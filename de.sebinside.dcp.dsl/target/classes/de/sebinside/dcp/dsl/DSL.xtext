@@ -1,0 +1,35 @@
+grammar de.sebinside.dcp.dsl.DSL with org.eclipse.xtext.common.Terminals
+
+generate dSL "http://www.sebinside.de/dcp/dsl/DSL"
+
+Model:
+	(elements+=AbstractElement)*;
+
+AbstractElement:
+	DataType | ValueSet | CharacteristicsType;
+
+DataType:
+	'datatype' name=ID;
+
+ValueSet:
+	'valueset' name=ID AssignementOperator '[' members+=ID (',' members+=ID)* ']';
+
+CharacteristicsType:
+	AttributeType | PropertyType;
+
+AttributeType:
+	'attribute' name=ID AssignementOperator valueset=[ValueSet];
+	
+PropertyType:
+	'property' name=ID AssignementOperator valueset=[ValueSet];
+	
+CharacteristicClass:
+	'class' name=ID '{' members+=CharacteristicSelector (',' members+=CharacteristicSelector)* '}'
+;
+
+CharacteristicSelector:
+	name=[CharacteristicsType] '.' literal=ID
+;
+
+AssignementOperator:
+	'<-';

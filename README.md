@@ -10,8 +10,9 @@ Most relevant files:
 - [DSLParsingTest.xtend](https://github.com/sebinside/DCPDSL/blob/master/de.sebinside.dcp.dsl.tests/src/de/sebinside/dcp/dsl/tests/DSLParsingTest.xtend)
 
 ## TODOs
-- Review code (I do have less knowledge about using xtext correctly)
+- Review code (I do have less knowledge about using xtext correctly, e.g. regarding `conjuncted?=...` and the build errors...)
 - Correct approach to meta-model? (Looking at the [old cooperate tutorial](https://github.com/Cooperate-Project/CooperateModelingEnvironment/wiki/Creating-a-Textual-Editor)
+- How to reference data types, value sets, etc. correctly?
 - Adding way more unit tests
 - Implement more validation (what else?)
 - Implement issue resolution (what?)

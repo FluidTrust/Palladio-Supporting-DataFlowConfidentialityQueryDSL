@@ -16,15 +16,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CharacteristicClassTest extends TestCase {
-
-	/**
-	 * The fixture for this Characteristic Class test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CharacteristicClass fixture = null;
+public class CharacteristicClassTest extends AbstractElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -46,23 +38,14 @@ public class CharacteristicClassTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Characteristic Class test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(CharacteristicClass fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this Characteristic Class test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected CharacteristicClass getFixture() {
-		return fixture;
+		return (CharacteristicClass)fixture;
 	}
 
 	/**

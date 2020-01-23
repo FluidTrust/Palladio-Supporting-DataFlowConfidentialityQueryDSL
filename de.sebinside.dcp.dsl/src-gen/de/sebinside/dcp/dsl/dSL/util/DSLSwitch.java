@@ -133,6 +133,7 @@ public class DSLSwitch<T> extends Switch<T>
       {
         CharacteristicClass characteristicClass = (CharacteristicClass)theEObject;
         T result = caseCharacteristicClass(characteristicClass);
+        if (result == null) result = caseAbstractElement(characteristicClass);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -140,6 +141,88 @@ public class DSLSwitch<T> extends Switch<T>
       {
         CharacteristicSelector characteristicSelector = (CharacteristicSelector)theEObject;
         T result = caseCharacteristicSelector(characteristicSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.CONSTRAINT:
+      {
+        Constraint constraint = (Constraint)theEObject;
+        T result = caseConstraint(constraint);
+        if (result == null) result = caseAbstractElement(constraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.RULE:
+      {
+        Rule rule = (Rule)theEObject;
+        T result = caseRule(rule);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.DATA_SELECTOR:
+      {
+        DataSelector dataSelector = (DataSelector)theEObject;
+        T result = caseDataSelector(dataSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.ATTRIBUTE_SELECTOR:
+      {
+        AttributeSelector attributeSelector = (AttributeSelector)theEObject;
+        T result = caseAttributeSelector(attributeSelector);
+        if (result == null) result = caseDataSelector(attributeSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR:
+      {
+        AttributeClassSelector attributeClassSelector = (AttributeClassSelector)theEObject;
+        T result = caseAttributeClassSelector(attributeClassSelector);
+        if (result == null) result = caseDataSelector(attributeClassSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.DESTINATION_SELECTOR:
+      {
+        DestinationSelector destinationSelector = (DestinationSelector)theEObject;
+        T result = caseDestinationSelector(destinationSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.PROPERTY_SELECTOR:
+      {
+        PropertySelector propertySelector = (PropertySelector)theEObject;
+        T result = casePropertySelector(propertySelector);
+        if (result == null) result = caseDestinationSelector(propertySelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.PROPERTY_CLASS_SELECTOR:
+      {
+        PropertyClassSelector propertyClassSelector = (PropertyClassSelector)theEObject;
+        T result = casePropertyClassSelector(propertyClassSelector);
+        if (result == null) result = caseDestinationSelector(propertyClassSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.STATEMENT:
+      {
+        Statement statement = (Statement)theEObject;
+        T result = caseStatement(statement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.STATEMENT_TYPE:
+      {
+        StatementType statementType = (StatementType)theEObject;
+        T result = caseStatementType(statementType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.STATEMENT_MODALITY:
+      {
+        StatementModality statementModality = (StatementModality)theEObject;
+        T result = caseStatementModality(statementModality);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -287,6 +370,182 @@ public class DSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCharacteristicSelector(CharacteristicSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstraint(Constraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rule</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rule</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRule(Rule object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Data Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Data Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDataSelector(DataSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Attribute Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Attribute Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAttributeSelector(AttributeSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Attribute Class Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Attribute Class Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAttributeClassSelector(AttributeClassSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Destination Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Destination Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDestinationSelector(DestinationSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePropertySelector(PropertySelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property Class Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property Class Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePropertyClassSelector(PropertyClassSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStatement(Statement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Statement Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Statement Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStatementType(StatementType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Statement Modality</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Statement Modality</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStatementModality(StatementModality object)
   {
     return null;
   }

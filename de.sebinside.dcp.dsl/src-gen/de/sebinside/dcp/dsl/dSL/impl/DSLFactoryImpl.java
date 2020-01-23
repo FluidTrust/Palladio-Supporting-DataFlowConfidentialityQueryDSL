@@ -74,6 +74,17 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
       case DSLPackage.PROPERTY_TYPE: return createPropertyType();
       case DSLPackage.CHARACTERISTIC_CLASS: return createCharacteristicClass();
       case DSLPackage.CHARACTERISTIC_SELECTOR: return createCharacteristicSelector();
+      case DSLPackage.CONSTRAINT: return createConstraint();
+      case DSLPackage.RULE: return createRule();
+      case DSLPackage.DATA_SELECTOR: return createDataSelector();
+      case DSLPackage.ATTRIBUTE_SELECTOR: return createAttributeSelector();
+      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR: return createAttributeClassSelector();
+      case DSLPackage.DESTINATION_SELECTOR: return createDestinationSelector();
+      case DSLPackage.PROPERTY_SELECTOR: return createPropertySelector();
+      case DSLPackage.PROPERTY_CLASS_SELECTOR: return createPropertyClassSelector();
+      case DSLPackage.STATEMENT: return createStatement();
+      case DSLPackage.STATEMENT_TYPE: return createStatementType();
+      case DSLPackage.STATEMENT_MODALITY: return createStatementModality();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -185,6 +196,138 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
   {
     CharacteristicSelectorImpl characteristicSelector = new CharacteristicSelectorImpl();
     return characteristicSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Constraint createConstraint()
+  {
+    ConstraintImpl constraint = new ConstraintImpl();
+    return constraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Rule createRule()
+  {
+    RuleImpl rule = new RuleImpl();
+    return rule;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DataSelector createDataSelector()
+  {
+    DataSelectorImpl dataSelector = new DataSelectorImpl();
+    return dataSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AttributeSelector createAttributeSelector()
+  {
+    AttributeSelectorImpl attributeSelector = new AttributeSelectorImpl();
+    return attributeSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AttributeClassSelector createAttributeClassSelector()
+  {
+    AttributeClassSelectorImpl attributeClassSelector = new AttributeClassSelectorImpl();
+    return attributeClassSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DestinationSelector createDestinationSelector()
+  {
+    DestinationSelectorImpl destinationSelector = new DestinationSelectorImpl();
+    return destinationSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PropertySelector createPropertySelector()
+  {
+    PropertySelectorImpl propertySelector = new PropertySelectorImpl();
+    return propertySelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PropertyClassSelector createPropertyClassSelector()
+  {
+    PropertyClassSelectorImpl propertyClassSelector = new PropertyClassSelectorImpl();
+    return propertyClassSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Statement createStatement()
+  {
+    StatementImpl statement = new StatementImpl();
+    return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StatementType createStatementType()
+  {
+    StatementTypeImpl statementType = new StatementTypeImpl();
+    return statementType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StatementModality createStatementModality()
+  {
+    StatementModalityImpl statementModality = new StatementModalityImpl();
+    return statementModality;
   }
 
   /**

@@ -105,6 +105,105 @@ public interface DSLFactory extends EFactory
   CharacteristicSelector createCharacteristicSelector();
 
   /**
+   * Returns a new object of class '<em>Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constraint</em>'.
+   * @generated
+   */
+  Constraint createConstraint();
+
+  /**
+   * Returns a new object of class '<em>Rule</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rule</em>'.
+   * @generated
+   */
+  Rule createRule();
+
+  /**
+   * Returns a new object of class '<em>Data Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Data Selector</em>'.
+   * @generated
+   */
+  DataSelector createDataSelector();
+
+  /**
+   * Returns a new object of class '<em>Attribute Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Attribute Selector</em>'.
+   * @generated
+   */
+  AttributeSelector createAttributeSelector();
+
+  /**
+   * Returns a new object of class '<em>Attribute Class Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Attribute Class Selector</em>'.
+   * @generated
+   */
+  AttributeClassSelector createAttributeClassSelector();
+
+  /**
+   * Returns a new object of class '<em>Destination Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Destination Selector</em>'.
+   * @generated
+   */
+  DestinationSelector createDestinationSelector();
+
+  /**
+   * Returns a new object of class '<em>Property Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Selector</em>'.
+   * @generated
+   */
+  PropertySelector createPropertySelector();
+
+  /**
+   * Returns a new object of class '<em>Property Class Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Class Selector</em>'.
+   * @generated
+   */
+  PropertyClassSelector createPropertyClassSelector();
+
+  /**
+   * Returns a new object of class '<em>Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Statement</em>'.
+   * @generated
+   */
+  Statement createStatement();
+
+  /**
+   * Returns a new object of class '<em>Statement Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Statement Type</em>'.
+   * @generated
+   */
+  StatementType createStatementType();
+
+  /**
+   * Returns a new object of class '<em>Statement Modality</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Statement Modality</em>'.
+   * @generated
+   */
+  StatementModality createStatementModality();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

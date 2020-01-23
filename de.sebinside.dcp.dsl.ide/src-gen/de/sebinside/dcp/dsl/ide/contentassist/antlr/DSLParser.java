@@ -33,6 +33,10 @@ public class DSLParser extends AbstractContentAssistParser {
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, DSLGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getAbstractElementAccess().getAlternatives(), "rule__AbstractElement__Alternatives");
 			builder.put(grammarAccess.getCharacteristicsTypeAccess().getAlternatives(), "rule__CharacteristicsType__Alternatives");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getAlternatives_2(), "rule__CharacteristicSelector__Alternatives_2");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getAlternatives_2_1_2(), "rule__CharacteristicSelector__Alternatives_2_1_2");
+			builder.put(grammarAccess.getDataSelectorAccess().getAlternatives(), "rule__DataSelector__Alternatives");
+			builder.put(grammarAccess.getDestinationSelectorAccess().getAlternatives(), "rule__DestinationSelector__Alternatives");
 			builder.put(grammarAccess.getDataTypeAccess().getGroup(), "rule__DataType__Group__0");
 			builder.put(grammarAccess.getValueSetAccess().getGroup(), "rule__ValueSet__Group__0");
 			builder.put(grammarAccess.getValueSetAccess().getGroup_5(), "rule__ValueSet__Group_5__0");
@@ -41,6 +45,19 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCharacteristicClassAccess().getGroup(), "rule__CharacteristicClass__Group__0");
 			builder.put(grammarAccess.getCharacteristicClassAccess().getGroup_4(), "rule__CharacteristicClass__Group_4__0");
 			builder.put(grammarAccess.getCharacteristicSelectorAccess().getGroup(), "rule__CharacteristicSelector__Group__0");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getGroup_2_0(), "rule__CharacteristicSelector__Group_2_0__0");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getGroup_2_1(), "rule__CharacteristicSelector__Group_2_1__0");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getGroup_2_1_2_0(), "rule__CharacteristicSelector__Group_2_1_2_0__0");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getGroup_2_1_2_1(), "rule__CharacteristicSelector__Group_2_1_2_1__0");
+			builder.put(grammarAccess.getConstraintAccess().getGroup(), "rule__Constraint__Group__0");
+			builder.put(grammarAccess.getRuleAccess().getGroup(), "rule__Rule__Group__0");
+			builder.put(grammarAccess.getRuleAccess().getGroup_1(), "rule__Rule__Group_1__0");
+			builder.put(grammarAccess.getRuleAccess().getGroup_4(), "rule__Rule__Group_4__0");
+			builder.put(grammarAccess.getAttributeSelectorAccess().getGroup(), "rule__AttributeSelector__Group__0");
+			builder.put(grammarAccess.getAttributeClassSelectorAccess().getGroup(), "rule__AttributeClassSelector__Group__0");
+			builder.put(grammarAccess.getPropertySelectorAccess().getGroup(), "rule__PropertySelector__Group__0");
+			builder.put(grammarAccess.getPropertyClassSelectorAccess().getGroup(), "rule__PropertyClassSelector__Group__0");
+			builder.put(grammarAccess.getStatementAccess().getGroup(), "rule__Statement__Group__0");
 			builder.put(grammarAccess.getModelAccess().getElementsAssignment(), "rule__Model__ElementsAssignment");
 			builder.put(grammarAccess.getDataTypeAccess().getNameAssignment_1(), "rule__DataType__NameAssignment_1");
 			builder.put(grammarAccess.getValueSetAccess().getNameAssignment_1(), "rule__ValueSet__NameAssignment_1");
@@ -53,8 +70,30 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCharacteristicClassAccess().getNameAssignment_1(), "rule__CharacteristicClass__NameAssignment_1");
 			builder.put(grammarAccess.getCharacteristicClassAccess().getMembersAssignment_3(), "rule__CharacteristicClass__MembersAssignment_3");
 			builder.put(grammarAccess.getCharacteristicClassAccess().getMembersAssignment_4_1(), "rule__CharacteristicClass__MembersAssignment_4_1");
-			builder.put(grammarAccess.getCharacteristicSelectorAccess().getNameAssignment_0(), "rule__CharacteristicSelector__NameAssignment_0");
-			builder.put(grammarAccess.getCharacteristicSelectorAccess().getLiteralAssignment_2(), "rule__CharacteristicSelector__LiteralAssignment_2");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getRefAssignment_0(), "rule__CharacteristicSelector__RefAssignment_0");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getNegatedAssignment_2_0_0(), "rule__CharacteristicSelector__NegatedAssignment_2_0_0");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getLiteralsAssignment_2_0_1(), "rule__CharacteristicSelector__LiteralsAssignment_2_0_1");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getLiteralsAssignment_2_1_1(), "rule__CharacteristicSelector__LiteralsAssignment_2_1_1");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getLiteralsAssignment_2_1_2_0_1(), "rule__CharacteristicSelector__LiteralsAssignment_2_1_2_0_1");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getConjunctedAssignment_2_1_2_1_0(), "rule__CharacteristicSelector__ConjunctedAssignment_2_1_2_1_0");
+			builder.put(grammarAccess.getCharacteristicSelectorAccess().getLiteralsAssignment_2_1_2_1_1(), "rule__CharacteristicSelector__LiteralsAssignment_2_1_2_1_1");
+			builder.put(grammarAccess.getConstraintAccess().getNameAssignment_1(), "rule__Constraint__NameAssignment_1");
+			builder.put(grammarAccess.getConstraintAccess().getRuleAssignment_3(), "rule__Constraint__RuleAssignment_3");
+			builder.put(grammarAccess.getRuleAccess().getDataSelectorsAssignment_0(), "rule__Rule__DataSelectorsAssignment_0");
+			builder.put(grammarAccess.getRuleAccess().getDataSelectorsAssignment_1_1(), "rule__Rule__DataSelectorsAssignment_1_1");
+			builder.put(grammarAccess.getRuleAccess().getStatementAssignment_2(), "rule__Rule__StatementAssignment_2");
+			builder.put(grammarAccess.getRuleAccess().getDestinationSelectorsAssignment_3(), "rule__Rule__DestinationSelectorsAssignment_3");
+			builder.put(grammarAccess.getRuleAccess().getDestinationSelectorsAssignment_4_1(), "rule__Rule__DestinationSelectorsAssignment_4_1");
+			builder.put(grammarAccess.getAttributeSelectorAccess().getRefAssignment_1(), "rule__AttributeSelector__RefAssignment_1");
+			builder.put(grammarAccess.getAttributeClassSelectorAccess().getNegatedAssignment_1(), "rule__AttributeClassSelector__NegatedAssignment_1");
+			builder.put(grammarAccess.getAttributeClassSelectorAccess().getRefAssignment_2(), "rule__AttributeClassSelector__RefAssignment_2");
+			builder.put(grammarAccess.getPropertySelectorAccess().getRefAssignment_1(), "rule__PropertySelector__RefAssignment_1");
+			builder.put(grammarAccess.getPropertyClassSelectorAccess().getNegatedAssignment_1(), "rule__PropertyClassSelector__NegatedAssignment_1");
+			builder.put(grammarAccess.getPropertyClassSelectorAccess().getRefAssignment_2(), "rule__PropertyClassSelector__RefAssignment_2");
+			builder.put(grammarAccess.getStatementAccess().getModalityAssignment_0(), "rule__Statement__ModalityAssignment_0");
+			builder.put(grammarAccess.getStatementAccess().getTypeAssignment_1(), "rule__Statement__TypeAssignment_1");
+			builder.put(grammarAccess.getStatementTypeAccess().getNameAssignment(), "rule__StatementType__NameAssignment");
+			builder.put(grammarAccess.getStatementModalityAccess().getNameAssignment(), "rule__StatementModality__NameAssignment");
 		}
 	}
 	

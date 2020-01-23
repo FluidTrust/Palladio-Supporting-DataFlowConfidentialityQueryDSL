@@ -7,13 +7,19 @@ import de.sebinside.dcp.dsl.dSL.CharacteristicSelector;
 import de.sebinside.dcp.dsl.dSL.CharacteristicsType;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +29,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSelectorImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSelectorImpl#getLiteral <em>Literal</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSelectorImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSelectorImpl#isNegated <em>Negated</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSelectorImpl#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSelectorImpl#isConjuncted <em>Conjuncted</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,34 +40,64 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container implements CharacteristicSelector
 {
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected CharacteristicsType name;
+  protected CharacteristicsType ref;
 
   /**
-   * The default value of the '{@link #getLiteral() <em>Literal</em>}' attribute.
+   * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLiteral()
+   * @see #isNegated()
    * @generated
    * @ordered
    */
-  protected static final String LITERAL_EDEFAULT = null;
+  protected static final boolean NEGATED_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getLiteral() <em>Literal</em>}' attribute.
+   * The cached value of the '{@link #isNegated() <em>Negated</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLiteral()
+   * @see #isNegated()
    * @generated
    * @ordered
    */
-  protected String literal = LITERAL_EDEFAULT;
+  protected boolean negated = NEGATED_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getLiterals() <em>Literals</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLiterals()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> literals;
+
+  /**
+   * The default value of the '{@link #isConjuncted() <em>Conjuncted</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isConjuncted()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean CONJUNCTED_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isConjuncted() <em>Conjuncted</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isConjuncted()
+   * @generated
+   * @ordered
+   */
+  protected boolean conjuncted = CONJUNCTED_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,19 +126,19 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * @generated
    */
   @Override
-  public CharacteristicsType getName()
+  public CharacteristicsType getRef()
   {
-    if (name != null && name.eIsProxy())
+    if (ref != null && ref.eIsProxy())
     {
-      InternalEObject oldName = (InternalEObject)name;
-      name = (CharacteristicsType)eResolveProxy(oldName);
-      if (name != oldName)
+      InternalEObject oldRef = (InternalEObject)ref;
+      ref = (CharacteristicsType)eResolveProxy(oldRef);
+      if (ref != oldRef)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTIC_SELECTOR__NAME, oldName, name));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTIC_SELECTOR__REF, oldRef, ref));
       }
     }
-    return name;
+    return ref;
   }
 
   /**
@@ -108,9 +146,9 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public CharacteristicsType basicGetName()
+  public CharacteristicsType basicGetRef()
   {
-    return name;
+    return ref;
   }
 
   /**
@@ -119,12 +157,12 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * @generated
    */
   @Override
-  public void setName(CharacteristicsType newName)
+  public void setRef(CharacteristicsType newRef)
   {
-    CharacteristicsType oldName = name;
-    name = newName;
+    CharacteristicsType oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__REF, oldRef, ref));
   }
 
   /**
@@ -133,9 +171,9 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * @generated
    */
   @Override
-  public String getLiteral()
+  public boolean isNegated()
   {
-    return literal;
+    return negated;
   }
 
   /**
@@ -144,12 +182,52 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * @generated
    */
   @Override
-  public void setLiteral(String newLiteral)
+  public void setNegated(boolean newNegated)
   {
-    String oldLiteral = literal;
-    literal = newLiteral;
+    boolean oldNegated = negated;
+    negated = newNegated;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__LITERAL, oldLiteral, literal));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED, oldNegated, negated));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<String> getLiterals()
+  {
+    if (literals == null)
+    {
+      literals = new EDataTypeEList<String>(String.class, this, DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS);
+    }
+    return literals;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isConjuncted()
+  {
+    return conjuncted;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConjuncted(boolean newConjuncted)
+  {
+    boolean oldConjuncted = conjuncted;
+    conjuncted = newConjuncted;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED, oldConjuncted, conjuncted));
   }
 
   /**
@@ -162,11 +240,15 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case DSLPackage.CHARACTERISTIC_SELECTOR__NAME:
-        if (resolve) return getName();
-        return basicGetName();
-      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERAL:
-        return getLiteral();
+      case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
+        if (resolve) return getRef();
+        return basicGetRef();
+      case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
+        return isNegated();
+      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
+        return getLiterals();
+      case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
+        return isConjuncted();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -176,16 +258,24 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case DSLPackage.CHARACTERISTIC_SELECTOR__NAME:
-        setName((CharacteristicsType)newValue);
+      case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
+        setRef((CharacteristicsType)newValue);
         return;
-      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERAL:
-        setLiteral((String)newValue);
+      case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
+        setNegated((Boolean)newValue);
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
+        getLiterals().clear();
+        getLiterals().addAll((Collection<? extends String>)newValue);
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
+        setConjuncted((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -201,11 +291,17 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case DSLPackage.CHARACTERISTIC_SELECTOR__NAME:
-        setName((CharacteristicsType)null);
+      case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
+        setRef((CharacteristicsType)null);
         return;
-      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERAL:
-        setLiteral(LITERAL_EDEFAULT);
+      case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
+        setNegated(NEGATED_EDEFAULT);
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
+        getLiterals().clear();
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
+        setConjuncted(CONJUNCTED_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -221,10 +317,14 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
   {
     switch (featureID)
     {
-      case DSLPackage.CHARACTERISTIC_SELECTOR__NAME:
-        return name != null;
-      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERAL:
-        return LITERAL_EDEFAULT == null ? literal != null : !LITERAL_EDEFAULT.equals(literal);
+      case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
+        return ref != null;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
+        return negated != NEGATED_EDEFAULT;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
+        return literals != null && !literals.isEmpty();
+      case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
+        return conjuncted != CONJUNCTED_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -240,8 +340,12 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (literal: ");
-    result.append(literal);
+    result.append(" (negated: ");
+    result.append(negated);
+    result.append(", literals: ");
+    result.append(literals);
+    result.append(", conjuncted: ");
+    result.append(conjuncted);
     result.append(')');
     return result.toString();
   }

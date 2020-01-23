@@ -9,16 +9,12 @@ import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,34 +27,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicClassImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicClassImpl#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CharacteristicClassImpl extends MinimalEObjectImpl.Container implements CharacteristicClass
+public class CharacteristicClassImpl extends AbstractElementImpl implements CharacteristicClass
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -88,31 +63,6 @@ public class CharacteristicClassImpl extends MinimalEObjectImpl.Container implem
   protected EClass eStaticClass()
   {
     return DSLPackage.Literals.CHARACTERISTIC_CLASS;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_CLASS__NAME, oldName, name));
   }
 
   /**
@@ -156,8 +106,6 @@ public class CharacteristicClassImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case DSLPackage.CHARACTERISTIC_CLASS__NAME:
-        return getName();
       case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
         return getMembers();
     }
@@ -175,9 +123,6 @@ public class CharacteristicClassImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case DSLPackage.CHARACTERISTIC_CLASS__NAME:
-        setName((String)newValue);
-        return;
       case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
         getMembers().clear();
         getMembers().addAll((Collection<? extends CharacteristicSelector>)newValue);
@@ -196,9 +141,6 @@ public class CharacteristicClassImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case DSLPackage.CHARACTERISTIC_CLASS__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
         getMembers().clear();
         return;
@@ -216,29 +158,10 @@ public class CharacteristicClassImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case DSLPackage.CHARACTERISTIC_CLASS__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
         return members != null && !members.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //CharacteristicClassImpl

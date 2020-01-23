@@ -19,13 +19,37 @@ class DSLParsingTest {
 	ParseHelper<Model> parseHelper
 	
 	@Test
-	def void loadModel() {
+	def void fullTest() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			datatype String
+			datatype UserData
+			valueset sensitivity <- [low, high, mid]
+			attribute sensitivity <- sensitivity
+			property sensitivity <- sensitivity
+			
+			class example {
+				sensitivity.low,
+				sensitivity.high
+			}
+			
+			constraint "test" {
+				data.attribute.sensitivity.high NEVER FLOWS node.property.sensitivity.low
+			}
+			
+			constraint "test" {
+				data.class.example NEVER FLOWS node.class.!example
+			}
+			
+			class selectorPossibilites {
+				sensitivity.low,
+				sensitivity.!low,
+				sensitivity.[low],
+				sensitivity.[low, high, mid],
+				sensitivity.[low & high & mid]
+			}
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors
-		//result.greetings.forEach[element | println(element.name)]
 		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
 	}
 }

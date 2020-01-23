@@ -306,7 +306,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTIC_CLASS__NAME = 0;
+  int CHARACTERISTIC_CLASS__NAME = ABSTRACT_ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -315,7 +315,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTIC_CLASS__MEMBERS = 1;
+  int CHARACTERISTIC_CLASS__MEMBERS = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Characteristic Class</em>' class.
@@ -324,7 +324,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTIC_CLASS_FEATURE_COUNT = 2;
+  int CHARACTERISTIC_CLASS_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSelectorImpl <em>Characteristic Selector</em>}' class.
@@ -337,22 +337,40 @@ public interface DSLPackage extends EPackage
   int CHARACTERISTIC_SELECTOR = 8;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' reference.
+   * The feature id for the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CHARACTERISTIC_SELECTOR__NAME = 0;
+  int CHARACTERISTIC_SELECTOR__REF = 0;
 
   /**
-   * The feature id for the '<em><b>Literal</b></em>' attribute.
+   * The feature id for the '<em><b>Negated</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CHARACTERISTIC_SELECTOR__LITERAL = 1;
+  int CHARACTERISTIC_SELECTOR__NEGATED = 1;
+
+  /**
+   * The feature id for the '<em><b>Literals</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHARACTERISTIC_SELECTOR__LITERALS = 2;
+
+  /**
+   * The feature id for the '<em><b>Conjuncted</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHARACTERISTIC_SELECTOR__CONJUNCTED = 3;
 
   /**
    * The number of structural features of the '<em>Characteristic Selector</em>' class.
@@ -361,7 +379,351 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTIC_SELECTOR_FEATURE_COUNT = 2;
+  int CHARACTERISTIC_SELECTOR_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl <em>Constraint</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getConstraint()
+   * @generated
+   */
+  int CONSTRAINT = 9;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT__NAME = ABSTRACT_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Rule</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT__RULE = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Constraint</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.RuleImpl <em>Rule</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.RuleImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getRule()
+   * @generated
+   */
+  int RULE = 10;
+
+  /**
+   * The feature id for the '<em><b>Data Selectors</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE__DATA_SELECTORS = 0;
+
+  /**
+   * The feature id for the '<em><b>Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE__STATEMENT = 1;
+
+  /**
+   * The feature id for the '<em><b>Destination Selectors</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE__DESTINATION_SELECTORS = 2;
+
+  /**
+   * The number of structural features of the '<em>Rule</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.DataSelectorImpl <em>Data Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.DataSelectorImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDataSelector()
+   * @generated
+   */
+  int DATA_SELECTOR = 11;
+
+  /**
+   * The number of structural features of the '<em>Data Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SELECTOR_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.AttributeSelectorImpl <em>Attribute Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.AttributeSelectorImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeSelector()
+   * @generated
+   */
+  int ATTRIBUTE_SELECTOR = 12;
+
+  /**
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_SELECTOR__REF = DATA_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Attribute Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_SELECTOR_FEATURE_COUNT = DATA_SELECTOR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.AttributeClassSelectorImpl <em>Attribute Class Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.AttributeClassSelectorImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeClassSelector()
+   * @generated
+   */
+  int ATTRIBUTE_CLASS_SELECTOR = 13;
+
+  /**
+   * The feature id for the '<em><b>Negated</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_CLASS_SELECTOR__NEGATED = DATA_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Ref</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_CLASS_SELECTOR__REF = DATA_SELECTOR_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Attribute Class Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_CLASS_SELECTOR_FEATURE_COUNT = DATA_SELECTOR_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.DestinationSelectorImpl <em>Destination Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.DestinationSelectorImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDestinationSelector()
+   * @generated
+   */
+  int DESTINATION_SELECTOR = 14;
+
+  /**
+   * The number of structural features of the '<em>Destination Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DESTINATION_SELECTOR_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.PropertySelectorImpl <em>Property Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.PropertySelectorImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertySelector()
+   * @generated
+   */
+  int PROPERTY_SELECTOR = 15;
+
+  /**
+   * The feature id for the '<em><b>Ref</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_SELECTOR__REF = DESTINATION_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Property Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.PropertyClassSelectorImpl <em>Property Class Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.PropertyClassSelectorImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertyClassSelector()
+   * @generated
+   */
+  int PROPERTY_CLASS_SELECTOR = 16;
+
+  /**
+   * The feature id for the '<em><b>Negated</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_CLASS_SELECTOR__NEGATED = DESTINATION_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Ref</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_CLASS_SELECTOR__REF = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Property Class Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_CLASS_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementImpl <em>Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.StatementImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatement()
+   * @generated
+   */
+  int STATEMENT = 17;
+
+  /**
+   * The feature id for the '<em><b>Modality</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT__MODALITY = 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT__TYPE = 1;
+
+  /**
+   * The number of structural features of the '<em>Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementTypeImpl <em>Statement Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.StatementTypeImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementType()
+   * @generated
+   */
+  int STATEMENT_TYPE = 18;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT_TYPE__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Statement Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT_TYPE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementModalityImpl <em>Statement Modality</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.StatementModalityImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementModality()
+   * @generated
+   */
+  int STATEMENT_MODALITY = 19;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT_MODALITY__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Statement Modality</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATEMENT_MODALITY_FEATURE_COUNT = 1;
 
 
   /**
@@ -489,17 +851,6 @@ public interface DSLPackage extends EPackage
   EClass getCharacteristicClass();
 
   /**
-   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicClass#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.CharacteristicClass#getName()
-   * @see #getCharacteristicClass()
-   * @generated
-   */
-  EAttribute getCharacteristicClass_Name();
-
-  /**
    * Returns the meta object for the containment reference list '{@link de.sebinside.dcp.dsl.dSL.CharacteristicClass#getMembers <em>Members</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -521,26 +872,312 @@ public interface DSLPackage extends EPackage
   EClass getCharacteristicSelector();
 
   /**
-   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getName <em>Name</em>}'.
+   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Name</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getName()
+   * @return the meta object for the reference '<em>Ref</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getRef()
    * @see #getCharacteristicSelector()
    * @generated
    */
-  EReference getCharacteristicSelector_Name();
+  EReference getCharacteristicSelector_Ref();
 
   /**
-   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getLiteral <em>Literal</em>}'.
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#isNegated <em>Negated</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Literal</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getLiteral()
+   * @return the meta object for the attribute '<em>Negated</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.CharacteristicSelector#isNegated()
    * @see #getCharacteristicSelector()
    * @generated
    */
-  EAttribute getCharacteristicSelector_Literal();
+  EAttribute getCharacteristicSelector_Negated();
+
+  /**
+   * Returns the meta object for the attribute list '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getLiterals <em>Literals</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Literals</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getLiterals()
+   * @see #getCharacteristicSelector()
+   * @generated
+   */
+  EAttribute getCharacteristicSelector_Literals();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#isConjuncted <em>Conjuncted</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Conjuncted</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.CharacteristicSelector#isConjuncted()
+   * @see #getCharacteristicSelector()
+   * @generated
+   */
+  EAttribute getCharacteristicSelector_Conjuncted();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Constraint <em>Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constraint</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Constraint
+   * @generated
+   */
+  EClass getConstraint();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.Constraint#getRule <em>Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Rule</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Constraint#getRule()
+   * @see #getConstraint()
+   * @generated
+   */
+  EReference getConstraint_Rule();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Rule <em>Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Rule</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Rule
+   * @generated
+   */
+  EClass getRule();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.sebinside.dcp.dsl.dSL.Rule#getDataSelectors <em>Data Selectors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Data Selectors</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Rule#getDataSelectors()
+   * @see #getRule()
+   * @generated
+   */
+  EReference getRule_DataSelectors();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.Rule#getStatement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Statement</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Rule#getStatement()
+   * @see #getRule()
+   * @generated
+   */
+  EReference getRule_Statement();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.sebinside.dcp.dsl.dSL.Rule#getDestinationSelectors <em>Destination Selectors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Destination Selectors</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Rule#getDestinationSelectors()
+   * @see #getRule()
+   * @generated
+   */
+  EReference getRule_DestinationSelectors();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.DataSelector <em>Data Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Data Selector</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.DataSelector
+   * @generated
+   */
+  EClass getDataSelector();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.AttributeSelector <em>Attribute Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Attribute Selector</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AttributeSelector
+   * @generated
+   */
+  EClass getAttributeSelector();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.AttributeSelector#getRef <em>Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Ref</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AttributeSelector#getRef()
+   * @see #getAttributeSelector()
+   * @generated
+   */
+  EReference getAttributeSelector_Ref();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector <em>Attribute Class Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Attribute Class Selector</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AttributeClassSelector
+   * @generated
+   */
+  EClass getAttributeClassSelector();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector#isNegated <em>Negated</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Negated</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AttributeClassSelector#isNegated()
+   * @see #getAttributeClassSelector()
+   * @generated
+   */
+  EAttribute getAttributeClassSelector_Negated();
+
+  /**
+   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector#getRef <em>Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Ref</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AttributeClassSelector#getRef()
+   * @see #getAttributeClassSelector()
+   * @generated
+   */
+  EReference getAttributeClassSelector_Ref();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.DestinationSelector <em>Destination Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Destination Selector</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.DestinationSelector
+   * @generated
+   */
+  EClass getDestinationSelector();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.PropertySelector <em>Property Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Property Selector</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.PropertySelector
+   * @generated
+   */
+  EClass getPropertySelector();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.PropertySelector#getRef <em>Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Ref</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.PropertySelector#getRef()
+   * @see #getPropertySelector()
+   * @generated
+   */
+  EReference getPropertySelector_Ref();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector <em>Property Class Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Property Class Selector</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.PropertyClassSelector
+   * @generated
+   */
+  EClass getPropertyClassSelector();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#isNegated <em>Negated</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Negated</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.PropertyClassSelector#isNegated()
+   * @see #getPropertyClassSelector()
+   * @generated
+   */
+  EAttribute getPropertyClassSelector_Negated();
+
+  /**
+   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#getRef <em>Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Ref</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.PropertyClassSelector#getRef()
+   * @see #getPropertyClassSelector()
+   * @generated
+   */
+  EReference getPropertyClassSelector_Ref();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Statement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Statement</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Statement
+   * @generated
+   */
+  EClass getStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.Statement#getModality <em>Modality</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Modality</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Statement#getModality()
+   * @see #getStatement()
+   * @generated
+   */
+  EReference getStatement_Modality();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.Statement#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Statement#getType()
+   * @see #getStatement()
+   * @generated
+   */
+  EReference getStatement_Type();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.StatementType <em>Statement Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Statement Type</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.StatementType
+   * @generated
+   */
+  EClass getStatementType();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.StatementType#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.StatementType#getName()
+   * @see #getStatementType()
+   * @generated
+   */
+  EAttribute getStatementType_Name();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.StatementModality <em>Statement Modality</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Statement Modality</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.StatementModality
+   * @generated
+   */
+  EClass getStatementModality();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.StatementModality#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.StatementModality#getName()
+   * @see #getStatementModality()
+   * @generated
+   */
+  EAttribute getStatementModality_Name();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -678,14 +1315,6 @@ public interface DSLPackage extends EPackage
     EClass CHARACTERISTIC_CLASS = eINSTANCE.getCharacteristicClass();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CHARACTERISTIC_CLASS__NAME = eINSTANCE.getCharacteristicClass_Name();
-
-    /**
      * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -704,20 +1333,258 @@ public interface DSLPackage extends EPackage
     EClass CHARACTERISTIC_SELECTOR = eINSTANCE.getCharacteristicSelector();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CHARACTERISTIC_SELECTOR__NAME = eINSTANCE.getCharacteristicSelector_Name();
+    EReference CHARACTERISTIC_SELECTOR__REF = eINSTANCE.getCharacteristicSelector_Ref();
 
     /**
-     * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Negated</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CHARACTERISTIC_SELECTOR__LITERAL = eINSTANCE.getCharacteristicSelector_Literal();
+    EAttribute CHARACTERISTIC_SELECTOR__NEGATED = eINSTANCE.getCharacteristicSelector_Negated();
+
+    /**
+     * The meta object literal for the '<em><b>Literals</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CHARACTERISTIC_SELECTOR__LITERALS = eINSTANCE.getCharacteristicSelector_Literals();
+
+    /**
+     * The meta object literal for the '<em><b>Conjuncted</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CHARACTERISTIC_SELECTOR__CONJUNCTED = eINSTANCE.getCharacteristicSelector_Conjuncted();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl <em>Constraint</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getConstraint()
+     * @generated
+     */
+    EClass CONSTRAINT = eINSTANCE.getConstraint();
+
+    /**
+     * The meta object literal for the '<em><b>Rule</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT__RULE = eINSTANCE.getConstraint_Rule();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.RuleImpl <em>Rule</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.RuleImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getRule()
+     * @generated
+     */
+    EClass RULE = eINSTANCE.getRule();
+
+    /**
+     * The meta object literal for the '<em><b>Data Selectors</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULE__DATA_SELECTORS = eINSTANCE.getRule_DataSelectors();
+
+    /**
+     * The meta object literal for the '<em><b>Statement</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULE__STATEMENT = eINSTANCE.getRule_Statement();
+
+    /**
+     * The meta object literal for the '<em><b>Destination Selectors</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULE__DESTINATION_SELECTORS = eINSTANCE.getRule_DestinationSelectors();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.DataSelectorImpl <em>Data Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.DataSelectorImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDataSelector()
+     * @generated
+     */
+    EClass DATA_SELECTOR = eINSTANCE.getDataSelector();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.AttributeSelectorImpl <em>Attribute Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.AttributeSelectorImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeSelector()
+     * @generated
+     */
+    EClass ATTRIBUTE_SELECTOR = eINSTANCE.getAttributeSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ATTRIBUTE_SELECTOR__REF = eINSTANCE.getAttributeSelector_Ref();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.AttributeClassSelectorImpl <em>Attribute Class Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.AttributeClassSelectorImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeClassSelector()
+     * @generated
+     */
+    EClass ATTRIBUTE_CLASS_SELECTOR = eINSTANCE.getAttributeClassSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Negated</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ATTRIBUTE_CLASS_SELECTOR__NEGATED = eINSTANCE.getAttributeClassSelector_Negated();
+
+    /**
+     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ATTRIBUTE_CLASS_SELECTOR__REF = eINSTANCE.getAttributeClassSelector_Ref();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.DestinationSelectorImpl <em>Destination Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.DestinationSelectorImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDestinationSelector()
+     * @generated
+     */
+    EClass DESTINATION_SELECTOR = eINSTANCE.getDestinationSelector();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.PropertySelectorImpl <em>Property Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.PropertySelectorImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertySelector()
+     * @generated
+     */
+    EClass PROPERTY_SELECTOR = eINSTANCE.getPropertySelector();
+
+    /**
+     * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY_SELECTOR__REF = eINSTANCE.getPropertySelector_Ref();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.PropertyClassSelectorImpl <em>Property Class Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.PropertyClassSelectorImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertyClassSelector()
+     * @generated
+     */
+    EClass PROPERTY_CLASS_SELECTOR = eINSTANCE.getPropertyClassSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Negated</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROPERTY_CLASS_SELECTOR__NEGATED = eINSTANCE.getPropertyClassSelector_Negated();
+
+    /**
+     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY_CLASS_SELECTOR__REF = eINSTANCE.getPropertyClassSelector_Ref();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementImpl <em>Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.StatementImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatement()
+     * @generated
+     */
+    EClass STATEMENT = eINSTANCE.getStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Modality</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATEMENT__MODALITY = eINSTANCE.getStatement_Modality();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATEMENT__TYPE = eINSTANCE.getStatement_Type();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementTypeImpl <em>Statement Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.StatementTypeImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementType()
+     * @generated
+     */
+    EClass STATEMENT_TYPE = eINSTANCE.getStatementType();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STATEMENT_TYPE__NAME = eINSTANCE.getStatementType_Name();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementModalityImpl <em>Statement Modality</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.StatementModalityImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementModality()
+     * @generated
+     */
+    EClass STATEMENT_MODALITY = eINSTANCE.getStatementModality();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STATEMENT_MODALITY__NAME = eINSTANCE.getStatementModality_Name();
 
   }
 

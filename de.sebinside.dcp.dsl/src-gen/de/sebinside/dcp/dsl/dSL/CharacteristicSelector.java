@@ -3,6 +3,8 @@
  */
 package de.sebinside.dcp.dsl.dSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,8 +16,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getName <em>Name</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getLiteral <em>Literal</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getRef <em>Ref</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#isNegated <em>Negated</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#isConjuncted <em>Conjuncted</em>}</li>
  * </ul>
  *
  * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector()
@@ -25,47 +29,81 @@ import org.eclipse.emf.ecore.EObject;
 public interface CharacteristicSelector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' reference.
+   * Returns the value of the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' reference.
-   * @see #setName(CharacteristicsType)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Name()
+   * @return the value of the '<em>Ref</em>' reference.
+   * @see #setRef(CharacteristicsType)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Ref()
    * @model
    * @generated
    */
-  CharacteristicsType getName();
+  CharacteristicsType getRef();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getName <em>Name</em>}' reference.
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getRef <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' reference.
-   * @see #getName()
+   * @param value the new value of the '<em>Ref</em>' reference.
+   * @see #getRef()
    * @generated
    */
-  void setName(CharacteristicsType value);
+  void setRef(CharacteristicsType value);
 
   /**
-   * Returns the value of the '<em><b>Literal</b></em>' attribute.
+   * Returns the value of the '<em><b>Negated</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Literal</em>' attribute.
-   * @see #setLiteral(String)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Literal()
+   * @return the value of the '<em>Negated</em>' attribute.
+   * @see #setNegated(boolean)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Negated()
    * @model
    * @generated
    */
-  String getLiteral();
+  boolean isNegated();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getLiteral <em>Literal</em>}' attribute.
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#isNegated <em>Negated</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Literal</em>' attribute.
-   * @see #getLiteral()
+   * @param value the new value of the '<em>Negated</em>' attribute.
+   * @see #isNegated()
    * @generated
    */
-  void setLiteral(String value);
+  void setNegated(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Literals</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Literals</em>' attribute list.
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Literals()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getLiterals();
+
+  /**
+   * Returns the value of the '<em><b>Conjuncted</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Conjuncted</em>' attribute.
+   * @see #setConjuncted(boolean)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Conjuncted()
+   * @model
+   * @generated
+   */
+  boolean isConjuncted();
+
+  /**
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#isConjuncted <em>Conjuncted</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Conjuncted</em>' attribute.
+   * @see #isConjuncted()
+   * @generated
+   */
+  void setConjuncted(boolean value);
 
 } // CharacteristicSelector

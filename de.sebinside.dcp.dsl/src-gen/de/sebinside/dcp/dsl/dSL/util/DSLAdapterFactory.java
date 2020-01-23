@@ -121,6 +121,61 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
         return createCharacteristicSelectorAdapter();
       }
       @Override
+      public Adapter caseConstraint(Constraint object)
+      {
+        return createConstraintAdapter();
+      }
+      @Override
+      public Adapter caseRule(Rule object)
+      {
+        return createRuleAdapter();
+      }
+      @Override
+      public Adapter caseDataSelector(DataSelector object)
+      {
+        return createDataSelectorAdapter();
+      }
+      @Override
+      public Adapter caseAttributeSelector(AttributeSelector object)
+      {
+        return createAttributeSelectorAdapter();
+      }
+      @Override
+      public Adapter caseAttributeClassSelector(AttributeClassSelector object)
+      {
+        return createAttributeClassSelectorAdapter();
+      }
+      @Override
+      public Adapter caseDestinationSelector(DestinationSelector object)
+      {
+        return createDestinationSelectorAdapter();
+      }
+      @Override
+      public Adapter casePropertySelector(PropertySelector object)
+      {
+        return createPropertySelectorAdapter();
+      }
+      @Override
+      public Adapter casePropertyClassSelector(PropertyClassSelector object)
+      {
+        return createPropertyClassSelectorAdapter();
+      }
+      @Override
+      public Adapter caseStatement(Statement object)
+      {
+        return createStatementAdapter();
+      }
+      @Override
+      public Adapter caseStatementType(StatementType object)
+      {
+        return createStatementTypeAdapter();
+      }
+      @Override
+      public Adapter caseStatementModality(StatementModality object)
+      {
+        return createStatementModalityAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -273,6 +328,171 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCharacteristicSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.Constraint <em>Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.Constraint
+   * @generated
+   */
+  public Adapter createConstraintAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.Rule <em>Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.Rule
+   * @generated
+   */
+  public Adapter createRuleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.DataSelector <em>Data Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.DataSelector
+   * @generated
+   */
+  public Adapter createDataSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.AttributeSelector <em>Attribute Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.AttributeSelector
+   * @generated
+   */
+  public Adapter createAttributeSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector <em>Attribute Class Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.AttributeClassSelector
+   * @generated
+   */
+  public Adapter createAttributeClassSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.DestinationSelector <em>Destination Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.DestinationSelector
+   * @generated
+   */
+  public Adapter createDestinationSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.PropertySelector <em>Property Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.PropertySelector
+   * @generated
+   */
+  public Adapter createPropertySelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector <em>Property Class Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.PropertyClassSelector
+   * @generated
+   */
+  public Adapter createPropertyClassSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.Statement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.Statement
+   * @generated
+   */
+  public Adapter createStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.StatementType <em>Statement Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.StatementType
+   * @generated
+   */
+  public Adapter createStatementTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.StatementModality <em>Statement Modality</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.StatementModality
+   * @generated
+   */
+  public Adapter createStatementModalityAdapter()
   {
     return null;
   }

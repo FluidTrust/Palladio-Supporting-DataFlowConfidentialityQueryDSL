@@ -26,10 +26,65 @@ public class DSLParsingTest {
   private ParseHelper<Model> parseHelper;
   
   @Test
-  public void loadModel() {
+  public void fullTest() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("datatype String");
+      _builder.newLine();
+      _builder.append("datatype UserData");
+      _builder.newLine();
+      _builder.append("valueset sensitivity <- [low, high, mid]");
+      _builder.newLine();
+      _builder.append("attribute sensitivity <- sensitivity");
+      _builder.newLine();
+      _builder.append("property sensitivity <- sensitivity");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("class example {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("sensitivity.low,");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("sensitivity.high");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("constraint \"test\" {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("data.attribute.sensitivity.high NEVER FLOWS node.property.sensitivity.low");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("constraint \"test\" {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("data.class.example NEVER FLOWS node.class.!example");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("class selectorPossibilites {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("sensitivity.low,");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("sensitivity.!low,");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("sensitivity.[low],");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("sensitivity.[low, high, mid],");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("sensitivity.[low & high & mid]");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assertions.assertNotNull(result);

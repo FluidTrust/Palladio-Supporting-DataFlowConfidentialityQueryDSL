@@ -16,15 +16,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConstraintTest extends TestCase {
-
-	/**
-	 * The fixture for this Constraint test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Constraint fixture = null;
+public class ConstraintTest extends AbstractElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -46,23 +38,14 @@ public class ConstraintTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Constraint test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(Constraint fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this Constraint test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Constraint getFixture() {
-		return fixture;
+		return (Constraint)fixture;
 	}
 
 	/**

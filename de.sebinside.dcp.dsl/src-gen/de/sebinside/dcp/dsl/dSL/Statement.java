@@ -25,47 +25,47 @@ import org.eclipse.emf.ecore.EObject;
 public interface Statement extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Modality</b></em>' containment reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Modality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Modality</em>' containment reference.
-   * @see #setModality(StatementModality)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getStatement_Modality()
-   * @model containment="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Modality</em>' containment reference.
+	 * @see #setModality(StatementModality)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getStatement_Modality()
+	 * @model containment="true"
+	 * @generated
+	 */
   StatementModality getModality();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Statement#getModality <em>Modality</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Statement#getModality <em>Modality</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Modality</em>' containment reference.
-   * @see #getModality()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Modality</em>' containment reference.
+	 * @see #getModality()
+	 * @generated
+	 */
   void setModality(StatementModality value);
 
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(StatementType)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getStatement_Type()
-   * @model containment="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Type</em>' containment reference.
+	 * @see #setType(StatementType)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getStatement_Type()
+	 * @model containment="true"
+	 * @generated
+	 */
   StatementType getType();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Statement#getType <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Statement#getType <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Type</em>' containment reference.
+	 * @see #getType()
+	 * @generated
+	 */
   void setType(StatementType value);
 
 } // Statement

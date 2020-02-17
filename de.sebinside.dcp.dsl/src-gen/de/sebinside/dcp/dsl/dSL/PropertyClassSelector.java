@@ -24,47 +24,47 @@ package de.sebinside.dcp.dsl.dSL;
 public interface PropertyClassSelector extends DestinationSelector
 {
   /**
-   * Returns the value of the '<em><b>Negated</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Negated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Negated</em>' attribute.
-   * @see #setNegated(boolean)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getPropertyClassSelector_Negated()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Negated</em>' attribute.
+	 * @see #setNegated(boolean)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getPropertyClassSelector_Negated()
+	 * @model
+	 * @generated
+	 */
   boolean isNegated();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#isNegated <em>Negated</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#isNegated <em>Negated</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Negated</em>' attribute.
-   * @see #isNegated()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Negated</em>' attribute.
+	 * @see #isNegated()
+	 * @generated
+	 */
   void setNegated(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Ref</b></em>' reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(CharacteristicClass)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getPropertyClassSelector_Ref()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Ref</em>' reference.
+	 * @see #setRef(CharacteristicClass)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getPropertyClassSelector_Ref()
+	 * @model
+	 * @generated
+	 */
   CharacteristicClass getRef();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#getRef <em>Ref</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#getRef <em>Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' reference.
-   * @see #getRef()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Ref</em>' reference.
+	 * @see #getRef()
+	 * @generated
+	 */
   void setRef(CharacteristicClass value);
 
 } // PropertyClassSelector

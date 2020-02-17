@@ -35,133 +35,127 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class CharacteristicClassImpl extends AbstractElementImpl implements CharacteristicClass
 {
   /**
-   * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMembers()
-   * @generated
-   * @ordered
-   */
+	 * @see #getMembers()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<CharacteristicSelector> members;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected CharacteristicClassImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.CHARACTERISTIC_CLASS;
-  }
+		return DSLPackage.Literals.CHARACTERISTIC_CLASS;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EList<CharacteristicSelector> getMembers()
   {
-    if (members == null)
-    {
-      members = new EObjectContainmentEList<CharacteristicSelector>(CharacteristicSelector.class, this, DSLPackage.CHARACTERISTIC_CLASS__MEMBERS);
-    }
-    return members;
-  }
+		if (members == null) {
+			members = new EObjectContainmentEList<CharacteristicSelector>(CharacteristicSelector.class, this, DSLPackage.CHARACTERISTIC_CLASS__MEMBERS);
+		}
+		return members;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-        return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
+				return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-        return getMembers();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
+				return getMembers();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-        getMembers().clear();
-        getMembers().addAll((Collection<? extends CharacteristicSelector>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
+				getMembers().clear();
+				getMembers().addAll((Collection<? extends CharacteristicSelector>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-        getMembers().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
+				getMembers().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-        return members != null && !members.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
+				return members != null && !members.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //CharacteristicClassImpl

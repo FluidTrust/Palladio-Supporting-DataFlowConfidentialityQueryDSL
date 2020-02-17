@@ -31,218 +31,212 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class AttributeClassSelectorImpl extends DataSelectorImpl implements AttributeClassSelector
 {
   /**
-   * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isNegated()
-   * @generated
-   * @ordered
-   */
+	 * @see #isNegated()
+	 * @generated
+	 * @ordered
+	 */
   protected static final boolean NEGATED_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isNegated() <em>Negated</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #isNegated() <em>Negated</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isNegated()
-   * @generated
-   * @ordered
-   */
+	 * @see #isNegated()
+	 * @generated
+	 * @ordered
+	 */
   protected boolean negated = NEGATED_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef()
-   * @generated
-   * @ordered
-   */
+	 * @see #getRef()
+	 * @generated
+	 * @ordered
+	 */
   protected CharacteristicClass ref;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected AttributeClassSelectorImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.ATTRIBUTE_CLASS_SELECTOR;
-  }
+		return DSLPackage.Literals.ATTRIBUTE_CLASS_SELECTOR;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean isNegated()
   {
-    return negated;
-  }
+		return negated;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setNegated(boolean newNegated)
   {
-    boolean oldNegated = negated;
-    negated = newNegated;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED, oldNegated, negated));
-  }
+		boolean oldNegated = negated;
+		negated = newNegated;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED, oldNegated, negated));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicClass getRef()
   {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (CharacteristicClass)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
-      }
-    }
-    return ref;
-  }
+		if (ref != null && ref.eIsProxy()) {
+			InternalEObject oldRef = (InternalEObject)ref;
+			ref = (CharacteristicClass)eResolveProxy(oldRef);
+			if (ref != oldRef) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
+			}
+		}
+		return ref;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public CharacteristicClass basicGetRef()
   {
-    return ref;
-  }
+		return ref;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setRef(CharacteristicClass newRef)
   {
-    CharacteristicClass oldRef = ref;
-    ref = newRef;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
-  }
+		CharacteristicClass oldRef = ref;
+		ref = newRef;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
-        return isNegated();
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
+				return isNegated();
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+				if (resolve) return getRef();
+				return basicGetRef();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
-        setNegated((Boolean)newValue);
-        return;
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
-        setRef((CharacteristicClass)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
+				setNegated((Boolean)newValue);
+				return;
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+				setRef((CharacteristicClass)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
-        setNegated(NEGATED_EDEFAULT);
-        return;
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
-        setRef((CharacteristicClass)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
+				setNegated(NEGATED_EDEFAULT);
+				return;
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+				setRef((CharacteristicClass)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
-        return negated != NEGATED_EDEFAULT;
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
-        return ref != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
+				return negated != NEGATED_EDEFAULT;
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+				return ref != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (negated: ");
-    result.append(negated);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (negated: ");
+		result.append(negated);
+		result.append(')');
+		return result.toString();
+	}
 
 } //AttributeClassSelectorImpl

@@ -24,15 +24,15 @@ import org.eclipse.emf.common.util.EList;
 public interface CharacteristicClass extends AbstractElement
 {
   /**
-   * Returns the value of the '<em><b>Members</b></em>' containment reference list.
-   * The list contents are of type {@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector}.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Members</b></em>' containment reference list.
+	 * The list contents are of type {@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Members</em>' containment reference list.
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicClass_Members()
-   * @model containment="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Members</em>' containment reference list.
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicClass_Members()
+	 * @model containment="true"
+	 * @generated
+	 */
   EList<CharacteristicSelector> getMembers();
 
 } // CharacteristicClass

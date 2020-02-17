@@ -18,24 +18,24 @@ import org.eclipse.emf.ecore.EClass;
 public class AttributeTypeImpl extends CharacteristicsTypeImpl implements AttributeType
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected AttributeTypeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.ATTRIBUTE_TYPE;
-  }
+		return DSLPackage.Literals.ATTRIBUTE_TYPE;
+	}
 
 } //AttributeTypeImpl

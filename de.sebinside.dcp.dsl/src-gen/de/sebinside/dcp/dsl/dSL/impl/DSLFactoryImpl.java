@@ -22,335 +22,331 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static DSLFactory init()
   {
-    try
-    {
-      DSLFactory theDSLFactory = (DSLFactory)EPackage.Registry.INSTANCE.getEFactory(DSLPackage.eNS_URI);
-      if (theDSLFactory != null)
-      {
-        return theDSLFactory;
-      }
-    }
-    catch (Exception exception)
-    {
-      EcorePlugin.INSTANCE.log(exception);
-    }
-    return new DSLFactoryImpl();
-  }
+		try {
+			DSLFactory theDSLFactory = (DSLFactory)EPackage.Registry.INSTANCE.getEFactory(DSLPackage.eNS_URI);
+			if (theDSLFactory != null) {
+				return theDSLFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new DSLFactoryImpl();
+	}
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public DSLFactoryImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EObject create(EClass eClass)
   {
-    switch (eClass.getClassifierID())
-    {
-      case DSLPackage.MODEL: return createModel();
-      case DSLPackage.ABSTRACT_ELEMENT: return createAbstractElement();
-      case DSLPackage.DATA_TYPE: return createDataType();
-      case DSLPackage.VALUE_SET: return createValueSet();
-      case DSLPackage.CHARACTERISTICS_TYPE: return createCharacteristicsType();
-      case DSLPackage.ATTRIBUTE_TYPE: return createAttributeType();
-      case DSLPackage.PROPERTY_TYPE: return createPropertyType();
-      case DSLPackage.CHARACTERISTIC_CLASS: return createCharacteristicClass();
-      case DSLPackage.CHARACTERISTIC_SELECTOR: return createCharacteristicSelector();
-      case DSLPackage.CONSTRAINT: return createConstraint();
-      case DSLPackage.RULE: return createRule();
-      case DSLPackage.DATA_SELECTOR: return createDataSelector();
-      case DSLPackage.ATTRIBUTE_SELECTOR: return createAttributeSelector();
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR: return createAttributeClassSelector();
-      case DSLPackage.DESTINATION_SELECTOR: return createDestinationSelector();
-      case DSLPackage.PROPERTY_SELECTOR: return createPropertySelector();
-      case DSLPackage.PROPERTY_CLASS_SELECTOR: return createPropertyClassSelector();
-      case DSLPackage.STATEMENT: return createStatement();
-      case DSLPackage.STATEMENT_TYPE: return createStatementType();
-      case DSLPackage.STATEMENT_MODALITY: return createStatementModality();
-      default:
-        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eClass.getClassifierID()) {
+			case DSLPackage.MODEL: return createModel();
+			case DSLPackage.ABSTRACT_ELEMENT: return createAbstractElement();
+			case DSLPackage.DATA_TYPE: return createDataType();
+			case DSLPackage.VALUE_SET: return createValueSet();
+			case DSLPackage.CHARACTERISTICS_TYPE: return createCharacteristicsType();
+			case DSLPackage.ATTRIBUTE_TYPE: return createAttributeType();
+			case DSLPackage.PROPERTY_TYPE: return createPropertyType();
+			case DSLPackage.CHARACTERISTIC_CLASS: return createCharacteristicClass();
+			case DSLPackage.CHARACTERISTIC_SELECTOR: return createCharacteristicSelector();
+			case DSLPackage.CONSTRAINT: return createConstraint();
+			case DSLPackage.RULE: return createRule();
+			case DSLPackage.DATA_SELECTOR: return createDataSelector();
+			case DSLPackage.ATTRIBUTE_SELECTOR: return createAttributeSelector();
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR: return createAttributeClassSelector();
+			case DSLPackage.DESTINATION_SELECTOR: return createDestinationSelector();
+			case DSLPackage.PROPERTY_SELECTOR: return createPropertySelector();
+			case DSLPackage.PROPERTY_CLASS_SELECTOR: return createPropertyClassSelector();
+			case DSLPackage.STATEMENT: return createStatement();
+			case DSLPackage.STATEMENT_TYPE: return createStatementType();
+			case DSLPackage.STATEMENT_MODALITY: return createStatementModality();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Model createModel()
   {
-    ModelImpl model = new ModelImpl();
-    return model;
-  }
+		ModelImpl model = new ModelImpl();
+		return model;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public AbstractElement createAbstractElement()
   {
-    AbstractElementImpl abstractElement = new AbstractElementImpl();
-    return abstractElement;
-  }
+		AbstractElementImpl abstractElement = new AbstractElementImpl();
+		return abstractElement;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public DataType createDataType()
   {
-    DataTypeImpl dataType = new DataTypeImpl();
-    return dataType;
-  }
+		DataTypeImpl dataType = new DataTypeImpl();
+		return dataType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public ValueSet createValueSet()
   {
-    ValueSetImpl valueSet = new ValueSetImpl();
-    return valueSet;
-  }
+		ValueSetImpl valueSet = new ValueSetImpl();
+		return valueSet;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicsType createCharacteristicsType()
   {
-    CharacteristicsTypeImpl characteristicsType = new CharacteristicsTypeImpl();
-    return characteristicsType;
-  }
+		CharacteristicsTypeImpl characteristicsType = new CharacteristicsTypeImpl();
+		return characteristicsType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public AttributeType createAttributeType()
   {
-    AttributeTypeImpl attributeType = new AttributeTypeImpl();
-    return attributeType;
-  }
+		AttributeTypeImpl attributeType = new AttributeTypeImpl();
+		return attributeType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public PropertyType createPropertyType()
   {
-    PropertyTypeImpl propertyType = new PropertyTypeImpl();
-    return propertyType;
-  }
+		PropertyTypeImpl propertyType = new PropertyTypeImpl();
+		return propertyType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicClass createCharacteristicClass()
   {
-    CharacteristicClassImpl characteristicClass = new CharacteristicClassImpl();
-    return characteristicClass;
-  }
+		CharacteristicClassImpl characteristicClass = new CharacteristicClassImpl();
+		return characteristicClass;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicSelector createCharacteristicSelector()
   {
-    CharacteristicSelectorImpl characteristicSelector = new CharacteristicSelectorImpl();
-    return characteristicSelector;
-  }
+		CharacteristicSelectorImpl characteristicSelector = new CharacteristicSelectorImpl();
+		return characteristicSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Constraint createConstraint()
   {
-    ConstraintImpl constraint = new ConstraintImpl();
-    return constraint;
-  }
+		ConstraintImpl constraint = new ConstraintImpl();
+		return constraint;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Rule createRule()
   {
-    RuleImpl rule = new RuleImpl();
-    return rule;
-  }
+		RuleImpl rule = new RuleImpl();
+		return rule;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public DataSelector createDataSelector()
   {
-    DataSelectorImpl dataSelector = new DataSelectorImpl();
-    return dataSelector;
-  }
+		DataSelectorImpl dataSelector = new DataSelectorImpl();
+		return dataSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public AttributeSelector createAttributeSelector()
   {
-    AttributeSelectorImpl attributeSelector = new AttributeSelectorImpl();
-    return attributeSelector;
-  }
+		AttributeSelectorImpl attributeSelector = new AttributeSelectorImpl();
+		return attributeSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public AttributeClassSelector createAttributeClassSelector()
   {
-    AttributeClassSelectorImpl attributeClassSelector = new AttributeClassSelectorImpl();
-    return attributeClassSelector;
-  }
+		AttributeClassSelectorImpl attributeClassSelector = new AttributeClassSelectorImpl();
+		return attributeClassSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public DestinationSelector createDestinationSelector()
   {
-    DestinationSelectorImpl destinationSelector = new DestinationSelectorImpl();
-    return destinationSelector;
-  }
+		DestinationSelectorImpl destinationSelector = new DestinationSelectorImpl();
+		return destinationSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public PropertySelector createPropertySelector()
   {
-    PropertySelectorImpl propertySelector = new PropertySelectorImpl();
-    return propertySelector;
-  }
+		PropertySelectorImpl propertySelector = new PropertySelectorImpl();
+		return propertySelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public PropertyClassSelector createPropertyClassSelector()
   {
-    PropertyClassSelectorImpl propertyClassSelector = new PropertyClassSelectorImpl();
-    return propertyClassSelector;
-  }
+		PropertyClassSelectorImpl propertyClassSelector = new PropertyClassSelectorImpl();
+		return propertyClassSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Statement createStatement()
   {
-    StatementImpl statement = new StatementImpl();
-    return statement;
-  }
+		StatementImpl statement = new StatementImpl();
+		return statement;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public StatementType createStatementType()
   {
-    StatementTypeImpl statementType = new StatementTypeImpl();
-    return statementType;
-  }
+		StatementTypeImpl statementType = new StatementTypeImpl();
+		return statementType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public StatementModality createStatementModality()
   {
-    StatementModalityImpl statementModality = new StatementModalityImpl();
-    return statementModality;
-  }
+		StatementModalityImpl statementModality = new StatementModalityImpl();
+		return statementModality;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public DSLPackage getDSLPackage()
   {
-    return (DSLPackage)getEPackage();
-  }
+		return (DSLPackage)getEPackage();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @deprecated
-   * @generated
-   */
+	 * @deprecated
+	 * @generated
+	 */
   @Deprecated
   public static DSLPackage getPackage()
   {
-    return DSLPackage.eINSTANCE;
-  }
+		return DSLPackage.eINSTANCE;
+	}
 
 } //DSLFactoryImpl

@@ -23,25 +23,25 @@ package de.sebinside.dcp.dsl.dSL;
 public interface CharacteristicsType extends AbstractElement
 {
   /**
-   * Returns the value of the '<em><b>Valueset</b></em>' reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Valueset</b></em>' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Valueset</em>' reference.
-   * @see #setValueset(ValueSet)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicsType_Valueset()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Valueset</em>' reference.
+	 * @see #setValueset(ValueSet)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicsType_Valueset()
+	 * @model
+	 * @generated
+	 */
   ValueSet getValueset();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicsType#getValueset <em>Valueset</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicsType#getValueset <em>Valueset</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Valueset</em>' reference.
-   * @see #getValueset()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Valueset</em>' reference.
+	 * @see #getValueset()
+	 * @generated
+	 */
   void setValueset(ValueSet value);
 
 } // CharacteristicsType

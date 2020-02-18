@@ -2,6 +2,8 @@ grammar de.sebinside.dcp.dsl.DSL with org.eclipse.xtext.common.Terminals
 
 generate dSL "http://www.sebinside.de/dcp/dsl/DSL"
 
+import "http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" as characteristics
+
 Model:
 	(elements+=AbstractElement)*;
 

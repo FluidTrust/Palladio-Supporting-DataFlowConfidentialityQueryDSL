@@ -3,13 +3,10 @@
  */
 package de.sebinside.dcp.dsl.generator;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -20,11 +17,5 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class DSLGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    final Function1<EObject, String> _function = (EObject x) -> {
-      return x.toString();
-    };
-    String _join = IteratorExtensions.join(IteratorExtensions.<EObject, String>map(resource.getAllContents(), _function), ", ");
-    String _plus = ("Content: " + _join);
-    fsa.generateFile("greetings.txt", _plus);
   }
 }

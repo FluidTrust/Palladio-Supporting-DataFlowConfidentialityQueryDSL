@@ -16,6 +16,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 class DSLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		fsa.generateFile('greetings.txt', 'Content: ' + resource.allContents.map[x|x.toString].join(', '))
+	//	println("Hello world!")
+	//	fsa.generateFile('test.txt', 'Content: ' + resource.allContents.map[x|x.toString].join(', '))
 	}
 }

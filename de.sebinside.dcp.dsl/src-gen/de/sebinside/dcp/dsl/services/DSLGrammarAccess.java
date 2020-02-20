@@ -28,6 +28,11 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cElementsAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cElementsAbstractElementParserRuleCall_0 = (RuleCall)cElementsAssignment.eContents().get(0);
 		
+		//// throws an excpetion: Couldn't resolve reference to EPackage 'http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/'.
+		//// import "http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" as characteristics
+		//// Import approach, not working at all
+		////CharacteristicsType returns characteristics::EnumCharacteristicType:
+		////	entityName = ID '.' literal = ID;
 		//Model:
 		//	elements+=AbstractElement*;
 		@Override public ParserRule getRule() { return rule; }
@@ -830,6 +835,11 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	//// throws an excpetion: Couldn't resolve reference to EPackage 'http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/'.
+	//// import "http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" as characteristics
+	//// Import approach, not working at all
+	////CharacteristicsType returns characteristics::EnumCharacteristicType:
+	////	entityName = ID '.' literal = ID;
 	//Model:
 	//	elements+=AbstractElement*;
 	public ModelElements getModelAccess() {

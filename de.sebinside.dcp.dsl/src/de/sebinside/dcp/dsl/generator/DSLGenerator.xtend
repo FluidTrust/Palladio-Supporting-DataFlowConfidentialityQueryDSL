@@ -8,6 +8,7 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
+
 /**
  * Generates code from your model files on save.
  * 
@@ -16,6 +17,22 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 class DSLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		fsa.generateFile('test.txt', 'Content: ' + resource.allContents.map[x|x.toString].join(', '))
+		val test = createFact("Test")
+		
+		val program = PrologFactory.eINSTANCE.createProgram
+		program.clauses.add(test)
+		
+		fsa.generateFile('test.pl', program.toString)
+		println("Done")
+	}
+	
+	def static createFact(String name) {
+		val fact = PrologFactory.eINSTANCE.createFact
+		val term = PrologFactory.eINSTANCE.createCompoundTerm
+		term.value = name
+		term.arguments
+		fact.head = term
+		
+		fact
 	}
 }

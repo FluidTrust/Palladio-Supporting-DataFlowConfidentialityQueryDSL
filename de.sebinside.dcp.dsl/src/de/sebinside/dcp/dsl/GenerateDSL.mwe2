@@ -8,14 +8,13 @@ var rootPath = ".."
 Workflow {
 	
 	bean = org.eclipse.emf.mwe.utils.StandaloneSetup {
-		registerGenModelFile = "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.genmodel"
+		scanClassPath = true
+		platformUri = rootPath
 		uriMap = {
 			from = "platform:/plugin/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.genmodel"
 			to = "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.genmodel"
-			
 		}
-		scanClassPath = true
-		platformUri = rootPath
+		registerGenModelFile = "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.genmodel"
 	}
 	
 	component = XtextGenerator {

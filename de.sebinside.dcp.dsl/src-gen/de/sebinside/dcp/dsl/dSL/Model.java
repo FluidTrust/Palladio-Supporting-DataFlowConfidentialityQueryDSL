@@ -26,15 +26,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface Model extends EObject
 {
   /**
-	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link de.sebinside.dcp.dsl.dSL.AbstractElement}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
+   * The list contents are of type {@link de.sebinside.dcp.dsl.dSL.AbstractElement}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getModel_Elements()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Elements</em>' containment reference list.
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getModel_Elements()
+   * @model containment="true"
+   * @generated
+   */
   EList<AbstractElement> getElements();
 
 } // Model

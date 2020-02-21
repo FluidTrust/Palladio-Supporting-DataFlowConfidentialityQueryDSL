@@ -30,140 +30,146 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class CharacteristicsTypeImpl extends AbstractElementImpl implements CharacteristicsType
 {
   /**
-	 * The cached value of the '{@link #getValueset() <em>Valueset</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getValueset() <em>Valueset</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getValueset()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getValueset()
+   * @generated
+   * @ordered
+   */
   protected ValueSet valueset;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected CharacteristicsTypeImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.CHARACTERISTICS_TYPE;
-	}
+    return DSLPackage.Literals.CHARACTERISTICS_TYPE;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public ValueSet getValueset()
   {
-		if (valueset != null && valueset.eIsProxy()) {
-			InternalEObject oldValueset = (InternalEObject)valueset;
-			valueset = (ValueSet)eResolveProxy(oldValueset);
-			if (valueset != oldValueset) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTICS_TYPE__VALUESET, oldValueset, valueset));
-			}
-		}
-		return valueset;
-	}
+    if (valueset != null && valueset.eIsProxy())
+    {
+      InternalEObject oldValueset = (InternalEObject)valueset;
+      valueset = (ValueSet)eResolveProxy(oldValueset);
+      if (valueset != oldValueset)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTICS_TYPE__VALUESET, oldValueset, valueset));
+      }
+    }
+    return valueset;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public ValueSet basicGetValueset()
   {
-		return valueset;
-	}
+    return valueset;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setValueset(ValueSet newValueset)
   {
-		ValueSet oldValueset = valueset;
-		valueset = newValueset;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTICS_TYPE__VALUESET, oldValueset, valueset));
-	}
+    ValueSet oldValueset = valueset;
+    valueset = newValueset;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTICS_TYPE__VALUESET, oldValueset, valueset));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
-				if (resolve) return getValueset();
-				return basicGetValueset();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
+        if (resolve) return getValueset();
+        return basicGetValueset();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
-				setValueset((ValueSet)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
+        setValueset((ValueSet)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eUnset(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
-				setValueset((ValueSet)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
+        setValueset((ValueSet)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean eIsSet(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
-				return valueset != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
+        return valueset != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 } //CharacteristicsTypeImpl

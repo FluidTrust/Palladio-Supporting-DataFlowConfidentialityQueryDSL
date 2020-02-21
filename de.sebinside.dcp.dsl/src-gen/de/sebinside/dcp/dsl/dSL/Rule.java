@@ -28,49 +28,49 @@ import org.eclipse.emf.ecore.EObject;
 public interface Rule extends EObject
 {
   /**
-	 * Returns the value of the '<em><b>Data Selectors</b></em>' containment reference list.
-	 * The list contents are of type {@link de.sebinside.dcp.dsl.dSL.DataSelector}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Data Selectors</b></em>' containment reference list.
+   * The list contents are of type {@link de.sebinside.dcp.dsl.dSL.DataSelector}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Selectors</em>' containment reference list.
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getRule_DataSelectors()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Data Selectors</em>' containment reference list.
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getRule_DataSelectors()
+   * @model containment="true"
+   * @generated
+   */
   EList<DataSelector> getDataSelectors();
 
   /**
-	 * Returns the value of the '<em><b>Statement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Statement</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Statement</em>' containment reference.
-	 * @see #setStatement(Statement)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getRule_Statement()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Statement</em>' containment reference.
+   * @see #setStatement(Statement)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getRule_Statement()
+   * @model containment="true"
+   * @generated
+   */
   Statement getStatement();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Rule#getStatement <em>Statement</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Rule#getStatement <em>Statement</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Statement</em>' containment reference.
-	 * @see #getStatement()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Statement</em>' containment reference.
+   * @see #getStatement()
+   * @generated
+   */
   void setStatement(Statement value);
 
   /**
-	 * Returns the value of the '<em><b>Destination Selectors</b></em>' containment reference list.
-	 * The list contents are of type {@link de.sebinside.dcp.dsl.dSL.DestinationSelector}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Destination Selectors</b></em>' containment reference list.
+   * The list contents are of type {@link de.sebinside.dcp.dsl.dSL.DestinationSelector}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Destination Selectors</em>' containment reference list.
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getRule_DestinationSelectors()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Destination Selectors</em>' containment reference list.
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getRule_DestinationSelectors()
+   * @model containment="true"
+   * @generated
+   */
   EList<DestinationSelector> getDestinationSelectors();
 
 } // Rule

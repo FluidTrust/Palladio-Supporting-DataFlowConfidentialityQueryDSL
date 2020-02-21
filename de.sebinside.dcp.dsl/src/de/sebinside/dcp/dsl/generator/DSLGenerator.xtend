@@ -3,6 +3,7 @@
  */
 package de.sebinside.dcp.dsl.generator
 
+import java.io.ByteArrayOutputStream
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
@@ -17,24 +18,32 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 class DSLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val test = createFact("Test")
-		
+		val test = createFact("dog")
+
 		val program = PrologFactory.eINSTANCE.createProgram
 		program.clauses.add(test)
+
+		val prologRessource = resource.resourceSet.createResource(resource.URI.appendFileExtension("pl"))
+		prologRessource.contents.add(program)
 		
+		val outputStream = new ByteArrayOutputStream()
+		prologRessource.save(outputStream, null)
 		
-		
-		fsa.generateFile('test.pl', program.toString)
+		fsa.generateFile("output.pl", outputStream.toString)
 		println("Done")
 	}
-	
+
 	def static createFact(String name) {
 		val fact = PrologFactory.eINSTANCE.createFact
 		val term = PrologFactory.eINSTANCE.createCompoundTerm
-		term.value = name
-		term.arguments
-		fact.head = term
 		
-		fact
+		val body = PrologFactory.eINSTANCE.createCompoundTerm
+		body.value = "fido"
+		
+		term.value = name
+		term.arguments.add(body)
+		fact.head = term
+	
+		return fact
 	}
 }

@@ -24,15 +24,15 @@ import org.eclipse.emf.common.util.EList;
 public interface ValueSet extends AbstractElement
 {
   /**
-	 * Returns the value of the '<em><b>Members</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Members</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Members</em>' attribute list.
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getValueSet_Members()
-	 * @model unique="false"
-	 * @generated
-	 */
+   * @return the value of the '<em>Members</em>' attribute list.
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getValueSet_Members()
+   * @model unique="false"
+   * @generated
+   */
   EList<String> getMembers();
 
 } // ValueSet

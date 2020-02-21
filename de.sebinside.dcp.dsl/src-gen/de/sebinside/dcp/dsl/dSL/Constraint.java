@@ -23,25 +23,25 @@ package de.sebinside.dcp.dsl.dSL;
 public interface Constraint extends AbstractElement
 {
   /**
-	 * Returns the value of the '<em><b>Rule</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Rule</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rule</em>' containment reference.
-	 * @see #setRule(Rule)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getConstraint_Rule()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Rule</em>' containment reference.
+   * @see #setRule(Rule)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getConstraint_Rule()
+   * @model containment="true"
+   * @generated
+   */
   Rule getRule();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Constraint#getRule <em>Rule</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Constraint#getRule <em>Rule</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Rule</em>' containment reference.
-	 * @see #getRule()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Rule</em>' containment reference.
+   * @see #getRule()
+   * @generated
+   */
   void setRule(Rule value);
 
 } // Constraint

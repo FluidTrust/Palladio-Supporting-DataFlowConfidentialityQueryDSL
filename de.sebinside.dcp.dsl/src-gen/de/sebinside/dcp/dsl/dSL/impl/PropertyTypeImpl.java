@@ -18,24 +18,24 @@ import org.eclipse.emf.ecore.EClass;
 public class PropertyTypeImpl extends CharacteristicsTypeImpl implements PropertyType
 {
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected PropertyTypeImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.PROPERTY_TYPE;
-	}
+    return DSLPackage.Literals.PROPERTY_TYPE;
+  }
 
 } //PropertyTypeImpl

@@ -40,307 +40,314 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container implements CharacteristicSelector
 {
   /**
-	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getRef()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRef()
+   * @generated
+   * @ordered
+   */
   protected CharacteristicsType ref;
 
   /**
-	 * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isNegated()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isNegated()
+   * @generated
+   * @ordered
+   */
   protected static final boolean NEGATED_EDEFAULT = false;
 
   /**
-	 * The cached value of the '{@link #isNegated() <em>Negated</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isNegated() <em>Negated</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isNegated()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isNegated()
+   * @generated
+   * @ordered
+   */
   protected boolean negated = NEGATED_EDEFAULT;
 
   /**
-	 * The cached value of the '{@link #getLiterals() <em>Literals</em>}' attribute list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getLiterals() <em>Literals</em>}' attribute list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getLiterals()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getLiterals()
+   * @generated
+   * @ordered
+   */
   protected EList<String> literals;
 
   /**
-	 * The default value of the '{@link #isConjuncted() <em>Conjuncted</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isConjuncted() <em>Conjuncted</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isConjuncted()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isConjuncted()
+   * @generated
+   * @ordered
+   */
   protected static final boolean CONJUNCTED_EDEFAULT = false;
 
   /**
-	 * The cached value of the '{@link #isConjuncted() <em>Conjuncted</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isConjuncted() <em>Conjuncted</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isConjuncted()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isConjuncted()
+   * @generated
+   * @ordered
+   */
   protected boolean conjuncted = CONJUNCTED_EDEFAULT;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected CharacteristicSelectorImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.CHARACTERISTIC_SELECTOR;
-	}
+    return DSLPackage.Literals.CHARACTERISTIC_SELECTOR;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public CharacteristicsType getRef()
   {
-		if (ref != null && ref.eIsProxy()) {
-			InternalEObject oldRef = (InternalEObject)ref;
-			ref = (CharacteristicsType)eResolveProxy(oldRef);
-			if (ref != oldRef) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTIC_SELECTOR__REF, oldRef, ref));
-			}
-		}
-		return ref;
-	}
+    if (ref != null && ref.eIsProxy())
+    {
+      InternalEObject oldRef = (InternalEObject)ref;
+      ref = (CharacteristicsType)eResolveProxy(oldRef);
+      if (ref != oldRef)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTIC_SELECTOR__REF, oldRef, ref));
+      }
+    }
+    return ref;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public CharacteristicsType basicGetRef()
   {
-		return ref;
-	}
+    return ref;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setRef(CharacteristicsType newRef)
   {
-		CharacteristicsType oldRef = ref;
-		ref = newRef;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__REF, oldRef, ref));
-	}
+    CharacteristicsType oldRef = ref;
+    ref = newRef;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__REF, oldRef, ref));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean isNegated()
   {
-		return negated;
-	}
+    return negated;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setNegated(boolean newNegated)
   {
-		boolean oldNegated = negated;
-		negated = newNegated;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED, oldNegated, negated));
-	}
+    boolean oldNegated = negated;
+    negated = newNegated;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED, oldNegated, negated));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EList<String> getLiterals()
   {
-		if (literals == null) {
-			literals = new EDataTypeEList<String>(String.class, this, DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS);
-		}
-		return literals;
-	}
+    if (literals == null)
+    {
+      literals = new EDataTypeEList<String>(String.class, this, DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS);
+    }
+    return literals;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean isConjuncted()
   {
-		return conjuncted;
-	}
+    return conjuncted;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setConjuncted(boolean newConjuncted)
   {
-		boolean oldConjuncted = conjuncted;
-		conjuncted = newConjuncted;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED, oldConjuncted, conjuncted));
-	}
+    boolean oldConjuncted = conjuncted;
+    conjuncted = newConjuncted;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED, oldConjuncted, conjuncted));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
-				if (resolve) return getRef();
-				return basicGetRef();
-			case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
-				return isNegated();
-			case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
-				return getLiterals();
-			case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
-				return isConjuncted();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
+        if (resolve) return getRef();
+        return basicGetRef();
+      case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
+        return isNegated();
+      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
+        return getLiterals();
+      case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
+        return isConjuncted();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
-				setRef((CharacteristicsType)newValue);
-				return;
-			case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
-				setNegated((Boolean)newValue);
-				return;
-			case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
-				getLiterals().clear();
-				getLiterals().addAll((Collection<? extends String>)newValue);
-				return;
-			case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
-				setConjuncted((Boolean)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
+        setRef((CharacteristicsType)newValue);
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
+        setNegated((Boolean)newValue);
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
+        getLiterals().clear();
+        getLiterals().addAll((Collection<? extends String>)newValue);
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
+        setConjuncted((Boolean)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eUnset(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
-				setRef((CharacteristicsType)null);
-				return;
-			case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
-				setNegated(NEGATED_EDEFAULT);
-				return;
-			case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
-				getLiterals().clear();
-				return;
-			case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
-				setConjuncted(CONJUNCTED_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
+        setRef((CharacteristicsType)null);
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
+        setNegated(NEGATED_EDEFAULT);
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
+        getLiterals().clear();
+        return;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
+        setConjuncted(CONJUNCTED_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean eIsSet(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
-				return ref != null;
-			case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
-				return negated != NEGATED_EDEFAULT;
-			case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
-				return literals != null && !literals.isEmpty();
-			case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
-				return conjuncted != CONJUNCTED_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
+        return ref != null;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
+        return negated != NEGATED_EDEFAULT;
+      case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
+        return literals != null && !literals.isEmpty();
+      case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
+        return conjuncted != CONJUNCTED_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public String toString()
   {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (negated: ");
-		result.append(negated);
-		result.append(", literals: ");
-		result.append(literals);
-		result.append(", conjuncted: ");
-		result.append(conjuncted);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (negated: ");
+    result.append(negated);
+    result.append(", literals: ");
+    result.append(literals);
+    result.append(", conjuncted: ");
+    result.append(conjuncted);
+    result.append(')');
+    return result.toString();
+  }
 
 } //CharacteristicSelectorImpl

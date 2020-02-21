@@ -2,6 +2,8 @@
 .metadata
 bin/
 tmp/
+target/
+xtend-gen/
 *.tmp
 *.bak
 *.swp

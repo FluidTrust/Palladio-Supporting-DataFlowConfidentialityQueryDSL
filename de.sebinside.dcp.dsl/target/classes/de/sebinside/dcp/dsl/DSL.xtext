@@ -2,11 +2,11 @@ grammar de.sebinside.dcp.dsl.DSL with org.eclipse.xtext.common.Terminals
 
 generate dSL "http://www.sebinside.de/dcp/dsl/DSL"
 
-// throws an excpetion: Couldn't resolve reference to EPackage 'http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/'.
-// import "http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" as characteristics
+//throws an excpetion: Couldn't resolve reference to EPackage 'http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/'.
+//import "http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" as characteristics
 
 // Import approach, not working at all
-//CharacteristicsType returns characteristics::EnumCharacteristicType:
+//CharacteristicsType returns characteristics::CharacteristicType:
 //	entityName = ID '.' literal = ID;
 
 
@@ -36,7 +36,7 @@ CharacteristicClass:
 	'class' name=ID '{' members+=CharacteristicSelector (',' members+=CharacteristicSelector)* '}';
 
 CharacteristicSelector:
-	ref=[CharacteristicsType] '.'
+	ref=[CharacteristicsType] '.' // characteristics::CharacteristicType
 	(((negated?='!')? literals+=ID) |
 	('[' literals+=ID ((',' literals+=ID)* | (conjuncted?='&' literals+=ID)*) ']'));
 

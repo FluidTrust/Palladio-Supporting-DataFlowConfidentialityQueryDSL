@@ -22,6 +22,8 @@ class DSLGenerator extends AbstractGenerator {
 		val program = PrologFactory.eINSTANCE.createProgram
 		program.clauses.add(test)
 		
+		
+		
 		fsa.generateFile('test.pl', program.toString)
 		println("Done")
 	}

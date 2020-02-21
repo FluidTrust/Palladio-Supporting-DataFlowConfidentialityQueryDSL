@@ -238,12 +238,9 @@ ruleValueSet returns [EObject current=null]
 				}
 			)
 		)
+		this_ASSIGNEMENT_OPERATOR_2=RULE_ASSIGNEMENT_OPERATOR
 		{
-			newCompositeNode(grammarAccess.getValueSetAccess().getAssignementOperatorParserRuleCall_2());
-		}
-		ruleAssignementOperator
-		{
-			afterParserOrEnumRuleCall();
+			newLeafNode(this_ASSIGNEMENT_OPERATOR_2, grammarAccess.getValueSetAccess().getASSIGNEMENT_OPERATORTerminalRuleCall_2());
 		}
 		otherlv_3='['
 		{
@@ -372,12 +369,9 @@ ruleAttributeType returns [EObject current=null]
 				}
 			)
 		)
+		this_ASSIGNEMENT_OPERATOR_2=RULE_ASSIGNEMENT_OPERATOR
 		{
-			newCompositeNode(grammarAccess.getAttributeTypeAccess().getAssignementOperatorParserRuleCall_2());
-		}
-		ruleAssignementOperator
-		{
-			afterParserOrEnumRuleCall();
+			newLeafNode(this_ASSIGNEMENT_OPERATOR_2, grammarAccess.getAttributeTypeAccess().getASSIGNEMENT_OPERATORTerminalRuleCall_2());
 		}
 		(
 			(
@@ -433,12 +427,9 @@ rulePropertyType returns [EObject current=null]
 				}
 			)
 		)
+		this_ASSIGNEMENT_OPERATOR_2=RULE_ASSIGNEMENT_OPERATOR
 		{
-			newCompositeNode(grammarAccess.getPropertyTypeAccess().getAssignementOperatorParserRuleCall_2());
-		}
-		ruleAssignementOperator
-		{
-			afterParserOrEnumRuleCall();
+			newLeafNode(this_ASSIGNEMENT_OPERATOR_2, grammarAccess.getPropertyTypeAccess().getASSIGNEMENT_OPERATORTerminalRuleCall_2());
 		}
 		(
 			(
@@ -1280,27 +1271,7 @@ ruleStatementModality returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleAssignementOperator
-entryRuleAssignementOperator returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getAssignementOperatorRule()); }
-	iv_ruleAssignementOperator=ruleAssignementOperator
-	{ $current=$iv_ruleAssignementOperator.current.getText(); }
-	EOF;
-
-// Rule AssignementOperator
-ruleAssignementOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	kw='<-'
-	{
-		$current.merge(kw);
-		newLeafNode(kw, grammarAccess.getAssignementOperatorAccess().getLessThanSignHyphenMinusKeyword());
-	}
-;
+RULE_ASSIGNEMENT_OPERATOR : '<-';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

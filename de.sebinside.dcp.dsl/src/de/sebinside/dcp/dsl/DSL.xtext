@@ -2,11 +2,13 @@ grammar de.sebinside.dcp.dsl.DSL with org.eclipse.xtext.common.Terminals
 
 generate dSL "http://www.sebinside.de/dcp/dsl/DSL"
 
-//throws an excpetion: Couldn't resolve reference to EPackage 'http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/'.
+// Nested EPackage has to be referred to by platform:/resource URI
+// https://sdqweb.ipd.kit.edu/wiki/Importing_nested_EPackages_in_Xtext
 //import "http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" as characteristics
+import "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics" as characteristics
 
 // Import approach, not working at all
-//CharacteristicsType returns characteristics::CharacteristicType:
+//CharacteristicsType2 returns characteristics::CharacteristicType:
 //	entityName = ID '.' literal = ID;
 
 
@@ -21,16 +23,16 @@ DataType:
 	'datatype' name=ID;
 
 ValueSet:
-	'valueset' name=ID AssignementOperator '[' members+=ID (',' members+=ID)* ']';
+	'valueset' name=ID ASSIGNEMENT_OPERATOR '[' members+=ID (',' members+=ID)* ']';
 
 CharacteristicsType:
 	AttributeType | PropertyType;
 
 AttributeType:
-	'attribute' name=ID AssignementOperator valueset=[ValueSet];
+	'attribute' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
 
 PropertyType:
-	'property' name=ID AssignementOperator valueset=[ValueSet];
+	'property' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
 
 CharacteristicClass:
 	'class' name=ID '{' members+=CharacteristicSelector (',' members+=CharacteristicSelector)* '}';
@@ -75,5 +77,5 @@ StatementType:
 StatementModality:
 	name='NEVER';
 
-AssignementOperator:
+terminal ASSIGNEMENT_OPERATOR:
 	'<-';

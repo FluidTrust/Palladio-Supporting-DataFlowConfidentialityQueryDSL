@@ -28,10 +28,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cElementsAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cElementsAbstractElementParserRuleCall_0 = (RuleCall)cElementsAssignment.eContents().get(0);
 		
-		////throws an excpetion: Couldn't resolve reference to EPackage 'http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/'.
-		////import "http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" as characteristics
 		//// Import approach, not working at all
-		////CharacteristicsType returns characteristics::CharacteristicType:
+		////CharacteristicsType2 returns characteristics::CharacteristicType:
 		////	entityName = ID '.' literal = ID;
 		//Model:
 		//	elements+=AbstractElement*;
@@ -103,7 +101,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cValuesetKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cAssignementOperatorParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final RuleCall cASSIGNEMENT_OPERATORTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Keyword cLeftSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cMembersAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cMembersIDTerminalRuleCall_4_0 = (RuleCall)cMembersAssignment_4.eContents().get(0);
@@ -114,10 +112,10 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightSquareBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//ValueSet:
-		//	'valueset' name=ID AssignementOperator '[' members+=ID (',' members+=ID)* ']';
+		//	'valueset' name=ID ASSIGNEMENT_OPERATOR '[' members+=ID (',' members+=ID)* ']';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'valueset' name=ID AssignementOperator '[' members+=ID (',' members+=ID)* ']'
+		//'valueset' name=ID ASSIGNEMENT_OPERATOR '[' members+=ID (',' members+=ID)* ']'
 		public Group getGroup() { return cGroup; }
 		
 		//'valueset'
@@ -129,8 +127,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//AssignementOperator
-		public RuleCall getAssignementOperatorParserRuleCall_2() { return cAssignementOperatorParserRuleCall_2; }
+		//ASSIGNEMENT_OPERATOR
+		public RuleCall getASSIGNEMENT_OPERATORTerminalRuleCall_2() { return cASSIGNEMENT_OPERATORTerminalRuleCall_2; }
 		
 		//'['
 		public Keyword getLeftSquareBracketKeyword_3() { return cLeftSquareBracketKeyword_3; }
@@ -181,16 +179,16 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAttributeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cAssignementOperatorParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final RuleCall cASSIGNEMENT_OPERATORTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Assignment cValuesetAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cValuesetValueSetCrossReference_3_0 = (CrossReference)cValuesetAssignment_3.eContents().get(0);
 		private final RuleCall cValuesetValueSetIDTerminalRuleCall_3_0_1 = (RuleCall)cValuesetValueSetCrossReference_3_0.eContents().get(1);
 		
 		//AttributeType:
-		//	'attribute' name=ID AssignementOperator valueset=[ValueSet];
+		//	'attribute' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'attribute' name=ID AssignementOperator valueset=[ValueSet]
+		//'attribute' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet]
 		public Group getGroup() { return cGroup; }
 		
 		//'attribute'
@@ -202,8 +200,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//AssignementOperator
-		public RuleCall getAssignementOperatorParserRuleCall_2() { return cAssignementOperatorParserRuleCall_2; }
+		//ASSIGNEMENT_OPERATOR
+		public RuleCall getASSIGNEMENT_OPERATORTerminalRuleCall_2() { return cASSIGNEMENT_OPERATORTerminalRuleCall_2; }
 		
 		//valueset=[ValueSet]
 		public Assignment getValuesetAssignment_3() { return cValuesetAssignment_3; }
@@ -220,16 +218,16 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPropertyKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cAssignementOperatorParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final RuleCall cASSIGNEMENT_OPERATORTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Assignment cValuesetAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cValuesetValueSetCrossReference_3_0 = (CrossReference)cValuesetAssignment_3.eContents().get(0);
 		private final RuleCall cValuesetValueSetIDTerminalRuleCall_3_0_1 = (RuleCall)cValuesetValueSetCrossReference_3_0.eContents().get(1);
 		
 		//PropertyType:
-		//	'property' name=ID AssignementOperator valueset=[ValueSet];
+		//	'property' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'property' name=ID AssignementOperator valueset=[ValueSet]
+		//'property' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet]
 		public Group getGroup() { return cGroup; }
 		
 		//'property'
@@ -241,8 +239,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//AssignementOperator
-		public RuleCall getAssignementOperatorParserRuleCall_2() { return cAssignementOperatorParserRuleCall_2; }
+		//ASSIGNEMENT_OPERATOR
+		public RuleCall getASSIGNEMENT_OPERATORTerminalRuleCall_2() { return cASSIGNEMENT_OPERATORTerminalRuleCall_2; }
 		
 		//valueset=[ValueSet]
 		public Assignment getValuesetAssignment_3() { return cValuesetAssignment_3; }
@@ -741,17 +739,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'NEVER'
 		public Keyword getNameNEVERKeyword_0() { return cNameNEVERKeyword_0; }
 	}
-	public class AssignementOperatorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AssignementOperator");
-		private final Keyword cLessThanSignHyphenMinusKeyword = (Keyword)rule.eContents().get(1);
-		
-		//AssignementOperator:
-		//	'<-';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'<-'
-		public Keyword getLessThanSignHyphenMinusKeyword() { return cLessThanSignHyphenMinusKeyword; }
-	}
 	
 	
 	private final ModelElements pModel;
@@ -774,7 +761,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final StatementElements pStatement;
 	private final StatementTypeElements pStatementType;
 	private final StatementModalityElements pStatementModality;
-	private final AssignementOperatorElements pAssignementOperator;
+	private final TerminalRule tASSIGNEMENT_OPERATOR;
 	
 	private final Grammar grammar;
 	
@@ -805,7 +792,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pStatement = new StatementElements();
 		this.pStatementType = new StatementTypeElements();
 		this.pStatementModality = new StatementModalityElements();
-		this.pAssignementOperator = new AssignementOperatorElements();
+		this.tASSIGNEMENT_OPERATOR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.ASSIGNEMENT_OPERATOR");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -835,10 +822,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	////throws an excpetion: Couldn't resolve reference to EPackage 'http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/'.
-	////import "http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" as characteristics
 	//// Import approach, not working at all
-	////CharacteristicsType returns characteristics::CharacteristicType:
+	////CharacteristicsType2 returns characteristics::CharacteristicType:
 	////	entityName = ID '.' literal = ID;
 	//Model:
 	//	elements+=AbstractElement*;
@@ -871,7 +856,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ValueSet:
-	//	'valueset' name=ID AssignementOperator '[' members+=ID (',' members+=ID)* ']';
+	//	'valueset' name=ID ASSIGNEMENT_OPERATOR '[' members+=ID (',' members+=ID)* ']';
 	public ValueSetElements getValueSetAccess() {
 		return pValueSet;
 	}
@@ -891,7 +876,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AttributeType:
-	//	'attribute' name=ID AssignementOperator valueset=[ValueSet];
+	//	'attribute' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
 	public AttributeTypeElements getAttributeTypeAccess() {
 		return pAttributeType;
 	}
@@ -901,7 +886,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//PropertyType:
-	//	'property' name=ID AssignementOperator valueset=[ValueSet];
+	//	'property' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
 	public PropertyTypeElements getPropertyTypeAccess() {
 		return pPropertyType;
 	}
@@ -1043,14 +1028,10 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getStatementModalityAccess().getRule();
 	}
 	
-	//AssignementOperator:
+	//terminal ASSIGNEMENT_OPERATOR:
 	//	'<-';
-	public AssignementOperatorElements getAssignementOperatorAccess() {
-		return pAssignementOperator;
-	}
-	
-	public ParserRule getAssignementOperatorRule() {
-		return getAssignementOperatorAccess().getRule();
+	public TerminalRule getASSIGNEMENT_OPERATORRule() {
+		return tASSIGNEMENT_OPERATOR;
 	}
 	
 	//terminal ID:

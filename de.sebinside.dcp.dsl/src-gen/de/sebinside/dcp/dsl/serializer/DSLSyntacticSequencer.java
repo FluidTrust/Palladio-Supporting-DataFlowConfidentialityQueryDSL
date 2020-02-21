@@ -26,16 +26,16 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getAssignementOperatorRule())
-			return getAssignementOperatorToken(semanticObject, ruleCall, node);
+		if (ruleCall.getRule() == grammarAccess.getASSIGNEMENT_OPERATORRule())
+			return getASSIGNEMENT_OPERATORToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
 	/**
-	 * AssignementOperator:
+	 * terminal ASSIGNEMENT_OPERATOR:
 	 * 	'<-';
 	 */
-	protected String getAssignementOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+	protected String getASSIGNEMENT_OPERATORToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "<-";

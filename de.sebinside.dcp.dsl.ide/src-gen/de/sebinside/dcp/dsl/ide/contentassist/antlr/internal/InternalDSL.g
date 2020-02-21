@@ -549,31 +549,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleAssignementOperator
-entryRuleAssignementOperator
-:
-{ before(grammarAccess.getAssignementOperatorRule()); }
-	 ruleAssignementOperator
-{ after(grammarAccess.getAssignementOperatorRule()); } 
-	 EOF 
-;
-
-// Rule AssignementOperator
-ruleAssignementOperator 
-	@init {
-		int stackSize = keepStackSize();
-	}
-	:
-	(
-		{ before(grammarAccess.getAssignementOperatorAccess().getLessThanSignHyphenMinusKeyword()); }
-		'<-'
-		{ after(grammarAccess.getAssignementOperatorAccess().getLessThanSignHyphenMinusKeyword()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 rule__AbstractElement__Alternatives
 	@init {
 		int stackSize = keepStackSize();
@@ -844,9 +819,9 @@ rule__ValueSet__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getValueSetAccess().getAssignementOperatorParserRuleCall_2()); }
-	ruleAssignementOperator
-	{ after(grammarAccess.getValueSetAccess().getAssignementOperatorParserRuleCall_2()); }
+	{ before(grammarAccess.getValueSetAccess().getASSIGNEMENT_OPERATORTerminalRuleCall_2()); }
+	RULE_ASSIGNEMENT_OPERATOR
+	{ after(grammarAccess.getValueSetAccess().getASSIGNEMENT_OPERATORTerminalRuleCall_2()); }
 )
 ;
 finally {
@@ -1087,9 +1062,9 @@ rule__AttributeType__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getAttributeTypeAccess().getAssignementOperatorParserRuleCall_2()); }
-	ruleAssignementOperator
-	{ after(grammarAccess.getAttributeTypeAccess().getAssignementOperatorParserRuleCall_2()); }
+	{ before(grammarAccess.getAttributeTypeAccess().getASSIGNEMENT_OPERATORTerminalRuleCall_2()); }
+	RULE_ASSIGNEMENT_OPERATOR
+	{ after(grammarAccess.getAttributeTypeAccess().getASSIGNEMENT_OPERATORTerminalRuleCall_2()); }
 )
 ;
 finally {
@@ -1195,9 +1170,9 @@ rule__PropertyType__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getPropertyTypeAccess().getAssignementOperatorParserRuleCall_2()); }
-	ruleAssignementOperator
-	{ after(grammarAccess.getPropertyTypeAccess().getAssignementOperatorParserRuleCall_2()); }
+	{ before(grammarAccess.getPropertyTypeAccess().getASSIGNEMENT_OPERATORTerminalRuleCall_2()); }
+	RULE_ASSIGNEMENT_OPERATOR
+	{ after(grammarAccess.getPropertyTypeAccess().getASSIGNEMENT_OPERATORTerminalRuleCall_2()); }
 )
 ;
 finally {
@@ -3083,6 +3058,8 @@ rule__StatementModality__NameAssignment
 finally {
 	restoreStackSize(stackSize);
 }
+
+RULE_ASSIGNEMENT_OPERATOR : '<-';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

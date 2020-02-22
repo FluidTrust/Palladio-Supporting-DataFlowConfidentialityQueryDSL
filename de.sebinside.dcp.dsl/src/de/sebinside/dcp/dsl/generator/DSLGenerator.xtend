@@ -3,19 +3,17 @@
  */
 package de.sebinside.dcp.dsl.generator
 
+import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import java.io.ByteArrayOutputStream
+import java.util.ArrayList
+import java.util.List
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
-import org.palladiosimulator.supporting.prolog.model.prolog.Program
-import de.sebinside.dcp.dsl.dSL.CharacteristicClass
-import java.util.List
 import org.palladiosimulator.supporting.prolog.model.prolog.Clause
-import java.util.ArrayList
-import org.eclipse.emf.common.util.BasicEList
-import org.palladiosimulator.supporting.prolog.model.prolog.Fact
+import org.palladiosimulator.supporting.prolog.model.prolog.Program
+import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.ExpressionsFactory
 
@@ -76,13 +74,13 @@ class DSLGenerator extends AbstractGenerator {
 		rule.head = ruleHead
 		
 		// Create single facts for every member
-		charateristicClass.members.forEach[member|
+		charateristicClass.members.forEach[member, index|
 			member.literals.forEach[literal|
 				val fact = PrologFactory.eINSTANCE.createFact
 				val factHead = PrologFactory.eINSTANCE.createCompoundTerm
 				val factBody = PrologFactory.eINSTANCE.createCompoundTerm
 				
-				factHead.value = '''CharacteristicsClass_«className»_«member.ref.name»'''
+				factHead.value = '''CharacteristicsClass_«className»_«member.ref.name»_«index»'''
 				
 				if(member.negated) {
 					factHead.value = '''«factHead.value»_NEG'''
@@ -116,17 +114,17 @@ class DSLGenerator extends AbstractGenerator {
 					val logicalAnd = ExpressionsFactory.eINSTANCE.createLogicalAnd
 					logicalAnd.left = rule.body
 					logicalAnd.right = factExpression
+					rule.body = logicalAnd
 				}
 				
 			]
 		]
 		
-		clauses.add(rule)
-		clauses
-	}
-	
-	def static factToExpression(Fact fact, boolean negated) {
+		if(rule.body !== null) {
+			clauses.add(rule)
+		}
 		
+		clauses
 	}
 	
 	def static saveFile(IFileSystemAccess2 fsa, Resource resource, Program program, String fileName) {

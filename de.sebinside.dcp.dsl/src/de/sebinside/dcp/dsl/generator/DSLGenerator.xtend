@@ -9,6 +9,15 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
+import org.palladiosimulator.supporting.prolog.model.prolog.Program
+import de.sebinside.dcp.dsl.dSL.CharacteristicClass
+import java.util.List
+import org.palladiosimulator.supporting.prolog.model.prolog.Clause
+import java.util.ArrayList
+import org.eclipse.emf.common.util.BasicEList
+import org.palladiosimulator.supporting.prolog.model.prolog.Fact
+import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
+import org.palladiosimulator.supporting.prolog.model.prolog.expressions.ExpressionsFactory
 
 /**
  * Generates code from your model files on save.
@@ -16,21 +25,21 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class DSLGenerator extends AbstractGenerator {
+	
+	static final String DEV_OUTPUT_FILE_NAME = "output.pl"
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val test = createFact("dog")
-
 		val program = PrologFactory.eINSTANCE.createProgram
-		program.clauses.add(test)
+		
+		// Just testing with only Characteristic Classes
+		for (element : resource.allContents.toIterable.filter(CharacteristicClass)) {
+        	program.clauses.addAll(element.compile)
+    	}
 
-		val prologRessource = resource.resourceSet.createResource(resource.URI.appendFileExtension("pl"))
-		prologRessource.contents.add(program)
-		
-		val outputStream = new ByteArrayOutputStream()
-		prologRessource.save(outputStream, null)
-		
-		fsa.generateFile("output.pl", outputStream.toString)
-		println("Done")
+		// TODO
+	
+			
+		saveFile(fsa, resource, program, DEV_OUTPUT_FILE_NAME)
 	}
 
 	def static createFact(String name) {
@@ -45,5 +54,91 @@ class DSLGenerator extends AbstractGenerator {
 		fact.head = term
 	
 		return fact
+	}
+	
+	def List<Clause> compile(CharacteristicClass charateristicClass) {
+		val clauses = new ArrayList<Clause>
+		val className = charateristicClass.name
+		
+		// Create rule referencing all facts
+		val rule = PrologFactory.eINSTANCE.createRule
+		val ruleHead = PrologFactory.eINSTANCE.createCompoundTerm
+		ruleHead.value = '''CharacteristicClass_«className»'''
+		
+		ruleHead.arguments.addAll(charateristicClass.members
+		.map[member|member.ref.name].toSet.map[type|
+			val term = PrologFactory.eINSTANCE.createCompoundTerm
+			term.value = type
+			term
+		].toList)
+		
+		rule.body = null
+		rule.head = ruleHead
+		
+		// Create single facts for every member
+		charateristicClass.members.forEach[member|
+			member.literals.forEach[literal|
+				val fact = PrologFactory.eINSTANCE.createFact
+				val factHead = PrologFactory.eINSTANCE.createCompoundTerm
+				val factBody = PrologFactory.eINSTANCE.createCompoundTerm
+				
+				factHead.value = '''CharacteristicsClass_«className»_«member.ref.name»'''
+				
+				if(member.negated) {
+					factHead.value = '''«factHead.value»_NEG'''
+				}
+				
+				factBody.value = literal
+				factHead.arguments.add(factBody)
+				
+				fact.head = factHead	
+				clauses.add(fact)
+				
+				// Add fact reference to rule
+				val factTerm = PrologFactory.eINSTANCE.createCompoundTerm
+				val factTermBody = PrologFactory.eINSTANCE.createCompoundTerm
+				
+				factTerm.value = fact.head.value
+				factTermBody.value = member.ref.name
+				factTerm.arguments.add(factTermBody)
+				
+				var Expression factExpression = factTerm
+				if(member.negated) {
+					val notProvable = ExpressionsFactory.eINSTANCE.createNotProvable
+					notProvable.expr = factTerm
+					factExpression = notProvable
+				}
+				
+				if(rule.body === null) {
+					rule.body = factExpression
+				} else {
+					// FIXME: conjuncted is not supported yet
+					val logicalAnd = ExpressionsFactory.eINSTANCE.createLogicalAnd
+					logicalAnd.left = rule.body
+					logicalAnd.right = factExpression
+				}
+				
+			]
+		]
+		
+		clauses.add(rule)
+		clauses
+	}
+	
+	def static factToExpression(Fact fact, boolean negated) {
+		
+	}
+	
+	def static saveFile(IFileSystemAccess2 fsa, Resource resource, Program program, String fileName) {
+		// Create new resource
+		val prologRessource = resource.resourceSet.createResource(resource.URI.appendFileExtension("pl"))
+		prologRessource.contents.add(program)
+		
+		// Trigger serialization
+		val outputStream = new ByteArrayOutputStream()
+		prologRessource.save(outputStream, null)
+		
+		// Use FileSystemAccess to write serialized prolog code
+		fsa.generateFile("output.pl", outputStream.toString)
 	}
 }

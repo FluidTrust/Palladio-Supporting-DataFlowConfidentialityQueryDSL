@@ -121,6 +121,16 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
         return createCharacteristicSelectorAdapter();
       }
       @Override
+      public Adapter caseAltCharacteristicSelector(AltCharacteristicSelector object)
+      {
+        return createAltCharacteristicSelectorAdapter();
+      }
+      @Override
+      public Adapter caseImportCharacteristics(ImportCharacteristics object)
+      {
+        return createImportCharacteristicsAdapter();
+      }
+      @Override
       public Adapter caseConstraint(Constraint object)
       {
         return createConstraintAdapter();
@@ -328,6 +338,36 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCharacteristicSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector <em>Alt Characteristic Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector
+   * @generated
+   */
+  public Adapter createAltCharacteristicSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.ImportCharacteristics <em>Import Characteristics</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.ImportCharacteristics
+   * @generated
+   */
+  public Adapter createImportCharacteristicsAdapter()
   {
     return null;
   }

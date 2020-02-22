@@ -44,33 +44,37 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	public class AbstractElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AbstractElement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cDataTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cValueSetParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cCharacteristicsTypeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cCharacteristicClassParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cConstraintParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cImportCharacteristicsParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDataTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cValueSetParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cCharacteristicsTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cCharacteristicClassParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cConstraintParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//AbstractElement:
-		//	DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
+		//	ImportCharacteristics | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint
+		//ImportCharacteristics | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
+		//ImportCharacteristics
+		public RuleCall getImportCharacteristicsParserRuleCall_0() { return cImportCharacteristicsParserRuleCall_0; }
+		
 		//DataType
-		public RuleCall getDataTypeParserRuleCall_0() { return cDataTypeParserRuleCall_0; }
+		public RuleCall getDataTypeParserRuleCall_1() { return cDataTypeParserRuleCall_1; }
 		
 		//ValueSet
-		public RuleCall getValueSetParserRuleCall_1() { return cValueSetParserRuleCall_1; }
+		public RuleCall getValueSetParserRuleCall_2() { return cValueSetParserRuleCall_2; }
 		
 		//CharacteristicsType
-		public RuleCall getCharacteristicsTypeParserRuleCall_2() { return cCharacteristicsTypeParserRuleCall_2; }
+		public RuleCall getCharacteristicsTypeParserRuleCall_3() { return cCharacteristicsTypeParserRuleCall_3; }
 		
 		//CharacteristicClass
-		public RuleCall getCharacteristicClassParserRuleCall_3() { return cCharacteristicClassParserRuleCall_3; }
+		public RuleCall getCharacteristicClassParserRuleCall_4() { return cCharacteristicClassParserRuleCall_4; }
 		
 		//Constraint
-		public RuleCall getConstraintParserRuleCall_4() { return cConstraintParserRuleCall_4; }
+		public RuleCall getConstraintParserRuleCall_5() { return cConstraintParserRuleCall_5; }
 	}
 	public class DataTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.DataType");
@@ -419,6 +423,171 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		//']'
 		public Keyword getRightSquareBracketKeyword_2_1_3() { return cRightSquareBracketKeyword_2_1_3; }
 	}
+	public class AltCharacteristicSelectorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AltCharacteristicSelector");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cRefAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cRefCharacteristicTypeCrossReference_0_0 = (CrossReference)cRefAssignment_0.eContents().get(0);
+		private final RuleCall cRefCharacteristicTypeIDTerminalRuleCall_0_0_1 = (RuleCall)cRefCharacteristicTypeCrossReference_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
+		private final Assignment cNegatedAssignment_2_0_0 = (Assignment)cGroup_2_0.eContents().get(0);
+		private final Keyword cNegatedExclamationMarkKeyword_2_0_0_0 = (Keyword)cNegatedAssignment_2_0_0.eContents().get(0);
+		private final Assignment cLiteralsAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
+		private final CrossReference cLiteralsEnumCharacteristicLiteralCrossReference_2_0_1_0 = (CrossReference)cLiteralsAssignment_2_0_1.eContents().get(0);
+		private final RuleCall cLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_0_1_0_1 = (RuleCall)cLiteralsEnumCharacteristicLiteralCrossReference_2_0_1_0.eContents().get(1);
+		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Assignment cLiteralsAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
+		private final CrossReference cLiteralsEnumCharacteristicLiteralCrossReference_2_1_1_0 = (CrossReference)cLiteralsAssignment_2_1_1.eContents().get(0);
+		private final RuleCall cLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_1_0_1 = (RuleCall)cLiteralsEnumCharacteristicLiteralCrossReference_2_1_1_0.eContents().get(1);
+		private final Alternatives cAlternatives_2_1_2 = (Alternatives)cGroup_2_1.eContents().get(2);
+		private final Group cGroup_2_1_2_0 = (Group)cAlternatives_2_1_2.eContents().get(0);
+		private final Keyword cCommaKeyword_2_1_2_0_0 = (Keyword)cGroup_2_1_2_0.eContents().get(0);
+		private final Assignment cLiteralsAssignment_2_1_2_0_1 = (Assignment)cGroup_2_1_2_0.eContents().get(1);
+		private final CrossReference cLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_0_1_0 = (CrossReference)cLiteralsAssignment_2_1_2_0_1.eContents().get(0);
+		private final RuleCall cLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_2_0_1_0_1 = (RuleCall)cLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_0_1_0.eContents().get(1);
+		private final Group cGroup_2_1_2_1 = (Group)cAlternatives_2_1_2.eContents().get(1);
+		private final Assignment cConjunctedAssignment_2_1_2_1_0 = (Assignment)cGroup_2_1_2_1.eContents().get(0);
+		private final Keyword cConjunctedAmpersandKeyword_2_1_2_1_0_0 = (Keyword)cConjunctedAssignment_2_1_2_1_0.eContents().get(0);
+		private final Assignment cLiteralsAssignment_2_1_2_1_1 = (Assignment)cGroup_2_1_2_1.eContents().get(1);
+		private final CrossReference cLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_1_1_0 = (CrossReference)cLiteralsAssignment_2_1_2_1_1.eContents().get(0);
+		private final RuleCall cLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_2_1_1_0_1 = (RuleCall)cLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_1_1_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_2_1_3 = (Keyword)cGroup_2_1.eContents().get(3);
+		
+		//// Original characteristics usage starts here
+		//// -----------------------------------------------------
+		//// Current state: Scoping is missing.
+		//// Possible tutorial? https://blogs.itemis.com/de/in-5-minuten-zur-dsl-mit-transitiven-importen-in-xtext
+		//AltCharacteristicSelector:
+		//	ref=[characteristics::CharacteristicType] '.' (negated?='!'? literals+=[characteristics::EnumCharacteristicLiteral] |
+		//	'[' literals+=[characteristics::EnumCharacteristicLiteral] ((','
+		//	literals+=[characteristics::EnumCharacteristicLiteral])*
+		//	| (conjuncted?='&' literals+=[characteristics::EnumCharacteristicLiteral])*) ']');
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ref=[characteristics::CharacteristicType] '.' (negated?='!'? literals+=[characteristics::EnumCharacteristicLiteral] |
+		//'[' literals+=[characteristics::EnumCharacteristicLiteral] ((','
+		//literals+=[characteristics::EnumCharacteristicLiteral])* | (conjuncted?='&'
+		//literals+=[characteristics::EnumCharacteristicLiteral])*) ']')
+		public Group getGroup() { return cGroup; }
+		
+		//ref=[characteristics::CharacteristicType]
+		public Assignment getRefAssignment_0() { return cRefAssignment_0; }
+		
+		//[characteristics::CharacteristicType]
+		public CrossReference getRefCharacteristicTypeCrossReference_0_0() { return cRefCharacteristicTypeCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getRefCharacteristicTypeIDTerminalRuleCall_0_0_1() { return cRefCharacteristicTypeIDTerminalRuleCall_0_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+		
+		//(negated?='!'? literals+=[characteristics::EnumCharacteristicLiteral] | '['
+		//literals+=[characteristics::EnumCharacteristicLiteral] ((',' literals+=[characteristics::EnumCharacteristicLiteral])* |
+		//(conjuncted?='&' literals+=[characteristics::EnumCharacteristicLiteral])*) ']')
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//negated?='!'? literals+=[characteristics::EnumCharacteristicLiteral]
+		public Group getGroup_2_0() { return cGroup_2_0; }
+		
+		//negated?='!'?
+		public Assignment getNegatedAssignment_2_0_0() { return cNegatedAssignment_2_0_0; }
+		
+		//'!'
+		public Keyword getNegatedExclamationMarkKeyword_2_0_0_0() { return cNegatedExclamationMarkKeyword_2_0_0_0; }
+		
+		//literals+=[characteristics::EnumCharacteristicLiteral]
+		public Assignment getLiteralsAssignment_2_0_1() { return cLiteralsAssignment_2_0_1; }
+		
+		//[characteristics::EnumCharacteristicLiteral]
+		public CrossReference getLiteralsEnumCharacteristicLiteralCrossReference_2_0_1_0() { return cLiteralsEnumCharacteristicLiteralCrossReference_2_0_1_0; }
+		
+		//ID
+		public RuleCall getLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_0_1_0_1() { return cLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_0_1_0_1; }
+		
+		//'[' literals+=[characteristics::EnumCharacteristicLiteral] ((','
+		//literals+=[characteristics::EnumCharacteristicLiteral])* | (conjuncted?='&'
+		//literals+=[characteristics::EnumCharacteristicLiteral])*) ']'
+		public Group getGroup_2_1() { return cGroup_2_1; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_2_1_0() { return cLeftSquareBracketKeyword_2_1_0; }
+		
+		//literals+=[characteristics::EnumCharacteristicLiteral]
+		public Assignment getLiteralsAssignment_2_1_1() { return cLiteralsAssignment_2_1_1; }
+		
+		//[characteristics::EnumCharacteristicLiteral]
+		public CrossReference getLiteralsEnumCharacteristicLiteralCrossReference_2_1_1_0() { return cLiteralsEnumCharacteristicLiteralCrossReference_2_1_1_0; }
+		
+		//ID
+		public RuleCall getLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_1_0_1() { return cLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_1_0_1; }
+		
+		//((',' literals+=[characteristics::EnumCharacteristicLiteral])* | (conjuncted?='&'
+		//literals+=[characteristics::EnumCharacteristicLiteral])*)
+		public Alternatives getAlternatives_2_1_2() { return cAlternatives_2_1_2; }
+		
+		//(',' literals+=[characteristics::EnumCharacteristicLiteral])*
+		public Group getGroup_2_1_2_0() { return cGroup_2_1_2_0; }
+		
+		//','
+		public Keyword getCommaKeyword_2_1_2_0_0() { return cCommaKeyword_2_1_2_0_0; }
+		
+		//literals+=[characteristics::EnumCharacteristicLiteral]
+		public Assignment getLiteralsAssignment_2_1_2_0_1() { return cLiteralsAssignment_2_1_2_0_1; }
+		
+		//[characteristics::EnumCharacteristicLiteral]
+		public CrossReference getLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_0_1_0() { return cLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_0_1_0; }
+		
+		//ID
+		public RuleCall getLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_2_0_1_0_1() { return cLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_2_0_1_0_1; }
+		
+		//(conjuncted?='&' literals+=[characteristics::EnumCharacteristicLiteral])*
+		public Group getGroup_2_1_2_1() { return cGroup_2_1_2_1; }
+		
+		//conjuncted?='&'
+		public Assignment getConjunctedAssignment_2_1_2_1_0() { return cConjunctedAssignment_2_1_2_1_0; }
+		
+		//'&'
+		public Keyword getConjunctedAmpersandKeyword_2_1_2_1_0_0() { return cConjunctedAmpersandKeyword_2_1_2_1_0_0; }
+		
+		//literals+=[characteristics::EnumCharacteristicLiteral]
+		public Assignment getLiteralsAssignment_2_1_2_1_1() { return cLiteralsAssignment_2_1_2_1_1; }
+		
+		//[characteristics::EnumCharacteristicLiteral]
+		public CrossReference getLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_1_1_0() { return cLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_1_1_0; }
+		
+		//ID
+		public RuleCall getLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_2_1_1_0_1() { return cLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_2_1_1_0_1; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_2_1_3() { return cRightSquareBracketKeyword_2_1_3; }
+	}
+	public class ImportCharacteristicsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.ImportCharacteristics");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cImportURIAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cImportURISTRINGTerminalRuleCall_1_0 = (RuleCall)cImportURIAssignment_1.eContents().get(0);
+		
+		//ImportCharacteristics:
+		//	'import' importURI=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'import' importURI=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//'import'
+		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
+		
+		//importURI=STRING
+		public Assignment getImportURIAssignment_1() { return cImportURIAssignment_1; }
+		
+		//STRING
+		public RuleCall getImportURISTRINGTerminalRuleCall_1_0() { return cImportURISTRINGTerminalRuleCall_1_0; }
+	}
 	public class ConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.Constraint");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -430,6 +599,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRuleRuleParserRuleCall_3_0 = (RuleCall)cRuleAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
+		//// Original characteristics usage ends here
+		//// -----------------------------------------------------
 		//Constraint:
 		//	'constraint' name=STRING '{' rule=Rule '}';
 		@Override public ParserRule getRule() { return rule; }
@@ -750,6 +921,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final PropertyTypeElements pPropertyType;
 	private final CharacteristicClassElements pCharacteristicClass;
 	private final CharacteristicSelectorElements pCharacteristicSelector;
+	private final AltCharacteristicSelectorElements pAltCharacteristicSelector;
+	private final ImportCharacteristicsElements pImportCharacteristics;
 	private final ConstraintElements pConstraint;
 	private final RuleElements pRule;
 	private final DataSelectorElements pDataSelector;
@@ -781,6 +954,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pPropertyType = new PropertyTypeElements();
 		this.pCharacteristicClass = new CharacteristicClassElements();
 		this.pCharacteristicSelector = new CharacteristicSelectorElements();
+		this.pAltCharacteristicSelector = new AltCharacteristicSelectorElements();
+		this.pImportCharacteristics = new ImportCharacteristicsElements();
 		this.pConstraint = new ConstraintElements();
 		this.pRule = new RuleElements();
 		this.pDataSelector = new DataSelectorElements();
@@ -836,7 +1011,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AbstractElement:
-	//	DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
+	//	ImportCharacteristics | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
 	public AbstractElementElements getAbstractElementAccess() {
 		return pAbstractElement;
 	}
@@ -916,6 +1091,35 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getCharacteristicSelectorAccess().getRule();
 	}
 	
+	//// Original characteristics usage starts here
+	//// -----------------------------------------------------
+	//// Current state: Scoping is missing.
+	//// Possible tutorial? https://blogs.itemis.com/de/in-5-minuten-zur-dsl-mit-transitiven-importen-in-xtext
+	//AltCharacteristicSelector:
+	//	ref=[characteristics::CharacteristicType] '.' (negated?='!'? literals+=[characteristics::EnumCharacteristicLiteral] |
+	//	'[' literals+=[characteristics::EnumCharacteristicLiteral] ((','
+	//	literals+=[characteristics::EnumCharacteristicLiteral])*
+	//	| (conjuncted?='&' literals+=[characteristics::EnumCharacteristicLiteral])*) ']');
+	public AltCharacteristicSelectorElements getAltCharacteristicSelectorAccess() {
+		return pAltCharacteristicSelector;
+	}
+	
+	public ParserRule getAltCharacteristicSelectorRule() {
+		return getAltCharacteristicSelectorAccess().getRule();
+	}
+	
+	//ImportCharacteristics:
+	//	'import' importURI=STRING;
+	public ImportCharacteristicsElements getImportCharacteristicsAccess() {
+		return pImportCharacteristics;
+	}
+	
+	public ParserRule getImportCharacteristicsRule() {
+		return getImportCharacteristicsAccess().getRule();
+	}
+	
+	//// Original characteristics usage ends here
+	//// -----------------------------------------------------
 	//Constraint:
 	//	'constraint' name=STRING '{' rule=Rule '}';
 	public ConstraintElements getConstraintAccess() {

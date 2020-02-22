@@ -13,6 +13,7 @@ package de.sebinside.dcp.dsl.dSL;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.Constraint#getName <em>Name</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.Constraint#getRule <em>Rule</em>}</li>
  * </ul>
  *
@@ -22,6 +23,28 @@ package de.sebinside.dcp.dsl.dSL;
  */
 public interface Constraint extends AbstractElement
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getConstraint_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Constraint#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
   /**
    * Returns the value of the '<em><b>Rule</b></em>' containment reference.
    * <!-- begin-user-doc -->

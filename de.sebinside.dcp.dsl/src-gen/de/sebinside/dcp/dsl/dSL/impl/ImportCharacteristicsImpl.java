@@ -4,7 +4,7 @@
 package de.sebinside.dcp.dsl.dSL.impl;
 
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
-import de.sebinside.dcp.dsl.dSL.DataType;
+import de.sebinside.dcp.dsl.dSL.ImportCharacteristics;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,45 +14,45 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Data Type</b></em>'.
+ * An implementation of the model object '<em><b>Import Characteristics</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.DataTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl#getImportURI <em>Import URI</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DataTypeImpl extends AbstractElementImpl implements DataType
+public class ImportCharacteristicsImpl extends AbstractElementImpl implements ImportCharacteristics
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getImportURI() <em>Import URI</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getImportURI()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String IMPORT_URI_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getImportURI() <em>Import URI</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getImportURI()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String importURI = IMPORT_URI_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DataTypeImpl()
+  protected ImportCharacteristicsImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class DataTypeImpl extends AbstractElementImpl implements DataType
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.DATA_TYPE;
+    return DSLPackage.Literals.IMPORT_CHARACTERISTICS;
   }
 
   /**
@@ -74,9 +74,9 @@ public class DataTypeImpl extends AbstractElementImpl implements DataType
    * @generated
    */
   @Override
-  public String getName()
+  public String getImportURI()
   {
-    return name;
+    return importURI;
   }
 
   /**
@@ -85,12 +85,12 @@ public class DataTypeImpl extends AbstractElementImpl implements DataType
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setImportURI(String newImportURI)
   {
-    String oldName = name;
-    name = newName;
+    String oldImportURI = importURI;
+    importURI = newImportURI;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.DATA_TYPE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI, oldImportURI, importURI));
   }
 
   /**
@@ -103,8 +103,8 @@ public class DataTypeImpl extends AbstractElementImpl implements DataType
   {
     switch (featureID)
     {
-      case DSLPackage.DATA_TYPE__NAME:
-        return getName();
+      case DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI:
+        return getImportURI();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +119,8 @@ public class DataTypeImpl extends AbstractElementImpl implements DataType
   {
     switch (featureID)
     {
-      case DSLPackage.DATA_TYPE__NAME:
-        setName((String)newValue);
+      case DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI:
+        setImportURI((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +136,8 @@ public class DataTypeImpl extends AbstractElementImpl implements DataType
   {
     switch (featureID)
     {
-      case DSLPackage.DATA_TYPE__NAME:
-        setName(NAME_EDEFAULT);
+      case DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI:
+        setImportURI(IMPORT_URI_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +153,8 @@ public class DataTypeImpl extends AbstractElementImpl implements DataType
   {
     switch (featureID)
     {
-      case DSLPackage.DATA_TYPE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI:
+        return IMPORT_URI_EDEFAULT == null ? importURI != null : !IMPORT_URI_EDEFAULT.equals(importURI);
     }
     return super.eIsSet(featureID);
   }
@@ -170,10 +170,10 @@ public class DataTypeImpl extends AbstractElementImpl implements DataType
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (importURI: ");
+    result.append(importURI);
     result.append(')');
     return result.toString();
   }
 
-} //DataTypeImpl
+} //ImportCharacteristicsImpl

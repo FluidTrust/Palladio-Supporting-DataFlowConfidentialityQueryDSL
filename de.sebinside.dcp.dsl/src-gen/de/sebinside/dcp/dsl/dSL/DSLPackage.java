@@ -96,22 +96,13 @@ public interface DSLPackage extends EPackage
   int ABSTRACT_ELEMENT = 1;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ABSTRACT_ELEMENT__NAME = 0;
-
-  /**
    * The number of structural features of the '<em>Abstract Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ABSTRACT_ELEMENT_FEATURE_COUNT = 1;
+  int ABSTRACT_ELEMENT_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.DataTypeImpl <em>Data Type</em>}' class.
@@ -130,7 +121,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATA_TYPE__NAME = ABSTRACT_ELEMENT__NAME;
+  int DATA_TYPE__NAME = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Data Type</em>' class.
@@ -139,7 +130,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATA_TYPE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int DATA_TYPE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.ValueSetImpl <em>Value Set</em>}' class.
@@ -158,7 +149,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VALUE_SET__NAME = ABSTRACT_ELEMENT__NAME;
+  int VALUE_SET__NAME = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' attribute list.
@@ -167,7 +158,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VALUE_SET__MEMBERS = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int VALUE_SET__MEMBERS = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Value Set</em>' class.
@@ -176,7 +167,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VALUE_SET_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int VALUE_SET_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicsTypeImpl <em>Characteristics Type</em>}' class.
@@ -195,7 +186,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTICS_TYPE__NAME = ABSTRACT_ELEMENT__NAME;
+  int CHARACTERISTICS_TYPE__NAME = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Valueset</b></em>' reference.
@@ -204,7 +195,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTICS_TYPE__VALUESET = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int CHARACTERISTICS_TYPE__VALUESET = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Characteristics Type</em>' class.
@@ -213,7 +204,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTICS_TYPE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int CHARACTERISTICS_TYPE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.AttributeTypeImpl <em>Attribute Type</em>}' class.
@@ -306,7 +297,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTIC_CLASS__NAME = ABSTRACT_ELEMENT__NAME;
+  int CHARACTERISTIC_CLASS__NAME = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -315,7 +306,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTIC_CLASS__MEMBERS = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int CHARACTERISTIC_CLASS__MEMBERS = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Characteristic Class</em>' class.
@@ -324,7 +315,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTERISTIC_CLASS_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int CHARACTERISTIC_CLASS_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSelectorImpl <em>Characteristic Selector</em>}' class.
@@ -382,6 +373,89 @@ public interface DSLPackage extends EPackage
   int CHARACTERISTIC_SELECTOR_FEATURE_COUNT = 4;
 
   /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.AltCharacteristicSelectorImpl <em>Alt Characteristic Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.AltCharacteristicSelectorImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAltCharacteristicSelector()
+   * @generated
+   */
+  int ALT_CHARACTERISTIC_SELECTOR = 9;
+
+  /**
+   * The feature id for the '<em><b>Ref</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_CHARACTERISTIC_SELECTOR__REF = 0;
+
+  /**
+   * The feature id for the '<em><b>Negated</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_CHARACTERISTIC_SELECTOR__NEGATED = 1;
+
+  /**
+   * The feature id for the '<em><b>Literals</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_CHARACTERISTIC_SELECTOR__LITERALS = 2;
+
+  /**
+   * The feature id for the '<em><b>Conjuncted</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_CHARACTERISTIC_SELECTOR__CONJUNCTED = 3;
+
+  /**
+   * The number of structural features of the '<em>Alt Characteristic Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_CHARACTERISTIC_SELECTOR_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl <em>Import Characteristics</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getImportCharacteristics()
+   * @generated
+   */
+  int IMPORT_CHARACTERISTICS = 10;
+
+  /**
+   * The feature id for the '<em><b>Import URI</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IMPORT_CHARACTERISTICS__IMPORT_URI = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Import Characteristics</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IMPORT_CHARACTERISTICS_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl <em>Constraint</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -389,7 +463,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getConstraint()
    * @generated
    */
-  int CONSTRAINT = 9;
+  int CONSTRAINT = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -398,7 +472,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT__NAME = ABSTRACT_ELEMENT__NAME;
+  int CONSTRAINT__NAME = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Rule</b></em>' containment reference.
@@ -407,7 +481,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT__RULE = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int CONSTRAINT__RULE = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Constraint</em>' class.
@@ -416,7 +490,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int CONSTRAINT_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.RuleImpl <em>Rule</em>}' class.
@@ -426,7 +500,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getRule()
    * @generated
    */
-  int RULE = 10;
+  int RULE = 12;
 
   /**
    * The feature id for the '<em><b>Data Selectors</b></em>' containment reference list.
@@ -472,7 +546,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDataSelector()
    * @generated
    */
-  int DATA_SELECTOR = 11;
+  int DATA_SELECTOR = 13;
 
   /**
    * The number of structural features of the '<em>Data Selector</em>' class.
@@ -491,7 +565,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeSelector()
    * @generated
    */
-  int ATTRIBUTE_SELECTOR = 12;
+  int ATTRIBUTE_SELECTOR = 14;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -519,7 +593,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeClassSelector()
    * @generated
    */
-  int ATTRIBUTE_CLASS_SELECTOR = 13;
+  int ATTRIBUTE_CLASS_SELECTOR = 15;
 
   /**
    * The feature id for the '<em><b>Negated</b></em>' attribute.
@@ -556,7 +630,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDestinationSelector()
    * @generated
    */
-  int DESTINATION_SELECTOR = 14;
+  int DESTINATION_SELECTOR = 16;
 
   /**
    * The number of structural features of the '<em>Destination Selector</em>' class.
@@ -575,7 +649,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertySelector()
    * @generated
    */
-  int PROPERTY_SELECTOR = 15;
+  int PROPERTY_SELECTOR = 17;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -603,7 +677,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertyClassSelector()
    * @generated
    */
-  int PROPERTY_CLASS_SELECTOR = 16;
+  int PROPERTY_CLASS_SELECTOR = 18;
 
   /**
    * The feature id for the '<em><b>Negated</b></em>' attribute.
@@ -640,7 +714,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatement()
    * @generated
    */
-  int STATEMENT = 17;
+  int STATEMENT = 19;
 
   /**
    * The feature id for the '<em><b>Modality</b></em>' containment reference.
@@ -677,7 +751,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementType()
    * @generated
    */
-  int STATEMENT_TYPE = 18;
+  int STATEMENT_TYPE = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -705,7 +779,7 @@ public interface DSLPackage extends EPackage
    * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementModality()
    * @generated
    */
-  int STATEMENT_MODALITY = 19;
+  int STATEMENT_MODALITY = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -758,17 +832,6 @@ public interface DSLPackage extends EPackage
   EClass getAbstractElement();
 
   /**
-   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.AbstractElement#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.AbstractElement#getName()
-   * @see #getAbstractElement()
-   * @generated
-   */
-  EAttribute getAbstractElement_Name();
-
-  /**
    * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.DataType <em>Data Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -779,6 +842,17 @@ public interface DSLPackage extends EPackage
   EClass getDataType();
 
   /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.DataType#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.DataType#getName()
+   * @see #getDataType()
+   * @generated
+   */
+  EAttribute getDataType_Name();
+
+  /**
    * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.ValueSet <em>Value Set</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -787,6 +861,17 @@ public interface DSLPackage extends EPackage
    * @generated
    */
   EClass getValueSet();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.ValueSet#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.ValueSet#getName()
+   * @see #getValueSet()
+   * @generated
+   */
+  EAttribute getValueSet_Name();
 
   /**
    * Returns the meta object for the attribute list '{@link de.sebinside.dcp.dsl.dSL.ValueSet#getMembers <em>Members</em>}'.
@@ -808,6 +893,17 @@ public interface DSLPackage extends EPackage
    * @generated
    */
   EClass getCharacteristicsType();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicsType#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.CharacteristicsType#getName()
+   * @see #getCharacteristicsType()
+   * @generated
+   */
+  EAttribute getCharacteristicsType_Name();
 
   /**
    * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.CharacteristicsType#getValueset <em>Valueset</em>}'.
@@ -849,6 +945,17 @@ public interface DSLPackage extends EPackage
    * @generated
    */
   EClass getCharacteristicClass();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicClass#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.CharacteristicClass#getName()
+   * @see #getCharacteristicClass()
+   * @generated
+   */
+  EAttribute getCharacteristicClass_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.sebinside.dcp.dsl.dSL.CharacteristicClass#getMembers <em>Members</em>}'.
@@ -916,6 +1023,81 @@ public interface DSLPackage extends EPackage
   EAttribute getCharacteristicSelector_Conjuncted();
 
   /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector <em>Alt Characteristic Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Alt Characteristic Selector</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector
+   * @generated
+   */
+  EClass getAltCharacteristicSelector();
+
+  /**
+   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector#getRef <em>Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Ref</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector#getRef()
+   * @see #getAltCharacteristicSelector()
+   * @generated
+   */
+  EReference getAltCharacteristicSelector_Ref();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector#isNegated <em>Negated</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Negated</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector#isNegated()
+   * @see #getAltCharacteristicSelector()
+   * @generated
+   */
+  EAttribute getAltCharacteristicSelector_Negated();
+
+  /**
+   * Returns the meta object for the reference list '{@link de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector#getLiterals <em>Literals</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Literals</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector#getLiterals()
+   * @see #getAltCharacteristicSelector()
+   * @generated
+   */
+  EReference getAltCharacteristicSelector_Literals();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector#isConjuncted <em>Conjuncted</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Conjuncted</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector#isConjuncted()
+   * @see #getAltCharacteristicSelector()
+   * @generated
+   */
+  EAttribute getAltCharacteristicSelector_Conjuncted();
+
+  /**
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.ImportCharacteristics <em>Import Characteristics</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Import Characteristics</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.ImportCharacteristics
+   * @generated
+   */
+  EClass getImportCharacteristics();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.ImportCharacteristics#getImportURI <em>Import URI</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Import URI</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.ImportCharacteristics#getImportURI()
+   * @see #getImportCharacteristics()
+   * @generated
+   */
+  EAttribute getImportCharacteristics_ImportURI();
+
+  /**
    * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Constraint <em>Constraint</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -924,6 +1106,17 @@ public interface DSLPackage extends EPackage
    * @generated
    */
   EClass getConstraint();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.Constraint#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Constraint#getName()
+   * @see #getConstraint()
+   * @generated
+   */
+  EAttribute getConstraint_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.Constraint#getRule <em>Rule</em>}'.
@@ -1231,14 +1424,6 @@ public interface DSLPackage extends EPackage
     EClass ABSTRACT_ELEMENT = eINSTANCE.getAbstractElement();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ABSTRACT_ELEMENT__NAME = eINSTANCE.getAbstractElement_Name();
-
-    /**
      * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.DataTypeImpl <em>Data Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1249,6 +1434,14 @@ public interface DSLPackage extends EPackage
     EClass DATA_TYPE = eINSTANCE.getDataType();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DATA_TYPE__NAME = eINSTANCE.getDataType_Name();
+
+    /**
      * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.ValueSetImpl <em>Value Set</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1257,6 +1450,14 @@ public interface DSLPackage extends EPackage
      * @generated
      */
     EClass VALUE_SET = eINSTANCE.getValueSet();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VALUE_SET__NAME = eINSTANCE.getValueSet_Name();
 
     /**
      * The meta object literal for the '<em><b>Members</b></em>' attribute list feature.
@@ -1275,6 +1476,14 @@ public interface DSLPackage extends EPackage
      * @generated
      */
     EClass CHARACTERISTICS_TYPE = eINSTANCE.getCharacteristicsType();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CHARACTERISTICS_TYPE__NAME = eINSTANCE.getCharacteristicsType_Name();
 
     /**
      * The meta object literal for the '<em><b>Valueset</b></em>' reference feature.
@@ -1313,6 +1522,14 @@ public interface DSLPackage extends EPackage
      * @generated
      */
     EClass CHARACTERISTIC_CLASS = eINSTANCE.getCharacteristicClass();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CHARACTERISTIC_CLASS__NAME = eINSTANCE.getCharacteristicClass_Name();
 
     /**
      * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
@@ -1365,6 +1582,66 @@ public interface DSLPackage extends EPackage
     EAttribute CHARACTERISTIC_SELECTOR__CONJUNCTED = eINSTANCE.getCharacteristicSelector_Conjuncted();
 
     /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.AltCharacteristicSelectorImpl <em>Alt Characteristic Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.AltCharacteristicSelectorImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAltCharacteristicSelector()
+     * @generated
+     */
+    EClass ALT_CHARACTERISTIC_SELECTOR = eINSTANCE.getAltCharacteristicSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ALT_CHARACTERISTIC_SELECTOR__REF = eINSTANCE.getAltCharacteristicSelector_Ref();
+
+    /**
+     * The meta object literal for the '<em><b>Negated</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ALT_CHARACTERISTIC_SELECTOR__NEGATED = eINSTANCE.getAltCharacteristicSelector_Negated();
+
+    /**
+     * The meta object literal for the '<em><b>Literals</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ALT_CHARACTERISTIC_SELECTOR__LITERALS = eINSTANCE.getAltCharacteristicSelector_Literals();
+
+    /**
+     * The meta object literal for the '<em><b>Conjuncted</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ALT_CHARACTERISTIC_SELECTOR__CONJUNCTED = eINSTANCE.getAltCharacteristicSelector_Conjuncted();
+
+    /**
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl <em>Import Characteristics</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getImportCharacteristics()
+     * @generated
+     */
+    EClass IMPORT_CHARACTERISTICS = eINSTANCE.getImportCharacteristics();
+
+    /**
+     * The meta object literal for the '<em><b>Import URI</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute IMPORT_CHARACTERISTICS__IMPORT_URI = eINSTANCE.getImportCharacteristics_ImportURI();
+
+    /**
      * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl <em>Constraint</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1373,6 +1650,14 @@ public interface DSLPackage extends EPackage
      * @generated
      */
     EClass CONSTRAINT = eINSTANCE.getConstraint();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTRAINT__NAME = eINSTANCE.getConstraint_Name();
 
     /**
      * The meta object literal for the '<em><b>Rule</b></em>' containment reference feature.

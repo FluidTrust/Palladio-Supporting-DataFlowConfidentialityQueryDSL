@@ -8,9 +8,13 @@ import de.sebinside.dcp.dsl.dSL.ValueSet;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 
@@ -22,6 +26,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ValueSetImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ValueSetImpl#getMembers <em>Members</em>}</li>
  * </ul>
  *
@@ -29,6 +34,26 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  */
 public class ValueSetImpl extends AbstractElementImpl implements ValueSet
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getMembers() <em>Members</em>}' attribute list.
    * <!-- begin-user-doc -->
@@ -66,6 +91,31 @@ public class ValueSetImpl extends AbstractElementImpl implements ValueSet
    * @generated
    */
   @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.VALUE_SET__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<String> getMembers()
   {
     if (members == null)
@@ -85,6 +135,8 @@ public class ValueSetImpl extends AbstractElementImpl implements ValueSet
   {
     switch (featureID)
     {
+      case DSLPackage.VALUE_SET__NAME:
+        return getName();
       case DSLPackage.VALUE_SET__MEMBERS:
         return getMembers();
     }
@@ -102,6 +154,9 @@ public class ValueSetImpl extends AbstractElementImpl implements ValueSet
   {
     switch (featureID)
     {
+      case DSLPackage.VALUE_SET__NAME:
+        setName((String)newValue);
+        return;
       case DSLPackage.VALUE_SET__MEMBERS:
         getMembers().clear();
         getMembers().addAll((Collection<? extends String>)newValue);
@@ -120,6 +175,9 @@ public class ValueSetImpl extends AbstractElementImpl implements ValueSet
   {
     switch (featureID)
     {
+      case DSLPackage.VALUE_SET__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case DSLPackage.VALUE_SET__MEMBERS:
         getMembers().clear();
         return;
@@ -137,6 +195,8 @@ public class ValueSetImpl extends AbstractElementImpl implements ValueSet
   {
     switch (featureID)
     {
+      case DSLPackage.VALUE_SET__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DSLPackage.VALUE_SET__MEMBERS:
         return members != null && !members.isEmpty();
     }
@@ -154,7 +214,9 @@ public class ValueSetImpl extends AbstractElementImpl implements ValueSet
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (members: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", members: ");
     result.append(members);
     result.append(')');
     return result.toString();

@@ -13,6 +13,7 @@ package de.sebinside.dcp.dsl.dSL;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicsType#getName <em>Name</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicsType#getValueset <em>Valueset</em>}</li>
  * </ul>
  *
@@ -22,6 +23,28 @@ package de.sebinside.dcp.dsl.dSL;
  */
 public interface CharacteristicsType extends AbstractElement
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicsType_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicsType#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
   /**
    * Returns the value of the '<em><b>Valueset</b></em>' reference.
    * <!-- begin-user-doc -->

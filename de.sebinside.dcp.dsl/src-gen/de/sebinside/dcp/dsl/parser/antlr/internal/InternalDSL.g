@@ -113,47 +113,56 @@ ruleAbstractElement returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getAbstractElementAccess().getDataTypeParserRuleCall_0());
+			newCompositeNode(grammarAccess.getAbstractElementAccess().getImportCharacteristicsParserRuleCall_0());
 		}
-		this_DataType_0=ruleDataType
+		this_ImportCharacteristics_0=ruleImportCharacteristics
 		{
-			$current = $this_DataType_0.current;
+			$current = $this_ImportCharacteristics_0.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getAbstractElementAccess().getValueSetParserRuleCall_1());
+			newCompositeNode(grammarAccess.getAbstractElementAccess().getDataTypeParserRuleCall_1());
 		}
-		this_ValueSet_1=ruleValueSet
+		this_DataType_1=ruleDataType
 		{
-			$current = $this_ValueSet_1.current;
+			$current = $this_DataType_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getAbstractElementAccess().getCharacteristicsTypeParserRuleCall_2());
+			newCompositeNode(grammarAccess.getAbstractElementAccess().getValueSetParserRuleCall_2());
 		}
-		this_CharacteristicsType_2=ruleCharacteristicsType
+		this_ValueSet_2=ruleValueSet
 		{
-			$current = $this_CharacteristicsType_2.current;
+			$current = $this_ValueSet_2.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getAbstractElementAccess().getCharacteristicClassParserRuleCall_3());
+			newCompositeNode(grammarAccess.getAbstractElementAccess().getCharacteristicsTypeParserRuleCall_3());
 		}
-		this_CharacteristicClass_3=ruleCharacteristicClass
+		this_CharacteristicsType_3=ruleCharacteristicsType
 		{
-			$current = $this_CharacteristicClass_3.current;
+			$current = $this_CharacteristicsType_3.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getAbstractElementAccess().getConstraintParserRuleCall_4());
+			newCompositeNode(grammarAccess.getAbstractElementAccess().getCharacteristicClassParserRuleCall_4());
 		}
-		this_Constraint_4=ruleConstraint
+		this_CharacteristicClass_4=ruleCharacteristicClass
 		{
-			$current = $this_Constraint_4.current;
+			$current = $this_CharacteristicClass_4.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getAbstractElementAccess().getConstraintParserRuleCall_5());
+		}
+		this_Constraint_5=ruleConstraint
+		{
+			$current = $this_Constraint_5.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -696,6 +705,47 @@ ruleCharacteristicSelector returns [EObject current=null]
 				otherlv_10=']'
 				{
 					newLeafNode(otherlv_10, grammarAccess.getCharacteristicSelectorAccess().getRightSquareBracketKeyword_2_1_3());
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleImportCharacteristics
+entryRuleImportCharacteristics returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getImportCharacteristicsRule()); }
+	iv_ruleImportCharacteristics=ruleImportCharacteristics
+	{ $current=$iv_ruleImportCharacteristics.current; }
+	EOF;
+
+// Rule ImportCharacteristics
+ruleImportCharacteristics returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='import'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getImportCharacteristicsAccess().getImportKeyword_0());
+		}
+		(
+			(
+				lv_importURI_1_0=RULE_STRING
+				{
+					newLeafNode(lv_importURI_1_0, grammarAccess.getImportCharacteristicsAccess().getImportURISTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getImportCharacteristicsRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"importURI",
+						lv_importURI_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)

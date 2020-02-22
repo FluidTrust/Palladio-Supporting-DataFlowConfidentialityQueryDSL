@@ -129,6 +129,7 @@ Workflow {
 			junitSupport = {
 				junitVersion = "5"
 			}
+			fragment =  scoping.ImportNamespacesScopingFragment2 {}
 		}
 	}
 }

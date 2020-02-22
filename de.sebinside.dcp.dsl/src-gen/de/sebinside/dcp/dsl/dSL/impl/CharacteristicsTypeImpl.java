@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicsTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicsTypeImpl#getValueset <em>Valueset</em>}</li>
  * </ul>
  *
@@ -29,6 +30,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class CharacteristicsTypeImpl extends AbstractElementImpl implements CharacteristicsType
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getValueset() <em>Valueset</em>}' reference.
    * <!-- begin-user-doc -->
@@ -58,6 +79,31 @@ public class CharacteristicsTypeImpl extends AbstractElementImpl implements Char
   protected EClass eStaticClass()
   {
     return DSLPackage.Literals.CHARACTERISTICS_TYPE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTICS_TYPE__NAME, oldName, name));
   }
 
   /**
@@ -115,6 +161,8 @@ public class CharacteristicsTypeImpl extends AbstractElementImpl implements Char
   {
     switch (featureID)
     {
+      case DSLPackage.CHARACTERISTICS_TYPE__NAME:
+        return getName();
       case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
         if (resolve) return getValueset();
         return basicGetValueset();
@@ -132,6 +180,9 @@ public class CharacteristicsTypeImpl extends AbstractElementImpl implements Char
   {
     switch (featureID)
     {
+      case DSLPackage.CHARACTERISTICS_TYPE__NAME:
+        setName((String)newValue);
+        return;
       case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
         setValueset((ValueSet)newValue);
         return;
@@ -149,6 +200,9 @@ public class CharacteristicsTypeImpl extends AbstractElementImpl implements Char
   {
     switch (featureID)
     {
+      case DSLPackage.CHARACTERISTICS_TYPE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
         setValueset((ValueSet)null);
         return;
@@ -166,10 +220,29 @@ public class CharacteristicsTypeImpl extends AbstractElementImpl implements Char
   {
     switch (featureID)
     {
+      case DSLPackage.CHARACTERISTICS_TYPE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DSLPackage.CHARACTERISTICS_TYPE__VALUESET:
         return valueset != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //CharacteristicsTypeImpl

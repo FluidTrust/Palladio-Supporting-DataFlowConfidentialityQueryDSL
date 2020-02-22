@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl#getRule <em>Rule</em>}</li>
  * </ul>
  *
@@ -30,6 +31,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ConstraintImpl extends AbstractElementImpl implements Constraint
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getRule() <em>Rule</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -59,6 +80,31 @@ public class ConstraintImpl extends AbstractElementImpl implements Constraint
   protected EClass eStaticClass()
   {
     return DSLPackage.Literals.CONSTRAINT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CONSTRAINT__NAME, oldName, name));
   }
 
   /**
@@ -137,6 +183,8 @@ public class ConstraintImpl extends AbstractElementImpl implements Constraint
   {
     switch (featureID)
     {
+      case DSLPackage.CONSTRAINT__NAME:
+        return getName();
       case DSLPackage.CONSTRAINT__RULE:
         return getRule();
     }
@@ -153,6 +201,9 @@ public class ConstraintImpl extends AbstractElementImpl implements Constraint
   {
     switch (featureID)
     {
+      case DSLPackage.CONSTRAINT__NAME:
+        setName((String)newValue);
+        return;
       case DSLPackage.CONSTRAINT__RULE:
         setRule((Rule)newValue);
         return;
@@ -170,6 +221,9 @@ public class ConstraintImpl extends AbstractElementImpl implements Constraint
   {
     switch (featureID)
     {
+      case DSLPackage.CONSTRAINT__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case DSLPackage.CONSTRAINT__RULE:
         setRule((Rule)null);
         return;
@@ -187,10 +241,29 @@ public class ConstraintImpl extends AbstractElementImpl implements Constraint
   {
     switch (featureID)
     {
+      case DSLPackage.CONSTRAINT__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DSLPackage.CONSTRAINT__RULE:
         return rule != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //ConstraintImpl

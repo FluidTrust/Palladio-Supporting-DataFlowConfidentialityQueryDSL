@@ -144,6 +144,21 @@ public class DSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DSLPackage.ALT_CHARACTERISTIC_SELECTOR:
+      {
+        AltCharacteristicSelector altCharacteristicSelector = (AltCharacteristicSelector)theEObject;
+        T result = caseAltCharacteristicSelector(altCharacteristicSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DSLPackage.IMPORT_CHARACTERISTICS:
+      {
+        ImportCharacteristics importCharacteristics = (ImportCharacteristics)theEObject;
+        T result = caseImportCharacteristics(importCharacteristics);
+        if (result == null) result = caseAbstractElement(importCharacteristics);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DSLPackage.CONSTRAINT:
       {
         Constraint constraint = (Constraint)theEObject;
@@ -370,6 +385,38 @@ public class DSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCharacteristicSelector(CharacteristicSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Alt Characteristic Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Alt Characteristic Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAltCharacteristicSelector(AltCharacteristicSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Import Characteristics</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Import Characteristics</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseImportCharacteristics(ImportCharacteristics object)
   {
     return null;
   }

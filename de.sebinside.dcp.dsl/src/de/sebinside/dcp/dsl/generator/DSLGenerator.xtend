@@ -14,6 +14,9 @@ import org.palladiosimulator.supporting.prolog.model.prolog.Clause
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
+import de.sebinside.dcp.dsl.dSL.Constraint
+import de.sebinside.dcp.dsl.dSL.Rule
+import de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.SubRuleType
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -35,7 +38,7 @@ class DSLGenerator extends AbstractGenerator {
 		val clauses = new ArrayList<Clause>
 
 		// Create rule referencing all facts
-		val rule = Rule('''CharacteristicClass_«charateristicClass.name»''')
+		val rule = Rule('''characteristicClass_«charateristicClass.name»''')
 		rule.body = null
 
 		// A rules arguments are all contained member types
@@ -48,7 +51,7 @@ class DSLGenerator extends AbstractGenerator {
 			member.literals.forEach [ literal |
 
 				// Create and add fact
-				val factName = '''CharacteristicsClass_«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
+				val factName = '''characteristicsClass_«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
 				val fact = SimpleFact(factName, literal)
 				clauses.add(fact)
 
@@ -74,5 +77,46 @@ class DSLGenerator extends AbstractGenerator {
 
 		clauses.add(rule)
 		clauses
+	}
+	
+	def List<Clause> compile(Constraint constraint) {
+		val clauses = new ArrayList<Clause>
+		val constraintName = '''constraint_«constraint.name»'''
+
+		val constraintRule = Rule(constraintName)
+		
+		// FIXME: The first iteration does only support one rule per constraint
+		val mainRule = constraint.rule
+		
+		// FIXME: The first iteration does only support NEVER FLOW statements
+		if(!mainRule.statement.modality.name.equals("NEVER") || !mainRule.statement.type.equals("FLOWS")) {
+			println("Unable to generate. Unsupported modality or statement type.")
+		} else {
+			
+			// A NEVER FLOWS statement consists of three sub rules
+			val callArgumentRule = createRule(SubRuleType.CALL_ARGUMENT, mainRule, constraintName)
+			val returnValueRule = createRule(SubRuleType.RETURN_VALUE, mainRule, constraintName)
+			val callStateRule = createRule(SubRuleType.CALL_STATE, mainRule, constraintName)
+			
+			// TODO: Combine rules, the arguments of the constraint rule are the combination of all sub rules
+		}
+		
+		clauses
+	}
+	
+	def createRule(SubRuleType ruleType, Rule rule, String constraintName) {
+		val subRule = Rule('''«constraintName»_«ruleType.toString»''')
+		
+		// TODO
+		
+		subRule
+	}
+	
+	def createVTypeUnification(String vType) {
+		
+	}
+	
+	def createCallStackUnification(String stackName, String headName) {
+		
 	}
 }

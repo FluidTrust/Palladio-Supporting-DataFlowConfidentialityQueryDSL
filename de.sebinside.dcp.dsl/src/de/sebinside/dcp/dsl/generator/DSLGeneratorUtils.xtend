@@ -65,4 +65,10 @@ class DSLGeneratorUtils {
 		// Use FileSystemAccess to write serialized prolog code
 		fsa.generateFile(fileName, outputStream.toString)
 	}
+	
+	enum SubRuleType {
+		CALL_ARGUMENT,
+		RETURN_VALUE,
+		CALL_STATE
+	}
 }

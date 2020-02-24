@@ -7,6 +7,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.Program
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.ExpressionsFactory
+import java.util.List
 
 class DSLGeneratorUtils {
 
@@ -39,6 +40,12 @@ class DSLGeneratorUtils {
 		compoundTerm.arguments.add(singleArgument)
 		compoundTerm
 	}
+	
+	def static CompoundTerm(String value, List<Expression> arguments) {
+		val compoundTerm = CompoundTerm(value)
+		compoundTerm.arguments.addAll(arguments)
+		compoundTerm
+	}
 
 	def static LogicalAnd(Expression left, Expression right) {
 		val logicalAnd = ExpressionsFactory.eINSTANCE.createLogicalAnd
@@ -46,11 +53,37 @@ class DSLGeneratorUtils {
 		logicalAnd.right = right
 		logicalAnd
 	}
+	
+	def static LogicalOr(Expression left, Expression right) {
+		val logicalOr = ExpressionsFactory.eINSTANCE.createLogicalOr
+		logicalOr.left = left
+		logicalOr.right = right
+		logicalOr
+	}
 
 	def static NotProvable(Expression expr) {
 		val notProvable = ExpressionsFactory.eINSTANCE.createNotProvable
 		notProvable.expr = expr
 		notProvable
+	}
+	
+	def static Unification(Expression left, Expression right) {
+		val unification = ExpressionsFactory.eINSTANCE.createUnification
+		unification.left = left
+		unification.right = right
+	}
+	
+	def static List(Expression head, Expression tail) {
+		val list = PrologFactory.eINSTANCE.createList
+		list.heads.add(head)
+		list.tails.add(tail)
+		list
+	}
+	
+	def static AtomicQuotedString(String value) {
+		val aqs = PrologFactory.eINSTANCE.createAtomicQuotedString
+		aqs.value = value
+		aqs
 	}
 
 	def static saveFile(IFileSystemAccess2 fsa, Resource resource, Program program, String fileName) {
@@ -66,7 +99,7 @@ class DSLGeneratorUtils {
 		fsa.generateFile(fileName, outputStream.toString)
 	}
 	
-	enum SubRuleType {
+	enum QueryType {
 		CALL_ARGUMENT,
 		RETURN_VALUE,
 		CALL_STATE

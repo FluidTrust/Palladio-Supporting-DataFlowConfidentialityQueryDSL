@@ -16,7 +16,13 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import de.sebinside.dcp.dsl.dSL.Constraint
 import de.sebinside.dcp.dsl.dSL.Rule
-import de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.SubRuleType
+import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
+import de.sebinside.dcp.dsl.dSL.AttributeSelector
+import de.sebinside.dcp.dsl.dSL.AttributeClassSelector
+import de.sebinside.dcp.dsl.dSL.PropertySelector
+import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
+import de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.QueryType
+import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -78,45 +84,82 @@ class DSLGenerator extends AbstractGenerator {
 		clauses.add(rule)
 		clauses
 	}
-	
+
 	def List<Clause> compile(Constraint constraint) {
 		val clauses = new ArrayList<Clause>
 		val constraintName = '''constraint_«constraint.name»'''
 
 		val constraintRule = Rule(constraintName)
-		
+
 		// FIXME: The first iteration does only support one rule per constraint
 		val mainRule = constraint.rule
-		
+
 		// FIXME: The first iteration does only support NEVER FLOW statements
-		if(!mainRule.statement.modality.name.equals("NEVER") || !mainRule.statement.type.equals("FLOWS")) {
+		if (!mainRule.statement.modality.name.equals("NEVER") || !mainRule.statement.type.equals("FLOWS")) {
 			println("Unable to generate. Unsupported modality or statement type.")
 		} else {
-			
+
 			// A NEVER FLOWS statement consists of three sub rules
-			val callArgumentRule = createRule(SubRuleType.CALL_ARGUMENT, mainRule, constraintName)
-			val returnValueRule = createRule(SubRuleType.RETURN_VALUE, mainRule, constraintName)
-			val callStateRule = createRule(SubRuleType.CALL_STATE, mainRule, constraintName)
-			
-			// TODO: Combine rules, the arguments of the constraint rule are the combination of all sub rules
+			val callArgumentRule = createQueryRule(QueryType.CALL_ARGUMENT, mainRule, constraintName)
+			val returnValueRule = createQueryRule(QueryType.RETURN_VALUE, mainRule, constraintName)
+			val callStateRule = createQueryRule(QueryType.CALL_STATE, mainRule, constraintName)
+
+		// TODO: Combine rules, the arguments of the constraint rule are the combination of all sub rules
 		}
-		
+
 		clauses
 	}
-	
-	def createRule(SubRuleType ruleType, Rule rule, String constraintName) {
-		val subRule = Rule('''«constraintName»_«ruleType.toString»''')
-		
+
+	def createQueryRule(QueryType queryType, Rule rule, String constraintName) {
+		val subRule = Rule('''«constraintName»_«queryType.toString»''')
+
 		// TODO
-		
 		subRule
 	}
-	
-	def createVTypeUnification(String vType) {
-		
+
+	def createQueryTypeUnification(QueryType queryType) {
+		Unification(CompoundTerm("QueryType"), AtomicQuotedString(queryType.toString))
 	}
-	
+
 	def createCallStackUnification(String stackName, String headName) {
-		
+		Unification(CompoundTerm(stackName), List(CompoundTerm(headName), CompoundTerm("_")))
+	}
+
+	def createMemberQuery(String valueSet, CompoundTerm member) {
+		CompoundTerm("valueSetMember", #[AtomicQuotedString(valueSet), member])
+	}
+
+	def createParameterQuery(QueryType queryType, Expression stack, Expression parameter, Expression attribute,
+		Expression value, Expression operation, Expression stateVariable) {
+
+		switch queryType {
+			case QueryType.CALL_ARGUMENT: {
+				CompoundTerm("callArgument", #[stack, parameter, attribute, value])
+			}
+			case RETURN_VALUE: {
+				CompoundTerm("returnValue", #[stack, parameter, attribute, value])
+			}
+			case CALL_STATE: {
+				val preCallState = CompoundTerm("preCallState", #[stack, operation, stateVariable, attribute, value])
+				val postCallState = CompoundTerm("postCallState", #[stack, operation, stateVariable, attribute, value])
+				LogicalOr(preCallState, postCallState)
+			}
+		}
+	}
+
+	def createSelector(QueryType queryType, AttributeSelector attributeSelector) {
+		// TODO
+	}
+
+	def createSelector(QueryType queryType, AttributeClassSelector attributeClassSelector) {
+		// TODO
+	}
+
+	def createSelector(QueryType queryType, PropertySelector propertySelector) {
+		// TODO
+	}
+
+	def createSelector(QueryType queryType, PropertyClassSelector propertyClassSelector) {
+		// TODO
 	}
 }

@@ -71,6 +71,7 @@ class DSLGeneratorUtils {
 		val unification = ExpressionsFactory.eINSTANCE.createUnification
 		unification.left = left
 		unification.right = right
+		unification
 	}
 	
 	def static List(Expression head, Expression tail) {

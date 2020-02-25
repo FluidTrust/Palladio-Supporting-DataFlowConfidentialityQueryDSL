@@ -36,7 +36,7 @@ class DSLGenerator extends AbstractGenerator {
 			program.clauses.addAll(element.compile)
 		}
 
-		// TODO
+		// TODO: Handle constraints
 		saveFile(fsa, resource, program, DEV_OUTPUT_FILE_NAME)
 	}
 
@@ -89,6 +89,7 @@ class DSLGenerator extends AbstractGenerator {
 		val clauses = new ArrayList<Clause>
 		val constraintName = '''constraint_«constraint.name»'''
 
+		// Every constraint is mapped to a rule
 		val constraintRule = Rule(constraintName)
 
 		// FIXME: The first iteration does only support one rule per constraint
@@ -113,7 +114,65 @@ class DSLGenerator extends AbstractGenerator {
 	def createQueryRule(QueryType queryType, Rule rule, String constraintName) {
 		val subRule = Rule('''«constraintName»_«queryType.toString»''')
 
-		// TODO
+		// These are all the elements of a query rule
+		val queryTypeTerm = createQueryTypeUnification(queryType)
+		val callStack = CompoundTerm("S")
+		val operation = CompoundTerm("OP")
+		val parameter = CompoundTerm("P")
+		val callState = CompoundTerm("ST")
+		val callStackUnification = createCallStackUnification(callStack, operation)
+
+		// Map all data selectors to parts of a rule
+		val dataSelectorTerm = rule.dataSelectors.map [ selector |
+			switch selector {
+				AttributeSelector: {
+					val queries = LogicalAnd(callStackUnification, null)
+
+					// Create a query for every literal of the selector
+					selector.ref.literals.forEach [ literal |
+						val query = createParameterQuery(queryType, callStack, parameter,
+							AtomicQuotedString(selector.ref.ref.name), AtomicQuotedString(literal), operation,
+							callState)
+
+						if (queries.right === null) {
+							queries.right = query
+						} else {
+							queries.right = LogicalAnd(queries.right, query)
+						}
+					]
+
+					// Handle negation
+					if (selector.ref.negated) {
+						queries.right = NotProvable(queries.right)
+					}
+
+					queries
+				}
+				AttributeClassSelector: {
+					val queries = LogicalAnd(callStackUnification, null)
+
+					// TODO: Generate memberQuery and parameterQuery
+					// TODO: Add class to classes set
+					queries
+				}
+			}
+		]
+
+		// Map all destination selectors to parts of a rule
+		val destinationSelectorTerm = rule.destinationSelectors.map [ selector |
+			switch selector {
+				PropertySelector: {
+					// TODO
+				}
+				PropertyClassSelector: {
+					// TODO
+				}
+			}
+		]
+
+		// TODO: Generate attribute / property class terms
+		// TODO: Combine all selector terms and queryTypeTerm to final LogicalAnd
+		// TODO: Set rules parameters
 		subRule
 	}
 
@@ -121,19 +180,23 @@ class DSLGenerator extends AbstractGenerator {
 		Unification(CompoundTerm("QueryType"), AtomicQuotedString(queryType.toString))
 	}
 
-	def createCallStackUnification(String stackName, String headName) {
-		Unification(CompoundTerm(stackName), List(CompoundTerm(headName), CompoundTerm("_")))
+	def createCallStackUnification(CompoundTerm stack, CompoundTerm head) {
+		Unification(stack, List(head, CompoundTerm("_")))
 	}
 
 	def createMemberQuery(String valueSet, CompoundTerm member) {
 		CompoundTerm("valueSetMember", #[AtomicQuotedString(valueSet), member])
 	}
 
+	def createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
+		CompoundTerm(characteristicClass.name, characteristicClass.members.map[member|CompoundTerm(member.ref.name)])
+	}
+
 	def createParameterQuery(QueryType queryType, Expression stack, Expression parameter, Expression attribute,
 		Expression value, Expression operation, Expression stateVariable) {
 
 		switch queryType {
-			case QueryType.CALL_ARGUMENT: {
+			case CALL_ARGUMENT: {
 				CompoundTerm("callArgument", #[stack, parameter, attribute, value])
 			}
 			case RETURN_VALUE: {
@@ -147,19 +210,7 @@ class DSLGenerator extends AbstractGenerator {
 		}
 	}
 
-	def createSelector(QueryType queryType, AttributeSelector attributeSelector) {
-		// TODO
-	}
-
-	def createSelector(QueryType queryType, AttributeClassSelector attributeClassSelector) {
-		// TODO
-	}
-
-	def createSelector(QueryType queryType, PropertySelector propertySelector) {
-		// TODO
-	}
-
-	def createSelector(QueryType queryType, PropertyClassSelector propertyClassSelector) {
-		// TODO
+	def createPropertyQuery(Expression operation, Expression property, Expression value) {
+		CompoundTerm("operationProperty", #[operation, property, value])
 	}
 }

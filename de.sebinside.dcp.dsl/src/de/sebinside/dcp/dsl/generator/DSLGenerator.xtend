@@ -3,27 +3,27 @@
  */
 package de.sebinside.dcp.dsl.generator
 
+import de.sebinside.dcp.dsl.dSL.AttributeClassSelector
+import de.sebinside.dcp.dsl.dSL.AttributeSelector
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
+import de.sebinside.dcp.dsl.dSL.Constraint
+import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
+import de.sebinside.dcp.dsl.dSL.PropertySelector
+import de.sebinside.dcp.dsl.dSL.Rule
+import de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.QueryType
 import java.util.ArrayList
 import java.util.List
+import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.palladiosimulator.supporting.prolog.model.prolog.Clause
+import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
+import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
-import de.sebinside.dcp.dsl.dSL.Constraint
-import de.sebinside.dcp.dsl.dSL.Rule
-import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
-import de.sebinside.dcp.dsl.dSL.AttributeSelector
-import de.sebinside.dcp.dsl.dSL.AttributeClassSelector
-import de.sebinside.dcp.dsl.dSL.PropertySelector
-import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
-import de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.QueryType
-import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
-import java.util.Set
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -32,12 +32,14 @@ class DSLGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val program = PrologFactory.eINSTANCE.createProgram
 
-		// Just testing with only Characteristic Classes
 		for (element : resource.allContents.toIterable.filter(CharacteristicClass)) {
 			program.clauses.addAll(element.compile)
 		}
+		
+		for (element : resource.allContents.toIterable.filter(Constraint)) {
+			program.clauses.addAll(element.compile)
+		}
 
-		// TODO (7): Handle constraints
 		saveFile(fsa, resource, program, DEV_OUTPUT_FILE_NAME)
 	}
 
@@ -105,10 +107,21 @@ class DSLGenerator extends AbstractGenerator {
 			val callArgumentRule = createQueryRule(QueryType.CALL_ARGUMENT, mainRule, constraintName)
 			val returnValueRule = createQueryRule(QueryType.RETURN_VALUE, mainRule, constraintName)
 			val callStateRule = createQueryRule(QueryType.CALL_STATE, mainRule, constraintName)
+			clauses.addAll(#[callArgumentRule, returnValueRule, callStateRule])
 
-		// TODO (6): Combine rules, the arguments of the constraint rule are the combination of all sub rules
+			// Combine rules
+			constraintRule.body = LogicalOr(
+				ruleToRuleCall(callArgumentRule),
+				LogicalOr(ruleToRuleCall(returnValueRule), ruleToRuleCall(callStateRule))
+			)
+
+			// Combine (unique) arguments of all rules
+			val allArguments = #[callArgumentRule, returnValueRule, callStateRule].map[rule|rule.head.arguments].
+				flatten.toSet
+			constraintRule.head.arguments.addAll(allArguments)
 		}
 
+		clauses.add(constraintRule)
 		clauses
 	}
 
@@ -117,18 +130,18 @@ class DSLGenerator extends AbstractGenerator {
 		val Set<CharacteristicClass> characteristicClasses = #{}
 
 		// These are all the elements of a query rule
-		val queryTypeTerm = createQueryTypeUnification(queryType)
 		val callStack = CompoundTerm("S")
 		val operation = CompoundTerm("OP")
 		val parameter = CompoundTerm("P")
 		val callState = CompoundTerm("ST")
+		val queryTypeTerm = createQueryTypeUnification(queryType)
 		val callStackUnification = createCallStackUnification(callStack, operation)
 
 		// Map all data selectors to parts of a rule
 		val dataSelectorTerm = rule.dataSelectors.map [ selector |
 			switch selector {
 				AttributeSelector: {
-					val queries = LogicalAnd(callStackUnification, null)
+					val queries = #[]
 
 					// Create a query for every literal of the selector
 					selector.ref.literals.forEach [ literal |
@@ -136,22 +149,18 @@ class DSLGenerator extends AbstractGenerator {
 							AtomicQuotedString(selector.ref.ref.name), AtomicQuotedString(literal), operation,
 							callState)
 
-						if (queries.right === null) {
-							queries.right = query
+						// Handle negation
+						if (selector.ref.negated) {
+							queries.add(NotProvable(query))
 						} else {
-							queries.right = LogicalAnd(queries.right, query)
+							queries.add(query)
 						}
 					]
-
-					// Handle negation
-					if (selector.ref.negated) {
-						queries.right = NotProvable(queries.right)
-					}
 
 					queries
 				}
 				AttributeClassSelector: {
-					val queries = LogicalAnd(callStackUnification, null)
+					val queries = #[]
 
 					// Add class to classes list (needed later for the rules parameter list)
 					characteristicClasses.add(selector.ref)
@@ -165,35 +174,99 @@ class DSLGenerator extends AbstractGenerator {
 
 						val term = LogicalAnd(query, memberQuery)
 
-						if (queries.right === null) {
-							queries.right = term
-						} else {
-							queries.right = LogicalAnd(queries.right, term)
-						}
-
+						queries.add(term)
 					]
 
 					queries
 				}
 			}
-		]
+		].map[expressionsToLogicalAnd]
 
 		// Map all destination selectors to parts of a rule
 		val destinationSelectorTerm = rule.destinationSelectors.map [ selector |
 			switch selector {
 				PropertySelector: {
-					// TODO (1)
+					val queries = #[]
+
+					// Create a query for every literal of the selector
+					selector.ref.literals.forEach [ literal |
+						val query = createPropertyQuery(operation, AtomicQuotedString(selector.ref.ref.name),
+							AtomicQuotedString(literal))
+
+						// Handle negation
+						if (selector.ref.negated) {
+							queries.add(NotProvable(query))
+						} else {
+							queries.add(query)
+						}
+					]
+
+					queries
 				}
 				PropertyClassSelector: {
-					// TODO (2)
+					val queries = #[]
+
+					// Add class to classes list (needed later for the rules parameter list)
+					characteristicClasses.add(selector.ref)
+
+					// Create a query for every member of the class
+					selector.ref.members.forEach [ member |
+						val query = createPropertyQuery(operation, AtomicQuotedString(selector.ref.name),
+							CompoundTerm(member.ref.name))
+
+						val memberQuery = createMemberQuery(member.ref.valueset.name, CompoundTerm(member.ref.name))
+
+						val term = LogicalAnd(query, memberQuery)
+
+						queries.add(term)
+					]
+
+					queries
 				}
 			}
-		]
+		].map[expressionsToLogicalAnd]
 
-		// TODO (3): Generate attribute / property class terms (based on characteristicClasses)
-		// TODO (4): Combine all selector terms and queryTypeTerm to final LogicalAnd
-		// TODO (5): Set rules parameters (static part + based on characteristicClasses)
+		// Create characteristics class terms
+		val characteristicsClassesTerms = characteristicClasses.map[createCharacteristicsClassTerm]
+		val characteristicsClassesLogicalAnd = expressionsToLogicalAnd(characteristicsClassesTerms)
+
+		// Create final rule body
+		val subRuleComponents = #[queryTypeTerm, callStackUnification, expressionsToLogicalAnd(dataSelectorTerm),
+			expressionsToLogicalAnd(destinationSelectorTerm), characteristicsClassesLogicalAnd]
+		subRule.body = expressionsToLogicalAnd(subRuleComponents)
+
+		// Create rules parameters
+		var List<CompoundTerm> parametersList = #[CompoundTerm("QueryType"), operation]
+		if (queryType == QueryType.CALL_STATE) {
+			parametersList.add(callState)
+		} else {
+			parametersList.add(parameter)
+		}
+
+		// Add all classes members names to the list since these are not constant
+		val classTerms = characteristicClasses.toList.
+			map[clazz|clazz.members.map[member|CompoundTerm(member.ref.name)]].flatten
+		parametersList.addAll(classTerms)
+		subRule.head.arguments.addAll(parametersList)
+
 		subRule
+	}
+
+	def ruleToRuleCall(org.palladiosimulator.supporting.prolog.model.prolog.Rule rule) {
+		val compoundTerm = CompoundTerm(rule.head.value)
+		compoundTerm.arguments.addAll(rule.head.arguments)
+		compoundTerm
+	}
+
+	def expressionsToLogicalAnd(Iterable<? extends Expression> expressions) {
+		val iterator = expressions.iterator
+		var term = expressions.head
+
+		while (iterator.hasNext) {
+			term = LogicalAnd(term, iterator.next)
+		}
+
+		term
 	}
 
 	def createQueryTypeUnification(QueryType queryType) {

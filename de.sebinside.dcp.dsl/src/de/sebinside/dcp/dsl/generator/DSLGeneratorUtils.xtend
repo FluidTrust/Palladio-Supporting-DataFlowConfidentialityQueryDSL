@@ -1,90 +1,61 @@
 package de.sebinside.dcp.dsl.generator
 
+import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import java.io.ByteArrayOutputStream
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess2
+import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
 import org.palladiosimulator.supporting.prolog.model.prolog.Program
-import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
+import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
-import org.palladiosimulator.supporting.prolog.model.prolog.expressions.ExpressionsFactory
-import java.util.List
+
+import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 
 class DSLGeneratorUtils {
 
-	def static Rule(String head) {
-		val rule = PrologFactory.eINSTANCE.createRule
-		val ruleHead = CompoundTerm(head)
-		rule.head = ruleHead
-		rule
-	}
-
-	def static SimpleFact(String head, String argument) {
-		val fact = PrologFactory.eINSTANCE.createFact
-		val factInternals = CompoundTerm(head, CompoundTerm(argument))
-		fact.head = factInternals
-		fact
-	}
-
-	def static CompoundTerm() {
-		PrologFactory.eINSTANCE.createCompoundTerm
-	}
-
-	def static CompoundTerm(String value) {
-		val compoundTerm = CompoundTerm
-		compoundTerm.value = value
+	def static ruleToRuleCall(Rule rule) {
+		val compoundTerm = CompoundTerm(rule.head.value)
+		compoundTerm.arguments.addAll(rule.head.arguments)
 		compoundTerm
 	}
 
-	def static CompoundTerm(String value, Expression singleArgument) {
-		val compoundTerm = CompoundTerm(value)
-		compoundTerm.arguments.add(singleArgument)
-		compoundTerm
-	}
-	
-	def static CompoundTerm(String value, List<Expression> arguments) {
-		val compoundTerm = CompoundTerm(value)
-		compoundTerm.arguments.addAll(arguments)
-		compoundTerm
+	def static expressionsToLogicalAnd(Iterable<? extends Expression> expressions) {
+		if (expressions.length == 0) {
+			null
+		} else {
+			val iterator = expressions.iterator
+			var term = iterator.next
+
+			while (iterator.hasNext) {
+				val nextItem = iterator.next
+
+				if (nextItem !== null) {
+					term = LogicalAnd(term, nextItem)
+				}
+			}
+
+			term
+		}
 	}
 
-	def static LogicalAnd(Expression left, Expression right) {
-		val logicalAnd = ExpressionsFactory.eINSTANCE.createLogicalAnd
-		logicalAnd.left = left
-		logicalAnd.right = right
-		logicalAnd
-	}
-	
-	def static LogicalOr(Expression left, Expression right) {
-		val logicalOr = ExpressionsFactory.eINSTANCE.createLogicalOr
-		logicalOr.left = left
-		logicalOr.right = right
-		logicalOr
+	def static createQueryTypeUnification(String queryType) {
+		Unification(CompoundTerm("QueryType"), AtomicQuotedString(queryType))
 	}
 
-	def static NotProvable(Expression expr) {
-		val notProvable = ExpressionsFactory.eINSTANCE.createNotProvable
-		notProvable.expr = expr
-		notProvable
+	def static createCallStackUnification(CompoundTerm stack, CompoundTerm head) {
+		Unification(stack, List(head, CompoundTerm("_")))
+	}
+
+	def static createMemberQuery(String valueSet, CompoundTerm member) {
+		CompoundTerm("valueSetMember", #[AtomicQuotedString(valueSet), member])
+	}
+
+	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
+		CompoundTerm(characteristicClass.name, characteristicClass.members.map[member|CompoundTerm(member.ref.name)])
 	}
 	
-	def static Unification(Expression left, Expression right) {
-		val unification = ExpressionsFactory.eINSTANCE.createUnification
-		unification.left = left
-		unification.right = right
-		unification
-	}
-	
-	def static List(Expression head, Expression tail) {
-		val list = PrologFactory.eINSTANCE.createList
-		list.heads.add(head)
-		list.tails.add(tail)
-		list
-	}
-	
-	def static AtomicQuotedString(String value) {
-		val aqs = PrologFactory.eINSTANCE.createAtomicQuotedString
-		aqs.value = value
-		aqs
+	def static createPropertyQuery(Expression operation, Expression property, Expression value) {
+		CompoundTerm("operationProperty", #[operation, property, value])
 	}
 
 	def static saveFile(IFileSystemAccess2 fsa, Resource resource, Program program, String fileName) {
@@ -98,11 +69,5 @@ class DSLGeneratorUtils {
 
 		// Use FileSystemAccess to write serialized prolog code
 		fsa.generateFile(fileName, outputStream.toString)
-	}
-	
-	enum QueryType {
-		CALL_ARGUMENT,
-		RETURN_VALUE,
-		CALL_STATE
 	}
 }

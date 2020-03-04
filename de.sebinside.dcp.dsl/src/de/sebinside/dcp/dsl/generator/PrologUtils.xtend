@@ -81,4 +81,5 @@ class PrologUtils {
 		aqs.value = value
 		aqs
 	}
+
 }

@@ -11,7 +11,7 @@ class CallStateQueryRule extends QueryRule {
 		super(rule, nameBase)
 	}
 
-	override createParameterQuery(String queryType, Expression stack, Expression parameter, Expression attribute,
+	override createParameterQuery(Expression stack, Expression parameter, Expression attribute,
 		Expression value, Expression operation, Expression stateVariable) {
 		val preCallState = CompoundTerm("preCallState", #[stack, operation, stateVariable, attribute, value])
 		val postCallState = CompoundTerm("postCallState", #[stack, operation, stateVariable, attribute, value])

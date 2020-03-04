@@ -10,7 +10,7 @@ class CallArgumentQueryRule extends QueryRule {
 		super(rule, nameBase)
 	}
 
-	override createParameterQuery(String queryType, Expression stack, Expression parameter, Expression attribute,
+	override createParameterQuery(Expression stack, Expression parameter, Expression attribute,
 		Expression value, Expression operation, Expression stateVariable) {
 		CompoundTerm("callArgument", #[stack, parameter, attribute, value])
 	}

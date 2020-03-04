@@ -18,9 +18,13 @@ class DSLGeneratorUtils {
 		compoundTerm.arguments.addAll(rule.head.arguments)
 		compoundTerm
 	}
+	
+	def static negate(Expression expression) {
+		NotProvable(expression)
+	}
 
 	def static expressionsToLogicalAnd(Iterable<? extends Expression> expressions) {
-		if (expressions.length == 0) {
+		if (expressions.size == 0) {
 			null
 		} else {
 			val iterator = expressions.iterator
@@ -42,8 +46,8 @@ class DSLGeneratorUtils {
 		Unification(CompoundTerm("QueryType"), AtomicQuotedString(queryType))
 	}
 
-	def static createCallStackUnification(CompoundTerm stack, CompoundTerm head) {
-		Unification(stack, List(head, CompoundTerm("_")))
+	def static createCallStackUnification(String stack, String head) {
+		Unification(CompoundTerm(stack), List(CompoundTerm(head), CompoundTerm("_")))
 	}
 
 	def static createMemberQuery(String valueSet, CompoundTerm member) {

@@ -10,7 +10,7 @@ class ReturnValueQueryRule extends QueryRule {
 		super(rule, nameBase)
 	}
 
-	override createParameterQuery(String queryType, Expression stack, Expression parameter, Expression attribute,
+	override createParameterQuery(Expression stack, Expression parameter, Expression attribute,
 		Expression value, Expression operation, Expression stateVariable) {
 		CompoundTerm("returnValue", #[stack, parameter, attribute, value])
 	}

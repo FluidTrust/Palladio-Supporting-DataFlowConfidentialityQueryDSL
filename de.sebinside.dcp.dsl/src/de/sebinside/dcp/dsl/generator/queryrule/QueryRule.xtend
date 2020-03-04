@@ -1,4 +1,4 @@
-package de.sebinside.dcp.dsl.generator
+package de.sebinside.dcp.dsl.generator.queryrule
 
 import de.sebinside.dcp.dsl.dSL.AttributeClassSelector
 import de.sebinside.dcp.dsl.dSL.AttributeSelector
@@ -118,6 +118,7 @@ abstract class QueryRule {
 		val characteristicsClassesTerms = characteristicClasses.map[clazz|createCharacteristicsClassTerm(clazz)]
 
 		// Create final rule body
+		// FIXME: Dirty Call Stack Unification Hack
 		val subRuleComponents = #[queryTypeTerm, createCallStackUnification("S", "OP"),
 			expressionsToLogicalAnd(dataSelectorTerm), expressionsToLogicalAnd(destinationSelectorTerm),
 			if (characteristicClasses.size > 0) {

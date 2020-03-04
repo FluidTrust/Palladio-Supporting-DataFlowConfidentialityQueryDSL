@@ -1,9 +1,9 @@
-package de.sebinside.dcp.dsl.generator
+package de.sebinside.dcp.dsl.generator.queryrule
 
-import de.sebinside.dcp.dsl.generator.QueryRule
 import de.sebinside.dcp.dsl.dSL.Rule
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import de.sebinside.dcp.dsl.generator.queryrule.QueryRule
 
 class CallArgumentQueryRule extends QueryRule {
 	new(Rule rule, String nameBase) {

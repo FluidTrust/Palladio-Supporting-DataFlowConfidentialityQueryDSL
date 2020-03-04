@@ -13,12 +13,12 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.palladiosimulator.supporting.prolog.model.prolog.Clause
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
-import de.sebinside.dcp.dsl.generator.CallArgumentQueryRule
-import de.sebinside.dcp.dsl.generator.ReturnValueQueryRule
-import de.sebinside.dcp.dsl.generator.CallStateQueryRule
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import de.sebinside.dcp.dsl.generator.queryrule.CallArgumentQueryRule
+import de.sebinside.dcp.dsl.generator.queryrule.ReturnValueQueryRule
+import de.sebinside.dcp.dsl.generator.queryrule.CallStateQueryRule
 
 class DSLGenerator extends AbstractGenerator {
 

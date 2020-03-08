@@ -18,12 +18,18 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 
+// TODO: Call State missing parameters (copy it)
+// TODO: No sub rule heads / parameters
+// TODO: No super rule heads / parameters
+// TODO: Change order: Super rules first (optional)
+
+
 abstract class QueryRule {
 
-	val callStack = CompoundTerm("S")
-	val operation = CompoundTerm("OP")
-	val parameter = CompoundTerm("P")
-	val callState = CompoundTerm("ST")
+	val callStack = "S"
+	val operation = "OP"
+	val parameter = "P"
+	val callState = "ST"
 	val queryTypeTerm = createQueryTypeUnification(queryTypeIdentification)
 
 	var Rule rule = null
@@ -37,8 +43,9 @@ abstract class QueryRule {
 
 	def generateDataSelectorTerm(AttributeSelector selector) {
 		selector.ref.literals.map [ literal |
-			val query = createParameterQuery(callStack, parameter, AtomicQuotedString(selector.ref.ref.name),
-				AtomicQuotedString(literal), operation, callState)
+			val query = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
+				AtomicQuotedString(selector.ref.ref.name), AtomicQuotedString(literal), CompoundTerm(operation),
+				CompoundTerm(callState))
 
 			if (selector.ref.negated) {
 				negate(query)
@@ -52,8 +59,9 @@ abstract class QueryRule {
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
-			val query = createParameterQuery(callStack, parameter, AtomicQuotedString(selector.ref.name),
-				CompoundTerm(member.ref.name), operation, callState)
+			val query = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
+				AtomicQuotedString(selector.ref.name), CompoundTerm(member.ref.name), CompoundTerm(operation),
+				CompoundTerm(callState))
 
 			val memberQuery = createMemberQuery(member.ref.valueset.name, CompoundTerm(member.ref.name))
 
@@ -77,7 +85,7 @@ abstract class QueryRule {
 
 	def generateDestinationSelectorTerm(PropertySelector selector) {
 		selector.ref.literals.map [ literal |
-			val query = createPropertyQuery(operation, AtomicQuotedString(selector.ref.ref.name),
+			val query = createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(selector.ref.ref.name),
 				AtomicQuotedString(literal))
 
 			if (selector.ref.negated) {
@@ -92,7 +100,7 @@ abstract class QueryRule {
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
-			val query = createPropertyQuery(operation, AtomicQuotedString(selector.ref.name),
+			val query = createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(member.ref.name),
 				CompoundTerm(member.ref.name))
 
 			val memberQuery = createMemberQuery(member.ref.valueset.name, CompoundTerm(member.ref.name))
@@ -119,7 +127,8 @@ abstract class QueryRule {
 
 		// Create final rule body
 		// FIXME: Dirty Call Stack Unification Hack
-		val subRuleComponents = #[queryTypeTerm, createCallStackUnification("S", "OP"),
+		val subRuleComponents = #[queryTypeTerm,
+			createCallStackUnification(CompoundTerm(callStack), CompoundTerm(operation)),
 			expressionsToLogicalAnd(dataSelectorTerm), expressionsToLogicalAnd(destinationSelectorTerm),
 			if (characteristicClasses.size > 0) {
 				expressionsToLogicalAnd(characteristicsClassesTerms)
@@ -128,11 +137,11 @@ abstract class QueryRule {
 
 		// Create rules parameters
 		var List<CompoundTerm> parametersList = new ArrayList<CompoundTerm>
-		parametersList.addAll(CompoundTerm("QueryType"), operation)
+		parametersList.addAll(CompoundTerm("QueryType"), CompoundTerm(operation))
 		if (queryTypeIdentification == "CALL_STATE") {
-			parametersList.add(callState)
+			parametersList.add(CompoundTerm(callState))
 		} else {
-			parametersList.add(parameter)
+			parametersList.add(CompoundTerm(parameter))
 		}
 
 		// Add all classes members names to the list since these are not constant

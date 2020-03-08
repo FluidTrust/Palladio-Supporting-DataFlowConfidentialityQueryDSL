@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.AttributeClassSelectorImpl#isNegated <em>Negated</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.AttributeClassSelectorImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
@@ -30,26 +29,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class AttributeClassSelectorImpl extends DataSelectorImpl implements AttributeClassSelector
 {
-  /**
-   * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isNegated()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean NEGATED_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isNegated() <em>Negated</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isNegated()
-   * @generated
-   * @ordered
-   */
-  protected boolean negated = NEGATED_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
@@ -79,31 +58,6 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   protected EClass eStaticClass()
   {
     return DSLPackage.Literals.ATTRIBUTE_CLASS_SELECTOR;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean isNegated()
-  {
-    return negated;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNegated(boolean newNegated)
-  {
-    boolean oldNegated = negated;
-    negated = newNegated;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED, oldNegated, negated));
   }
 
   /**
@@ -161,8 +115,6 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   {
     switch (featureID)
     {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
-        return isNegated();
       case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
         if (resolve) return getRef();
         return basicGetRef();
@@ -180,9 +132,6 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   {
     switch (featureID)
     {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
-        setNegated((Boolean)newValue);
-        return;
       case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
         setRef((CharacteristicClass)newValue);
         return;
@@ -200,9 +149,6 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   {
     switch (featureID)
     {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
-        setNegated(NEGATED_EDEFAULT);
-        return;
       case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
         setRef((CharacteristicClass)null);
         return;
@@ -220,29 +166,10 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   {
     switch (featureID)
     {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__NEGATED:
-        return negated != NEGATED_EDEFAULT;
       case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
         return ref != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (negated: ");
-    result.append(negated);
-    result.append(')');
-    return result.toString();
   }
 
 } //AttributeClassSelectorImpl

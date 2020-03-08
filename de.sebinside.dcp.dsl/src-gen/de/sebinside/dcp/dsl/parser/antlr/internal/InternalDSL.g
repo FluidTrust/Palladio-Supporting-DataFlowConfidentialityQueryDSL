@@ -1046,28 +1046,14 @@ ruleAttributeClassSelector returns [EObject current=null]
 		}
 		(
 			(
-				lv_negated_1_0='!'
-				{
-					newLeafNode(lv_negated_1_0, grammarAccess.getAttributeClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getAttributeClassSelectorRule());
-					}
-					setWithLastConsumed($current, "negated", true, "!");
-				}
-			)
-		)?
-		(
-			(
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getAttributeClassSelectorRule());
 					}
 				}
-				otherlv_2=RULE_ID
+				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassCrossReference_2_0());
+					newLeafNode(otherlv_1, grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassCrossReference_1_0());
 				}
 			)
 		)
@@ -1174,28 +1160,14 @@ rulePropertyClassSelector returns [EObject current=null]
 		}
 		(
 			(
-				lv_negated_1_0='!'
-				{
-					newLeafNode(lv_negated_1_0, grammarAccess.getPropertyClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getPropertyClassSelectorRule());
-					}
-					setWithLastConsumed($current, "negated", true, "!");
-				}
-			)
-		)?
-		(
-			(
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getPropertyClassSelectorRule());
 					}
 				}
-				otherlv_2=RULE_ID
+				otherlv_1=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassCrossReference_2_0());
+					newLeafNode(otherlv_1, grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassCrossReference_1_0());
 				}
 			)
 		)

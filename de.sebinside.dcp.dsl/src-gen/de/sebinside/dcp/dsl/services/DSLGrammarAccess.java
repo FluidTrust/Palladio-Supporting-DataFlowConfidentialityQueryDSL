@@ -745,36 +745,28 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AttributeClassSelector");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDataClassKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNegatedAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cNegatedExclamationMarkKeyword_1_0 = (Keyword)cNegatedAssignment_1.eContents().get(0);
-		private final Assignment cRefAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cRefCharacteristicClassCrossReference_2_0 = (CrossReference)cRefAssignment_2.eContents().get(0);
-		private final RuleCall cRefCharacteristicClassIDTerminalRuleCall_2_0_1 = (RuleCall)cRefCharacteristicClassCrossReference_2_0.eContents().get(1);
+		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cRefCharacteristicClassCrossReference_1_0 = (CrossReference)cRefAssignment_1.eContents().get(0);
+		private final RuleCall cRefCharacteristicClassIDTerminalRuleCall_1_0_1 = (RuleCall)cRefCharacteristicClassCrossReference_1_0.eContents().get(1);
 		
 		//AttributeClassSelector:
-		//	'data.class.' negated?='!'? ref=[CharacteristicClass];
+		//	'data.class.' ref=[CharacteristicClass];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'data.class.' negated?='!'? ref=[CharacteristicClass]
+		//'data.class.' ref=[CharacteristicClass]
 		public Group getGroup() { return cGroup; }
 		
 		//'data.class.'
 		public Keyword getDataClassKeyword_0() { return cDataClassKeyword_0; }
 		
-		//negated?='!'?
-		public Assignment getNegatedAssignment_1() { return cNegatedAssignment_1; }
-		
-		//'!'
-		public Keyword getNegatedExclamationMarkKeyword_1_0() { return cNegatedExclamationMarkKeyword_1_0; }
-		
 		//ref=[CharacteristicClass]
-		public Assignment getRefAssignment_2() { return cRefAssignment_2; }
+		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
 		
 		//[CharacteristicClass]
-		public CrossReference getRefCharacteristicClassCrossReference_2_0() { return cRefCharacteristicClassCrossReference_2_0; }
+		public CrossReference getRefCharacteristicClassCrossReference_1_0() { return cRefCharacteristicClassCrossReference_1_0; }
 		
 		//ID
-		public RuleCall getRefCharacteristicClassIDTerminalRuleCall_2_0_1() { return cRefCharacteristicClassIDTerminalRuleCall_2_0_1; }
+		public RuleCall getRefCharacteristicClassIDTerminalRuleCall_1_0_1() { return cRefCharacteristicClassIDTerminalRuleCall_1_0_1; }
 	}
 	public class DestinationSelectorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.DestinationSelector");
@@ -822,36 +814,28 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.PropertyClassSelector");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cNodeClassKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNegatedAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cNegatedExclamationMarkKeyword_1_0 = (Keyword)cNegatedAssignment_1.eContents().get(0);
-		private final Assignment cRefAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cRefCharacteristicClassCrossReference_2_0 = (CrossReference)cRefAssignment_2.eContents().get(0);
-		private final RuleCall cRefCharacteristicClassIDTerminalRuleCall_2_0_1 = (RuleCall)cRefCharacteristicClassCrossReference_2_0.eContents().get(1);
+		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cRefCharacteristicClassCrossReference_1_0 = (CrossReference)cRefAssignment_1.eContents().get(0);
+		private final RuleCall cRefCharacteristicClassIDTerminalRuleCall_1_0_1 = (RuleCall)cRefCharacteristicClassCrossReference_1_0.eContents().get(1);
 		
 		//PropertyClassSelector:
-		//	'node.class.' negated?='!'? ref=[CharacteristicClass];
+		//	'node.class.' ref=[CharacteristicClass];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'node.class.' negated?='!'? ref=[CharacteristicClass]
+		//'node.class.' ref=[CharacteristicClass]
 		public Group getGroup() { return cGroup; }
 		
 		//'node.class.'
 		public Keyword getNodeClassKeyword_0() { return cNodeClassKeyword_0; }
 		
-		//negated?='!'?
-		public Assignment getNegatedAssignment_1() { return cNegatedAssignment_1; }
-		
-		//'!'
-		public Keyword getNegatedExclamationMarkKeyword_1_0() { return cNegatedExclamationMarkKeyword_1_0; }
-		
 		//ref=[CharacteristicClass]
-		public Assignment getRefAssignment_2() { return cRefAssignment_2; }
+		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
 		
 		//[CharacteristicClass]
-		public CrossReference getRefCharacteristicClassCrossReference_2_0() { return cRefCharacteristicClassCrossReference_2_0; }
+		public CrossReference getRefCharacteristicClassCrossReference_1_0() { return cRefCharacteristicClassCrossReference_1_0; }
 		
 		//ID
-		public RuleCall getRefCharacteristicClassIDTerminalRuleCall_2_0_1() { return cRefCharacteristicClassIDTerminalRuleCall_2_0_1; }
+		public RuleCall getRefCharacteristicClassIDTerminalRuleCall_1_0_1() { return cRefCharacteristicClassIDTerminalRuleCall_1_0_1; }
 	}
 	public class StatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.Statement");
@@ -1163,7 +1147,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AttributeClassSelector:
-	//	'data.class.' negated?='!'? ref=[CharacteristicClass];
+	//	'data.class.' ref=[CharacteristicClass];
 	public AttributeClassSelectorElements getAttributeClassSelectorAccess() {
 		return pAttributeClassSelector;
 	}
@@ -1193,7 +1177,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//PropertyClassSelector:
-	//	'node.class.' negated?='!'? ref=[CharacteristicClass];
+	//	'node.class.' ref=[CharacteristicClass];
 	public PropertyClassSelectorElements getPropertyClassSelectorAccess() {
 		return pPropertyClassSelector;
 	}

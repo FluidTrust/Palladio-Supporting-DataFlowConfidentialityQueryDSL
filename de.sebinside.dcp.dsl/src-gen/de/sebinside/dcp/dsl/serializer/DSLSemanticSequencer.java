@@ -135,10 +135,16 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     AttributeClassSelector returns AttributeClassSelector
 	 *
 	 * Constraint:
-	 *     (negated?='!'? ref=[CharacteristicClass|ID])
+	 *     ref=[CharacteristicClass|ID]
 	 */
 	protected void sequence_AttributeClassSelector(ISerializationContext context, AttributeClassSelector semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.ATTRIBUTE_CLASS_SELECTOR__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.ATTRIBUTE_CLASS_SELECTOR__REF));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_1_0_1(), semanticObject.eGet(DSLPackage.Literals.ATTRIBUTE_CLASS_SELECTOR__REF, false));
+		feeder.finish();
 	}
 	
 	
@@ -287,10 +293,16 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PropertyClassSelector returns PropertyClassSelector
 	 *
 	 * Constraint:
-	 *     (negated?='!'? ref=[CharacteristicClass|ID])
+	 *     ref=[CharacteristicClass|ID]
 	 */
 	protected void sequence_PropertyClassSelector(ISerializationContext context, PropertyClassSelector semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.PROPERTY_CLASS_SELECTOR__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.PROPERTY_CLASS_SELECTOR__REF));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_1_0_1(), semanticObject.eGet(DSLPackage.Literals.PROPERTY_CLASS_SELECTOR__REF, false));
+		feeder.finish();
 	}
 	
 	

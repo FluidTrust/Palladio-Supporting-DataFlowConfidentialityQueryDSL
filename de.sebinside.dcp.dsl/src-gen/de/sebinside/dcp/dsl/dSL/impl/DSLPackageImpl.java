@@ -769,20 +769,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   @Override
-  public EAttribute getAttributeClassSelector_Negated()
-  {
-    return (EAttribute)attributeClassSelectorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getAttributeClassSelector_Ref()
   {
-    return (EReference)attributeClassSelectorEClass.getEStructuralFeatures().get(1);
+    return (EReference)attributeClassSelectorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -835,20 +824,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   @Override
-  public EAttribute getPropertyClassSelector_Negated()
-  {
-    return (EAttribute)propertyClassSelectorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getPropertyClassSelector_Ref()
   {
-    return (EReference)propertyClassSelectorEClass.getEStructuralFeatures().get(1);
+    return (EReference)propertyClassSelectorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1013,7 +991,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     createEReference(attributeSelectorEClass, ATTRIBUTE_SELECTOR__REF);
 
     attributeClassSelectorEClass = createEClass(ATTRIBUTE_CLASS_SELECTOR);
-    createEAttribute(attributeClassSelectorEClass, ATTRIBUTE_CLASS_SELECTOR__NEGATED);
     createEReference(attributeClassSelectorEClass, ATTRIBUTE_CLASS_SELECTOR__REF);
 
     destinationSelectorEClass = createEClass(DESTINATION_SELECTOR);
@@ -1022,7 +999,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     createEReference(propertySelectorEClass, PROPERTY_SELECTOR__REF);
 
     propertyClassSelectorEClass = createEClass(PROPERTY_CLASS_SELECTOR);
-    createEAttribute(propertyClassSelectorEClass, PROPERTY_CLASS_SELECTOR__NEGATED);
     createEReference(propertyClassSelectorEClass, PROPERTY_CLASS_SELECTOR__REF);
 
     statementEClass = createEClass(STATEMENT);
@@ -1137,7 +1113,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     initEReference(getAttributeSelector_Ref(), this.getCharacteristicSelector(), null, "ref", null, 0, 1, AttributeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeClassSelectorEClass, AttributeClassSelector.class, "AttributeClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAttributeClassSelector_Negated(), theEcorePackage.getEBoolean(), "negated", null, 0, 1, AttributeClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttributeClassSelector_Ref(), this.getCharacteristicClass(), null, "ref", null, 0, 1, AttributeClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(destinationSelectorEClass, DestinationSelector.class, "DestinationSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1146,7 +1121,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     initEReference(getPropertySelector_Ref(), this.getCharacteristicSelector(), null, "ref", null, 0, 1, PropertySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyClassSelectorEClass, PropertyClassSelector.class, "PropertyClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPropertyClassSelector_Negated(), theEcorePackage.getEBoolean(), "negated", null, 0, 1, PropertyClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPropertyClassSelector_Ref(), this.getCharacteristicClass(), null, "ref", null, 0, 1, PropertyClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

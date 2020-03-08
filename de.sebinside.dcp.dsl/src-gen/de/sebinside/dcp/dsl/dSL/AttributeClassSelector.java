@@ -13,7 +13,6 @@ package de.sebinside.dcp.dsl.dSL;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector#isNegated <em>Negated</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector#getRef <em>Ref</em>}</li>
  * </ul>
  *
@@ -23,28 +22,6 @@ package de.sebinside.dcp.dsl.dSL;
  */
 public interface AttributeClassSelector extends DataSelector
 {
-  /**
-   * Returns the value of the '<em><b>Negated</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Negated</em>' attribute.
-   * @see #setNegated(boolean)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getAttributeClassSelector_Negated()
-   * @model
-   * @generated
-   */
-  boolean isNegated();
-
-  /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector#isNegated <em>Negated</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Negated</em>' attribute.
-   * @see #isNegated()
-   * @generated
-   */
-  void setNegated(boolean value);
-
   /**
    * Returns the value of the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->

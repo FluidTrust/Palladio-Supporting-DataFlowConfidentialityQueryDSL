@@ -76,7 +76,7 @@ AttributeSelector:
 	'data.attribute.' ref=CharacteristicSelector;
 
 AttributeClassSelector:
-	'data.class.' (negated?='!')? ref=[CharacteristicClass];
+	'data.class.' ref=[CharacteristicClass];
 
 DestinationSelector:
 	PropertySelector | PropertyClassSelector;
@@ -85,7 +85,7 @@ PropertySelector:
 	'node.property.' ref=CharacteristicSelector;
 
 PropertyClassSelector:
-	'node.class.' (negated?='!')? ref=[CharacteristicClass];
+	'node.class.' ref=[CharacteristicClass];
 
 Statement:
 	modality=StatementModality type=StatementType;

@@ -596,22 +596,13 @@ public interface DSLPackage extends EPackage
   int ATTRIBUTE_CLASS_SELECTOR = 15;
 
   /**
-   * The feature id for the '<em><b>Negated</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTE_CLASS_SELECTOR__NEGATED = DATA_SELECTOR_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_CLASS_SELECTOR__REF = DATA_SELECTOR_FEATURE_COUNT + 1;
+  int ATTRIBUTE_CLASS_SELECTOR__REF = DATA_SELECTOR_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Attribute Class Selector</em>' class.
@@ -620,7 +611,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_CLASS_SELECTOR_FEATURE_COUNT = DATA_SELECTOR_FEATURE_COUNT + 2;
+  int ATTRIBUTE_CLASS_SELECTOR_FEATURE_COUNT = DATA_SELECTOR_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.DestinationSelectorImpl <em>Destination Selector</em>}' class.
@@ -680,22 +671,13 @@ public interface DSLPackage extends EPackage
   int PROPERTY_CLASS_SELECTOR = 18;
 
   /**
-   * The feature id for the '<em><b>Negated</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_CLASS_SELECTOR__NEGATED = DESTINATION_SELECTOR_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_CLASS_SELECTOR__REF = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
+  int PROPERTY_CLASS_SELECTOR__REF = DESTINATION_SELECTOR_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Property Class Selector</em>' class.
@@ -704,7 +686,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_CLASS_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 2;
+  int PROPERTY_CLASS_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementImpl <em>Statement</em>}' class.
@@ -1214,17 +1196,6 @@ public interface DSLPackage extends EPackage
   EClass getAttributeClassSelector();
 
   /**
-   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector#isNegated <em>Negated</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Negated</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.AttributeClassSelector#isNegated()
-   * @see #getAttributeClassSelector()
-   * @generated
-   */
-  EAttribute getAttributeClassSelector_Negated();
-
-  /**
    * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1275,17 +1246,6 @@ public interface DSLPackage extends EPackage
    * @generated
    */
   EClass getPropertyClassSelector();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#isNegated <em>Negated</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Negated</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.PropertyClassSelector#isNegated()
-   * @see #getPropertyClassSelector()
-   * @generated
-   */
-  EAttribute getPropertyClassSelector_Negated();
 
   /**
    * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#getRef <em>Ref</em>}'.
@@ -1740,14 +1700,6 @@ public interface DSLPackage extends EPackage
     EClass ATTRIBUTE_CLASS_SELECTOR = eINSTANCE.getAttributeClassSelector();
 
     /**
-     * The meta object literal for the '<em><b>Negated</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ATTRIBUTE_CLASS_SELECTOR__NEGATED = eINSTANCE.getAttributeClassSelector_Negated();
-
-    /**
      * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1792,14 +1744,6 @@ public interface DSLPackage extends EPackage
      * @generated
      */
     EClass PROPERTY_CLASS_SELECTOR = eINSTANCE.getPropertyClassSelector();
-
-    /**
-     * The meta object literal for the '<em><b>Negated</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROPERTY_CLASS_SELECTOR__NEGATED = eINSTANCE.getPropertyClassSelector_Negated();
 
     /**
      * The meta object literal for the '<em><b>Ref</b></em>' reference feature.

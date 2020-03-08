@@ -2323,7 +2323,6 @@ rule__AttributeClassSelector__Group__1
 	}
 :
 	rule__AttributeClassSelector__Group__1__Impl
-	rule__AttributeClassSelector__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2335,35 +2334,9 @@ rule__AttributeClassSelector__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getAttributeClassSelectorAccess().getNegatedAssignment_1()); }
-	(rule__AttributeClassSelector__NegatedAssignment_1)?
-	{ after(grammarAccess.getAttributeClassSelectorAccess().getNegatedAssignment_1()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__AttributeClassSelector__Group__2
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__AttributeClassSelector__Group__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__AttributeClassSelector__Group__2__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getAttributeClassSelectorAccess().getRefAssignment_2()); }
-	(rule__AttributeClassSelector__RefAssignment_2)
-	{ after(grammarAccess.getAttributeClassSelectorAccess().getRefAssignment_2()); }
+	{ before(grammarAccess.getAttributeClassSelectorAccess().getRefAssignment_1()); }
+	(rule__AttributeClassSelector__RefAssignment_1)
+	{ after(grammarAccess.getAttributeClassSelectorAccess().getRefAssignment_1()); }
 )
 ;
 finally {
@@ -2458,7 +2431,6 @@ rule__PropertyClassSelector__Group__1
 	}
 :
 	rule__PropertyClassSelector__Group__1__Impl
-	rule__PropertyClassSelector__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2470,35 +2442,9 @@ rule__PropertyClassSelector__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getPropertyClassSelectorAccess().getNegatedAssignment_1()); }
-	(rule__PropertyClassSelector__NegatedAssignment_1)?
-	{ after(grammarAccess.getPropertyClassSelectorAccess().getNegatedAssignment_1()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__PropertyClassSelector__Group__2
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__PropertyClassSelector__Group__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__PropertyClassSelector__Group__2__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getPropertyClassSelectorAccess().getRefAssignment_2()); }
-	(rule__PropertyClassSelector__RefAssignment_2)
-	{ after(grammarAccess.getPropertyClassSelectorAccess().getRefAssignment_2()); }
+	{ before(grammarAccess.getPropertyClassSelectorAccess().getRefAssignment_1()); }
+	(rule__PropertyClassSelector__RefAssignment_1)
+	{ after(grammarAccess.getPropertyClassSelectorAccess().getRefAssignment_1()); }
 )
 ;
 finally {
@@ -3000,38 +2946,19 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__AttributeClassSelector__NegatedAssignment_1
+rule__AttributeClassSelector__RefAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getAttributeClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0()); }
+		{ before(grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassCrossReference_1_0()); }
 		(
-			{ before(grammarAccess.getAttributeClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0()); }
-			'!'
-			{ after(grammarAccess.getAttributeClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0()); }
-		)
-		{ after(grammarAccess.getAttributeClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__AttributeClassSelector__RefAssignment_2
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassCrossReference_2_0()); }
-		(
-			{ before(grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_2_0_1()); }
+			{ before(grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_1_0_1()); }
 			RULE_ID
-			{ after(grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_2_0_1()); }
+			{ after(grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_1_0_1()); }
 		)
-		{ after(grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassCrossReference_2_0()); }
+		{ after(grammarAccess.getAttributeClassSelectorAccess().getRefCharacteristicClassCrossReference_1_0()); }
 	)
 ;
 finally {
@@ -3053,38 +2980,19 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PropertyClassSelector__NegatedAssignment_1
+rule__PropertyClassSelector__RefAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getPropertyClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0()); }
+		{ before(grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassCrossReference_1_0()); }
 		(
-			{ before(grammarAccess.getPropertyClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0()); }
-			'!'
-			{ after(grammarAccess.getPropertyClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0()); }
-		)
-		{ after(grammarAccess.getPropertyClassSelectorAccess().getNegatedExclamationMarkKeyword_1_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__PropertyClassSelector__RefAssignment_2
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassCrossReference_2_0()); }
-		(
-			{ before(grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_2_0_1()); }
+			{ before(grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_1_0_1()); }
 			RULE_ID
-			{ after(grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_2_0_1()); }
+			{ after(grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassIDTerminalRuleCall_1_0_1()); }
 		)
-		{ after(grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassCrossReference_2_0()); }
+		{ after(grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassCrossReference_1_0()); }
 	)
 ;
 finally {

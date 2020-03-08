@@ -101,11 +101,9 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRuleAccess().getDestinationSelectorsAssignment_3(), "rule__Rule__DestinationSelectorsAssignment_3");
 			builder.put(grammarAccess.getRuleAccess().getDestinationSelectorsAssignment_4_1(), "rule__Rule__DestinationSelectorsAssignment_4_1");
 			builder.put(grammarAccess.getAttributeSelectorAccess().getRefAssignment_1(), "rule__AttributeSelector__RefAssignment_1");
-			builder.put(grammarAccess.getAttributeClassSelectorAccess().getNegatedAssignment_1(), "rule__AttributeClassSelector__NegatedAssignment_1");
-			builder.put(grammarAccess.getAttributeClassSelectorAccess().getRefAssignment_2(), "rule__AttributeClassSelector__RefAssignment_2");
+			builder.put(grammarAccess.getAttributeClassSelectorAccess().getRefAssignment_1(), "rule__AttributeClassSelector__RefAssignment_1");
 			builder.put(grammarAccess.getPropertySelectorAccess().getRefAssignment_1(), "rule__PropertySelector__RefAssignment_1");
-			builder.put(grammarAccess.getPropertyClassSelectorAccess().getNegatedAssignment_1(), "rule__PropertyClassSelector__NegatedAssignment_1");
-			builder.put(grammarAccess.getPropertyClassSelectorAccess().getRefAssignment_2(), "rule__PropertyClassSelector__RefAssignment_2");
+			builder.put(grammarAccess.getPropertyClassSelectorAccess().getRefAssignment_1(), "rule__PropertyClassSelector__RefAssignment_1");
 			builder.put(grammarAccess.getStatementAccess().getModalityAssignment_0(), "rule__Statement__ModalityAssignment_0");
 			builder.put(grammarAccess.getStatementAccess().getTypeAssignment_1(), "rule__Statement__TypeAssignment_1");
 			builder.put(grammarAccess.getStatementTypeAccess().getNameAssignment(), "rule__StatementType__NameAssignment");

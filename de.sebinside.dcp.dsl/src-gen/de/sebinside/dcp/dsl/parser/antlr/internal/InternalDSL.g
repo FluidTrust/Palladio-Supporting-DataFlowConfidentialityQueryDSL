@@ -113,11 +113,11 @@ ruleAbstractElement returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getAbstractElementAccess().getImportCharacteristicsParserRuleCall_0());
+			newCompositeNode(grammarAccess.getAbstractElementAccess().getIncludeParserRuleCall_0());
 		}
-		this_ImportCharacteristics_0=ruleImportCharacteristics
+		this_Include_0=ruleInclude
 		{
-			$current = $this_ImportCharacteristics_0.current;
+			$current = $this_Include_0.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
@@ -711,15 +711,15 @@ ruleCharacteristicSelector returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleImportCharacteristics
-entryRuleImportCharacteristics returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getImportCharacteristicsRule()); }
-	iv_ruleImportCharacteristics=ruleImportCharacteristics
-	{ $current=$iv_ruleImportCharacteristics.current; }
+// Entry rule entryRuleInclude
+entryRuleInclude returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getIncludeRule()); }
+	iv_ruleInclude=ruleInclude
+	{ $current=$iv_ruleInclude.current; }
 	EOF;
 
-// Rule ImportCharacteristics
-ruleImportCharacteristics returns [EObject current=null]
+// Rule Include
+ruleInclude returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -729,17 +729,17 @@ ruleImportCharacteristics returns [EObject current=null]
 	(
 		otherlv_0='import'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getImportCharacteristicsAccess().getImportKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getIncludeAccess().getImportKeyword_0());
 		}
 		(
 			(
 				lv_importURI_1_0=RULE_STRING
 				{
-					newLeafNode(lv_importURI_1_0, grammarAccess.getImportCharacteristicsAccess().getImportURISTRINGTerminalRuleCall_1_0());
+					newLeafNode(lv_importURI_1_0, grammarAccess.getIncludeAccess().getImportURISTRINGTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getImportCharacteristicsRule());
+						$current = createModelElement(grammarAccess.getIncludeRule());
 					}
 					setWithLastConsumed(
 						$current,

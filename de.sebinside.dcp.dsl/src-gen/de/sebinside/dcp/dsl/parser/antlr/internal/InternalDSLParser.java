@@ -249,11 +249,11 @@ public class InternalDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAbstractElement"
-    // InternalDSL.g:107:1: ruleAbstractElement returns [EObject current=null] : (this_ImportCharacteristics_0= ruleImportCharacteristics | this_DataType_1= ruleDataType | this_ValueSet_2= ruleValueSet | this_CharacteristicsType_3= ruleCharacteristicsType | this_CharacteristicClass_4= ruleCharacteristicClass | this_Constraint_5= ruleConstraint ) ;
+    // InternalDSL.g:107:1: ruleAbstractElement returns [EObject current=null] : (this_Include_0= ruleInclude | this_DataType_1= ruleDataType | this_ValueSet_2= ruleValueSet | this_CharacteristicsType_3= ruleCharacteristicsType | this_CharacteristicClass_4= ruleCharacteristicClass | this_Constraint_5= ruleConstraint ) ;
     public final EObject ruleAbstractElement() throws RecognitionException {
         EObject current = null;
 
-        EObject this_ImportCharacteristics_0 = null;
+        EObject this_Include_0 = null;
 
         EObject this_DataType_1 = null;
 
@@ -270,10 +270,10 @@ public class InternalDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDSL.g:113:2: ( (this_ImportCharacteristics_0= ruleImportCharacteristics | this_DataType_1= ruleDataType | this_ValueSet_2= ruleValueSet | this_CharacteristicsType_3= ruleCharacteristicsType | this_CharacteristicClass_4= ruleCharacteristicClass | this_Constraint_5= ruleConstraint ) )
-            // InternalDSL.g:114:2: (this_ImportCharacteristics_0= ruleImportCharacteristics | this_DataType_1= ruleDataType | this_ValueSet_2= ruleValueSet | this_CharacteristicsType_3= ruleCharacteristicsType | this_CharacteristicClass_4= ruleCharacteristicClass | this_Constraint_5= ruleConstraint )
+            // InternalDSL.g:113:2: ( (this_Include_0= ruleInclude | this_DataType_1= ruleDataType | this_ValueSet_2= ruleValueSet | this_CharacteristicsType_3= ruleCharacteristicsType | this_CharacteristicClass_4= ruleCharacteristicClass | this_Constraint_5= ruleConstraint ) )
+            // InternalDSL.g:114:2: (this_Include_0= ruleInclude | this_DataType_1= ruleDataType | this_ValueSet_2= ruleValueSet | this_CharacteristicsType_3= ruleCharacteristicsType | this_CharacteristicClass_4= ruleCharacteristicClass | this_Constraint_5= ruleConstraint )
             {
-            // InternalDSL.g:114:2: (this_ImportCharacteristics_0= ruleImportCharacteristics | this_DataType_1= ruleDataType | this_ValueSet_2= ruleValueSet | this_CharacteristicsType_3= ruleCharacteristicsType | this_CharacteristicClass_4= ruleCharacteristicClass | this_Constraint_5= ruleConstraint )
+            // InternalDSL.g:114:2: (this_Include_0= ruleInclude | this_DataType_1= ruleDataType | this_ValueSet_2= ruleValueSet | this_CharacteristicsType_3= ruleCharacteristicsType | this_CharacteristicClass_4= ruleCharacteristicClass | this_Constraint_5= ruleConstraint )
             int alt2=6;
             switch ( input.LA(1) ) {
             case 25:
@@ -316,18 +316,18 @@ public class InternalDSLParser extends AbstractInternalAntlrParser {
 
             switch (alt2) {
                 case 1 :
-                    // InternalDSL.g:115:3: this_ImportCharacteristics_0= ruleImportCharacteristics
+                    // InternalDSL.g:115:3: this_Include_0= ruleInclude
                     {
 
-                    			newCompositeNode(grammarAccess.getAbstractElementAccess().getImportCharacteristicsParserRuleCall_0());
+                    			newCompositeNode(grammarAccess.getAbstractElementAccess().getIncludeParserRuleCall_0());
                     		
                     pushFollow(FOLLOW_2);
-                    this_ImportCharacteristics_0=ruleImportCharacteristics();
+                    this_Include_0=ruleInclude();
 
                     state._fsp--;
 
 
-                    			current = this_ImportCharacteristics_0;
+                    			current = this_Include_0;
                     			afterParserOrEnumRuleCall();
                     		
 
@@ -1774,25 +1774,25 @@ public class InternalDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleCharacteristicSelector"
 
 
-    // $ANTLR start "entryRuleImportCharacteristics"
-    // InternalDSL.g:715:1: entryRuleImportCharacteristics returns [EObject current=null] : iv_ruleImportCharacteristics= ruleImportCharacteristics EOF ;
-    public final EObject entryRuleImportCharacteristics() throws RecognitionException {
+    // $ANTLR start "entryRuleInclude"
+    // InternalDSL.g:715:1: entryRuleInclude returns [EObject current=null] : iv_ruleInclude= ruleInclude EOF ;
+    public final EObject entryRuleInclude() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleImportCharacteristics = null;
+        EObject iv_ruleInclude = null;
 
 
         try {
-            // InternalDSL.g:715:62: (iv_ruleImportCharacteristics= ruleImportCharacteristics EOF )
-            // InternalDSL.g:716:2: iv_ruleImportCharacteristics= ruleImportCharacteristics EOF
+            // InternalDSL.g:715:48: (iv_ruleInclude= ruleInclude EOF )
+            // InternalDSL.g:716:2: iv_ruleInclude= ruleInclude EOF
             {
-             newCompositeNode(grammarAccess.getImportCharacteristicsRule()); 
+             newCompositeNode(grammarAccess.getIncludeRule()); 
             pushFollow(FOLLOW_1);
-            iv_ruleImportCharacteristics=ruleImportCharacteristics();
+            iv_ruleInclude=ruleInclude();
 
             state._fsp--;
 
-             current =iv_ruleImportCharacteristics; 
+             current =iv_ruleInclude; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -1807,12 +1807,12 @@ public class InternalDSLParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleImportCharacteristics"
+    // $ANTLR end "entryRuleInclude"
 
 
-    // $ANTLR start "ruleImportCharacteristics"
-    // InternalDSL.g:722:1: ruleImportCharacteristics returns [EObject current=null] : (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) ) ;
-    public final EObject ruleImportCharacteristics() throws RecognitionException {
+    // $ANTLR start "ruleInclude"
+    // InternalDSL.g:722:1: ruleInclude returns [EObject current=null] : (otherlv_0= 'import' ( (lv_importURI_1_0= RULE_STRING ) ) ) ;
+    public final EObject ruleInclude() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -1830,7 +1830,7 @@ public class InternalDSLParser extends AbstractInternalAntlrParser {
             {
             otherlv_0=(Token)match(input,25,FOLLOW_14); 
 
-            			newLeafNode(otherlv_0, grammarAccess.getImportCharacteristicsAccess().getImportKeyword_0());
+            			newLeafNode(otherlv_0, grammarAccess.getIncludeAccess().getImportKeyword_0());
             		
             // InternalDSL.g:734:3: ( (lv_importURI_1_0= RULE_STRING ) )
             // InternalDSL.g:735:4: (lv_importURI_1_0= RULE_STRING )
@@ -1840,11 +1840,11 @@ public class InternalDSLParser extends AbstractInternalAntlrParser {
             {
             lv_importURI_1_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
-            					newLeafNode(lv_importURI_1_0, grammarAccess.getImportCharacteristicsAccess().getImportURISTRINGTerminalRuleCall_1_0());
+            					newLeafNode(lv_importURI_1_0, grammarAccess.getIncludeAccess().getImportURISTRINGTerminalRuleCall_1_0());
             				
 
             					if (current==null) {
-            						current = createModelElement(grammarAccess.getImportCharacteristicsRule());
+            						current = createModelElement(grammarAccess.getIncludeRule());
             					}
             					setWithLastConsumed(
             						current,
@@ -1877,7 +1877,7 @@ public class InternalDSLParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleImportCharacteristics"
+    // $ANTLR end "ruleInclude"
 
 
     // $ANTLR start "entryRuleConstraint"

@@ -17,7 +17,7 @@ import de.sebinside.dcp.dsl.dSL.DSLPackage;
 import de.sebinside.dcp.dsl.dSL.DataSelector;
 import de.sebinside.dcp.dsl.dSL.DataType;
 import de.sebinside.dcp.dsl.dSL.DestinationSelector;
-import de.sebinside.dcp.dsl.dSL.ImportCharacteristics;
+import de.sebinside.dcp.dsl.dSL.Include;
 import de.sebinside.dcp.dsl.dSL.Model;
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector;
 import de.sebinside.dcp.dsl.dSL.PropertySelector;
@@ -165,7 +165,7 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass importCharacteristicsEClass = null;
+  private EClass includeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -626,9 +626,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   @Override
-  public EClass getImportCharacteristics()
+  public EClass getInclude()
   {
-    return importCharacteristicsEClass;
+    return includeEClass;
   }
 
   /**
@@ -637,9 +637,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   @Override
-  public EAttribute getImportCharacteristics_ImportURI()
+  public EAttribute getInclude_ImportURI()
   {
-    return (EAttribute)importCharacteristicsEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)includeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -973,8 +973,8 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     createEReference(altCharacteristicSelectorEClass, ALT_CHARACTERISTIC_SELECTOR__LITERALS);
     createEAttribute(altCharacteristicSelectorEClass, ALT_CHARACTERISTIC_SELECTOR__CONJUNCTED);
 
-    importCharacteristicsEClass = createEClass(IMPORT_CHARACTERISTICS);
-    createEAttribute(importCharacteristicsEClass, IMPORT_CHARACTERISTICS__IMPORT_URI);
+    includeEClass = createEClass(INCLUDE);
+    createEAttribute(includeEClass, INCLUDE__IMPORT_URI);
 
     constraintEClass = createEClass(CONSTRAINT);
     createEAttribute(constraintEClass, CONSTRAINT__NAME);
@@ -1051,7 +1051,7 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     attributeTypeEClass.getESuperTypes().add(this.getCharacteristicsType());
     propertyTypeEClass.getESuperTypes().add(this.getCharacteristicsType());
     characteristicClassEClass.getESuperTypes().add(this.getAbstractElement());
-    importCharacteristicsEClass.getESuperTypes().add(this.getAbstractElement());
+    includeEClass.getESuperTypes().add(this.getAbstractElement());
     constraintEClass.getESuperTypes().add(this.getAbstractElement());
     attributeSelectorEClass.getESuperTypes().add(this.getDataSelector());
     attributeClassSelectorEClass.getESuperTypes().add(this.getDataSelector());
@@ -1095,8 +1095,8 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     initEReference(getAltCharacteristicSelector_Literals(), theCharacteristicsPackage.getEnumCharacteristicLiteral(), null, "literals", null, 0, -1, AltCharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAltCharacteristicSelector_Conjuncted(), theEcorePackage.getEBoolean(), "conjuncted", null, 0, 1, AltCharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(importCharacteristicsEClass, ImportCharacteristics.class, "ImportCharacteristics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImportCharacteristics_ImportURI(), theEcorePackage.getEString(), "importURI", null, 0, 1, ImportCharacteristics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(includeEClass, Include.class, "Include", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInclude_ImportURI(), theEcorePackage.getEString(), "importURI", null, 0, 1, Include.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getConstraint_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -14,7 +14,7 @@ Model:
 	(elements+=AbstractElement)*;
 
 AbstractElement:
-	ImportCharacteristics | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
+	Include | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
 
 DataType:
 	'datatype' name=ID;
@@ -54,7 +54,7 @@ AltCharacteristicSelector:
 		) ']'
 	));
 
-ImportCharacteristics:
+Include:
 	'import' importURI=STRING
 ;
 

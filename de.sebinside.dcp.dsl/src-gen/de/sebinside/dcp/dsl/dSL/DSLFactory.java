@@ -114,13 +114,13 @@ public interface DSLFactory extends EFactory
   AltCharacteristicSelector createAltCharacteristicSelector();
 
   /**
-   * Returns a new object of class '<em>Import Characteristics</em>'.
+   * Returns a new object of class '<em>Include</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import Characteristics</em>'.
+   * @return a new object of class '<em>Include</em>'.
    * @generated
    */
-  ImportCharacteristics createImportCharacteristics();
+  Include createInclude();
 
   /**
    * Returns a new object of class '<em>Constraint</em>'.

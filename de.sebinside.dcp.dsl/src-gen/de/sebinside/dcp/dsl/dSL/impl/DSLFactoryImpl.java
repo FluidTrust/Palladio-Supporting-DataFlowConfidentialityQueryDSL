@@ -75,7 +75,7 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
       case DSLPackage.CHARACTERISTIC_CLASS: return createCharacteristicClass();
       case DSLPackage.CHARACTERISTIC_SELECTOR: return createCharacteristicSelector();
       case DSLPackage.ALT_CHARACTERISTIC_SELECTOR: return createAltCharacteristicSelector();
-      case DSLPackage.IMPORT_CHARACTERISTICS: return createImportCharacteristics();
+      case DSLPackage.INCLUDE: return createInclude();
       case DSLPackage.CONSTRAINT: return createConstraint();
       case DSLPackage.RULE: return createRule();
       case DSLPackage.DATA_SELECTOR: return createDataSelector();
@@ -218,10 +218,10 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
    * @generated
    */
   @Override
-  public ImportCharacteristics createImportCharacteristics()
+  public Include createInclude()
   {
-    ImportCharacteristicsImpl importCharacteristics = new ImportCharacteristicsImpl();
-    return importCharacteristics;
+    IncludeImpl include = new IncludeImpl();
+    return include;
   }
 
   /**

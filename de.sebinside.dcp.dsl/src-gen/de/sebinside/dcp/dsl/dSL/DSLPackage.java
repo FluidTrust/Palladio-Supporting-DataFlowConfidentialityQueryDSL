@@ -428,14 +428,14 @@ public interface DSLPackage extends EPackage
   int ALT_CHARACTERISTIC_SELECTOR_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl <em>Import Characteristics</em>}' class.
+   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.IncludeImpl <em>Include</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl
-   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getImportCharacteristics()
+   * @see de.sebinside.dcp.dsl.dSL.impl.IncludeImpl
+   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getInclude()
    * @generated
    */
-  int IMPORT_CHARACTERISTICS = 10;
+  int INCLUDE = 10;
 
   /**
    * The feature id for the '<em><b>Import URI</b></em>' attribute.
@@ -444,16 +444,16 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int IMPORT_CHARACTERISTICS__IMPORT_URI = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+  int INCLUDE__IMPORT_URI = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Import Characteristics</em>' class.
+   * The number of structural features of the '<em>Include</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int IMPORT_CHARACTERISTICS_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+  int INCLUDE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl <em>Constraint</em>}' class.
@@ -1059,25 +1059,25 @@ public interface DSLPackage extends EPackage
   EAttribute getAltCharacteristicSelector_Conjuncted();
 
   /**
-   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.ImportCharacteristics <em>Import Characteristics</em>}'.
+   * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Include <em>Include</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Import Characteristics</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.ImportCharacteristics
+   * @return the meta object for class '<em>Include</em>'.
+   * @see de.sebinside.dcp.dsl.dSL.Include
    * @generated
    */
-  EClass getImportCharacteristics();
+  EClass getInclude();
 
   /**
-   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.ImportCharacteristics#getImportURI <em>Import URI</em>}'.
+   * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.Include#getImportURI <em>Import URI</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Import URI</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.ImportCharacteristics#getImportURI()
-   * @see #getImportCharacteristics()
+   * @see de.sebinside.dcp.dsl.dSL.Include#getImportURI()
+   * @see #getInclude()
    * @generated
    */
-  EAttribute getImportCharacteristics_ImportURI();
+  EAttribute getInclude_ImportURI();
 
   /**
    * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Constraint <em>Constraint</em>}'.
@@ -1584,14 +1584,14 @@ public interface DSLPackage extends EPackage
     EAttribute ALT_CHARACTERISTIC_SELECTOR__CONJUNCTED = eINSTANCE.getAltCharacteristicSelector_Conjuncted();
 
     /**
-     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl <em>Import Characteristics</em>}' class.
+     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.IncludeImpl <em>Include</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl
-     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getImportCharacteristics()
+     * @see de.sebinside.dcp.dsl.dSL.impl.IncludeImpl
+     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getInclude()
      * @generated
      */
-    EClass IMPORT_CHARACTERISTICS = eINSTANCE.getImportCharacteristics();
+    EClass INCLUDE = eINSTANCE.getInclude();
 
     /**
      * The meta object literal for the '<em><b>Import URI</b></em>' attribute feature.
@@ -1599,7 +1599,7 @@ public interface DSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IMPORT_CHARACTERISTICS__IMPORT_URI = eINSTANCE.getImportCharacteristics_ImportURI();
+    EAttribute INCLUDE__IMPORT_URI = eINSTANCE.getInclude_ImportURI();
 
     /**
      * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.ConstraintImpl <em>Constraint</em>}' class.

@@ -44,7 +44,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	public class AbstractElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AbstractElement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cImportCharacteristicsParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cIncludeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cDataTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cValueSetParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cCharacteristicsTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
@@ -52,14 +52,14 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConstraintParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//AbstractElement:
-		//	ImportCharacteristics | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
+		//	Include | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ImportCharacteristics | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint
+		//Include | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//ImportCharacteristics
-		public RuleCall getImportCharacteristicsParserRuleCall_0() { return cImportCharacteristicsParserRuleCall_0; }
+		//Include
+		public RuleCall getIncludeParserRuleCall_0() { return cIncludeParserRuleCall_0; }
 		
 		//DataType
 		public RuleCall getDataTypeParserRuleCall_1() { return cDataTypeParserRuleCall_1; }
@@ -565,14 +565,14 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		//']'
 		public Keyword getRightSquareBracketKeyword_2_1_3() { return cRightSquareBracketKeyword_2_1_3; }
 	}
-	public class ImportCharacteristicsElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.ImportCharacteristics");
+	public class IncludeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.Include");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cImportURIAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cImportURISTRINGTerminalRuleCall_1_0 = (RuleCall)cImportURIAssignment_1.eContents().get(0);
 		
-		//ImportCharacteristics:
+		//Include:
 		//	'import' importURI=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -906,7 +906,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final CharacteristicClassElements pCharacteristicClass;
 	private final CharacteristicSelectorElements pCharacteristicSelector;
 	private final AltCharacteristicSelectorElements pAltCharacteristicSelector;
-	private final ImportCharacteristicsElements pImportCharacteristics;
+	private final IncludeElements pInclude;
 	private final ConstraintElements pConstraint;
 	private final RuleElements pRule;
 	private final DataSelectorElements pDataSelector;
@@ -939,7 +939,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pCharacteristicClass = new CharacteristicClassElements();
 		this.pCharacteristicSelector = new CharacteristicSelectorElements();
 		this.pAltCharacteristicSelector = new AltCharacteristicSelectorElements();
-		this.pImportCharacteristics = new ImportCharacteristicsElements();
+		this.pInclude = new IncludeElements();
 		this.pConstraint = new ConstraintElements();
 		this.pRule = new RuleElements();
 		this.pDataSelector = new DataSelectorElements();
@@ -995,7 +995,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AbstractElement:
-	//	ImportCharacteristics | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
+	//	Include | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
 	public AbstractElementElements getAbstractElementAccess() {
 		return pAbstractElement;
 	}
@@ -1092,14 +1092,14 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getAltCharacteristicSelectorAccess().getRule();
 	}
 	
-	//ImportCharacteristics:
+	//Include:
 	//	'import' importURI=STRING;
-	public ImportCharacteristicsElements getImportCharacteristicsAccess() {
-		return pImportCharacteristics;
+	public IncludeElements getIncludeAccess() {
+		return pInclude;
 	}
 	
-	public ParserRule getImportCharacteristicsRule() {
-		return getImportCharacteristicsAccess().getRule();
+	public ParserRule getIncludeRule() {
+		return getIncludeAccess().getRule();
 	}
 	
 	//// Original characteristics usage ends here

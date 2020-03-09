@@ -4,7 +4,7 @@
 package de.sebinside.dcp.dsl.dSL.impl;
 
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
-import de.sebinside.dcp.dsl.dSL.ImportCharacteristics;
+import de.sebinside.dcp.dsl.dSL.Include;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Import Characteristics</b></em>'.
+ * An implementation of the model object '<em><b>Include</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ImportCharacteristicsImpl#getImportURI <em>Import URI</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.IncludeImpl#getImportURI <em>Import URI</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ImportCharacteristicsImpl extends AbstractElementImpl implements ImportCharacteristics
+public class IncludeImpl extends AbstractElementImpl implements Include
 {
   /**
    * The default value of the '{@link #getImportURI() <em>Import URI</em>}' attribute.
@@ -52,7 +52,7 @@ public class ImportCharacteristicsImpl extends AbstractElementImpl implements Im
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ImportCharacteristicsImpl()
+  protected IncludeImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class ImportCharacteristicsImpl extends AbstractElementImpl implements Im
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.IMPORT_CHARACTERISTICS;
+    return DSLPackage.Literals.INCLUDE;
   }
 
   /**
@@ -90,7 +90,7 @@ public class ImportCharacteristicsImpl extends AbstractElementImpl implements Im
     String oldImportURI = importURI;
     importURI = newImportURI;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI, oldImportURI, importURI));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.INCLUDE__IMPORT_URI, oldImportURI, importURI));
   }
 
   /**
@@ -103,7 +103,7 @@ public class ImportCharacteristicsImpl extends AbstractElementImpl implements Im
   {
     switch (featureID)
     {
-      case DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI:
+      case DSLPackage.INCLUDE__IMPORT_URI:
         return getImportURI();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -119,7 +119,7 @@ public class ImportCharacteristicsImpl extends AbstractElementImpl implements Im
   {
     switch (featureID)
     {
-      case DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI:
+      case DSLPackage.INCLUDE__IMPORT_URI:
         setImportURI((String)newValue);
         return;
     }
@@ -136,7 +136,7 @@ public class ImportCharacteristicsImpl extends AbstractElementImpl implements Im
   {
     switch (featureID)
     {
-      case DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI:
+      case DSLPackage.INCLUDE__IMPORT_URI:
         setImportURI(IMPORT_URI_EDEFAULT);
         return;
     }
@@ -153,7 +153,7 @@ public class ImportCharacteristicsImpl extends AbstractElementImpl implements Im
   {
     switch (featureID)
     {
-      case DSLPackage.IMPORT_CHARACTERISTICS__IMPORT_URI:
+      case DSLPackage.INCLUDE__IMPORT_URI:
         return IMPORT_URI_EDEFAULT == null ? importURI != null : !IMPORT_URI_EDEFAULT.equals(importURI);
     }
     return super.eIsSet(featureID);
@@ -176,4 +176,4 @@ public class ImportCharacteristicsImpl extends AbstractElementImpl implements Im
     return result.toString();
   }
 
-} //ImportCharacteristicsImpl
+} //IncludeImpl

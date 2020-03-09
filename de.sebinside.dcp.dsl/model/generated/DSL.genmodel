@@ -39,8 +39,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//AltCharacteristicSelector/literals"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//AltCharacteristicSelector/conjuncted"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//ImportCharacteristics">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//ImportCharacteristics/importURI"/>
+    <genClasses ecoreClass="DSL.ecore#//Include">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Include/importURI"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Constraint">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Constraint/name"/>

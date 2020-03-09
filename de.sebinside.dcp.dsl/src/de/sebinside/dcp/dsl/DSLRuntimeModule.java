@@ -3,9 +3,39 @@
  */
 package de.sebinside.dcp.dsl;
 
+import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
+import org.eclipse.xtext.scoping.IGlobalScopeProvider;
+
+import com.google.inject.Binder;
+
+import de.sebinside.dcp.dsl.scoping.CharacteristicsGlobalScopeProvider;
 
 /**
- * Use this class to register components to be used at runtime / without the Equinox extension registry.
+ * Use this class to register components to be used at runtime / without the
+ * Equinox extension registry.
  */
+
 public class DSLRuntimeModule extends AbstractDSLRuntimeModule {
+
+	Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+		return CharacteristicsResourceDescriptionStrategy.class;
+	}
+
+	public Class<? extends IResourceServiceProvider> bindIResourceServiceProvider() {
+		return CharacteristicsResourceServiceProvider.class;
+	}
+
+	@Override
+	public Class<? extends IGlobalScopeProvider> bindIGlobalScopeProvider() {
+		return CharacteristicsGlobalScopeProvider.class;
+	}
+
+	@Override
+	public void configure(Binder binder) {
+		System.out.println("Binding strategy...");
+		super.configure(binder);
+		binder.bind(IDefaultResourceDescriptionStrategy.class).to(CharacteristicsResourceDescriptionStrategy.class);
+		binder.bind(IResourceServiceProvider.class).to(CharacteristicsResourceServiceProvider.class);
+	}
 }

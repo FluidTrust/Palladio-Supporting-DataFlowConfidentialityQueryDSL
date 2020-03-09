@@ -13,7 +13,7 @@ import de.sebinside.dcp.dsl.dSL.CharacteristicSelector;
 import de.sebinside.dcp.dsl.dSL.Constraint;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 import de.sebinside.dcp.dsl.dSL.DataType;
-import de.sebinside.dcp.dsl.dSL.ImportCharacteristics;
+import de.sebinside.dcp.dsl.dSL.Include;
 import de.sebinside.dcp.dsl.dSL.Model;
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector;
 import de.sebinside.dcp.dsl.dSL.PropertySelector;
@@ -73,8 +73,8 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DSLPackage.DATA_TYPE:
 				sequence_DataType(context, (DataType) semanticObject); 
 				return; 
-			case DSLPackage.IMPORT_CHARACTERISTICS:
-				sequence_ImportCharacteristics(context, (ImportCharacteristics) semanticObject); 
+			case DSLPackage.INCLUDE:
+				sequence_Include(context, (Include) semanticObject); 
 				return; 
 			case DSLPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
@@ -258,19 +258,19 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     AbstractElement returns ImportCharacteristics
-	 *     ImportCharacteristics returns ImportCharacteristics
+	 *     AbstractElement returns Include
+	 *     Include returns Include
 	 *
 	 * Constraint:
 	 *     importURI=STRING
 	 */
-	protected void sequence_ImportCharacteristics(ISerializationContext context, ImportCharacteristics semanticObject) {
+	protected void sequence_Include(ISerializationContext context, Include semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.IMPORT_CHARACTERISTICS__IMPORT_URI) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.IMPORT_CHARACTERISTICS__IMPORT_URI));
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.INCLUDE__IMPORT_URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.INCLUDE__IMPORT_URI));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getImportCharacteristicsAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());
+		feeder.accept(grammarAccess.getIncludeAccess().getImportURISTRINGTerminalRuleCall_1_0(), semanticObject.getImportURI());
 		feeder.finish();
 	}
 	

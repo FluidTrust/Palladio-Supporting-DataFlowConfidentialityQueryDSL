@@ -151,11 +151,11 @@ public class DSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DSLPackage.IMPORT_CHARACTERISTICS:
+      case DSLPackage.INCLUDE:
       {
-        ImportCharacteristics importCharacteristics = (ImportCharacteristics)theEObject;
-        T result = caseImportCharacteristics(importCharacteristics);
-        if (result == null) result = caseAbstractElement(importCharacteristics);
+        Include include = (Include)theEObject;
+        T result = caseInclude(include);
+        if (result == null) result = caseAbstractElement(include);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -406,17 +406,17 @@ public class DSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Import Characteristics</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Include</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import Characteristics</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Include</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseImportCharacteristics(ImportCharacteristics object)
+  public T caseInclude(Include object)
   {
     return null;
   }

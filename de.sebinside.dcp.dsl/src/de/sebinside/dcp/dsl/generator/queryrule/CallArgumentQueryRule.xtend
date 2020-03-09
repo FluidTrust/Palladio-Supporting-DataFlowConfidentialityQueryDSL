@@ -18,5 +18,9 @@ class CallArgumentQueryRule extends QueryRule {
 	override queryTypeIdentification() {
 		"CALL_ARGUMENT"
 	}
+	
+	override parameterTerm() {
+		CompoundTerm(parameter)
+	}
 
 }

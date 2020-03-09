@@ -19,5 +19,9 @@ class ReturnValueQueryRule extends QueryRule {
 	override queryTypeIdentification() {
 		"RETURN_VALUE"
 	}
+	
+	override parameterTerm() {
+		CompoundTerm(parameter)
+	}
 
 }

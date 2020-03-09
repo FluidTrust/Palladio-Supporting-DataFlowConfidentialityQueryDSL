@@ -18,18 +18,12 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 
-// TODO: Call State missing parameters (copy it)
-// TODO: No sub rule heads / parameters
-// TODO: No super rule heads / parameters
-// TODO: Change order: Super rules first (optional)
-
-
 abstract class QueryRule {
 
-	val callStack = "S"
-	val operation = "OP"
-	val parameter = "P"
-	val callState = "ST"
+	protected val callStack = "S"
+	protected val operation = "OP"
+	protected val parameter = "P"
+	protected val callState = "ST"
 	val queryTypeTerm = createQueryTypeUnification(queryTypeIdentification)
 
 	var Rule rule = null
@@ -69,6 +63,7 @@ abstract class QueryRule {
 		]
 	}
 
+	// FIXME: Somehow get rid of these switch methods
 	def generateDataSelectorTerm(DataSelector selector) {
 		switch selector {
 			AttributeSelector: generateDataSelectorTerm(selector)
@@ -126,7 +121,6 @@ abstract class QueryRule {
 		val characteristicsClassesTerms = characteristicClasses.map[clazz|createCharacteristicsClassTerm(clazz)]
 
 		// Create final rule body
-		// FIXME: Dirty Call Stack Unification Hack
 		val subRuleComponents = #[queryTypeTerm,
 			createCallStackUnification(CompoundTerm(callStack), CompoundTerm(operation)),
 			expressionsToLogicalAnd(dataSelectorTerm), expressionsToLogicalAnd(destinationSelectorTerm),
@@ -138,23 +132,22 @@ abstract class QueryRule {
 		// Create rules parameters
 		var List<CompoundTerm> parametersList = new ArrayList<CompoundTerm>
 		parametersList.addAll(CompoundTerm("QueryType"), CompoundTerm(operation))
-		if (queryTypeIdentification == "CALL_STATE") {
-			parametersList.add(CompoundTerm(callState))
-		} else {
-			parametersList.add(CompoundTerm(parameter))
-		}
+		parametersList.add(parameterTerm())
 
-		// Add all classes members names to the list since these are not constant
-		val classTerms = characteristicClasses.toList.
-			map[clazz|clazz.members.map[member|CompoundTerm(member.ref.name)]].flatten
+		// Add all (unique) classes members names to the list
+		val classTerms = characteristicClasses.toList.map[clazz|clazz.members.map[member|member.ref.name]].toSet.
+			flatten.map[term|CompoundTerm(term)]
 		parametersList.addAll(classTerms)
-		subRule.head.arguments.addAll(parametersList)
 
+		subRule.head.arguments.addAll(parametersList)
 		subRule
 	}
 
 	abstract def Expression createParameterQuery(Expression stack, Expression parameter, Expression attribute,
-		Expression value, Expression operation, Expression stateVariable);
+		Expression value, Expression operation, Expression stateVariable)
 
-	abstract def String queryTypeIdentification();
+	abstract def String queryTypeIdentification()
+
+	abstract def CompoundTerm parameterTerm()
+
 }

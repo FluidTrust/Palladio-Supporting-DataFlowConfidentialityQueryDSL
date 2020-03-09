@@ -10,15 +10,25 @@ import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import org.eclipse.emf.ecore.util.EcoreUtil
+import java.util.List
 
 class DSLGeneratorUtils {
 
 	def static ruleToRuleCall(Rule rule) {
 		val compoundTerm = CompoundTerm(rule.head.value)
-		compoundTerm.arguments.addAll(rule.head.arguments)
+		compoundTerm.arguments.addAll(rule.head.arguments.map[argument|EcoreUtil.copy(argument)])
 		compoundTerm
 	}
-	
+
+	def static combineRuleArguments(List<Rule> rules) {
+		val allArguments = rules.map[rule|rule.head.arguments].flatten
+		val allArgumentTerms = allArguments.map[arg|arg as CompoundTerm]
+		val allArgumentValues = allArgumentTerms.map[arg|arg.value]
+		val uniqueArgumentValues = allArgumentValues.toSet
+		uniqueArgumentValues.map[parameter|CompoundTerm(parameter)]
+	}
+
 	def static negate(Expression expression) {
 		NotProvable(expression)
 	}
@@ -57,7 +67,7 @@ class DSLGeneratorUtils {
 	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
 		CompoundTerm(characteristicClass.name, characteristicClass.members.map[member|CompoundTerm(member.ref.name)])
 	}
-	
+
 	def static createPropertyQuery(Expression operation, Expression property, Expression value) {
 		CompoundTerm("operationProperty", #[operation, property, value])
 	}

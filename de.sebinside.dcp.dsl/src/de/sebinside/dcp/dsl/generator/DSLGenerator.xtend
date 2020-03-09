@@ -5,6 +5,9 @@ package de.sebinside.dcp.dsl.generator
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.Constraint
+import de.sebinside.dcp.dsl.generator.queryrule.CallArgumentQueryRule
+import de.sebinside.dcp.dsl.generator.queryrule.CallStateQueryRule
+import de.sebinside.dcp.dsl.generator.queryrule.ReturnValueQueryRule
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.ecore.resource.Resource
@@ -16,9 +19,6 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
-import de.sebinside.dcp.dsl.generator.queryrule.CallArgumentQueryRule
-import de.sebinside.dcp.dsl.generator.queryrule.ReturnValueQueryRule
-import de.sebinside.dcp.dsl.generator.queryrule.CallStateQueryRule
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -102,8 +102,7 @@ class DSLGenerator extends AbstractGenerator {
 			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName).generate()
 			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName).generate()
 			val callStateRule = new CallStateQueryRule(mainRule, constraintName).generate()
-			clauses.addAll(callArgumentRule, returnValueRule, callStateRule)
-
+			
 			// Combine rules
 			constraintRule.body = LogicalOr(
 				ruleToRuleCall(callArgumentRule),
@@ -111,13 +110,13 @@ class DSLGenerator extends AbstractGenerator {
 			)
 
 			// Combine (unique) arguments of all rules
-			val allArguments = #[callArgumentRule, returnValueRule, callStateRule].map[rule|rule.head.arguments].
-				flatten.toSet
+			val allArguments = combineRuleArguments(#[callArgumentRule, returnValueRule, callStateRule])
 			constraintRule.head.arguments.addAll(allArguments)
 
 			clauses.add(constraintRule)
-
+			clauses.addAll(callArgumentRule, returnValueRule, callStateRule)
 		}
 		clauses
 	}
+	
 }

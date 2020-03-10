@@ -4,10 +4,7 @@
 package de.sebinside.dcp.dsl;
 
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
-import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
-
-import com.google.inject.Binder;
 
 import de.sebinside.dcp.dsl.scoping.CharacteristicsGlobalScopeProvider;
 
@@ -18,12 +15,8 @@ import de.sebinside.dcp.dsl.scoping.CharacteristicsGlobalScopeProvider;
 
 public class DSLRuntimeModule extends AbstractDSLRuntimeModule {
 
-	Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+	public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
 		return CharacteristicsResourceDescriptionStrategy.class;
-	}
-
-	public Class<? extends IResourceServiceProvider> bindIResourceServiceProvider() {
-		return CharacteristicsResourceServiceProvider.class;
 	}
 
 	@Override
@@ -31,11 +24,4 @@ public class DSLRuntimeModule extends AbstractDSLRuntimeModule {
 		return CharacteristicsGlobalScopeProvider.class;
 	}
 
-	@Override
-	public void configure(Binder binder) {
-		System.out.println("Binding strategy...");
-		super.configure(binder);
-		binder.bind(IDefaultResourceDescriptionStrategy.class).to(CharacteristicsResourceDescriptionStrategy.class);
-		binder.bind(IResourceServiceProvider.class).to(CharacteristicsResourceServiceProvider.class);
-	}
 }

@@ -6,8 +6,6 @@ package de.sebinside.dcp.dsl.dSL.tests;
 import de.sebinside.dcp.dsl.dSL.Constraint;
 import de.sebinside.dcp.dsl.dSL.DSLFactory;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 /**

@@ -6,46 +6,19 @@ generate dSL "http://www.sebinside.de/dcp/dsl/DSL"
 // https://sdqweb.ipd.kit.edu/wiki/Importing_nested_EPackages_in_Xtext
 import "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics" as characteristics
 
-// Import approach, not working at all
-//CharacteristicsType2 returns characteristics::CharacteristicType:
-//	entityName = ID '.' literal = ID;
-
 Model:
 	(elements+=AbstractElement)*;
 
 AbstractElement:
-	Include | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
+	Include | DataType | CharacteristicClass | Constraint;
 
 DataType:
 	'datatype' name=ID;
-
-ValueSet:
-	'valueset' name=ID ASSIGNEMENT_OPERATOR '[' members+=ID (',' members+=ID)* ']';
-
-CharacteristicsType:
-	AttributeType | PropertyType;
-
-AttributeType:
-	'attribute' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
-
-PropertyType:
-	'property' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
 
 CharacteristicClass:
 	'class' name=ID '{' members+=CharacteristicSelector (',' members+=CharacteristicSelector)* '}';
 
 CharacteristicSelector:
-	ref=[CharacteristicsType] '.'
-	(((negated?='!')? literals+=ID) |
-	('[' literals+=ID ((',' literals+=ID)* | (conjuncted?='&' literals+=ID)*) ']'));
-	
-// Original characteristics usage starts here
-// -----------------------------------------------------
-
-// Current state: Scoping is missing.
-// Possible tutorial? https://blogs.itemis.com/de/in-5-minuten-zur-dsl-mit-transitiven-importen-in-xtext
-
-AltCharacteristicSelector:
 	ref=[characteristics::CharacteristicType] '.'
 	(((negated?='!')? literals+=[characteristics::EnumCharacteristicLiteral]) |
 	('[' literals+=[characteristics::EnumCharacteristicLiteral] 
@@ -57,9 +30,6 @@ AltCharacteristicSelector:
 Include:
 	'import' importURI=STRING
 ;
-
-// Original characteristics usage ends here
-// -----------------------------------------------------
 
 Constraint:
 	'constraint' name=STRING '{' rule=Rule '}';
@@ -95,6 +65,3 @@ StatementType:
 
 StatementModality:
 	name='NEVER';
-
-terminal ASSIGNEMENT_OPERATOR:
-	'<-';

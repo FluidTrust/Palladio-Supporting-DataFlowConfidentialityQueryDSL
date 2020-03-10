@@ -4,7 +4,6 @@
 package de.sebinside.dcp.dsl.dSL.impl;
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicSelector;
-import de.sebinside.dcp.dsl.dSL.CharacteristicsType;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
 import java.util.Collection;
@@ -14,12 +13,16 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType;
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,7 +50,7 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * @generated
    * @ordered
    */
-  protected CharacteristicsType ref;
+  protected CharacteristicType ref;
 
   /**
    * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
@@ -70,14 +73,14 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
   protected boolean negated = NEGATED_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getLiterals() <em>Literals</em>}' attribute list.
+   * The cached value of the '{@link #getLiterals() <em>Literals</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getLiterals()
    * @generated
    * @ordered
    */
-  protected EList<String> literals;
+  protected EList<EnumCharacteristicLiteral> literals;
 
   /**
    * The default value of the '{@link #isConjuncted() <em>Conjuncted</em>}' attribute.
@@ -126,12 +129,12 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * @generated
    */
   @Override
-  public CharacteristicsType getRef()
+  public CharacteristicType getRef()
   {
-    if (ref != null && ref.eIsProxy())
+    if (ref != null && ((EObject)ref).eIsProxy())
     {
       InternalEObject oldRef = (InternalEObject)ref;
-      ref = (CharacteristicsType)eResolveProxy(oldRef);
+      ref = (CharacteristicType)eResolveProxy(oldRef);
       if (ref != oldRef)
       {
         if (eNotificationRequired())
@@ -146,7 +149,7 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public CharacteristicsType basicGetRef()
+  public CharacteristicType basicGetRef()
   {
     return ref;
   }
@@ -157,9 +160,9 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * @generated
    */
   @Override
-  public void setRef(CharacteristicsType newRef)
+  public void setRef(CharacteristicType newRef)
   {
-    CharacteristicsType oldRef = ref;
+    CharacteristicType oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_SELECTOR__REF, oldRef, ref));
@@ -196,11 +199,11 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
    * @generated
    */
   @Override
-  public EList<String> getLiterals()
+  public EList<EnumCharacteristicLiteral> getLiterals()
   {
     if (literals == null)
     {
-      literals = new EDataTypeEList<String>(String.class, this, DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS);
+      literals = new EObjectResolvingEList<EnumCharacteristicLiteral>(EnumCharacteristicLiteral.class, this, DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS);
     }
     return literals;
   }
@@ -265,14 +268,14 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
     switch (featureID)
     {
       case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
-        setRef((CharacteristicsType)newValue);
+        setRef((CharacteristicType)newValue);
         return;
       case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
         setNegated((Boolean)newValue);
         return;
       case DSLPackage.CHARACTERISTIC_SELECTOR__LITERALS:
         getLiterals().clear();
-        getLiterals().addAll((Collection<? extends String>)newValue);
+        getLiterals().addAll((Collection<? extends EnumCharacteristicLiteral>)newValue);
         return;
       case DSLPackage.CHARACTERISTIC_SELECTOR__CONJUNCTED:
         setConjuncted((Boolean)newValue);
@@ -292,7 +295,7 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
     switch (featureID)
     {
       case DSLPackage.CHARACTERISTIC_SELECTOR__REF:
-        setRef((CharacteristicsType)null);
+        setRef((CharacteristicType)null);
         return;
       case DSLPackage.CHARACTERISTIC_SELECTOR__NEGATED:
         setNegated(NEGATED_EDEFAULT);
@@ -342,8 +345,6 @@ public class CharacteristicSelectorImpl extends MinimalEObjectImpl.Container imp
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (negated: ");
     result.append(negated);
-    result.append(", literals: ");
-    result.append(literals);
     result.append(", conjuncted: ");
     result.append(conjuncted);
     result.append(')');

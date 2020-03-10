@@ -4,13 +4,10 @@
 package de.sebinside.dcp.dsl.dSL.impl;
 
 import de.sebinside.dcp.dsl.dSL.AbstractElement;
-import de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector;
 import de.sebinside.dcp.dsl.dSL.AttributeClassSelector;
 import de.sebinside.dcp.dsl.dSL.AttributeSelector;
-import de.sebinside.dcp.dsl.dSL.AttributeType;
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass;
 import de.sebinside.dcp.dsl.dSL.CharacteristicSelector;
-import de.sebinside.dcp.dsl.dSL.CharacteristicsType;
 import de.sebinside.dcp.dsl.dSL.Constraint;
 import de.sebinside.dcp.dsl.dSL.DSLFactory;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
@@ -21,12 +18,10 @@ import de.sebinside.dcp.dsl.dSL.Include;
 import de.sebinside.dcp.dsl.dSL.Model;
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector;
 import de.sebinside.dcp.dsl.dSL.PropertySelector;
-import de.sebinside.dcp.dsl.dSL.PropertyType;
 import de.sebinside.dcp.dsl.dSL.Rule;
 import de.sebinside.dcp.dsl.dSL.Statement;
 import de.sebinside.dcp.dsl.dSL.StatementModality;
 import de.sebinside.dcp.dsl.dSL.StatementType;
-import de.sebinside.dcp.dsl.dSL.ValueSet;
 
 import de.uka.ipd.sdq.identifier.IdentifierPackage;
 
@@ -116,34 +111,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass valueSetEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass characteristicsTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass attributeTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass propertyTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass characteristicClassEClass = null;
 
   /**
@@ -152,13 +119,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   private EClass characteristicSelectorEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass altCharacteristicSelectorEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -395,94 +355,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   @Override
-  public EClass getValueSet()
-  {
-    return valueSetEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getValueSet_Name()
-  {
-    return (EAttribute)valueSetEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getValueSet_Members()
-  {
-    return (EAttribute)valueSetEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getCharacteristicsType()
-  {
-    return characteristicsTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getCharacteristicsType_Name()
-  {
-    return (EAttribute)characteristicsTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getCharacteristicsType_Valueset()
-  {
-    return (EReference)characteristicsTypeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getAttributeType()
-  {
-    return attributeTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getPropertyType()
-  {
-    return propertyTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getCharacteristicClass()
   {
     return characteristicClassEClass;
@@ -549,9 +421,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   @Override
-  public EAttribute getCharacteristicSelector_Literals()
+  public EReference getCharacteristicSelector_Literals()
   {
-    return (EAttribute)characteristicSelectorEClass.getEStructuralFeatures().get(2);
+    return (EReference)characteristicSelectorEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -563,61 +435,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
   public EAttribute getCharacteristicSelector_Conjuncted()
   {
     return (EAttribute)characteristicSelectorEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getAltCharacteristicSelector()
-  {
-    return altCharacteristicSelectorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getAltCharacteristicSelector_Ref()
-  {
-    return (EReference)altCharacteristicSelectorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getAltCharacteristicSelector_Negated()
-  {
-    return (EAttribute)altCharacteristicSelectorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getAltCharacteristicSelector_Literals()
-  {
-    return (EReference)altCharacteristicSelectorEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getAltCharacteristicSelector_Conjuncted()
-  {
-    return (EAttribute)altCharacteristicSelectorEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -945,18 +762,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     dataTypeEClass = createEClass(DATA_TYPE);
     createEAttribute(dataTypeEClass, DATA_TYPE__NAME);
 
-    valueSetEClass = createEClass(VALUE_SET);
-    createEAttribute(valueSetEClass, VALUE_SET__NAME);
-    createEAttribute(valueSetEClass, VALUE_SET__MEMBERS);
-
-    characteristicsTypeEClass = createEClass(CHARACTERISTICS_TYPE);
-    createEAttribute(characteristicsTypeEClass, CHARACTERISTICS_TYPE__NAME);
-    createEReference(characteristicsTypeEClass, CHARACTERISTICS_TYPE__VALUESET);
-
-    attributeTypeEClass = createEClass(ATTRIBUTE_TYPE);
-
-    propertyTypeEClass = createEClass(PROPERTY_TYPE);
-
     characteristicClassEClass = createEClass(CHARACTERISTIC_CLASS);
     createEAttribute(characteristicClassEClass, CHARACTERISTIC_CLASS__NAME);
     createEReference(characteristicClassEClass, CHARACTERISTIC_CLASS__MEMBERS);
@@ -964,14 +769,8 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     characteristicSelectorEClass = createEClass(CHARACTERISTIC_SELECTOR);
     createEReference(characteristicSelectorEClass, CHARACTERISTIC_SELECTOR__REF);
     createEAttribute(characteristicSelectorEClass, CHARACTERISTIC_SELECTOR__NEGATED);
-    createEAttribute(characteristicSelectorEClass, CHARACTERISTIC_SELECTOR__LITERALS);
+    createEReference(characteristicSelectorEClass, CHARACTERISTIC_SELECTOR__LITERALS);
     createEAttribute(characteristicSelectorEClass, CHARACTERISTIC_SELECTOR__CONJUNCTED);
-
-    altCharacteristicSelectorEClass = createEClass(ALT_CHARACTERISTIC_SELECTOR);
-    createEReference(altCharacteristicSelectorEClass, ALT_CHARACTERISTIC_SELECTOR__REF);
-    createEAttribute(altCharacteristicSelectorEClass, ALT_CHARACTERISTIC_SELECTOR__NEGATED);
-    createEReference(altCharacteristicSelectorEClass, ALT_CHARACTERISTIC_SELECTOR__LITERALS);
-    createEAttribute(altCharacteristicSelectorEClass, ALT_CHARACTERISTIC_SELECTOR__CONJUNCTED);
 
     includeEClass = createEClass(INCLUDE);
     createEAttribute(includeEClass, INCLUDE__IMPORT_URI);
@@ -1046,10 +845,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
     // Add supertypes to classes
     dataTypeEClass.getESuperTypes().add(this.getAbstractElement());
-    valueSetEClass.getESuperTypes().add(this.getAbstractElement());
-    characteristicsTypeEClass.getESuperTypes().add(this.getAbstractElement());
-    attributeTypeEClass.getESuperTypes().add(this.getCharacteristicsType());
-    propertyTypeEClass.getESuperTypes().add(this.getCharacteristicsType());
     characteristicClassEClass.getESuperTypes().add(this.getAbstractElement());
     includeEClass.getESuperTypes().add(this.getAbstractElement());
     constraintEClass.getESuperTypes().add(this.getAbstractElement());
@@ -1067,33 +862,15 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     initEClass(dataTypeEClass, DataType.class, "DataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDataType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, DataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(valueSetEClass, ValueSet.class, "ValueSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getValueSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ValueSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getValueSet_Members(), theEcorePackage.getEString(), "members", null, 0, -1, ValueSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(characteristicsTypeEClass, CharacteristicsType.class, "CharacteristicsType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCharacteristicsType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CharacteristicsType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCharacteristicsType_Valueset(), this.getValueSet(), null, "valueset", null, 0, 1, CharacteristicsType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(attributeTypeEClass, AttributeType.class, "AttributeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(propertyTypeEClass, PropertyType.class, "PropertyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(characteristicClassEClass, CharacteristicClass.class, "CharacteristicClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCharacteristicClass_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CharacteristicClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCharacteristicClass_Members(), this.getCharacteristicSelector(), null, "members", null, 0, -1, CharacteristicClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(characteristicSelectorEClass, CharacteristicSelector.class, "CharacteristicSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCharacteristicSelector_Ref(), this.getCharacteristicsType(), null, "ref", null, 0, 1, CharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCharacteristicSelector_Ref(), theCharacteristicsPackage.getCharacteristicType(), null, "ref", null, 0, 1, CharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCharacteristicSelector_Negated(), theEcorePackage.getEBoolean(), "negated", null, 0, 1, CharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCharacteristicSelector_Literals(), theEcorePackage.getEString(), "literals", null, 0, -1, CharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCharacteristicSelector_Literals(), theCharacteristicsPackage.getEnumCharacteristicLiteral(), null, "literals", null, 0, -1, CharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCharacteristicSelector_Conjuncted(), theEcorePackage.getEBoolean(), "conjuncted", null, 0, 1, CharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(altCharacteristicSelectorEClass, AltCharacteristicSelector.class, "AltCharacteristicSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAltCharacteristicSelector_Ref(), theCharacteristicsPackage.getCharacteristicType(), null, "ref", null, 0, 1, AltCharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAltCharacteristicSelector_Negated(), theEcorePackage.getEBoolean(), "negated", null, 0, 1, AltCharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAltCharacteristicSelector_Literals(), theCharacteristicsPackage.getEnumCharacteristicLiteral(), null, "literals", null, 0, -1, AltCharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAltCharacteristicSelector_Conjuncted(), theEcorePackage.getEBoolean(), "conjuncted", null, 0, 1, AltCharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(includeEClass, Include.class, "Include", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInclude_ImportURI(), theEcorePackage.getEString(), "importURI", null, 0, 1, Include.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

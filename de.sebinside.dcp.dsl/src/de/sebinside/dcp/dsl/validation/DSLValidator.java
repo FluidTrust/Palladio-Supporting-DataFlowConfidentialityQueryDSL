@@ -3,17 +3,6 @@
  */
 package de.sebinside.dcp.dsl.validation;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.validation.Check;
-
-import de.sebinside.dcp.dsl.dSL.CharacteristicSelector;
-import de.sebinside.dcp.dsl.dSL.CharacteristicsType;
-import de.sebinside.dcp.dsl.dSL.DSLPackage;
-import de.sebinside.dcp.dsl.dSL.Model;
-
 /**
  * This class contains custom validation rules.
  *
@@ -21,28 +10,5 @@ import de.sebinside.dcp.dsl.dSL.Model;
  * https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 public class DSLValidator extends AbstractDSLValidator {
-
-	public static final String INVALID_LITERAL = "invalidLiteral";
-	public static final String INVALID_REFERENCE = "invalidReference";
-
-	@Check
-	public void checkCharacteristicsLiteralReference(CharacteristicSelector selector) {
-		Model root = (Model) EcoreUtil2.getRootContainer(selector);
-		List<CharacteristicsType> references = root.getElements().stream().filter(x -> x instanceof CharacteristicsType)
-				.map(x -> (CharacteristicsType) x).filter(x -> x.equals(selector.getRef()))
-				.collect(Collectors.toList());
-
-		if (references.size() != 1) {
-			warning("Problem while retrieving referenced value set.", DSLPackage.Literals.CHARACTERISTIC_SELECTOR__REF,
-					INVALID_REFERENCE);
-		} else {
-			CharacteristicsType reference = references.get(0);
-			
-			if (!selector.getLiterals().stream().allMatch(x -> reference.getValueset().getMembers().contains(x))) {
-				error("At least one referenced literal was not found.", DSLPackage.Literals.CHARACTERISTIC_SELECTOR__LITERALS,
-						INVALID_LITERAL);
-			}
-		}
-	}
 
 }

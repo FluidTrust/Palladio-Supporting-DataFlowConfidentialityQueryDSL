@@ -13,16 +13,6 @@
     <genClasses ecoreClass="DSL.ecore#//DataType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//DataType/name"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//ValueSet">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//ValueSet/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//ValueSet/members"/>
-    </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//CharacteristicsType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicsType/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicsType/valueset"/>
-    </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//AttributeType"/>
-    <genClasses ecoreClass="DSL.ecore#//PropertyType"/>
     <genClasses ecoreClass="DSL.ecore#//CharacteristicClass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicClass/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicClass/members"/>
@@ -30,14 +20,8 @@
     <genClasses ecoreClass="DSL.ecore#//CharacteristicSelector">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicSelector/ref"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicSelector/negated"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicSelector/literals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicSelector/literals"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicSelector/conjuncted"/>
-    </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//AltCharacteristicSelector">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//AltCharacteristicSelector/ref"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//AltCharacteristicSelector/negated"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//AltCharacteristicSelector/literals"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//AltCharacteristicSelector/conjuncted"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Include">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Include/importURI"/>

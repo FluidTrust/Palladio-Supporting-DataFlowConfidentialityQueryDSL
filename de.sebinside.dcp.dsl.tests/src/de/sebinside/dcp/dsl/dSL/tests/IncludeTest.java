@@ -3,18 +3,18 @@
  */
 package de.sebinside.dcp.dsl.dSL.tests;
 
-import de.sebinside.dcp.dsl.dSL.AttributeType;
 import de.sebinside.dcp.dsl.dSL.DSLFactory;
+import de.sebinside.dcp.dsl.dSL.Include;
 
 import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Attribute Type</b></em>'.
+ * A test case for the model object '<em><b>Include</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class AttributeTypeTest extends CharacteristicsTypeTest {
+public class IncludeTest extends AbstractElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -22,28 +22,28 @@ public class AttributeTypeTest extends CharacteristicsTypeTest {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(AttributeTypeTest.class);
+		TestRunner.run(IncludeTest.class);
 	}
 
 	/**
-	 * Constructs a new Attribute Type test case with the given name.
+	 * Constructs a new Include test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AttributeTypeTest(String name) {
+	public IncludeTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Returns the fixture for this Attribute Type test case.
+	 * Returns the fixture for this Include test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	protected AttributeType getFixture() {
-		return (AttributeType)fixture;
+	protected Include getFixture() {
+		return (Include)fixture;
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class AttributeTypeTest extends CharacteristicsTypeTest {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(DSLFactory.eINSTANCE.createAttributeType());
+		setFixture(DSLFactory.eINSTANCE.createInclude());
 	}
 
 	/**
@@ -68,4 +68,4 @@ public class AttributeTypeTest extends CharacteristicsTypeTest {
 		setFixture(null);
 	}
 
-} //AttributeTypeTest
+} //IncludeTest

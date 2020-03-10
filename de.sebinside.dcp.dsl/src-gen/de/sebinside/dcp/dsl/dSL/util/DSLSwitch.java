@@ -95,40 +95,6 @@ public class DSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DSLPackage.VALUE_SET:
-      {
-        ValueSet valueSet = (ValueSet)theEObject;
-        T result = caseValueSet(valueSet);
-        if (result == null) result = caseAbstractElement(valueSet);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DSLPackage.CHARACTERISTICS_TYPE:
-      {
-        CharacteristicsType characteristicsType = (CharacteristicsType)theEObject;
-        T result = caseCharacteristicsType(characteristicsType);
-        if (result == null) result = caseAbstractElement(characteristicsType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DSLPackage.ATTRIBUTE_TYPE:
-      {
-        AttributeType attributeType = (AttributeType)theEObject;
-        T result = caseAttributeType(attributeType);
-        if (result == null) result = caseCharacteristicsType(attributeType);
-        if (result == null) result = caseAbstractElement(attributeType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DSLPackage.PROPERTY_TYPE:
-      {
-        PropertyType propertyType = (PropertyType)theEObject;
-        T result = casePropertyType(propertyType);
-        if (result == null) result = caseCharacteristicsType(propertyType);
-        if (result == null) result = caseAbstractElement(propertyType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case DSLPackage.CHARACTERISTIC_CLASS:
       {
         CharacteristicClass characteristicClass = (CharacteristicClass)theEObject;
@@ -141,13 +107,6 @@ public class DSLSwitch<T> extends Switch<T>
       {
         CharacteristicSelector characteristicSelector = (CharacteristicSelector)theEObject;
         T result = caseCharacteristicSelector(characteristicSelector);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DSLPackage.ALT_CHARACTERISTIC_SELECTOR:
-      {
-        AltCharacteristicSelector altCharacteristicSelector = (AltCharacteristicSelector)theEObject;
-        T result = caseAltCharacteristicSelector(altCharacteristicSelector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -294,70 +253,6 @@ public class DSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Value Set</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value Set</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseValueSet(ValueSet object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Characteristics Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Characteristics Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCharacteristicsType(CharacteristicsType object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Attribute Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Attribute Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAttributeType(AttributeType object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePropertyType(PropertyType object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Characteristic Class</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -385,22 +280,6 @@ public class DSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCharacteristicSelector(CharacteristicSelector object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Alt Characteristic Selector</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alt Characteristic Selector</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAltCharacteristicSelector(AltCharacteristicSelector object)
   {
     return null;
   }

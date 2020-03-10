@@ -7,6 +7,9 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType;
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Characteristic Selector</b></em>'.
@@ -33,12 +36,12 @@ public interface CharacteristicSelector extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(CharacteristicsType)
+   * @see #setRef(CharacteristicType)
    * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Ref()
    * @model
    * @generated
    */
-  CharacteristicsType getRef();
+  CharacteristicType getRef();
 
   /**
    * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getRef <em>Ref</em>}' reference.
@@ -48,7 +51,7 @@ public interface CharacteristicSelector extends EObject
    * @see #getRef()
    * @generated
    */
-  void setRef(CharacteristicsType value);
+  void setRef(CharacteristicType value);
 
   /**
    * Returns the value of the '<em><b>Negated</b></em>' attribute.
@@ -73,16 +76,16 @@ public interface CharacteristicSelector extends EObject
   void setNegated(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Literals</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Literals</b></em>' reference list.
+   * The list contents are of type {@link org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Literals</em>' attribute list.
+   * @return the value of the '<em>Literals</em>' reference list.
    * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Literals()
-   * @model unique="false"
+   * @model
    * @generated
    */
-  EList<String> getLiterals();
+  EList<EnumCharacteristicLiteral> getLiterals();
 
   /**
    * Returns the value of the '<em><b>Conjuncted</b></em>' attribute.

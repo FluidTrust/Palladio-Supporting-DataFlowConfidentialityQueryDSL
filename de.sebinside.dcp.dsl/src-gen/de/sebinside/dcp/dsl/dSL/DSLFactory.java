@@ -51,42 +51,6 @@ public interface DSLFactory extends EFactory
   DataType createDataType();
 
   /**
-   * Returns a new object of class '<em>Value Set</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Value Set</em>'.
-   * @generated
-   */
-  ValueSet createValueSet();
-
-  /**
-   * Returns a new object of class '<em>Characteristics Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Characteristics Type</em>'.
-   * @generated
-   */
-  CharacteristicsType createCharacteristicsType();
-
-  /**
-   * Returns a new object of class '<em>Attribute Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Attribute Type</em>'.
-   * @generated
-   */
-  AttributeType createAttributeType();
-
-  /**
-   * Returns a new object of class '<em>Property Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Type</em>'.
-   * @generated
-   */
-  PropertyType createPropertyType();
-
-  /**
    * Returns a new object of class '<em>Characteristic Class</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -103,15 +67,6 @@ public interface DSLFactory extends EFactory
    * @generated
    */
   CharacteristicSelector createCharacteristicSelector();
-
-  /**
-   * Returns a new object of class '<em>Alt Characteristic Selector</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alt Characteristic Selector</em>'.
-   * @generated
-   */
-  AltCharacteristicSelector createAltCharacteristicSelector();
 
   /**
    * Returns a new object of class '<em>Include</em>'.

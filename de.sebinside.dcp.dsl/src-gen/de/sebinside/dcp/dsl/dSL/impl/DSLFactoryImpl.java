@@ -68,13 +68,8 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
       case DSLPackage.MODEL: return createModel();
       case DSLPackage.ABSTRACT_ELEMENT: return createAbstractElement();
       case DSLPackage.DATA_TYPE: return createDataType();
-      case DSLPackage.VALUE_SET: return createValueSet();
-      case DSLPackage.CHARACTERISTICS_TYPE: return createCharacteristicsType();
-      case DSLPackage.ATTRIBUTE_TYPE: return createAttributeType();
-      case DSLPackage.PROPERTY_TYPE: return createPropertyType();
       case DSLPackage.CHARACTERISTIC_CLASS: return createCharacteristicClass();
       case DSLPackage.CHARACTERISTIC_SELECTOR: return createCharacteristicSelector();
-      case DSLPackage.ALT_CHARACTERISTIC_SELECTOR: return createAltCharacteristicSelector();
       case DSLPackage.INCLUDE: return createInclude();
       case DSLPackage.CONSTRAINT: return createConstraint();
       case DSLPackage.RULE: return createRule();
@@ -134,54 +129,6 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
    * @generated
    */
   @Override
-  public ValueSet createValueSet()
-  {
-    ValueSetImpl valueSet = new ValueSetImpl();
-    return valueSet;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public CharacteristicsType createCharacteristicsType()
-  {
-    CharacteristicsTypeImpl characteristicsType = new CharacteristicsTypeImpl();
-    return characteristicsType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public AttributeType createAttributeType()
-  {
-    AttributeTypeImpl attributeType = new AttributeTypeImpl();
-    return attributeType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public PropertyType createPropertyType()
-  {
-    PropertyTypeImpl propertyType = new PropertyTypeImpl();
-    return propertyType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public CharacteristicClass createCharacteristicClass()
   {
     CharacteristicClassImpl characteristicClass = new CharacteristicClassImpl();
@@ -198,18 +145,6 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
   {
     CharacteristicSelectorImpl characteristicSelector = new CharacteristicSelectorImpl();
     return characteristicSelector;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public AltCharacteristicSelector createAltCharacteristicSelector()
-  {
-    AltCharacteristicSelectorImpl altCharacteristicSelector = new AltCharacteristicSelectorImpl();
-    return altCharacteristicSelector;
   }
 
   /**

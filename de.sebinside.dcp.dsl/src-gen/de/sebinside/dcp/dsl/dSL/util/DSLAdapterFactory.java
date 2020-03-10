@@ -91,26 +91,6 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
         return createDataTypeAdapter();
       }
       @Override
-      public Adapter caseValueSet(ValueSet object)
-      {
-        return createValueSetAdapter();
-      }
-      @Override
-      public Adapter caseCharacteristicsType(CharacteristicsType object)
-      {
-        return createCharacteristicsTypeAdapter();
-      }
-      @Override
-      public Adapter caseAttributeType(AttributeType object)
-      {
-        return createAttributeTypeAdapter();
-      }
-      @Override
-      public Adapter casePropertyType(PropertyType object)
-      {
-        return createPropertyTypeAdapter();
-      }
-      @Override
       public Adapter caseCharacteristicClass(CharacteristicClass object)
       {
         return createCharacteristicClassAdapter();
@@ -119,11 +99,6 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCharacteristicSelector(CharacteristicSelector object)
       {
         return createCharacteristicSelectorAdapter();
-      }
-      @Override
-      public Adapter caseAltCharacteristicSelector(AltCharacteristicSelector object)
-      {
-        return createAltCharacteristicSelectorAdapter();
       }
       @Override
       public Adapter caseInclude(Include object)
@@ -253,66 +228,6 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.ValueSet <em>Value Set</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.sebinside.dcp.dsl.dSL.ValueSet
-   * @generated
-   */
-  public Adapter createValueSetAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicsType <em>Characteristics Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.sebinside.dcp.dsl.dSL.CharacteristicsType
-   * @generated
-   */
-  public Adapter createCharacteristicsTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.AttributeType <em>Attribute Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.sebinside.dcp.dsl.dSL.AttributeType
-   * @generated
-   */
-  public Adapter createAttributeTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.PropertyType <em>Property Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.sebinside.dcp.dsl.dSL.PropertyType
-   * @generated
-   */
-  public Adapter createPropertyTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicClass <em>Characteristic Class</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -338,21 +253,6 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCharacteristicSelectorAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector <em>Alt Characteristic Selector</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.sebinside.dcp.dsl.dSL.AltCharacteristicSelector
-   * @generated
-   */
-  public Adapter createAltCharacteristicSelectorAdapter()
   {
     return null;
   }

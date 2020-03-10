@@ -28,9 +28,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cElementsAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cElementsAbstractElementParserRuleCall_0 = (RuleCall)cElementsAssignment.eContents().get(0);
 		
-		//// Import approach, not working at all
-		////CharacteristicsType2 returns characteristics::CharacteristicType:
-		////	entityName = ID '.' literal = ID;
 		//Model:
 		//	elements+=AbstractElement*;
 		@Override public ParserRule getRule() { return rule; }
@@ -46,16 +43,14 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cIncludeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cDataTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cValueSetParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cCharacteristicsTypeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cCharacteristicClassParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cConstraintParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cCharacteristicClassParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cConstraintParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//AbstractElement:
-		//	Include | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
+		//	Include | DataType | CharacteristicClass | Constraint;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Include | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint
+		//Include | DataType | CharacteristicClass | Constraint
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Include
@@ -64,17 +59,11 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		//DataType
 		public RuleCall getDataTypeParserRuleCall_1() { return cDataTypeParserRuleCall_1; }
 		
-		//ValueSet
-		public RuleCall getValueSetParserRuleCall_2() { return cValueSetParserRuleCall_2; }
-		
-		//CharacteristicsType
-		public RuleCall getCharacteristicsTypeParserRuleCall_3() { return cCharacteristicsTypeParserRuleCall_3; }
-		
 		//CharacteristicClass
-		public RuleCall getCharacteristicClassParserRuleCall_4() { return cCharacteristicClassParserRuleCall_4; }
+		public RuleCall getCharacteristicClassParserRuleCall_2() { return cCharacteristicClassParserRuleCall_2; }
 		
 		//Constraint
-		public RuleCall getConstraintParserRuleCall_5() { return cConstraintParserRuleCall_5; }
+		public RuleCall getConstraintParserRuleCall_3() { return cConstraintParserRuleCall_3; }
 	}
 	public class DataTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.DataType");
@@ -98,162 +87,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-	}
-	public class ValueSetElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.ValueSet");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cValuesetKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cASSIGNEMENT_OPERATORTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Keyword cLeftSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cMembersAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMembersIDTerminalRuleCall_4_0 = (RuleCall)cMembersAssignment_4.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cCommaKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cMembersAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cMembersIDTerminalRuleCall_5_1_0 = (RuleCall)cMembersAssignment_5_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		
-		//ValueSet:
-		//	'valueset' name=ID ASSIGNEMENT_OPERATOR '[' members+=ID (',' members+=ID)* ']';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'valueset' name=ID ASSIGNEMENT_OPERATOR '[' members+=ID (',' members+=ID)* ']'
-		public Group getGroup() { return cGroup; }
-		
-		//'valueset'
-		public Keyword getValuesetKeyword_0() { return cValuesetKeyword_0; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-		
-		//ASSIGNEMENT_OPERATOR
-		public RuleCall getASSIGNEMENT_OPERATORTerminalRuleCall_2() { return cASSIGNEMENT_OPERATORTerminalRuleCall_2; }
-		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_3() { return cLeftSquareBracketKeyword_3; }
-		
-		//members+=ID
-		public Assignment getMembersAssignment_4() { return cMembersAssignment_4; }
-		
-		//ID
-		public RuleCall getMembersIDTerminalRuleCall_4_0() { return cMembersIDTerminalRuleCall_4_0; }
-		
-		//(',' members+=ID)*
-		public Group getGroup_5() { return cGroup_5; }
-		
-		//','
-		public Keyword getCommaKeyword_5_0() { return cCommaKeyword_5_0; }
-		
-		//members+=ID
-		public Assignment getMembersAssignment_5_1() { return cMembersAssignment_5_1; }
-		
-		//ID
-		public RuleCall getMembersIDTerminalRuleCall_5_1_0() { return cMembersIDTerminalRuleCall_5_1_0; }
-		
-		//']'
-		public Keyword getRightSquareBracketKeyword_6() { return cRightSquareBracketKeyword_6; }
-	}
-	public class CharacteristicsTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.CharacteristicsType");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cAttributeTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cPropertyTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//CharacteristicsType:
-		//	AttributeType | PropertyType;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//AttributeType | PropertyType
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//AttributeType
-		public RuleCall getAttributeTypeParserRuleCall_0() { return cAttributeTypeParserRuleCall_0; }
-		
-		//PropertyType
-		public RuleCall getPropertyTypeParserRuleCall_1() { return cPropertyTypeParserRuleCall_1; }
-	}
-	public class AttributeTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AttributeType");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cAttributeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cASSIGNEMENT_OPERATORTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Assignment cValuesetAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cValuesetValueSetCrossReference_3_0 = (CrossReference)cValuesetAssignment_3.eContents().get(0);
-		private final RuleCall cValuesetValueSetIDTerminalRuleCall_3_0_1 = (RuleCall)cValuesetValueSetCrossReference_3_0.eContents().get(1);
-		
-		//AttributeType:
-		//	'attribute' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'attribute' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet]
-		public Group getGroup() { return cGroup; }
-		
-		//'attribute'
-		public Keyword getAttributeKeyword_0() { return cAttributeKeyword_0; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-		
-		//ASSIGNEMENT_OPERATOR
-		public RuleCall getASSIGNEMENT_OPERATORTerminalRuleCall_2() { return cASSIGNEMENT_OPERATORTerminalRuleCall_2; }
-		
-		//valueset=[ValueSet]
-		public Assignment getValuesetAssignment_3() { return cValuesetAssignment_3; }
-		
-		//[ValueSet]
-		public CrossReference getValuesetValueSetCrossReference_3_0() { return cValuesetValueSetCrossReference_3_0; }
-		
-		//ID
-		public RuleCall getValuesetValueSetIDTerminalRuleCall_3_0_1() { return cValuesetValueSetIDTerminalRuleCall_3_0_1; }
-	}
-	public class PropertyTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.PropertyType");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPropertyKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cASSIGNEMENT_OPERATORTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Assignment cValuesetAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cValuesetValueSetCrossReference_3_0 = (CrossReference)cValuesetAssignment_3.eContents().get(0);
-		private final RuleCall cValuesetValueSetIDTerminalRuleCall_3_0_1 = (RuleCall)cValuesetValueSetCrossReference_3_0.eContents().get(1);
-		
-		//PropertyType:
-		//	'property' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'property' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet]
-		public Group getGroup() { return cGroup; }
-		
-		//'property'
-		public Keyword getPropertyKeyword_0() { return cPropertyKeyword_0; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-		
-		//ASSIGNEMENT_OPERATOR
-		public RuleCall getASSIGNEMENT_OPERATORTerminalRuleCall_2() { return cASSIGNEMENT_OPERATORTerminalRuleCall_2; }
-		
-		//valueset=[ValueSet]
-		public Assignment getValuesetAssignment_3() { return cValuesetAssignment_3; }
-		
-		//[ValueSet]
-		public CrossReference getValuesetValueSetCrossReference_3_0() { return cValuesetValueSetCrossReference_3_0; }
-		
-		//ID
-		public RuleCall getValuesetValueSetIDTerminalRuleCall_3_0_1() { return cValuesetValueSetIDTerminalRuleCall_3_0_1; }
 	}
 	public class CharacteristicClassElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.CharacteristicClass");
@@ -314,119 +147,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.CharacteristicSelector");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cRefAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cRefCharacteristicsTypeCrossReference_0_0 = (CrossReference)cRefAssignment_0.eContents().get(0);
-		private final RuleCall cRefCharacteristicsTypeIDTerminalRuleCall_0_0_1 = (RuleCall)cRefCharacteristicsTypeCrossReference_0_0.eContents().get(1);
-		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
-		private final Assignment cNegatedAssignment_2_0_0 = (Assignment)cGroup_2_0.eContents().get(0);
-		private final Keyword cNegatedExclamationMarkKeyword_2_0_0_0 = (Keyword)cNegatedAssignment_2_0_0.eContents().get(0);
-		private final Assignment cLiteralsAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
-		private final RuleCall cLiteralsIDTerminalRuleCall_2_0_1_0 = (RuleCall)cLiteralsAssignment_2_0_1.eContents().get(0);
-		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
-		private final Assignment cLiteralsAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
-		private final RuleCall cLiteralsIDTerminalRuleCall_2_1_1_0 = (RuleCall)cLiteralsAssignment_2_1_1.eContents().get(0);
-		private final Alternatives cAlternatives_2_1_2 = (Alternatives)cGroup_2_1.eContents().get(2);
-		private final Group cGroup_2_1_2_0 = (Group)cAlternatives_2_1_2.eContents().get(0);
-		private final Keyword cCommaKeyword_2_1_2_0_0 = (Keyword)cGroup_2_1_2_0.eContents().get(0);
-		private final Assignment cLiteralsAssignment_2_1_2_0_1 = (Assignment)cGroup_2_1_2_0.eContents().get(1);
-		private final RuleCall cLiteralsIDTerminalRuleCall_2_1_2_0_1_0 = (RuleCall)cLiteralsAssignment_2_1_2_0_1.eContents().get(0);
-		private final Group cGroup_2_1_2_1 = (Group)cAlternatives_2_1_2.eContents().get(1);
-		private final Assignment cConjunctedAssignment_2_1_2_1_0 = (Assignment)cGroup_2_1_2_1.eContents().get(0);
-		private final Keyword cConjunctedAmpersandKeyword_2_1_2_1_0_0 = (Keyword)cConjunctedAssignment_2_1_2_1_0.eContents().get(0);
-		private final Assignment cLiteralsAssignment_2_1_2_1_1 = (Assignment)cGroup_2_1_2_1.eContents().get(1);
-		private final RuleCall cLiteralsIDTerminalRuleCall_2_1_2_1_1_0 = (RuleCall)cLiteralsAssignment_2_1_2_1_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_2_1_3 = (Keyword)cGroup_2_1.eContents().get(3);
-		
-		//CharacteristicSelector:
-		//	ref=[CharacteristicsType] '.' (negated?='!'? literals+=ID | '[' literals+=ID ((',' literals+=ID)* | (conjuncted?='&'
-		//	literals+=ID)*) ']');
-		@Override public ParserRule getRule() { return rule; }
-		
-		//ref=[CharacteristicsType] '.' (negated?='!'? literals+=ID | '[' literals+=ID ((',' literals+=ID)* | (conjuncted?='&'
-		//literals+=ID)*) ']')
-		public Group getGroup() { return cGroup; }
-		
-		//ref=[CharacteristicsType]
-		public Assignment getRefAssignment_0() { return cRefAssignment_0; }
-		
-		//[CharacteristicsType]
-		public CrossReference getRefCharacteristicsTypeCrossReference_0_0() { return cRefCharacteristicsTypeCrossReference_0_0; }
-		
-		//ID
-		public RuleCall getRefCharacteristicsTypeIDTerminalRuleCall_0_0_1() { return cRefCharacteristicsTypeIDTerminalRuleCall_0_0_1; }
-		
-		//'.'
-		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
-		
-		//(negated?='!'? literals+=ID | '[' literals+=ID ((',' literals+=ID)* | (conjuncted?='&' literals+=ID)*) ']')
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
-		
-		//negated?='!'? literals+=ID
-		public Group getGroup_2_0() { return cGroup_2_0; }
-		
-		//negated?='!'?
-		public Assignment getNegatedAssignment_2_0_0() { return cNegatedAssignment_2_0_0; }
-		
-		//'!'
-		public Keyword getNegatedExclamationMarkKeyword_2_0_0_0() { return cNegatedExclamationMarkKeyword_2_0_0_0; }
-		
-		//literals+=ID
-		public Assignment getLiteralsAssignment_2_0_1() { return cLiteralsAssignment_2_0_1; }
-		
-		//ID
-		public RuleCall getLiteralsIDTerminalRuleCall_2_0_1_0() { return cLiteralsIDTerminalRuleCall_2_0_1_0; }
-		
-		//'[' literals+=ID ((',' literals+=ID)* | (conjuncted?='&' literals+=ID)*) ']'
-		public Group getGroup_2_1() { return cGroup_2_1; }
-		
-		//'['
-		public Keyword getLeftSquareBracketKeyword_2_1_0() { return cLeftSquareBracketKeyword_2_1_0; }
-		
-		//literals+=ID
-		public Assignment getLiteralsAssignment_2_1_1() { return cLiteralsAssignment_2_1_1; }
-		
-		//ID
-		public RuleCall getLiteralsIDTerminalRuleCall_2_1_1_0() { return cLiteralsIDTerminalRuleCall_2_1_1_0; }
-		
-		//((',' literals+=ID)* | (conjuncted?='&' literals+=ID)*)
-		public Alternatives getAlternatives_2_1_2() { return cAlternatives_2_1_2; }
-		
-		//(',' literals+=ID)*
-		public Group getGroup_2_1_2_0() { return cGroup_2_1_2_0; }
-		
-		//','
-		public Keyword getCommaKeyword_2_1_2_0_0() { return cCommaKeyword_2_1_2_0_0; }
-		
-		//literals+=ID
-		public Assignment getLiteralsAssignment_2_1_2_0_1() { return cLiteralsAssignment_2_1_2_0_1; }
-		
-		//ID
-		public RuleCall getLiteralsIDTerminalRuleCall_2_1_2_0_1_0() { return cLiteralsIDTerminalRuleCall_2_1_2_0_1_0; }
-		
-		//(conjuncted?='&' literals+=ID)*
-		public Group getGroup_2_1_2_1() { return cGroup_2_1_2_1; }
-		
-		//conjuncted?='&'
-		public Assignment getConjunctedAssignment_2_1_2_1_0() { return cConjunctedAssignment_2_1_2_1_0; }
-		
-		//'&'
-		public Keyword getConjunctedAmpersandKeyword_2_1_2_1_0_0() { return cConjunctedAmpersandKeyword_2_1_2_1_0_0; }
-		
-		//literals+=ID
-		public Assignment getLiteralsAssignment_2_1_2_1_1() { return cLiteralsAssignment_2_1_2_1_1; }
-		
-		//ID
-		public RuleCall getLiteralsIDTerminalRuleCall_2_1_2_1_1_0() { return cLiteralsIDTerminalRuleCall_2_1_2_1_1_0; }
-		
-		//']'
-		public Keyword getRightSquareBracketKeyword_2_1_3() { return cRightSquareBracketKeyword_2_1_3; }
-	}
-	public class AltCharacteristicSelectorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AltCharacteristicSelector");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cRefAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cRefCharacteristicTypeCrossReference_0_0 = (CrossReference)cRefAssignment_0.eContents().get(0);
 		private final RuleCall cRefCharacteristicTypeIDTerminalRuleCall_0_0_1 = (RuleCall)cRefCharacteristicTypeCrossReference_0_0.eContents().get(1);
 		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -456,11 +176,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLiteralsEnumCharacteristicLiteralIDTerminalRuleCall_2_1_2_1_1_0_1 = (RuleCall)cLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_1_1_0.eContents().get(1);
 		private final Keyword cRightSquareBracketKeyword_2_1_3 = (Keyword)cGroup_2_1.eContents().get(3);
 		
-		//// Original characteristics usage starts here
-		//// -----------------------------------------------------
-		//// Current state: Scoping is missing.
-		//// Possible tutorial? https://blogs.itemis.com/de/in-5-minuten-zur-dsl-mit-transitiven-importen-in-xtext
-		//AltCharacteristicSelector:
+		//CharacteristicSelector:
 		//	ref=[characteristics::CharacteristicType] '.' (negated?='!'? literals+=[characteristics::EnumCharacteristicLiteral] |
 		//	'[' literals+=[characteristics::EnumCharacteristicLiteral] ((','
 		//	literals+=[characteristics::EnumCharacteristicLiteral])*
@@ -599,8 +315,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRuleRuleParserRuleCall_3_0 = (RuleCall)cRuleAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//// Original characteristics usage ends here
-		//// -----------------------------------------------------
 		//Constraint:
 		//	'constraint' name=STRING '{' rule=Rule '}';
 		@Override public ParserRule getRule() { return rule; }
@@ -899,13 +613,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final ModelElements pModel;
 	private final AbstractElementElements pAbstractElement;
 	private final DataTypeElements pDataType;
-	private final ValueSetElements pValueSet;
-	private final CharacteristicsTypeElements pCharacteristicsType;
-	private final AttributeTypeElements pAttributeType;
-	private final PropertyTypeElements pPropertyType;
 	private final CharacteristicClassElements pCharacteristicClass;
 	private final CharacteristicSelectorElements pCharacteristicSelector;
-	private final AltCharacteristicSelectorElements pAltCharacteristicSelector;
 	private final IncludeElements pInclude;
 	private final ConstraintElements pConstraint;
 	private final RuleElements pRule;
@@ -918,7 +627,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final StatementElements pStatement;
 	private final StatementTypeElements pStatementType;
 	private final StatementModalityElements pStatementModality;
-	private final TerminalRule tASSIGNEMENT_OPERATOR;
 	
 	private final Grammar grammar;
 	
@@ -932,13 +640,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pModel = new ModelElements();
 		this.pAbstractElement = new AbstractElementElements();
 		this.pDataType = new DataTypeElements();
-		this.pValueSet = new ValueSetElements();
-		this.pCharacteristicsType = new CharacteristicsTypeElements();
-		this.pAttributeType = new AttributeTypeElements();
-		this.pPropertyType = new PropertyTypeElements();
 		this.pCharacteristicClass = new CharacteristicClassElements();
 		this.pCharacteristicSelector = new CharacteristicSelectorElements();
-		this.pAltCharacteristicSelector = new AltCharacteristicSelectorElements();
 		this.pInclude = new IncludeElements();
 		this.pConstraint = new ConstraintElements();
 		this.pRule = new RuleElements();
@@ -951,7 +654,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pStatement = new StatementElements();
 		this.pStatementType = new StatementTypeElements();
 		this.pStatementModality = new StatementModalityElements();
-		this.tASSIGNEMENT_OPERATOR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.ASSIGNEMENT_OPERATOR");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -981,9 +683,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//// Import approach, not working at all
-	////CharacteristicsType2 returns characteristics::CharacteristicType:
-	////	entityName = ID '.' literal = ID;
 	//Model:
 	//	elements+=AbstractElement*;
 	public ModelElements getModelAccess() {
@@ -995,7 +694,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AbstractElement:
-	//	Include | DataType | ValueSet | CharacteristicsType | CharacteristicClass | Constraint;
+	//	Include | DataType | CharacteristicClass | Constraint;
 	public AbstractElementElements getAbstractElementAccess() {
 		return pAbstractElement;
 	}
@@ -1014,46 +713,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getDataTypeAccess().getRule();
 	}
 	
-	//ValueSet:
-	//	'valueset' name=ID ASSIGNEMENT_OPERATOR '[' members+=ID (',' members+=ID)* ']';
-	public ValueSetElements getValueSetAccess() {
-		return pValueSet;
-	}
-	
-	public ParserRule getValueSetRule() {
-		return getValueSetAccess().getRule();
-	}
-	
-	//CharacteristicsType:
-	//	AttributeType | PropertyType;
-	public CharacteristicsTypeElements getCharacteristicsTypeAccess() {
-		return pCharacteristicsType;
-	}
-	
-	public ParserRule getCharacteristicsTypeRule() {
-		return getCharacteristicsTypeAccess().getRule();
-	}
-	
-	//AttributeType:
-	//	'attribute' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
-	public AttributeTypeElements getAttributeTypeAccess() {
-		return pAttributeType;
-	}
-	
-	public ParserRule getAttributeTypeRule() {
-		return getAttributeTypeAccess().getRule();
-	}
-	
-	//PropertyType:
-	//	'property' name=ID ASSIGNEMENT_OPERATOR valueset=[ValueSet];
-	public PropertyTypeElements getPropertyTypeAccess() {
-		return pPropertyType;
-	}
-	
-	public ParserRule getPropertyTypeRule() {
-		return getPropertyTypeAccess().getRule();
-	}
-	
 	//CharacteristicClass:
 	//	'class' name=ID '{' members+=CharacteristicSelector (',' members+=CharacteristicSelector)* '}';
 	public CharacteristicClassElements getCharacteristicClassAccess() {
@@ -1065,31 +724,16 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//CharacteristicSelector:
-	//	ref=[CharacteristicsType] '.' (negated?='!'? literals+=ID | '[' literals+=ID ((',' literals+=ID)* | (conjuncted?='&'
-	//	literals+=ID)*) ']');
+	//	ref=[characteristics::CharacteristicType] '.' (negated?='!'? literals+=[characteristics::EnumCharacteristicLiteral] |
+	//	'[' literals+=[characteristics::EnumCharacteristicLiteral] ((','
+	//	literals+=[characteristics::EnumCharacteristicLiteral])*
+	//	| (conjuncted?='&' literals+=[characteristics::EnumCharacteristicLiteral])*) ']');
 	public CharacteristicSelectorElements getCharacteristicSelectorAccess() {
 		return pCharacteristicSelector;
 	}
 	
 	public ParserRule getCharacteristicSelectorRule() {
 		return getCharacteristicSelectorAccess().getRule();
-	}
-	
-	//// Original characteristics usage starts here
-	//// -----------------------------------------------------
-	//// Current state: Scoping is missing.
-	//// Possible tutorial? https://blogs.itemis.com/de/in-5-minuten-zur-dsl-mit-transitiven-importen-in-xtext
-	//AltCharacteristicSelector:
-	//	ref=[characteristics::CharacteristicType] '.' (negated?='!'? literals+=[characteristics::EnumCharacteristicLiteral] |
-	//	'[' literals+=[characteristics::EnumCharacteristicLiteral] ((','
-	//	literals+=[characteristics::EnumCharacteristicLiteral])*
-	//	| (conjuncted?='&' literals+=[characteristics::EnumCharacteristicLiteral])*) ']');
-	public AltCharacteristicSelectorElements getAltCharacteristicSelectorAccess() {
-		return pAltCharacteristicSelector;
-	}
-	
-	public ParserRule getAltCharacteristicSelectorRule() {
-		return getAltCharacteristicSelectorAccess().getRule();
 	}
 	
 	//Include:
@@ -1102,8 +746,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getIncludeAccess().getRule();
 	}
 	
-	//// Original characteristics usage ends here
-	//// -----------------------------------------------------
 	//Constraint:
 	//	'constraint' name=STRING '{' rule=Rule '}';
 	public ConstraintElements getConstraintAccess() {
@@ -1214,12 +856,6 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getStatementModalityRule() {
 		return getStatementModalityAccess().getRule();
-	}
-	
-	//terminal ASSIGNEMENT_OPERATOR:
-	//	'<-';
-	public TerminalRule getASSIGNEMENT_OPERATORRule() {
-		return tASSIGNEMENT_OPERATOR;
 	}
 	
 	//terminal ID:

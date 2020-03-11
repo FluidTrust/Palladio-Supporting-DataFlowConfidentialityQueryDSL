@@ -23,25 +23,25 @@ package de.sebinside.dcp.dsl.dSL;
 public interface AttributeClassSelector extends DataSelector
 {
   /**
-   * Returns the value of the '<em><b>Ref</b></em>' reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(CharacteristicClass)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getAttributeClassSelector_Ref()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Ref</em>' reference.
+	 * @see #setRef(CharacteristicClass)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getAttributeClassSelector_Ref()
+	 * @model
+	 * @generated
+	 */
   CharacteristicClass getRef();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector#getRef <em>Ref</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.AttributeClassSelector#getRef <em>Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' reference.
-   * @see #getRef()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Ref</em>' reference.
+	 * @see #getRef()
+	 * @generated
+	 */
   void setRef(CharacteristicClass value);
 
 } // AttributeClassSelector

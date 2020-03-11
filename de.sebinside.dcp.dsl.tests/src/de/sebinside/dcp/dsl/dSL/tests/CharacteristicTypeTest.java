@@ -3,18 +3,18 @@
  */
 package de.sebinside.dcp.dsl.dSL.tests;
 
+import de.sebinside.dcp.dsl.dSL.CharacteristicType;
 import de.sebinside.dcp.dsl.dSL.DSLFactory;
-import de.sebinside.dcp.dsl.dSL.DataType;
 
 import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Data Type</b></em>'.
+ * A test case for the model object '<em><b>Characteristic Type</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class DataTypeTest extends AbstractElementTest {
+public class CharacteristicTypeTest extends AbstractElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -22,28 +22,28 @@ public class DataTypeTest extends AbstractElementTest {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(DataTypeTest.class);
+		TestRunner.run(CharacteristicTypeTest.class);
 	}
 
 	/**
-	 * Constructs a new Data Type test case with the given name.
+	 * Constructs a new Characteristic Type test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataTypeTest(String name) {
+	public CharacteristicTypeTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Returns the fixture for this Data Type test case.
+	 * Returns the fixture for this Characteristic Type test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	protected DataType getFixture() {
-		return (DataType)fixture;
+	protected CharacteristicType getFixture() {
+		return (CharacteristicType)fixture;
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class DataTypeTest extends AbstractElementTest {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(DSLFactory.eINSTANCE.createDataType());
+		setFixture(DSLFactory.eINSTANCE.createCharacteristicType());
 	}
 
 	/**
@@ -68,4 +68,4 @@ public class DataTypeTest extends AbstractElementTest {
 		setFixture(null);
 	}
 
-} //DataTypeTest
+} //CharacteristicTypeTest

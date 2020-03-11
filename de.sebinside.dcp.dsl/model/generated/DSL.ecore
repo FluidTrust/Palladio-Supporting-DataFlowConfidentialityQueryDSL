@@ -6,16 +6,17 @@
         eType="#//AbstractElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DataType" eSuperTypes="#//AbstractElement">
+  <eClassifiers xsi:type="ecore:EClass" name="CharacteristicType" eSuperTypes="#//AbstractElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics/CharacteristicType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CharacteristicClass" eSuperTypes="#//AbstractElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//CharacteristicSelector" containment="true"/>
+        eType="#//CharacteristicTypeSelector" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CharacteristicSelector">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics/CharacteristicType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CharacteristicTypeSelector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CharacteristicType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="negated" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="literals" unique="false"
         upperBound="-1" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics/EnumCharacteristicLiteral"/>
@@ -38,7 +39,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSelector"/>
   <eClassifiers xsi:type="ecore:EClass" name="AttributeSelector" eSuperTypes="#//DataSelector">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CharacteristicSelector"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CharacteristicTypeSelector"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AttributeClassSelector" eSuperTypes="#//DataSelector">
@@ -46,7 +47,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DestinationSelector"/>
   <eClassifiers xsi:type="ecore:EClass" name="PropertySelector" eSuperTypes="#//DestinationSelector">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CharacteristicSelector"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CharacteristicTypeSelector"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyClassSelector" eSuperTypes="#//DestinationSelector">

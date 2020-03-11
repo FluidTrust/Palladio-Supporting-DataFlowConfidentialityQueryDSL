@@ -122,11 +122,11 @@ ruleAbstractElement returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getAbstractElementAccess().getDataTypeParserRuleCall_1());
+			newCompositeNode(grammarAccess.getAbstractElementAccess().getCharacteristicTypeParserRuleCall_1());
 		}
-		this_DataType_1=ruleDataType
+		this_CharacteristicType_1=ruleCharacteristicType
 		{
-			$current = $this_DataType_1.current;
+			$current = $this_CharacteristicType_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
@@ -150,15 +150,15 @@ ruleAbstractElement returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleDataType
-entryRuleDataType returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getDataTypeRule()); }
-	iv_ruleDataType=ruleDataType
-	{ $current=$iv_ruleDataType.current; }
+// Entry rule entryRuleCharacteristicType
+entryRuleCharacteristicType returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCharacteristicTypeRule()); }
+	iv_ruleCharacteristicType=ruleCharacteristicType
+	{ $current=$iv_ruleCharacteristicType.current; }
 	EOF;
 
-// Rule DataType
-ruleDataType returns [EObject current=null]
+// Rule CharacteristicType
+ruleCharacteristicType returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -166,25 +166,42 @@ ruleDataType returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='datatype'
+		otherlv_0='type'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getDataTypeAccess().getDatatypeKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getCharacteristicTypeAccess().getTypeKeyword_0());
 		}
 		(
 			(
 				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getDataTypeAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getCharacteristicTypeAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getDataTypeRule());
+						$current = createModelElement(grammarAccess.getCharacteristicTypeRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"name",
 						lv_name_1_0,
 						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2=':'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getCharacteristicTypeAccess().getColonKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCharacteristicTypeRule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeCrossReference_3_0());
 				}
 			)
 		)
@@ -236,9 +253,9 @@ ruleCharacteristicClass returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getCharacteristicClassAccess().getMembersCharacteristicSelectorParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getCharacteristicClassAccess().getMembersCharacteristicTypeSelectorParserRuleCall_3_0());
 				}
-				lv_members_3_0=ruleCharacteristicSelector
+				lv_members_3_0=ruleCharacteristicTypeSelector
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getCharacteristicClassRule());
@@ -247,7 +264,7 @@ ruleCharacteristicClass returns [EObject current=null]
 						$current,
 						"members",
 						lv_members_3_0,
-						"de.sebinside.dcp.dsl.DSL.CharacteristicSelector");
+						"de.sebinside.dcp.dsl.DSL.CharacteristicTypeSelector");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -260,9 +277,9 @@ ruleCharacteristicClass returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getCharacteristicClassAccess().getMembersCharacteristicSelectorParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getCharacteristicClassAccess().getMembersCharacteristicTypeSelectorParserRuleCall_4_1_0());
 					}
-					lv_members_5_0=ruleCharacteristicSelector
+					lv_members_5_0=ruleCharacteristicTypeSelector
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getCharacteristicClassRule());
@@ -271,7 +288,7 @@ ruleCharacteristicClass returns [EObject current=null]
 							$current,
 							"members",
 							lv_members_5_0,
-							"de.sebinside.dcp.dsl.DSL.CharacteristicSelector");
+							"de.sebinside.dcp.dsl.DSL.CharacteristicTypeSelector");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -284,15 +301,15 @@ ruleCharacteristicClass returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleCharacteristicSelector
-entryRuleCharacteristicSelector returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getCharacteristicSelectorRule()); }
-	iv_ruleCharacteristicSelector=ruleCharacteristicSelector
-	{ $current=$iv_ruleCharacteristicSelector.current; }
+// Entry rule entryRuleCharacteristicTypeSelector
+entryRuleCharacteristicTypeSelector returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCharacteristicTypeSelectorRule()); }
+	iv_ruleCharacteristicTypeSelector=ruleCharacteristicTypeSelector
+	{ $current=$iv_ruleCharacteristicTypeSelector.current; }
 	EOF;
 
-// Rule CharacteristicSelector
-ruleCharacteristicSelector returns [EObject current=null]
+// Rule CharacteristicTypeSelector
+ruleCharacteristicTypeSelector returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -304,18 +321,18 @@ ruleCharacteristicSelector returns [EObject current=null]
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getCharacteristicSelectorRule());
+						$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
 					}
 				}
 				otherlv_0=RULE_ID
 				{
-					newLeafNode(otherlv_0, grammarAccess.getCharacteristicSelectorAccess().getRefCharacteristicTypeCrossReference_0_0());
+					newLeafNode(otherlv_0, grammarAccess.getCharacteristicTypeSelectorAccess().getRefCharacteristicTypeCrossReference_0_0());
 				}
 			)
 		)
 		otherlv_1='.'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getCharacteristicSelectorAccess().getFullStopKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getCharacteristicTypeSelectorAccess().getFullStopKeyword_1());
 		}
 		(
 			(
@@ -323,11 +340,11 @@ ruleCharacteristicSelector returns [EObject current=null]
 					(
 						lv_negated_2_0='!'
 						{
-							newLeafNode(lv_negated_2_0, grammarAccess.getCharacteristicSelectorAccess().getNegatedExclamationMarkKeyword_2_0_0_0());
+							newLeafNode(lv_negated_2_0, grammarAccess.getCharacteristicTypeSelectorAccess().getNegatedExclamationMarkKeyword_2_0_0_0());
 						}
 						{
 							if ($current==null) {
-								$current = createModelElement(grammarAccess.getCharacteristicSelectorRule());
+								$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
 							}
 							setWithLastConsumed($current, "negated", true, "!");
 						}
@@ -337,12 +354,12 @@ ruleCharacteristicSelector returns [EObject current=null]
 					(
 						{
 							if ($current==null) {
-								$current = createModelElement(grammarAccess.getCharacteristicSelectorRule());
+								$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
 							}
 						}
 						otherlv_3=RULE_ID
 						{
-							newLeafNode(otherlv_3, grammarAccess.getCharacteristicSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_0_1_0());
+							newLeafNode(otherlv_3, grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_0_1_0());
 						}
 					)
 				)
@@ -351,18 +368,18 @@ ruleCharacteristicSelector returns [EObject current=null]
 			(
 				otherlv_4='['
 				{
-					newLeafNode(otherlv_4, grammarAccess.getCharacteristicSelectorAccess().getLeftSquareBracketKeyword_2_1_0());
+					newLeafNode(otherlv_4, grammarAccess.getCharacteristicTypeSelectorAccess().getLeftSquareBracketKeyword_2_1_0());
 				}
 				(
 					(
 						{
 							if ($current==null) {
-								$current = createModelElement(grammarAccess.getCharacteristicSelectorRule());
+								$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
 							}
 						}
 						otherlv_5=RULE_ID
 						{
-							newLeafNode(otherlv_5, grammarAccess.getCharacteristicSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_1_1_0());
+							newLeafNode(otherlv_5, grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_1_1_0());
 						}
 					)
 				)
@@ -370,18 +387,18 @@ ruleCharacteristicSelector returns [EObject current=null]
 					(
 						otherlv_6=','
 						{
-							newLeafNode(otherlv_6, grammarAccess.getCharacteristicSelectorAccess().getCommaKeyword_2_1_2_0_0());
+							newLeafNode(otherlv_6, grammarAccess.getCharacteristicTypeSelectorAccess().getCommaKeyword_2_1_2_0_0());
 						}
 						(
 							(
 								{
 									if ($current==null) {
-										$current = createModelElement(grammarAccess.getCharacteristicSelectorRule());
+										$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
 									}
 								}
 								otherlv_7=RULE_ID
 								{
-									newLeafNode(otherlv_7, grammarAccess.getCharacteristicSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_0_1_0());
+									newLeafNode(otherlv_7, grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_0_1_0());
 								}
 							)
 						)
@@ -392,11 +409,11 @@ ruleCharacteristicSelector returns [EObject current=null]
 							(
 								lv_conjuncted_8_0='&'
 								{
-									newLeafNode(lv_conjuncted_8_0, grammarAccess.getCharacteristicSelectorAccess().getConjunctedAmpersandKeyword_2_1_2_1_0_0());
+									newLeafNode(lv_conjuncted_8_0, grammarAccess.getCharacteristicTypeSelectorAccess().getConjunctedAmpersandKeyword_2_1_2_1_0_0());
 								}
 								{
 									if ($current==null) {
-										$current = createModelElement(grammarAccess.getCharacteristicSelectorRule());
+										$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
 									}
 									setWithLastConsumed($current, "conjuncted", true, "&");
 								}
@@ -406,12 +423,12 @@ ruleCharacteristicSelector returns [EObject current=null]
 							(
 								{
 									if ($current==null) {
-										$current = createModelElement(grammarAccess.getCharacteristicSelectorRule());
+										$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
 									}
 								}
 								otherlv_9=RULE_ID
 								{
-									newLeafNode(otherlv_9, grammarAccess.getCharacteristicSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_1_1_0());
+									newLeafNode(otherlv_9, grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_1_1_0());
 								}
 							)
 						)
@@ -419,7 +436,7 @@ ruleCharacteristicSelector returns [EObject current=null]
 				)
 				otherlv_10=']'
 				{
-					newLeafNode(otherlv_10, grammarAccess.getCharacteristicSelectorAccess().getRightSquareBracketKeyword_2_1_3());
+					newLeafNode(otherlv_10, grammarAccess.getCharacteristicTypeSelectorAccess().getRightSquareBracketKeyword_2_1_3());
 				}
 			)
 		)
@@ -720,9 +737,9 @@ ruleAttributeSelector returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAttributeSelectorAccess().getRefCharacteristicSelectorParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getAttributeSelectorAccess().getRefCharacteristicTypeSelectorParserRuleCall_1_0());
 				}
-				lv_ref_1_0=ruleCharacteristicSelector
+				lv_ref_1_0=ruleCharacteristicTypeSelector
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAttributeSelectorRule());
@@ -731,7 +748,7 @@ ruleAttributeSelector returns [EObject current=null]
 						$current,
 						"ref",
 						lv_ref_1_0,
-						"de.sebinside.dcp.dsl.DSL.CharacteristicSelector");
+						"de.sebinside.dcp.dsl.DSL.CharacteristicTypeSelector");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -834,9 +851,9 @@ rulePropertySelector returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPropertySelectorAccess().getRefCharacteristicSelectorParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getPropertySelectorAccess().getRefCharacteristicTypeSelectorParserRuleCall_1_0());
 				}
-				lv_ref_1_0=ruleCharacteristicSelector
+				lv_ref_1_0=ruleCharacteristicTypeSelector
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPropertySelectorRule());
@@ -845,7 +862,7 @@ rulePropertySelector returns [EObject current=null]
 						$current,
 						"ref",
 						lv_ref_1_0,
-						"de.sebinside.dcp.dsl.DSL.CharacteristicSelector");
+						"de.sebinside.dcp.dsl.DSL.CharacteristicTypeSelector");
 					afterParserOrEnumRuleCall();
 				}
 			)

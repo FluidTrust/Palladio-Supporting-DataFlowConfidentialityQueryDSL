@@ -15,7 +15,7 @@ import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.E
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicType;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Enumeration;
 
-import de.sebinside.dcp.dsl.dSL.CharacteristicSelector;
+import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
 /**
@@ -29,10 +29,10 @@ public class DSLScopeProvider extends AbstractDSLScopeProvider {
 	@Override
 	public IScope getScope(EObject context, EReference reference) {
 
-		if (context instanceof CharacteristicSelector
-				&& reference == DSLPackage.Literals.CHARACTERISTIC_SELECTOR__LITERALS) {
+		if (context instanceof CharacteristicTypeSelector
+						&& reference == DSLPackage.Literals.CHARACTERISTIC_TYPE_SELECTOR__LITERALS) {
 
-			CharacteristicType type = ((CharacteristicSelector) context).getRef();
+			CharacteristicType type = ((CharacteristicTypeSelector) context).getRef().getRef();
 
 			// The DSL is intended to only work with EnumCharacteristicType
 			if (type instanceof EnumCharacteristicType) {

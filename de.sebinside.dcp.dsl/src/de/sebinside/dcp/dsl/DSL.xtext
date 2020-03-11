@@ -10,16 +10,16 @@ Model:
 	(elements+=AbstractElement)*;
 
 AbstractElement:
-	Include | DataType | CharacteristicClass | Constraint;
+	Include | CharacteristicType | CharacteristicClass | Constraint;
 
-DataType:
-	'datatype' name=ID;
+CharacteristicType:
+	'type' name=ID ':' ref=[characteristics::CharacteristicType];
 
 CharacteristicClass:
-	'class' name=ID '{' members+=CharacteristicSelector (',' members+=CharacteristicSelector)* '}';
+	'class' name=ID '{' members+=CharacteristicTypeSelector (',' members+=CharacteristicTypeSelector)* '}';
 
-CharacteristicSelector:
-	ref=[characteristics::CharacteristicType] '.'
+CharacteristicTypeSelector:
+	ref=[CharacteristicType] '.'
 	(((negated?='!')? literals+=[characteristics::EnumCharacteristicLiteral]) |
 	('[' literals+=[characteristics::EnumCharacteristicLiteral] 
 		((',' literals+=[characteristics::EnumCharacteristicLiteral])* 
@@ -43,7 +43,7 @@ DataSelector:
 	AttributeSelector | AttributeClassSelector;
 
 AttributeSelector:
-	'data.attribute.' ref=CharacteristicSelector;
+	'data.attribute.' ref=CharacteristicTypeSelector;
 
 AttributeClassSelector:
 	'data.class.' ref=[CharacteristicClass];
@@ -52,7 +52,7 @@ DestinationSelector:
 	PropertySelector | PropertyClassSelector;
 
 PropertySelector:
-	'node.property.' ref=CharacteristicSelector;
+	'node.property.' ref=CharacteristicTypeSelector;
 
 PropertyClassSelector:
 	'node.class.' ref=[CharacteristicClass];

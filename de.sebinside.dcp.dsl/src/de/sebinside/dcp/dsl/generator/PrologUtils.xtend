@@ -15,7 +15,7 @@ class PrologUtils {
 
 	def static SimpleFact(String head, String argument) {
 		val fact = PrologFactory.eINSTANCE.createFact
-		val factInternals = CompoundTerm(head, CompoundTerm(argument))
+		val factInternals = CompoundTerm(head, AtomicQuotedString(argument))
 		fact.head = factInternals
 		fact
 	}

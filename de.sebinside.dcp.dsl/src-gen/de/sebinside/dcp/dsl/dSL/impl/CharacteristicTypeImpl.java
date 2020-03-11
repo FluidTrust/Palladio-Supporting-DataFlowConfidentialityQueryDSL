@@ -3,40 +3,32 @@
  */
 package de.sebinside.dcp.dsl.dSL.impl;
 
-import de.sebinside.dcp.dsl.dSL.CharacteristicClass;
-import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector;
+import de.sebinside.dcp.dsl.dSL.CharacteristicType;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Characteristic Class</b></em>'.
+ * An implementation of the model object '<em><b>Characteristic Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicClassImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicClassImpl#getMembers <em>Members</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicTypeImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CharacteristicClassImpl extends AbstractElementImpl implements CharacteristicClass
+public class CharacteristicTypeImpl extends AbstractElementImpl implements CharacteristicType
 {
   /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -59,21 +51,21 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
   protected String name = NAME_EDEFAULT;
 
   /**
-	 * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
+	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getMembers()
+	 * @see #getRef()
 	 * @generated
 	 * @ordered
 	 */
-  protected EList<CharacteristicTypeSelector> members;
+  protected org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType ref;
 
   /**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  protected CharacteristicClassImpl()
+  protected CharacteristicTypeImpl()
   {
 		super();
 	}
@@ -86,7 +78,7 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.CHARACTERISTIC_CLASS;
+		return DSLPackage.Literals.CHARACTERISTIC_TYPE;
 	}
 
   /**
@@ -111,7 +103,7 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_CLASS__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE__NAME, oldName, name));
 	}
 
   /**
@@ -120,12 +112,27 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
 	 * @generated
 	 */
   @Override
-  public EList<CharacteristicTypeSelector> getMembers()
+  public org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType getRef()
   {
-		if (members == null) {
-			members = new EObjectContainmentEList<CharacteristicTypeSelector>(CharacteristicTypeSelector.class, this, DSLPackage.CHARACTERISTIC_CLASS__MEMBERS);
+		if (ref != null && ((EObject)ref).eIsProxy()) {
+			InternalEObject oldRef = (InternalEObject)ref;
+			ref = (org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType)eResolveProxy(oldRef);
+			if (ref != oldRef) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTIC_TYPE__REF, oldRef, ref));
+			}
 		}
-		return members;
+		return ref;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType basicGetRef()
+  {
+		return ref;
 	}
 
   /**
@@ -134,13 +141,12 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
 	 * @generated
 	 */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public void setRef(org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType newRef)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-				return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType oldRef = ref;
+		ref = newRef;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE__REF, oldRef, ref));
 	}
 
   /**
@@ -152,10 +158,11 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
 		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_CLASS__NAME:
+			case DSLPackage.CHARACTERISTIC_TYPE__NAME:
 				return getName();
-			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-				return getMembers();
+			case DSLPackage.CHARACTERISTIC_TYPE__REF:
+				if (resolve) return getRef();
+				return basicGetRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,17 +172,15 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
 		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_CLASS__NAME:
+			case DSLPackage.CHARACTERISTIC_TYPE__NAME:
 				setName((String)newValue);
 				return;
-			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-				getMembers().clear();
-				getMembers().addAll((Collection<? extends CharacteristicTypeSelector>)newValue);
+			case DSLPackage.CHARACTERISTIC_TYPE__REF:
+				setRef((org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -190,11 +195,11 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
   public void eUnset(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_CLASS__NAME:
+			case DSLPackage.CHARACTERISTIC_TYPE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-				getMembers().clear();
+			case DSLPackage.CHARACTERISTIC_TYPE__REF:
+				setRef((org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -209,10 +214,10 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
   public boolean eIsSet(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_CLASS__NAME:
+			case DSLPackage.CHARACTERISTIC_TYPE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case DSLPackage.CHARACTERISTIC_CLASS__MEMBERS:
-				return members != null && !members.isEmpty();
+			case DSLPackage.CHARACTERISTIC_TYPE__REF:
+				return ref != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -234,4 +239,4 @@ public class CharacteristicClassImpl extends AbstractElementImpl implements Char
 		return result.toString();
 	}
 
-} //CharacteristicClassImpl
+} //CharacteristicTypeImpl

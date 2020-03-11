@@ -34,238 +34,229 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class StatementImpl extends MinimalEObjectImpl.Container implements Statement
 {
   /**
-   * The cached value of the '{@link #getModality() <em>Modality</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getModality() <em>Modality</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getModality()
-   * @generated
-   * @ordered
-   */
+	 * @see #getModality()
+	 * @generated
+	 * @ordered
+	 */
   protected StatementModality modality;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
   protected StatementType type;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected StatementImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.STATEMENT;
-  }
+		return DSLPackage.Literals.STATEMENT;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public StatementModality getModality()
   {
-    return modality;
-  }
+		return modality;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NotificationChain basicSetModality(StatementModality newModality, NotificationChain msgs)
   {
-    StatementModality oldModality = modality;
-    modality = newModality;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__MODALITY, oldModality, newModality);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
+		StatementModality oldModality = modality;
+		modality = newModality;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__MODALITY, oldModality, newModality);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setModality(StatementModality newModality)
   {
-    if (newModality != modality)
-    {
-      NotificationChain msgs = null;
-      if (modality != null)
-        msgs = ((InternalEObject)modality).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__MODALITY, null, msgs);
-      if (newModality != null)
-        msgs = ((InternalEObject)newModality).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__MODALITY, null, msgs);
-      msgs = basicSetModality(newModality, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__MODALITY, newModality, newModality));
-  }
+		if (newModality != modality) {
+			NotificationChain msgs = null;
+			if (modality != null)
+				msgs = ((InternalEObject)modality).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__MODALITY, null, msgs);
+			if (newModality != null)
+				msgs = ((InternalEObject)newModality).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__MODALITY, null, msgs);
+			msgs = basicSetModality(newModality, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__MODALITY, newModality, newModality));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public StatementType getType()
   {
-    return type;
-  }
+		return type;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NotificationChain basicSetType(StatementType newType, NotificationChain msgs)
   {
-    StatementType oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
+		StatementType oldType = type;
+		type = newType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__TYPE, oldType, newType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setType(StatementType newType)
   {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__TYPE, newType, newType));
-  }
+		if (newType != type) {
+			NotificationChain msgs = null;
+			if (type != null)
+				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__TYPE, null, msgs);
+			if (newType != null)
+				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.STATEMENT__TYPE, null, msgs);
+			msgs = basicSetType(newType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT__TYPE, newType, newType));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case DSLPackage.STATEMENT__MODALITY:
-        return basicSetModality(null, msgs);
-      case DSLPackage.STATEMENT__TYPE:
-        return basicSetType(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case DSLPackage.STATEMENT__MODALITY:
+				return basicSetModality(null, msgs);
+			case DSLPackage.STATEMENT__TYPE:
+				return basicSetType(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case DSLPackage.STATEMENT__MODALITY:
-        return getModality();
-      case DSLPackage.STATEMENT__TYPE:
-        return getType();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DSLPackage.STATEMENT__MODALITY:
+				return getModality();
+			case DSLPackage.STATEMENT__TYPE:
+				return getType();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case DSLPackage.STATEMENT__MODALITY:
-        setModality((StatementModality)newValue);
-        return;
-      case DSLPackage.STATEMENT__TYPE:
-        setType((StatementType)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DSLPackage.STATEMENT__MODALITY:
+				setModality((StatementModality)newValue);
+				return;
+			case DSLPackage.STATEMENT__TYPE:
+				setType((StatementType)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.STATEMENT__MODALITY:
-        setModality((StatementModality)null);
-        return;
-      case DSLPackage.STATEMENT__TYPE:
-        setType((StatementType)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.STATEMENT__MODALITY:
+				setModality((StatementModality)null);
+				return;
+			case DSLPackage.STATEMENT__TYPE:
+				setType((StatementType)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.STATEMENT__MODALITY:
-        return modality != null;
-      case DSLPackage.STATEMENT__TYPE:
-        return type != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.STATEMENT__MODALITY:
+				return modality != null;
+			case DSLPackage.STATEMENT__TYPE:
+				return type != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //StatementImpl

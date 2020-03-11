@@ -15,14 +15,16 @@ This snippet describes the Type0-constraint from the geolocation / shop example.
 ```smalltalk
 import "Geolocation.xmi"
 
+type level: PrivacyLevel
+type location: Locations
+
 class isNotSafe {
 	Locations.!EU
 }
 
 constraint "noType0Flow" {
-	data.attribute.PrivacyLevel.Type0 & data.attribute.Locations.EU
-	 NEVER FLOWS node.class.isNotSafe
-} 
+	data.attribute.level.Type0 NEVER FLOWS node.class.isNotSafe
+}
 ```
 
 ### Sample
@@ -31,6 +33,10 @@ This snippet is partly equivalent to the one from the *LanguageDesign*-Document.
 
 ```smalltalk
 import "SimpleCharacteristics.xmi"
+
+type Sizes: Sizes
+type Locations: Locations
+type Colors: Colors
 
 class example1 {
     Sizes.[small,medium],

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<characteristics:CharacteristicTypeContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:characteristics="http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" id="_nSj8IFqmEeiPkr6LR6jHLg">
+  <characteristicTypes xsi:type="characteristics:EnumCharacteristicType" id="_rkiSMFqnEeiY18w7ObeSrg" entityName="Sizes" multipleChoice="true" enum="_CustomId2"/>
+  <characteristicTypes xsi:type="characteristics:EnumCharacteristicType" id="_vP5JoFqnEeiY18w7ObeSrg" entityName="Locations" multipleChoice="true" enum="_CustomId1"/>
+  <characteristicTypes xsi:type="characteristics:EnumCharacteristicType" id="_CustomId10" entityName="Colors" multipleChoice="true" enum="_CustomId6"/>
+  <enumerations id="_CustomId2" entityName="Sizes">
+    <literals id="_CustomId3" entityName="small"/>
+    <literals id="_CustomId4" entityName="medium"/>
+    <literals id="_CustomId5" entityName="large"/>
+  </enumerations>
+  <enumerations id="_CustomId6" entityName="Colors">
+    <literals id="_CustomId7" entityName="red"/>
+    <literals id="_CustomId8" entityName="blue"/>
+    <literals id="_CustomId9" entityName="green"/>
+  </enumerations>
+  <enumerations id="_CustomId1" entityName="Locations">
+    <literals id="_m8CdEFqnEeiY18w7ObeSrg" entityName="EU"/>
+    <literals id="_ollNwFqnEeiY18w7ObeSrg" entityName="USA"/>
+    <literals id="_pqWdcFqnEeiY18w7ObeSrg" entityName="Asia"/>
+  </enumerations>
+</characteristics:CharacteristicTypeContainer>

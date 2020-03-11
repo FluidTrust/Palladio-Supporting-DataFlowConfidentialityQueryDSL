@@ -46,7 +46,7 @@ class DSLGenerator extends AbstractGenerator {
 		rule.body = null
 
 		// A rules arguments are all contained member types
-		rule.head.arguments.addAll(charateristicClass.members.map[member|member.ref.name].toSet.map [ type |
+		rule.head.arguments.addAll(charateristicClass.members.map[member|member.ref.entityName].toSet.map [ type |
 			CompoundTerm(type)
 		].toList)
 
@@ -55,12 +55,12 @@ class DSLGenerator extends AbstractGenerator {
 			member.literals.forEach [ literal |
 
 				// Create and add fact
-				val factName = '''characteristicsClass_«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
-				val fact = SimpleFact(factName, literal)
+				val factName = '''characteristicsClass_«charateristicClass.name»_«member.ref.entityName»_«index»«if(member.negated) "_NEG"»'''
+				val fact = SimpleFact(factName, literal.entityName)
 				clauses.add(fact)
 
 				// Create fact reference for the rule
-				val factReference = CompoundTerm(fact.head.value, CompoundTerm(member.ref.name))
+				val factReference = CompoundTerm(fact.head.value, CompoundTerm(member.ref.entityName))
 
 				// Handle negated facts
 				val factExpression = if (member.negated) {

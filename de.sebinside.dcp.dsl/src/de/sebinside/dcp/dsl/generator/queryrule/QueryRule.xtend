@@ -38,7 +38,7 @@ abstract class QueryRule {
 	def generateDataSelectorTerm(AttributeSelector selector) {
 		selector.ref.literals.map [ literal |
 			val query = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-				AtomicQuotedString(selector.ref.ref.name), AtomicQuotedString(literal), CompoundTerm(operation),
+				AtomicQuotedString(selector.ref.ref.entityName), AtomicQuotedString(literal.entityName), CompoundTerm(operation),
 				CompoundTerm(callState))
 
 			if (selector.ref.negated) {
@@ -54,10 +54,10 @@ abstract class QueryRule {
 
 		selector.ref.members.map [ member |
 			val query = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-				AtomicQuotedString(selector.ref.name), CompoundTerm(member.ref.name), CompoundTerm(operation),
+				AtomicQuotedString(selector.ref.name), CompoundTerm(member.ref.entityName), CompoundTerm(operation),
 				CompoundTerm(callState))
 
-			val memberQuery = createMemberQuery(member.ref.valueset.name, CompoundTerm(member.ref.name))
+			val memberQuery = createMemberQuery(member.ref.entityName, CompoundTerm(member.ref.entityName))
 
 			LogicalAnd(query, memberQuery)
 		]
@@ -80,8 +80,8 @@ abstract class QueryRule {
 
 	def generateDestinationSelectorTerm(PropertySelector selector) {
 		selector.ref.literals.map [ literal |
-			val query = createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(selector.ref.ref.name),
-				AtomicQuotedString(literal))
+			val query = createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(selector.ref.ref.entityName),
+				AtomicQuotedString(literal.entityName))
 
 			if (selector.ref.negated) {
 				negate(query)
@@ -95,10 +95,10 @@ abstract class QueryRule {
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
-			val query = createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(member.ref.name),
-				CompoundTerm(member.ref.name))
+			val query = createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(member.ref.entityName),
+				CompoundTerm(member.ref.entityName))
 
-			val memberQuery = createMemberQuery(member.ref.valueset.name, CompoundTerm(member.ref.name))
+			val memberQuery = createMemberQuery(member.ref.entityName, CompoundTerm(member.ref.entityName))
 
 			LogicalAnd(query, memberQuery)
 		]
@@ -135,7 +135,7 @@ abstract class QueryRule {
 		parametersList.add(parameterTerm())
 
 		// Add all (unique) classes members names to the list
-		val classTerms = characteristicClasses.toList.map[clazz|clazz.members.map[member|member.ref.name]].toSet.
+		val classTerms = characteristicClasses.toList.map[clazz|clazz.members.map[member|member.ref.entityName]].toSet.
 			flatten.map[term|CompoundTerm(term)]
 		parametersList.addAll(classTerms)
 

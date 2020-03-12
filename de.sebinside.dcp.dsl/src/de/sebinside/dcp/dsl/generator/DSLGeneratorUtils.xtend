@@ -65,7 +65,7 @@ class DSLGeneratorUtils {
 	}
 
 	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
-		CompoundTerm(characteristicClass.name, characteristicClass.members.map[member|CompoundTerm(member.ref.name)])
+		CompoundTerm('''characteristicClass_«characteristicClass.name»''', characteristicClass.members.map[member|CompoundTerm(member.ref.name.toFirstUpper)])
 	}
 
 	def static createPropertyQuery(Expression operation, Expression property, Expression value) {

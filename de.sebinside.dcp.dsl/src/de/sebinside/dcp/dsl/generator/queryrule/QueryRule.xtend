@@ -53,13 +53,9 @@ abstract class QueryRule {
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
-			val query = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-				AtomicQuotedString(selector.ref.name), CompoundTerm(member.ref.name), CompoundTerm(operation),
+			createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
+				AtomicQuotedString(selector.ref.name), CompoundTerm(member.ref.name.toFirstUpper), CompoundTerm(operation),
 				CompoundTerm(callState))
-
-			val memberQuery = createMemberQuery(member.ref.ref.entityName, CompoundTerm(member.ref.name))
-
-			LogicalAnd(query, memberQuery)
 		]
 	}
 
@@ -95,12 +91,8 @@ abstract class QueryRule {
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
-			val query = createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(member.ref.name),
-				CompoundTerm(member.ref.name))
-
-			val memberQuery = createMemberQuery(member.ref.ref.entityName, CompoundTerm(member.ref.name))
-
-			LogicalAnd(query, memberQuery)
+			createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(member.ref.name),
+				CompoundTerm(member.ref.name.toFirstUpper))
 		]
 	}
 
@@ -136,7 +128,7 @@ abstract class QueryRule {
 
 		// Add all (unique) classes members names to the list
 		val classTerms = characteristicClasses.toList.map[clazz|clazz.members.map[member|member.ref.name]].toSet.
-			flatten.map[term|CompoundTerm(term)]
+			flatten.map[term|CompoundTerm(term.toFirstUpper)]
 		parametersList.addAll(classTerms)
 
 		subRule.head.arguments.addAll(parametersList)

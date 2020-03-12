@@ -45,9 +45,9 @@ class DSLGenerator extends AbstractGenerator {
 		val rule = Rule('''characteristicClass_«charateristicClass.name»''')
 		rule.body = null
 
-		// A rules arguments are all contained member types
+		// A rules arguments are all contained member type names
 		rule.head.arguments.addAll(charateristicClass.members.map[member|member.ref.name].toSet.map [ type |
-			CompoundTerm(type)
+			CompoundTerm(type.toFirstUpper)
 		].toList)
 
 		// Create single facts for every member
@@ -60,7 +60,7 @@ class DSLGenerator extends AbstractGenerator {
 				clauses.add(fact)
 
 				// Create fact reference for the rule
-				val factReference = CompoundTerm(fact.head.value, CompoundTerm(member.ref.name))
+				val factReference = CompoundTerm(fact.head.value, CompoundTerm(member.ref.name.toFirstUpper))
 
 				// Handle negated facts
 				val factExpression = if (member.negated) {
@@ -78,6 +78,18 @@ class DSLGenerator extends AbstractGenerator {
 				}
 			]
 		]
+
+		// Add member queries to the class directly
+		// FIXME: Might contain duplicates
+		val memberQueries = charateristicClass.members.map [ member |
+			createMemberQuery(member.ref.ref.entityName, CompoundTerm(member.ref.name.toFirstUpper))
+		]
+		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
+
+		if (memberQueries !== null) {
+			// Note: The ordering is crucial!
+			rule.body = LogicalAnd(memberQueriesTerm, rule.body)
+		}
 
 		clauses.add(rule)
 		clauses
@@ -102,7 +114,7 @@ class DSLGenerator extends AbstractGenerator {
 			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName).generate()
 			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName).generate()
 			val callStateRule = new CallStateQueryRule(mainRule, constraintName).generate()
-			
+
 			// Combine rules
 			constraintRule.body = LogicalOr(
 				ruleToRuleCall(callArgumentRule),
@@ -118,5 +130,5 @@ class DSLGenerator extends AbstractGenerator {
 		}
 		clauses
 	}
-	
+
 }

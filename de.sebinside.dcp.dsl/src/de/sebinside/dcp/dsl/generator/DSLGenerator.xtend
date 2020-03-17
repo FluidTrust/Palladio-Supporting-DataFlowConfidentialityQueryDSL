@@ -42,7 +42,7 @@ class DSLGenerator extends AbstractGenerator {
 		val clauses = new ArrayList<Clause>
 
 		// Create rule referencing all facts
-		val rule = Rule('''characteristicClass_Â«charateristicClass.nameÂ»''')
+		val rule = Rule('''characteristicClass_«charateristicClass.name»''')
 		rule.body = null
 
 		// A rules arguments are all contained member type names
@@ -55,7 +55,7 @@ class DSLGenerator extends AbstractGenerator {
 			member.literals.forEach [ literal |
 
 				// Create and add fact
-				val factName = '''characteristicsClass_Â«charateristicClass.nameÂ»_Â«member.ref.nameÂ»_Â«indexÂ»Â«if(member.negated) "_NEG"Â»'''
+				val factName = '''characteristicsClass_«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
 				val fact = SimpleFact(factName, literal.entityName)
 				clauses.add(fact)
 
@@ -97,7 +97,7 @@ class DSLGenerator extends AbstractGenerator {
 
 	def List<Clause> compile(Constraint constraint) {
 		val clauses = new ArrayList<Clause>
-		val constraintName = '''constraint_Â«constraint.nameÂ»'''
+		val constraintName = '''constraint_«constraint.name»'''
 
 		// Every constraint is mapped to a rule
 		val constraintRule = Rule(constraintName)

@@ -97,7 +97,7 @@ abstract class QueryRule {
 	}
 
 	def generate() {
-		val subRule = Rule('''Â«nameBaseÂ»_Â«queryTypeIdentificationÂ»''')
+		val subRule = Rule('''«nameBase»_«queryTypeIdentification»''')
 
 		// Map all data selectors to parts of a rule
 		val dataSelectorTerm = rule.dataSelectors.map[selector|generateDataSelectorTerm(selector)].map [ queries |

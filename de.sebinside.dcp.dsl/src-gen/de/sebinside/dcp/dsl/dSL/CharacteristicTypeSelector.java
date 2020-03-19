@@ -21,7 +21,6 @@ import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.E
  *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#getRef <em>Ref</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#isNegated <em>Negated</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#getLiterals <em>Literals</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#isConjuncted <em>Conjuncted</em>}</li>
  * </ul>
  *
  * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector()
@@ -85,27 +84,5 @@ public interface CharacteristicTypeSelector extends EObject
 	 * @generated
 	 */
   EList<EnumCharacteristicLiteral> getLiterals();
-
-  /**
-	 * Returns the value of the '<em><b>Conjuncted</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @return the value of the '<em>Conjuncted</em>' attribute.
-	 * @see #setConjuncted(boolean)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Conjuncted()
-	 * @model
-	 * @generated
-	 */
-  boolean isConjuncted();
-
-  /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#isConjuncted <em>Conjuncted</em>}' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Conjuncted</em>' attribute.
-	 * @see #isConjuncted()
-	 * @generated
-	 */
-  void setConjuncted(boolean value);
 
 } // CharacteristicTypeSelector

@@ -73,7 +73,6 @@ class DSLGenerator extends AbstractGenerator {
 				if (rule.body === null) {
 					rule.body = factExpression
 				} else {
-					// FIXME: conjuncted is not supported yet
 					rule.body = LogicalAnd(rule.body, factExpression)
 				}
 			]

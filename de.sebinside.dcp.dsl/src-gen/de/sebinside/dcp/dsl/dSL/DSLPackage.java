@@ -216,22 +216,13 @@ public interface DSLPackage extends EPackage
   int CHARACTERISTIC_TYPE_SELECTOR__LITERALS = 2;
 
   /**
-	 * The feature id for the '<em><b>Conjuncted</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-  int CHARACTERISTIC_TYPE_SELECTOR__CONJUNCTED = 3;
-
-  /**
 	 * The number of structural features of the '<em>Characteristic Type Selector</em>' class.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-  int CHARACTERISTIC_TYPE_SELECTOR_FEATURE_COUNT = 4;
+  int CHARACTERISTIC_TYPE_SELECTOR_FEATURE_COUNT = 3;
 
   /**
 	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.IncludeImpl <em>Include</em>}' class.
@@ -727,17 +718,6 @@ public interface DSLPackage extends EPackage
   EReference getCharacteristicTypeSelector_Literals();
 
   /**
-	 * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#isConjuncted <em>Conjuncted</em>}'.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Conjuncted</em>'.
-	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#isConjuncted()
-	 * @see #getCharacteristicTypeSelector()
-	 * @generated
-	 */
-  EAttribute getCharacteristicTypeSelector_Conjuncted();
-
-  /**
 	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Include <em>Include</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1147,14 +1127,6 @@ public interface DSLPackage extends EPackage
 		 * @generated
 		 */
     EReference CHARACTERISTIC_TYPE_SELECTOR__LITERALS = eINSTANCE.getCharacteristicTypeSelector_Literals();
-
-    /**
-		 * The meta object literal for the '<em><b>Conjuncted</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-		 * @generated
-		 */
-    EAttribute CHARACTERISTIC_TYPE_SELECTOR__CONJUNCTED = eINSTANCE.getCharacteristicTypeSelector_Conjuncted();
 
     /**
 		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.IncludeImpl <em>Include</em>}' class.

@@ -443,17 +443,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 	 * @generated
 	 */
   @Override
-  public EAttribute getCharacteristicTypeSelector_Conjuncted()
-  {
-		return (EAttribute)characteristicTypeSelectorEClass.getEStructuralFeatures().get(3);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
   public EClass getInclude()
   {
 		return includeEClass;
@@ -782,7 +771,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		createEReference(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__REF);
 		createEAttribute(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__NEGATED);
 		createEReference(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__LITERALS);
-		createEAttribute(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__CONJUNCTED);
 
 		includeEClass = createEClass(INCLUDE);
 		createEAttribute(includeEClass, INCLUDE__IMPORT_URI);
@@ -883,7 +871,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		initEReference(getCharacteristicTypeSelector_Ref(), this.getCharacteristicType(), null, "ref", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCharacteristicTypeSelector_Negated(), theEcorePackage.getEBoolean(), "negated", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCharacteristicTypeSelector_Literals(), theCharacteristicsPackage.getEnumCharacteristicLiteral(), null, "literals", null, 0, -1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCharacteristicTypeSelector_Conjuncted(), theEcorePackage.getEBoolean(), "conjuncted", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(includeEClass, Include.class, "Include", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInclude_ImportURI(), theEcorePackage.getEString(), "importURI", null, 0, 1, Include.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

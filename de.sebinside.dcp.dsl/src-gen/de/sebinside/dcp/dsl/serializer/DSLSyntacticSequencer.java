@@ -26,9 +26,19 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (ruleCall.getRule() == grammarAccess.getSL_COMMENTRule())
+			return getSL_COMMENTToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	/**
+	 * terminal SL_COMMENT : '//' !('\n'|'\r')* ('\r'? '\n')?;
+	 */
+	protected String getSL_COMMENTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "//";
+	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {

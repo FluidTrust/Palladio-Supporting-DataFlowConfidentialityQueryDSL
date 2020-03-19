@@ -34,7 +34,6 @@ import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.E
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicTypeSelectorImpl#getRef <em>Ref</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicTypeSelectorImpl#isNegated <em>Negated</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicTypeSelectorImpl#getLiterals <em>Literals</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicTypeSelectorImpl#isConjuncted <em>Conjuncted</em>}</li>
  * </ul>
  *
  * @generated
@@ -80,26 +79,6 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 	 * @ordered
 	 */
   protected EList<EnumCharacteristicLiteral> literals;
-
-  /**
-	 * The default value of the '{@link #isConjuncted() <em>Conjuncted</em>}' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @see #isConjuncted()
-	 * @generated
-	 * @ordered
-	 */
-  protected static final boolean CONJUNCTED_EDEFAULT = false;
-
-  /**
-	 * The cached value of the '{@link #isConjuncted() <em>Conjuncted</em>}' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @see #isConjuncted()
-	 * @generated
-	 * @ordered
-	 */
-  protected boolean conjuncted = CONJUNCTED_EDEFAULT;
 
   /**
 	 * <!-- begin-user-doc -->
@@ -210,31 +189,6 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
   @Override
-  public boolean isConjuncted()
-  {
-		return conjuncted;
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public void setConjuncted(boolean newConjuncted)
-  {
-		boolean oldConjuncted = conjuncted;
-		conjuncted = newConjuncted;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__CONJUNCTED, oldConjuncted, conjuncted));
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
 		switch (featureID) {
@@ -245,8 +199,6 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 				return isNegated();
 			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
 				return getLiterals();
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__CONJUNCTED:
-				return isConjuncted();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -271,9 +223,6 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 				getLiterals().clear();
 				getLiterals().addAll((Collection<? extends EnumCharacteristicLiteral>)newValue);
 				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__CONJUNCTED:
-				setConjuncted((Boolean)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -296,9 +245,6 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
 				getLiterals().clear();
 				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__CONJUNCTED:
-				setConjuncted(CONJUNCTED_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -318,8 +264,6 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 				return negated != NEGATED_EDEFAULT;
 			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
 				return literals != null && !literals.isEmpty();
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__CONJUNCTED:
-				return conjuncted != CONJUNCTED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -337,8 +281,6 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (negated: ");
 		result.append(negated);
-		result.append(", conjuncted: ");
-		result.append(conjuncted);
 		result.append(')');
 		return result.toString();
 	}

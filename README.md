@@ -19,10 +19,11 @@ type level: PrivacyLevel
 type location: Locations
 
 class isNotSafe {
-	Locations.!EU
+	location.!EU
 }
 
-constraint "noType0Flow" {
+// No type 0 data flow to unsafe locations
+constraint noType0Flow {
 	data.attribute.level.Type0 NEVER FLOWS node.class.isNotSafe
 }
 ```
@@ -43,11 +44,12 @@ class example1 {
     Colors.!red,
     Locations.USA
 }
-constraint "example1" {
+
+constraint example1 {
 	data.attribute.Sizes.small NEVER FLOWS node.property.Locations.USA
 }
 
-constraint "example2" {
+constraint example2 {
 	data.class.example1 NEVER FLOWS node.property.Colors.red
 }
 ```

@@ -150,13 +150,7 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         ref=[CharacteristicType|ID] 
-	 *         (
-	 *             (negated?='!'? literals+=[EnumCharacteristicLiteral|ID]) | 
-	 *             (
-	 *                 literals+=[EnumCharacteristicLiteral|ID] 
-	 *                 (literals+=[EnumCharacteristicLiteral|ID]+ | (conjuncted?='&' literals+=[EnumCharacteristicLiteral|ID])+)?
-	 *             )
-	 *         )
+	 *         ((negated?='!'? literals+=[EnumCharacteristicLiteral|ID]) | (literals+=[EnumCharacteristicLiteral|ID] literals+=[EnumCharacteristicLiteral|ID]*))
 	 *     )
 	 */
 	protected void sequence_CharacteristicTypeSelector(ISerializationContext context, CharacteristicTypeSelector semanticObject) {
@@ -192,7 +186,7 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Constraint returns Constraint
 	 *
 	 * Constraint:
-	 *     (name=STRING rule=Rule)
+	 *     (name=ID rule=Rule)
 	 */
 	protected void sequence_Constraint(ISerializationContext context, Constraint semanticObject) {
 		if (errorAcceptor != null) {
@@ -202,7 +196,7 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.CONSTRAINT__RULE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getConstraintAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getConstraintAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getConstraintAccess().getRuleRuleParserRuleCall_3_0(), semanticObject.getRule());
 		feeder.finish();
 	}

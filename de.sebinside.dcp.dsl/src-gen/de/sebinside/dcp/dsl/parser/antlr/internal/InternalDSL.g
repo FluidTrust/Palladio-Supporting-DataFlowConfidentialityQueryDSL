@@ -147,6 +147,11 @@ ruleAbstractElement returns [EObject current=null]
 			$current = $this_Constraint_3.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		this_SL_COMMENT_4=RULE_SL_COMMENT
+		{
+			newLeafNode(this_SL_COMMENT_4, grammarAccess.getAbstractElementAccess().getSL_COMMENTTerminalRuleCall_4());
+		}
 	)
 ;
 
@@ -384,59 +389,27 @@ ruleCharacteristicTypeSelector returns [EObject current=null]
 					)
 				)
 				(
-					(
-						otherlv_6=','
-						{
-							newLeafNode(otherlv_6, grammarAccess.getCharacteristicTypeSelectorAccess().getCommaKeyword_2_1_2_0_0());
-						}
-						(
-							(
-								{
-									if ($current==null) {
-										$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
-									}
-								}
-								otherlv_7=RULE_ID
-								{
-									newLeafNode(otherlv_7, grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_0_1_0());
-								}
-							)
-						)
-					)*
-					    |
+					otherlv_6=','
+					{
+						newLeafNode(otherlv_6, grammarAccess.getCharacteristicTypeSelectorAccess().getCommaKeyword_2_1_2_0());
+					}
 					(
 						(
-							(
-								lv_conjuncted_8_0='&'
-								{
-									newLeafNode(lv_conjuncted_8_0, grammarAccess.getCharacteristicTypeSelectorAccess().getConjunctedAmpersandKeyword_2_1_2_1_0_0());
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
 								}
-								{
-									if ($current==null) {
-										$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
-									}
-									setWithLastConsumed($current, "conjuncted", true, "&");
-								}
-							)
+							}
+							otherlv_7=RULE_ID
+							{
+								newLeafNode(otherlv_7, grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_1_0());
+							}
 						)
-						(
-							(
-								{
-									if ($current==null) {
-										$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
-									}
-								}
-								otherlv_9=RULE_ID
-								{
-									newLeafNode(otherlv_9, grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsEnumCharacteristicLiteralCrossReference_2_1_2_1_1_0());
-								}
-							)
-						)
-					)*
-				)
-				otherlv_10=']'
+					)
+				)*
+				otherlv_8=']'
 				{
-					newLeafNode(otherlv_10, grammarAccess.getCharacteristicTypeSelectorAccess().getRightSquareBracketKeyword_2_1_3());
+					newLeafNode(otherlv_8, grammarAccess.getCharacteristicTypeSelectorAccess().getRightSquareBracketKeyword_2_1_3());
 				}
 			)
 		)
@@ -506,9 +479,9 @@ ruleConstraint returns [EObject current=null]
 		}
 		(
 			(
-				lv_name_1_0=RULE_STRING
+				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getConstraintAccess().getNameSTRINGTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getConstraintAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -518,7 +491,7 @@ ruleConstraint returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)

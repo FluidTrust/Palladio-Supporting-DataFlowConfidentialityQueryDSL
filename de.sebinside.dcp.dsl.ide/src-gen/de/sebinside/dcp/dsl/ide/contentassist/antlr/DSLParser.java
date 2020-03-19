@@ -33,7 +33,6 @@ public class DSLParser extends AbstractContentAssistParser {
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, DSLGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getAbstractElementAccess().getAlternatives(), "rule__AbstractElement__Alternatives");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getAlternatives_2(), "rule__CharacteristicTypeSelector__Alternatives_2");
-			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getAlternatives_2_1_2(), "rule__CharacteristicTypeSelector__Alternatives_2_1_2");
 			builder.put(grammarAccess.getDataSelectorAccess().getAlternatives(), "rule__DataSelector__Alternatives");
 			builder.put(grammarAccess.getDestinationSelectorAccess().getAlternatives(), "rule__DestinationSelector__Alternatives");
 			builder.put(grammarAccess.getCharacteristicTypeAccess().getGroup(), "rule__CharacteristicType__Group__0");
@@ -42,8 +41,7 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getGroup(), "rule__CharacteristicTypeSelector__Group__0");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getGroup_2_0(), "rule__CharacteristicTypeSelector__Group_2_0__0");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getGroup_2_1(), "rule__CharacteristicTypeSelector__Group_2_1__0");
-			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getGroup_2_1_2_0(), "rule__CharacteristicTypeSelector__Group_2_1_2_0__0");
-			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getGroup_2_1_2_1(), "rule__CharacteristicTypeSelector__Group_2_1_2_1__0");
+			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getGroup_2_1_2(), "rule__CharacteristicTypeSelector__Group_2_1_2__0");
 			builder.put(grammarAccess.getIncludeAccess().getGroup(), "rule__Include__Group__0");
 			builder.put(grammarAccess.getConstraintAccess().getGroup(), "rule__Constraint__Group__0");
 			builder.put(grammarAccess.getRuleAccess().getGroup(), "rule__Rule__Group__0");
@@ -64,9 +62,7 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getNegatedAssignment_2_0_0(), "rule__CharacteristicTypeSelector__NegatedAssignment_2_0_0");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsAssignment_2_0_1(), "rule__CharacteristicTypeSelector__LiteralsAssignment_2_0_1");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsAssignment_2_1_1(), "rule__CharacteristicTypeSelector__LiteralsAssignment_2_1_1");
-			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsAssignment_2_1_2_0_1(), "rule__CharacteristicTypeSelector__LiteralsAssignment_2_1_2_0_1");
-			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getConjunctedAssignment_2_1_2_1_0(), "rule__CharacteristicTypeSelector__ConjunctedAssignment_2_1_2_1_0");
-			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsAssignment_2_1_2_1_1(), "rule__CharacteristicTypeSelector__LiteralsAssignment_2_1_2_1_1");
+			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsAssignment_2_1_2_1(), "rule__CharacteristicTypeSelector__LiteralsAssignment_2_1_2_1");
 			builder.put(grammarAccess.getIncludeAccess().getImportURIAssignment_1(), "rule__Include__ImportURIAssignment_1");
 			builder.put(grammarAccess.getConstraintAccess().getNameAssignment_1(), "rule__Constraint__NameAssignment_1");
 			builder.put(grammarAccess.getConstraintAccess().getRuleAssignment_3(), "rule__Constraint__RuleAssignment_3");

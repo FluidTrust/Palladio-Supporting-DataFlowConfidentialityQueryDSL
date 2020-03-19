@@ -3,8 +3,6 @@ package de.sebinside.dcp.dsl.generator.queryrule
 import de.sebinside.dcp.dsl.dSL.AttributeClassSelector
 import de.sebinside.dcp.dsl.dSL.AttributeSelector
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
-import de.sebinside.dcp.dsl.dSL.DataSelector
-import de.sebinside.dcp.dsl.dSL.DestinationSelector
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
 import de.sebinside.dcp.dsl.dSL.PropertySelector
 import de.sebinside.dcp.dsl.dSL.Rule
@@ -35,7 +33,7 @@ abstract class QueryRule {
 		this.nameBase = nameBase
 	}
 
-	def generateDataSelectorTerm(AttributeSelector selector) {
+	def dispatch generateDataSelectorTerm(AttributeSelector selector) {
 		selector.ref.literals.map [ literal |
 			val query = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
 				AtomicQuotedString(selector.ref.ref.name), AtomicQuotedString(literal.entityName), CompoundTerm(operation),
@@ -49,7 +47,7 @@ abstract class QueryRule {
 		]
 	}
 
-	def generateDataSelectorTerm(AttributeClassSelector selector) {
+	def dispatch generateDataSelectorTerm(AttributeClassSelector selector) {
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
@@ -59,22 +57,7 @@ abstract class QueryRule {
 		]
 	}
 
-	// FIXME: Somehow get rid of these switch methods
-	def generateDataSelectorTerm(DataSelector selector) {
-		switch selector {
-			AttributeSelector: generateDataSelectorTerm(selector)
-			AttributeClassSelector: generateDataSelectorTerm(selector)
-		}
-	}
-
-	def generateDestinationSelectorTerm(DestinationSelector selector) {
-		switch selector {
-			PropertySelector: generateDestinationSelectorTerm(selector)
-			PropertyClassSelector: generateDestinationSelectorTerm(selector)
-		}
-	}
-
-	def generateDestinationSelectorTerm(PropertySelector selector) {
+	def dispatch generateDestinationSelectorTerm(PropertySelector selector) {
 		selector.ref.literals.map [ literal |
 			val query = createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(selector.ref.ref.name),
 				AtomicQuotedString(literal.entityName))
@@ -87,7 +70,7 @@ abstract class QueryRule {
 		]
 	}
 
-	def generateDestinationSelectorTerm(PropertyClassSelector selector) {
+	def dispatch generateDestinationSelectorTerm(PropertyClassSelector selector) {
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |

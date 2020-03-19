@@ -22,7 +22,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicTypeSelector/ref"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicTypeSelector/negated"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicTypeSelector/literals"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicTypeSelector/conjuncted"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Include">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Include/importURI"/>

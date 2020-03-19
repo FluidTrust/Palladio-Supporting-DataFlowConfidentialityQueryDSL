@@ -4,13 +4,14 @@ generate dSL "http://www.sebinside.de/dcp/dsl/DSL"
 
 // Nested EPackage has to be referred to by platform:/resource URI
 // https://sdqweb.ipd.kit.edu/wiki/Importing_nested_EPackages_in_Xtext
-import "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics" as characteristics
+import "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics" as
+characteristics
 
 Model:
 	(elements+=AbstractElement)*;
 
 AbstractElement:
-	Include | CharacteristicType | CharacteristicClass | Constraint;
+	Include | CharacteristicType | CharacteristicClass | Constraint | SL_COMMENT;
 
 CharacteristicType:
 	'type' name=ID ':' ref=[characteristics::CharacteristicType];
@@ -21,18 +22,15 @@ CharacteristicClass:
 CharacteristicTypeSelector:
 	ref=[CharacteristicType] '.'
 	(((negated?='!')? literals+=[characteristics::EnumCharacteristicLiteral]) |
-	('[' literals+=[characteristics::EnumCharacteristicLiteral] 
-		((',' literals+=[characteristics::EnumCharacteristicLiteral])* 
-			| (conjuncted?='&' literals+=[characteristics::EnumCharacteristicLiteral])*
-		) ']'
-	));
+	('[' literals+=[characteristics::EnumCharacteristicLiteral]
+	(',' literals+=[characteristics::EnumCharacteristicLiteral])*
+	']'));
 
 Include:
-	'import' importURI=STRING
-;
+	'import' importURI=STRING;
 
 Constraint:
-	'constraint' name=STRING '{' rule=Rule '}';
+	'constraint' name=ID '{' rule=Rule '}';
 
 Rule:
 	dataSelectors+=DataSelector ('&' dataSelectors+=DataSelector)*

@@ -28,6 +28,16 @@ constraint noType0Flow {
 }
 ```
 
+This yields the following **result**:
+
+```prolog
+QueryType = 'CALL_ARGUMENT',
+OP = 'UserDB_store',
+P = customer,
+Location = 'Asia' ;
+false.
+```
+
 ### Sample
 
 This snippet is partly equivalent to the one from the *LanguageDesign*-Document.

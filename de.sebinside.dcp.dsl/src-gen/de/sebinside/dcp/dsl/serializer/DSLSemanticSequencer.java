@@ -4,6 +4,7 @@
 package de.sebinside.dcp.dsl.serializer;
 
 import com.google.inject.Inject;
+import de.sebinside.dcp.dsl.dSL.AbstractElement;
 import de.sebinside.dcp.dsl.dSL.AttributeClassSelector;
 import de.sebinside.dcp.dsl.dSL.AttributeSelector;
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass;
@@ -13,12 +14,14 @@ import de.sebinside.dcp.dsl.dSL.Constraint;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 import de.sebinside.dcp.dsl.dSL.Include;
 import de.sebinside.dcp.dsl.dSL.Model;
+import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector;
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector;
 import de.sebinside.dcp.dsl.dSL.PropertySelector;
 import de.sebinside.dcp.dsl.dSL.Rule;
 import de.sebinside.dcp.dsl.dSL.Statement;
 import de.sebinside.dcp.dsl.dSL.StatementModality;
 import de.sebinside.dcp.dsl.dSL.StatementType;
+import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef;
 import de.sebinside.dcp.dsl.services.DSLGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -45,6 +48,9 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == DSLPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case DSLPackage.ABSTRACT_ELEMENT:
+				sequence_AbstractElement(context, (AbstractElement) semanticObject); 
+				return; 
 			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR:
 				sequence_AttributeClassSelector(context, (AttributeClassSelector) semanticObject); 
 				return; 
@@ -69,6 +75,9 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DSLPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
+			case DSLPackage.NODE_IDENTITIY_SELECTOR:
+				sequence_NodeIdentitiySelector(context, (NodeIdentitiySelector) semanticObject); 
+				return; 
 			case DSLPackage.PROPERTY_CLASS_SELECTOR:
 				sequence_PropertyClassSelector(context, (PropertyClassSelector) semanticObject); 
 				return; 
@@ -87,10 +96,25 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DSLPackage.STATEMENT_TYPE:
 				sequence_StatementType(context, (StatementType) semanticObject); 
 				return; 
+			case DSLPackage.TARGET_MODEL_TYPE_DEF:
+				sequence_TargetModelTypeDef(context, (TargetModelTypeDef) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     AbstractElement returns AbstractElement
+	 *
+	 * Constraint:
+	 *     {AbstractElement}
+	 */
+	protected void sequence_AbstractElement(ISerializationContext context, AbstractElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -226,10 +250,29 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     elements+=AbstractElement+
+	 *     ((targetModelType=TargetModelTypeDef elements+=AbstractElement+) | elements+=AbstractElement+)?
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     DestinationSelector returns NodeIdentitiySelector
+	 *     NodeIdentitiySelector returns NodeIdentitiySelector
+	 *
+	 * Constraint:
+	 *     ref=STRING
+	 */
+	protected void sequence_NodeIdentitiySelector(ISerializationContext context, NodeIdentitiySelector semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__REF));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getNodeIdentitiySelectorAccess().getRefSTRINGTerminalRuleCall_1_0(), semanticObject.getRef());
+		feeder.finish();
 	}
 	
 	
@@ -342,6 +385,24 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getStatementAccess().getModalityStatementModalityParserRuleCall_0_0(), semanticObject.getModality());
 		feeder.accept(grammarAccess.getStatementAccess().getTypeStatementTypeParserRuleCall_1_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TargetModelTypeDef returns TargetModelTypeDef
+	 *
+	 * Constraint:
+	 *     type=TargetModelType
+	 */
+	protected void sequence_TargetModelTypeDef(ISerializationContext context, TargetModelTypeDef semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTargetModelTypeDefAccess().getTypeTargetModelTypeEnumRuleCall_1_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	

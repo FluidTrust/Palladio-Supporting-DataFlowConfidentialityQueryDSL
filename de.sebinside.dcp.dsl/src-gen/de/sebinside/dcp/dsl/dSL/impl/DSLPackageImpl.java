@@ -16,12 +16,15 @@ import de.sebinside.dcp.dsl.dSL.DataSelector;
 import de.sebinside.dcp.dsl.dSL.DestinationSelector;
 import de.sebinside.dcp.dsl.dSL.Include;
 import de.sebinside.dcp.dsl.dSL.Model;
+import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector;
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector;
 import de.sebinside.dcp.dsl.dSL.PropertySelector;
 import de.sebinside.dcp.dsl.dSL.Rule;
 import de.sebinside.dcp.dsl.dSL.Statement;
 import de.sebinside.dcp.dsl.dSL.StatementModality;
 import de.sebinside.dcp.dsl.dSL.StatementType;
+import de.sebinside.dcp.dsl.dSL.TargetModelType;
+import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef;
 
 import de.uka.ipd.sdq.identifier.IdentifierPackage;
 
@@ -33,6 +36,7 @@ import de.uka.ipd.sdq.units.UnitsPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -91,6 +95,13 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 	 * @generated
 	 */
   private EClass modelEClass = null;
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  private EClass targetModelTypeDefEClass = null;
 
   /**
 	 * <!-- begin-user-doc -->
@@ -188,6 +199,13 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * <!-- end-user-doc -->
 	 * @generated
 	 */
+  private EClass nodeIdentitiySelectorEClass = null;
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
   private EClass statementEClass = null;
 
   /**
@@ -203,6 +221,13 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 	 * @generated
 	 */
   private EClass statementModalityEClass = null;
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  private EEnum targetModelTypeEEnum = null;
 
   /**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -311,9 +336,42 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 	 * @generated
 	 */
   @Override
-  public EReference getModel_Elements()
+  public EReference getModel_TargetModelType()
   {
 		return (EReference)modelEClass.getEStructuralFeatures().get(0);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EReference getModel_Elements()
+  {
+		return (EReference)modelEClass.getEStructuralFeatures().get(1);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EClass getTargetModelTypeDef()
+  {
+		return targetModelTypeDefEClass;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EAttribute getTargetModelTypeDef_Type()
+  {
+		return (EAttribute)targetModelTypeDefEClass.getEStructuralFeatures().get(0);
 	}
 
   /**
@@ -652,6 +710,28 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 	 * @generated
 	 */
   @Override
+  public EClass getNodeIdentitiySelector()
+  {
+		return nodeIdentitiySelectorEClass;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EAttribute getNodeIdentitiySelector_Ref()
+  {
+		return (EAttribute)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(0);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
   public EClass getStatement()
   {
 		return statementEClass;
@@ -729,6 +809,17 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 	 * @generated
 	 */
   @Override
+  public EEnum getTargetModelType()
+  {
+		return targetModelTypeEEnum;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
   public DSLFactory getDSLFactory()
   {
 		return (DSLFactory)getEFactoryInstance();
@@ -755,7 +846,11 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
 		// Create classes and their features
 		modelEClass = createEClass(MODEL);
+		createEReference(modelEClass, MODEL__TARGET_MODEL_TYPE);
 		createEReference(modelEClass, MODEL__ELEMENTS);
+
+		targetModelTypeDefEClass = createEClass(TARGET_MODEL_TYPE_DEF);
+		createEAttribute(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__TYPE);
 
 		abstractElementEClass = createEClass(ABSTRACT_ELEMENT);
 
@@ -800,6 +895,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		propertyClassSelectorEClass = createEClass(PROPERTY_CLASS_SELECTOR);
 		createEReference(propertyClassSelectorEClass, PROPERTY_CLASS_SELECTOR__REF);
 
+		nodeIdentitiySelectorEClass = createEClass(NODE_IDENTITIY_SELECTOR);
+		createEAttribute(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__REF);
+
 		statementEClass = createEClass(STATEMENT);
 		createEReference(statementEClass, STATEMENT__MODALITY);
 		createEReference(statementEClass, STATEMENT__TYPE);
@@ -809,6 +907,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
 		statementModalityEClass = createEClass(STATEMENT_MODALITY);
 		createEAttribute(statementModalityEClass, STATEMENT_MODALITY__NAME);
+
+		// Create enums
+		targetModelTypeEEnum = createEEnum(TARGET_MODEL_TYPE);
 	}
 
   /**
@@ -852,10 +953,15 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		attributeClassSelectorEClass.getESuperTypes().add(this.getDataSelector());
 		propertySelectorEClass.getESuperTypes().add(this.getDestinationSelector());
 		propertyClassSelectorEClass.getESuperTypes().add(this.getDestinationSelector());
+		nodeIdentitiySelectorEClass.getESuperTypes().add(this.getDestinationSelector());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModel_TargetModelType(), this.getTargetModelTypeDef(), null, "targetModelType", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModel_Elements(), this.getAbstractElement(), null, "elements", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(targetModelTypeDefEClass, TargetModelTypeDef.class, "TargetModelTypeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTargetModelTypeDef_Type(), this.getTargetModelType(), "type", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractElementEClass, AbstractElement.class, "AbstractElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -900,6 +1006,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		initEClass(propertyClassSelectorEClass, PropertyClassSelector.class, "PropertyClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyClassSelector_Ref(), this.getCharacteristicClass(), null, "ref", null, 0, 1, PropertyClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(nodeIdentitiySelectorEClass, NodeIdentitiySelector.class, "NodeIdentitiySelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNodeIdentitiySelector_Ref(), theEcorePackage.getEString(), "ref", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStatement_Modality(), this.getStatementModality(), null, "modality", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStatement_Type(), this.getStatementType(), null, "type", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -909,6 +1018,12 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
 		initEClass(statementModalityEClass, StatementModality.class, "StatementModality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStatementModality_Name(), theEcorePackage.getEString(), "name", null, 0, 1, StatementModality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(targetModelTypeEEnum, TargetModelType.class, "TargetModelType");
+		addEEnumLiteral(targetModelTypeEEnum, TargetModelType.OPERATION_MODEL);
+		addEEnumLiteral(targetModelTypeEEnum, TargetModelType.DATA_CENTRIC_PALLADIO);
+		addEEnumLiteral(targetModelTypeEEnum, TargetModelType.EXTENDED_DFD);
 
 		// Create resource
 		createResource(eNS_URI);

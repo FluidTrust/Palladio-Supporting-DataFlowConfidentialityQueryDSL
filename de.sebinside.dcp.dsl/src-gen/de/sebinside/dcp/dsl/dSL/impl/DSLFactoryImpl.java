@@ -6,6 +6,7 @@ package de.sebinside.dcp.dsl.dSL.impl;
 import de.sebinside.dcp.dsl.dSL.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -62,6 +63,7 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
   {
 		switch (eClass.getClassifierID()) {
 			case DSLPackage.MODEL: return createModel();
+			case DSLPackage.TARGET_MODEL_TYPE_DEF: return createTargetModelTypeDef();
 			case DSLPackage.ABSTRACT_ELEMENT: return createAbstractElement();
 			case DSLPackage.CHARACTERISTIC_TYPE: return createCharacteristicType();
 			case DSLPackage.CHARACTERISTIC_CLASS: return createCharacteristicClass();
@@ -75,6 +77,7 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
 			case DSLPackage.DESTINATION_SELECTOR: return createDestinationSelector();
 			case DSLPackage.PROPERTY_SELECTOR: return createPropertySelector();
 			case DSLPackage.PROPERTY_CLASS_SELECTOR: return createPropertyClassSelector();
+			case DSLPackage.NODE_IDENTITIY_SELECTOR: return createNodeIdentitiySelector();
 			case DSLPackage.STATEMENT: return createStatement();
 			case DSLPackage.STATEMENT_TYPE: return createStatementType();
 			case DSLPackage.STATEMENT_MODALITY: return createStatementModality();
@@ -89,10 +92,54 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
 	 * @generated
 	 */
   @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+		switch (eDataType.getClassifierID()) {
+			case DSLPackage.TARGET_MODEL_TYPE:
+				return createTargetModelTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+		switch (eDataType.getClassifierID()) {
+			case DSLPackage.TARGET_MODEL_TYPE:
+				return convertTargetModelTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
   public Model createModel()
   {
 		ModelImpl model = new ModelImpl();
 		return model;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public TargetModelTypeDef createTargetModelTypeDef()
+  {
+		TargetModelTypeDefImpl targetModelTypeDef = new TargetModelTypeDefImpl();
+		return targetModelTypeDef;
 	}
 
   /**
@@ -257,6 +304,18 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
 	 * @generated
 	 */
   @Override
+  public NodeIdentitiySelector createNodeIdentitiySelector()
+  {
+		NodeIdentitiySelectorImpl nodeIdentitiySelector = new NodeIdentitiySelectorImpl();
+		return nodeIdentitiySelector;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
   public Statement createStatement()
   {
 		StatementImpl statement = new StatementImpl();
@@ -285,6 +344,28 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
   {
 		StatementModalityImpl statementModality = new StatementModalityImpl();
 		return statementModality;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public TargetModelType createTargetModelTypeFromString(EDataType eDataType, String initialValue)
+  {
+		TargetModelType result = TargetModelType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public String convertTargetModelTypeToString(EDataType eDataType, Object instanceValue)
+  {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
   /**

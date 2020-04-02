@@ -77,6 +77,12 @@ public class DSLSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DSLPackage.TARGET_MODEL_TYPE_DEF: {
+				TargetModelTypeDef targetModelTypeDef = (TargetModelTypeDef)theEObject;
+				T result = caseTargetModelTypeDef(targetModelTypeDef);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DSLPackage.ABSTRACT_ELEMENT: {
 				AbstractElement abstractElement = (AbstractElement)theEObject;
 				T result = caseAbstractElement(abstractElement);
@@ -163,6 +169,13 @@ public class DSLSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DSLPackage.NODE_IDENTITIY_SELECTOR: {
+				NodeIdentitiySelector nodeIdentitiySelector = (NodeIdentitiySelector)theEObject;
+				T result = caseNodeIdentitiySelector(nodeIdentitiySelector);
+				if (result == null) result = caseDestinationSelector(nodeIdentitiySelector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DSLPackage.STATEMENT: {
 				Statement statement = (Statement)theEObject;
 				T result = caseStatement(statement);
@@ -197,6 +210,22 @@ public class DSLSwitch<T> extends Switch<T>
 	 * @generated
 	 */
   public T caseModel(Model object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Target Model Type Def</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Target Model Type Def</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseTargetModelTypeDef(TargetModelTypeDef object)
   {
 		return null;
 	}
@@ -405,6 +434,22 @@ public class DSLSwitch<T> extends Switch<T>
 	 * @generated
 	 */
   public T casePropertyClassSelector(PropertyClassSelector object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Node Identitiy Selector</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Node Identitiy Selector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseNodeIdentitiySelector(NodeIdentitiySelector object)
   {
 		return null;
 	}

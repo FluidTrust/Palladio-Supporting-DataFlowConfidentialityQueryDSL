@@ -19,13 +19,22 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import de.sebinside.dcp.dsl.dSL.TargetModelType
+import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
 
 class DSLGenerator extends AbstractGenerator {
 
 	static final String DEV_OUTPUT_FILE_NAME = "output.pl"
 
+	// Setting the default value
+	TargetModelType targetModelType = TargetModelType.OPERATION_MODEL
+
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val program = PrologFactory.eINSTANCE.createProgram
+
+		for(element: resource.allContents.toIterable.filter(TargetModelTypeDef)) {
+			element.compile
+		}
 
 		for (element : resource.allContents.toIterable.filter(CharacteristicClass)) {
 			program.clauses.addAll(element.compile)
@@ -35,7 +44,17 @@ class DSLGenerator extends AbstractGenerator {
 			program.clauses.addAll(element.compile)
 		}
 
-		saveFile(fsa, resource, program, DEV_OUTPUT_FILE_NAME)
+		val outputFileName = if (resource.URI.lastSegment !== null) {
+				resource.URI.lastSegment.replace(".DCPDSL", ".pl")
+			} else {
+				DEV_OUTPUT_FILE_NAME
+			}
+		saveFile(fsa, resource, program, outputFileName)
+	}
+
+	def compile(TargetModelTypeDef typeDefs) {
+		// There is only one or none target model type definition
+		this.targetModelType = typeDefs.type
 	}
 
 	def List<Clause> compile(CharacteristicClass charateristicClass) {

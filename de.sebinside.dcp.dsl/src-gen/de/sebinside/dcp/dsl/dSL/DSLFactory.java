@@ -33,6 +33,15 @@ public interface DSLFactory extends EFactory
   Model createModel();
 
   /**
+	 * Returns a new object of class '<em>Target Model Type Def</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Target Model Type Def</em>'.
+	 * @generated
+	 */
+  TargetModelTypeDef createTargetModelTypeDef();
+
+  /**
 	 * Returns a new object of class '<em>Abstract Element</em>'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -148,6 +157,15 @@ public interface DSLFactory extends EFactory
 	 * @generated
 	 */
   PropertyClassSelector createPropertyClassSelector();
+
+  /**
+	 * Returns a new object of class '<em>Node Identitiy Selector</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Node Identitiy Selector</em>'.
+	 * @generated
+	 */
+  NodeIdentitiySelector createNodeIdentitiySelector();
 
   /**
 	 * Returns a new object of class '<em>Statement</em>'.

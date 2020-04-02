@@ -8,10 +8,18 @@ import "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/datapr
 characteristics
 
 Model:
+	(targetModelType=TargetModelTypeDef)?
 	(elements+=AbstractElement)*;
 
+TargetModelTypeDef:
+	'target' type=TargetModelType;
+
+enum TargetModelType:
+	OperationModel | DataCentricPalladio | ExtendedDFD
+;
+
 AbstractElement:
-	Include | CharacteristicType | CharacteristicClass | Constraint | SL_COMMENT;
+	Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
 
 CharacteristicType:
 	'type' name=ID ':' ref=[characteristics::CharacteristicType];
@@ -47,13 +55,17 @@ AttributeClassSelector:
 	'data.class.' ref=[CharacteristicClass];
 
 DestinationSelector:
-	PropertySelector | PropertyClassSelector;
+	PropertySelector | PropertyClassSelector | NodeIdentitiySelector;
 
 PropertySelector:
 	'node.property.' ref=CharacteristicTypeSelector;
 
 PropertyClassSelector:
 	'node.class.' ref=[CharacteristicClass];
+	
+NodeIdentitiySelector:
+	'node.name.' ref=STRING
+;
 
 Statement:
 	modality=StatementModality type=StatementType;

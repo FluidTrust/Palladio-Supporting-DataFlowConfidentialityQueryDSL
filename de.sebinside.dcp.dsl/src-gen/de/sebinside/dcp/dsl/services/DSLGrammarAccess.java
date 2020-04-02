@@ -6,9 +6,12 @@ package de.sebinside.dcp.dsl.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -17,6 +20,7 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
+import org.eclipse.xtext.service.AbstractElementFinder.AbstractEnumRuleElementFinder;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
 
@@ -25,18 +29,54 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public class ModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.Model");
-		private final Assignment cElementsAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cElementsAbstractElementParserRuleCall_0 = (RuleCall)cElementsAssignment.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTargetModelTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTargetModelTypeTargetModelTypeDefParserRuleCall_0_0 = (RuleCall)cTargetModelTypeAssignment_0.eContents().get(0);
+		private final Assignment cElementsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cElementsAbstractElementParserRuleCall_1_0 = (RuleCall)cElementsAssignment_1.eContents().get(0);
 		
 		//Model:
+		//	targetModelType=TargetModelTypeDef?
 		//	elements+=AbstractElement*;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//targetModelType=TargetModelTypeDef? elements+=AbstractElement*
+		public Group getGroup() { return cGroup; }
+		
+		//targetModelType=TargetModelTypeDef?
+		public Assignment getTargetModelTypeAssignment_0() { return cTargetModelTypeAssignment_0; }
+		
+		//TargetModelTypeDef
+		public RuleCall getTargetModelTypeTargetModelTypeDefParserRuleCall_0_0() { return cTargetModelTypeTargetModelTypeDefParserRuleCall_0_0; }
+		
 		//elements+=AbstractElement*
-		public Assignment getElementsAssignment() { return cElementsAssignment; }
+		public Assignment getElementsAssignment_1() { return cElementsAssignment_1; }
 		
 		//AbstractElement
-		public RuleCall getElementsAbstractElementParserRuleCall_0() { return cElementsAbstractElementParserRuleCall_0; }
+		public RuleCall getElementsAbstractElementParserRuleCall_1_0() { return cElementsAbstractElementParserRuleCall_1_0; }
+	}
+	public class TargetModelTypeDefElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.TargetModelTypeDef");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTargetKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeTargetModelTypeEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		
+		//TargetModelTypeDef:
+		//	'target' type=TargetModelType;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'target' type=TargetModelType
+		public Group getGroup() { return cGroup; }
+		
+		//'target'
+		public Keyword getTargetKeyword_0() { return cTargetKeyword_0; }
+		
+		//type=TargetModelType
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		
+		//TargetModelType
+		public RuleCall getTypeTargetModelTypeEnumRuleCall_1_0() { return cTypeTargetModelTypeEnumRuleCall_1_0; }
 	}
 	public class AbstractElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AbstractElement");
@@ -45,13 +85,15 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCharacteristicTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cCharacteristicClassParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cConstraintParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cSL_COMMENTTerminalRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cAbstractElementAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final RuleCall cSL_COMMENTTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
 		
 		//AbstractElement:
-		//	Include | CharacteristicType | CharacteristicClass | Constraint | SL_COMMENT;
+		//	Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Include | CharacteristicType | CharacteristicClass | Constraint | SL_COMMENT
+		//Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Include
@@ -66,8 +108,14 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		//Constraint
 		public RuleCall getConstraintParserRuleCall_3() { return cConstraintParserRuleCall_3; }
 		
+		//{AbstractElement} SL_COMMENT
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//{AbstractElement}
+		public Action getAbstractElementAction_4_0() { return cAbstractElementAction_4_0; }
+		
 		//SL_COMMENT
-		public RuleCall getSL_COMMENTTerminalRuleCall_4() { return cSL_COMMENTTerminalRuleCall_4; }
+		public RuleCall getSL_COMMENTTerminalRuleCall_4_1() { return cSL_COMMENTTerminalRuleCall_4_1; }
 	}
 	public class CharacteristicTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.CharacteristicType");
@@ -475,12 +523,13 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cPropertySelectorParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cPropertyClassSelectorParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cNodeIdentitiySelectorParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//DestinationSelector:
-		//	PropertySelector | PropertyClassSelector;
+		//	PropertySelector | PropertyClassSelector | NodeIdentitiySelector;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//PropertySelector | PropertyClassSelector
+		//PropertySelector | PropertyClassSelector | NodeIdentitiySelector
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//PropertySelector
@@ -488,6 +537,9 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//PropertyClassSelector
 		public RuleCall getPropertyClassSelectorParserRuleCall_1() { return cPropertyClassSelectorParserRuleCall_1; }
+		
+		//NodeIdentitiySelector
+		public RuleCall getNodeIdentitiySelectorParserRuleCall_2() { return cNodeIdentitiySelectorParserRuleCall_2; }
 	}
 	public class PropertySelectorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.PropertySelector");
@@ -538,6 +590,29 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getRefCharacteristicClassIDTerminalRuleCall_1_0_1() { return cRefCharacteristicClassIDTerminalRuleCall_1_0_1; }
+	}
+	public class NodeIdentitiySelectorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.NodeIdentitiySelector");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cNodeNameKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cRefSTRINGTerminalRuleCall_1_0 = (RuleCall)cRefAssignment_1.eContents().get(0);
+		
+		//NodeIdentitiySelector:
+		//	'node.name.' ref=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'node.name.' ref=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//'node.name.'
+		public Keyword getNodeNameKeyword_0() { return cNodeNameKeyword_0; }
+		
+		//ref=STRING
+		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
+		
+		//STRING
+		public RuleCall getRefSTRINGTerminalRuleCall_1_0() { return cRefSTRINGTerminalRuleCall_1_0; }
 	}
 	public class StatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.Statement");
@@ -597,8 +672,45 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getNameNEVERKeyword_0() { return cNameNEVERKeyword_0; }
 	}
 	
+	public class TargetModelTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.TargetModelType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cOperationModelEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cOperationModelOperationModelKeyword_0_0 = (Keyword)cOperationModelEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cDataCentricPalladioEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cDataCentricPalladioDataCentricPalladioKeyword_1_0 = (Keyword)cDataCentricPalladioEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cExtendedDFDEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cExtendedDFDExtendedDFDKeyword_2_0 = (Keyword)cExtendedDFDEnumLiteralDeclaration_2.eContents().get(0);
+		
+		//enum TargetModelType:
+		//	OperationModel | DataCentricPalladio | ExtendedDFD;
+		public EnumRule getRule() { return rule; }
+		
+		//OperationModel | DataCentricPalladio | ExtendedDFD
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//OperationModel
+		public EnumLiteralDeclaration getOperationModelEnumLiteralDeclaration_0() { return cOperationModelEnumLiteralDeclaration_0; }
+		
+		//"OperationModel"
+		public Keyword getOperationModelOperationModelKeyword_0_0() { return cOperationModelOperationModelKeyword_0_0; }
+		
+		//DataCentricPalladio
+		public EnumLiteralDeclaration getDataCentricPalladioEnumLiteralDeclaration_1() { return cDataCentricPalladioEnumLiteralDeclaration_1; }
+		
+		//"DataCentricPalladio"
+		public Keyword getDataCentricPalladioDataCentricPalladioKeyword_1_0() { return cDataCentricPalladioDataCentricPalladioKeyword_1_0; }
+		
+		//ExtendedDFD
+		public EnumLiteralDeclaration getExtendedDFDEnumLiteralDeclaration_2() { return cExtendedDFDEnumLiteralDeclaration_2; }
+		
+		//"ExtendedDFD"
+		public Keyword getExtendedDFDExtendedDFDKeyword_2_0() { return cExtendedDFDExtendedDFDKeyword_2_0; }
+	}
 	
 	private final ModelElements pModel;
+	private final TargetModelTypeDefElements pTargetModelTypeDef;
+	private final TargetModelTypeElements eTargetModelType;
 	private final AbstractElementElements pAbstractElement;
 	private final CharacteristicTypeElements pCharacteristicType;
 	private final CharacteristicClassElements pCharacteristicClass;
@@ -612,6 +724,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final DestinationSelectorElements pDestinationSelector;
 	private final PropertySelectorElements pPropertySelector;
 	private final PropertyClassSelectorElements pPropertyClassSelector;
+	private final NodeIdentitiySelectorElements pNodeIdentitiySelector;
 	private final StatementElements pStatement;
 	private final StatementTypeElements pStatementType;
 	private final StatementModalityElements pStatementModality;
@@ -626,6 +739,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
+		this.pTargetModelTypeDef = new TargetModelTypeDefElements();
+		this.eTargetModelType = new TargetModelTypeElements();
 		this.pAbstractElement = new AbstractElementElements();
 		this.pCharacteristicType = new CharacteristicTypeElements();
 		this.pCharacteristicClass = new CharacteristicClassElements();
@@ -639,6 +754,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pDestinationSelector = new DestinationSelectorElements();
 		this.pPropertySelector = new PropertySelectorElements();
 		this.pPropertyClassSelector = new PropertyClassSelectorElements();
+		this.pNodeIdentitiySelector = new NodeIdentitiySelectorElements();
 		this.pStatement = new StatementElements();
 		this.pStatementType = new StatementTypeElements();
 		this.pStatementModality = new StatementModalityElements();
@@ -672,6 +788,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
+	//	targetModelType=TargetModelTypeDef?
 	//	elements+=AbstractElement*;
 	public ModelElements getModelAccess() {
 		return pModel;
@@ -681,8 +798,28 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getModelAccess().getRule();
 	}
 	
+	//TargetModelTypeDef:
+	//	'target' type=TargetModelType;
+	public TargetModelTypeDefElements getTargetModelTypeDefAccess() {
+		return pTargetModelTypeDef;
+	}
+	
+	public ParserRule getTargetModelTypeDefRule() {
+		return getTargetModelTypeDefAccess().getRule();
+	}
+	
+	//enum TargetModelType:
+	//	OperationModel | DataCentricPalladio | ExtendedDFD;
+	public TargetModelTypeElements getTargetModelTypeAccess() {
+		return eTargetModelType;
+	}
+	
+	public EnumRule getTargetModelTypeRule() {
+		return getTargetModelTypeAccess().getRule();
+	}
+	
 	//AbstractElement:
-	//	Include | CharacteristicType | CharacteristicClass | Constraint | SL_COMMENT;
+	//	Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
 	public AbstractElementElements getAbstractElementAccess() {
 		return pAbstractElement;
 	}
@@ -786,7 +923,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//DestinationSelector:
-	//	PropertySelector | PropertyClassSelector;
+	//	PropertySelector | PropertyClassSelector | NodeIdentitiySelector;
 	public DestinationSelectorElements getDestinationSelectorAccess() {
 		return pDestinationSelector;
 	}
@@ -813,6 +950,16 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getPropertyClassSelectorRule() {
 		return getPropertyClassSelectorAccess().getRule();
+	}
+	
+	//NodeIdentitiySelector:
+	//	'node.name.' ref=STRING;
+	public NodeIdentitiySelectorElements getNodeIdentitiySelectorAccess() {
+		return pNodeIdentitiySelector;
+	}
+	
+	public ParserRule getNodeIdentitiySelectorRule() {
+		return getNodeIdentitiySelectorAccess().getRule();
 	}
 	
 	//Statement:

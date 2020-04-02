@@ -2,8 +2,18 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dSL" nsURI="http://www.sebinside.de/dcp/dsl/DSL" nsPrefix="dSL">
   <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetModelType" eType="#//TargetModelTypeDef"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//AbstractElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TargetModelTypeDef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TargetModelType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TargetModelType">
+    <eLiterals name="OperationModel" literal="OperationModel"/>
+    <eLiterals name="DataCentricPalladio" value="1" literal="DataCentricPalladio"/>
+    <eLiterals name="ExtendedDFD" value="2" literal="ExtendedDFD"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="CharacteristicType" eSuperTypes="#//AbstractElement">
@@ -51,6 +61,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyClassSelector" eSuperTypes="#//DestinationSelector">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CharacteristicClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeIdentitiySelector" eSuperTypes="#//DestinationSelector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modality" eType="#//StatementModality"

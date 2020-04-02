@@ -76,6 +76,10 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
 				return createModelAdapter();
 			}
 			@Override
+			public Adapter caseTargetModelTypeDef(TargetModelTypeDef object) {
+				return createTargetModelTypeDefAdapter();
+			}
+			@Override
 			public Adapter caseAbstractElement(AbstractElement object) {
 				return createAbstractElementAdapter();
 			}
@@ -128,6 +132,10 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
 				return createPropertyClassSelectorAdapter();
 			}
 			@Override
+			public Adapter caseNodeIdentitiySelector(NodeIdentitiySelector object) {
+				return createNodeIdentitiySelectorAdapter();
+			}
+			@Override
 			public Adapter caseStatement(Statement object) {
 				return createStatementAdapter();
 			}
@@ -171,6 +179,21 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
   public Adapter createModelAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef <em>Target Model Type Def</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
+	 * @generated
+	 */
+  public Adapter createTargetModelTypeDefAdapter()
   {
 		return null;
 	}
@@ -366,6 +389,21 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
   public Adapter createPropertyClassSelectorAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector <em>Node Identitiy Selector</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
+	 * @generated
+	 */
+  public Adapter createNodeIdentitiySelectorAdapter()
   {
 		return null;
 	}

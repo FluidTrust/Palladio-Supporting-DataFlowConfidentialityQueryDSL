@@ -23,6 +23,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -77,23 +78,86 @@ ruleModel returns [EObject current=null]
 }:
 	(
 		(
-			{
-				newCompositeNode(grammarAccess.getModelAccess().getElementsAbstractElementParserRuleCall_0());
-			}
-			lv_elements_0_0=ruleAbstractElement
-			{
-				if ($current==null) {
-					$current = createModelElementForParent(grammarAccess.getModelRule());
+			(
+				{
+					newCompositeNode(grammarAccess.getModelAccess().getTargetModelTypeTargetModelTypeDefParserRuleCall_0_0());
 				}
-				add(
-					$current,
-					"elements",
-					lv_elements_0_0,
-					"de.sebinside.dcp.dsl.DSL.AbstractElement");
-				afterParserOrEnumRuleCall();
-			}
+				lv_targetModelType_0_0=ruleTargetModelTypeDef
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getModelRule());
+					}
+					set(
+						$current,
+						"targetModelType",
+						lv_targetModelType_0_0,
+						"de.sebinside.dcp.dsl.DSL.TargetModelTypeDef");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getModelAccess().getElementsAbstractElementParserRuleCall_1_0());
+				}
+				lv_elements_1_0=ruleAbstractElement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getModelRule());
+					}
+					add(
+						$current,
+						"elements",
+						lv_elements_1_0,
+						"de.sebinside.dcp.dsl.DSL.AbstractElement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleTargetModelTypeDef
+entryRuleTargetModelTypeDef returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTargetModelTypeDefRule()); }
+	iv_ruleTargetModelTypeDef=ruleTargetModelTypeDef
+	{ $current=$iv_ruleTargetModelTypeDef.current; }
+	EOF;
+
+// Rule TargetModelTypeDef
+ruleTargetModelTypeDef returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='target'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getTargetModelTypeDefAccess().getTargetKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTargetModelTypeDefAccess().getTypeTargetModelTypeEnumRuleCall_1_0());
+				}
+				lv_type_1_0=ruleTargetModelType
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTargetModelTypeDefRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_1_0,
+						"de.sebinside.dcp.dsl.DSL.TargetModelType");
+					afterParserOrEnumRuleCall();
+				}
+			)
 		)
-	)*
+	)
 ;
 
 // Entry rule entryRuleAbstractElement
@@ -148,10 +212,19 @@ ruleAbstractElement returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
-		this_SL_COMMENT_4=RULE_SL_COMMENT
-		{
-			newLeafNode(this_SL_COMMENT_4, grammarAccess.getAbstractElementAccess().getSL_COMMENTTerminalRuleCall_4());
-		}
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAbstractElementAccess().getAbstractElementAction_4_0(),
+						$current);
+				}
+			)
+			this_SL_COMMENT_5=RULE_SL_COMMENT
+			{
+				newLeafNode(this_SL_COMMENT_5, grammarAccess.getAbstractElementAccess().getSL_COMMENTTerminalRuleCall_4_1());
+			}
+		)
 	)
 ;
 
@@ -798,6 +871,15 @@ ruleDestinationSelector returns [EObject current=null]
 			$current = $this_PropertyClassSelector_1.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getDestinationSelectorAccess().getNodeIdentitiySelectorParserRuleCall_2());
+		}
+		this_NodeIdentitiySelector_2=ruleNodeIdentitiySelector
+		{
+			$current = $this_NodeIdentitiySelector_2.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -873,6 +955,47 @@ rulePropertyClassSelector returns [EObject current=null]
 				otherlv_1=RULE_ID
 				{
 					newLeafNode(otherlv_1, grammarAccess.getPropertyClassSelectorAccess().getRefCharacteristicClassCrossReference_1_0());
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleNodeIdentitiySelector
+entryRuleNodeIdentitiySelector returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getNodeIdentitiySelectorRule()); }
+	iv_ruleNodeIdentitiySelector=ruleNodeIdentitiySelector
+	{ $current=$iv_ruleNodeIdentitiySelector.current; }
+	EOF;
+
+// Rule NodeIdentitiySelector
+ruleNodeIdentitiySelector returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='node.name.'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getNodeIdentitiySelectorAccess().getNodeNameKeyword_0());
+		}
+		(
+			(
+				lv_ref_1_0=RULE_STRING
+				{
+					newLeafNode(lv_ref_1_0, grammarAccess.getNodeIdentitiySelectorAccess().getRefSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getNodeIdentitiySelectorRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"ref",
+						lv_ref_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
@@ -993,6 +1116,41 @@ ruleStatementModality returns [EObject current=null]
 					$current = createModelElement(grammarAccess.getStatementModalityRule());
 				}
 				setWithLastConsumed($current, "name", lv_name_0_0, "NEVER");
+			}
+		)
+	)
+;
+
+// Rule TargetModelType
+ruleTargetModelType returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='OperationModel'
+			{
+				$current = grammarAccess.getTargetModelTypeAccess().getOperationModelEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getTargetModelTypeAccess().getOperationModelEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='DataCentricPalladio'
+			{
+				$current = grammarAccess.getTargetModelTypeAccess().getDataCentricPalladioEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getTargetModelTypeAccess().getDataCentricPalladioEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='ExtendedDFD'
+			{
+				$current = grammarAccess.getTargetModelTypeAccess().getExtendedDFDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getTargetModelTypeAccess().getExtendedDFDEnumLiteralDeclaration_2());
 			}
 		)
 	)

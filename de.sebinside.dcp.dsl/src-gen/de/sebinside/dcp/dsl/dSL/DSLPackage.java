@@ -5,6 +5,7 @@ package de.sebinside.dcp.dsl.dSL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -68,13 +69,22 @@ public interface DSLPackage extends EPackage
   int MODEL = 0;
 
   /**
+	 * The feature id for the '<em><b>Target Model Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int MODEL__TARGET_MODEL_TYPE = 0;
+
+  /**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-  int MODEL__ELEMENTS = 0;
+  int MODEL__ELEMENTS = 1;
 
   /**
 	 * The number of structural features of the '<em>Model</em>' class.
@@ -83,7 +93,35 @@ public interface DSLPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-  int MODEL_FEATURE_COUNT = 1;
+  int MODEL_FEATURE_COUNT = 2;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl <em>Target Model Type Def</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getTargetModelTypeDef()
+	 * @generated
+	 */
+  int TARGET_MODEL_TYPE_DEF = 1;
+
+  /**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int TARGET_MODEL_TYPE_DEF__TYPE = 0;
+
+  /**
+	 * The number of structural features of the '<em>Target Model Type Def</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int TARGET_MODEL_TYPE_DEF_FEATURE_COUNT = 1;
 
   /**
 	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
@@ -93,7 +131,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAbstractElement()
 	 * @generated
 	 */
-  int ABSTRACT_ELEMENT = 1;
+  int ABSTRACT_ELEMENT = 2;
 
   /**
 	 * The number of structural features of the '<em>Abstract Element</em>' class.
@@ -112,7 +150,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicType()
 	 * @generated
 	 */
-  int CHARACTERISTIC_TYPE = 2;
+  int CHARACTERISTIC_TYPE = 3;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -149,7 +187,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicClass()
 	 * @generated
 	 */
-  int CHARACTERISTIC_CLASS = 3;
+  int CHARACTERISTIC_CLASS = 4;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -186,7 +224,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicTypeSelector()
 	 * @generated
 	 */
-  int CHARACTERISTIC_TYPE_SELECTOR = 4;
+  int CHARACTERISTIC_TYPE_SELECTOR = 5;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -232,7 +270,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getInclude()
 	 * @generated
 	 */
-  int INCLUDE = 5;
+  int INCLUDE = 6;
 
   /**
 	 * The feature id for the '<em><b>Import URI</b></em>' attribute.
@@ -260,7 +298,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getConstraint()
 	 * @generated
 	 */
-  int CONSTRAINT = 6;
+  int CONSTRAINT = 7;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -297,7 +335,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getRule()
 	 * @generated
 	 */
-  int RULE = 7;
+  int RULE = 8;
 
   /**
 	 * The feature id for the '<em><b>Data Selectors</b></em>' containment reference list.
@@ -343,7 +381,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDataSelector()
 	 * @generated
 	 */
-  int DATA_SELECTOR = 8;
+  int DATA_SELECTOR = 9;
 
   /**
 	 * The number of structural features of the '<em>Data Selector</em>' class.
@@ -362,7 +400,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeSelector()
 	 * @generated
 	 */
-  int ATTRIBUTE_SELECTOR = 9;
+  int ATTRIBUTE_SELECTOR = 10;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -390,7 +428,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeClassSelector()
 	 * @generated
 	 */
-  int ATTRIBUTE_CLASS_SELECTOR = 10;
+  int ATTRIBUTE_CLASS_SELECTOR = 11;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -418,7 +456,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDestinationSelector()
 	 * @generated
 	 */
-  int DESTINATION_SELECTOR = 11;
+  int DESTINATION_SELECTOR = 12;
 
   /**
 	 * The number of structural features of the '<em>Destination Selector</em>' class.
@@ -437,7 +475,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertySelector()
 	 * @generated
 	 */
-  int PROPERTY_SELECTOR = 12;
+  int PROPERTY_SELECTOR = 13;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -465,7 +503,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertyClassSelector()
 	 * @generated
 	 */
-  int PROPERTY_CLASS_SELECTOR = 13;
+  int PROPERTY_CLASS_SELECTOR = 14;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -486,6 +524,34 @@ public interface DSLPackage extends EPackage
   int PROPERTY_CLASS_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
 
   /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.NodeIdentitiySelectorImpl <em>Node Identitiy Selector</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.NodeIdentitiySelectorImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getNodeIdentitiySelector()
+	 * @generated
+	 */
+  int NODE_IDENTITIY_SELECTOR = 15;
+
+  /**
+	 * The feature id for the '<em><b>Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int NODE_IDENTITIY_SELECTOR__REF = DESTINATION_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
+	 * The number of structural features of the '<em>Node Identitiy Selector</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int NODE_IDENTITIY_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
+
+  /**
 	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementImpl <em>Statement</em>}' class.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -493,7 +559,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatement()
 	 * @generated
 	 */
-  int STATEMENT = 14;
+  int STATEMENT = 16;
 
   /**
 	 * The feature id for the '<em><b>Modality</b></em>' containment reference.
@@ -530,7 +596,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementType()
 	 * @generated
 	 */
-  int STATEMENT_TYPE = 15;
+  int STATEMENT_TYPE = 17;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -558,7 +624,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementModality()
 	 * @generated
 	 */
-  int STATEMENT_MODALITY = 16;
+  int STATEMENT_MODALITY = 18;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -578,6 +644,16 @@ public interface DSLPackage extends EPackage
 	 */
   int STATEMENT_MODALITY_FEATURE_COUNT = 1;
 
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.TargetModelType <em>Target Model Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.TargetModelType
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getTargetModelType()
+	 * @generated
+	 */
+  int TARGET_MODEL_TYPE = 19;
+
 
   /**
 	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Model <em>Model</em>}'.
@@ -590,6 +666,17 @@ public interface DSLPackage extends EPackage
   EClass getModel();
 
   /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.Model#getTargetModelType <em>Target Model Type</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Target Model Type</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.Model#getTargetModelType()
+	 * @see #getModel()
+	 * @generated
+	 */
+  EReference getModel_TargetModelType();
+
+  /**
 	 * Returns the meta object for the containment reference list '{@link de.sebinside.dcp.dsl.dSL.Model#getElements <em>Elements</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -599,6 +686,27 @@ public interface DSLPackage extends EPackage
 	 * @generated
 	 */
   EReference getModel_Elements();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef <em>Target Model Type Def</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Target Model Type Def</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
+	 * @generated
+	 */
+  EClass getTargetModelTypeDef();
+
+  /**
+	 * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getType()
+	 * @see #getTargetModelTypeDef()
+	 * @generated
+	 */
+  EAttribute getTargetModelTypeDef_Type();
 
   /**
 	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.AbstractElement <em>Abstract Element</em>}'.
@@ -918,6 +1026,27 @@ public interface DSLPackage extends EPackage
   EReference getPropertyClassSelector_Ref();
 
   /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector <em>Node Identitiy Selector</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Node Identitiy Selector</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
+	 * @generated
+	 */
+  EClass getNodeIdentitiySelector();
+
+  /**
+	 * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getRef <em>Ref</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ref</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getRef()
+	 * @see #getNodeIdentitiySelector()
+	 * @generated
+	 */
+  EAttribute getNodeIdentitiySelector_Ref();
+
+  /**
 	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Statement <em>Statement</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -992,6 +1121,16 @@ public interface DSLPackage extends EPackage
   EAttribute getStatementModality_Name();
 
   /**
+	 * Returns the meta object for enum '{@link de.sebinside.dcp.dsl.dSL.TargetModelType <em>Target Model Type</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Target Model Type</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.TargetModelType
+	 * @generated
+	 */
+  EEnum getTargetModelType();
+
+  /**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1025,12 +1164,38 @@ public interface DSLPackage extends EPackage
     EClass MODEL = eINSTANCE.getModel();
 
     /**
+		 * The meta object literal for the '<em><b>Target Model Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference MODEL__TARGET_MODEL_TYPE = eINSTANCE.getModel_TargetModelType();
+
+    /**
 		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 		 * @generated
 		 */
     EReference MODEL__ELEMENTS = eINSTANCE.getModel_Elements();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl <em>Target Model Type Def</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getTargetModelTypeDef()
+		 * @generated
+		 */
+    EClass TARGET_MODEL_TYPE_DEF = eINSTANCE.getTargetModelTypeDef();
+
+    /**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EAttribute TARGET_MODEL_TYPE_DEF__TYPE = eINSTANCE.getTargetModelTypeDef_Type();
 
     /**
 		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
@@ -1299,6 +1464,24 @@ public interface DSLPackage extends EPackage
     EReference PROPERTY_CLASS_SELECTOR__REF = eINSTANCE.getPropertyClassSelector_Ref();
 
     /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.NodeIdentitiySelectorImpl <em>Node Identitiy Selector</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.NodeIdentitiySelectorImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getNodeIdentitiySelector()
+		 * @generated
+		 */
+    EClass NODE_IDENTITIY_SELECTOR = eINSTANCE.getNodeIdentitiySelector();
+
+    /**
+		 * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EAttribute NODE_IDENTITIY_SELECTOR__REF = eINSTANCE.getNodeIdentitiySelector_Ref();
+
+    /**
 		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementImpl <em>Statement</em>}' class.
 		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1359,6 +1542,16 @@ public interface DSLPackage extends EPackage
 		 * @generated
 		 */
     EAttribute STATEMENT_MODALITY__NAME = eINSTANCE.getStatementModality_Name();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.TargetModelType <em>Target Model Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.TargetModelType
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getTargetModelType()
+		 * @generated
+		 */
+    EEnum TARGET_MODEL_TYPE = eINSTANCE.getTargetModelType();
 
   }
 

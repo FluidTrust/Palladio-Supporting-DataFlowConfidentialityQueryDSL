@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.Model#getTargetModelType <em>Target Model Type</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.Model#getElements <em>Elements</em>}</li>
  * </ul>
  *
@@ -25,6 +26,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Model extends EObject
 {
+  /**
+	 * Returns the value of the '<em><b>Target Model Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the value of the '<em>Target Model Type</em>' containment reference.
+	 * @see #setTargetModelType(TargetModelTypeDef)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getModel_TargetModelType()
+	 * @model containment="true"
+	 * @generated
+	 */
+  TargetModelTypeDef getTargetModelType();
+
+  /**
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Model#getTargetModelType <em>Target Model Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Model Type</em>' containment reference.
+	 * @see #getTargetModelType()
+	 * @generated
+	 */
+  void setTargetModelType(TargetModelTypeDef value);
+
   /**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
 	 * The list contents are of type {@link de.sebinside.dcp.dsl.dSL.AbstractElement}.

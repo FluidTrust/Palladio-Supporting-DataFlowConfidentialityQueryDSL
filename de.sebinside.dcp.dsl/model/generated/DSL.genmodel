@@ -6,8 +6,17 @@
     copyrightFields="false" runtimeVersion="2.20" usedGenPackages="../../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../../org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.genmodel#//dataprocessing/characteristics ../../../de.uka.ipd.sdq.identifier/model/identifier.genmodel#//identifier ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/core/entity ../../../org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.genmodel#//dataprocessing/repository ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/repository ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/resourcetype ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/core/composition ../../../org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.genmodel#//dataprocessing/data ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/core ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/reliability ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/seff ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/parameter ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/protocol platform:/plugin/de.uka.ipd.sdq.units/model/Units.genmodel#//units platform:/plugin/de.uka.ipd.sdq.stoex/model/stoex.genmodel#//stoex ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/usagemodel ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/seff/seff_performance ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/qosannotations/qos_performance ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/resourceenvironment ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/qosannotations/qos_reliability ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/seff/seff_reliability ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/qosannotations platform:/plugin/de.uka.ipd.sdq.probfunction/model/ProbabilityFunction.genmodel#//probfunction ../../../org.palladiosimulator.pcm/model/pcm.genmodel#//pcm/system">
   <genPackages prefix="DSL" basePackage="de.sebinside.dcp.dsl" disposableProviderFactory="true"
       fileExtensions="DCPDSL" ecorePackage="DSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DSL.ecore#//TargetModelType">
+      <genEnumLiterals ecoreEnumLiteral="DSL.ecore#//TargetModelType/OperationModel"/>
+      <genEnumLiterals ecoreEnumLiteral="DSL.ecore#//TargetModelType/DataCentricPalladio"/>
+      <genEnumLiterals ecoreEnumLiteral="DSL.ecore#//TargetModelType/ExtendedDFD"/>
+    </genEnums>
     <genClasses ecoreClass="DSL.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Model/targetModelType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Model/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//TargetModelTypeDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//TargetModelTypeDef/type"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//AbstractElement"/>
     <genClasses ecoreClass="DSL.ecore#//CharacteristicType">
@@ -48,6 +57,9 @@
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//PropertyClassSelector">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//PropertyClassSelector/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//NodeIdentitiySelector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//NodeIdentitiySelector/ref"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Statement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Statement/modality"/>

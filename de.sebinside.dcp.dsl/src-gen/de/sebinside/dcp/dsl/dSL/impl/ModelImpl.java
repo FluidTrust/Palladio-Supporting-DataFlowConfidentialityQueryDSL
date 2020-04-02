@@ -6,9 +6,11 @@ package de.sebinside.dcp.dsl.dSL.impl;
 import de.sebinside.dcp.dsl.dSL.AbstractElement;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 import de.sebinside.dcp.dsl.dSL.Model;
+import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -29,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ModelImpl#getTargetModelType <em>Target Model Type</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ModelImpl#getElements <em>Elements</em>}</li>
  * </ul>
  *
@@ -36,6 +40,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
+  /**
+	 * The cached value of the '{@link #getTargetModelType() <em>Target Model Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see #getTargetModelType()
+	 * @generated
+	 * @ordered
+	 */
+  protected TargetModelTypeDef targetModelType;
+
   /**
 	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -73,6 +87,54 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 	 * @generated
 	 */
   @Override
+  public TargetModelTypeDef getTargetModelType()
+  {
+		return targetModelType;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public NotificationChain basicSetTargetModelType(TargetModelTypeDef newTargetModelType, NotificationChain msgs)
+  {
+		TargetModelTypeDef oldTargetModelType = targetModelType;
+		targetModelType = newTargetModelType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.MODEL__TARGET_MODEL_TYPE, oldTargetModelType, newTargetModelType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public void setTargetModelType(TargetModelTypeDef newTargetModelType)
+  {
+		if (newTargetModelType != targetModelType) {
+			NotificationChain msgs = null;
+			if (targetModelType != null)
+				msgs = ((InternalEObject)targetModelType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.MODEL__TARGET_MODEL_TYPE, null, msgs);
+			if (newTargetModelType != null)
+				msgs = ((InternalEObject)newTargetModelType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.MODEL__TARGET_MODEL_TYPE, null, msgs);
+			msgs = basicSetTargetModelType(newTargetModelType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.MODEL__TARGET_MODEL_TYPE, newTargetModelType, newTargetModelType));
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
   public EList<AbstractElement> getElements()
   {
 		if (elements == null) {
@@ -90,6 +152,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
 		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				return basicSetTargetModelType(null, msgs);
 			case DSLPackage.MODEL__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
@@ -105,6 +169,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
 		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				return getTargetModelType();
 			case DSLPackage.MODEL__ELEMENTS:
 				return getElements();
 		}
@@ -121,6 +187,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   public void eSet(int featureID, Object newValue)
   {
 		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				setTargetModelType((TargetModelTypeDef)newValue);
+				return;
 			case DSLPackage.MODEL__ELEMENTS:
 				getElements().clear();
 				getElements().addAll((Collection<? extends AbstractElement>)newValue);
@@ -138,6 +207,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   public void eUnset(int featureID)
   {
 		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				setTargetModelType((TargetModelTypeDef)null);
+				return;
 			case DSLPackage.MODEL__ELEMENTS:
 				getElements().clear();
 				return;
@@ -154,6 +226,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   public boolean eIsSet(int featureID)
   {
 		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				return targetModelType != null;
 			case DSLPackage.MODEL__ELEMENTS:
 				return elements != null && !elements.isEmpty();
 		}

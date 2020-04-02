@@ -15,6 +15,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 
 abstract class QueryRule {
 
@@ -77,6 +78,14 @@ abstract class QueryRule {
 			createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(member.ref.name),
 				CompoundTerm(member.ref.name.toFirstUpper))
 		]
+	}
+	
+	def dispatch generateDestinationSelectorTerm(NodeIdentitiySelector selector) {
+		// TODO: More to add here to support Palladio
+		val nodeIdentity = selector.ref
+		val unification = Unification(CompoundTerm(operation), AtomicQuotedString(nodeIdentity))
+		
+		#[unification]
 	}
 
 	def generate() {

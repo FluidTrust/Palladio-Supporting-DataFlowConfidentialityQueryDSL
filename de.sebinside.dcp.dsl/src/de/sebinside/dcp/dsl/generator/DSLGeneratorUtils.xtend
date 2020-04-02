@@ -12,6 +12,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import org.eclipse.emf.ecore.util.EcoreUtil
 import java.util.List
+import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
 
 class DSLGeneratorUtils {
 
@@ -60,8 +61,8 @@ class DSLGeneratorUtils {
 		Unification(stack, List(head, CompoundTerm("_")))
 	}
 
-	def static createMemberQuery(String valueSet, CompoundTerm member) {
-		CompoundTerm("valueSetMember", #[AtomicQuotedString(valueSet), member])
+	def static createMemberQuery(AtomicQuotedString valueSet, CompoundTerm member) {
+		CompoundTerm("valueSetMember", #[valueSet, member])
 	}
 
 	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {

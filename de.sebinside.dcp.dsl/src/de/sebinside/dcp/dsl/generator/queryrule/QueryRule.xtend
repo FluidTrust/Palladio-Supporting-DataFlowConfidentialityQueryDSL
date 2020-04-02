@@ -16,6 +16,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
+import de.sebinside.dcp.dsl.generator.crossplatform.CharacteristicEnumConverter
 
 abstract class QueryRule {
 
@@ -27,18 +28,21 @@ abstract class QueryRule {
 
 	var Rule rule = null
 	var String nameBase = null
+	var CharacteristicEnumConverter characteristicEnumConverter = null
+
 	var Set<CharacteristicClass> characteristicClasses = new HashSet<CharacteristicClass>
 
-	new(Rule rule, String nameBase) {
+	new(Rule rule, String nameBase, CharacteristicEnumConverter characteristicEnumConverter) {
 		this.rule = rule
 		this.nameBase = nameBase
+		this.characteristicEnumConverter = characteristicEnumConverter;
 	}
 
 	def dispatch generateDataSelectorTerm(AttributeSelector selector) {
 		selector.ref.literals.map [ literal |
 			val query = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-				AtomicQuotedString(selector.ref.ref.name), AtomicQuotedString(literal.entityName), CompoundTerm(operation),
-				CompoundTerm(callState))
+				characteristicEnumConverter.convert(selector.ref.ref), characteristicEnumConverter.convert(literal),
+				CompoundTerm(operation), CompoundTerm(callState))
 
 			if (selector.ref.negated) {
 				negate(query)
@@ -53,15 +57,15 @@ abstract class QueryRule {
 
 		selector.ref.members.map [ member |
 			createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-				AtomicQuotedString(selector.ref.name), CompoundTerm(member.ref.name.toFirstUpper), CompoundTerm(operation),
-				CompoundTerm(callState))
+				characteristicEnumConverter.convert(member.ref), CompoundTerm(member.ref.name.toFirstUpper),
+				CompoundTerm(operation), CompoundTerm(callState))
 		]
 	}
 
 	def dispatch generateDestinationSelectorTerm(PropertySelector selector) {
 		selector.ref.literals.map [ literal |
-			val query = createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(selector.ref.ref.name),
-				AtomicQuotedString(literal.entityName))
+			val query = createPropertyQuery(CompoundTerm(operation), characteristicEnumConverter.convert(selector.ref.ref),
+				characteristicEnumConverter.convert(literal))
 
 			if (selector.ref.negated) {
 				negate(query)
@@ -75,16 +79,16 @@ abstract class QueryRule {
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
-			createPropertyQuery(CompoundTerm(operation), AtomicQuotedString(member.ref.name),
+			createPropertyQuery(CompoundTerm(operation), characteristicEnumConverter.convert(member.ref),
 				CompoundTerm(member.ref.name.toFirstUpper))
 		]
 	}
-	
+
 	def dispatch generateDestinationSelectorTerm(NodeIdentitiySelector selector) {
-		// TODO: More to add here to support Palladio
+		// TODO: More to add here to support Palladio (using the crossplatform converter approach)
 		val nodeIdentity = selector.ref
 		val unification = Unification(CompoundTerm(operation), AtomicQuotedString(nodeIdentity))
-		
+
 		#[unification]
 	}
 

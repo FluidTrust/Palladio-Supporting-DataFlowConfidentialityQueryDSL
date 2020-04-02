@@ -8,12 +8,13 @@ There are several characteristics files available for testing purposes. They can
 
 ## Snippets
 
-### Geolocation
+### Shop
 
-This snippet describes the Type0-constraint from the geolocation / shop example.
+This snippet describes the Type0-constraint from the shop example.
 
 ```smalltalk
-import "Geolocation.xmi"
+target OperationModel
+import "shop.xmi"
 
 type level: PrivacyLevel
 type location: Locations
@@ -23,7 +24,7 @@ class isNotSafe {
 }
 
 // No type 0 data flow to unsafe locations
-constraint noType0Flow {
+constraint NoType0Flow {
 	data.attribute.level.Type0 NEVER FLOWS node.class.isNotSafe
 }
 ```
@@ -61,5 +62,29 @@ constraint example1 {
 
 constraint example2 {
 	data.class.example1 NEVER FLOWS node.property.Colors.red
+}
+```
+
+### Geolocation
+
+This snippet describes the constraint for the (newly developed) geolocation example.
+**Please note: Node Identities are still work in Progress!**
+
+```smalltalk
+target DataCentricPalladio
+import "geolocation.xmi"
+
+type Encryption: Encryption
+type Location: Location
+type Origin: Origin
+type PersonalInformation: PersonalInformation
+
+// No flow of personal unencrypted information to the specified node 
+constraint NoUnencryptedPersonalDataFlow {
+	data.attribute.Origin.EU &
+	data.attribute.PersonalInformation.true &
+	data.attribute.Encryption.!true 
+	NEVER FLOWS
+	node.name."StoreDB"
 }
 ```

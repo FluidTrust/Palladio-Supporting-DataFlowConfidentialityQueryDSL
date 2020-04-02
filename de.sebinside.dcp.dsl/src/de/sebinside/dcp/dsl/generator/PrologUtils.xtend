@@ -4,6 +4,7 @@ import java.util.List
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.ExpressionsFactory
+import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
 
 class PrologUtils {
 	def static Rule(String head) {
@@ -13,9 +14,9 @@ class PrologUtils {
 		rule
 	}
 
-	def static SimpleFact(String head, String argument) {
+	def static SimpleFact(String head, AtomicQuotedString argument) {
 		val fact = PrologFactory.eINSTANCE.createFact
-		val factInternals = CompoundTerm(head, AtomicQuotedString(argument))
+		val factInternals = CompoundTerm(head, argument)
 		fact.head = factInternals
 		fact
 	}

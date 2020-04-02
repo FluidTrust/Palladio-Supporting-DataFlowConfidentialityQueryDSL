@@ -5,6 +5,10 @@ package de.sebinside.dcp.dsl.generator
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.Constraint
+import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
+import de.sebinside.dcp.dsl.generator.crossplatform.CharacteristicEnumConverter
+import de.sebinside.dcp.dsl.generator.crossplatform.OperationModelCharacteristicEnumConverter
+import de.sebinside.dcp.dsl.generator.crossplatform.PalladioCharacteristicEnumConverter
 import de.sebinside.dcp.dsl.generator.queryrule.CallArgumentQueryRule
 import de.sebinside.dcp.dsl.generator.queryrule.CallStateQueryRule
 import de.sebinside.dcp.dsl.generator.queryrule.ReturnValueQueryRule
@@ -19,20 +23,18 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
-import de.sebinside.dcp.dsl.dSL.TargetModelType
-import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
 
 class DSLGenerator extends AbstractGenerator {
 
 	static final String DEV_OUTPUT_FILE_NAME = "output.pl"
 
 	// Setting the default value
-	TargetModelType targetModelType = TargetModelType.OPERATION_MODEL
+	CharacteristicEnumConverter characteristicEnumConverter = new OperationModelCharacteristicEnumConverter
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val program = PrologFactory.eINSTANCE.createProgram
 
-		for(element: resource.allContents.toIterable.filter(TargetModelTypeDef)) {
+		for (element : resource.allContents.toIterable.filter(TargetModelTypeDef)) {
 			element.compile
 		}
 
@@ -54,7 +56,17 @@ class DSLGenerator extends AbstractGenerator {
 
 	def compile(TargetModelTypeDef typeDefs) {
 		// There is only one or none target model type definition
-		this.targetModelType = typeDefs.type
+		switch (typeDefs.type) {
+			case DATA_CENTRIC_PALLADIO: {
+				this.characteristicEnumConverter = new PalladioCharacteristicEnumConverter
+			}
+			case EXTENDED_DFD: {
+				throw new Exception("Extended DFD are not supported yet.")
+			}
+			case OPERATION_MODEL: {
+				this.characteristicEnumConverter = new OperationModelCharacteristicEnumConverter
+			}
+		}
 	}
 
 	def List<Clause> compile(CharacteristicClass charateristicClass) {
@@ -75,7 +87,7 @@ class DSLGenerator extends AbstractGenerator {
 
 				// Create and add fact
 				val factName = '''characteristicsClass_«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
-				val fact = SimpleFact(factName, literal.entityName)
+				val fact = SimpleFact(factName, characteristicEnumConverter.convert(literal))
 				clauses.add(fact)
 
 				// Create fact reference for the rule
@@ -100,7 +112,8 @@ class DSLGenerator extends AbstractGenerator {
 		// Add member queries to the class directly
 		// FIXME: Might contain duplicates
 		val memberQueries = charateristicClass.members.map [ member |
-			createMemberQuery(member.ref.ref.entityName, CompoundTerm(member.ref.name.toFirstUpper))
+			createMemberQuery(characteristicEnumConverter.convert(member.ref),
+				CompoundTerm(member.ref.name.toFirstUpper))
 		]
 		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
 
@@ -129,9 +142,9 @@ class DSLGenerator extends AbstractGenerator {
 		} else {
 
 			// A NEVER FLOWS statement consists of three sub rules
-			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName).generate()
-			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName).generate()
-			val callStateRule = new CallStateQueryRule(mainRule, constraintName).generate()
+			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
+			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
+			val callStateRule = new CallStateQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
 
 			// Combine rules
 			constraintRule.body = LogicalOr(

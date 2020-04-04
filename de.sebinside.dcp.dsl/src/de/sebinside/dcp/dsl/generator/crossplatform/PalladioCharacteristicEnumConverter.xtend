@@ -1,6 +1,5 @@
 package de.sebinside.dcp.dsl.generator.crossplatform
 
-import de.sebinside.dcp.dsl.generator.crossplatform.CharacteristicEnumConverter
 import de.sebinside.dcp.dsl.dSL.CharacteristicType
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
 

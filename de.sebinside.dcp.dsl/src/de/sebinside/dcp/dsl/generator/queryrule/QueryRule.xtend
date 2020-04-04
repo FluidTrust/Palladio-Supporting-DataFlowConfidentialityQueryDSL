@@ -64,8 +64,8 @@ abstract class QueryRule {
 
 	def dispatch generateDestinationSelectorTerm(PropertySelector selector) {
 		selector.ref.literals.map [ literal |
-			val query = createPropertyQuery(CompoundTerm(operation), characteristicEnumConverter.convert(selector.ref.ref),
-				characteristicEnumConverter.convert(literal))
+			val query = createPropertyQuery(CompoundTerm(operation),
+				characteristicEnumConverter.convert(selector.ref.ref), characteristicEnumConverter.convert(literal))
 
 			if (selector.ref.negated) {
 				negate(query)
@@ -111,15 +111,15 @@ abstract class QueryRule {
 		// Create final rule body
 		val subRuleComponents = #[queryTypeTerm,
 			createCallStackUnification(CompoundTerm(callStack), CompoundTerm(operation)),
-			expressionsToLogicalAnd(dataSelectorTerm), expressionsToLogicalAnd(destinationSelectorTerm),
-			if (characteristicClasses.size > 0) {
+			createStackValidCall(CompoundTerm(callStack)), expressionsToLogicalAnd(dataSelectorTerm),
+			expressionsToLogicalAnd(destinationSelectorTerm), if (characteristicClasses.size > 0) {
 				expressionsToLogicalAnd(characteristicsClassesTerms)
 			}]
 		subRule.body = expressionsToLogicalAnd(subRuleComponents)
 
 		// Create rules parameters
 		var List<CompoundTerm> parametersList = new ArrayList<CompoundTerm>
-		parametersList.addAll(CompoundTerm("QueryType"), CompoundTerm(operation))
+		parametersList.addAll(CompoundTerm("QueryType"), CompoundTerm(operation), CompoundTerm(callStack))
 		parametersList.add(parameterTerm())
 
 		// Add all (unique) classes members names to the list

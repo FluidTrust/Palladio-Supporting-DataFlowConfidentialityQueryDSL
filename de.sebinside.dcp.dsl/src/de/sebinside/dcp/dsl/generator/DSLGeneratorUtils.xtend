@@ -60,6 +60,10 @@ class DSLGeneratorUtils {
 	def static createCallStackUnification(CompoundTerm stack, CompoundTerm head) {
 		Unification(stack, List(head, CompoundTerm("_")))
 	}
+	
+	def static createStackValidCall(CompoundTerm callStack) {
+		CompoundTerm("stackValid", callStack)
+	}
 
 	def static createMemberQuery(AtomicQuotedString valueSet, CompoundTerm member) {
 		CompoundTerm("valueSetMember", #[valueSet, member])

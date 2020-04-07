@@ -1,13 +1,12 @@
 package de.sebinside.dcp.dsl.generator.queryrule
 
 import de.sebinside.dcp.dsl.dSL.Rule
-import org.eclipse.emf.ecore.util.EcoreUtil
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.CharacteristicEnumConverter
 
-class CallStateQueryRule extends QueryRule {
+class PreCallStateQueryRule extends QueryRule {
 
 	new(Rule rule, String nameBase, CharacteristicEnumConverter characteristicEnumConverter) {
 		super(rule, nameBase, characteristicEnumConverter)
@@ -15,20 +14,11 @@ class CallStateQueryRule extends QueryRule {
 
 	override createParameterQuery(Expression stack, Expression parameter, Expression attribute, Expression value,
 		Expression operation, Expression stateVariable) {
-		val preCallState = CompoundTerm("preCallState", #[stack, operation, stateVariable, attribute, value])
-		// Create copies of each parameter (this is needed because...?)
-		val postCallState = CompoundTerm("postCallState", #[
-			EcoreUtil.copy(stack),
-			EcoreUtil.copy(operation),
-			EcoreUtil.copy(stateVariable),
-			EcoreUtil.copy(attribute),
-			EcoreUtil.copy(value)
-		])
-		LogicalOr(preCallState, postCallState)
+		CompoundTerm("preCallState", #[stack, operation, stateVariable, attribute, value])
 	}
 
 	override queryTypeIdentification() {
-		"CALL_STATE"
+		"PRE_CALL_STATE"
 	}
 	
 	override parameterTerm() {

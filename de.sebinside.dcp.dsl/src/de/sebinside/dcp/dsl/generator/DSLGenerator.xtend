@@ -10,7 +10,6 @@ import de.sebinside.dcp.dsl.generator.crossplatform.CharacteristicEnumConverter
 import de.sebinside.dcp.dsl.generator.crossplatform.OperationModelCharacteristicEnumConverter
 import de.sebinside.dcp.dsl.generator.crossplatform.PalladioCharacteristicEnumConverter
 import de.sebinside.dcp.dsl.generator.queryrule.CallArgumentQueryRule
-import de.sebinside.dcp.dsl.generator.queryrule.CallStateQueryRule
 import de.sebinside.dcp.dsl.generator.queryrule.ReturnValueQueryRule
 import java.util.ArrayList
 import java.util.List
@@ -23,6 +22,8 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import de.sebinside.dcp.dsl.generator.queryrule.PostCallStateQueryRule
+import de.sebinside.dcp.dsl.generator.queryrule.PreCallStateQueryRule
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -144,20 +145,23 @@ class DSLGenerator extends AbstractGenerator {
 			// A NEVER FLOWS statement consists of three sub rules
 			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
 			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
-			val callStateRule = new CallStateQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
+			val preCallStateRule = new PreCallStateQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
+			val postCallStateRule = new PostCallStateQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
 
 			// Combine rules
 			constraintRule.body = LogicalOr(
 				ruleToRuleCall(callArgumentRule),
-				LogicalOr(ruleToRuleCall(returnValueRule), ruleToRuleCall(callStateRule))
+				LogicalOr(ruleToRuleCall(returnValueRule),
+					LogicalOr(ruleToRuleCall(preCallStateRule), ruleToRuleCall(postCallStateRule))
+				)
 			)
 
 			// Combine (unique) arguments of all rules
-			val allArguments = combineRuleArguments(#[callArgumentRule, returnValueRule, callStateRule])
+			val allArguments = combineRuleArguments(#[callArgumentRule, returnValueRule, preCallStateRule, postCallStateRule])
 			constraintRule.head.arguments.addAll(allArguments)
 
 			clauses.add(constraintRule)
-			clauses.addAll(callArgumentRule, returnValueRule, callStateRule)
+			clauses.addAll(callArgumentRule, returnValueRule, preCallStateRule, postCallStateRule)
 		}
 		clauses
 	}

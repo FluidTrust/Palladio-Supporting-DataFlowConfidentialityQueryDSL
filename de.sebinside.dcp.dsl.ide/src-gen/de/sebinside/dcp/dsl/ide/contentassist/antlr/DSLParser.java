@@ -38,6 +38,8 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTargetModelTypeAccess().getAlternatives(), "rule__TargetModelType__Alternatives");
 			builder.put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 			builder.put(grammarAccess.getTargetModelTypeDefAccess().getGroup(), "rule__TargetModelTypeDef__Group__0");
+			builder.put(grammarAccess.getTargetModelTypeDefAccess().getGroup_2(), "rule__TargetModelTypeDef__Group_2__0");
+			builder.put(grammarAccess.getTargetModelTypeDefAccess().getGroup_2_2(), "rule__TargetModelTypeDef__Group_2_2__0");
 			builder.put(grammarAccess.getAbstractElementAccess().getGroup_4(), "rule__AbstractElement__Group_4__0");
 			builder.put(grammarAccess.getCharacteristicTypeAccess().getGroup(), "rule__CharacteristicType__Group__0");
 			builder.put(grammarAccess.getCharacteristicClassAccess().getGroup(), "rule__CharacteristicClass__Group__0");
@@ -60,6 +62,9 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getModelAccess().getTargetModelTypeAssignment_0(), "rule__Model__TargetModelTypeAssignment_0");
 			builder.put(grammarAccess.getModelAccess().getElementsAssignment_1(), "rule__Model__ElementsAssignment_1");
 			builder.put(grammarAccess.getTargetModelTypeDefAccess().getTypeAssignment_1(), "rule__TargetModelTypeDef__TypeAssignment_1");
+			builder.put(grammarAccess.getTargetModelTypeDefAccess().getTypeContainerAssignment_2_1(), "rule__TargetModelTypeDef__TypeContainerAssignment_2_1");
+			builder.put(grammarAccess.getTargetModelTypeDefAccess().getAllocationModelAssignment_2_2_1(), "rule__TargetModelTypeDef__AllocationModelAssignment_2_2_1");
+			builder.put(grammarAccess.getTargetModelTypeDefAccess().getUsageScenarioAssignment_2_2_3(), "rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3");
 			builder.put(grammarAccess.getCharacteristicTypeAccess().getNameAssignment_1(), "rule__CharacteristicType__NameAssignment_1");
 			builder.put(grammarAccess.getCharacteristicTypeAccess().getRefAssignment_3(), "rule__CharacteristicType__RefAssignment_3");
 			builder.put(grammarAccess.getCharacteristicClassAccess().getNameAssignment_1(), "rule__CharacteristicClass__NameAssignment_1");

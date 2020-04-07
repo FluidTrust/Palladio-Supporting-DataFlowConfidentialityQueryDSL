@@ -6,7 +6,7 @@ package de.sebinside.dcp.dsl;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
 
-import de.sebinside.dcp.dsl.scoping.CharacteristicsGlobalScopeProvider;
+import de.sebinside.dcp.dsl.scoping.ImportReadyGlobalScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the
@@ -16,12 +16,12 @@ import de.sebinside.dcp.dsl.scoping.CharacteristicsGlobalScopeProvider;
 public class DSLRuntimeModule extends AbstractDSLRuntimeModule {
 
 	public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
-		return CharacteristicsResourceDescriptionStrategy.class;
+		return ExtendedResourceDescriptionStrategy.class;
 	}
 
 	@Override
 	public Class<? extends IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return CharacteristicsGlobalScopeProvider.class;
+		return ImportReadyGlobalScopeProvider.class;
 	}
 
 }

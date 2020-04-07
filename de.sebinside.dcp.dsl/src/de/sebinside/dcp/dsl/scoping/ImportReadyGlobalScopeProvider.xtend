@@ -10,10 +10,10 @@ import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.resource.IResourceDescription
 import org.eclipse.xtext.scoping.impl.ImportUriGlobalScopeProvider
 import org.eclipse.xtext.util.IResourceScopeCache
-import de.sebinside.dcp.dsl.CharacteristicsResourceDescriptionStrategy
 import de.sebinside.dcp.dsl.dSL.DSLPackage
+import de.sebinside.dcp.dsl.ExtendedResourceDescriptionStrategy
 
-class CharacteristicsGlobalScopeProvider extends ImportUriGlobalScopeProvider {
+class ImportReadyGlobalScopeProvider extends ImportUriGlobalScopeProvider {
 	static final Splitter SPLITTER = Splitter.on(',');
 
 	@Inject
@@ -23,7 +23,7 @@ class CharacteristicsGlobalScopeProvider extends ImportUriGlobalScopeProvider {
 	IResourceScopeCache cache;
 
 	override protected getImportedUris(Resource resource) {
-		return cache.get(CharacteristicsGlobalScopeProvider.getSimpleName(), resource, new Provider<LinkedHashSet<URI>>() {
+		return cache.get(ImportReadyGlobalScopeProvider.getSimpleName(), resource, new Provider<LinkedHashSet<URI>>() {
 			override get() {
 				val uniqueImportURIs = collectImportUris(resource, new LinkedHashSet<URI>(5))
 
@@ -40,7 +40,7 @@ class CharacteristicsGlobalScopeProvider extends ImportUriGlobalScopeProvider {
 				val models = resourceDescription.getExportedObjectsByType(DSLPackage.Literals.MODEL)
 				
 				models.forEach[
-					val userData = getUserData(CharacteristicsResourceDescriptionStrategy.INCLUDES)
+					val userData = getUserData(ExtendedResourceDescriptionStrategy.INCLUDES)
 					if(userData !== null) {
 						SPLITTER.split(userData).forEach[uri |
 							var includedUri = URI.createURI(uri)

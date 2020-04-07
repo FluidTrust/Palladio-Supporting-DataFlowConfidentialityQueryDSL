@@ -5,6 +5,12 @@ package de.sebinside.dcp.dsl.dSL;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.palladiosimulator.pcm.allocation.Allocation;
+
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicTypeContainer;
+
+import org.palladiosimulator.pcm.usagemodel.UsageScenario;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Target Model Type Def</b></em>'.
@@ -15,6 +21,9 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getType <em>Type</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getTypeContainer <em>Type Container</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getAllocationModel <em>Allocation Model</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getUsageScenario <em>Usage Scenario</em>}</li>
  * </ul>
  *
  * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getTargetModelTypeDef()
@@ -47,5 +56,71 @@ public interface TargetModelTypeDef extends EObject
 	 * @generated
 	 */
   void setType(TargetModelType value);
+
+  /**
+	 * Returns the value of the '<em><b>Type Container</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type Container</em>' reference.
+	 * @see #setTypeContainer(CharacteristicTypeContainer)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getTargetModelTypeDef_TypeContainer()
+	 * @model
+	 * @generated
+	 */
+  CharacteristicTypeContainer getTypeContainer();
+
+  /**
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getTypeContainer <em>Type Container</em>}' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type Container</em>' reference.
+	 * @see #getTypeContainer()
+	 * @generated
+	 */
+  void setTypeContainer(CharacteristicTypeContainer value);
+
+  /**
+	 * Returns the value of the '<em><b>Allocation Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the value of the '<em>Allocation Model</em>' reference.
+	 * @see #setAllocationModel(Allocation)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getTargetModelTypeDef_AllocationModel()
+	 * @model
+	 * @generated
+	 */
+  Allocation getAllocationModel();
+
+  /**
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getAllocationModel <em>Allocation Model</em>}' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Allocation Model</em>' reference.
+	 * @see #getAllocationModel()
+	 * @generated
+	 */
+  void setAllocationModel(Allocation value);
+
+  /**
+	 * Returns the value of the '<em><b>Usage Scenario</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the value of the '<em>Usage Scenario</em>' reference.
+	 * @see #setUsageScenario(UsageScenario)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getTargetModelTypeDef_UsageScenario()
+	 * @model
+	 * @generated
+	 */
+  UsageScenario getUsageScenario();
+
+  /**
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getUsageScenario <em>Usage Scenario</em>}' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Usage Scenario</em>' reference.
+	 * @see #getUsageScenario()
+	 * @generated
+	 */
+  void setUsageScenario(UsageScenario value);
 
 } // TargetModelTypeDef

@@ -10,9 +10,17 @@ import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.palladiosimulator.pcm.allocation.Allocation;
+
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicTypeContainer;
+
+import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +31,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl#getTypeContainer <em>Type Container</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl#getAllocationModel <em>Allocation Model</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl#getUsageScenario <em>Usage Scenario</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,6 +59,36 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
 	 * @ordered
 	 */
   protected TargetModelType type = TYPE_EDEFAULT;
+
+  /**
+	 * The cached value of the '{@link #getTypeContainer() <em>Type Container</em>}' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see #getTypeContainer()
+	 * @generated
+	 * @ordered
+	 */
+  protected CharacteristicTypeContainer typeContainer;
+
+  /**
+	 * The cached value of the '{@link #getAllocationModel() <em>Allocation Model</em>}' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see #getAllocationModel()
+	 * @generated
+	 * @ordered
+	 */
+  protected Allocation allocationModel;
+
+  /**
+	 * The cached value of the '{@link #getUsageScenario() <em>Usage Scenario</em>}' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see #getUsageScenario()
+	 * @generated
+	 * @ordered
+	 */
+  protected UsageScenario usageScenario;
 
   /**
 	 * <!-- begin-user-doc -->
@@ -101,11 +142,149 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
   @Override
+  public CharacteristicTypeContainer getTypeContainer()
+  {
+		if (typeContainer != null && ((EObject)typeContainer).eIsProxy()) {
+			InternalEObject oldTypeContainer = (InternalEObject)typeContainer;
+			typeContainer = (CharacteristicTypeContainer)eResolveProxy(oldTypeContainer);
+			if (typeContainer != oldTypeContainer) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER, oldTypeContainer, typeContainer));
+			}
+		}
+		return typeContainer;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public CharacteristicTypeContainer basicGetTypeContainer()
+  {
+		return typeContainer;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public void setTypeContainer(CharacteristicTypeContainer newTypeContainer)
+  {
+		CharacteristicTypeContainer oldTypeContainer = typeContainer;
+		typeContainer = newTypeContainer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER, oldTypeContainer, typeContainer));
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public Allocation getAllocationModel()
+  {
+		if (allocationModel != null && ((EObject)allocationModel).eIsProxy()) {
+			InternalEObject oldAllocationModel = (InternalEObject)allocationModel;
+			allocationModel = (Allocation)eResolveProxy(oldAllocationModel);
+			if (allocationModel != oldAllocationModel) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL, oldAllocationModel, allocationModel));
+			}
+		}
+		return allocationModel;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public Allocation basicGetAllocationModel()
+  {
+		return allocationModel;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public void setAllocationModel(Allocation newAllocationModel)
+  {
+		Allocation oldAllocationModel = allocationModel;
+		allocationModel = newAllocationModel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL, oldAllocationModel, allocationModel));
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public UsageScenario getUsageScenario()
+  {
+		if (usageScenario != null && ((EObject)usageScenario).eIsProxy()) {
+			InternalEObject oldUsageScenario = (InternalEObject)usageScenario;
+			usageScenario = (UsageScenario)eResolveProxy(oldUsageScenario);
+			if (usageScenario != oldUsageScenario) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO, oldUsageScenario, usageScenario));
+			}
+		}
+		return usageScenario;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public UsageScenario basicGetUsageScenario()
+  {
+		return usageScenario;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public void setUsageScenario(UsageScenario newUsageScenario)
+  {
+		UsageScenario oldUsageScenario = usageScenario;
+		usageScenario = newUsageScenario;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO, oldUsageScenario, usageScenario));
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
 		switch (featureID) {
 			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
 				return getType();
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
+				if (resolve) return getTypeContainer();
+				return basicGetTypeContainer();
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
+				if (resolve) return getAllocationModel();
+				return basicGetAllocationModel();
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
+				if (resolve) return getUsageScenario();
+				return basicGetUsageScenario();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -121,6 +300,15 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
 		switch (featureID) {
 			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
 				setType((TargetModelType)newValue);
+				return;
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
+				setTypeContainer((CharacteristicTypeContainer)newValue);
+				return;
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
+				setAllocationModel((Allocation)newValue);
+				return;
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
+				setUsageScenario((UsageScenario)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,6 +326,15 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
 			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
+				setTypeContainer((CharacteristicTypeContainer)null);
+				return;
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
+				setAllocationModel((Allocation)null);
+				return;
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
+				setUsageScenario((UsageScenario)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -153,6 +350,12 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
 		switch (featureID) {
 			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
 				return type != TYPE_EDEFAULT;
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
+				return typeContainer != null;
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
+				return allocationModel != null;
+			case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
+				return usageScenario != null;
 		}
 		return super.eIsSet(featureID);
 	}

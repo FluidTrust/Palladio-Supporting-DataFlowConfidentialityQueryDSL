@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
+import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicType;
@@ -51,6 +52,7 @@ public class DSLScopeProvider extends AbstractDSLScopeProvider {
 			}
 			return super.getScope(context, reference);
 		}
+		
 		return super.getScope(context, reference);
 	}
 }

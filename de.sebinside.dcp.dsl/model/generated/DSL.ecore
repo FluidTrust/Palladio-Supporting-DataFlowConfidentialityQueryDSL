@@ -9,6 +9,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TargetModelTypeDef">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TargetModelType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeContainer" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics/CharacteristicTypeContainer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allocationModel" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//allocation/Allocation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usageScenario" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel/UsageScenario"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TargetModelType">
     <eLiterals name="OperationModel" literal="OperationModel"/>

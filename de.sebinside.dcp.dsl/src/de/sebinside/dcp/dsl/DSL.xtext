@@ -6,17 +6,19 @@ generate dSL "http://www.sebinside.de/dcp/dsl/DSL"
 // https://sdqweb.ipd.kit.edu/wiki/Importing_nested_EPackages_in_Xtext
 import "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics" as
 characteristics
+import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//allocation" as allocation
+import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel" as usagemodel
 
 Model:
 	(targetModelType=TargetModelTypeDef)?
 	(elements+=AbstractElement)*;
 
 TargetModelTypeDef:
-	'target' type=TargetModelType;
+	'target' type=TargetModelType ('using' typeContainer=[characteristics::CharacteristicTypeContainer]
+	(',' allocationModel=[allocation::Allocation] ',' usageScenario=[usagemodel::UsageScenario])?)?;
 
 enum TargetModelType:
-	OperationModel | DataCentricPalladio | ExtendedDFD
-;
+	OperationModel | DataCentricPalladio | ExtendedDFD;
 
 AbstractElement:
 	Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
@@ -62,10 +64,9 @@ PropertySelector:
 
 PropertyClassSelector:
 	'node.class.' ref=[CharacteristicClass];
-	
+
 NodeIdentitiySelector:
-	'node.name.' ref=STRING
-;
+	'node.name.' ref=STRING;
 
 Statement:
 	modality=StatementModality type=StatementType;

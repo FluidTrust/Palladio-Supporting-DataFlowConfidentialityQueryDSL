@@ -394,16 +394,10 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TargetModelTypeDef returns TargetModelTypeDef
 	 *
 	 * Constraint:
-	 *     type=TargetModelType
+	 *     (type=TargetModelType (typeContainer=[CharacteristicTypeContainer|ID] (allocationModel=[Allocation|ID] usageScenario=[UsageScenario|ID])?)?)
 	 */
 	protected void sequence_TargetModelTypeDef(ISerializationContext context, TargetModelTypeDef semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTargetModelTypeDefAccess().getTypeTargetModelTypeEnumRuleCall_1_0(), semanticObject.getType());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

@@ -115,13 +115,40 @@ public interface DSLPackage extends EPackage
   int TARGET_MODEL_TYPE_DEF__TYPE = 0;
 
   /**
+	 * The feature id for the '<em><b>Type Container</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER = 1;
+
+  /**
+	 * The feature id for the '<em><b>Allocation Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL = 2;
+
+  /**
+	 * The feature id for the '<em><b>Usage Scenario</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO = 3;
+
+  /**
 	 * The number of structural features of the '<em>Target Model Type Def</em>' class.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-  int TARGET_MODEL_TYPE_DEF_FEATURE_COUNT = 1;
+  int TARGET_MODEL_TYPE_DEF_FEATURE_COUNT = 4;
 
   /**
 	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
@@ -709,6 +736,39 @@ public interface DSLPackage extends EPackage
   EAttribute getTargetModelTypeDef_Type();
 
   /**
+	 * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getTypeContainer <em>Type Container</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type Container</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getTypeContainer()
+	 * @see #getTargetModelTypeDef()
+	 * @generated
+	 */
+  EReference getTargetModelTypeDef_TypeContainer();
+
+  /**
+	 * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getAllocationModel <em>Allocation Model</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Allocation Model</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getAllocationModel()
+	 * @see #getTargetModelTypeDef()
+	 * @generated
+	 */
+  EReference getTargetModelTypeDef_AllocationModel();
+
+  /**
+	 * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getUsageScenario <em>Usage Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Usage Scenario</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getUsageScenario()
+	 * @see #getTargetModelTypeDef()
+	 * @generated
+	 */
+  EReference getTargetModelTypeDef_UsageScenario();
+
+  /**
 	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.AbstractElement <em>Abstract Element</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1196,6 +1256,30 @@ public interface DSLPackage extends EPackage
 		 * @generated
 		 */
     EAttribute TARGET_MODEL_TYPE_DEF__TYPE = eINSTANCE.getTargetModelTypeDef_Type();
+
+    /**
+		 * The meta object literal for the '<em><b>Type Container</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER = eINSTANCE.getTargetModelTypeDef_TypeContainer();
+
+    /**
+		 * The meta object literal for the '<em><b>Allocation Model</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL = eINSTANCE.getTargetModelTypeDef_AllocationModel();
+
+    /**
+		 * The meta object literal for the '<em><b>Usage Scenario</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO = eINSTANCE.getTargetModelTypeDef_UsageScenario();
 
     /**
 		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.AbstractElementImpl <em>Abstract Element</em>}' class.

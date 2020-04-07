@@ -43,6 +43,8 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.palladiosimulator.pcm.allocation.AllocationPackage;
+
 import org.palladiosimulator.pcm.core.CorePackage;
 
 import org.palladiosimulator.pcm.core.composition.CompositionPackage;
@@ -281,29 +283,30 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		// Initialize simple dependencies
 		EcorePackage.eINSTANCE.eClass();
 		CharacteristicsPackage.eINSTANCE.eClass();
+		AllocationPackage.eINSTANCE.eClass();
+		UsagemodelPackage.eINSTANCE.eClass();
 		IdentifierPackage.eINSTANCE.eClass();
 		EntityPackage.eINSTANCE.eClass();
 		RepositoryPackage.eINSTANCE.eClass();
-		org.palladiosimulator.pcm.repository.RepositoryPackage.eINSTANCE.eClass();
-		ResourcetypePackage.eINSTANCE.eClass();
+		ResourceenvironmentPackage.eINSTANCE.eClass();
 		CompositionPackage.eINSTANCE.eClass();
-		DataPackage.eINSTANCE.eClass();
-		CorePackage.eINSTANCE.eClass();
-		ReliabilityPackage.eINSTANCE.eClass();
-		SeffPackage.eINSTANCE.eClass();
+		SystemPackage.eINSTANCE.eClass();
 		ParameterPackage.eINSTANCE.eClass();
-		ProtocolPackage.eINSTANCE.eClass();
-		UnitsPackage.eINSTANCE.eClass();
+		org.palladiosimulator.pcm.repository.RepositoryPackage.eINSTANCE.eClass();
+		CorePackage.eINSTANCE.eClass();
+		ResourcetypePackage.eINSTANCE.eClass();
+		DataPackage.eINSTANCE.eClass();
+		QosannotationsPackage.eINSTANCE.eClass();
+		SeffPackage.eINSTANCE.eClass();
 		StoexPackage.eINSTANCE.eClass();
-		UsagemodelPackage.eINSTANCE.eClass();
+		ReliabilityPackage.eINSTANCE.eClass();
+		ProtocolPackage.eINSTANCE.eClass();
 		SeffPerformancePackage.eINSTANCE.eClass();
 		QosPerformancePackage.eINSTANCE.eClass();
-		ResourceenvironmentPackage.eINSTANCE.eClass();
-		QosReliabilityPackage.eINSTANCE.eClass();
+		UnitsPackage.eINSTANCE.eClass();
 		SeffReliabilityPackage.eINSTANCE.eClass();
-		QosannotationsPackage.eINSTANCE.eClass();
 		ProbfunctionPackage.eINSTANCE.eClass();
-		SystemPackage.eINSTANCE.eClass();
+		QosReliabilityPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theDSLPackage.createPackageContents();
@@ -372,6 +375,39 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
   public EAttribute getTargetModelTypeDef_Type()
   {
 		return (EAttribute)targetModelTypeDefEClass.getEStructuralFeatures().get(0);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EReference getTargetModelTypeDef_TypeContainer()
+  {
+		return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(1);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EReference getTargetModelTypeDef_AllocationModel()
+  {
+		return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(2);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EReference getTargetModelTypeDef_UsageScenario()
+  {
+		return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(3);
 	}
 
   /**
@@ -851,6 +887,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
 		targetModelTypeDefEClass = createEClass(TARGET_MODEL_TYPE_DEF);
 		createEAttribute(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__TYPE);
+		createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER);
+		createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL);
+		createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO);
 
 		abstractElementEClass = createEClass(ABSTRACT_ELEMENT);
 
@@ -937,8 +976,10 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		CharacteristicsPackage theCharacteristicsPackage = (CharacteristicsPackage)EPackage.Registry.INSTANCE.getEPackage(CharacteristicsPackage.eNS_URI);
+		AllocationPackage theAllocationPackage = (AllocationPackage)EPackage.Registry.INSTANCE.getEPackage(AllocationPackage.eNS_URI);
+		UsagemodelPackage theUsagemodelPackage = (UsagemodelPackage)EPackage.Registry.INSTANCE.getEPackage(UsagemodelPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -962,6 +1003,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
 		initEClass(targetModelTypeDefEClass, TargetModelTypeDef.class, "TargetModelTypeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTargetModelTypeDef_Type(), this.getTargetModelType(), "type", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTargetModelTypeDef_TypeContainer(), theCharacteristicsPackage.getCharacteristicTypeContainer(), null, "typeContainer", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTargetModelTypeDef_AllocationModel(), theAllocationPackage.getAllocation(), null, "allocationModel", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTargetModelTypeDef_UsageScenario(), theUsagemodelPackage.getUsageScenario(), null, "usageScenario", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractElementEClass, AbstractElement.class, "AbstractElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

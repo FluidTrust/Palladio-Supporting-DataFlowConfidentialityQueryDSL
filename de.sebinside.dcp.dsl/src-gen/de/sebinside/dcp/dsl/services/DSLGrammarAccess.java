@@ -61,12 +61,28 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTargetKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cTypeTargetModelTypeEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cUsingKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cTypeContainerAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cTypeContainerCharacteristicTypeContainerCrossReference_2_1_0 = (CrossReference)cTypeContainerAssignment_2_1.eContents().get(0);
+		private final RuleCall cTypeContainerCharacteristicTypeContainerIDTerminalRuleCall_2_1_0_1 = (RuleCall)cTypeContainerCharacteristicTypeContainerCrossReference_2_1_0.eContents().get(1);
+		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
+		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Assignment cAllocationModelAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
+		private final CrossReference cAllocationModelAllocationCrossReference_2_2_1_0 = (CrossReference)cAllocationModelAssignment_2_2_1.eContents().get(0);
+		private final RuleCall cAllocationModelAllocationIDTerminalRuleCall_2_2_1_0_1 = (RuleCall)cAllocationModelAllocationCrossReference_2_2_1_0.eContents().get(1);
+		private final Keyword cCommaKeyword_2_2_2 = (Keyword)cGroup_2_2.eContents().get(2);
+		private final Assignment cUsageScenarioAssignment_2_2_3 = (Assignment)cGroup_2_2.eContents().get(3);
+		private final CrossReference cUsageScenarioUsageScenarioCrossReference_2_2_3_0 = (CrossReference)cUsageScenarioAssignment_2_2_3.eContents().get(0);
+		private final RuleCall cUsageScenarioUsageScenarioIDTerminalRuleCall_2_2_3_0_1 = (RuleCall)cUsageScenarioUsageScenarioCrossReference_2_2_3_0.eContents().get(1);
 		
 		//TargetModelTypeDef:
-		//	'target' type=TargetModelType;
+		//	'target' type=TargetModelType ('using' typeContainer=[characteristics::CharacteristicTypeContainer] (','
+		//	allocationModel=[allocation::Allocation] ',' usageScenario=[usagemodel::UsageScenario])?)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'target' type=TargetModelType
+		//'target' type=TargetModelType ('using' typeContainer=[characteristics::CharacteristicTypeContainer] (','
+		//allocationModel=[allocation::Allocation] ',' usageScenario=[usagemodel::UsageScenario])?)?
 		public Group getGroup() { return cGroup; }
 		
 		//'target'
@@ -77,6 +93,49 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//TargetModelType
 		public RuleCall getTypeTargetModelTypeEnumRuleCall_1_0() { return cTypeTargetModelTypeEnumRuleCall_1_0; }
+		
+		//('using' typeContainer=[characteristics::CharacteristicTypeContainer] (',' allocationModel=[allocation::Allocation] ','
+		//usageScenario=[usagemodel::UsageScenario])?)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'using'
+		public Keyword getUsingKeyword_2_0() { return cUsingKeyword_2_0; }
+		
+		//typeContainer=[characteristics::CharacteristicTypeContainer]
+		public Assignment getTypeContainerAssignment_2_1() { return cTypeContainerAssignment_2_1; }
+		
+		//[characteristics::CharacteristicTypeContainer]
+		public CrossReference getTypeContainerCharacteristicTypeContainerCrossReference_2_1_0() { return cTypeContainerCharacteristicTypeContainerCrossReference_2_1_0; }
+		
+		//ID
+		public RuleCall getTypeContainerCharacteristicTypeContainerIDTerminalRuleCall_2_1_0_1() { return cTypeContainerCharacteristicTypeContainerIDTerminalRuleCall_2_1_0_1; }
+		
+		//(',' allocationModel=[allocation::Allocation] ',' usageScenario=[usagemodel::UsageScenario])?
+		public Group getGroup_2_2() { return cGroup_2_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
+		
+		//allocationModel=[allocation::Allocation]
+		public Assignment getAllocationModelAssignment_2_2_1() { return cAllocationModelAssignment_2_2_1; }
+		
+		//[allocation::Allocation]
+		public CrossReference getAllocationModelAllocationCrossReference_2_2_1_0() { return cAllocationModelAllocationCrossReference_2_2_1_0; }
+		
+		//ID
+		public RuleCall getAllocationModelAllocationIDTerminalRuleCall_2_2_1_0_1() { return cAllocationModelAllocationIDTerminalRuleCall_2_2_1_0_1; }
+		
+		//','
+		public Keyword getCommaKeyword_2_2_2() { return cCommaKeyword_2_2_2; }
+		
+		//usageScenario=[usagemodel::UsageScenario]
+		public Assignment getUsageScenarioAssignment_2_2_3() { return cUsageScenarioAssignment_2_2_3; }
+		
+		//[usagemodel::UsageScenario]
+		public CrossReference getUsageScenarioUsageScenarioCrossReference_2_2_3_0() { return cUsageScenarioUsageScenarioCrossReference_2_2_3_0; }
+		
+		//ID
+		public RuleCall getUsageScenarioUsageScenarioIDTerminalRuleCall_2_2_3_0_1() { return cUsageScenarioUsageScenarioIDTerminalRuleCall_2_2_3_0_1; }
 	}
 	public class AbstractElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AbstractElement");
@@ -799,7 +858,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TargetModelTypeDef:
-	//	'target' type=TargetModelType;
+	//	'target' type=TargetModelType ('using' typeContainer=[characteristics::CharacteristicTypeContainer] (','
+	//	allocationModel=[allocation::Allocation] ',' usageScenario=[usagemodel::UsageScenario])?)?;
 	public TargetModelTypeDefElements getTargetModelTypeDefAccess() {
 		return pTargetModelTypeDef;
 	}

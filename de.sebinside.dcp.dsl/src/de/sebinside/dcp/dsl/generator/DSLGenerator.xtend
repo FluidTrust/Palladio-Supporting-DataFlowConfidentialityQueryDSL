@@ -24,6 +24,9 @@ import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.generator.queryrule.PostCallStateQueryRule
 import de.sebinside.dcp.dsl.generator.queryrule.PreCallStateQueryRule
+import de.sebinside.dcp.dsl.generator.crossplatform.OperationModelNodeIdentityConverter
+import de.sebinside.dcp.dsl.generator.crossplatform.NodeIdentityConverter
+import de.sebinside.dcp.dsl.generator.crossplatform.PalladioNodeIdentityConverter
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -31,6 +34,7 @@ class DSLGenerator extends AbstractGenerator {
 
 	// Setting the default value
 	CharacteristicEnumConverter characteristicEnumConverter = new OperationModelCharacteristicEnumConverter
+	NodeIdentityConverter nodeIdentityConverter = new OperationModelNodeIdentityConverter
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val program = PrologFactory.eINSTANCE.createProgram
@@ -60,12 +64,14 @@ class DSLGenerator extends AbstractGenerator {
 		switch (typeDefs.type) {
 			case DATA_CENTRIC_PALLADIO: {
 				this.characteristicEnumConverter = new PalladioCharacteristicEnumConverter
+				this.nodeIdentityConverter = new PalladioNodeIdentityConverter
 			}
 			case EXTENDED_DFD: {
 				throw new Exception("Extended DFD are not supported yet.")
 			}
 			case OPERATION_MODEL: {
 				this.characteristicEnumConverter = new OperationModelCharacteristicEnumConverter
+				this.nodeIdentityConverter = new OperationModelNodeIdentityConverter
 			}
 		}
 	}
@@ -143,10 +149,10 @@ class DSLGenerator extends AbstractGenerator {
 		} else {
 
 			// A NEVER FLOWS statement consists of three sub rules
-			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
-			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
-			val preCallStateRule = new PreCallStateQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
-			val postCallStateRule = new PostCallStateQueryRule(mainRule, constraintName, characteristicEnumConverter).generate()
+			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName, characteristicEnumConverter, nodeIdentityConverter).generate()
+			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName, characteristicEnumConverter, nodeIdentityConverter).generate()
+			val preCallStateRule = new PreCallStateQueryRule(mainRule, constraintName, characteristicEnumConverter, nodeIdentityConverter).generate()
+			val postCallStateRule = new PostCallStateQueryRule(mainRule, constraintName, characteristicEnumConverter, nodeIdentityConverter).generate()
 
 			// Combine rules
 			constraintRule.body = LogicalOr(

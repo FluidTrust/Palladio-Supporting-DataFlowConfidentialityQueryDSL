@@ -68,23 +68,25 @@ constraint example2 {
 ### Geolocation
 
 This snippet describes the constraint for the (newly developed) geolocation example.
-**Please note: Node Identities are still work in Progress!**
 
 ```smalltalk
-target DataCentricPalladio
+target DataCentricPalladio using _onNMoHKKEeq9tYpRa9lb6Q,_VggokHKKEeq9tYpRa9lb6Q,_9qywoHKJEeq9tYpRa9lb6Q
 import "geolocation.xmi"
+import "newAllocation.allocation"
+import "newAssembly.system"
+import "newUsageModel.usagemodel"
 
 type Encryption: Encryption
 type Location: Location
 type Origin: Origin
 type PersonalInformation: PersonalInformation
 
-// No flow of personal unencrypted information to the specified node 
+// No flow of personal unencrypted information to the specified node
 constraint NoUnencryptedPersonalDataFlow {
 	data.attribute.Origin.EU &
 	data.attribute.PersonalInformation.true &
 	data.attribute.Encryption.!true 
 	NEVER FLOWS
-	node.name."StoreDB"
+	node.identity.Assembly_StoreDB.StoreDB._GDFtwHKJEeq9tYpRa9lb6Q
 }
 ```

@@ -17,6 +17,7 @@ import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import de.sebinside.dcp.dsl.generator.crossplatform.CharacteristicEnumConverter
+import de.sebinside.dcp.dsl.generator.crossplatform.NodeIdentityConverter
 
 abstract class QueryRule {
 
@@ -29,13 +30,16 @@ abstract class QueryRule {
 	var Rule rule = null
 	var String nameBase = null
 	var CharacteristicEnumConverter characteristicEnumConverter = null
+	var NodeIdentityConverter nodeIdentityConverter = null
 
 	var Set<CharacteristicClass> characteristicClasses = new HashSet<CharacteristicClass>
 
-	new(Rule rule, String nameBase, CharacteristicEnumConverter characteristicEnumConverter) {
+	new(Rule rule, String nameBase, CharacteristicEnumConverter characteristicEnumConverter,
+		NodeIdentityConverter nodeIdentityConverter) {
 		this.rule = rule
 		this.nameBase = nameBase
-		this.characteristicEnumConverter = characteristicEnumConverter;
+		this.characteristicEnumConverter = characteristicEnumConverter
+		this.nodeIdentityConverter = nodeIdentityConverter
 	}
 
 	def dispatch generateDataSelectorTerm(AttributeSelector selector) {
@@ -85,9 +89,7 @@ abstract class QueryRule {
 	}
 
 	def dispatch generateDestinationSelectorTerm(NodeIdentitiySelector selector) {
-		// TODO: More to add here to support Palladio (using the crossplatform converter approach)
-		val nodeIdentity = selector.name !== null ? selector.name : selector.assembly.entityName
-		val unification = Unification(CompoundTerm(operation), AtomicQuotedString(nodeIdentity))
+		val unification = Unification(CompoundTerm(operation), nodeIdentityConverter.convert(selector))
 
 		#[unification]
 	}

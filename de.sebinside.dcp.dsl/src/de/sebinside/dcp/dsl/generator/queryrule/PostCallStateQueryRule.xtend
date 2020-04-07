@@ -5,11 +5,12 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.CharacteristicEnumConverter
+import de.sebinside.dcp.dsl.generator.crossplatform.NodeIdentityConverter
 
 class PostCallStateQueryRule extends QueryRule {
 
-	new(Rule rule, String nameBase, CharacteristicEnumConverter characteristicEnumConverter) {
-		super(rule, nameBase, characteristicEnumConverter)
+	new(Rule rule, String nameBase, CharacteristicEnumConverter characteristicEnumConverter, NodeIdentityConverter nodeIdentityConverter) {
+		super(rule, nameBase, characteristicEnumConverter, nodeIdentityConverter)
 	}
 
 	override createParameterQuery(Expression stack, Expression parameter, Expression attribute, Expression value,

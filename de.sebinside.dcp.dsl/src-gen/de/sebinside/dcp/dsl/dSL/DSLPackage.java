@@ -561,13 +561,40 @@ public interface DSLPackage extends EPackage
   int NODE_IDENTITIY_SELECTOR = 15;
 
   /**
-	 * The feature id for the '<em><b>Ref</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-  int NODE_IDENTITIY_SELECTOR__REF = DESTINATION_SELECTOR_FEATURE_COUNT + 0;
+  int NODE_IDENTITIY_SELECTOR__NAME = DESTINATION_SELECTOR_FEATURE_COUNT + 0;
+
+  /**
+	 * The feature id for the '<em><b>Assembly</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int NODE_IDENTITIY_SELECTOR__ASSEMBLY = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
+
+  /**
+	 * The feature id for the '<em><b>Component</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int NODE_IDENTITIY_SELECTOR__COMPONENT = DESTINATION_SELECTOR_FEATURE_COUNT + 2;
+
+  /**
+	 * The feature id for the '<em><b>Seff</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int NODE_IDENTITIY_SELECTOR__SEFF = DESTINATION_SELECTOR_FEATURE_COUNT + 3;
 
   /**
 	 * The number of structural features of the '<em>Node Identitiy Selector</em>' class.
@@ -576,7 +603,7 @@ public interface DSLPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-  int NODE_IDENTITIY_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
+  int NODE_IDENTITIY_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 4;
 
   /**
 	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementImpl <em>Statement</em>}' class.
@@ -1096,15 +1123,48 @@ public interface DSLPackage extends EPackage
   EClass getNodeIdentitiySelector();
 
   /**
-	 * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getRef <em>Ref</em>}'.
+	 * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ref</em>'.
-	 * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getRef()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getName()
 	 * @see #getNodeIdentitiySelector()
 	 * @generated
 	 */
-  EAttribute getNodeIdentitiySelector_Ref();
+  EAttribute getNodeIdentitiySelector_Name();
+
+  /**
+	 * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getAssembly <em>Assembly</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Assembly</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getAssembly()
+	 * @see #getNodeIdentitiySelector()
+	 * @generated
+	 */
+  EReference getNodeIdentitiySelector_Assembly();
+
+  /**
+	 * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getComponent <em>Component</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Component</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getComponent()
+	 * @see #getNodeIdentitiySelector()
+	 * @generated
+	 */
+  EReference getNodeIdentitiySelector_Component();
+
+  /**
+	 * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getSeff <em>Seff</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Seff</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getSeff()
+	 * @see #getNodeIdentitiySelector()
+	 * @generated
+	 */
+  EReference getNodeIdentitiySelector_Seff();
 
   /**
 	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Statement <em>Statement</em>}'.
@@ -1558,12 +1618,36 @@ public interface DSLPackage extends EPackage
     EClass NODE_IDENTITIY_SELECTOR = eINSTANCE.getNodeIdentitiySelector();
 
     /**
-		 * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 		 * @generated
 		 */
-    EAttribute NODE_IDENTITIY_SELECTOR__REF = eINSTANCE.getNodeIdentitiySelector_Ref();
+    EAttribute NODE_IDENTITIY_SELECTOR__NAME = eINSTANCE.getNodeIdentitiySelector_Name();
+
+    /**
+		 * The meta object literal for the '<em><b>Assembly</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference NODE_IDENTITIY_SELECTOR__ASSEMBLY = eINSTANCE.getNodeIdentitiySelector_Assembly();
+
+    /**
+		 * The meta object literal for the '<em><b>Component</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference NODE_IDENTITIY_SELECTOR__COMPONENT = eINSTANCE.getNodeIdentitiySelector_Component();
+
+    /**
+		 * The meta object literal for the '<em><b>Seff</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference NODE_IDENTITIY_SELECTOR__SEFF = eINSTANCE.getNodeIdentitiySelector_Seff();
 
     /**
 		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementImpl <em>Statement</em>}' class.

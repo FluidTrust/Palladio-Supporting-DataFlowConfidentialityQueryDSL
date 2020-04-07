@@ -3,21 +3,31 @@
  */
 package de.sebinside.dcp.dsl.scoping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicType;
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Enumeration;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
+
+import com.ibm.icu.impl.duration.impl.Utils;
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
+import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector;
 
 /**
  * This class contains custom scoping description.
@@ -31,11 +41,11 @@ public class DSLScopeProvider extends AbstractDSLScopeProvider {
 	public IScope getScope(EObject context, EReference reference) {
 
 		if (context instanceof CharacteristicTypeSelector
-						&& reference == DSLPackage.Literals.CHARACTERISTIC_TYPE_SELECTOR__LITERALS) {
+				&& reference == DSLPackage.Literals.CHARACTERISTIC_TYPE_SELECTOR__LITERALS) {
 
 			CharacteristicType type = ((CharacteristicTypeSelector) context).getRef().getRef();
 
-			// The DSL is intended to only work with EnumCharacteristicType
+			// Assumption: The DSL is intended to only work with EnumCharacteristicType
 			if (type instanceof EnumCharacteristicType) {
 				EnumCharacteristicType enumType = (EnumCharacteristicType) type;
 				Enumeration literalEnumeration = enumType.getEnum();
@@ -52,7 +62,36 @@ public class DSLScopeProvider extends AbstractDSLScopeProvider {
 			}
 			return super.getScope(context, reference);
 		}
+
+		if (context instanceof NodeIdentitiySelector
+				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__COMPONENT) {
+
+			AssemblyContext assemblyContext = ((NodeIdentitiySelector) context).getAssembly();
+			RepositoryComponent repositoryComponent = assemblyContext.getEncapsulatedComponent__AssemblyContext();
+			
+			// Assumption: The DSL is intended to only work with BasicComponents
+			if(repositoryComponent instanceof BasicComponent) {
+				BasicComponent component = (BasicComponent) repositoryComponent;
+				List<BasicComponent> componentList = new ArrayList<BasicComponent>();
+				componentList.add(component);
+				
+				return Scopes.scopeFor(componentList, c -> QualifiedName.create(c.getEntityName()), IScope.NULLSCOPE);
+			}
+			return super.getScope(context, reference);
+		}
 		
+		if(context instanceof NodeIdentitiySelector && reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__SEFF) {
+			
+			BasicComponent component = ((NodeIdentitiySelector) context).getComponent();
+			
+			// This is the case if the component is invalid referenced
+			if(component != null) {
+				List<ServiceEffectSpecification> seffs = component.getServiceEffectSpecifications__BasicComponent();
+				
+				return Scopes.scopeFor(seffs, seff -> QualifiedName.create(EcoreUtil2.getID(seff)), IScope.NULLSCOPE);
+			}
+		}
+
 		return super.getScope(context, reference);
 	}
 }

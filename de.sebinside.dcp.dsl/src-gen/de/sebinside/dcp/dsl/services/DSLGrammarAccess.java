@@ -652,26 +652,85 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class NodeIdentitiySelectorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.NodeIdentitiySelector");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cNodeNameKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRefSTRINGTerminalRuleCall_1_0 = (RuleCall)cRefAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cNodeNameKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameSTRINGTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cNodeIdentityKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cAssemblyAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final CrossReference cAssemblyAssemblyContextCrossReference_1_1_0 = (CrossReference)cAssemblyAssignment_1_1.eContents().get(0);
+		private final RuleCall cAssemblyAssemblyContextIDTerminalRuleCall_1_1_0_1 = (RuleCall)cAssemblyAssemblyContextCrossReference_1_1_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cComponentAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final CrossReference cComponentBasicComponentCrossReference_1_3_0 = (CrossReference)cComponentAssignment_1_3.eContents().get(0);
+		private final RuleCall cComponentBasicComponentIDTerminalRuleCall_1_3_0_1 = (RuleCall)cComponentBasicComponentCrossReference_1_3_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		private final Assignment cSeffAssignment_1_5 = (Assignment)cGroup_1.eContents().get(5);
+		private final CrossReference cSeffServiceEffectSpecificationCrossReference_1_5_0 = (CrossReference)cSeffAssignment_1_5.eContents().get(0);
+		private final RuleCall cSeffServiceEffectSpecificationIDTerminalRuleCall_1_5_0_1 = (RuleCall)cSeffServiceEffectSpecificationCrossReference_1_5_0.eContents().get(1);
 		
 		//NodeIdentitiySelector:
-		//	'node.name.' ref=STRING;
+		//	'node.name.' name=STRING | 'node.identity.' assembly=[composition::AssemblyContext] '.'
+		//	component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'node.name.' ref=STRING
-		public Group getGroup() { return cGroup; }
+		//'node.name.' name=STRING | 'node.identity.' assembly=[composition::AssemblyContext] '.'
+		//component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification]
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'node.name.' name=STRING
+		public Group getGroup_0() { return cGroup_0; }
 		
 		//'node.name.'
-		public Keyword getNodeNameKeyword_0() { return cNodeNameKeyword_0; }
+		public Keyword getNodeNameKeyword_0_0() { return cNodeNameKeyword_0_0; }
 		
-		//ref=STRING
-		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
+		//name=STRING
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 		
 		//STRING
-		public RuleCall getRefSTRINGTerminalRuleCall_1_0() { return cRefSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getNameSTRINGTerminalRuleCall_0_1_0() { return cNameSTRINGTerminalRuleCall_0_1_0; }
+		
+		//'node.identity.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.'
+		//seff=[seff::ServiceEffectSpecification]
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'node.identity.'
+		public Keyword getNodeIdentityKeyword_1_0() { return cNodeIdentityKeyword_1_0; }
+		
+		//assembly=[composition::AssemblyContext]
+		public Assignment getAssemblyAssignment_1_1() { return cAssemblyAssignment_1_1; }
+		
+		//[composition::AssemblyContext]
+		public CrossReference getAssemblyAssemblyContextCrossReference_1_1_0() { return cAssemblyAssemblyContextCrossReference_1_1_0; }
+		
+		//ID
+		public RuleCall getAssemblyAssemblyContextIDTerminalRuleCall_1_1_0_1() { return cAssemblyAssemblyContextIDTerminalRuleCall_1_1_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1_2() { return cFullStopKeyword_1_2; }
+		
+		//component=[repository::BasicComponent]
+		public Assignment getComponentAssignment_1_3() { return cComponentAssignment_1_3; }
+		
+		//[repository::BasicComponent]
+		public CrossReference getComponentBasicComponentCrossReference_1_3_0() { return cComponentBasicComponentCrossReference_1_3_0; }
+		
+		//ID
+		public RuleCall getComponentBasicComponentIDTerminalRuleCall_1_3_0_1() { return cComponentBasicComponentIDTerminalRuleCall_1_3_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1_4() { return cFullStopKeyword_1_4; }
+		
+		//seff=[seff::ServiceEffectSpecification]
+		public Assignment getSeffAssignment_1_5() { return cSeffAssignment_1_5; }
+		
+		//[seff::ServiceEffectSpecification]
+		public CrossReference getSeffServiceEffectSpecificationCrossReference_1_5_0() { return cSeffServiceEffectSpecificationCrossReference_1_5_0; }
+		
+		//ID
+		public RuleCall getSeffServiceEffectSpecificationIDTerminalRuleCall_1_5_0_1() { return cSeffServiceEffectSpecificationIDTerminalRuleCall_1_5_0_1; }
 	}
 	public class StatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.Statement");
@@ -1013,7 +1072,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//NodeIdentitiySelector:
-	//	'node.name.' ref=STRING;
+	//	'node.name.' name=STRING | 'node.identity.' assembly=[composition::AssemblyContext] '.'
+	//	component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification];
 	public NodeIdentitiySelectorElements getNodeIdentitiySelectorAccess() {
 		return pNodeIdentitiySelector;
 	}

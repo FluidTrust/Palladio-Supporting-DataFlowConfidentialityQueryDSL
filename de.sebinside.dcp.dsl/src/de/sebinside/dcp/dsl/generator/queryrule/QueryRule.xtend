@@ -86,7 +86,7 @@ abstract class QueryRule {
 
 	def dispatch generateDestinationSelectorTerm(NodeIdentitiySelector selector) {
 		// TODO: More to add here to support Palladio (using the crossplatform converter approach)
-		val nodeIdentity = selector.ref
+		val nodeIdentity = selector.name !== null ? selector.name : selector.assembly.entityName
 		val unification = Unification(CompoundTerm(operation), AtomicQuotedString(nodeIdentity))
 
 		#[unification]

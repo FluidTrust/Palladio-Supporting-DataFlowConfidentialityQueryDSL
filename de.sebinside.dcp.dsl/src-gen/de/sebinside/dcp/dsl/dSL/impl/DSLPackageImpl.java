@@ -55,8 +55,6 @@ import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.C
 
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.DataPackage;
 
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.repository.RepositoryPackage;
-
 import org.palladiosimulator.pcm.parameter.ParameterPackage;
 
 import org.palladiosimulator.pcm.protocol.ProtocolPackage;
@@ -69,15 +67,13 @@ import org.palladiosimulator.pcm.qosannotations.qos_reliability.QosReliabilityPa
 
 import org.palladiosimulator.pcm.reliability.ReliabilityPackage;
 
+import org.palladiosimulator.pcm.repository.RepositoryPackage;
+
 import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentPackage;
 
 import org.palladiosimulator.pcm.resourcetype.ResourcetypePackage;
 
 import org.palladiosimulator.pcm.seff.SeffPackage;
-
-import org.palladiosimulator.pcm.seff.seff_performance.SeffPerformancePackage;
-
-import org.palladiosimulator.pcm.seff.seff_reliability.SeffReliabilityPackage;
 
 import org.palladiosimulator.pcm.system.SystemPackage;
 
@@ -284,29 +280,27 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		EcorePackage.eINSTANCE.eClass();
 		CharacteristicsPackage.eINSTANCE.eClass();
 		AllocationPackage.eINSTANCE.eClass();
+		CompositionPackage.eINSTANCE.eClass();
+		RepositoryPackage.eINSTANCE.eClass();
+		SeffPackage.eINSTANCE.eClass();
 		UsagemodelPackage.eINSTANCE.eClass();
 		IdentifierPackage.eINSTANCE.eClass();
 		EntityPackage.eINSTANCE.eClass();
-		RepositoryPackage.eINSTANCE.eClass();
+		org.palladiosimulator.pcm.dataprocessing.dataprocessing.repository.RepositoryPackage.eINSTANCE.eClass();
 		ResourceenvironmentPackage.eINSTANCE.eClass();
-		CompositionPackage.eINSTANCE.eClass();
 		SystemPackage.eINSTANCE.eClass();
-		ParameterPackage.eINSTANCE.eClass();
-		org.palladiosimulator.pcm.repository.RepositoryPackage.eINSTANCE.eClass();
 		CorePackage.eINSTANCE.eClass();
+		ParameterPackage.eINSTANCE.eClass();
+		ReliabilityPackage.eINSTANCE.eClass();
 		ResourcetypePackage.eINSTANCE.eClass();
+		ProtocolPackage.eINSTANCE.eClass();
 		DataPackage.eINSTANCE.eClass();
 		QosannotationsPackage.eINSTANCE.eClass();
-		SeffPackage.eINSTANCE.eClass();
 		StoexPackage.eINSTANCE.eClass();
-		ReliabilityPackage.eINSTANCE.eClass();
-		ProtocolPackage.eINSTANCE.eClass();
-		SeffPerformancePackage.eINSTANCE.eClass();
 		QosPerformancePackage.eINSTANCE.eClass();
-		UnitsPackage.eINSTANCE.eClass();
-		SeffReliabilityPackage.eINSTANCE.eClass();
-		ProbfunctionPackage.eINSTANCE.eClass();
 		QosReliabilityPackage.eINSTANCE.eClass();
+		UnitsPackage.eINSTANCE.eClass();
+		ProbfunctionPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theDSLPackage.createPackageContents();
@@ -757,9 +751,42 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 	 * @generated
 	 */
   @Override
-  public EAttribute getNodeIdentitiySelector_Ref()
+  public EAttribute getNodeIdentitiySelector_Name()
   {
 		return (EAttribute)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(0);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EReference getNodeIdentitiySelector_Assembly()
+  {
+		return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(1);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EReference getNodeIdentitiySelector_Component()
+  {
+		return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(2);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EReference getNodeIdentitiySelector_Seff()
+  {
+		return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(3);
 	}
 
   /**
@@ -935,7 +962,10 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		createEReference(propertyClassSelectorEClass, PROPERTY_CLASS_SELECTOR__REF);
 
 		nodeIdentitiySelectorEClass = createEClass(NODE_IDENTITIY_SELECTOR);
-		createEAttribute(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__REF);
+		createEAttribute(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__NAME);
+		createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__ASSEMBLY);
+		createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__COMPONENT);
+		createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__SEFF);
 
 		statementEClass = createEClass(STATEMENT);
 		createEReference(statementEClass, STATEMENT__MODALITY);
@@ -980,6 +1010,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		AllocationPackage theAllocationPackage = (AllocationPackage)EPackage.Registry.INSTANCE.getEPackage(AllocationPackage.eNS_URI);
 		UsagemodelPackage theUsagemodelPackage = (UsagemodelPackage)EPackage.Registry.INSTANCE.getEPackage(UsagemodelPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		CompositionPackage theCompositionPackage = (CompositionPackage)EPackage.Registry.INSTANCE.getEPackage(CompositionPackage.eNS_URI);
+		RepositoryPackage theRepositoryPackage = (RepositoryPackage)EPackage.Registry.INSTANCE.getEPackage(RepositoryPackage.eNS_URI);
+		SeffPackage theSeffPackage = (SeffPackage)EPackage.Registry.INSTANCE.getEPackage(SeffPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1051,7 +1084,10 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 		initEReference(getPropertyClassSelector_Ref(), this.getCharacteristicClass(), null, "ref", null, 0, 1, PropertyClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeIdentitiySelectorEClass, NodeIdentitiySelector.class, "NodeIdentitiySelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNodeIdentitiySelector_Ref(), theEcorePackage.getEString(), "ref", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNodeIdentitiySelector_Name(), theEcorePackage.getEString(), "name", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNodeIdentitiySelector_Assembly(), theCompositionPackage.getAssemblyContext(), null, "assembly", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNodeIdentitiySelector_Component(), theRepositoryPackage.getBasicComponent(), null, "component", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNodeIdentitiySelector_Seff(), theSeffPackage.getServiceEffectSpecification(), null, "seff", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStatement_Modality(), this.getStatementModality(), null, "modality", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

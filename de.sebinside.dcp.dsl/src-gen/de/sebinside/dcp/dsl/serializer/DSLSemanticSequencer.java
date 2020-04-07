@@ -263,16 +263,10 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     NodeIdentitiySelector returns NodeIdentitiySelector
 	 *
 	 * Constraint:
-	 *     ref=STRING
+	 *     (name=STRING | (assembly=[AssemblyContext|ID] component=[BasicComponent|ID] seff=[ServiceEffectSpecification|ID]))
 	 */
 	protected void sequence_NodeIdentitiySelector(ISerializationContext context, NodeIdentitiySelector semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__REF));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getNodeIdentitiySelectorAccess().getRefSTRINGTerminalRuleCall_1_0(), semanticObject.getRef());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

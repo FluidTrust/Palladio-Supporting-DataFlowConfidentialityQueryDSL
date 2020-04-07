@@ -18,6 +18,9 @@ import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.C
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicType
 import org.palladiosimulator.pcm.usagemodel.UsageScenario
 import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage
+import org.palladiosimulator.pcm.core.CorePackage
+import org.palladiosimulator.pcm.core.composition.CompositionPackage
+import org.palladiosimulator.pcm.core.composition.AssemblyContext
 
 class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStrategy {
 
@@ -51,7 +54,17 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 			return false
 		}
 		
+		if(eObject.eClass == CompositionPackage.eINSTANCE.assemblyContext) {
+			createEObjectDescriptionForAssemblyContext(eObject, acceptor)
+			return false
+		}
+		
 		super.createEObjectDescriptions(eObject, acceptor)
+	}
+	
+	protected def createEObjectDescriptionForAssemblyContext(EObject eObject, IAcceptor<IEObjectDescription> acceptor) {
+		val assemblyContext = eObject as AssemblyContext
+		acceptor.accept(EObjectDescription.create(QualifiedName.create(assemblyContext.entityName), assemblyContext))
 	}
 	
 	protected def createEObjectDescriptionForUsageScenario(EObject eObject, IAcceptor<IEObjectDescription> acceptor) {

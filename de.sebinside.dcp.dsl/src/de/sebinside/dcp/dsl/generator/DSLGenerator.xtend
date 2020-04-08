@@ -24,6 +24,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import org.palladiosimulator.pcm.usagemodel.UsageScenario
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -59,7 +60,13 @@ class DSLGenerator extends AbstractGenerator {
 		// There is only one or none target model type definition
 		switch (typeDefs.type) {
 			case DATA_CENTRIC_PALLADIO: {
-				this.converter = new PalladioConverter
+				if (typeDefs.usageScenario === null || typeDefs.allocationModel === null ||
+					typeDefs.typeContainer === null) {
+					this.converter = new PalladioConverter
+				} else {
+					this.converter = new PalladioConverter(typeDefs.usageScenario.usageModel_UsageScenario,
+						typeDefs.allocationModel, typeDefs.typeContainer)
+				}
 			}
 			case EXTENDED_DFD: {
 				throw new Exception("Extended DFD are not supported yet.")
@@ -113,8 +120,7 @@ class DSLGenerator extends AbstractGenerator {
 		// Add member queries to the class directly
 		// FIXME: Might contain duplicates
 		val memberQueries = charateristicClass.members.map [ member |
-			createMemberQuery(converter.convert(member.ref),
-				CompoundTerm(member.ref.name.toFirstUpper))
+			createMemberQuery(converter.convert(member.ref), CompoundTerm(member.ref.name.toFirstUpper))
 		]
 		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
 
@@ -151,13 +157,15 @@ class DSLGenerator extends AbstractGenerator {
 			// Combine rules
 			constraintRule.body = LogicalOr(
 				ruleToRuleCall(callArgumentRule),
-				LogicalOr(ruleToRuleCall(returnValueRule),
+				LogicalOr(
+					ruleToRuleCall(returnValueRule),
 					LogicalOr(ruleToRuleCall(preCallStateRule), ruleToRuleCall(postCallStateRule))
 				)
 			)
 
 			// Combine (unique) arguments of all rules
-			val allArguments = combineRuleArguments(#[callArgumentRule, returnValueRule, preCallStateRule, postCallStateRule])
+			val allArguments = combineRuleArguments(
+				#[callArgumentRule, returnValueRule, preCallStateRule, postCallStateRule])
 			constraintRule.head.arguments.addAll(allArguments)
 
 			clauses.add(constraintRule)

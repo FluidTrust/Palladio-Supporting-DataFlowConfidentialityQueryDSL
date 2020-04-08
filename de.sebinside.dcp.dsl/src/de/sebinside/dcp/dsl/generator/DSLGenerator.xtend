@@ -6,10 +6,12 @@ package de.sebinside.dcp.dsl.generator
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.Constraint
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
-import de.sebinside.dcp.dsl.generator.crossplatform.CharacteristicEnumConverter
-import de.sebinside.dcp.dsl.generator.crossplatform.OperationModelCharacteristicEnumConverter
-import de.sebinside.dcp.dsl.generator.crossplatform.PalladioCharacteristicEnumConverter
+import de.sebinside.dcp.dsl.generator.crossplatform.Converter
+import de.sebinside.dcp.dsl.generator.crossplatform.OperationModelConverter
+import de.sebinside.dcp.dsl.generator.crossplatform.PalladioConverter
 import de.sebinside.dcp.dsl.generator.queryrule.CallArgumentQueryRule
+import de.sebinside.dcp.dsl.generator.queryrule.PostCallStateQueryRule
+import de.sebinside.dcp.dsl.generator.queryrule.PreCallStateQueryRule
 import de.sebinside.dcp.dsl.generator.queryrule.ReturnValueQueryRule
 import java.util.ArrayList
 import java.util.List
@@ -22,19 +24,13 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
-import de.sebinside.dcp.dsl.generator.queryrule.PostCallStateQueryRule
-import de.sebinside.dcp.dsl.generator.queryrule.PreCallStateQueryRule
-import de.sebinside.dcp.dsl.generator.crossplatform.OperationModelNodeIdentityConverter
-import de.sebinside.dcp.dsl.generator.crossplatform.NodeIdentityConverter
-import de.sebinside.dcp.dsl.generator.crossplatform.PalladioNodeIdentityConverter
 
 class DSLGenerator extends AbstractGenerator {
 
 	static final String DEV_OUTPUT_FILE_NAME = "output.pl"
 
 	// Setting the default value
-	CharacteristicEnumConverter characteristicEnumConverter = new OperationModelCharacteristicEnumConverter
-	NodeIdentityConverter nodeIdentityConverter = new OperationModelNodeIdentityConverter
+	Converter converter = new OperationModelConverter
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val program = PrologFactory.eINSTANCE.createProgram
@@ -63,15 +59,13 @@ class DSLGenerator extends AbstractGenerator {
 		// There is only one or none target model type definition
 		switch (typeDefs.type) {
 			case DATA_CENTRIC_PALLADIO: {
-				this.characteristicEnumConverter = new PalladioCharacteristicEnumConverter
-				this.nodeIdentityConverter = new PalladioNodeIdentityConverter
+				this.converter = new PalladioConverter
 			}
 			case EXTENDED_DFD: {
 				throw new Exception("Extended DFD are not supported yet.")
 			}
 			case OPERATION_MODEL: {
-				this.characteristicEnumConverter = new OperationModelCharacteristicEnumConverter
-				this.nodeIdentityConverter = new OperationModelNodeIdentityConverter
+				this.converter = new OperationModelConverter
 			}
 		}
 	}
@@ -94,7 +88,7 @@ class DSLGenerator extends AbstractGenerator {
 
 				// Create and add fact
 				val factName = '''characteristicsClass_«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
-				val fact = SimpleFact(factName, characteristicEnumConverter.convert(literal))
+				val fact = SimpleFact(factName, converter.convert(literal))
 				clauses.add(fact)
 
 				// Create fact reference for the rule
@@ -119,7 +113,7 @@ class DSLGenerator extends AbstractGenerator {
 		// Add member queries to the class directly
 		// FIXME: Might contain duplicates
 		val memberQueries = charateristicClass.members.map [ member |
-			createMemberQuery(characteristicEnumConverter.convert(member.ref),
+			createMemberQuery(converter.convert(member.ref),
 				CompoundTerm(member.ref.name.toFirstUpper))
 		]
 		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
@@ -149,10 +143,10 @@ class DSLGenerator extends AbstractGenerator {
 		} else {
 
 			// A NEVER FLOWS statement consists of three sub rules
-			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName, characteristicEnumConverter, nodeIdentityConverter).generate()
-			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName, characteristicEnumConverter, nodeIdentityConverter).generate()
-			val preCallStateRule = new PreCallStateQueryRule(mainRule, constraintName, characteristicEnumConverter, nodeIdentityConverter).generate()
-			val postCallStateRule = new PostCallStateQueryRule(mainRule, constraintName, characteristicEnumConverter, nodeIdentityConverter).generate()
+			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName, converter).generate()
+			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName, converter).generate()
+			val preCallStateRule = new PreCallStateQueryRule(mainRule, constraintName, converter).generate()
+			val postCallStateRule = new PostCallStateQueryRule(mainRule, constraintName, converter).generate()
 
 			// Combine rules
 			constraintRule.body = LogicalOr(

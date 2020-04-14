@@ -24,7 +24,8 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
-import org.palladiosimulator.pcm.usagemodel.UsageScenario
+import de.sebinside.dcp.dsl.dSL.TargetModelType
+import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -32,6 +33,7 @@ class DSLGenerator extends AbstractGenerator {
 
 	// Setting the default value
 	Converter converter = new OperationModelConverter
+	TargetModelType targetModelType = TargetModelType.OPERATION_MODEL
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val program = PrologFactory.eINSTANCE.createProgram
@@ -58,6 +60,8 @@ class DSLGenerator extends AbstractGenerator {
 
 	def compile(TargetModelTypeDef typeDefs) {
 		// There is only one or none target model type definition
+		this.targetModelType = typeDefs.type
+		
 		switch (typeDefs.type) {
 			case DATA_CENTRIC_PALLADIO: {
 				if (typeDefs.usageScenario === null || typeDefs.allocationModel === null ||
@@ -145,31 +149,28 @@ class DSLGenerator extends AbstractGenerator {
 
 		// FIXME: The first iteration does only support NEVER FLOW statements
 		if (!mainRule.statement.modality.name.equals("NEVER") || !mainRule.statement.type.name.equals("FLOWS")) {
-			println("Unable to generate. Unsupported modality or statement type.")
+			throw new Exception("Unable to generate. Unsupported modality or statement type.")
 		} else {
-
-			// A NEVER FLOWS statement consists of three sub rules
-			val callArgumentRule = new CallArgumentQueryRule(mainRule, constraintName, converter).generate()
-			val returnValueRule = new ReturnValueQueryRule(mainRule, constraintName, converter).generate()
-			val preCallStateRule = new PreCallStateQueryRule(mainRule, constraintName, converter).generate()
-			val postCallStateRule = new PostCallStateQueryRule(mainRule, constraintName, converter).generate()
+			
+			var rules = new ArrayList<Rule>()
+			rules.add(new PreCallStateQueryRule(mainRule, constraintName, converter).generate())
+			
+			// Only the operation model works with all kinds of rules, Palladio only requires preCallStates
+			if(this.targetModelType == TargetModelType.OPERATION_MODEL) {
+				rules.add(new CallArgumentQueryRule(mainRule, constraintName, converter).generate())
+				rules.add(new ReturnValueQueryRule(mainRule, constraintName, converter).generate())
+				rules.add(new PostCallStateQueryRule(mainRule, constraintName, converter).generate())
+			}
 
 			// Combine rules
-			constraintRule.body = LogicalOr(
-				ruleToRuleCall(callArgumentRule),
-				LogicalOr(
-					ruleToRuleCall(returnValueRule),
-					LogicalOr(ruleToRuleCall(preCallStateRule), ruleToRuleCall(postCallStateRule))
-				)
-			)
+			constraintRule.body = expressionsToLogicalOr(rules.map[rule|ruleToRuleCall(rule)])
 
 			// Combine (unique) arguments of all rules
-			val allArguments = combineRuleArguments(
-				#[callArgumentRule, returnValueRule, preCallStateRule, postCallStateRule])
+			val allArguments = combineRuleArguments(rules)
 			constraintRule.head.arguments.addAll(allArguments)
 
 			clauses.add(constraintRule)
-			clauses.addAll(callArgumentRule, returnValueRule, preCallStateRule, postCallStateRule)
+			clauses.addAll(rules)
 		}
 		clauses
 	}

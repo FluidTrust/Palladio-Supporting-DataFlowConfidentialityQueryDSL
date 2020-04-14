@@ -41,340 +41,350 @@ import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container implements TargetModelTypeDef
 {
   /**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
   protected static final TargetModelType TYPE_EDEFAULT = TargetModelType.OPERATION_MODEL;
 
   /**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
   protected TargetModelType type = TYPE_EDEFAULT;
 
   /**
-	 * The cached value of the '{@link #getTypeContainer() <em>Type Container</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTypeContainer() <em>Type Container</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getTypeContainer()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getTypeContainer()
+   * @generated
+   * @ordered
+   */
   protected CharacteristicTypeContainer typeContainer;
 
   /**
-	 * The cached value of the '{@link #getAllocationModel() <em>Allocation Model</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAllocationModel() <em>Allocation Model</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getAllocationModel()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAllocationModel()
+   * @generated
+   * @ordered
+   */
   protected Allocation allocationModel;
 
   /**
-	 * The cached value of the '{@link #getUsageScenario() <em>Usage Scenario</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getUsageScenario() <em>Usage Scenario</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getUsageScenario()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getUsageScenario()
+   * @generated
+   * @ordered
+   */
   protected UsageScenario usageScenario;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected TargetModelTypeDefImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.TARGET_MODEL_TYPE_DEF;
-	}
+    return DSLPackage.Literals.TARGET_MODEL_TYPE_DEF;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public TargetModelType getType()
   {
-		return type;
-	}
+    return type;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setType(TargetModelType newType)
   {
-		TargetModelType oldType = type;
-		type = newType == null ? TYPE_EDEFAULT : newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE, oldType, type));
-	}
+    TargetModelType oldType = type;
+    type = newType == null ? TYPE_EDEFAULT : newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE, oldType, type));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public CharacteristicTypeContainer getTypeContainer()
   {
-		if (typeContainer != null && ((EObject)typeContainer).eIsProxy()) {
-			InternalEObject oldTypeContainer = (InternalEObject)typeContainer;
-			typeContainer = (CharacteristicTypeContainer)eResolveProxy(oldTypeContainer);
-			if (typeContainer != oldTypeContainer) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER, oldTypeContainer, typeContainer));
-			}
-		}
-		return typeContainer;
-	}
+    if (typeContainer != null && ((EObject)typeContainer).eIsProxy())
+    {
+      InternalEObject oldTypeContainer = (InternalEObject)typeContainer;
+      typeContainer = (CharacteristicTypeContainer)eResolveProxy(oldTypeContainer);
+      if (typeContainer != oldTypeContainer)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER, oldTypeContainer, typeContainer));
+      }
+    }
+    return typeContainer;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public CharacteristicTypeContainer basicGetTypeContainer()
   {
-		return typeContainer;
-	}
+    return typeContainer;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setTypeContainer(CharacteristicTypeContainer newTypeContainer)
   {
-		CharacteristicTypeContainer oldTypeContainer = typeContainer;
-		typeContainer = newTypeContainer;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER, oldTypeContainer, typeContainer));
-	}
+    CharacteristicTypeContainer oldTypeContainer = typeContainer;
+    typeContainer = newTypeContainer;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER, oldTypeContainer, typeContainer));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Allocation getAllocationModel()
   {
-		if (allocationModel != null && ((EObject)allocationModel).eIsProxy()) {
-			InternalEObject oldAllocationModel = (InternalEObject)allocationModel;
-			allocationModel = (Allocation)eResolveProxy(oldAllocationModel);
-			if (allocationModel != oldAllocationModel) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL, oldAllocationModel, allocationModel));
-			}
-		}
-		return allocationModel;
-	}
+    if (allocationModel != null && ((EObject)allocationModel).eIsProxy())
+    {
+      InternalEObject oldAllocationModel = (InternalEObject)allocationModel;
+      allocationModel = (Allocation)eResolveProxy(oldAllocationModel);
+      if (allocationModel != oldAllocationModel)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL, oldAllocationModel, allocationModel));
+      }
+    }
+    return allocationModel;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public Allocation basicGetAllocationModel()
   {
-		return allocationModel;
-	}
+    return allocationModel;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setAllocationModel(Allocation newAllocationModel)
   {
-		Allocation oldAllocationModel = allocationModel;
-		allocationModel = newAllocationModel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL, oldAllocationModel, allocationModel));
-	}
+    Allocation oldAllocationModel = allocationModel;
+    allocationModel = newAllocationModel;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL, oldAllocationModel, allocationModel));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public UsageScenario getUsageScenario()
   {
-		if (usageScenario != null && ((EObject)usageScenario).eIsProxy()) {
-			InternalEObject oldUsageScenario = (InternalEObject)usageScenario;
-			usageScenario = (UsageScenario)eResolveProxy(oldUsageScenario);
-			if (usageScenario != oldUsageScenario) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO, oldUsageScenario, usageScenario));
-			}
-		}
-		return usageScenario;
-	}
+    if (usageScenario != null && ((EObject)usageScenario).eIsProxy())
+    {
+      InternalEObject oldUsageScenario = (InternalEObject)usageScenario;
+      usageScenario = (UsageScenario)eResolveProxy(oldUsageScenario);
+      if (usageScenario != oldUsageScenario)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO, oldUsageScenario, usageScenario));
+      }
+    }
+    return usageScenario;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public UsageScenario basicGetUsageScenario()
   {
-		return usageScenario;
-	}
+    return usageScenario;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setUsageScenario(UsageScenario newUsageScenario)
   {
-		UsageScenario oldUsageScenario = usageScenario;
-		usageScenario = newUsageScenario;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO, oldUsageScenario, usageScenario));
-	}
+    UsageScenario oldUsageScenario = usageScenario;
+    usageScenario = newUsageScenario;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO, oldUsageScenario, usageScenario));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-		switch (featureID) {
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
-				return getType();
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
-				if (resolve) return getTypeContainer();
-				return basicGetTypeContainer();
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
-				if (resolve) return getAllocationModel();
-				return basicGetAllocationModel();
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
-				if (resolve) return getUsageScenario();
-				return basicGetUsageScenario();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
+        return getType();
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
+        if (resolve) return getTypeContainer();
+        return basicGetTypeContainer();
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
+        if (resolve) return getAllocationModel();
+        return basicGetAllocationModel();
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
+        if (resolve) return getUsageScenario();
+        return basicGetUsageScenario();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-		switch (featureID) {
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
-				setType((TargetModelType)newValue);
-				return;
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
-				setTypeContainer((CharacteristicTypeContainer)newValue);
-				return;
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
-				setAllocationModel((Allocation)newValue);
-				return;
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
-				setUsageScenario((UsageScenario)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
+        setType((TargetModelType)newValue);
+        return;
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
+        setTypeContainer((CharacteristicTypeContainer)newValue);
+        return;
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
+        setAllocationModel((Allocation)newValue);
+        return;
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
+        setUsageScenario((UsageScenario)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eUnset(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
-				setTypeContainer((CharacteristicTypeContainer)null);
-				return;
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
-				setAllocationModel((Allocation)null);
-				return;
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
-				setUsageScenario((UsageScenario)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
+        setType(TYPE_EDEFAULT);
+        return;
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
+        setTypeContainer((CharacteristicTypeContainer)null);
+        return;
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
+        setAllocationModel((Allocation)null);
+        return;
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
+        setUsageScenario((UsageScenario)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean eIsSet(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
-				return type != TYPE_EDEFAULT;
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
-				return typeContainer != null;
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
-				return allocationModel != null;
-			case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
-				return usageScenario != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
+        return type != TYPE_EDEFAULT;
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
+        return typeContainer != null;
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
+        return allocationModel != null;
+      case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_SCENARIO:
+        return usageScenario != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public String toString()
   {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (type: ");
-		result.append(type);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (type: ");
+    result.append(type);
+    result.append(')');
+    return result.toString();
+  }
 
 } //TargetModelTypeDefImpl

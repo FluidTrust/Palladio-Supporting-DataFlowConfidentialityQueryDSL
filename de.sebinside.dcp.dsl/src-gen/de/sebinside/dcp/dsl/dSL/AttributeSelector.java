@@ -23,25 +23,25 @@ package de.sebinside.dcp.dsl.dSL;
 public interface AttributeSelector extends DataSelector
 {
   /**
-	 * Returns the value of the '<em><b>Ref</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ref</em>' containment reference.
-	 * @see #setRef(CharacteristicTypeSelector)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getAttributeSelector_Ref()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Ref</em>' containment reference.
+   * @see #setRef(CharacteristicTypeSelector)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getAttributeSelector_Ref()
+   * @model containment="true"
+   * @generated
+   */
   CharacteristicTypeSelector getRef();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.AttributeSelector#getRef <em>Ref</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.AttributeSelector#getRef <em>Ref</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ref</em>' containment reference.
-	 * @see #getRef()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Ref</em>' containment reference.
+   * @see #getRef()
+   * @generated
+   */
   void setRef(CharacteristicTypeSelector value);
 
 } // AttributeSelector

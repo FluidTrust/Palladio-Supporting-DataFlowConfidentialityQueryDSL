@@ -36,8 +36,13 @@ class PalladioConverter implements Converter {
 
 			AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
 		} else {
-			// TODO
-			AtomicQuotedString("Not implemented yet.")
+			val computedValue = trace.value.resolveId(characteristicType.ref)
+			
+			if(computedValue.present) {
+				AtomicQuotedString(computedValue.get)
+			} else {
+				throw new Exception("Unable to resolve CharacteristicType id.")
+			}
 		}
 	}
 
@@ -48,8 +53,13 @@ class PalladioConverter implements Converter {
 
 			AtomicQuotedString('''EnumCharacteristicLiteral «content» («id»)''')
 		} else {
-			// TODO	
-			AtomicQuotedString("Not implemented yet.")
+			val computedValue = trace.value.resolveId(characteristicLiteral)
+			
+			if(computedValue.present) {
+				AtomicQuotedString(computedValue.get)
+			} else {
+				throw new Exception("Unable to resolve EnumCharacteristicLiteral id.")
+			}
 		}
 	}
 

@@ -35,6 +35,14 @@ class DSLGeneratorUtils {
 	}
 
 	def static expressionsToLogicalAnd(Iterable<? extends Expression> expressions) {
+		encapsulateExpressions(expressions, true)
+	}
+
+	def static expressionsToLogicalOr(Iterable<? extends Expression> expressions) {
+		encapsulateExpressions(expressions, false)
+	}
+
+	private def static encapsulateExpressions(Iterable<? extends Expression> expressions, Boolean logicalAnd) {
 		if (expressions.size == 0) {
 			null
 		} else {
@@ -45,7 +53,10 @@ class DSLGeneratorUtils {
 				val nextItem = iterator.next
 
 				if (nextItem !== null) {
-					term = LogicalAnd(term, nextItem)
+					if (logicalAnd)
+						term = LogicalAnd(term, nextItem)
+					else
+						term = LogicalOr(term, nextItem)
 				}
 			}
 
@@ -60,7 +71,7 @@ class DSLGeneratorUtils {
 	def static createCallStackUnification(CompoundTerm stack, CompoundTerm head) {
 		Unification(stack, List(head, CompoundTerm("_")))
 	}
-	
+
 	def static createStackValidCall(CompoundTerm callStack) {
 		CompoundTerm("stackValid", callStack)
 	}
@@ -70,7 +81,9 @@ class DSLGeneratorUtils {
 	}
 
 	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
-		CompoundTerm('''characteristicClass_«characteristicClass.name»''', characteristicClass.members.map[member|CompoundTerm(member.ref.name.toFirstUpper)])
+		CompoundTerm('''characteristicClass_«characteristicClass.name»''', characteristicClass.members.map [ member |
+			CompoundTerm(member.ref.name.toFirstUpper)
+		])
 	}
 
 	def static createPropertyQuery(Expression operation, Expression property, Expression value) {

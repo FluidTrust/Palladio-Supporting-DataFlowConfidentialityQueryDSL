@@ -43,234 +43,243 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class RuleImpl extends MinimalEObjectImpl.Container implements Rule
 {
   /**
-	 * The cached value of the '{@link #getDataSelectors() <em>Data Selectors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDataSelectors() <em>Data Selectors</em>}' containment reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getDataSelectors()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDataSelectors()
+   * @generated
+   * @ordered
+   */
   protected EList<DataSelector> dataSelectors;
 
   /**
-	 * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getStatement()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getStatement()
+   * @generated
+   * @ordered
+   */
   protected Statement statement;
 
   /**
-	 * The cached value of the '{@link #getDestinationSelectors() <em>Destination Selectors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDestinationSelectors() <em>Destination Selectors</em>}' containment reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getDestinationSelectors()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDestinationSelectors()
+   * @generated
+   * @ordered
+   */
   protected EList<DestinationSelector> destinationSelectors;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected RuleImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.RULE;
-	}
+    return DSLPackage.Literals.RULE;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EList<DataSelector> getDataSelectors()
   {
-		if (dataSelectors == null) {
-			dataSelectors = new EObjectContainmentEList<DataSelector>(DataSelector.class, this, DSLPackage.RULE__DATA_SELECTORS);
-		}
-		return dataSelectors;
-	}
+    if (dataSelectors == null)
+    {
+      dataSelectors = new EObjectContainmentEList<DataSelector>(DataSelector.class, this, DSLPackage.RULE__DATA_SELECTORS);
+    }
+    return dataSelectors;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Statement getStatement()
   {
-		return statement;
-	}
+    return statement;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public NotificationChain basicSetStatement(Statement newStatement, NotificationChain msgs)
   {
-		Statement oldStatement = statement;
-		statement = newStatement;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.RULE__STATEMENT, oldStatement, newStatement);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+    Statement oldStatement = statement;
+    statement = newStatement;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.RULE__STATEMENT, oldStatement, newStatement);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setStatement(Statement newStatement)
   {
-		if (newStatement != statement) {
-			NotificationChain msgs = null;
-			if (statement != null)
-				msgs = ((InternalEObject)statement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.RULE__STATEMENT, null, msgs);
-			if (newStatement != null)
-				msgs = ((InternalEObject)newStatement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.RULE__STATEMENT, null, msgs);
-			msgs = basicSetStatement(newStatement, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.RULE__STATEMENT, newStatement, newStatement));
-	}
+    if (newStatement != statement)
+    {
+      NotificationChain msgs = null;
+      if (statement != null)
+        msgs = ((InternalEObject)statement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.RULE__STATEMENT, null, msgs);
+      if (newStatement != null)
+        msgs = ((InternalEObject)newStatement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.RULE__STATEMENT, null, msgs);
+      msgs = basicSetStatement(newStatement, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.RULE__STATEMENT, newStatement, newStatement));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EList<DestinationSelector> getDestinationSelectors()
   {
-		if (destinationSelectors == null) {
-			destinationSelectors = new EObjectContainmentEList<DestinationSelector>(DestinationSelector.class, this, DSLPackage.RULE__DESTINATION_SELECTORS);
-		}
-		return destinationSelectors;
-	}
+    if (destinationSelectors == null)
+    {
+      destinationSelectors = new EObjectContainmentEList<DestinationSelector>(DestinationSelector.class, this, DSLPackage.RULE__DESTINATION_SELECTORS);
+    }
+    return destinationSelectors;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-		switch (featureID) {
-			case DSLPackage.RULE__DATA_SELECTORS:
-				return ((InternalEList<?>)getDataSelectors()).basicRemove(otherEnd, msgs);
-			case DSLPackage.RULE__STATEMENT:
-				return basicSetStatement(null, msgs);
-			case DSLPackage.RULE__DESTINATION_SELECTORS:
-				return ((InternalEList<?>)getDestinationSelectors()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.RULE__DATA_SELECTORS:
+        return ((InternalEList<?>)getDataSelectors()).basicRemove(otherEnd, msgs);
+      case DSLPackage.RULE__STATEMENT:
+        return basicSetStatement(null, msgs);
+      case DSLPackage.RULE__DESTINATION_SELECTORS:
+        return ((InternalEList<?>)getDestinationSelectors()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-		switch (featureID) {
-			case DSLPackage.RULE__DATA_SELECTORS:
-				return getDataSelectors();
-			case DSLPackage.RULE__STATEMENT:
-				return getStatement();
-			case DSLPackage.RULE__DESTINATION_SELECTORS:
-				return getDestinationSelectors();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.RULE__DATA_SELECTORS:
+        return getDataSelectors();
+      case DSLPackage.RULE__STATEMENT:
+        return getStatement();
+      case DSLPackage.RULE__DESTINATION_SELECTORS:
+        return getDestinationSelectors();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-		switch (featureID) {
-			case DSLPackage.RULE__DATA_SELECTORS:
-				getDataSelectors().clear();
-				getDataSelectors().addAll((Collection<? extends DataSelector>)newValue);
-				return;
-			case DSLPackage.RULE__STATEMENT:
-				setStatement((Statement)newValue);
-				return;
-			case DSLPackage.RULE__DESTINATION_SELECTORS:
-				getDestinationSelectors().clear();
-				getDestinationSelectors().addAll((Collection<? extends DestinationSelector>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.RULE__DATA_SELECTORS:
+        getDataSelectors().clear();
+        getDataSelectors().addAll((Collection<? extends DataSelector>)newValue);
+        return;
+      case DSLPackage.RULE__STATEMENT:
+        setStatement((Statement)newValue);
+        return;
+      case DSLPackage.RULE__DESTINATION_SELECTORS:
+        getDestinationSelectors().clear();
+        getDestinationSelectors().addAll((Collection<? extends DestinationSelector>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eUnset(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.RULE__DATA_SELECTORS:
-				getDataSelectors().clear();
-				return;
-			case DSLPackage.RULE__STATEMENT:
-				setStatement((Statement)null);
-				return;
-			case DSLPackage.RULE__DESTINATION_SELECTORS:
-				getDestinationSelectors().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.RULE__DATA_SELECTORS:
+        getDataSelectors().clear();
+        return;
+      case DSLPackage.RULE__STATEMENT:
+        setStatement((Statement)null);
+        return;
+      case DSLPackage.RULE__DESTINATION_SELECTORS:
+        getDestinationSelectors().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean eIsSet(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.RULE__DATA_SELECTORS:
-				return dataSelectors != null && !dataSelectors.isEmpty();
-			case DSLPackage.RULE__STATEMENT:
-				return statement != null;
-			case DSLPackage.RULE__DESTINATION_SELECTORS:
-				return destinationSelectors != null && !destinationSelectors.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.RULE__DATA_SELECTORS:
+        return dataSelectors != null && !dataSelectors.isEmpty();
+      case DSLPackage.RULE__STATEMENT:
+        return statement != null;
+      case DSLPackage.RULE__DESTINATION_SELECTORS:
+        return destinationSelectors != null && !destinationSelectors.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 } //RuleImpl

@@ -23,25 +23,25 @@ package de.sebinside.dcp.dsl.dSL;
 public interface Include extends AbstractElement
 {
   /**
-	 * Returns the value of the '<em><b>Import URI</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Import URI</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Import URI</em>' attribute.
-	 * @see #setImportURI(String)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getInclude_ImportURI()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Import URI</em>' attribute.
+   * @see #setImportURI(String)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getInclude_ImportURI()
+   * @model
+   * @generated
+   */
   String getImportURI();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Include#getImportURI <em>Import URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Include#getImportURI <em>Import URI</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Import URI</em>' attribute.
-	 * @see #getImportURI()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Import URI</em>' attribute.
+   * @see #getImportURI()
+   * @generated
+   */
   void setImportURI(String value);
 
 } // Include

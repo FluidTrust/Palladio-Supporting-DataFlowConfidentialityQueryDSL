@@ -68,27 +68,30 @@ public class DSLScopeProvider extends AbstractDSLScopeProvider {
 
 			AssemblyContext assemblyContext = ((NodeIdentitiySelector) context).getAssembly();
 			RepositoryComponent repositoryComponent = assemblyContext.getEncapsulatedComponent__AssemblyContext();
-			
+
 			// Assumption: The DSL is intended to only work with BasicComponents
-			if(repositoryComponent instanceof BasicComponent) {
+			if (repositoryComponent instanceof BasicComponent) {
 				BasicComponent component = (BasicComponent) repositoryComponent;
 				List<BasicComponent> componentList = new ArrayList<BasicComponent>();
 				componentList.add(component);
-				
+
 				return Scopes.scopeFor(componentList, c -> QualifiedName.create(c.getEntityName()), IScope.NULLSCOPE);
 			}
 			return super.getScope(context, reference);
 		}
-		
-		if(context instanceof NodeIdentitiySelector && reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__SEFF) {
-			
+
+		if (context instanceof NodeIdentitiySelector
+				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__SEFF) {
+
 			BasicComponent component = ((NodeIdentitiySelector) context).getComponent();
-			
+
 			// This is the case if the component is invalid referenced
-			if(component != null) {
+			if (component != null) {
 				List<ServiceEffectSpecification> seffs = component.getServiceEffectSpecifications__BasicComponent();
-				
-				return Scopes.scopeFor(seffs, seff -> QualifiedName.create(EcoreUtil2.getID(seff)), IScope.NULLSCOPE);
+
+				return Scopes.scopeFor(seffs,
+						seff -> QualifiedName.create(seff.getDescribedService__SEFF().getEntityName()),
+						IScope.NULLSCOPE);
 			}
 		}
 

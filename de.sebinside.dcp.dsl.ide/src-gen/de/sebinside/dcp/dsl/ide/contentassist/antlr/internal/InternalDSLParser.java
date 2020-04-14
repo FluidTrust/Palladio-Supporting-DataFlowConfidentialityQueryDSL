@@ -3212,31 +3212,31 @@ public class InternalDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TargetModelTypeDef__Group_2_2__3__Impl"
-    // InternalDSL.g:1007:1: rule__TargetModelTypeDef__Group_2_2__3__Impl : ( ( rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3 ) ) ;
+    // InternalDSL.g:1007:1: rule__TargetModelTypeDef__Group_2_2__3__Impl : ( ( rule__TargetModelTypeDef__UsageModelAssignment_2_2_3 ) ) ;
     public final void rule__TargetModelTypeDef__Group_2_2__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDSL.g:1011:1: ( ( ( rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3 ) ) )
-            // InternalDSL.g:1012:1: ( ( rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3 ) )
+            // InternalDSL.g:1011:1: ( ( ( rule__TargetModelTypeDef__UsageModelAssignment_2_2_3 ) ) )
+            // InternalDSL.g:1012:1: ( ( rule__TargetModelTypeDef__UsageModelAssignment_2_2_3 ) )
             {
-            // InternalDSL.g:1012:1: ( ( rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3 ) )
-            // InternalDSL.g:1013:2: ( rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3 )
+            // InternalDSL.g:1012:1: ( ( rule__TargetModelTypeDef__UsageModelAssignment_2_2_3 ) )
+            // InternalDSL.g:1013:2: ( rule__TargetModelTypeDef__UsageModelAssignment_2_2_3 )
             {
-             before(grammarAccess.getTargetModelTypeDefAccess().getUsageScenarioAssignment_2_2_3()); 
-            // InternalDSL.g:1014:2: ( rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3 )
-            // InternalDSL.g:1014:3: rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3
+             before(grammarAccess.getTargetModelTypeDefAccess().getUsageModelAssignment_2_2_3()); 
+            // InternalDSL.g:1014:2: ( rule__TargetModelTypeDef__UsageModelAssignment_2_2_3 )
+            // InternalDSL.g:1014:3: rule__TargetModelTypeDef__UsageModelAssignment_2_2_3
             {
             pushFollow(FOLLOW_2);
-            rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3();
+            rule__TargetModelTypeDef__UsageModelAssignment_2_2_3();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getTargetModelTypeDefAccess().getUsageScenarioAssignment_2_2_3()); 
+             after(grammarAccess.getTargetModelTypeDefAccess().getUsageModelAssignment_2_2_3()); 
 
             }
 
@@ -8209,9 +8209,9 @@ public class InternalDSLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__TargetModelTypeDef__AllocationModelAssignment_2_2_1"
 
 
-    // $ANTLR start "rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3"
-    // InternalDSL.g:2699:1: rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3 : ( ( RULE_ID ) ) ;
-    public final void rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3() throws RecognitionException {
+    // $ANTLR start "rule__TargetModelTypeDef__UsageModelAssignment_2_2_3"
+    // InternalDSL.g:2699:1: rule__TargetModelTypeDef__UsageModelAssignment_2_2_3 : ( ( RULE_ID ) ) ;
+    public final void rule__TargetModelTypeDef__UsageModelAssignment_2_2_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -8222,17 +8222,17 @@ public class InternalDSLParser extends AbstractInternalContentAssistParser {
             // InternalDSL.g:2704:2: ( ( RULE_ID ) )
             // InternalDSL.g:2705:3: ( RULE_ID )
             {
-             before(grammarAccess.getTargetModelTypeDefAccess().getUsageScenarioUsageScenarioCrossReference_2_2_3_0()); 
+             before(grammarAccess.getTargetModelTypeDefAccess().getUsageModelUsageModelCrossReference_2_2_3_0()); 
             // InternalDSL.g:2706:3: ( RULE_ID )
             // InternalDSL.g:2707:4: RULE_ID
             {
-             before(grammarAccess.getTargetModelTypeDefAccess().getUsageScenarioUsageScenarioIDTerminalRuleCall_2_2_3_0_1()); 
+             before(grammarAccess.getTargetModelTypeDefAccess().getUsageModelUsageModelIDTerminalRuleCall_2_2_3_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getTargetModelTypeDefAccess().getUsageScenarioUsageScenarioIDTerminalRuleCall_2_2_3_0_1()); 
+             after(grammarAccess.getTargetModelTypeDefAccess().getUsageModelUsageModelIDTerminalRuleCall_2_2_3_0_1()); 
 
             }
 
-             after(grammarAccess.getTargetModelTypeDefAccess().getUsageScenarioUsageScenarioCrossReference_2_2_3_0()); 
+             after(grammarAccess.getTargetModelTypeDefAccess().getUsageModelUsageModelCrossReference_2_2_3_0()); 
 
             }
 
@@ -8251,7 +8251,7 @@ public class InternalDSLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__TargetModelTypeDef__UsageScenarioAssignment_2_2_3"
+    // $ANTLR end "rule__TargetModelTypeDef__UsageModelAssignment_2_2_3"
 
 
     // $ANTLR start "rule__CharacteristicType__NameAssignment_1"

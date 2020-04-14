@@ -64,11 +64,11 @@ class DSLGenerator extends AbstractGenerator {
 		
 		switch (typeDefs.type) {
 			case DATA_CENTRIC_PALLADIO: {
-				if (typeDefs.usageScenario === null || typeDefs.allocationModel === null ||
+				if (typeDefs.usageModel === null || typeDefs.allocationModel === null ||
 					typeDefs.typeContainer === null) {
 					this.converter = new PalladioConverter
 				} else {
-					this.converter = new PalladioConverter(typeDefs.usageScenario.usageModel_UsageScenario,
+					this.converter = new PalladioConverter(typeDefs.usageModel,
 						typeDefs.allocationModel, typeDefs.typeContainer)
 				}
 			}

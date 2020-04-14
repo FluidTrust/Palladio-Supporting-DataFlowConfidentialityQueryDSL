@@ -452,7 +452,7 @@ public class InternalDSLParser extends AbstractInternalAntlrParser {
                             						
                             otherlv_7=(Token)match(input,RULE_ID,FOLLOW_2); 
 
-                            							newLeafNode(otherlv_7, grammarAccess.getTargetModelTypeDefAccess().getUsageScenarioUsageScenarioCrossReference_2_2_3_0());
+                            							newLeafNode(otherlv_7, grammarAccess.getTargetModelTypeDefAccess().getUsageModelUsageModelCrossReference_2_2_3_0());
                             						
 
                             }

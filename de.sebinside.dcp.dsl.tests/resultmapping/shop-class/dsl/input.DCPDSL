@@ -1,0 +1,14 @@
+target OperationModel
+import "shop.xmi"
+
+type level: PrivacyLevel
+type location: Locations
+
+class isNotSafe {
+	location.!EU
+}
+
+// No type 0 data flow to unsafe locations
+constraint NoType0Flow {
+	data.attribute.level.Type0 NEVER FLOWS node.class.isNotSafe
+}

@@ -29,16 +29,6 @@ constraint NoType0Flow {
 }
 ```
 
-This yields the following **result**:
-
-```prolog
-QueryType = 'CALL_ARGUMENT',
-OP = 'UserDB_store',
-P = customer,
-Location = 'Asia' ;
-false.
-```
-
 ### Sample
 
 This snippet is partly equivalent to the one from the *LanguageDesign*-Document.
@@ -70,7 +60,7 @@ constraint example2 {
 This snippet describes the constraint for the (newly developed) geolocation example.
 
 ```smalltalk
-target DataCentricPalladio using _onNMoHKKEeq9tYpRa9lb6Q,_VggokHKKEeq9tYpRa9lb6Q,_9qywoHKJEeq9tYpRa9lb6Q
+target DataCentricPalladio using geolocation,newAllocation,newUsageModel
 import "geolocation.xmi"
 import "newAllocation.allocation"
 import "newAssembly.system"
@@ -81,12 +71,12 @@ type Location: Location
 type Origin: Origin
 type PersonalInformation: PersonalInformation
 
-// No flow of personal unencrypted information to the specified node
+// No flow of personal unencrypted information to the specified node 
 constraint NoUnencryptedPersonalDataFlow {
 	data.attribute.Origin.EU &
 	data.attribute.PersonalInformation.true &
 	data.attribute.Encryption.!true 
 	NEVER FLOWS
-	node.identity.Assembly_StoreDB.StoreDB._GDFtwHKJEeq9tYpRa9lb6Q
+	node.identity.Assembly_StoreDB.StoreDB.store
 }
 ```

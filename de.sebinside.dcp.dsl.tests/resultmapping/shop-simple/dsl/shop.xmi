@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<characteristics:CharacteristicTypeContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:characteristics="http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" id="_nSj8IFqmEeiPkr6LR6jHLg">
+  <characteristicTypes xsi:type="characteristics:EnumCharacteristicType" id="_rkiSMFqnEeiY18w7ObeSrg" entityName="PrivacyLevel" multipleChoice="true" enum="_CustomId2"/>
+  <characteristicTypes xsi:type="characteristics:EnumCharacteristicType" id="_vP5JoFqnEeiY18w7ObeSrg" entityName="Locations" multipleChoice="true" enum="_CustomId1"/>
+  <enumerations id="_CustomId2" entityName="PrivacyLevel">
+    <literals id="_CustomId3" entityName="Type0"/>
+    <literals id="_CustomId4" entityName="Type1"/>
+    <literals id="_CustomId5" entityName="Type2"/>
+  </enumerations>
+  <enumerations id="_CustomId1" entityName="Locations">
+    <literals id="_m8CdEFqnEeiY18w7ObeSrg" entityName="EU"/>
+    <literals id="_ollNwFqnEeiY18w7ObeSrg" entityName="USA"/>
+    <literals id="_pqWdcFqnEeiY18w7ObeSrg" entityName="Asia"/>
+  </enumerations>
+</characteristics:CharacteristicTypeContainer>

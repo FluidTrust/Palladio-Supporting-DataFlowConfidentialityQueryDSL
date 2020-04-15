@@ -67,6 +67,10 @@ class DSLGeneratorUtils {
 	def static createQueryTypeUnification(String queryType) {
 		Unification(CompoundTerm("QueryType"), AtomicQuotedString(queryType))
 	}
+	
+	def static createConstraintNameUnification(String constraintName) {
+		Unification(CompoundTerm("ConstraintName"), AtomicQuotedString(constraintName))
+	}
 
 	def static createCallStackUnification(CompoundTerm stack, CompoundTerm head) {
 		Unification(stack, List(head, CompoundTerm("_")))

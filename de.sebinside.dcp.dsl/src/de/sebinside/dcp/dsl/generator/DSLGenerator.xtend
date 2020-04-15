@@ -124,7 +124,7 @@ class DSLGenerator extends AbstractGenerator {
 		// Add member queries to the class directly
 		// FIXME: Might contain duplicates
 		val memberQueries = charateristicClass.members.map [ member |
-			createMemberQuery(converter.convert(member.ref), CompoundTerm(member.ref.name.toFirstUpper))
+			createMemberQuery(AtomicQuotedString(member.ref.ref.entityName), CompoundTerm(member.ref.name.toFirstUpper))
 		]
 		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
 
@@ -140,6 +140,7 @@ class DSLGenerator extends AbstractGenerator {
 	def List<Clause> compile(Constraint constraint) {
 		val clauses = new ArrayList<Clause>
 		val constraintName = '''constraint_«constraint.name»'''
+		val constraintNameTerm = createConstraintNameUnification(constraint.name)
 
 		// Every constraint is mapped to a rule
 		val constraintRule = Rule(constraintName)
@@ -164,6 +165,10 @@ class DSLGenerator extends AbstractGenerator {
 
 			// Combine rules
 			constraintRule.body = expressionsToLogicalOr(rules.map[rule|ruleToRuleCall(rule)])
+			
+			// Add constraint name unification
+			constraintRule.body = LogicalAnd(constraintNameTerm, constraintRule.body)
+			constraintRule.head.arguments.add(CompoundTerm("ConstraintName"))
 
 			// Combine (unique) arguments of all rules
 			val allArguments = combineRuleArguments(rules)

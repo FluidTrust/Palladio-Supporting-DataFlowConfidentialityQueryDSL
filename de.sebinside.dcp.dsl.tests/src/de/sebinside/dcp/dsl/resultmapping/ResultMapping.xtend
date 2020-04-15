@@ -10,10 +10,16 @@ import org.junit.jupiter.api.BeforeEach
 import org.prolog4j.IProverFactory
 import org.prolog4j.Prover
 import org.prolog4j.tuprolog.TuPrologProverFactory
+import javax.inject.Inject
+import org.eclipse.xtext.testing.util.ParseHelper
+import de.sebinside.dcp.dsl.dSL.Model
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
 class ResultMapping {
+	
+	@Inject
+	ParseHelper<Model> parseHelper
 	
 	static IProverFactory proverFactory;
 	protected Prover prover;
@@ -38,6 +44,11 @@ class ResultMapping {
 		solution.forEach[s|
 			println(s)
 		]
+	}
+	
+	@Test
+	def void parseTest() {
+		parseHelper.parse("")
 	}
 	
 }

@@ -3,7 +3,7 @@ package de.sebinside.dcp.dsl.resultmapping
 import de.sebinside.dcp.dsl.dSL.Model
 import org.prolog4j.Solution
 
-class ResultMapper {
+class ResultMapping {
 	
 	Model model = null
 	Solution<Object> solution = null
@@ -11,10 +11,6 @@ class ResultMapper {
 	new(Model model, Solution<Object> solution) {
 		this.model = model
 		this.solution = solution
-	}
-	
-	def String createResult() {
-		'''Not yet implemented. Received model '«model.toString»' and solution '«solution.toString»'.'''
 	}
 	
 }

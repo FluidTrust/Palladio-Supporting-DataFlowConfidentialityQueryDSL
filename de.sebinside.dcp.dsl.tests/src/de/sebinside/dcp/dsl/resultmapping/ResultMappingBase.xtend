@@ -15,6 +15,8 @@ import de.sebinside.dcp.dsl.dSL.Model
 import java.nio.file.Files
 import java.nio.file.Paths
 import org.prolog4j.Solution
+import de.sebinside.dcp.dsl.resultmapping.serialize.ResultMappingSerializer
+import de.sebinside.dcp.dsl.resultmapping.serialize.PlainTextSerializer
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
@@ -25,16 +27,17 @@ class ResultMappingBase {
 
 	static IProverFactory proverFactory;
 	protected Prover prover;
+	protected ResultMappingSerializer serializer;
 
 	@BeforeAll
 	static def void init() {
 		proverFactory = new TuPrologProverFactory()
-
 	}
 
 	@BeforeEach
 	def void setup() {
 		prover = proverFactory.createProver();
+		serializer = new PlainTextSerializer()
 	}
 
 	protected def Solution<Object> createSolution(String caseName, String query) {

@@ -1,0 +1,15 @@
+target OperationModel
+import "geolocation-simple.xmi"
+
+type isEncrypted: Encryption
+type origin: Origin
+type isPersonalInformation: PersonalInformation
+
+// No flow of personal unencrypted information to the specified node 
+constraint NoUnencryptedPersonalDataFlow {
+	data.attribute.origin.EU &
+	data.attribute.isPersonalInformation.isTrue &
+	data.attribute.isEncrypted.!isTrue 
+	NEVER FLOWS
+	node.name."storeInDB"
+}

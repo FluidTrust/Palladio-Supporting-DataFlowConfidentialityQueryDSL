@@ -5,6 +5,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
+import de.sebinside.dcp.dsl.generator.GlobalConstants
 
 class PostCallStateQueryRule extends QueryRule {
 
@@ -18,7 +19,7 @@ class PostCallStateQueryRule extends QueryRule {
 	}
 
 	override queryTypeIdentification() {
-		"POST_CALL_STATE"
+		'''«GlobalConstants.QueryTypes.POST_CALL_STATE»'''
 	}
 	
 	override parameterTerm() {

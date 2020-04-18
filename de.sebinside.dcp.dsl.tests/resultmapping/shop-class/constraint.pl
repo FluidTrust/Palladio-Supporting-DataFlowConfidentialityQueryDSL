@@ -1,38 +1,38 @@
 characteristicsClass_isNotSafe_location_0_NEG('EU').
-characteristicClass_isNotSafe(Location) :-
-	valueSetMember('Locations', Location),
-	\+ characteristicsClass_isNotSafe_location_0_NEG(Location).
-constraint_NoType0Flow(ConstraintName, QueryType, OP, S, ST, Location, P) :-
+characteristicsClass_isNotSafe(ClassVar_location) :-
+	valueSetMember('Locations', ClassVar_location),
+	\+ characteristicsClass_isNotSafe_location_0_NEG(ClassVar_location).
+constraint_NoType0Flow(ConstraintName, QueryType, OP, S, ST, ClassVar_location, P) :-
 	ConstraintName = 'NoType0Flow',
-	( constraint_NoType0Flow_PRE_CALL_STATE(QueryType, OP, S, ST, Location);
-	constraint_NoType0Flow_CALL_ARGUMENT(QueryType, OP, S, P, Location);
-	constraint_NoType0Flow_RETURN_VALUE(QueryType, OP, S, P, Location);
-	constraint_NoType0Flow_POST_CALL_STATE(QueryType, OP, S, ST, Location) ).
-constraint_NoType0Flow_PRE_CALL_STATE(QueryType, OP, S, ST, Location) :-
-	QueryType = 'PRE_CALL_STATE',
+	( constraint_NoType0Flow_PreCallState(QueryType, OP, S, ST, ClassVar_location);
+	constraint_NoType0Flow_PostCallState(QueryType, OP, S, ST, ClassVar_location);
+	constraint_NoType0Flow_CallArgument(QueryType, OP, S, P, ClassVar_location);
+	constraint_NoType0Flow_ReturnValue(QueryType, OP, S, P, ClassVar_location) ).
+constraint_NoType0Flow_PreCallState(QueryType, OP, S, ST, ClassVar_location) :-
+	QueryType = 'PreCallState',
 	S = [OP | _],
 	stackValid(S),
 	preCallState(S, OP, ST, 'level', 'Type-0'),
-	operationProperty(OP, 'location', Location),
-	characteristicClass_isNotSafe(Location).
-constraint_NoType0Flow_CALL_ARGUMENT(QueryType, OP, S, P, Location) :-
-	QueryType = 'CALL_ARGUMENT',
-	S = [OP | _],
-	stackValid(S),
-	callArgument(S, P, 'level', 'Type-0'),
-	operationProperty(OP, 'location', Location),
-	characteristicClass_isNotSafe(Location).
-constraint_NoType0Flow_RETURN_VALUE(QueryType, OP, S, P, Location) :-
-	QueryType = 'RETURN_VALUE',
-	S = [OP | _],
-	stackValid(S),
-	returnValue(S, P, 'level', 'Type-0'),
-	operationProperty(OP, 'location', Location),
-	characteristicClass_isNotSafe(Location).
-constraint_NoType0Flow_POST_CALL_STATE(QueryType, OP, S, ST, Location) :-
-	QueryType = 'POST_CALL_STATE',
+	operationProperty(OP, 'location', ClassVar_location),
+	characteristicsClass_isNotSafe(ClassVar_location).
+constraint_NoType0Flow_PostCallState(QueryType, OP, S, ST, ClassVar_location) :-
+	QueryType = 'PostCallState',
 	S = [OP | _],
 	stackValid(S),
 	postCallState(S, OP, ST, 'level', 'Type-0'),
-	operationProperty(OP, 'location', Location),
-	characteristicClass_isNotSafe(Location).
+	operationProperty(OP, 'location', ClassVar_location),
+	characteristicsClass_isNotSafe(ClassVar_location).
+constraint_NoType0Flow_CallArgument(QueryType, OP, S, P, ClassVar_location) :-
+	QueryType = 'CallArgument',
+	S = [OP | _],
+	stackValid(S),
+	callArgument(S, P, 'level', 'Type-0'),
+	operationProperty(OP, 'location', ClassVar_location),
+	characteristicsClass_isNotSafe(ClassVar_location).
+constraint_NoType0Flow_ReturnValue(QueryType, OP, S, P, ClassVar_location) :-
+	QueryType = 'ReturnValue',
+	S = [OP | _],
+	stackValid(S),
+	returnValue(S, P, 'level', 'Type-0'),
+	operationProperty(OP, 'location', ClassVar_location),
+	characteristicsClass_isNotSafe(ClassVar_location).

@@ -5,6 +5,7 @@ package de.sebinside.dcp.dsl.generator
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.Constraint
+import de.sebinside.dcp.dsl.dSL.TargetModelType
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import de.sebinside.dcp.dsl.generator.crossplatform.OperationModelConverter
@@ -21,15 +22,16 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.palladiosimulator.supporting.prolog.model.prolog.Clause
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
+import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
-import de.sebinside.dcp.dsl.dSL.TargetModelType
-import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 
 class DSLGenerator extends AbstractGenerator {
 
-	static final String DEV_OUTPUT_FILE_NAME = "output.pl"
+	static final String DEFAULT_OUTPUT_FILE_NAME = "output.pl"
+	static final String DSL_EXTENSION = ".DCPDSL"
+	static final String PROLOG_EXTENSION = ".pl"
 
 	// Setting the default value
 	Converter converter = new OperationModelConverter
@@ -51,9 +53,9 @@ class DSLGenerator extends AbstractGenerator {
 		}
 
 		val outputFileName = if (resource.URI.lastSegment !== null) {
-				resource.URI.lastSegment.replace(".DCPDSL", ".pl")
+				resource.URI.lastSegment.replace(DSL_EXTENSION, PROLOG_EXTENSION)
 			} else {
-				DEV_OUTPUT_FILE_NAME
+				DEFAULT_OUTPUT_FILE_NAME
 			}
 		saveFile(fsa, resource, program, outputFileName)
 	}
@@ -61,15 +63,15 @@ class DSLGenerator extends AbstractGenerator {
 	def compile(TargetModelTypeDef typeDefs) {
 		// There is only one or none target model type definition
 		this.targetModelType = typeDefs.type
-		
+
 		switch (typeDefs.type) {
 			case DATA_CENTRIC_PALLADIO: {
 				if (typeDefs.usageModel === null || typeDefs.allocationModel === null ||
 					typeDefs.typeContainer === null) {
 					this.converter = new PalladioConverter
 				} else {
-					this.converter = new PalladioConverter(typeDefs.usageModel,
-						typeDefs.allocationModel, typeDefs.typeContainer)
+					this.converter = new PalladioConverter(typeDefs.usageModel, typeDefs.allocationModel,
+						typeDefs.typeContainer)
 				}
 			}
 			case EXTENDED_DFD: {
@@ -85,12 +87,12 @@ class DSLGenerator extends AbstractGenerator {
 		val clauses = new ArrayList<Clause>
 
 		// Create rule referencing all facts
-		val rule = Rule('''characteristicClass_«charateristicClass.name»''')
+		val rule = Rule('''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«charateristicClass.name»''')
 		rule.body = null
 
 		// A rules arguments are all contained member type names
 		rule.head.arguments.addAll(charateristicClass.members.map[member|member.ref.name].toSet.map [ type |
-			CompoundTerm(type.toFirstUpper)
+			CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«type»''')
 		].toList)
 
 		// Create single facts for every member
@@ -98,12 +100,13 @@ class DSLGenerator extends AbstractGenerator {
 			member.literals.forEach [ literal |
 
 				// Create and add fact
-				val factName = '''characteristicsClass_«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
+				val factName = '''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
 				val fact = SimpleFact(factName, converter.convert(literal))
 				clauses.add(fact)
 
 				// Create fact reference for the rule
-				val factReference = CompoundTerm(fact.head.value, CompoundTerm(member.ref.name.toFirstUpper))
+				val factReference = CompoundTerm(fact.head.value,
+					CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»'''))
 
 				// Handle negated facts
 				val factExpression = if (member.negated) {
@@ -124,7 +127,8 @@ class DSLGenerator extends AbstractGenerator {
 		// Add member queries to the class directly
 		// FIXME: Might contain duplicates
 		val memberQueries = charateristicClass.members.map [ member |
-			createMemberQuery(AtomicQuotedString(member.ref.ref.entityName), CompoundTerm(member.ref.name.toFirstUpper))
+			createMemberQuery(AtomicQuotedString(member.ref.ref.entityName),
+				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»'''))
 		]
 		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
 
@@ -139,7 +143,7 @@ class DSLGenerator extends AbstractGenerator {
 
 	def List<Clause> compile(Constraint constraint) {
 		val clauses = new ArrayList<Clause>
-		val constraintName = '''constraint_«constraint.name»'''
+		val constraintName = '''«GlobalConstants.Prefixes.CONSTRAINT»«constraint.name»'''
 		val constraintNameTerm = createConstraintNameUnification(constraint.name)
 
 		// Every constraint is mapped to a rule
@@ -152,23 +156,23 @@ class DSLGenerator extends AbstractGenerator {
 		if (!mainRule.statement.modality.name.equals("NEVER") || !mainRule.statement.type.name.equals("FLOWS")) {
 			throw new Exception("Unable to generate. Unsupported modality or statement type.")
 		} else {
-			
+
 			var rules = new ArrayList<Rule>()
 			rules.add(new PreCallStateQueryRule(mainRule, constraintName, converter).generate())
-			
+
 			// Only the operation model works with all kinds of rules, Palladio only requires preCallStates
-			if(this.targetModelType == TargetModelType.OPERATION_MODEL) {
+			if (this.targetModelType == TargetModelType.OPERATION_MODEL) {
+				rules.add(new PostCallStateQueryRule(mainRule, constraintName, converter).generate())
 				rules.add(new CallArgumentQueryRule(mainRule, constraintName, converter).generate())
 				rules.add(new ReturnValueQueryRule(mainRule, constraintName, converter).generate())
-				rules.add(new PostCallStateQueryRule(mainRule, constraintName, converter).generate())
 			}
 
 			// Combine rules
 			constraintRule.body = expressionsToLogicalOr(rules.map[rule|ruleToRuleCall(rule)])
-			
+
 			// Add constraint name unification
 			constraintRule.body = LogicalAnd(constraintNameTerm, constraintRule.body)
-			constraintRule.head.arguments.add(CompoundTerm("ConstraintName"))
+			constraintRule.head.arguments.add(CompoundTerm('''«GlobalConstants.Parameters.CONSTRAINT_NAME»'''))
 
 			// Combine (unique) arguments of all rules
 			val allArguments = combineRuleArguments(rules)

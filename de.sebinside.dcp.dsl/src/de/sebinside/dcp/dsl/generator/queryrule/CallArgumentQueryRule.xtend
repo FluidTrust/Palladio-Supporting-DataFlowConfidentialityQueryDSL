@@ -5,6 +5,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.generator.queryrule.QueryRule
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
+import de.sebinside.dcp.dsl.generator.GlobalConstants
 
 class CallArgumentQueryRule extends QueryRule {
 	new(Rule rule, String nameBase, Converter converter) {
@@ -17,7 +18,7 @@ class CallArgumentQueryRule extends QueryRule {
 	}
 	
 	override queryTypeIdentification() {
-		"CALL_ARGUMENT"
+		'''«GlobalConstants.QueryTypes.CALL_ARGUMENT»'''
 	}
 	
 	override parameterTerm() {

@@ -65,11 +65,12 @@ class DSLGeneratorUtils {
 	}
 
 	def static createQueryTypeUnification(String queryType) {
-		Unification(CompoundTerm("QueryType"), AtomicQuotedString(queryType))
+		Unification(CompoundTerm('''«GlobalConstants.Parameters.QUERY_TYPE»'''), AtomicQuotedString(queryType))
 	}
-	
+
 	def static createConstraintNameUnification(String constraintName) {
-		Unification(CompoundTerm("ConstraintName"), AtomicQuotedString(constraintName))
+		Unification(CompoundTerm('''«GlobalConstants.Parameters.CONSTRAINT_NAME»'''),
+			AtomicQuotedString(constraintName))
 	}
 
 	def static createCallStackUnification(CompoundTerm stack, CompoundTerm head) {
@@ -85,9 +86,10 @@ class DSLGeneratorUtils {
 	}
 
 	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
-		CompoundTerm('''characteristicClass_«characteristicClass.name»''', characteristicClass.members.map [ member |
-			CompoundTerm(member.ref.name.toFirstUpper)
-		])
+		CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«characteristicClass.name»''', characteristicClass.
+			members.map [ member |
+				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»''')
+			])
 	}
 
 	def static createPropertyQuery(Expression operation, Expression property, Expression value) {

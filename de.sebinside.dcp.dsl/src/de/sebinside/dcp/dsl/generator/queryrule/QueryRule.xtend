@@ -17,13 +17,14 @@ import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
+import de.sebinside.dcp.dsl.generator.GlobalConstants
 
 abstract class QueryRule {
 
-	protected val callStack = "S"
-	protected val operation = "OP"
-	protected val parameter = "P"
-	protected val callState = "ST"
+	protected val String callStack = GlobalConstants.Parameters.CALL_STACK.toString
+	protected val String operation = GlobalConstants.Parameters.OPERATION.toString
+	protected val String parameter = GlobalConstants.Parameters.PARAMETER.toString
+	protected val String callState = GlobalConstants.Parameters.CALL_STATE.toString
 	val queryTypeTerm = createQueryTypeUnification(queryTypeIdentification)
 
 	var Rule rule = null
@@ -41,8 +42,8 @@ abstract class QueryRule {
 	def dispatch generateDataSelectorTerm(AttributeSelector selector) {
 		selector.ref.literals.map [ literal |
 			val query = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-				converter.convert(selector.ref.ref), converter.convert(literal),
-				CompoundTerm(operation), CompoundTerm(callState))
+				converter.convert(selector.ref.ref), converter.convert(literal), CompoundTerm(operation),
+				CompoundTerm(callState))
 
 			if (selector.ref.negated) {
 				negate(query)
@@ -56,16 +57,16 @@ abstract class QueryRule {
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
-			createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-				converter.convert(member.ref), CompoundTerm(member.ref.name.toFirstUpper),
-				CompoundTerm(operation), CompoundTerm(callState))
+			createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter), converter.convert(member.ref),
+				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»'''), CompoundTerm(operation),
+				CompoundTerm(callState))
 		]
 	}
 
 	def dispatch generateDestinationSelectorTerm(PropertySelector selector) {
 		selector.ref.literals.map [ literal |
-			val query = createPropertyQuery(CompoundTerm(operation),
-				converter.convert(selector.ref.ref), converter.convert(literal))
+			val query = createPropertyQuery(CompoundTerm(operation), converter.convert(selector.ref.ref),
+				converter.convert(literal))
 
 			if (selector.ref.negated) {
 				negate(query)
@@ -80,7 +81,7 @@ abstract class QueryRule {
 
 		selector.ref.members.map [ member |
 			createPropertyQuery(CompoundTerm(operation), converter.convert(member.ref),
-				CompoundTerm(member.ref.name.toFirstUpper))
+				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»'''))
 		]
 	}
 
@@ -122,7 +123,7 @@ abstract class QueryRule {
 
 		// Add all (unique) classes members names to the list
 		val classTerms = characteristicClasses.toList.map[clazz|clazz.members.map[member|member.ref.name]].toSet.
-			flatten.map[term|CompoundTerm(term.toFirstUpper)]
+			flatten.map[term|CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«term»''')]
 		parametersList.addAll(classTerms)
 
 		subRule.head.arguments.addAll(parametersList)

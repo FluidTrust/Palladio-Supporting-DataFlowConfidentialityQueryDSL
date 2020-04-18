@@ -1,8 +1,8 @@
 constraint_NoUnencryptedPersonalDataFlow(ConstraintName, QueryType, OP, S, ST) :-
 	ConstraintName = 'NoUnencryptedPersonalDataFlow',
-	constraint_NoUnencryptedPersonalDataFlow_PRE_CALL_STATE(QueryType, OP, S, ST).
-constraint_NoUnencryptedPersonalDataFlow_PRE_CALL_STATE(QueryType, OP, S, ST) :-
-	QueryType = 'PRE_CALL_STATE',
+	constraint_NoUnencryptedPersonalDataFlow_PreCallState(QueryType, OP, S, ST).
+constraint_NoUnencryptedPersonalDataFlow_PreCallState(QueryType, OP, S, ST) :-
+	QueryType = 'PreCallState',
 	S = [OP | _],
 	stackValid(S),
 	( preCallState(S, OP, ST, 'EnumCharacteristicType Origin (_tN5q8HKKEeq9tYpRa9lb6Q)', 'EnumCharacteristicLiteral EU (_ryWS8HKKEeq9tYpRa9lb6Q)'),

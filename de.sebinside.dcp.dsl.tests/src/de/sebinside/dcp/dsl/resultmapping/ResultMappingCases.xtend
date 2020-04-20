@@ -1,6 +1,7 @@
 package de.sebinside.dcp.dsl.resultmapping
 
 import org.junit.jupiter.api.Test
+import de.sebinside.dcp.dsl.resultmapping.generate.ResultMapping
 
 class ResultMappingCases extends ResultMappingBase {
 
@@ -36,7 +37,7 @@ class ResultMappingCases extends ResultMappingBase {
 		val model = loadDSLModel(caseName)
 		val solution = createSolution(caseName, query)
 		val result = new ResultMapping(model, solution)
-		println(serializer.serialize(result))
+		println(serializer.serialize(caseName, result))
 	}
 
 }

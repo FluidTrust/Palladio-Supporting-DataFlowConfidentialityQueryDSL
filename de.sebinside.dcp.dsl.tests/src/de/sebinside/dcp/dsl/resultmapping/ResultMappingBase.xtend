@@ -17,6 +17,13 @@ import java.nio.file.Paths
 import org.prolog4j.Solution
 import de.sebinside.dcp.dsl.resultmapping.serialize.ResultMappingSerializer
 import de.sebinside.dcp.dsl.resultmapping.serialize.PlainTextSerializer
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.common.util.URI
+import java.io.File
+import java.io.FileInputStream
+import org.eclipse.emf.ecore.resource.Resource
+import java.util.Map
+import java.util.HashMap
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
@@ -53,12 +60,29 @@ class ResultMappingBase {
 	}
 
 	protected def Model loadDSLModel(String caseName) {
-		val dsl = readResultMappingFile('''«caseName»/dsl/input.DCPDSL''')
-		parseHelper.parse(dsl)
+		val dslPath = '''«caseName»/dsl/input.DCPDSL'''
+
+		val resourceSet = new ResourceSetImpl
+		//val res = resourceSet.createResource(createPlatformURI(createResultMappingPath("shop-class/dsl/shop.xmi")))
+		//val uriMap = new HashMap<URI, Resource>;
+		//uriMap.put(URI.createPlatformResourceURI("/de.sebinside.dcp.dsl.tests/resultmapping/shop-class/dsl/shop.xmi", false), res)
+		//uriMap.put(URI.createURI("/de.sebinside.dcp.dsl.tests/resultmapping/shop-class/dsl/shop.xmi"), res)
+		//resourceSet.URIResourceMap = uriMap
+		val inputStream = new FileInputStream(new File(createResultMappingPath(dslPath)))
+
+		parseHelper.parse(inputStream, createPlatformURI(createResultMappingPath(dslPath)), null, resourceSet)
 	}
 
 	private def readResultMappingFile(String relativePath) {
-		new String(Files.readAllBytes(Paths.get('''resultmapping/«relativePath»''')));
+		new String(Files.readAllBytes(Paths.get(createResultMappingPath(relativePath))));
+	}
+
+	private static def String createResultMappingPath(String relativePath) {
+		'''resultmapping/«relativePath»'''
+	}
+
+	private static def createPlatformURI(String relativePath) {
+		URI.createPlatformResourceURI("/de.sebinside.dcp.dsl.tests/" + relativePath, false)
 	}
 
 }

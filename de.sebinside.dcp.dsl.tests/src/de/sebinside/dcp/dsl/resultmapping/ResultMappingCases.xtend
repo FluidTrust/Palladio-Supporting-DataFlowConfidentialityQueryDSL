@@ -22,7 +22,7 @@ class ResultMappingCases extends ResultMappingBase {
 	@Test
 	def void geolocationSimpleCase() {
 		val caseName = "geolocation-simple"
-		val query = "constraint_NoUnencryptedPersonalDataFlow_CallArgument(QueryType, OP, S, P)."
+		val query = "constraint_NoUnencryptedPersonalDataFlow(ConstraintName, QueryType, OP, S, P)."
 		loadInputAndPrintResultMapping(caseName, query)
 	}
 	

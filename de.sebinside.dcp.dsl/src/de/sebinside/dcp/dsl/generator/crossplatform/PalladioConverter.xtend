@@ -34,11 +34,11 @@ class PalladioConverter implements Converter {
 			val name = characteristicType.ref.entityName
 			val id = characteristicType.ref.id
 
-			AtomicQuotedString('''EnumCharacteristicType ï¿½nameï¿½ (ï¿½idï¿½)''')
+			AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
 		} else {
 			val computedValue = trace.value.resolveId(characteristicType.ref)
-			
-			if(computedValue.present) {
+
+			if (computedValue.present) {
 				AtomicQuotedString(computedValue.get)
 			} else {
 				throw new Exception("Unable to resolve CharacteristicType id.")
@@ -51,11 +51,11 @@ class PalladioConverter implements Converter {
 			val content = characteristicLiteral.entityName
 			val id = characteristicLiteral.id
 
-			AtomicQuotedString('''EnumCharacteristicLiteral ï¿½contentï¿½ (ï¿½idï¿½)''')
+			AtomicQuotedString('''EnumCharacteristicLiteral «content» («id»)''')
 		} else {
 			val computedValue = trace.value.resolveId(characteristicLiteral)
-			
-			if(computedValue.present) {
+
+			if (computedValue.present) {
 				AtomicQuotedString(computedValue.get)
 			} else {
 				throw new Exception("Unable to resolve EnumCharacteristicLiteral id.")
@@ -72,10 +72,11 @@ class PalladioConverter implements Converter {
 			val assemblyID = selector.assembly.id
 			val seffID = EcoreUtil2.getID(selector.seff)
 
-			AtomicQuotedString('''ResourceDemandingSEFF (ï¿½seffIDï¿½) - AC ï¿½assemblyIDï¿½''')
+			AtomicQuotedString('''ResourceDemandingSEFF («seffID») - AC «assemblyID»''')
 		} else {
 			if (selector.seff instanceof ResourceDemandingSEFF) {
-				val seffInstance = SEFFInstance.createInstance(selector.assembly, selector.seff as ResourceDemandingSEFF);
+				val seffInstance = SEFFInstance.createInstance(selector.assembly,
+					selector.seff as ResourceDemandingSEFF);
 
 				val computedValue = trace.value.resolveId(seffInstance)
 

@@ -63,11 +63,6 @@ class ResultMappingBase {
 		val dslPath = '''«caseName»/dsl/input.DCPDSL'''
 
 		val resourceSet = new ResourceSetImpl
-		//val res = resourceSet.createResource(createPlatformURI(createResultMappingPath("shop-class/dsl/shop.xmi")))
-		//val uriMap = new HashMap<URI, Resource>;
-		//uriMap.put(URI.createPlatformResourceURI("/de.sebinside.dcp.dsl.tests/resultmapping/shop-class/dsl/shop.xmi", false), res)
-		//uriMap.put(URI.createURI("/de.sebinside.dcp.dsl.tests/resultmapping/shop-class/dsl/shop.xmi"), res)
-		//resourceSet.URIResourceMap = uriMap
 		val inputStream = new FileInputStream(new File(createResultMappingPath(dslPath)))
 
 		parseHelper.parse(inputStream, createPlatformURI(createResultMappingPath(dslPath)), null, resourceSet)
@@ -82,7 +77,7 @@ class ResultMappingBase {
 	}
 
 	private static def createPlatformURI(String relativePath) {
-		URI.createPlatformResourceURI("/de.sebinside.dcp.dsl.tests/" + relativePath, false)
+		URI.createPlatformPluginURI("/de.sebinside.dcp.dsl.tests/" + relativePath, false)
 	}
 
 }

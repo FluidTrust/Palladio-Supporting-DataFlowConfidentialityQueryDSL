@@ -58,8 +58,13 @@ class ResultMapping {
 	}
 
 	private def handleSolution(SolutionIterator<Object> iterator) {
-		val constraintName = iterator.get(GlobalConstants.Parameters.CONSTRAINT_NAME.toString).toString
-		val constraintCandidates = this.constraints.filter[constraint|constraint.constraintName.equals(constraintName)]
+		val constraintName = getSolutionVariable(iterator, GlobalConstants.Parameters.CONSTRAINT_NAME.toString)
+		
+		if(constraintName.isEmpty) {
+			throw new RuntimeException("A solution does not contain the non-optional constraint name parameter.")
+		}
+		
+		val constraintCandidates = this.constraints.filter[constraint|constraint.constraintName.equals(constraintName.get)]
 
 		if (constraintCandidates.length != 1) {
 			throw new RuntimeException(

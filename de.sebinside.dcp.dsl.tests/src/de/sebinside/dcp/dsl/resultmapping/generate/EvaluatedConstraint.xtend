@@ -33,4 +33,8 @@ class EvaluatedConstraint {
 	def addViolation(Violation violation) {
 		this.violations.add(violation)
 	}
+	
+	def getViolations() {
+		this.violations
+	}
 }

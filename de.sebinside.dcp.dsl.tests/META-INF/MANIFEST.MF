@@ -12,6 +12,7 @@ Require-Bundle: de.sebinside.dcp.dsl,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.prolog4j.api;bundle-version="1.0.0",
- org.prolog4j.tuprolog;bundle-version="1.0.0"
+ org.prolog4j.tuprolog;bundle-version="1.0.0",
+ org.palladiosimulator.pcm.dataprocessing;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.sebinside.dcp.dsl.tests;x-internal=true

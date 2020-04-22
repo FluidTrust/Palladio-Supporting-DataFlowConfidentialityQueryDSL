@@ -33,6 +33,7 @@ class PlainTextSerializer implements ResultMappingSerializer {
 		for (constraint : resultMapping.evaluatedConstraints) {
 			chapters.add(createConstraintOverviewChapter(constraint))
 			chapters.add(createConstraintDetailsChapter(constraint))
+			chapters.add(createConstraintViolationsChapter(constraint))
 		}
 
 		combineChapters(chapters)
@@ -167,6 +168,16 @@ class PlainTextSerializer implements ResultMappingSerializer {
 
 		mapFromSelectorList(selectors, NodeIdentitiySelector, processingFunction)
 	}
+	
+	private static def mapQueryType(String queryType) {
+		// TODO: Implement correctly
+		queryType
+	}
+	
+	private static def mapCallStack(List<String> callStack) {
+		// TODO: Implement correctly
+		callStack.join(", ")
+	}
 
 	private def createGeneralChapter() {
 		val title = "General"
@@ -214,6 +225,28 @@ class PlainTextSerializer implements ResultMappingSerializer {
 			entries.add('''Destination Identity: «nodeIdentities.get»''')
 
 		createChapter(title, entries)
+	}
+	
+	
+	
+	private def createConstraintViolationsChapter(EvaluatedConstraint constraint) {
+		val title = "Constraint violations"
+		
+		var violations = new ArrayList<String>
+		
+		// TODO: Add palladio support
+		for(violation: constraint.violations) {
+			val paramter = violation.parameter.isPresent ? violation.parameter.get : violation.callState.get
+			val queryType = mapQueryType(violation.queryType)
+			val operation = violation.operation
+			val callStack = mapCallStack(violation.callStack)
+			
+			// TODO: Handle class variables
+			
+			violations.add('''«violations.length + 1». Parameter "«paramter»" is not allowed to be «queryType» in operation "«operation»".\n\t- Call Stack: «callStack»''')
+		}
+		
+		createChapter(title, violations)
 	}
 
 }

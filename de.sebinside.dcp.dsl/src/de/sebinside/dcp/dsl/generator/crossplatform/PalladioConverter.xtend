@@ -1,21 +1,21 @@
 package de.sebinside.dcp.dsl.generator.crossplatform
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicType
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
-
-import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
-import org.eclipse.xtext.EcoreUtil2
-import org.palladiosimulator.pcm.dataprocessing.analysis.transformation.basic.ITransformatorFactory
-import org.palladiosimulator.pcm.usagemodel.UsageModel
-import org.palladiosimulator.pcm.allocation.Allocation
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicTypeContainer
-import org.palladiosimulator.pcm.dataprocessing.analysis.transformation.basic.ITransformationTrace
 import org.apache.commons.lang3.mutable.Mutable
 import org.apache.commons.lang3.mutable.MutableObject
+import org.eclipse.xtext.EcoreUtil2
+import org.palladiosimulator.pcm.allocation.Allocation
+import org.palladiosimulator.pcm.dataprocessing.analysis.transformation.basic.ITransformationTrace
+import org.palladiosimulator.pcm.dataprocessing.analysis.transformation.basic.ITransformatorFactory
+import org.palladiosimulator.pcm.dataprocessing.analysis.transformation.naming.impl.HumanReadableUniqueNameProvider
 import org.palladiosimulator.pcm.dataprocessing.analysis.transformation.naming.wrappers.SEFFInstance
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicTypeContainer
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF
-import org.palladiosimulator.pcm.dataprocessing.analysis.transformation.tests.base.HumanReadableUniqueNameProvider
+import org.palladiosimulator.pcm.usagemodel.UsageModel
+
+import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 
 class PalladioConverter implements Converter {
 
@@ -34,7 +34,7 @@ class PalladioConverter implements Converter {
 			val name = characteristicType.ref.entityName
 			val id = characteristicType.ref.id
 
-			AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
+			AtomicQuotedString('''EnumCharacteristicType ï¿½nameï¿½ (ï¿½idï¿½)''')
 		} else {
 			val computedValue = trace.value.resolveId(characteristicType.ref)
 			
@@ -51,7 +51,7 @@ class PalladioConverter implements Converter {
 			val content = characteristicLiteral.entityName
 			val id = characteristicLiteral.id
 
-			AtomicQuotedString('''EnumCharacteristicLiteral «content» («id»)''')
+			AtomicQuotedString('''EnumCharacteristicLiteral ï¿½contentï¿½ (ï¿½idï¿½)''')
 		} else {
 			val computedValue = trace.value.resolveId(characteristicLiteral)
 			
@@ -72,7 +72,7 @@ class PalladioConverter implements Converter {
 			val assemblyID = selector.assembly.id
 			val seffID = EcoreUtil2.getID(selector.seff)
 
-			AtomicQuotedString('''ResourceDemandingSEFF («seffID») - AC «assemblyID»''')
+			AtomicQuotedString('''ResourceDemandingSEFF (ï¿½seffIDï¿½) - AC ï¿½assemblyIDï¿½''')
 		} else {
 			if (selector.seff instanceof ResourceDemandingSEFF) {
 				val seffInstance = SEFFInstance.createInstance(selector.assembly, selector.seff as ResourceDemandingSEFF);

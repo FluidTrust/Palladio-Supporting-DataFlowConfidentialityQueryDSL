@@ -15,8 +15,9 @@ import java.util.function.BiFunction
 import org.eclipse.emf.ecore.EObject
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
 import java.util.Map
-import java.util.stream.Collectors
-import java.util.HashMap
+import de.sebinside.dcp.dsl.dSL.PropertySelector
+import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
+import de.sebinside.dcp.dsl.generator.GlobalConstants
 
 class PlainTextSerializer implements ResultMappingSerializer {
 
@@ -99,68 +100,67 @@ class PlainTextSerializer implements ResultMappingSerializer {
 		}
 	}
 
-	private static def mapCharacteristics(List<? extends EObject> selectors) {
+	static BiFunction<EObject, StringBuilder, StringBuilder> characteristicSelectorProcessing = [ selector, builder |
 
-		val BiFunction<EObject, StringBuilder, StringBuilder> processingFunction = [ selector, builder |
+		// We use reflection here to overcome the need of copy/pasting this code since Data and Node selectors have no common selector super type
+		val characteristicSelector = selector.eGet(
+			selector.eClass.getEStructuralFeature("ref")) as CharacteristicTypeSelector
 
-			// We use reflection here to overcome the need of copy/pasting this code since Data and Node selectors have no common selector super type
-			val characteristicSelector = selector.eGet(
-				selector.eClass.getEStructuralFeature("ref")) as CharacteristicTypeSelector
+		val characteristicName = characteristicSelector.ref.name
+		val literals = characteristicSelector.eGet(characteristicSelector.eClass.getEStructuralFeature("literals"),
+			true) as List<EnumCharacteristicLiteral>
+		val literalNames = literals.map[literal|'''"«literal.entityName»"''']
 
-			val characteristicName = characteristicSelector.ref.name
-			val literals = characteristicSelector.eGet(characteristicSelector.eClass.getEStructuralFeature("literals"),
-				true) as List<EnumCharacteristicLiteral>
-			val literalNames = literals.map[literal|'''"«literal.entityName»"''']
-
-			builder.append('''"«characteristicName»" set to «if(literalNames.length == 1)
+		builder.append('''"«characteristicName»" set to «if(literalNames.length == 1)
 					literalNames.head
 					else
 					literalNames.join(", ")»"''')
 
-		]
+	]
 
-		mapFromSelectorList(selectors, AttributeSelector, processingFunction)
-	}
+	static BiFunction<EObject, StringBuilder, StringBuilder> characteristicClassSelectorProcessing = [ selector, builder |
+		val characteristicClass = selector.eGet(selector.eClass.getEStructuralFeature("ref")) as CharacteristicClass
+		builder.append('''"«characteristicClass.name»"''')
+	]
 
-	private static def Optional<String> mapCharacteristicClasses(List<? extends EObject> selectors) {
+	static BiFunction<EObject, StringBuilder, StringBuilder> nodeIdentityProcessing = [ selector, builder |
 
-		val BiFunction<EObject, StringBuilder, StringBuilder> processingFunction = [ selector, builder |
-			val characteristicClass = selector.eGet(selector.eClass.getEStructuralFeature("ref")) as CharacteristicClass
-			builder.append('''"«characteristicClass.name»"''')
-		]
+		val identitySelector = selector as NodeIdentitiySelector
 
-		mapFromSelectorList(selectors, AttributeClassSelector, processingFunction)
-	}
+		// TODO: Add Palladio Support
+		builder.append('''"«identitySelector.name»"''')
 
-	private static def Optional<String> mapNodeIdentities(List<DestinationSelector> selectors) {
-		val BiFunction<EObject, StringBuilder, StringBuilder> processingFunction = [ selector, builder |
-
-			val identitySelector = selector as NodeIdentitiySelector
-
-			// TODO: Add Palladio Support
-			builder.append('''"«identitySelector.name»"''')
-
-		]
-
-		mapFromSelectorList(selectors, NodeIdentitiySelector, processingFunction)
-	}
+	]
 
 	private static def mapQueryType(String queryType) {
-		// TODO: Implement correctly
-		queryType
+
+		// TODO: Add special Palladio support
+		val typeCandidates = GlobalConstants.QueryTypes.values.filter[value|value.toString.equals(queryType)]
+	
+		if(typeCandidates.length != 1) {
+			throw new RuntimeException("Illegal query type.")
+		}
+
+		switch (typeCandidates.head) {
+			case CALL_ARGUMENT: "call argument"
+			case RETURN_VALUE: "return value"
+			case PRE_CALL_STATE: "call state"
+			case POST_CALL_STATE: "call state"
+		}
 	}
 
 	private static def mapCallStack(List<String> callStack) {
-		// TODO: Implement correctly
-		callStack.join(", ")
+		// TODO: Add Palladio Support
+		callStack.map[call|'''"«call»"'''].join(" <- ")
 	}
 
-	private static def mapClassVariables(List<CharacteristicClass> classes, Map<String, String> variableValueMap) {
+	private static def mapClassVariables(Map<String, String> classVariableValueMap,
+		Map<String, CharacteristicClass> classVariableClassMap) {
 		val builder = new StringBuilder()
 
-		for (variable : variableValueMap.keySet) {
-			val clazz = findCharacteristicClass(classes, variable)
-			val value = variableValueMap.get(variable)
+		for (variable : classVariableValueMap.keySet) {
+			val clazz = classVariableClassMap.get(variable)
+			val value = classVariableValueMap.get(variable)
 
 			if (!builder.toString.equals("")) {
 				builder.append(", ")
@@ -172,22 +172,9 @@ class PlainTextSerializer implements ResultMappingSerializer {
 		builder.toString
 	}
 
-	private static def CharacteristicClass findCharacteristicClass(List<CharacteristicClass> classes, String variable) {
-		val candidates = classes.filter[clazz|clazz.members.map[member|member.ref.name].contains(variable)]
-
-		// FIXME: This will not work properly, when multiple classes use the same parameters
-		if (candidates.length != 1) {
-			null
-		} else {
-			candidates.head
-		}
-	}
-
-	private static def String createIfPresent(String title, Optional<String> value) {
+	private static def addEntryIfPresent(String title, Optional<String> value, List<String> entries) {
 		if (value.present) {
-			'''«title»: «value.get»'''
-		} else {
-			""
+			entries.add('''«title»: «value.get»''')
 		}
 	}
 
@@ -212,20 +199,25 @@ class PlainTextSerializer implements ResultMappingSerializer {
 		val condition = Optional.
 			of('''Condition: «constraint.statement.modality.name» «constraint.statement.type.name»''')
 
-		val dataAttributeValues = mapCharacteristics(constraint.dataSelectors)
-		val dataClassValues = mapCharacteristicClasses(constraint.dataSelectors)
+		val dataAttributeValues = mapFromSelectorList(constraint.dataSelectors, AttributeSelector,
+			characteristicSelectorProcessing)
+		val dataClassValues = mapFromSelectorList(constraint.dataSelectors, AttributeClassSelector,
+			characteristicClassSelectorProcessing)
 
-		val nodePropertyValues = mapCharacteristics(constraint.destinationSelectors)
-		val nodeClassValues = mapCharacteristicClasses(constraint.destinationSelectors)
-		val nodeIdentities = mapNodeIdentities(constraint.destinationSelectors)
+		val nodePropertyValues = mapFromSelectorList(constraint.destinationSelectors, PropertySelector,
+			characteristicSelectorProcessing)
+		val nodeClassValues = mapFromSelectorList(constraint.destinationSelectors, PropertyClassSelector,
+			characteristicClassSelectorProcessing)
+		val nodeIdentities = mapFromSelectorList(constraint.destinationSelectors, NodeIdentitiySelector,
+			nodeIdentityProcessing)
 
 		var entries = new ArrayList<String>
-		entries.add(createIfPresent("Data Characteristics", dataAttributeValues))
-		entries.add(createIfPresent("Data Classes", dataClassValues))
-		entries.add(createIfPresent("Condition", condition))
-		entries.add(createIfPresent("Destination Characteristics", nodePropertyValues))
-		entries.add(createIfPresent("Destination Classes", nodeClassValues))
-		entries.add(createIfPresent("Destination Identity", nodeIdentities))
+		addEntryIfPresent("Data Characteristics", dataAttributeValues, entries)
+		addEntryIfPresent("Data Classes", dataClassValues, entries)
+		addEntryIfPresent("Condition", condition, entries)
+		addEntryIfPresent("Destination Characteristics", nodePropertyValues, entries)
+		addEntryIfPresent("Destination Classes", nodeClassValues, entries)
+		addEntryIfPresent("Destination Identity", nodeIdentities, entries)
 
 		createChapter(title, entries.filter[entry|!entry.equals("")])
 	}
@@ -247,7 +239,7 @@ class PlainTextSerializer implements ResultMappingSerializer {
 			val violationInfo = '''«violations.length + 1». Parameter "«paramter»" is not allowed to be «queryType» in operation "«operation»".'''
 			val callstackInfo = '''- Call Stack: «callStack»'''
 
-			val classVariables = mapClassVariables(characteristicClasses, violation.classVariables)
+			val classVariables = mapClassVariables(violation.classVariableValueMap, violation.classVariableClassMap)
 			val classVariableInfo = classVariables.equals("") ? "" : '''- Characteristic Classes: «classVariables»'''
 
 			violations.add('''«violationInfo»«newLineSeparator»«callstackInfo»«newLineSeparator»«classVariableInfo»''')

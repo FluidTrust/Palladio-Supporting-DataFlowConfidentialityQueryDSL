@@ -15,7 +15,7 @@ class ResultMappingCases extends ResultMappingBase {
 	@Test
 	def void shopClassCase() {
 		val caseName = "shop-class"
-		val query = "constraint_NoType0Flow(ConstraintName, QueryType, OP, S, ST, ClassVar_location, P)."
+		val query = "constraint_NoType0Flow(ConstraintName, QueryType, OP, S, ST, ClassVar_isNotSafe_location, P)."
 		loadInputAndPrintResultMapping(caseName, query)
 	}
 

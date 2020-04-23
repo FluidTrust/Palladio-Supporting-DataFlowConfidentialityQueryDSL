@@ -92,7 +92,7 @@ class DSLGenerator extends AbstractGenerator {
 
 		// A rules arguments are all contained member type names
 		rule.head.arguments.addAll(charateristicClass.members.map[member|member.ref.name].toSet.map [ type |
-			CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«type»''')
+			CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«type»''')
 		].toList)
 
 		// Create single facts for every member
@@ -106,7 +106,7 @@ class DSLGenerator extends AbstractGenerator {
 
 				// Create fact reference for the rule
 				val factReference = CompoundTerm(fact.head.value,
-					CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»'''))
+					CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«member.ref.name»'''))
 
 				// Handle negated facts
 				val factExpression = if (member.negated) {
@@ -128,7 +128,7 @@ class DSLGenerator extends AbstractGenerator {
 		// FIXME: Might contain duplicates
 		val memberQueries = charateristicClass.members.map [ member |
 			createMemberQuery(AtomicQuotedString(member.ref.ref.entityName),
-				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»'''))
+				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«member.ref.name»'''))
 		]
 		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
 

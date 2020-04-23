@@ -58,8 +58,8 @@ abstract class QueryRule {
 
 		selector.ref.members.map [ member |
 			createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter), converter.convert(member.ref),
-				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»'''), CompoundTerm(operation),
-				CompoundTerm(callState))
+				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«selector.ref.name»_«member.ref.name»'''),
+				CompoundTerm(operation), CompoundTerm(callState))
 		]
 	}
 
@@ -81,7 +81,7 @@ abstract class QueryRule {
 
 		selector.ref.members.map [ member |
 			createPropertyQuery(CompoundTerm(operation), converter.convert(member.ref),
-				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»'''))
+				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«selector.ref.name»_«member.ref.name»'''))
 		]
 	}
 
@@ -122,8 +122,9 @@ abstract class QueryRule {
 		parametersList.add(parameterTerm())
 
 		// Add all (unique) classes members names to the list
-		val classTerms = characteristicClasses.toList.map[clazz|clazz.members.map[member|member.ref.name]].toSet.
-			flatten.map[term|CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«term»''')]
+		val classTerms = characteristicClasses.toList.map [ clazz |
+			clazz.members.map[member|'''«GlobalConstants.Prefixes.CLASS_VARIABLE»«clazz.name»_«member.ref.name»''']
+		].toSet.flatten.map[term|CompoundTerm(term)]
 		parametersList.addAll(classTerms)
 
 		subRule.head.arguments.addAll(parametersList)

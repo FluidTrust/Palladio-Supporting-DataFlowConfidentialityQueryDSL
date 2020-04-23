@@ -36,7 +36,7 @@ class ResultMapping {
 	def List<EvaluatedConstraint> getEvaluatedConstraints() {
 		this.constraints
 	}
-	
+
 	def List<CharacteristicClass> getCharacteristicClasses() {
 		this.classes
 	}
@@ -63,12 +63,14 @@ class ResultMapping {
 
 	private def handleSolution(SolutionIterator<Object> iterator) {
 		val constraintName = getSolutionVariable(iterator, GlobalConstants.Parameters.CONSTRAINT_NAME.toString)
-		
-		if(constraintName.isEmpty) {
+
+		if (constraintName.isEmpty) {
 			throw new RuntimeException("A solution does not contain the non-optional constraint name parameter.")
 		}
-		
-		val constraintCandidates = this.constraints.filter[constraint|constraint.constraintName.equals(constraintName.get)]
+
+		val constraintCandidates = this.constraints.filter [ constraint |
+			constraint.constraintName.equals(constraintName.get)
+		]
 
 		if (constraintCandidates.length != 1) {
 			throw new RuntimeException(
@@ -89,18 +91,28 @@ class ResultMapping {
 
 		// Retrieve (optional) extra class variable unifications
 		val classVariableNames = collectClassVariableNames(evaluatedConstraint)
-		var classVariables = new HashMap<String, String>
+		var classVariableValueMap = new HashMap<String, String>
+		var classVariableClassMap = new HashMap<String, CharacteristicClass>
 		for (variable : classVariableNames) {
 			val value = getSolutionVariable(iterator, '''«GlobalConstants.Prefixes.CLASS_VARIABLE»«variable»''')
 			if (value.present) {
-				// Prefix has to be removed again
-				classVariables.put(variable, value.get)
+				val className = variable.substring(0, variable.lastIndexOf("_"))
+				val variableName = variable.substring(variable.lastIndexOf("_") + 1)
+
+				val classCandidates = this.classes.filter[clazz|clazz.name.equals(className)]
+
+				if (classCandidates.length != 1) {
+					throw new RuntimeException("Constraint input and solution result mismatch: Class not found.")
+				}
+
+				classVariableValueMap.put(variableName, value.get)
+				classVariableClassMap.put(variableName, classCandidates.head)
 			}
 		}
 
 		evaluatedConstraint.addViolation(
 			new Violation(violationQueryType.get, violationCallStack.get, violationOperation.get, violationParameter,
-				violationCallState, classVariables))
+				violationCallState, classVariableValueMap, classVariableClassMap))
 	}
 
 	private static def Optional<String> getSolutionVariable(SolutionIterator<Object> iterator, String variableName) {
@@ -136,13 +148,13 @@ class ResultMapping {
 		val destinationSelectorClasses = constraint.destinationSelectors.filter(PropertyClassSelector).map [ selector |
 			selector.ref
 		].toList
-		
+
 		val allConstraintClasses = Stream.concat(dataSelectorClasses.toList.stream,
 			destinationSelectorClasses.toList.stream).distinct.collect(Collectors.toList)
 
 		allConstraintClasses.map [ clazz |
 			clazz.members.map [ member |
-				member.ref.name
+				'''«clazz.name»_«member.ref.name»'''
 			]
 		].flatten
 	}

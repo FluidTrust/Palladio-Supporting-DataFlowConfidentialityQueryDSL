@@ -88,7 +88,7 @@ class DSLGeneratorUtils {
 	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
 		CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«characteristicClass.name»''', characteristicClass.
 			members.map [ member |
-				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»''')
+				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«characteristicClass.name»_«member.ref.name»''')
 			])
 	}
 

@@ -24,6 +24,8 @@ import java.io.FileInputStream
 import org.eclipse.emf.ecore.resource.Resource
 import java.util.Map
 import java.util.HashMap
+import java.nio.file.OpenOption
+import java.nio.file.StandardOpenOption
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
@@ -57,6 +59,11 @@ class ResultMappingBase {
 		val model = readResultMappingFile('''«caseName»/model.pl''')
 		val constraint = readResultMappingFile('''«caseName»/constraint.pl''')
 		model + "\n" + constraint
+	}
+	
+	protected def saveResult(String caseName, String result) {
+		val resultFilePath = createResultMappingPath('''_results/«caseName».txt''')
+		Files.writeString(Paths.get(resultFilePath), result, StandardOpenOption.CREATE)
 	}
 
 	protected def Model loadDSLModel(String caseName) {

@@ -1,0 +1,22 @@
+-------------- GENERAL ---------------
+
+Case name: geolocation-simple
+Constraint count: 1
+
+-------------- OVERVIEW --------------
+
+Constraint name: "NoUnencryptedPersonalDataFlow"
+Violations found: 1
+
+--------- CONSTRAINT DETAILS ---------
+
+Data Characteristics: "origin" set to "EU"", "isPersonalInformation" set to "isTrue"", "isEncrypted" set to "isTrue""
+Condition: Condition: NEVER FLOWS
+Destination Identity: "storeInDB"
+
+------- CONSTRAINT VIOLATIONS --------
+
+1. Parameter "datum" is not allowed to be call argument in operation "storeInDB".
+	- Call Stack: "storeInDB" <- "storeCustomer" <- "buy" <- "performBuy" <- "EUOrderFromUS"
+
+

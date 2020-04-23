@@ -1,0 +1,22 @@
+-------------- GENERAL ---------------
+
+Case name: shop-simple
+Constraint count: 1
+
+-------------- OVERVIEW --------------
+
+Constraint name: "NoType0Flow"
+Violations found: 1
+
+--------- CONSTRAINT DETAILS ---------
+
+Data Characteristics: "level" set to "Type0""
+Condition: Condition: NEVER FLOWS
+Destination Characteristics: "location" set to "EU""
+
+------- CONSTRAINT VIOLATIONS --------
+
+1. Parameter "customer" is not allowed to be call argument in operation "UserDB_store".
+	- Call Stack: "UserDB_store" <- "storeUser" <- "ShopServer_buy" <- "buy" <- "usage"
+
+

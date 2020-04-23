@@ -36,6 +36,10 @@ class ResultMapping {
 	def List<EvaluatedConstraint> getEvaluatedConstraints() {
 		this.constraints
 	}
+	
+	def List<CharacteristicClass> getCharacteristicClasses() {
+		this.classes
+	}
 
 	private def generateMapping() {
 		this.constraints = new ArrayList<EvaluatedConstraint>
@@ -87,8 +91,9 @@ class ResultMapping {
 		val classVariableNames = collectClassVariableNames(evaluatedConstraint)
 		var classVariables = new HashMap<String, String>
 		for (variable : classVariableNames) {
-			val value = getSolutionVariable(iterator, variable)
+			val value = getSolutionVariable(iterator, '''«GlobalConstants.Prefixes.CLASS_VARIABLE»«variable»''')
 			if (value.present) {
+				// Prefix has to be removed again
 				classVariables.put(variable, value.get)
 			}
 		}
@@ -137,7 +142,7 @@ class ResultMapping {
 
 		allConstraintClasses.map [ clazz |
 			clazz.members.map [ member |
-				'''«GlobalConstants.Prefixes.CLASS_VARIABLE»«member.ref.name»'''
+				member.ref.name
 			]
 		].flatten
 	}

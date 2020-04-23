@@ -14,6 +14,9 @@ import java.util.Optional
 import java.util.function.BiFunction
 import org.eclipse.emf.ecore.EObject
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
+import java.util.Map
+import java.util.stream.Collectors
+import java.util.HashMap
 
 class PlainTextSerializer implements ResultMappingSerializer {
 
@@ -32,7 +35,7 @@ class PlainTextSerializer implements ResultMappingSerializer {
 		for (constraint : resultMapping.evaluatedConstraints) {
 			chapters.add(createConstraintOverviewChapter(constraint))
 			chapters.add(createConstraintDetailsChapter(constraint))
-			chapters.add(createConstraintViolationsChapter(constraint))
+			chapters.add(createConstraintViolationsChapter(constraint, resultMapping.getCharacteristicClasses))
 		}
 
 		combineChapters(chapters)
@@ -152,6 +155,34 @@ class PlainTextSerializer implements ResultMappingSerializer {
 		callStack.join(", ")
 	}
 
+	private static def mapClassVariables(List<CharacteristicClass> classes, Map<String, String> variableValueMap) {
+		val builder = new StringBuilder()
+
+		for (variable : variableValueMap.keySet) {
+			val clazz = findCharacteristicClass(classes, variable)
+			val value = variableValueMap.get(variable)
+
+			if (!builder.toString.equals("")) {
+				builder.append(", ")
+			}
+
+			builder.append('''Parameter "«variable»" (Class "«clazz.name»") set to "«value»"''')
+		}
+
+		builder.toString
+	}
+
+	private static def CharacteristicClass findCharacteristicClass(List<CharacteristicClass> classes, String variable) {
+		val candidates = classes.filter[clazz|clazz.members.map[member|member.ref.name].contains(variable)]
+
+		// FIXME: This will not work properly, when multiple classes use the same parameters
+		if (candidates.length != 1) {
+			null
+		} else {
+			candidates.head
+		}
+	}
+
 	private static def String createIfPresent(String title, Optional<String> value) {
 		if (value.present) {
 			'''«title»: «value.get»'''
@@ -199,10 +230,12 @@ class PlainTextSerializer implements ResultMappingSerializer {
 		createChapter(title, entries.filter[entry|!entry.equals("")])
 	}
 
-	private def createConstraintViolationsChapter(EvaluatedConstraint constraint) {
+	private def createConstraintViolationsChapter(EvaluatedConstraint constraint,
+		List<CharacteristicClass> characteristicClasses) {
 		val title = "Constraint violations"
 
 		var violations = new ArrayList<String>
+		val newLineSeparator = "\n\t"
 
 		// TODO: Add palladio support
 		for (violation : constraint.violations) {
@@ -211,9 +244,13 @@ class PlainTextSerializer implements ResultMappingSerializer {
 			val operation = violation.operation
 			val callStack = mapCallStack(violation.callStack)
 
-			// TODO: Handle class variables
-			violations.
-				add('''«violations.length + 1». Parameter "«paramter»" is not allowed to be «queryType» in operation "«operation»".«"\n\t"»- Call Stack: «callStack»''')
+			val violationInfo = '''«violations.length + 1». Parameter "«paramter»" is not allowed to be «queryType» in operation "«operation»".'''
+			val callstackInfo = '''- Call Stack: «callStack»'''
+
+			val classVariables = mapClassVariables(characteristicClasses, violation.classVariables)
+			val classVariableInfo = classVariables.equals("") ? "" : '''- Characteristic Classes: «classVariables»'''
+
+			violations.add('''«violationInfo»«newLineSeparator»«callstackInfo»«newLineSeparator»«classVariableInfo»''')
 		}
 
 		createChapter(title, violations)

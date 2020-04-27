@@ -19,15 +19,16 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.uml2.codegen.ecore;bundle-version="2.5.0",
  org.palladiosimulator.pcm.dataprocessing.analysis.transformation;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.sebinside.dcp.dsl.serializer,
- de.sebinside.dcp.dsl.generator,
- de.sebinside.dcp.dsl.parser.antlr,
- de.sebinside.dcp.dsl,
- de.sebinside.dcp.dsl.dSL.util,
- de.sebinside.dcp.dsl.services,
- de.sebinside.dcp.dsl.parser.antlr.internal,
+Export-Package: de.sebinside.dcp.dsl,
+ de.sebinside.dcp.dsl.dSL,
  de.sebinside.dcp.dsl.dSL.impl,
- de.sebinside.dcp.dsl.validation,
+ de.sebinside.dcp.dsl.dSL.util,
+ de.sebinside.dcp.dsl.generator,
+ de.sebinside.dcp.dsl.generator.crossplatform,
+ de.sebinside.dcp.dsl.parser.antlr,
+ de.sebinside.dcp.dsl.parser.antlr.internal,
  de.sebinside.dcp.dsl.scoping,
- de.sebinside.dcp.dsl.dSL
+ de.sebinside.dcp.dsl.serializer,
+ de.sebinside.dcp.dsl.services,
+ de.sebinside.dcp.dsl.validation
 Import-Package: org.apache.log4j

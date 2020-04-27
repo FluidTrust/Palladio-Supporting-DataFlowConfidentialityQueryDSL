@@ -16,15 +16,16 @@ import java.util.stream.Stream
 import org.prolog4j.Solution
 import org.prolog4j.SolutionIterator
 import org.prolog4j.UnknownVariableException
+import org.eclipse.xtend.lib.annotations.Accessors
 
 class ResultMapping {
 
 	Model model = null
 	Solution<Object> solution = null
 
-	List<EvaluatedConstraint> constraints = null
-	List<CharacteristicClass> classes = null
-	TargetModelType targetModelType = null
+	@Accessors(PUBLIC_GETTER, PRIVATE_SETTER) List<EvaluatedConstraint> evaluatedConstraints = null
+	@Accessors(PUBLIC_GETTER, PRIVATE_SETTER) List<CharacteristicClass> characteristicClasses = null
+	@Accessors(PUBLIC_GETTER, PRIVATE_SETTER) TargetModelType targetModelType = null
 
 	new(Model model, Solution<Object> solution) {
 		this.model = model
@@ -33,25 +34,17 @@ class ResultMapping {
 		generateMapping()
 	}
 
-	def List<EvaluatedConstraint> getEvaluatedConstraints() {
-		this.constraints
-	}
-
-	def List<CharacteristicClass> getCharacteristicClasses() {
-		this.classes
-	}
-
 	private def generateMapping() {
-		this.constraints = new ArrayList<EvaluatedConstraint>
-		this.classes = new ArrayList<CharacteristicClass>
+		this.evaluatedConstraints = new ArrayList<EvaluatedConstraint>
+		this.characteristicClasses = new ArrayList<CharacteristicClass>
 		this.targetModelType = model.targetModelType.type
 
 		// Start by iterating over model elements to retrieve constraint details, later needed for the mapping
 		for (clazz : model.elements.filter(CharacteristicClass)) {
-			this.classes.add(clazz)
+			this.characteristicClasses.add(clazz)
 		}
 		for (constraint : model.elements.filter(Constraint)) {
-			this.constraints.add(new EvaluatedConstraint(constraint))
+			this.evaluatedConstraints.add(new EvaluatedConstraint(constraint))
 		}
 
 		// Start processing the analysis result
@@ -68,7 +61,7 @@ class ResultMapping {
 			throw new RuntimeException("A solution does not contain the non-optional constraint name parameter.")
 		}
 
-		val constraintCandidates = this.constraints.filter [ constraint |
+		val constraintCandidates = this.evaluatedConstraints.filter [ constraint |
 			constraint.constraintName.equals(constraintName.get)
 		]
 
@@ -99,7 +92,7 @@ class ResultMapping {
 				val className = variable.substring(0, variable.lastIndexOf("_"))
 				val variableName = variable.substring(variable.lastIndexOf("_") + 1)
 
-				val classCandidates = this.classes.filter[clazz|clazz.name.equals(className)]
+				val classCandidates = this.characteristicClasses.filter[clazz|clazz.name.equals(className)]
 
 				if (classCandidates.length != 1) {
 					throw new RuntimeException("Constraint input and solution result mismatch: Class not found.")

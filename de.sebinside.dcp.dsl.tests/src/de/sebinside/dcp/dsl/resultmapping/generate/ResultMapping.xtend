@@ -133,6 +133,7 @@ class ResultMapping {
 		}
 	}
 
+	@Deprecated
 	private static def collectClassVariableNames(EvaluatedConstraint constraint) {
 		// Classes can be used in attribute and property selectors. This has no effect on the variable naming
 		val dataSelectorClasses = constraint.dataSelectors.filter(AttributeClassSelector).map [ selector |

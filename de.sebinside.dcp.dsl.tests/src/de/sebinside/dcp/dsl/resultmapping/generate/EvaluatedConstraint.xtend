@@ -27,24 +27,24 @@ class EvaluatedConstraint {
 		original.name
 	}
 
-	def List<CharacteristicTypeSelector> getAttributeSelectors() {
-		getFilteredSelectorsRef(original.rule.dataSelectors, AttributeSelector)
+	def Iterable<CharacteristicTypeSelector> getAttributeSelectors() {
+		original.rule.dataSelectors.filter(AttributeSelector).map[selector|selector.ref]
 	}
 
-	def List<CharacteristicTypeSelector> getPropertySelectors() {
-		getFilteredSelectorsRef(original.rule.destinationSelectors, PropertySelector)
+	def Iterable<CharacteristicTypeSelector> getPropertySelectors() {
+		original.rule.destinationSelectors.filter(PropertySelector).map[selector|selector.ref]
 	}
 
-	def List<CharacteristicClass> getAttributeClasses() {
-		getFilteredSelectorsRef(original.rule.dataSelectors, AttributeClassSelector)
+	def Iterable<CharacteristicClass> getAttributeClasses() {
+		original.rule.dataSelectors.filter(AttributeClassSelector).map[selector|selector.ref]
 	}
 
-	def List<CharacteristicClass> getPropertyClasses() {
-		getFilteredSelectorsRef(original.rule.dataSelectors, PropertyClassSelector)
+	def Iterable<CharacteristicClass> getPropertyClasses() {
+		original.rule.dataSelectors.filter(PropertyClassSelector).map[selector|selector.ref]
 	}
 
-	def List<NodeIdentitiySelector> getNodeIdentities() {
-		original.rule.destinationSelectors.filter(NodeIdentitiySelector).toList
+	def Iterable<NodeIdentitiySelector> getNodeIdentities() {
+		original.rule.destinationSelectors.filter(NodeIdentitiySelector)
 	}
 
 	@Deprecated
@@ -63,13 +63,5 @@ class EvaluatedConstraint {
 
 	def addViolation(Violation violation) {
 		this.violations.add(violation)
-	}
-
-	private static def <T> List<T> getFilteredSelectorsRef(List<? extends EObject> selectors,
-		Class<? extends EObject> selectorType) {
-		selectors.filter(selectorType).map [ selector |
-			// We use reflection here because not all selectors have the same super types
-			selector.eGet(selector.eClass.getEStructuralFeature("ref")) as T
-		].toList
 	}
 }

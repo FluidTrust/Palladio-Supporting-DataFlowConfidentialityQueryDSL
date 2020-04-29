@@ -1,23 +1,16 @@
 package de.sebinside.dcp.dsl.resultmapping.serialize
 
-import de.sebinside.dcp.dsl.dSL.AttributeClassSelector
-import de.sebinside.dcp.dsl.dSL.AttributeSelector
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
-import de.sebinside.dcp.dsl.dSL.DestinationSelector
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
+import de.sebinside.dcp.dsl.generator.GlobalConstants
 import de.sebinside.dcp.dsl.resultmapping.generate.EvaluatedConstraint
 import de.sebinside.dcp.dsl.resultmapping.generate.ResultMapping
 import java.util.ArrayList
 import java.util.List
-import java.util.Optional
-import java.util.function.BiFunction
-import org.eclipse.emf.ecore.EObject
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
 import java.util.Map
-import de.sebinside.dcp.dsl.dSL.PropertySelector
-import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
-import de.sebinside.dcp.dsl.generator.GlobalConstants
+
+import static de.sebinside.dcp.dsl.resultmapping.ResultMappingUtils.*
 
 class PlainTextSerializer implements ResultMappingSerializer {
 
@@ -150,19 +143,22 @@ class PlainTextSerializer implements ResultMappingSerializer {
 		callStack.map[call|'''"«call»"'''].join(" <- ")
 	}
 
-	private static def mapClassVariables(Map<String, String> classVariableValueMap,
-		Map<String, CharacteristicClass> classVariableClassMap) {
+	private static def mapClassVariables(Map<CharacteristicTypeSelector, String> classVariables) {
 		val builder = new StringBuilder()
 
-		for (variable : classVariableValueMap.keySet) {
-			val clazz = classVariableClassMap.get(variable)
-			val value = classVariableValueMap.get(variable)
+		for (variable : classVariables.keySet) {
+			val clazz = retrieveClass(variable)
+			val value = classVariables.get(variable)
+
+			if (clazz.empty) {
+				throw new RuntimeException("Mapping failure. Non-class variable found in class variables.")
+			}
 
 			if (!builder.toString.equals("")) {
 				builder.append(", ")
 			}
 
-			builder.append('''Parameter "«variable»" (Class "«clazz.name»") set to "«value»"''')
+			builder.append('''Parameter "«variable»" (Class "«clazz.get.name»") set to "«value»"''')
 		}
 
 		builder.toString
@@ -230,7 +226,7 @@ class PlainTextSerializer implements ResultMappingSerializer {
 			val violationInfo = '''«violations.length + 1». Parameter "«paramter»" is not allowed to be «queryType» in operation "«operation»".'''
 			val callstackInfo = '''- Call Stack: «callStack»'''
 
-			val classVariables = mapClassVariables(violation.classVariableValueMap, violation.classVariableClassMap)
+			val classVariables = mapClassVariables(violation.classVariables)
 			val classVariableInfo = classVariables.equals("") ? "" : '''- Characteristic Classes: «classVariables»'''
 
 			violations.add('''«violationInfo»«newLineSeparator»«callstackInfo»«newLineSeparator»«classVariableInfo»''')

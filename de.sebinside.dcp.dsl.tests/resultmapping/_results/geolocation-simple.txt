@@ -10,7 +10,7 @@ Violations found: 1
 
 --------- CONSTRAINT DETAILS ---------
 
-Data Characteristics: "origin" set to "EU"", "isPersonalInformation" set to "isTrue"", "isEncrypted" notset to "isTrue""
+Data Characteristics: "origin" set to "EU"", "isPersonalInformation" set to "isTrue"", "isEncrypted" not set to "isTrue""
 Condition: Condition: NEVER FLOWS
 Destination Identity: "storeInDB"
 
@@ -18,7 +18,6 @@ Destination Identity: "storeInDB"
 
 1. Parameter "datum" is not allowed to be call argument in operation "storeInDB".
 	- Call Stack: "storeInDB" <- "storeCustomer" <- "buy" <- "performBuy" <- "EUOrderFromUS"
-
 
 
 

@@ -1,17 +1,18 @@
 package de.sebinside.dcp.dsl.resultmapping.generate
 
-import java.util.List
-import java.util.ArrayList
-import de.sebinside.dcp.dsl.dSL.Constraint
-import org.eclipse.xtend.lib.annotations.Accessors
-import org.eclipse.emf.ecore.EObject
-import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
-import de.sebinside.dcp.dsl.dSL.AttributeSelector
-import de.sebinside.dcp.dsl.dSL.PropertySelector
-import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.AttributeClassSelector
-import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
+import de.sebinside.dcp.dsl.dSL.AttributeSelector
+import de.sebinside.dcp.dsl.dSL.CharacteristicClass
+import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
+import de.sebinside.dcp.dsl.dSL.Constraint
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
+import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
+import de.sebinside.dcp.dsl.dSL.PropertySelector
+import java.util.ArrayList
+import java.util.List
+import java.util.stream.Collectors
+import java.util.stream.Stream
+import org.eclipse.xtend.lib.annotations.Accessors
 
 class EvaluatedConstraint {
 
@@ -47,14 +48,8 @@ class EvaluatedConstraint {
 		original.rule.destinationSelectors.filter(NodeIdentitiySelector)
 	}
 
-	@Deprecated
-	def getDataSelectors() {
-		original.rule.dataSelectors
-	}
-
-	@Deprecated
-	def getDestinationSelectors() {
-		original.rule.destinationSelectors
+	def Iterable<CharacteristicClass> getAllClasses() {
+		Stream.concat(attributeClasses.toList.stream, propertyClasses.toList.stream).distinct.collect(Collectors.toList)
 	}
 
 	def getStatement() {

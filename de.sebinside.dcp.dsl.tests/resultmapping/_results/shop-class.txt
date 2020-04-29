@@ -17,7 +17,9 @@ Condition: Condition: NEVER FLOWS
 
 1. Parameter "customer" is not allowed to be call argument in operation "UserDB_store".
 	- Call Stack: "UserDB_store" <- "storeUser" <- "ShopServer_buy" <- "buy" <- "usage"
-	- Characteristic Classes: Parameter "location" (Class "isNotSafe") set to "Asia"
+
+
+ Characteristic Classes: Parameter "location" (Class "isNotSafe") set to "Asia"
 
 
 ass "isNotSafe") set to "Asia"

@@ -1,22 +1,19 @@
 package de.sebinside.dcp.dsl.resultmapping.generate
 
-import de.sebinside.dcp.dsl.dSL.AttributeClassSelector
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
+import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
 import de.sebinside.dcp.dsl.dSL.Constraint
 import de.sebinside.dcp.dsl.dSL.Model
-import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
 import de.sebinside.dcp.dsl.dSL.TargetModelType
 import de.sebinside.dcp.dsl.generator.GlobalConstants
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
-import java.util.Optional
-import java.util.stream.Collectors
-import java.util.stream.Stream
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.prolog4j.Solution
 import org.prolog4j.SolutionIterator
-import org.prolog4j.UnknownVariableException
-import org.eclipse.xtend.lib.annotations.Accessors
+
+import static de.sebinside.dcp.dsl.resultmapping.ResultMappingUtils.*
 
 class ResultMapping {
 
@@ -55,6 +52,38 @@ class ResultMapping {
 	}
 
 	private def handleSolution(SolutionIterator<Object> iterator) {
+		val evaluatedConstraint = retrieveConstraint(iterator)
+
+		// Retrieve standard query parameters
+		val violationQueryType = getSolutionVariable(iterator, GlobalConstants.Parameters.QUERY_TYPE.toString)
+		val violationCallStack = getSolutionArray(iterator, GlobalConstants.Parameters.CALL_STACK.toString)
+		val violationOperation = getSolutionVariable(iterator, GlobalConstants.Parameters.OPERATION.toString)
+		val violationParameter = getSolutionVariable(iterator, GlobalConstants.Parameters.PARAMETER.toString)
+		val violationCallState = getSolutionVariable(iterator, GlobalConstants.Parameters.CALL_STATE.toString)
+
+		if (violationQueryType.empty || violationCallStack.empty || violationOperation.empty) {
+			throw new RuntimeException("QueryType, CallStack and Operation parameters are required in the solution.")
+		}
+
+		// Retrieve (optional) extra class variable unifications
+		var classVariableMap = new HashMap<CharacteristicTypeSelector, String>
+		for (clazz : evaluatedConstraint.allClasses) {
+			for (member : clazz.members) {
+				val value = getSolutionVariable(
+					iterator, '''«GlobalConstants.Prefixes.CLASS_VARIABLE»«clazz.name»_«member.ref.name»''')
+
+				if (value.present) {
+					classVariableMap.put(member, value.get)
+				}
+			}
+		}
+
+		evaluatedConstraint.addViolation(
+			new Violation(violationQueryType.get, violationCallStack.get, violationOperation.get, violationParameter,
+				violationCallState, classVariableMap))
+	}
+
+	private def EvaluatedConstraint retrieveConstraint(SolutionIterator<Object> iterator) {
 		val constraintName = getSolutionVariable(iterator, GlobalConstants.Parameters.CONSTRAINT_NAME.toString)
 
 		if (constraintName.isEmpty) {
@@ -69,88 +98,8 @@ class ResultMapping {
 			throw new RuntimeException(
 				"Constraint input and solution result mismatch: Constraint not found or multiple constraints found.")
 		}
-		val evaluatedConstraint = constraintCandidates.head
 
-		// Retrieve standard query parameters
-		val violationQueryType = getSolutionVariable(iterator, GlobalConstants.Parameters.QUERY_TYPE.toString)
-		val violationCallStack = getSolutionArray(iterator, GlobalConstants.Parameters.CALL_STACK.toString)
-		val violationOperation = getSolutionVariable(iterator, GlobalConstants.Parameters.OPERATION.toString)
-		val violationParameter = getSolutionVariable(iterator, GlobalConstants.Parameters.PARAMETER.toString)
-		val violationCallState = getSolutionVariable(iterator, GlobalConstants.Parameters.CALL_STATE.toString)
-
-		if (violationQueryType.empty || violationCallStack.empty || violationOperation.empty) {
-			throw new RuntimeException("QueryType, CallStack and Operation parameters are required in the solution.")
-		}
-
-		// Retrieve (optional) extra class variable unifications
-		val classVariableNames = collectClassVariableNames(evaluatedConstraint)
-		var classVariableValueMap = new HashMap<String, String>
-		var classVariableClassMap = new HashMap<String, CharacteristicClass>
-		for (variable : classVariableNames) {
-			val value = getSolutionVariable(iterator, '''«GlobalConstants.Prefixes.CLASS_VARIABLE»«variable»''')
-			if (value.present) {
-				val className = variable.substring(0, variable.lastIndexOf("_"))
-				val variableName = variable.substring(variable.lastIndexOf("_") + 1)
-
-				val classCandidates = this.characteristicClasses.filter[clazz|clazz.name.equals(className)]
-
-				if (classCandidates.length != 1) {
-					throw new RuntimeException("Constraint input and solution result mismatch: Class not found.")
-				}
-
-				classVariableValueMap.put(variableName, value.get)
-				classVariableClassMap.put(variableName, classCandidates.head)
-			}
-		}
-
-		evaluatedConstraint.addViolation(
-			new Violation(violationQueryType.get, violationCallStack.get, violationOperation.get, violationParameter,
-				violationCallState, classVariableValueMap, classVariableClassMap))
-	}
-
-	private static def Optional<String> getSolutionVariable(SolutionIterator<Object> iterator, String variableName) {
-		try {
-			Optional.of(iterator.get(variableName).toString)
-		} catch (UnknownVariableException e) {
-			// This exception is thrown if the variable does not exist. There is no other way to get this information.
-			Optional.empty
-		} catch (RuntimeException e) {
-			// This exception is thrown if the variable exists, but is empty. There is no other way to get this information.
-			Optional.of("")
-		}
-	}
-
-	private static def Optional<List<String>> getSolutionArray(SolutionIterator<Object> iterator, String variableName) {
-		try {
-			val value = iterator.get(variableName)
-			Optional.of(value as List<String>)
-		} catch (UnknownVariableException e) {
-			// This exception is thrown if the variable does not exist. There is no other way to get this information.
-			Optional.empty
-		} catch (RuntimeException e) {
-			// This exception is thrown if the variable exists, but is empty. There is no other way to get this information.
-			Optional.of(new ArrayList<String>())
-		}
-	}
-
-	@Deprecated
-	private static def collectClassVariableNames(EvaluatedConstraint constraint) {
-		// Classes can be used in attribute and property selectors. This has no effect on the variable naming
-		val dataSelectorClasses = constraint.dataSelectors.filter(AttributeClassSelector).map [ selector |
-			selector.ref
-		].toList
-		val destinationSelectorClasses = constraint.destinationSelectors.filter(PropertyClassSelector).map [ selector |
-			selector.ref
-		].toList
-
-		val allConstraintClasses = Stream.concat(dataSelectorClasses.toList.stream,
-			destinationSelectorClasses.toList.stream).distinct.collect(Collectors.toList)
-
-		allConstraintClasses.map [ clazz |
-			clazz.members.map [ member |
-				'''«clazz.name»_«member.ref.name»'''
-			]
-		].flatten
+		constraintCandidates.head
 	}
 
 }

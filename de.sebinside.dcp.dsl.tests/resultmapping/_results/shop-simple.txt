@@ -12,13 +12,12 @@ Violations found: 1
 
 Data Characteristics: "level" set to "Type0""
 Condition: Condition: NEVER FLOWS
-Destination Characteristics: "location" notset to "EU""
+Destination Characteristics: "location" not set to "EU""
 
 ------- CONSTRAINT VIOLATIONS --------
 
 1. Parameter "customer" is not allowed to be call argument in operation "UserDB_store".
 	- Call Stack: "UserDB_store" <- "storeUser" <- "ShopServer_buy" <- "buy" <- "usage"
-
 
 
 

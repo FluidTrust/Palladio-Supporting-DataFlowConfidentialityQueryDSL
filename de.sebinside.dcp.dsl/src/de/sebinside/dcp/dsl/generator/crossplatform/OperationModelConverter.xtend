@@ -8,6 +8,10 @@ import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 
 class OperationModelConverter implements Converter {
 	
+	package new() {
+		
+	}
+	
 	override convert(CharacteristicType characteristicType) {
 		AtomicQuotedString(characteristicType.name)
 	}

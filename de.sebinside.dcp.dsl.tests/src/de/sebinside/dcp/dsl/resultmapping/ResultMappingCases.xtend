@@ -2,6 +2,7 @@ package de.sebinside.dcp.dsl.resultmapping
 
 import org.junit.jupiter.api.Test
 import de.sebinside.dcp.dsl.resultmapping.generate.ResultMapping
+import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
 
 class ResultMappingCases extends ResultMappingBase {
 

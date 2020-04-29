@@ -26,6 +26,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -34,7 +35,7 @@ class DSLGenerator extends AbstractGenerator {
 	static final String PROLOG_EXTENSION = ".pl"
 
 	// Setting the default value
-	Converter converter = new OperationModelConverter
+	Converter converter = ConverterFactory.createOperationModelConverter
 	TargetModelType targetModelType = TargetModelType.OPERATION_MODEL
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -68,17 +69,17 @@ class DSLGenerator extends AbstractGenerator {
 			case DATA_CENTRIC_PALLADIO: {
 				if (typeDefs.usageModel === null || typeDefs.allocationModel === null ||
 					typeDefs.typeContainer === null) {
-					this.converter = new PalladioConverter
+					this.converter = ConverterFactory.createPalladioConverter
 				} else {
-					this.converter = new PalladioConverter(typeDefs.usageModel, typeDefs.allocationModel,
-						typeDefs.typeContainer)
+					this.converter = ConverterFactory.createPalladioConverter(typeDefs.usageModel,
+						typeDefs.allocationModel, typeDefs.typeContainer)
 				}
 			}
 			case EXTENDED_DFD: {
 				throw new Exception("Extended DFD are not supported yet.")
 			}
 			case OPERATION_MODEL: {
-				this.converter = new OperationModelConverter
+				this.converter = ConverterFactory.createOperationModelConverter
 			}
 		}
 	}

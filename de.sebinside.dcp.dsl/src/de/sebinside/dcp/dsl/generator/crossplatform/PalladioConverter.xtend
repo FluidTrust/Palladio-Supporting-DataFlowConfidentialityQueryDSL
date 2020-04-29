@@ -21,12 +21,13 @@ class PalladioConverter implements Converter {
 
 	Mutable<ITransformationTrace> trace = new MutableObject<ITransformationTrace>(null)
 
-	new(UsageModel usageModel, Allocation allocationModel, CharacteristicTypeContainer typeContainer) {
+	package new(UsageModel usageModel, Allocation allocationModel, CharacteristicTypeContainer typeContainer) {
 		val transformator = ITransformatorFactory.instance.create(null, new HumanReadableUniqueNameProvider())
 		transformator.transform(usageModel, allocationModel, typeContainer, trace)
 	}
-
-	new() {
+	
+	package new() {
+		
 	}
 
 	override convert(CharacteristicType characteristicType) {

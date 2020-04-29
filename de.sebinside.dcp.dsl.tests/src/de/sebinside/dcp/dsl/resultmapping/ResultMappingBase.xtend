@@ -1,31 +1,27 @@
 package de.sebinside.dcp.dsl.resultmapping
 
-import de.sebinside.dcp.dsl.tests.DSLInjectorProvider
-import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.extensions.InjectionExtension
-import org.junit.jupiter.api.^extension.ExtendWith
-import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.BeforeEach
-import org.prolog4j.IProverFactory
-import org.prolog4j.Prover
-import org.prolog4j.tuprolog.TuPrologProverFactory
-import javax.inject.Inject
-import org.eclipse.xtext.testing.util.ParseHelper
 import de.sebinside.dcp.dsl.dSL.Model
-import java.nio.file.Files
-import java.nio.file.Paths
-import org.prolog4j.Solution
 import de.sebinside.dcp.dsl.resultmapping.serialize.ResultMappingSerializer
-import de.sebinside.dcp.dsl.resultmapping.serialize.PlainTextSerializer
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.emf.common.util.URI
+import de.sebinside.dcp.dsl.resultmapping.serialize.SerializerFactory
+import de.sebinside.dcp.dsl.tests.DSLInjectorProvider
 import java.io.File
 import java.io.FileInputStream
-import org.eclipse.emf.ecore.resource.Resource
-import java.util.Map
-import java.util.HashMap
-import java.nio.file.OpenOption
+import java.nio.file.Files
+import java.nio.file.Paths
 import java.nio.file.StandardOpenOption
+import javax.inject.Inject
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.extensions.InjectionExtension
+import org.eclipse.xtext.testing.util.ParseHelper
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.^extension.ExtendWith
+import org.prolog4j.IProverFactory
+import org.prolog4j.Prover
+import org.prolog4j.Solution
+import org.prolog4j.tuprolog.TuPrologProverFactory
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
@@ -46,7 +42,7 @@ class ResultMappingBase {
 	@BeforeEach
 	def void setup() {
 		prover = proverFactory.createProver();
-		serializer = new PlainTextSerializer()
+		serializer = SerializerFactory.createPlainTextSerializer
 	}
 
 	protected def Solution<Object> createSolution(String caseName, String query) {
@@ -60,7 +56,7 @@ class ResultMappingBase {
 		val constraint = readResultMappingFile('''«caseName»/constraint.pl''')
 		model + "\n" + constraint
 	}
-	
+
 	protected def saveResult(String caseName, String result) {
 		val resultFilePath = createResultMappingPath('''_results/«caseName».txt''')
 		Files.writeString(Paths.get(resultFilePath), result, StandardOpenOption.CREATE)

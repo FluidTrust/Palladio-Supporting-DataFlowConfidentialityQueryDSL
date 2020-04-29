@@ -12,7 +12,8 @@ import java.util.Map
 
 import static de.sebinside.dcp.dsl.resultmapping.ResultMappingUtils.*
 
-class PlainTextSerializer implements ResultMappingSerializer {
+@Deprecated
+class OutdatedPlainTextSerializer implements ResultMappingSerializer {
 
 	static final int TITLE_LENGTH = 40
 

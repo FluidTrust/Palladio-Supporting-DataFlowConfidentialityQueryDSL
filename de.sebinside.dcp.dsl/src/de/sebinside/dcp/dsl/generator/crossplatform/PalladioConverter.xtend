@@ -25,9 +25,8 @@ class PalladioConverter implements Converter {
 		val transformator = ITransformatorFactory.instance.create(null, new HumanReadableUniqueNameProvider())
 		transformator.transform(usageModel, allocationModel, typeContainer, trace)
 	}
-	
+
 	package new() {
-		
 	}
 
 	override convert(CharacteristicType characteristicType) {
@@ -90,6 +89,33 @@ class PalladioConverter implements Converter {
 			} else {
 				throw new Exception("Unable to resolve SEFF instance.")
 			}
+		}
+	}
+
+	override createQualifiedName(NodeIdentitiySelector selector) {
+		'''«selector.assembly.entityName».«selector.component.entityName».«selector.seff.describedService__SEFF.entityName»'''
+	}
+
+	override convertVariable(String id) {
+		val result = trace.value.resolveVariable(id)
+
+		if (result.empty) {
+			id
+		} else {
+			// TODO: Add processing here
+			result.get.toString
+		}
+	}
+
+	override resolveQualifiedName(String id) {
+		// TODO: Add processing here (multiple cases)
+		val result = trace.value.resolveIdentifier(id)
+
+		if (result.empty) {
+			id
+		} else {
+			// TODO: Change result type to be also optional
+			result.get.toString
 		}
 	}
 

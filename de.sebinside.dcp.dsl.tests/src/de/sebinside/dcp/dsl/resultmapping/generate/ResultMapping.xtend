@@ -14,6 +14,8 @@ import org.prolog4j.Solution
 import org.prolog4j.SolutionIterator
 
 import static de.sebinside.dcp.dsl.resultmapping.ResultMappingUtils.*
+import de.sebinside.dcp.dsl.generator.crossplatform.Converter
+import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
 
 class ResultMapping {
 
@@ -22,7 +24,6 @@ class ResultMapping {
 
 	@Accessors(PUBLIC_GETTER, PRIVATE_SETTER) List<EvaluatedConstraint> evaluatedConstraints = null
 	@Accessors(PUBLIC_GETTER, PRIVATE_SETTER) List<CharacteristicClass> characteristicClasses = null
-	@Accessors(PUBLIC_GETTER, PRIVATE_SETTER) TargetModelType targetModelType = null
 
 	new(Model model, Solution<Object> solution) {
 		this.model = model
@@ -31,10 +32,21 @@ class ResultMapping {
 		generateMapping()
 	}
 
+	def Converter getTargetModelCompliantConverter() {
+		switch (model.targetModelType.type) {
+			case OPERATION_MODEL:
+				ConverterFactory.createOperationModelConverter
+			case DATA_CENTRIC_PALLADIO:
+				ConverterFactory.createPalladioConverter(model.targetModelType.usageModel,
+					model.targetModelType.allocationModel, model.targetModelType.typeContainer)
+			default:
+				throw new RuntimeException("Unsupported target model type.")
+		}
+	}
+
 	private def generateMapping() {
 		this.evaluatedConstraints = new ArrayList<EvaluatedConstraint>
 		this.characteristicClasses = new ArrayList<CharacteristicClass>
-		this.targetModelType = model.targetModelType.type
 
 		// Start by iterating over model elements to retrieve constraint details, later needed for the mapping
 		for (clazz : model.elements.filter(CharacteristicClass)) {

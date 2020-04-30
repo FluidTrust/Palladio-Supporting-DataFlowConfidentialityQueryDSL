@@ -17,6 +17,7 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 
 	override serialize(String caseName, ResultMapping resultMapping) {
 		var constraintCounter = 1
+		this.crossPlatformConverter = resultMapping.targetModelCompliantConverter
 
 		'''«makeTitle("General")»
 
@@ -50,7 +51,8 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 	}
 
 	protected def getParameterOrCallState(Violation violation) {
-		escape(violation.parameter.isPresent ? violation.parameter.get : violation.callState.get)
+		val variable = violation.parameter.isPresent ? violation.parameter.get : violation.callState.get
+		escape(crossPlatformConverter.convertVariable(variable))
 	}
 
 	protected def mapQueryType(String queryType) {
@@ -71,8 +73,7 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 	}
 
 	protected def String mapNodeIdentity(NodeIdentitiySelector selector) {
-		// TODO: Add Palladio handling
-		escape(selector.name)
+		escape(crossPlatformConverter.createQualifiedName(selector))
 	}
 
 	protected def String mapCharacteristicClass(CharacteristicClass clazz) {
@@ -80,7 +81,7 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 	}
 
 	protected def String mapCallStackEntry(String entry) {
-		escape(entry)
+		escape(crossPlatformConverter.resolveQualifiedName(entry))
 	}
 
 	protected def String indent(String value) {

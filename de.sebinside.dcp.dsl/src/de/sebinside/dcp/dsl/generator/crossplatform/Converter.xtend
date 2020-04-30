@@ -7,6 +7,14 @@ import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 
 interface Converter {
 	def AtomicQuotedString convert(CharacteristicType characteristicType)
+
 	def AtomicQuotedString convert(EnumCharacteristicLiteral characteristicLiteral)
+
 	def AtomicQuotedString convert(NodeIdentitiySelector selector)
+
+	def String createQualifiedName(NodeIdentitiySelector selector)
+
+	def String resolveQualifiedName(String id)
+
+	def String convertVariable(String id)
 }

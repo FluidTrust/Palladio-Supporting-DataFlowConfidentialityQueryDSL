@@ -7,24 +7,35 @@ import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 
 class OperationModelConverter implements Converter {
-	
+
 	package new() {
-		
 	}
-	
+
 	override convert(CharacteristicType characteristicType) {
 		AtomicQuotedString(characteristicType.name)
 	}
-	
+
 	override convert(EnumCharacteristicLiteral characteristicLiteral) {
 		AtomicQuotedString(characteristicLiteral.entityName)
 	}
-	
+
 	override convert(NodeIdentitiySelector selector) {
-		if(selector.name === null) {
+		if (selector.name === null) {
 			throw new IllegalArgumentException("Use node.name-attribute with OperationModel target.")
 		}
 		return AtomicQuotedString(selector.name)
 	}
+
+	override convertVariable(String id) {
+		id
+	}
 	
+	override createQualifiedName(NodeIdentitiySelector selector) {
+		selector.name
+	}
+	
+	override resolveQualifiedName(String id) {
+		id
+	}
+
 }

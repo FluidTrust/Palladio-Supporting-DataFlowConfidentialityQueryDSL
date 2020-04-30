@@ -1,14 +1,12 @@
 package de.sebinside.dcp.dsl.resultmapping.serialize
 
-import de.sebinside.dcp.dsl.resultmapping.generate.ResultMapping
-import de.sebinside.dcp.dsl.generator.crossplatform.Converter
-import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
+import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import de.sebinside.dcp.dsl.generator.GlobalConstants
+import de.sebinside.dcp.dsl.generator.crossplatform.Converter
+import de.sebinside.dcp.dsl.resultmapping.generate.ResultMapping
 import de.sebinside.dcp.dsl.resultmapping.generate.Violation
-
-import static de.sebinside.dcp.dsl.resultmapping.ResultMappingUtils.*
 
 abstract class AbstractResultMappingSerializer implements ResultMappingSerializer {
 
@@ -22,43 +20,42 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 
 		'''«makeTitle("General")»
 
-Case name: «caseName»
+Case name: «escape(caseName)»
 Constraint count: «resultMapping.evaluatedConstraints.length»
 
 «FOR constraint : resultMapping.evaluatedConstraints SEPARATOR "\n\n"»
 «makeTitle('''Constraint «constraintCounter++»''')»
 
-Constraint name: «constraint.constraintName»
+Constraint name: «escape(constraint.constraintName)»
 Violations found: «constraint.violations.length»
 
 «makeSubTitle("Constraint Details")»
 
-«FOR selector : constraint.attributeSelectors BEFORE "Data Characteristics: " SEPARATOR ", "»«mapCharacteristicTypeSelector(selector)»«ENDFOR»
+«FOR selector : constraint.attributeSelectors BEFORE "Data Characteristics: " + advancedEnumHeader("Characteristic", "Value") SEPARATOR advancedEnumSeparator»«mapCharacteristicTypeSelector(selector)»«ENDFOR»
 «FOR selector: constraint.attributeClasses BEFORE "Data Classes: " SEPARATOR ", "»«mapCharacteristicClass(selector)»«ENDFOR»
-Condition: «constraint.statement.modality.name» «constraint.statement.type.name»
-«FOR selector : constraint.propertySelectors BEFORE "Destination Characteristics: " SEPARATOR ", "»«mapCharacteristicTypeSelector(selector)»«ENDFOR»
+Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint.statement.type.name)»
+«FOR selector : constraint.propertySelectors BEFORE "Destination Characteristics: " + advancedEnumHeader("Characteristic", "Value") SEPARATOR advancedEnumSeparator»«mapCharacteristicTypeSelector(selector)»«ENDFOR»
 «FOR selector: constraint.propertyClasses BEFORE "Destination Classes: " SEPARATOR ", "»«mapCharacteristicClass(selector)»«ENDFOR»
 «FOR selector: constraint.nodeIdentities BEFORE "Destination Identity: " SEPARATOR ", "»«mapNodeIdentity(selector)»«ENDFOR»
 
 «makeSubTitle("Constraint Violations")»
 
 «FOR i : 0..(constraint.violations.size - 1) SEPARATOR "\n"»
-«i+1». Parameter "«getParameterOrCallState(constraint.violations.get(i))»" is not allowed to be «mapQueryType(constraint.violations.get(i).queryType)» in operation "«constraint.violations.get(i).operation»".
-«FOR entry: constraint.violations.get(i).callStack BEFORE "\t- Call Stack: " SEPARATOR " <- "»"«entry»"«ENDFOR»
-«FOR variable: constraint.violations.get(i).classVariables.keySet BEFORE "\t- Characteristic Classes: " SEPARATOR ", "»
-Parameter "«variable.ref.name»" (Class "«retrieveClass(variable).get.name»") set to "«constraint.violations.get(i).classVariables.get(variable)»"
-«ENDFOR»
+«i+1». Parameter «getParameterOrCallState(constraint.violations.get(i))» is not allowed to be «highlight(mapQueryType(constraint.violations.get(i).queryType))» in operation «escape(constraint.violations.get(i).operation)».
+«FOR entry: constraint.violations.get(i).callStack BEFORE "\t- Call Stack: " + indent(advancedEnumHeader("Node")) SEPARATOR advancedEnumSeparator»«indent(mapCallStackEntry(entry))»«ENDFOR»
+«FOR variable: constraint.violations.get(i).classVariables.keySet BEFORE "\t- Characteristic Classes: " + indent(advancedEnumHeader("Parameter", "Class", "Value")) SEPARATOR advancedEnumSeparator»«indent(mapClassVariable(variable, constraint.violations.get(i).classVariables.get(variable)))»«ENDFOR»
 «ENDFOR»
 «ENDFOR»
 '''
 	}
 
 	protected def getParameterOrCallState(Violation violation) {
-		violation.parameter.isPresent ? violation.parameter.get : violation.callState.get
+		escape(violation.parameter.isPresent ? violation.parameter.get : violation.callState.get)
 	}
 
 	protected def mapQueryType(String queryType) {
 
+		// TODO: Add special palladio escaping
 		val typeCandidates = GlobalConstants.QueryTypes.values.filter[value|value.toString.equals(queryType)]
 
 		if (typeCandidates.length != 1) {
@@ -73,14 +70,37 @@ Parameter "«variable.ref.name»" (Class "«retrieveClass(variable).get.name»") set
 		}
 	}
 
-	abstract def String mapNodeIdentity(NodeIdentitiySelector selector)
+	protected def String mapNodeIdentity(NodeIdentitiySelector selector) {
+		// TODO: Add Palladio handling
+		escape(selector.name)
+	}
 
-	abstract def String mapCharacteristicClass(CharacteristicClass clazz)
+	protected def String mapCharacteristicClass(CharacteristicClass clazz) {
+		escape(clazz.name)
+	}
 
-	abstract def String makeTitle(String value)
+	protected def String mapCallStackEntry(String entry) {
+		escape(entry)
+	}
 
-	abstract def String makeSubTitle(String value)
+	protected def String indent(String value) {
+		'''«"\t"»«value.lines.toArray.join("\n\t")»«if(value.lines.toArray.size > 1) "\n" else ""»'''
+	}
 
-	abstract def String mapCharacteristicTypeSelector(CharacteristicTypeSelector selector)
+	abstract protected def String mapClassVariable(CharacteristicTypeSelector variable, String value)
+
+	abstract protected def String advancedEnumHeader(String... entries)
+
+	abstract protected def String advancedEnumSeparator()
+
+	abstract protected def String makeTitle(String value)
+
+	abstract protected def String makeSubTitle(String value)
+
+	abstract protected def String mapCharacteristicTypeSelector(CharacteristicTypeSelector selector)
+
+	abstract protected def String escape(String value)
+
+	abstract protected def String highlight(String value)
 
 }

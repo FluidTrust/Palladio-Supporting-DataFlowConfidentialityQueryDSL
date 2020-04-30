@@ -42,7 +42,7 @@ class ResultMappingBase {
 	@BeforeEach
 	def void setup() {
 		prover = proverFactory.createProver();
-		serializer = SerializerFactory.createPlainTextSerializer
+		serializer = SerializerFactory.createMarkdownSerializer
 	}
 
 	protected def Solution<Object> createSolution(String caseName, String query) {
@@ -57,9 +57,9 @@ class ResultMappingBase {
 		model + "\n" + constraint
 	}
 
-	protected def saveResult(String caseName, String result) {
-		val resultFilePath = createResultMappingPath('''_results/«caseName».txt''')
-		Files.writeString(Paths.get(resultFilePath), result, StandardOpenOption.TRUNCATE_EXISTING)
+	protected def saveResult(String caseName, String fileExtension, String result) {
+		val resultFilePath = createResultMappingPath('''_results/«caseName».«fileExtension»''')
+		Files.writeString(Paths.get(resultFilePath), result, #[StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE])
 	}
 
 	protected def Model loadDSLModel(String caseName) {

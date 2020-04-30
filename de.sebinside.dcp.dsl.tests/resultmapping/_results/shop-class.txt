@@ -1,11 +1,11 @@
 -------------- GENERAL ---------------
 
-Case name: shop-class
+Case name: "shop-class"
 Constraint count: 1
 
 ------------ CONSTRAINT 1 ------------
 
-Constraint name: NoType0Flow
+Constraint name: "NoType0Flow"
 Violations found: 1
 
 --------- CONSTRAINT DETAILS ---------
@@ -17,5 +17,5 @@ Destination Classes: "isNotSafe"
 ------- CONSTRAINT VIOLATIONS --------
 
 1. Parameter "customer" is not allowed to be call argument in operation "UserDB_store".
-	- Call Stack: "UserDB_store" <- "storeUser" <- "ShopServer_buy" <- "buy" <- "usage"
+	- Call Stack: "UserDB_store", "storeUser", "ShopServer_buy", "buy", "usage"
 	- Characteristic Classes: Parameter "location" (Class "isNotSafe") set to "Asia"

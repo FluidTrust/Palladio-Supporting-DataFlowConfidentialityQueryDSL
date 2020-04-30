@@ -38,7 +38,7 @@ class ResultMappingCases extends ResultMappingBase {
 		val solution = createSolution(caseName, query)
 		val result = new ResultMapping(model, solution)
 		val serializedResult = serializer.serialize(caseName, result)
-		saveResult(caseName, serializedResult)
+		saveResult(caseName, serializer.fileExtension ,serializedResult)
 	}
 
 }

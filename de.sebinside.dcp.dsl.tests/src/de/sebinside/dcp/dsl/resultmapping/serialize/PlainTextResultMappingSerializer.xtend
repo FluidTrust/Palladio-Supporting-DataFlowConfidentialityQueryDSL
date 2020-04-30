@@ -1,27 +1,19 @@
 package de.sebinside.dcp.dsl.resultmapping.serialize
 
-import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
-import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
+
+import static de.sebinside.dcp.dsl.resultmapping.ResultMappingUtils.*
 
 class PlainTextResultMappingSerializer extends AbstractResultMappingSerializer {
 
 	package new() {
 	}
 
-	override mapNodeIdentity(NodeIdentitiySelector selector) {
-		'''"«selector.name»"'''
-	}
-
-	override mapCharacteristicClass(CharacteristicClass clazz) {
-		'''"«clazz.name»"'''
-	}
-
 	override mapCharacteristicTypeSelector(CharacteristicTypeSelector selector) {
 		val characteristicName = selector.ref.name
-		val literals = selector.literals.map[literal|'''"«literal.entityName»"'''].join(", ")
+		val literals = selector.literals.map[literal|escape(literal.entityName)].join(", ")
 
-		'''"«characteristicName»" «if(selector.negated) "not " else ""»set to «literals»'''
+		'''«escape(characteristicName)» «if(selector.negated) "not " else ""»set to «literals»'''
 	}
 
 	override makeTitle(String value) {
@@ -36,6 +28,30 @@ class PlainTextResultMappingSerializer extends AbstractResultMappingSerializer {
 
 	override makeSubTitle(String value) {
 		makeTitle(value)
+	}
+	
+	override fileExtension() {
+		"txt"
+	}
+	
+	override escape(String value) {
+		'''"«value»"'''
+	}
+	
+	override highlight(String value) {
+		value
+	}
+	
+	override protected mapClassVariable(CharacteristicTypeSelector variable, String value) {
+		'''Parameter «escape(variable.ref.name)» (Class «escape(retrieveClass(variable).get.name)») set to «escape(value)»'''
+	}
+	
+	override protected advancedEnumHeader(String... header) {
+		""
+	}
+	
+	override protected advancedEnumSeparator() {
+		", "
 	}
 
 }

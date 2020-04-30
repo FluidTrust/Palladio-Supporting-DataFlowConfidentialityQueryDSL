@@ -1,11 +1,11 @@
 -------------- GENERAL ---------------
 
-Case name: geolocation-simple
+Case name: "geolocation-simple"
 Constraint count: 1
 
 ------------ CONSTRAINT 1 ------------
 
-Constraint name: NoUnencryptedPersonalDataFlow
+Constraint name: "NoUnencryptedPersonalDataFlow"
 Violations found: 1
 
 --------- CONSTRAINT DETAILS ---------
@@ -17,4 +17,4 @@ Destination Identity: "storeInDB"
 ------- CONSTRAINT VIOLATIONS --------
 
 1. Parameter "datum" is not allowed to be call argument in operation "storeInDB".
-	- Call Stack: "storeInDB" <- "storeCustomer" <- "buy" <- "performBuy" <- "EUOrderFromUS"
+	- Call Stack: "storeInDB", "storeCustomer", "buy", "performBuy", "EUOrderFromUS"

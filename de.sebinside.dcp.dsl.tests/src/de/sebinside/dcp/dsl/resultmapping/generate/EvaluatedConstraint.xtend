@@ -41,7 +41,7 @@ class EvaluatedConstraint {
 	}
 
 	def Iterable<CharacteristicClass> getPropertyClasses() {
-		original.rule.dataSelectors.filter(PropertyClassSelector).map[selector|selector.ref]
+		original.rule.destinationSelectors.filter(PropertyClassSelector).map[selector|selector.ref]
 	}
 
 	def Iterable<NodeIdentitiySelector> getNodeIdentities() {

@@ -59,7 +59,7 @@ class ResultMappingBase {
 
 	protected def saveResult(String caseName, String result) {
 		val resultFilePath = createResultMappingPath('''_results/«caseName».txt''')
-		Files.writeString(Paths.get(resultFilePath), result, StandardOpenOption.CREATE)
+		Files.writeString(Paths.get(resultFilePath), result, StandardOpenOption.TRUNCATE_EXISTING)
 	}
 
 	protected def Model loadDSLModel(String caseName) {

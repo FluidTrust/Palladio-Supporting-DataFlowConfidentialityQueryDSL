@@ -1,9 +1,10 @@
 package de.sebinside.dcp.dsl.generator.crossplatform
 
-import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
 import de.sebinside.dcp.dsl.dSL.CharacteristicType
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
+import de.sebinside.dcp.dsl.generator.GlobalConstants.QueryTypes
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
+import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
 
 interface Converter {
 	def AtomicQuotedString convert(CharacteristicType characteristicType)
@@ -17,4 +18,15 @@ interface Converter {
 	def String resolveQualifiedName(String id)
 
 	def String convertVariable(String id)
+
+	def String convertQueryType(QueryTypes queryType, String variableId) {
+		switch (queryType) {
+			case CALL_ARGUMENT: "call argument"
+			case RETURN_VALUE: "return value"
+			case PRE_CALL_STATE: "call state"
+			case POST_CALL_STATE: "call state"
+		}
+	}
+	
+	def Boolean qualifiedNameResolvable(String id)
 }

@@ -2,6 +2,7 @@ package de.sebinside.dcp.dsl.generator.crossplatform
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicType
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
+import de.sebinside.dcp.dsl.generator.GlobalConstants.QueryTypes
 import org.apache.commons.lang3.mutable.Mutable
 import org.apache.commons.lang3.mutable.MutableObject
 import org.eclipse.xtext.EcoreUtil2
@@ -102,21 +103,49 @@ class PalladioConverter implements Converter {
 		if (result.empty) {
 			id
 		} else {
-			// TODO: Add processing here
-			result.get.toString
+			result.get.data.entityName
 		}
 	}
 
 	override resolveQualifiedName(String id) {
-		// TODO: Add processing here (multiple cases)
-		val result = trace.value.resolveIdentifier(id)
 
-		if (result.empty) {
-			id
+		val seff = trace.value.resolveSeffInstance(id)
+		val operation = trace.value.resolveDataOperationInstance(id)
+
+		if (seff.present) {
+			val seffName = seff.get.entity.describedService__SEFF.entityName
+			val componentName = seff.get.entity.basicComponent_ServiceEffectSpecification.entityName
+			val contextName = seff.get.ac.entityName
+			'''«contextName».«componentName».«seffName»'''
+		} else if (operation.present) {
+			operation.get.entity.entityName
 		} else {
-			// TODO: Change result type to be also optional
-			result.get.toString
+			id
 		}
+	}
+
+	override convertQueryType(QueryTypes queryType, String variableId) {
+		val variable = trace.value.resolveVariable(variableId)
+
+		if (variable.empty) {
+			Converter.super.convertQueryType(queryType, variableId)
+		} else {
+			switch (variable.get.purpose) {
+				case PARAMETER: {
+					"call argument"
+				}
+				case RETURN: {
+					"return value"
+				}
+				case STATE: {
+					"parameter"
+				}
+			}
+		}
+	}
+
+	override qualifiedNameResolvable(String id) {
+		trace.value.resolveSeffInstance(id).present || trace.value.resolveDataOperationInstance(id).present
 	}
 
 }

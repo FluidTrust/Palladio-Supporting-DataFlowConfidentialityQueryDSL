@@ -37,7 +37,7 @@ class MarkdownResultMappingSerializer extends AbstractResultMappingSerializer {
 	}
 
 	override mapCallStackEntry(String entry) {
-		'''| «entry» |'''
+		'''| «super.mapCallStackEntry(entry)» |'''
 	}
 
 	override protected mapClassVariable(CharacteristicTypeSelector variable, String value) {
@@ -52,6 +52,10 @@ class MarkdownResultMappingSerializer extends AbstractResultMappingSerializer {
 
 	override protected advancedEnumSeparator() {
 		"\n"
+	}
+	
+	override protected indent(String value) {
+		'''«"\t"»«value.lines.toArray.join("\n\t")»«if(value.lines.toArray.size > 1) "\n" else ""»'''
 	}
 
 }

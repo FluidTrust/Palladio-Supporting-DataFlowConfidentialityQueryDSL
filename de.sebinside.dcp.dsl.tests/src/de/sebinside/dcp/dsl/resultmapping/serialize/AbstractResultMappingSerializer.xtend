@@ -42,8 +42,8 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 «makeSubTitle("Constraint Violations")»
 
 «FOR i : 0..(constraint.violations.size - 1) SEPARATOR "\n"»
-«i+1». Parameter «getParameterOrCallState(constraint.violations.get(i))» is not allowed to be «highlight(mapQueryType(constraint.violations.get(i).queryType))» in operation «escape(constraint.violations.get(i).operation)».
-«FOR entry: constraint.violations.get(i).callStack BEFORE "\t- Call Stack: " + indent(advancedEnumHeader("Node")) SEPARATOR advancedEnumSeparator»«indent(mapCallStackEntry(entry))»«ENDFOR»
+«i+1». Parameter «escape(crossPlatformConverter.convertVariable(getParameterOrCallState(constraint.violations.get(i))))» is not allowed to be «highlight(mapQueryType(constraint.violations.get(i)))» in operation «escape(crossPlatformConverter.resolveQualifiedName(constraint.violations.get(i).operation))».
+«FOR entry: constraint.violations.get(i).callStack.filter[e|crossPlatformConverter.qualifiedNameResolvable(e)] BEFORE "\t- Call Stack: " + indent(advancedEnumHeader("Node")) SEPARATOR advancedEnumSeparator»«indent(mapCallStackEntry(entry))»«ENDFOR»
 «FOR variable: constraint.violations.get(i).classVariables.keySet BEFORE "\t- Characteristic Classes: " + indent(advancedEnumHeader("Parameter", "Class", "Value")) SEPARATOR advancedEnumSeparator»«indent(mapClassVariable(variable, constraint.violations.get(i).classVariables.get(variable)))»«ENDFOR»
 «ENDFOR»
 «ENDFOR»
@@ -51,25 +51,19 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 	}
 
 	protected def getParameterOrCallState(Violation violation) {
-		val variable = violation.parameter.isPresent ? violation.parameter.get : violation.callState.get
-		escape(crossPlatformConverter.convertVariable(variable))
+		violation.parameter.isPresent ? violation.parameter.get : violation.callState.get
 	}
 
-	protected def mapQueryType(String queryType) {
+	protected def mapQueryType(Violation violation) {
 
-		// TODO: Add special palladio escaping
-		val typeCandidates = GlobalConstants.QueryTypes.values.filter[value|value.toString.equals(queryType)]
+		val typeCandidates = GlobalConstants.QueryTypes.values.filter[value|value.toString.equals(violation.queryType)]
+		val parameter = getParameterOrCallState(violation)
 
 		if (typeCandidates.length != 1) {
 			throw new RuntimeException("Illegal query type.")
 		}
 
-		switch (typeCandidates.head) {
-			case CALL_ARGUMENT: "call argument"
-			case RETURN_VALUE: "return value"
-			case PRE_CALL_STATE: "call state"
-			case POST_CALL_STATE: "call state"
-		}
+		crossPlatformConverter.convertQueryType(typeCandidates.head, parameter)
 	}
 
 	protected def String mapNodeIdentity(NodeIdentitiySelector selector) {
@@ -84,9 +78,7 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 		escape(crossPlatformConverter.resolveQualifiedName(entry))
 	}
 
-	protected def String indent(String value) {
-		'''«"\t"»«value.lines.toArray.join("\n\t")»«if(value.lines.toArray.size > 1) "\n" else ""»'''
-	}
+	abstract protected def String indent(String value)
 
 	abstract protected def String mapClassVariable(CharacteristicTypeSelector variable, String value)
 

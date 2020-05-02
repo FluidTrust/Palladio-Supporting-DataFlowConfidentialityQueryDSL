@@ -1,10 +1,10 @@
 package de.sebinside.dcp.dsl.generator.crossplatform
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicType
+import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
 
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
-import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 
 class OperationModelConverter implements Converter {
 
@@ -36,6 +36,10 @@ class OperationModelConverter implements Converter {
 	
 	override resolveQualifiedName(String id) {
 		id
+	}
+	
+	override qualifiedNameResolvable(String id) {
+		true
 	}
 
 }

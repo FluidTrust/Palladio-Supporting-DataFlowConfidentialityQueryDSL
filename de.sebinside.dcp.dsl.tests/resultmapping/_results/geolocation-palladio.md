@@ -18,23 +18,16 @@ Data Characteristics:
 | `PersonalInformation` | `true` |
 | `Encryption` | *not* `true` |
 Condition: *NEVER* *FLOWS*
-Destination Identity: ``
+Destination Identity: `Assembly_StoreDB.StoreDB.store`
 
 ## Constraint Violations
 
-1. Parameter `DB.store.param.input_STATE_5e4e3009` is not allowed to be *call state* in operation `ResourceDemandingSEFF (_GDFtwHKJEeq9tYpRa9lb6Q) - AC _q7weoHKJEeq9tYpRa9lb6Q`.
+1. Parameter `DB.store.param.input` is not allowed to be *parameter* in operation `Assembly_StoreDB.StoreDB.store`.
 	- Call Stack: 	
 	
 	| Node |
 	| :-- |
-	| ResourceDemandingSEFF (_GDFtwHKJEeq9tYpRa9lb6Q) - AC _q7weoHKJEeq9tYpRa9lb6Q |
-	| opCall_f7b0423c |
-	| PerformDataTransmissionOperation USBuy.buy.storeCustomer.call (_C5tTQ3KPEeq9tYpRa9lb6Q) - AC _ojjRIHKJEeq9tYpRa9lb6Q |
-	| opCall_158741f8 |
-	| ResourceDemandingSEFF (_8i7mIHKIEeq9tYpRa9lb6Q) - AC _ojjRIHKJEeq9tYpRa9lb6Q |
-	| opCall_3ccb3cc9 |
-	| PerformDataTransmissionOperation EUBuyingAtUS.callBuyUS.performCall (_z6DH83KMEeq9tYpRa9lb6Q) - AC n/a |
-	| opCall_eb823ab2 |
-	| ScenarioBehaviour EU buying at US (_zJWLIHKJEeq9tYpRa9lb6Q)_dataOp |
-	| opCall_bd4b2b13 |
-	| ScenarioBehaviour EU buying at US (_zJWLIHKJEeq9tYpRa9lb6Q) |
+	| `Assembly_StoreDB.StoreDB.store` |
+	| `USBuy.buy.storeCustomer.call` |
+	| `Assembly_USBuy.USBuy.buy` |
+	| `EUBuyingAtUS.callBuyUS.performCall` |

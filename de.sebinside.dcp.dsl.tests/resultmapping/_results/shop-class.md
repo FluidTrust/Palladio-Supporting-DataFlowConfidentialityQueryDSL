@@ -25,11 +25,11 @@ Destination Classes: `isNotSafe`
 	
 	| Node |
 	| :-- |
-	| UserDB_store |
-	| storeUser |
-	| ShopServer_buy |
-	| buy |
-	| usage |
+	| `UserDB_store` |
+	| `storeUser` |
+	| `ShopServer_buy` |
+	| `buy` |
+	| `usage` |
 	- Characteristic Classes: 	
 	
 	| Parameter | Class | Value |

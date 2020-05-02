@@ -53,5 +53,10 @@ class PlainTextResultMappingSerializer extends AbstractResultMappingSerializer {
 	override protected advancedEnumSeparator() {
 		", "
 	}
+	
+	override protected indent(String value) {
+		// No extra indentation needed in plain text
+		value
+	}
 
 }

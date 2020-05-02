@@ -27,8 +27,8 @@ Destination Identity: `storeInDB`
 	
 	| Node |
 	| :-- |
-	| storeInDB |
-	| storeCustomer |
-	| buy |
-	| performBuy |
-	| EUOrderFromUS |
+	| `storeInDB` |
+	| `storeCustomer` |
+	| `buy` |
+	| `performBuy` |
+	| `EUOrderFromUS` |

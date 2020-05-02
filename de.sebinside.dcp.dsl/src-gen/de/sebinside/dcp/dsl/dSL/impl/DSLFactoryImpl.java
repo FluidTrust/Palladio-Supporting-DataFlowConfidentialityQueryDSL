@@ -23,378 +23,424 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static DSLFactory init()
   {
-    try
-    {
-      DSLFactory theDSLFactory = (DSLFactory)EPackage.Registry.INSTANCE.getEFactory(DSLPackage.eNS_URI);
-      if (theDSLFactory != null)
-      {
-        return theDSLFactory;
-      }
-    }
-    catch (Exception exception)
-    {
-      EcorePlugin.INSTANCE.log(exception);
-    }
-    return new DSLFactoryImpl();
-  }
+		try {
+			DSLFactory theDSLFactory = (DSLFactory)EPackage.Registry.INSTANCE.getEFactory(DSLPackage.eNS_URI);
+			if (theDSLFactory != null) {
+				return theDSLFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new DSLFactoryImpl();
+	}
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public DSLFactoryImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EObject create(EClass eClass)
   {
-    switch (eClass.getClassifierID())
-    {
-      case DSLPackage.MODEL: return createModel();
-      case DSLPackage.TARGET_MODEL_TYPE_DEF: return createTargetModelTypeDef();
-      case DSLPackage.ABSTRACT_ELEMENT: return createAbstractElement();
-      case DSLPackage.CHARACTERISTIC_TYPE: return createCharacteristicType();
-      case DSLPackage.CHARACTERISTIC_CLASS: return createCharacteristicClass();
-      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR: return createCharacteristicTypeSelector();
-      case DSLPackage.INCLUDE: return createInclude();
-      case DSLPackage.CONSTRAINT: return createConstraint();
-      case DSLPackage.RULE: return createRule();
-      case DSLPackage.DATA_SELECTOR: return createDataSelector();
-      case DSLPackage.ATTRIBUTE_SELECTOR: return createAttributeSelector();
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR: return createAttributeClassSelector();
-      case DSLPackage.DESTINATION_SELECTOR: return createDestinationSelector();
-      case DSLPackage.PROPERTY_SELECTOR: return createPropertySelector();
-      case DSLPackage.PROPERTY_CLASS_SELECTOR: return createPropertyClassSelector();
-      case DSLPackage.NODE_IDENTITIY_SELECTOR: return createNodeIdentitiySelector();
-      case DSLPackage.STATEMENT: return createStatement();
-      case DSLPackage.STATEMENT_TYPE: return createStatementType();
-      case DSLPackage.STATEMENT_MODALITY: return createStatementModality();
-      default:
-        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eClass.getClassifierID()) {
+			case DSLPackage.MODEL: return createModel();
+			case DSLPackage.TARGET_MODEL_TYPE_DEF: return createTargetModelTypeDef();
+			case DSLPackage.ABSTRACT_ELEMENT: return createAbstractElement();
+			case DSLPackage.CHARACTERISTIC_TYPE: return createCharacteristicType();
+			case DSLPackage.CHARACTERISTIC_CLASS: return createCharacteristicClass();
+			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR: return createCharacteristicTypeSelector();
+			case DSLPackage.CHARACTERISTIC_VARIABLE: return createCharacteristicVariable();
+			case DSLPackage.INCLUDE: return createInclude();
+			case DSLPackage.CONSTRAINT: return createConstraint();
+			case DSLPackage.RULE: return createRule();
+			case DSLPackage.DATA_SELECTOR: return createDataSelector();
+			case DSLPackage.CHARACTERISTIC_SELECTOR: return createCharacteristicSelector();
+			case DSLPackage.CHARACTERISTIC_CLASS_SELECTOR: return createCharacteristicClassSelector();
+			case DSLPackage.ATTRIBUTE_SELECTOR: return createAttributeSelector();
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR: return createAttributeClassSelector();
+			case DSLPackage.DESTINATION_SELECTOR: return createDestinationSelector();
+			case DSLPackage.PROPERTY_SELECTOR: return createPropertySelector();
+			case DSLPackage.PROPERTY_CLASS_SELECTOR: return createPropertyClassSelector();
+			case DSLPackage.NODE_IDENTITIY_SELECTOR: return createNodeIdentitiySelector();
+			case DSLPackage.STATEMENT: return createStatement();
+			case DSLPackage.STATEMENT_TYPE: return createStatementType();
+			case DSLPackage.STATEMENT_MODALITY: return createStatementModality();
+			case DSLPackage.CONDITION: return createCondition();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object createFromString(EDataType eDataType, String initialValue)
   {
-    switch (eDataType.getClassifierID())
-    {
-      case DSLPackage.TARGET_MODEL_TYPE:
-        return createTargetModelTypeFromString(eDataType, initialValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eDataType.getClassifierID()) {
+			case DSLPackage.TARGET_MODEL_TYPE:
+				return createTargetModelTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String convertToString(EDataType eDataType, Object instanceValue)
   {
-    switch (eDataType.getClassifierID())
-    {
-      case DSLPackage.TARGET_MODEL_TYPE:
-        return convertTargetModelTypeToString(eDataType, instanceValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eDataType.getClassifierID()) {
+			case DSLPackage.TARGET_MODEL_TYPE:
+				return convertTargetModelTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Model createModel()
   {
-    ModelImpl model = new ModelImpl();
-    return model;
-  }
+		ModelImpl model = new ModelImpl();
+		return model;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public TargetModelTypeDef createTargetModelTypeDef()
   {
-    TargetModelTypeDefImpl targetModelTypeDef = new TargetModelTypeDefImpl();
-    return targetModelTypeDef;
-  }
+		TargetModelTypeDefImpl targetModelTypeDef = new TargetModelTypeDefImpl();
+		return targetModelTypeDef;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public AbstractElement createAbstractElement()
   {
-    AbstractElementImpl abstractElement = new AbstractElementImpl();
-    return abstractElement;
-  }
+		AbstractElementImpl abstractElement = new AbstractElementImpl();
+		return abstractElement;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicType createCharacteristicType()
   {
-    CharacteristicTypeImpl characteristicType = new CharacteristicTypeImpl();
-    return characteristicType;
-  }
+		CharacteristicTypeImpl characteristicType = new CharacteristicTypeImpl();
+		return characteristicType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicClass createCharacteristicClass()
   {
-    CharacteristicClassImpl characteristicClass = new CharacteristicClassImpl();
-    return characteristicClass;
-  }
+		CharacteristicClassImpl characteristicClass = new CharacteristicClassImpl();
+		return characteristicClass;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicTypeSelector createCharacteristicTypeSelector()
   {
-    CharacteristicTypeSelectorImpl characteristicTypeSelector = new CharacteristicTypeSelectorImpl();
-    return characteristicTypeSelector;
-  }
+		CharacteristicTypeSelectorImpl characteristicTypeSelector = new CharacteristicTypeSelectorImpl();
+		return characteristicTypeSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
+  @Override
+  public CharacteristicVariable createCharacteristicVariable()
+  {
+		CharacteristicVariableImpl characteristicVariable = new CharacteristicVariableImpl();
+		return characteristicVariable;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
   @Override
   public Include createInclude()
   {
-    IncludeImpl include = new IncludeImpl();
-    return include;
-  }
+		IncludeImpl include = new IncludeImpl();
+		return include;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Constraint createConstraint()
   {
-    ConstraintImpl constraint = new ConstraintImpl();
-    return constraint;
-  }
+		ConstraintImpl constraint = new ConstraintImpl();
+		return constraint;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Rule createRule()
   {
-    RuleImpl rule = new RuleImpl();
-    return rule;
-  }
+		RuleImpl rule = new RuleImpl();
+		return rule;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public DataSelector createDataSelector()
   {
-    DataSelectorImpl dataSelector = new DataSelectorImpl();
-    return dataSelector;
-  }
+		DataSelectorImpl dataSelector = new DataSelectorImpl();
+		return dataSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
+  @Override
+  public CharacteristicSelector createCharacteristicSelector()
+  {
+		CharacteristicSelectorImpl characteristicSelector = new CharacteristicSelectorImpl();
+		return characteristicSelector;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public CharacteristicClassSelector createCharacteristicClassSelector()
+  {
+		CharacteristicClassSelectorImpl characteristicClassSelector = new CharacteristicClassSelectorImpl();
+		return characteristicClassSelector;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
   @Override
   public AttributeSelector createAttributeSelector()
   {
-    AttributeSelectorImpl attributeSelector = new AttributeSelectorImpl();
-    return attributeSelector;
-  }
+		AttributeSelectorImpl attributeSelector = new AttributeSelectorImpl();
+		return attributeSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public AttributeClassSelector createAttributeClassSelector()
   {
-    AttributeClassSelectorImpl attributeClassSelector = new AttributeClassSelectorImpl();
-    return attributeClassSelector;
-  }
+		AttributeClassSelectorImpl attributeClassSelector = new AttributeClassSelectorImpl();
+		return attributeClassSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public DestinationSelector createDestinationSelector()
   {
-    DestinationSelectorImpl destinationSelector = new DestinationSelectorImpl();
-    return destinationSelector;
-  }
+		DestinationSelectorImpl destinationSelector = new DestinationSelectorImpl();
+		return destinationSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public PropertySelector createPropertySelector()
   {
-    PropertySelectorImpl propertySelector = new PropertySelectorImpl();
-    return propertySelector;
-  }
+		PropertySelectorImpl propertySelector = new PropertySelectorImpl();
+		return propertySelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public PropertyClassSelector createPropertyClassSelector()
   {
-    PropertyClassSelectorImpl propertyClassSelector = new PropertyClassSelectorImpl();
-    return propertyClassSelector;
-  }
+		PropertyClassSelectorImpl propertyClassSelector = new PropertyClassSelectorImpl();
+		return propertyClassSelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NodeIdentitiySelector createNodeIdentitiySelector()
   {
-    NodeIdentitiySelectorImpl nodeIdentitiySelector = new NodeIdentitiySelectorImpl();
-    return nodeIdentitiySelector;
-  }
+		NodeIdentitiySelectorImpl nodeIdentitiySelector = new NodeIdentitiySelectorImpl();
+		return nodeIdentitiySelector;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Statement createStatement()
   {
-    StatementImpl statement = new StatementImpl();
-    return statement;
-  }
+		StatementImpl statement = new StatementImpl();
+		return statement;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public StatementType createStatementType()
   {
-    StatementTypeImpl statementType = new StatementTypeImpl();
-    return statementType;
-  }
+		StatementTypeImpl statementType = new StatementTypeImpl();
+		return statementType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public StatementModality createStatementModality()
   {
-    StatementModalityImpl statementModality = new StatementModalityImpl();
-    return statementModality;
-  }
+		StatementModalityImpl statementModality = new StatementModalityImpl();
+		return statementModality;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
+  @Override
+  public Condition createCondition()
+  {
+		ConditionImpl condition = new ConditionImpl();
+		return condition;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
   public TargetModelType createTargetModelTypeFromString(EDataType eDataType, String initialValue)
   {
-    TargetModelType result = TargetModelType.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
+		TargetModelType result = TargetModelType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String convertTargetModelTypeToString(EDataType eDataType, Object instanceValue)
   {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
+		return instanceValue == null ? null : instanceValue.toString();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public DSLPackage getDSLPackage()
   {
-    return (DSLPackage)getEPackage();
-  }
+		return (DSLPackage)getEPackage();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @deprecated
-   * @generated
-   */
+	 * @deprecated
+	 * @generated
+	 */
   @Deprecated
   public static DSLPackage getPackage()
   {
-    return DSLPackage.eINSTANCE;
-  }
+		return DSLPackage.eINSTANCE;
+	}
 
 } //DSLFactoryImpl

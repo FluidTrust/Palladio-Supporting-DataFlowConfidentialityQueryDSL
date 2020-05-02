@@ -3,57 +3,49 @@
  */
 package de.sebinside.dcp.dsl.dSL.impl;
 
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariable;
+import de.sebinside.dcp.dsl.dSL.Condition;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
-import de.sebinside.dcp.dsl.dSL.StatementType;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Statement Type</b></em>'.
+ * An implementation of the model object '<em><b>Condition</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.StatementTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ConditionImpl#getTodo <em>Todo</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class StatementTypeImpl extends MinimalEObjectImpl.Container implements StatementType
+public class ConditionImpl extends MinimalEObjectImpl.Container implements Condition
 {
   /**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getTodo() <em>Todo</em>}' reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getTodo()
 	 * @generated
 	 * @ordered
 	 */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-  protected String name = NAME_EDEFAULT;
+  protected CharacteristicVariable todo;
 
   /**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  protected StatementTypeImpl()
+  protected ConditionImpl()
   {
 		super();
 	}
@@ -66,7 +58,7 @@ public class StatementTypeImpl extends MinimalEObjectImpl.Container implements S
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.STATEMENT_TYPE;
+		return DSLPackage.Literals.CONDITION;
 	}
 
   /**
@@ -75,9 +67,27 @@ public class StatementTypeImpl extends MinimalEObjectImpl.Container implements S
 	 * @generated
 	 */
   @Override
-  public String getName()
+  public CharacteristicVariable getTodo()
   {
-		return name;
+		if (todo != null && todo.eIsProxy()) {
+			InternalEObject oldTodo = (InternalEObject)todo;
+			todo = (CharacteristicVariable)eResolveProxy(oldTodo);
+			if (todo != oldTodo) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CONDITION__TODO, oldTodo, todo));
+			}
+		}
+		return todo;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public CharacteristicVariable basicGetTodo()
+  {
+		return todo;
 	}
 
   /**
@@ -86,12 +96,12 @@ public class StatementTypeImpl extends MinimalEObjectImpl.Container implements S
 	 * @generated
 	 */
   @Override
-  public void setName(String newName)
+  public void setTodo(CharacteristicVariable newTodo)
   {
-		String oldName = name;
-		name = newName;
+		CharacteristicVariable oldTodo = todo;
+		todo = newTodo;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.STATEMENT_TYPE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CONDITION__TODO, oldTodo, todo));
 	}
 
   /**
@@ -103,8 +113,9 @@ public class StatementTypeImpl extends MinimalEObjectImpl.Container implements S
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
 		switch (featureID) {
-			case DSLPackage.STATEMENT_TYPE__NAME:
-				return getName();
+			case DSLPackage.CONDITION__TODO:
+				if (resolve) return getTodo();
+				return basicGetTodo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -118,8 +129,8 @@ public class StatementTypeImpl extends MinimalEObjectImpl.Container implements S
   public void eSet(int featureID, Object newValue)
   {
 		switch (featureID) {
-			case DSLPackage.STATEMENT_TYPE__NAME:
-				setName((String)newValue);
+			case DSLPackage.CONDITION__TODO:
+				setTodo((CharacteristicVariable)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -134,8 +145,8 @@ public class StatementTypeImpl extends MinimalEObjectImpl.Container implements S
   public void eUnset(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.STATEMENT_TYPE__NAME:
-				setName(NAME_EDEFAULT);
+			case DSLPackage.CONDITION__TODO:
+				setTodo((CharacteristicVariable)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -150,27 +161,10 @@ public class StatementTypeImpl extends MinimalEObjectImpl.Container implements S
   public boolean eIsSet(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.STATEMENT_TYPE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case DSLPackage.CONDITION__TODO:
+				return todo != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public String toString()
-  {
-		if (eIsProxy()) return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
-	}
-
-} //StatementTypeImpl
+} //ConditionImpl

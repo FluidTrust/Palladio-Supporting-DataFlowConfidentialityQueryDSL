@@ -9,39 +9,11 @@ package de.sebinside.dcp.dsl.dSL;
  * A representation of the model object '<em><b>Property Class Selector</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#getRef <em>Ref</em>}</li>
- * </ul>
  *
  * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getPropertyClassSelector()
  * @model
  * @generated
  */
-public interface PropertyClassSelector extends DestinationSelector
+public interface PropertyClassSelector extends CharacteristicClassSelector, DestinationSelector
 {
-  /**
-   * Returns the value of the '<em><b>Ref</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(CharacteristicClass)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getPropertyClassSelector_Ref()
-   * @model
-   * @generated
-   */
-  CharacteristicClass getRef();
-
-  /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.PropertyClassSelector#getRef <em>Ref</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' reference.
-   * @see #getRef()
-   * @generated
-   */
-  void setRef(CharacteristicClass value);
-
 } // PropertyClassSelector

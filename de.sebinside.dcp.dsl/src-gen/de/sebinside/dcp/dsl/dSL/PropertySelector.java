@@ -9,39 +9,11 @@ package de.sebinside.dcp.dsl.dSL;
  * A representation of the model object '<em><b>Property Selector</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.PropertySelector#getRef <em>Ref</em>}</li>
- * </ul>
  *
  * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getPropertySelector()
  * @model
  * @generated
  */
-public interface PropertySelector extends DestinationSelector
+public interface PropertySelector extends CharacteristicSelector, DestinationSelector
 {
-  /**
-   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' containment reference.
-   * @see #setRef(CharacteristicTypeSelector)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getPropertySelector_Ref()
-   * @model containment="true"
-   * @generated
-   */
-  CharacteristicTypeSelector getRef();
-
-  /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.PropertySelector#getRef <em>Ref</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' containment reference.
-   * @see #getRef()
-   * @generated
-   */
-  void setRef(CharacteristicTypeSelector value);
-
 } // PropertySelector

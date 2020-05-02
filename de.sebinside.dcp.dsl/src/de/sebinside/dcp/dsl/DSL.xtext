@@ -34,10 +34,18 @@ CharacteristicClass:
 
 CharacteristicTypeSelector:
 	ref=[CharacteristicType] '.'
+	// Single literal, may be negated
 	(((negated?='!')? literals+=[characteristics::EnumCharacteristicLiteral]) |
+	// Multiple literals, written as list
 	('[' literals+=[characteristics::EnumCharacteristicLiteral]
 	(',' literals+=[characteristics::EnumCharacteristicLiteral])*
-	']'));
+	']') |
+	// Variable usage
+	(isVariableSelector?="$") variable=CharacteristicVariable);
+	
+CharacteristicVariable:
+	name=ID (isSet?="{}")?
+;
 
 Include:
 	'import' importURI=STRING;
@@ -48,10 +56,17 @@ Constraint:
 Rule:
 	dataSelectors+=DataSelector ('&' dataSelectors+=DataSelector)*
 	statement=Statement
-	destinationSelectors+=DestinationSelector ('&' destinationSelectors+=DestinationSelector)*;
+	destinationSelectors+=DestinationSelector ('&' destinationSelectors+=DestinationSelector)*
+	(condition=Condition)?;
 
 DataSelector:
 	AttributeSelector | AttributeClassSelector;
+
+CharacteristicSelector:
+	AttributeSelector | PropertySelector;
+
+CharacteristicClassSelector:
+	AttributeClassSelector | PropertyClassSelector;
 
 AttributeSelector:
 	'data.attribute.' ref=CharacteristicTypeSelector;
@@ -80,3 +95,7 @@ StatementType:
 
 StatementModality:
 	name='NEVER';
+	
+Condition:
+	'WHERE' todo=[CharacteristicVariable] 
+;

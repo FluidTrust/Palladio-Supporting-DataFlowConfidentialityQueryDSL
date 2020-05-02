@@ -3,7 +3,6 @@
  */
 package de.sebinside.dcp.dsl.dSL.impl;
 
-import de.sebinside.dcp.dsl.dSL.AttributeClassSelector;
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass;
 import de.sebinside.dcp.dsl.dSL.CharacteristicClassSelector;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
@@ -14,21 +13,22 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Attribute Class Selector</b></em>'.
+ * An implementation of the model object '<em><b>Characteristic Class Selector</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.AttributeClassSelectorImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicClassSelectorImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AttributeClassSelectorImpl extends DataSelectorImpl implements AttributeClassSelector
+public class CharacteristicClassSelectorImpl extends MinimalEObjectImpl.Container implements CharacteristicClassSelector
 {
   /**
 	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
@@ -45,7 +45,7 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  protected AttributeClassSelectorImpl()
+  protected CharacteristicClassSelectorImpl()
   {
 		super();
 	}
@@ -58,7 +58,7 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.ATTRIBUTE_CLASS_SELECTOR;
+		return DSLPackage.Literals.CHARACTERISTIC_CLASS_SELECTOR;
 	}
 
   /**
@@ -74,7 +74,7 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
 			ref = (CharacteristicClass)eResolveProxy(oldRef);
 			if (ref != oldRef) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF, oldRef, ref));
 			}
 		}
 		return ref;
@@ -101,7 +101,7 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
 		CharacteristicClass oldRef = ref;
 		ref = newRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF, oldRef, ref));
 	}
 
   /**
@@ -113,7 +113,7 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
 		switch (featureID) {
-			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+			case DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF:
 				if (resolve) return getRef();
 				return basicGetRef();
 		}
@@ -129,7 +129,7 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   public void eSet(int featureID, Object newValue)
   {
 		switch (featureID) {
-			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+			case DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF:
 				setRef((CharacteristicClass)newValue);
 				return;
 		}
@@ -145,7 +145,7 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   public void eUnset(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+			case DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF:
 				setRef((CharacteristicClass)null);
 				return;
 		}
@@ -161,44 +161,10 @@ public class AttributeClassSelectorImpl extends DataSelectorImpl implements Attr
   public boolean eIsSet(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+			case DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF:
 				return ref != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-		if (baseClass == CharacteristicClassSelector.class) {
-			switch (derivedFeatureID) {
-				case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF: return DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-		if (baseClass == CharacteristicClassSelector.class) {
-			switch (baseFeatureID) {
-				case DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF: return DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-} //AttributeClassSelectorImpl
+} //CharacteristicClassSelectorImpl

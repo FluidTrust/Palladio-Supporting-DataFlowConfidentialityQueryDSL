@@ -34,6 +34,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicTypeSelector/ref"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicTypeSelector/negated"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicTypeSelector/literals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicTypeSelector/isVariableSelector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicTypeSelector/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//CharacteristicVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicVariable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicVariable/isSet"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Include">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Include/importURI"/>
@@ -46,21 +52,20 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Rule/dataSelectors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Rule/statement"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Rule/destinationSelectors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Rule/condition"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//DataSelector"/>
-    <genClasses ecoreClass="DSL.ecore#//AttributeSelector">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//AttributeSelector/ref"/>
+    <genClasses ecoreClass="DSL.ecore#//CharacteristicSelector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicSelector/ref"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//AttributeClassSelector">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//AttributeClassSelector/ref"/>
+    <genClasses ecoreClass="DSL.ecore#//CharacteristicClassSelector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicClassSelector/ref"/>
     </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//AttributeSelector"/>
+    <genClasses ecoreClass="DSL.ecore#//AttributeClassSelector"/>
     <genClasses ecoreClass="DSL.ecore#//DestinationSelector"/>
-    <genClasses ecoreClass="DSL.ecore#//PropertySelector">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//PropertySelector/ref"/>
-    </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//PropertyClassSelector">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//PropertyClassSelector/ref"/>
-    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//PropertySelector"/>
+    <genClasses ecoreClass="DSL.ecore#//PropertyClassSelector"/>
     <genClasses ecoreClass="DSL.ecore#//NodeIdentitiySelector">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//NodeIdentitiySelector/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//NodeIdentitiySelector/assembly"/>
@@ -76,6 +81,9 @@
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//StatementModality">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//StatementModality/name"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//Condition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//Condition/todo"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

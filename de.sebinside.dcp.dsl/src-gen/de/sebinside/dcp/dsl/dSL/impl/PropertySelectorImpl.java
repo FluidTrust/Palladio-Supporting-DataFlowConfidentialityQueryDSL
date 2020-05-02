@@ -3,194 +3,39 @@
  */
 package de.sebinside.dcp.dsl.dSL.impl;
 
-import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 import de.sebinside.dcp.dsl.dSL.PropertySelector;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Property Selector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * </p>
- * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.PropertySelectorImpl#getRef <em>Ref</em>}</li>
- * </ul>
  *
  * @generated
  */
-public class PropertySelectorImpl extends DestinationSelectorImpl implements PropertySelector
+public class PropertySelectorImpl extends CharacteristicSelectorImpl implements PropertySelector
 {
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef()
-   * @generated
-   * @ordered
-   */
-  protected CharacteristicTypeSelector ref;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected PropertySelectorImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.PROPERTY_SELECTOR;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public CharacteristicTypeSelector getRef()
-  {
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetRef(CharacteristicTypeSelector newRef, NotificationChain msgs)
-  {
-    CharacteristicTypeSelector oldRef = ref;
-    ref = newRef;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.PROPERTY_SELECTOR__REF, oldRef, newRef);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setRef(CharacteristicTypeSelector newRef)
-  {
-    if (newRef != ref)
-    {
-      NotificationChain msgs = null;
-      if (ref != null)
-        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PROPERTY_SELECTOR__REF, null, msgs);
-      if (newRef != null)
-        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.PROPERTY_SELECTOR__REF, null, msgs);
-      msgs = basicSetRef(newRef, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.PROPERTY_SELECTOR__REF, newRef, newRef));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case DSLPackage.PROPERTY_SELECTOR__REF:
-        return basicSetRef(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case DSLPackage.PROPERTY_SELECTOR__REF:
-        return getRef();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case DSLPackage.PROPERTY_SELECTOR__REF:
-        setRef((CharacteristicTypeSelector)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case DSLPackage.PROPERTY_SELECTOR__REF:
-        setRef((CharacteristicTypeSelector)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case DSLPackage.PROPERTY_SELECTOR__REF:
-        return ref != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		return DSLPackage.Literals.PROPERTY_SELECTOR;
+	}
 
 } //PropertySelectorImpl

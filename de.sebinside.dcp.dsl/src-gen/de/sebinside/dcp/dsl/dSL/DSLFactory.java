@@ -16,191 +16,227 @@ import org.eclipse.emf.ecore.EFactory;
 public interface DSLFactory extends EFactory
 {
   /**
-   * The singleton instance of the factory.
-   * <!-- begin-user-doc -->
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   DSLFactory eINSTANCE = de.sebinside.dcp.dsl.dSL.impl.DSLFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Model</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Model</em>'.
+	 * @generated
+	 */
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Target Model Type Def</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Target Model Type Def</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Target Model Type Def</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Target Model Type Def</em>'.
+	 * @generated
+	 */
   TargetModelTypeDef createTargetModelTypeDef();
 
   /**
-   * Returns a new object of class '<em>Abstract Element</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Abstract Element</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Abstract Element</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Abstract Element</em>'.
+	 * @generated
+	 */
   AbstractElement createAbstractElement();
 
   /**
-   * Returns a new object of class '<em>Characteristic Type</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Characteristic Type</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Characteristic Type</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Characteristic Type</em>'.
+	 * @generated
+	 */
   CharacteristicType createCharacteristicType();
 
   /**
-   * Returns a new object of class '<em>Characteristic Class</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Characteristic Class</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Characteristic Class</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Characteristic Class</em>'.
+	 * @generated
+	 */
   CharacteristicClass createCharacteristicClass();
 
   /**
-   * Returns a new object of class '<em>Characteristic Type Selector</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Characteristic Type Selector</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Characteristic Type Selector</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Characteristic Type Selector</em>'.
+	 * @generated
+	 */
   CharacteristicTypeSelector createCharacteristicTypeSelector();
 
   /**
-   * Returns a new object of class '<em>Include</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Characteristic Variable</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Include</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Characteristic Variable</em>'.
+	 * @generated
+	 */
+  CharacteristicVariable createCharacteristicVariable();
+
+  /**
+	 * Returns a new object of class '<em>Include</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Include</em>'.
+	 * @generated
+	 */
   Include createInclude();
 
   /**
-   * Returns a new object of class '<em>Constraint</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Constraint</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Constraint</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Constraint</em>'.
+	 * @generated
+	 */
   Constraint createConstraint();
 
   /**
-   * Returns a new object of class '<em>Rule</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Rule</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rule</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Rule</em>'.
+	 * @generated
+	 */
   Rule createRule();
 
   /**
-   * Returns a new object of class '<em>Data Selector</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Data Selector</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Data Selector</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Data Selector</em>'.
+	 * @generated
+	 */
   DataSelector createDataSelector();
 
   /**
-   * Returns a new object of class '<em>Attribute Selector</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Characteristic Selector</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Attribute Selector</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Characteristic Selector</em>'.
+	 * @generated
+	 */
+  CharacteristicSelector createCharacteristicSelector();
+
+  /**
+	 * Returns a new object of class '<em>Characteristic Class Selector</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Characteristic Class Selector</em>'.
+	 * @generated
+	 */
+  CharacteristicClassSelector createCharacteristicClassSelector();
+
+  /**
+	 * Returns a new object of class '<em>Attribute Selector</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Attribute Selector</em>'.
+	 * @generated
+	 */
   AttributeSelector createAttributeSelector();
 
   /**
-   * Returns a new object of class '<em>Attribute Class Selector</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Attribute Class Selector</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Attribute Class Selector</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Attribute Class Selector</em>'.
+	 * @generated
+	 */
   AttributeClassSelector createAttributeClassSelector();
 
   /**
-   * Returns a new object of class '<em>Destination Selector</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Destination Selector</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Destination Selector</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Destination Selector</em>'.
+	 * @generated
+	 */
   DestinationSelector createDestinationSelector();
 
   /**
-   * Returns a new object of class '<em>Property Selector</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Property Selector</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Selector</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Property Selector</em>'.
+	 * @generated
+	 */
   PropertySelector createPropertySelector();
 
   /**
-   * Returns a new object of class '<em>Property Class Selector</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Property Class Selector</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Class Selector</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Property Class Selector</em>'.
+	 * @generated
+	 */
   PropertyClassSelector createPropertyClassSelector();
 
   /**
-   * Returns a new object of class '<em>Node Identitiy Selector</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Node Identitiy Selector</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Node Identitiy Selector</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Node Identitiy Selector</em>'.
+	 * @generated
+	 */
   NodeIdentitiySelector createNodeIdentitiySelector();
 
   /**
-   * Returns a new object of class '<em>Statement</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Statement</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Statement</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Statement</em>'.
+	 * @generated
+	 */
   Statement createStatement();
 
   /**
-   * Returns a new object of class '<em>Statement Type</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Statement Type</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Statement Type</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Statement Type</em>'.
+	 * @generated
+	 */
   StatementType createStatementType();
 
   /**
-   * Returns a new object of class '<em>Statement Modality</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Statement Modality</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Statement Modality</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Statement Modality</em>'.
+	 * @generated
+	 */
   StatementModality createStatementModality();
 
   /**
-   * Returns the package supported by this factory.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Condition</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the package supported by this factory.
-   * @generated
-   */
+	 * @return a new object of class '<em>Condition</em>'.
+	 * @generated
+	 */
+  Condition createCondition();
+
+  /**
+	 * Returns the package supported by this factory.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the package supported by this factory.
+	 * @generated
+	 */
   DSLPackage getDSLPackage();
 
 } //DSLFactory

@@ -540,7 +540,94 @@ ruleCharacteristicTypeSelector returns [EObject current=null]
 					newLeafNode(otherlv_8, grammarAccess.getCharacteristicTypeSelectorAccess().getRightSquareBracketKeyword_2_1_3());
 				}
 			)
+			    |
+			(
+				(
+					(
+						lv_isVariableSelector_9_0='$'
+						{
+							newLeafNode(lv_isVariableSelector_9_0, grammarAccess.getCharacteristicTypeSelectorAccess().getIsVariableSelectorDollarSignKeyword_2_2_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getCharacteristicTypeSelectorRule());
+							}
+							setWithLastConsumed($current, "isVariableSelector", true, "\$");
+						}
+					)
+				)
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getCharacteristicTypeSelectorAccess().getVariableCharacteristicVariableParserRuleCall_2_2_1_0());
+						}
+						lv_variable_10_0=ruleCharacteristicVariable
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getCharacteristicTypeSelectorRule());
+							}
+							set(
+								$current,
+								"variable",
+								lv_variable_10_0,
+								"de.sebinside.dcp.dsl.DSL.CharacteristicVariable");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)
 		)
+	)
+;
+
+// Entry rule entryRuleCharacteristicVariable
+entryRuleCharacteristicVariable returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCharacteristicVariableRule()); }
+	iv_ruleCharacteristicVariable=ruleCharacteristicVariable
+	{ $current=$iv_ruleCharacteristicVariable.current; }
+	EOF;
+
+// Rule CharacteristicVariable
+ruleCharacteristicVariable returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_name_0_0=RULE_ID
+				{
+					newLeafNode(lv_name_0_0, grammarAccess.getCharacteristicVariableAccess().getNameIDTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCharacteristicVariableRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_0_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			(
+				lv_isSet_1_0='{}'
+				{
+					newLeafNode(lv_isSet_1_0, grammarAccess.getCharacteristicVariableAccess().getIsSetLeftCurlyBracketRightCurlyBracketKeyword_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCharacteristicVariableRule());
+					}
+					setWithLastConsumed($current, "isSet", true, "{}");
+				}
+			)
+		)?
 	)
 ;
 
@@ -776,6 +863,25 @@ ruleRule returns [EObject current=null]
 				)
 			)
 		)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getRuleAccess().getConditionConditionParserRuleCall_5_0());
+				}
+				lv_condition_7_0=ruleCondition
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getRuleRule());
+					}
+					set(
+						$current,
+						"condition",
+						lv_condition_7_0,
+						"de.sebinside.dcp.dsl.DSL.Condition");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
 	)
 ;
 
@@ -1228,6 +1334,42 @@ ruleStatementModality returns [EObject current=null]
 				}
 				setWithLastConsumed($current, "name", lv_name_0_0, "NEVER");
 			}
+		)
+	)
+;
+
+// Entry rule entryRuleCondition
+entryRuleCondition returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getConditionRule()); }
+	iv_ruleCondition=ruleCondition
+	{ $current=$iv_ruleCondition.current; }
+	EOF;
+
+// Rule Condition
+ruleCondition returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='WHERE'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getConditionAccess().getWHEREKeyword_0());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getConditionRule());
+					}
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getConditionAccess().getTodoCharacteristicVariableCrossReference_1_0());
+				}
+			)
 		)
 	)
 ;

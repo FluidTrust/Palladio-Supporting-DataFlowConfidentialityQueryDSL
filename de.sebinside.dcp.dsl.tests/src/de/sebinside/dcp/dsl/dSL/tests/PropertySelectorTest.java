@@ -14,7 +14,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PropertySelectorTest extends DestinationSelectorTest {
+public class PropertySelectorTest extends CharacteristicSelectorTest {
 
 	/**
 	 * <!-- begin-user-doc -->

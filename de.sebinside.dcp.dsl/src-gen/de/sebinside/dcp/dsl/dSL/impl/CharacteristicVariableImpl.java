@@ -3,32 +3,31 @@
  */
 package de.sebinside.dcp.dsl.dSL.impl;
 
-import de.sebinside.dcp.dsl.dSL.CharacteristicType;
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariable;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Characteristic Type</b></em>'.
+ * An implementation of the model object '<em><b>Characteristic Variable</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicTypeImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicTypeImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableImpl#isIsSet <em>Is Set</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CharacteristicTypeImpl extends AbstractElementImpl implements CharacteristicType
+public class CharacteristicVariableImpl extends MinimalEObjectImpl.Container implements CharacteristicVariable
 {
   /**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -51,21 +50,31 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
   protected String name = NAME_EDEFAULT;
 
   /**
-	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+	 * The default value of the '{@link #isIsSet() <em>Is Set</em>}' attribute.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getRef()
+	 * @see #isIsSet()
 	 * @generated
 	 * @ordered
 	 */
-  protected org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType ref;
+  protected static final boolean IS_SET_EDEFAULT = false;
+
+  /**
+	 * The cached value of the '{@link #isIsSet() <em>Is Set</em>}' attribute.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see #isIsSet()
+	 * @generated
+	 * @ordered
+	 */
+  protected boolean isSet = IS_SET_EDEFAULT;
 
   /**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  protected CharacteristicTypeImpl()
+  protected CharacteristicVariableImpl()
   {
 		super();
 	}
@@ -78,7 +87,7 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.CHARACTERISTIC_TYPE;
+		return DSLPackage.Literals.CHARACTERISTIC_VARIABLE;
 	}
 
   /**
@@ -103,7 +112,7 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_VARIABLE__NAME, oldName, name));
 	}
 
   /**
@@ -112,27 +121,9 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
 	 * @generated
 	 */
   @Override
-  public org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType getRef()
+  public boolean isIsSet()
   {
-		if (ref != null && ((EObject)ref).eIsProxy()) {
-			InternalEObject oldRef = (InternalEObject)ref;
-			ref = (org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType)eResolveProxy(oldRef);
-			if (ref != oldRef) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTIC_TYPE__REF, oldRef, ref));
-			}
-		}
-		return ref;
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  public org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType basicGetRef()
-  {
-		return ref;
+		return isSet;
 	}
 
   /**
@@ -141,12 +132,12 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
 	 * @generated
 	 */
   @Override
-  public void setRef(org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType newRef)
+  public void setIsSet(boolean newIsSet)
   {
-		org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType oldRef = ref;
-		ref = newRef;
+		boolean oldIsSet = isSet;
+		isSet = newIsSet;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE__REF, oldRef, ref));
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET, oldIsSet, isSet));
 	}
 
   /**
@@ -158,11 +149,10 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
 		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_TYPE__NAME:
+			case DSLPackage.CHARACTERISTIC_VARIABLE__NAME:
 				return getName();
-			case DSLPackage.CHARACTERISTIC_TYPE__REF:
-				if (resolve) return getRef();
-				return basicGetRef();
+			case DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET:
+				return isIsSet();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -176,11 +166,11 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
   public void eSet(int featureID, Object newValue)
   {
 		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_TYPE__NAME:
+			case DSLPackage.CHARACTERISTIC_VARIABLE__NAME:
 				setName((String)newValue);
 				return;
-			case DSLPackage.CHARACTERISTIC_TYPE__REF:
-				setRef((org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType)newValue);
+			case DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET:
+				setIsSet((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -195,11 +185,11 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
   public void eUnset(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_TYPE__NAME:
+			case DSLPackage.CHARACTERISTIC_VARIABLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case DSLPackage.CHARACTERISTIC_TYPE__REF:
-				setRef((org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType)null);
+			case DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET:
+				setIsSet(IS_SET_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -214,10 +204,10 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
   public boolean eIsSet(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_TYPE__NAME:
+			case DSLPackage.CHARACTERISTIC_VARIABLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case DSLPackage.CHARACTERISTIC_TYPE__REF:
-				return ref != null;
+			case DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET:
+				return isSet != IS_SET_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -235,8 +225,10 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", isSet: ");
+		result.append(isSet);
 		result.append(')');
 		return result.toString();
 	}
 
-} //CharacteristicTypeImpl
+} //CharacteristicVariableImpl

@@ -6,12 +6,12 @@
         <originalType xsi:type="repository:CompositeDataType" href="newRepository.repository#_xtqFsHKIEeq9tYpRa9lb6Q"/>
       </resultingData>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_mk-kR3KMEeq9tYpRa9lb6Q">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_oRa393KMEeq9tYpRa9lb6Q">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
     </operations>
     <operations xsi:type="processing:CreateDataOperation" id="_qytI8HKMEeq9tYpRa9lb6Q" entityName="EUBuyingAtUS.callBuyUS.createOrderData">
@@ -19,12 +19,12 @@
         <originalType xsi:type="repository:CompositeDataType" href="newRepository.repository#_xtqFsHKIEeq9tYpRa9lb6Q"/>
       </resultingData>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_uIL3B3KMEeq9tYpRa9lb6Q">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_v3eqZ3KMEeq9tYpRa9lb6Q">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
     </operations>
     <operations xsi:type="processing:PerformDataTransmissionOperation" id="_z6DH83KMEeq9tYpRa9lb6Q" entityName="EUBuyingAtUS.callBuyUS.performCall">
@@ -38,12 +38,12 @@
         <originalType xsi:type="repository:CompositeDataType" href="newRepository.repository#_xtqFsHKIEeq9tYpRa9lb6Q"/>
       </resultingData>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_mk-kR3KMEeq9tYpRa9lb6Qa">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_oRa393KMEeq9tYpRa9lb6Qa">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
     </operations>
     <operations xsi:type="processing:CreateDataOperation" id="_qytI8HKMEeq9tYpRa9lb6Qa" entityName="EUBuyingAtEU.callBuyEU.createOrderData">
@@ -51,12 +51,12 @@
         <originalType xsi:type="repository:CompositeDataType" href="newRepository.repository#_xtqFsHKIEeq9tYpRa9lb6Q"/>
       </resultingData>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_uIL3B3KMEeq9tYpRa9lb6Qa">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_v3eqZ3KMEeq9tYpRa9lb6Qa">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
     </operations>
     <operations xsi:type="processing:PerformDataTransmissionOperation" id="_z6DH83KMEeq9tYpRa9lb6Qa" entityName="EUBuyingAtEU.callBuyEU.performCall">
@@ -70,12 +70,12 @@
         <originalType xsi:type="repository:CompositeDataType" href="newRepository.repository#_xtqFsHKIEeq9tYpRa9lb6Q"/>
       </resultingData>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_mk-kR3KMEeq9tYpRa9lb6Qb">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_sa788HKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_sa788HKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_oRa393KMEeq9tYpRa9lb6Qb">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
     </operations>
     <operations xsi:type="processing:CreateDataOperation" id="_qytI8HKMEeq9tYpRa9lb6Qb" entityName="USBuyingAtUS.callBuyUS.createOrderData">
@@ -83,12 +83,12 @@
         <originalType xsi:type="repository:CompositeDataType" href="newRepository.repository#_xtqFsHKIEeq9tYpRa9lb6Q"/>
       </resultingData>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_uIL3B3KMEeq9tYpRa9lb6Qb">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_sa788HKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#_tN5q8HKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_sa788HKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
       <initialCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_v3eqZ3KMEeq9tYpRa9lb6Qb">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
       </initialCharacteristics>
     </operations>
     <operations xsi:type="processing:PerformDataTransmissionOperation" id="_z6DH83KMEeq9tYpRa9lb6Qb" entityName="USBuyingAtUS.callBuyUS.performCall">
@@ -99,8 +99,8 @@
   <dataProcessingContainers id="_5i4jQHKNEeq9tYpRa9lb6Q" entityName="Encryptor.encrypt">
     <operations xsi:type="processing:CharacteristicChangingDataOperation" id="_dIcGfHKOEeq9tYpRa9lb6Q" entityName="Encryptor.encrypt.encryptData" data="_tCG1MHKLEeq9tYpRa9lb6Q">
       <characteristic xsi:type="characteristics:EnumCharacteristic" id="_iDRowHKOEeq9tYpRa9lb6Q">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#_98iygHKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#_98iygHKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
       </characteristic>
     </operations>
     <operations xsi:type="processing:ReturnDataOperation" id="_kAPrxnKOEeq9tYpRa9lb6Q" entityName="Encryptor.encrypt.encryptData.return" consumedData="_tCG1MHKLEeq9tYpRa9lb6Q" returnDestination="_vwJIwnKLEeq9tYpRa9lb6Q"/>
@@ -116,8 +116,8 @@
   <dataProcessingContainers id="_8-ggMHKOEeq9tYpRa9lb6Q" entityName="USBuy.buy.updateQuantity">
     <operations xsi:type="processing:CharacteristicChangingDataOperation" id="_K7VnbHKPEeq9tYpRa9lb6Q" entityName="USBuy.buy.updateQuantity.removePersonal" data="_pTCicHKLEeq9tYpRa9lb6Q" operation="REMOVE">
       <characteristic xsi:type="characteristics:EnumCharacteristic" id="_PVOYwHKPEeq9tYpRa9lb6Q">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
       </characteristic>
     </operations>
     <operations xsi:type="processing:PerformDataTransmissionOperation" id="_RNyc5HKPEeq9tYpRa9lb6Q" entityName="USBuy.buy.updateQuantity.call">
@@ -141,8 +141,8 @@
   <dataProcessingContainers id="_bRGU8HKPEeq9tYpRa9lb6Q" entityName="EUBuy.buy.updateQuantity">
     <operations xsi:type="processing:CharacteristicChangingDataOperation" id="_vIgkPHKPEeq9tYpRa9lb6Q" entityName="EUBuy.buy.updateQuantity.removePersonal" data="_pTCicHKLEeq9tYpRa9lb6Q" operation="REMOVE">
       <characteristic xsi:type="characteristics:EnumCharacteristic" id="_yObMQHKPEeq9tYpRa9lb6Q">
-        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
-        <literals href="characteristics.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
+        <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#__hrkUHKKEeq9tYpRa9lb6Q"/>
+        <literals href="geolocation.xmi#_6MC8YHKKEeq9tYpRa9lb6Q"/>
       </characteristic>
     </operations>
     <operations xsi:type="processing:PerformDataTransmissionOperation" id="_suUZs3KPEeq9tYpRa9lb6Q" entityName="EUBuy.buy.updateQuantity.call">
@@ -151,14 +151,14 @@
   </dataProcessingContainers>
   <characteristicContainer id="_1lo8g3KLEeq9tYpRa9lb6Q" entityName="ResourceContainer.EU">
     <ownedCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_-ALf4HKLEeq9tYpRa9lb6Q">
-      <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#_vo7i8HKKEeq9tYpRa9lb6Q"/>
-      <literals href="characteristics.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
+      <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#_vo7i8HKKEeq9tYpRa9lb6Q"/>
+      <literals href="geolocation.xmi#_ryWS8HKKEeq9tYpRa9lb6Q"/>
     </ownedCharacteristics>
   </characteristicContainer>
   <characteristicContainer id="_34rWI3KLEeq9tYpRa9lb6Q" entityName="ResourceContainer.US">
     <ownedCharacteristics xsi:type="characteristics:EnumCharacteristic" id="_B8C4gHKMEeq9tYpRa9lb6Q">
-      <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="characteristics.xmi#_vo7i8HKKEeq9tYpRa9lb6Q"/>
-      <literals href="characteristics.xmi#_sa788HKKEeq9tYpRa9lb6Q"/>
+      <characteristicType xsi:type="characteristics:EnumCharacteristicType" href="geolocation.xmi#_vo7i8HKKEeq9tYpRa9lb6Q"/>
+      <literals href="geolocation.xmi#_sa788HKKEeq9tYpRa9lb6Q"/>
     </ownedCharacteristics>
   </characteristicContainer>
   <operationSignatureDataRefinement id="_Lc9qkXKLEeq9tYpRa9lb6Q" entityName="Buy.buy">

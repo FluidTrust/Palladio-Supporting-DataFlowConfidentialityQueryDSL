@@ -308,14 +308,14 @@ public interface DSLPackage extends EPackage
   int CHARACTERISTIC_TYPE_SELECTOR_FEATURE_COUNT = 5;
 
   /**
-	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableImpl <em>Characteristic Variable</em>}' class.
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableTypeImpl <em>Characteristic Variable Type</em>}' class.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableImpl
-	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicVariable()
+	 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableTypeImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicVariableType()
 	 * @generated
 	 */
-  int CHARACTERISTIC_VARIABLE = 6;
+  int CHARACTERISTIC_VARIABLE_TYPE = 6;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -324,16 +324,35 @@ public interface DSLPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-  int CHARACTERISTIC_VARIABLE__NAME = 0;
+  int CHARACTERISTIC_VARIABLE_TYPE__NAME = 0;
 
   /**
-	 * The feature id for the '<em><b>Is Set</b></em>' attribute.
+	 * The number of structural features of the '<em>Characteristic Variable Type</em>' class.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-  int CHARACTERISTIC_VARIABLE__IS_SET = 1;
+  int CHARACTERISTIC_VARIABLE_TYPE_FEATURE_COUNT = 1;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableImpl <em>Characteristic Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicVariable()
+	 * @generated
+	 */
+  int CHARACTERISTIC_VARIABLE = 7;
+
+  /**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CHARACTERISTIC_VARIABLE__NAME = CHARACTERISTIC_VARIABLE_TYPE__NAME;
 
   /**
 	 * The number of structural features of the '<em>Characteristic Variable</em>' class.
@@ -342,7 +361,35 @@ public interface DSLPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-  int CHARACTERISTIC_VARIABLE_FEATURE_COUNT = 2;
+  int CHARACTERISTIC_VARIABLE_FEATURE_COUNT = CHARACTERISTIC_VARIABLE_TYPE_FEATURE_COUNT + 0;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSetImpl <em>Characteristic Set</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicSetImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicSet()
+	 * @generated
+	 */
+  int CHARACTERISTIC_SET = 8;
+
+  /**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CHARACTERISTIC_SET__NAME = CHARACTERISTIC_VARIABLE_TYPE__NAME;
+
+  /**
+	 * The number of structural features of the '<em>Characteristic Set</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CHARACTERISTIC_SET_FEATURE_COUNT = CHARACTERISTIC_VARIABLE_TYPE_FEATURE_COUNT + 0;
 
   /**
 	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.IncludeImpl <em>Include</em>}' class.
@@ -352,7 +399,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getInclude()
 	 * @generated
 	 */
-  int INCLUDE = 7;
+  int INCLUDE = 9;
 
   /**
 	 * The feature id for the '<em><b>Import URI</b></em>' attribute.
@@ -380,7 +427,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getConstraint()
 	 * @generated
 	 */
-  int CONSTRAINT = 8;
+  int CONSTRAINT = 10;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -417,7 +464,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getRule()
 	 * @generated
 	 */
-  int RULE = 9;
+  int RULE = 11;
 
   /**
 	 * The feature id for the '<em><b>Data Selectors</b></em>' containment reference list.
@@ -472,7 +519,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDataSelector()
 	 * @generated
 	 */
-  int DATA_SELECTOR = 10;
+  int DATA_SELECTOR = 12;
 
   /**
 	 * The number of structural features of the '<em>Data Selector</em>' class.
@@ -491,7 +538,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicSelector()
 	 * @generated
 	 */
-  int CHARACTERISTIC_SELECTOR = 11;
+  int CHARACTERISTIC_SELECTOR = 13;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -519,7 +566,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicClassSelector()
 	 * @generated
 	 */
-  int CHARACTERISTIC_CLASS_SELECTOR = 12;
+  int CHARACTERISTIC_CLASS_SELECTOR = 14;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -547,7 +594,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeSelector()
 	 * @generated
 	 */
-  int ATTRIBUTE_SELECTOR = 13;
+  int ATTRIBUTE_SELECTOR = 15;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -575,7 +622,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getAttributeClassSelector()
 	 * @generated
 	 */
-  int ATTRIBUTE_CLASS_SELECTOR = 14;
+  int ATTRIBUTE_CLASS_SELECTOR = 16;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -603,7 +650,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getDestinationSelector()
 	 * @generated
 	 */
-  int DESTINATION_SELECTOR = 15;
+  int DESTINATION_SELECTOR = 17;
 
   /**
 	 * The number of structural features of the '<em>Destination Selector</em>' class.
@@ -622,7 +669,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertySelector()
 	 * @generated
 	 */
-  int PROPERTY_SELECTOR = 16;
+  int PROPERTY_SELECTOR = 18;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -650,7 +697,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getPropertyClassSelector()
 	 * @generated
 	 */
-  int PROPERTY_CLASS_SELECTOR = 17;
+  int PROPERTY_CLASS_SELECTOR = 19;
 
   /**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -678,7 +725,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getNodeIdentitiySelector()
 	 * @generated
 	 */
-  int NODE_IDENTITIY_SELECTOR = 18;
+  int NODE_IDENTITIY_SELECTOR = 20;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -733,7 +780,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatement()
 	 * @generated
 	 */
-  int STATEMENT = 19;
+  int STATEMENT = 21;
 
   /**
 	 * The feature id for the '<em><b>Modality</b></em>' containment reference.
@@ -770,7 +817,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementType()
 	 * @generated
 	 */
-  int STATEMENT_TYPE = 20;
+  int STATEMENT_TYPE = 22;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -798,7 +845,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getStatementModality()
 	 * @generated
 	 */
-  int STATEMENT_MODALITY = 21;
+  int STATEMENT_MODALITY = 23;
 
   /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -826,16 +873,16 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCondition()
 	 * @generated
 	 */
-  int CONDITION = 22;
+  int CONDITION = 24;
 
   /**
-	 * The feature id for the '<em><b>Todo</b></em>' reference.
+	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-  int CONDITION__TODO = 0;
+  int CONDITION__OPERATION = 0;
 
   /**
 	 * The number of structural features of the '<em>Condition</em>' class.
@@ -847,6 +894,416 @@ public interface DSLPackage extends EPackage
   int CONDITION_FEATURE_COUNT = 1;
 
   /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.ReferenceImpl <em>Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.ReferenceImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getReference()
+	 * @generated
+	 */
+  int REFERENCE = 25;
+
+  /**
+	 * The number of structural features of the '<em>Reference</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int REFERENCE_FEATURE_COUNT = 0;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicReferenceImpl <em>Characteristic Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicReferenceImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicReference()
+	 * @generated
+	 */
+  int CHARACTERISTIC_REFERENCE = 26;
+
+  /**
+	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CHARACTERISTIC_REFERENCE__VALUE = REFERENCE_FEATURE_COUNT + 0;
+
+  /**
+	 * The number of structural features of the '<em>Characteristic Reference</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CHARACTERISTIC_REFERENCE_FEATURE_COUNT = REFERENCE_FEATURE_COUNT + 1;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSetReferenceImpl <em>Characteristic Set Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicSetReferenceImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicSetReference()
+	 * @generated
+	 */
+  int CHARACTERISTIC_SET_REFERENCE = 27;
+
+  /**
+	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CHARACTERISTIC_SET_REFERENCE__VALUE = REFERENCE_FEATURE_COUNT + 0;
+
+  /**
+	 * The feature id for the '<em><b>Ref</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CHARACTERISTIC_SET_REFERENCE__REF = REFERENCE_FEATURE_COUNT + 1;
+
+  /**
+	 * The number of structural features of the '<em>Characteristic Set Reference</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CHARACTERISTIC_SET_REFERENCE_FEATURE_COUNT = REFERENCE_FEATURE_COUNT + 2;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.OperationImpl <em>Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.OperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getOperation()
+	 * @generated
+	 */
+  int OPERATION = 28;
+
+  /**
+	 * The number of structural features of the '<em>Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int OPERATION_FEATURE_COUNT = 0;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.BooleanOperationImpl <em>Boolean Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.BooleanOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getBooleanOperation()
+	 * @generated
+	 */
+  int BOOLEAN_OPERATION = 29;
+
+  /**
+	 * The number of structural features of the '<em>Boolean Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int BOOLEAN_OPERATION_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 0;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristsicSetOperationImpl <em>Characteristsic Set Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristsicSetOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristsicSetOperation()
+	 * @generated
+	 */
+  int CHARACTERISTSIC_SET_OPERATION = 30;
+
+  /**
+	 * The number of structural features of the '<em>Characteristsic Set Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CHARACTERISTSIC_SET_OPERATION_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 0;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.LogicalAndOperationImpl <em>Logical And Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.LogicalAndOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getLogicalAndOperation()
+	 * @generated
+	 */
+  int LOGICAL_AND_OPERATION = 31;
+
+  /**
+	 * The feature id for the '<em><b>Left</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int LOGICAL_AND_OPERATION__LEFT = BOOLEAN_OPERATION_FEATURE_COUNT + 0;
+
+  /**
+	 * The feature id for the '<em><b>Right</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int LOGICAL_AND_OPERATION__RIGHT = BOOLEAN_OPERATION_FEATURE_COUNT + 1;
+
+  /**
+	 * The number of structural features of the '<em>Logical And Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int LOGICAL_AND_OPERATION_FEATURE_COUNT = BOOLEAN_OPERATION_FEATURE_COUNT + 2;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.LogicalOrOperationImpl <em>Logical Or Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.LogicalOrOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getLogicalOrOperation()
+	 * @generated
+	 */
+  int LOGICAL_OR_OPERATION = 32;
+
+  /**
+	 * The feature id for the '<em><b>Left</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int LOGICAL_OR_OPERATION__LEFT = 0;
+
+  /**
+	 * The feature id for the '<em><b>Right</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int LOGICAL_OR_OPERATION__RIGHT = 1;
+
+  /**
+	 * The number of structural features of the '<em>Logical Or Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int LOGICAL_OR_OPERATION_FEATURE_COUNT = 2;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.LogicalNegationOperationImpl <em>Logical Negation Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.LogicalNegationOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getLogicalNegationOperation()
+	 * @generated
+	 */
+  int LOGICAL_NEGATION_OPERATION = 33;
+
+  /**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int LOGICAL_NEGATION_OPERATION__VALUE = BOOLEAN_OPERATION_FEATURE_COUNT + 0;
+
+  /**
+	 * The number of structural features of the '<em>Logical Negation Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int LOGICAL_NEGATION_OPERATION_FEATURE_COUNT = BOOLEAN_OPERATION_FEATURE_COUNT + 1;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.VariableEqualityOperationImpl <em>Variable Equality Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.VariableEqualityOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getVariableEqualityOperation()
+	 * @generated
+	 */
+  int VARIABLE_EQUALITY_OPERATION = 34;
+
+  /**
+	 * The feature id for the '<em><b>Left</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int VARIABLE_EQUALITY_OPERATION__LEFT = BOOLEAN_OPERATION_FEATURE_COUNT + 0;
+
+  /**
+	 * The feature id for the '<em><b>Right</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int VARIABLE_EQUALITY_OPERATION__RIGHT = BOOLEAN_OPERATION_FEATURE_COUNT + 1;
+
+  /**
+	 * The number of structural features of the '<em>Variable Equality Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int VARIABLE_EQUALITY_OPERATION_FEATURE_COUNT = BOOLEAN_OPERATION_FEATURE_COUNT + 2;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.VariableInequalityOperationImpl <em>Variable Inequality Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.VariableInequalityOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getVariableInequalityOperation()
+	 * @generated
+	 */
+  int VARIABLE_INEQUALITY_OPERATION = 35;
+
+  /**
+	 * The feature id for the '<em><b>Left</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int VARIABLE_INEQUALITY_OPERATION__LEFT = BOOLEAN_OPERATION_FEATURE_COUNT + 0;
+
+  /**
+	 * The feature id for the '<em><b>Right</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int VARIABLE_INEQUALITY_OPERATION__RIGHT = BOOLEAN_OPERATION_FEATURE_COUNT + 1;
+
+  /**
+	 * The number of structural features of the '<em>Variable Inequality Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int VARIABLE_INEQUALITY_OPERATION_FEATURE_COUNT = BOOLEAN_OPERATION_FEATURE_COUNT + 2;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.EmptySetOperationImpl <em>Empty Set Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.EmptySetOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getEmptySetOperation()
+	 * @generated
+	 */
+  int EMPTY_SET_OPERATION = 36;
+
+  /**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int EMPTY_SET_OPERATION__VALUE = BOOLEAN_OPERATION_FEATURE_COUNT + 0;
+
+  /**
+	 * The number of structural features of the '<em>Empty Set Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int EMPTY_SET_OPERATION_FEATURE_COUNT = BOOLEAN_OPERATION_FEATURE_COUNT + 1;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.IntersectionOperationImpl <em>Intersection Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.IntersectionOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getIntersectionOperation()
+	 * @generated
+	 */
+  int INTERSECTION_OPERATION = 37;
+
+  /**
+	 * The feature id for the '<em><b>Left</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int INTERSECTION_OPERATION__LEFT = CHARACTERISTSIC_SET_OPERATION_FEATURE_COUNT + 0;
+
+  /**
+	 * The feature id for the '<em><b>Right</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int INTERSECTION_OPERATION__RIGHT = CHARACTERISTSIC_SET_OPERATION_FEATURE_COUNT + 1;
+
+  /**
+	 * The number of structural features of the '<em>Intersection Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int INTERSECTION_OPERATION_FEATURE_COUNT = CHARACTERISTSIC_SET_OPERATION_FEATURE_COUNT + 2;
+
+  /**
+	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.CreateSetOperationImpl <em>Create Set Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @see de.sebinside.dcp.dsl.dSL.impl.CreateSetOperationImpl
+	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCreateSetOperation()
+	 * @generated
+	 */
+  int CREATE_SET_OPERATION = 38;
+
+  /**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CREATE_SET_OPERATION__VALUE = CHARACTERISTSIC_SET_OPERATION_FEATURE_COUNT + 0;
+
+  /**
+	 * The number of structural features of the '<em>Create Set Operation</em>' class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+  int CREATE_SET_OPERATION_FEATURE_COUNT = CHARACTERISTSIC_SET_OPERATION_FEATURE_COUNT + 1;
+
+  /**
 	 * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.TargetModelType <em>Target Model Type</em>}' enum.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -854,7 +1311,7 @@ public interface DSLPackage extends EPackage
 	 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getTargetModelType()
 	 * @generated
 	 */
-  int TARGET_MODEL_TYPE = 23;
+  int TARGET_MODEL_TYPE = 39;
 
 
   /**
@@ -1083,6 +1540,27 @@ public interface DSLPackage extends EPackage
   EReference getCharacteristicTypeSelector_Variable();
 
   /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicVariableType <em>Characteristic Variable Type</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Characteristic Variable Type</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
+	 * @generated
+	 */
+  EClass getCharacteristicVariableType();
+
+  /**
+	 * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicVariableType#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicVariableType#getName()
+	 * @see #getCharacteristicVariableType()
+	 * @generated
+	 */
+  EAttribute getCharacteristicVariableType_Name();
+
+  /**
 	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicVariable <em>Characteristic Variable</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1093,26 +1571,14 @@ public interface DSLPackage extends EPackage
   EClass getCharacteristicVariable();
 
   /**
-	 * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicVariable#getName <em>Name</em>}'.
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSet <em>Characteristic Set</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicVariable#getName()
-	 * @see #getCharacteristicVariable()
+	 * @return the meta object for class '<em>Characteristic Set</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicSet
 	 * @generated
 	 */
-  EAttribute getCharacteristicVariable_Name();
-
-  /**
-	 * Returns the meta object for the attribute '{@link de.sebinside.dcp.dsl.dSL.CharacteristicVariable#isIsSet <em>Is Set</em>}'.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Set</em>'.
-	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicVariable#isIsSet()
-	 * @see #getCharacteristicVariable()
-	 * @generated
-	 */
-  EAttribute getCharacteristicVariable_IsSet();
+  EClass getCharacteristicSet();
 
   /**
 	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Include <em>Include</em>}'.
@@ -1462,15 +1928,331 @@ public interface DSLPackage extends EPackage
   EClass getCondition();
 
   /**
-	 * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.Condition#getTodo <em>Todo</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.Condition#getOperation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Todo</em>'.
-	 * @see de.sebinside.dcp.dsl.dSL.Condition#getTodo()
+	 * @return the meta object for the containment reference '<em>Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.Condition#getOperation()
 	 * @see #getCondition()
 	 * @generated
 	 */
-  EReference getCondition_Todo();
+  EReference getCondition_Operation();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Reference <em>Reference</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reference</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.Reference
+	 * @generated
+	 */
+  EClass getReference();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicReference <em>Characteristic Reference</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Characteristic Reference</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicReference
+	 * @generated
+	 */
+  EClass getCharacteristicReference();
+
+  /**
+	 * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.CharacteristicReference#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicReference#getValue()
+	 * @see #getCharacteristicReference()
+	 * @generated
+	 */
+  EReference getCharacteristicReference_Value();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSetReference <em>Characteristic Set Reference</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Characteristic Set Reference</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicSetReference
+	 * @generated
+	 */
+  EClass getCharacteristicSetReference();
+
+  /**
+	 * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSetReference#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicSetReference#getValue()
+	 * @see #getCharacteristicSetReference()
+	 * @generated
+	 */
+  EReference getCharacteristicSetReference_Value();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSetReference#getRef <em>Ref</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Ref</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicSetReference#getRef()
+	 * @see #getCharacteristicSetReference()
+	 * @generated
+	 */
+  EReference getCharacteristicSetReference_Ref();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Operation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.Operation
+	 * @generated
+	 */
+  EClass getOperation();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.BooleanOperation <em>Boolean Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boolean Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.BooleanOperation
+	 * @generated
+	 */
+  EClass getBooleanOperation();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.CharacteristsicSetOperation <em>Characteristsic Set Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Characteristsic Set Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristsicSetOperation
+	 * @generated
+	 */
+  EClass getCharacteristsicSetOperation();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.LogicalAndOperation <em>Logical And Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Logical And Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalAndOperation
+	 * @generated
+	 */
+  EClass getLogicalAndOperation();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.LogicalAndOperation#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalAndOperation#getLeft()
+	 * @see #getLogicalAndOperation()
+	 * @generated
+	 */
+  EReference getLogicalAndOperation_Left();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.LogicalAndOperation#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalAndOperation#getRight()
+	 * @see #getLogicalAndOperation()
+	 * @generated
+	 */
+  EReference getLogicalAndOperation_Right();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.LogicalOrOperation <em>Logical Or Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Logical Or Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalOrOperation
+	 * @generated
+	 */
+  EClass getLogicalOrOperation();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.LogicalOrOperation#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalOrOperation#getLeft()
+	 * @see #getLogicalOrOperation()
+	 * @generated
+	 */
+  EReference getLogicalOrOperation_Left();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.LogicalOrOperation#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalOrOperation#getRight()
+	 * @see #getLogicalOrOperation()
+	 * @generated
+	 */
+  EReference getLogicalOrOperation_Right();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.LogicalNegationOperation <em>Logical Negation Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Logical Negation Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalNegationOperation
+	 * @generated
+	 */
+  EClass getLogicalNegationOperation();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.LogicalNegationOperation#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalNegationOperation#getValue()
+	 * @see #getLogicalNegationOperation()
+	 * @generated
+	 */
+  EReference getLogicalNegationOperation_Value();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.VariableEqualityOperation <em>Variable Equality Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Equality Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.VariableEqualityOperation
+	 * @generated
+	 */
+  EClass getVariableEqualityOperation();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.VariableEqualityOperation#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.VariableEqualityOperation#getLeft()
+	 * @see #getVariableEqualityOperation()
+	 * @generated
+	 */
+  EReference getVariableEqualityOperation_Left();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.VariableEqualityOperation#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.VariableEqualityOperation#getRight()
+	 * @see #getVariableEqualityOperation()
+	 * @generated
+	 */
+  EReference getVariableEqualityOperation_Right();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.VariableInequalityOperation <em>Variable Inequality Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Inequality Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.VariableInequalityOperation
+	 * @generated
+	 */
+  EClass getVariableInequalityOperation();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.VariableInequalityOperation#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.VariableInequalityOperation#getLeft()
+	 * @see #getVariableInequalityOperation()
+	 * @generated
+	 */
+  EReference getVariableInequalityOperation_Left();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.VariableInequalityOperation#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.VariableInequalityOperation#getRight()
+	 * @see #getVariableInequalityOperation()
+	 * @generated
+	 */
+  EReference getVariableInequalityOperation_Right();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.EmptySetOperation <em>Empty Set Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Empty Set Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.EmptySetOperation
+	 * @generated
+	 */
+  EClass getEmptySetOperation();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.EmptySetOperation#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.EmptySetOperation#getValue()
+	 * @see #getEmptySetOperation()
+	 * @generated
+	 */
+  EReference getEmptySetOperation_Value();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.IntersectionOperation <em>Intersection Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Intersection Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.IntersectionOperation
+	 * @generated
+	 */
+  EClass getIntersectionOperation();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.IntersectionOperation#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.IntersectionOperation#getLeft()
+	 * @see #getIntersectionOperation()
+	 * @generated
+	 */
+  EReference getIntersectionOperation_Left();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.IntersectionOperation#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.IntersectionOperation#getRight()
+	 * @see #getIntersectionOperation()
+	 * @generated
+	 */
+  EReference getIntersectionOperation_Right();
+
+  /**
+	 * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.CreateSetOperation <em>Create Set Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Create Set Operation</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CreateSetOperation
+	 * @generated
+	 */
+  EClass getCreateSetOperation();
+
+  /**
+	 * Returns the meta object for the containment reference '{@link de.sebinside.dcp.dsl.dSL.CreateSetOperation#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see de.sebinside.dcp.dsl.dSL.CreateSetOperation#getValue()
+	 * @see #getCreateSetOperation()
+	 * @generated
+	 */
+  EReference getCreateSetOperation_Value();
 
   /**
 	 * Returns the meta object for enum '{@link de.sebinside.dcp.dsl.dSL.TargetModelType <em>Target Model Type</em>}'.
@@ -1686,6 +2468,24 @@ public interface DSLPackage extends EPackage
     EReference CHARACTERISTIC_TYPE_SELECTOR__VARIABLE = eINSTANCE.getCharacteristicTypeSelector_Variable();
 
     /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableTypeImpl <em>Characteristic Variable Type</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableTypeImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicVariableType()
+		 * @generated
+		 */
+    EClass CHARACTERISTIC_VARIABLE_TYPE = eINSTANCE.getCharacteristicVariableType();
+
+    /**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EAttribute CHARACTERISTIC_VARIABLE_TYPE__NAME = eINSTANCE.getCharacteristicVariableType_Name();
+
+    /**
 		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableImpl <em>Characteristic Variable</em>}' class.
 		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1696,20 +2496,14 @@ public interface DSLPackage extends EPackage
     EClass CHARACTERISTIC_VARIABLE = eINSTANCE.getCharacteristicVariable();
 
     /**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSetImpl <em>Characteristic Set</em>}' class.
 		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicSetImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicSet()
 		 * @generated
 		 */
-    EAttribute CHARACTERISTIC_VARIABLE__NAME = eINSTANCE.getCharacteristicVariable_Name();
-
-    /**
-		 * The meta object literal for the '<em><b>Is Set</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-		 * @generated
-		 */
-    EAttribute CHARACTERISTIC_VARIABLE__IS_SET = eINSTANCE.getCharacteristicVariable_IsSet();
+    EClass CHARACTERISTIC_SET = eINSTANCE.getCharacteristicSet();
 
     /**
 		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.IncludeImpl <em>Include</em>}' class.
@@ -2008,12 +2802,280 @@ public interface DSLPackage extends EPackage
     EClass CONDITION = eINSTANCE.getCondition();
 
     /**
-		 * The meta object literal for the '<em><b>Todo</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Operation</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 		 * @generated
 		 */
-    EReference CONDITION__TODO = eINSTANCE.getCondition_Todo();
+    EReference CONDITION__OPERATION = eINSTANCE.getCondition_Operation();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.ReferenceImpl <em>Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.ReferenceImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getReference()
+		 * @generated
+		 */
+    EClass REFERENCE = eINSTANCE.getReference();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicReferenceImpl <em>Characteristic Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicReferenceImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicReference()
+		 * @generated
+		 */
+    EClass CHARACTERISTIC_REFERENCE = eINSTANCE.getCharacteristicReference();
+
+    /**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference CHARACTERISTIC_REFERENCE__VALUE = eINSTANCE.getCharacteristicReference_Value();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicSetReferenceImpl <em>Characteristic Set Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristicSetReferenceImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristicSetReference()
+		 * @generated
+		 */
+    EClass CHARACTERISTIC_SET_REFERENCE = eINSTANCE.getCharacteristicSetReference();
+
+    /**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference CHARACTERISTIC_SET_REFERENCE__VALUE = eINSTANCE.getCharacteristicSetReference_Value();
+
+    /**
+		 * The meta object literal for the '<em><b>Ref</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference CHARACTERISTIC_SET_REFERENCE__REF = eINSTANCE.getCharacteristicSetReference_Ref();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.OperationImpl <em>Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.OperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getOperation()
+		 * @generated
+		 */
+    EClass OPERATION = eINSTANCE.getOperation();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.BooleanOperationImpl <em>Boolean Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.BooleanOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getBooleanOperation()
+		 * @generated
+		 */
+    EClass BOOLEAN_OPERATION = eINSTANCE.getBooleanOperation();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristsicSetOperationImpl <em>Characteristsic Set Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.CharacteristsicSetOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCharacteristsicSetOperation()
+		 * @generated
+		 */
+    EClass CHARACTERISTSIC_SET_OPERATION = eINSTANCE.getCharacteristsicSetOperation();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.LogicalAndOperationImpl <em>Logical And Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.LogicalAndOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getLogicalAndOperation()
+		 * @generated
+		 */
+    EClass LOGICAL_AND_OPERATION = eINSTANCE.getLogicalAndOperation();
+
+    /**
+		 * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference LOGICAL_AND_OPERATION__LEFT = eINSTANCE.getLogicalAndOperation_Left();
+
+    /**
+		 * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference LOGICAL_AND_OPERATION__RIGHT = eINSTANCE.getLogicalAndOperation_Right();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.LogicalOrOperationImpl <em>Logical Or Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.LogicalOrOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getLogicalOrOperation()
+		 * @generated
+		 */
+    EClass LOGICAL_OR_OPERATION = eINSTANCE.getLogicalOrOperation();
+
+    /**
+		 * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference LOGICAL_OR_OPERATION__LEFT = eINSTANCE.getLogicalOrOperation_Left();
+
+    /**
+		 * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference LOGICAL_OR_OPERATION__RIGHT = eINSTANCE.getLogicalOrOperation_Right();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.LogicalNegationOperationImpl <em>Logical Negation Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.LogicalNegationOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getLogicalNegationOperation()
+		 * @generated
+		 */
+    EClass LOGICAL_NEGATION_OPERATION = eINSTANCE.getLogicalNegationOperation();
+
+    /**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference LOGICAL_NEGATION_OPERATION__VALUE = eINSTANCE.getLogicalNegationOperation_Value();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.VariableEqualityOperationImpl <em>Variable Equality Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.VariableEqualityOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getVariableEqualityOperation()
+		 * @generated
+		 */
+    EClass VARIABLE_EQUALITY_OPERATION = eINSTANCE.getVariableEqualityOperation();
+
+    /**
+		 * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference VARIABLE_EQUALITY_OPERATION__LEFT = eINSTANCE.getVariableEqualityOperation_Left();
+
+    /**
+		 * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference VARIABLE_EQUALITY_OPERATION__RIGHT = eINSTANCE.getVariableEqualityOperation_Right();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.VariableInequalityOperationImpl <em>Variable Inequality Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.VariableInequalityOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getVariableInequalityOperation()
+		 * @generated
+		 */
+    EClass VARIABLE_INEQUALITY_OPERATION = eINSTANCE.getVariableInequalityOperation();
+
+    /**
+		 * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference VARIABLE_INEQUALITY_OPERATION__LEFT = eINSTANCE.getVariableInequalityOperation_Left();
+
+    /**
+		 * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference VARIABLE_INEQUALITY_OPERATION__RIGHT = eINSTANCE.getVariableInequalityOperation_Right();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.EmptySetOperationImpl <em>Empty Set Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.EmptySetOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getEmptySetOperation()
+		 * @generated
+		 */
+    EClass EMPTY_SET_OPERATION = eINSTANCE.getEmptySetOperation();
+
+    /**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference EMPTY_SET_OPERATION__VALUE = eINSTANCE.getEmptySetOperation_Value();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.IntersectionOperationImpl <em>Intersection Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.IntersectionOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getIntersectionOperation()
+		 * @generated
+		 */
+    EClass INTERSECTION_OPERATION = eINSTANCE.getIntersectionOperation();
+
+    /**
+		 * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference INTERSECTION_OPERATION__LEFT = eINSTANCE.getIntersectionOperation_Left();
+
+    /**
+		 * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference INTERSECTION_OPERATION__RIGHT = eINSTANCE.getIntersectionOperation_Right();
+
+    /**
+		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.CreateSetOperationImpl <em>Create Set Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @see de.sebinside.dcp.dsl.dSL.impl.CreateSetOperationImpl
+		 * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getCreateSetOperation()
+		 * @generated
+		 */
+    EClass CREATE_SET_OPERATION = eINSTANCE.getCreateSetOperation();
+
+    /**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    EReference CREATE_SET_OPERATION__VALUE = eINSTANCE.getCreateSetOperation_Value();
 
     /**
 		 * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.TargetModelType <em>Target Model Type</em>}' enum.

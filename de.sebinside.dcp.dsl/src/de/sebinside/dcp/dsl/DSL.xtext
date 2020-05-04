@@ -41,11 +41,16 @@ CharacteristicTypeSelector:
 	(',' literals+=[characteristics::EnumCharacteristicLiteral])*
 	']') |
 	// Variable usage
-	(isVariableSelector?="$") variable=CharacteristicVariable);
-	
+	(isVariableSelector?="$") variable=CharacteristicVariableType);
+
+CharacteristicVariableType:
+	CharacteristicVariable | CharacteristicSet;
+
 CharacteristicVariable:
-	name=ID (isSet?="{}")?
-;
+	name=ID;
+
+CharacteristicSet:
+	name=ID "{}";
 
 Include:
 	'import' importURI=STRING;
@@ -95,7 +100,51 @@ StatementType:
 
 StatementModality:
 	name='NEVER';
-	
+
 Condition:
-	'WHERE' todo=[CharacteristicVariable] 
-;
+	'WHERE' operation=BooleanOperation;
+
+Reference:
+	CharacteristicReference | CharacteristicSetReference;
+
+CharacteristicReference:
+	value=[CharacteristicVariable];
+
+CharacteristicSetReference:
+	value=[CharacteristicSet] | ref=CharacteristsicSetOperation;
+
+Operation:
+	BooleanOperation | CharacteristsicSetOperation;
+
+BooleanOperation:
+	LogicalAndOperation // |  LogicalOrOperation 
+	| LogicalNegationOperation | VariableEqualityOperation |
+	VariableInequalityOperation | EmptySetOperation;
+
+CharacteristsicSetOperation:
+	CreateSetOperation | IntersectionOperation;
+LogicalAndOperation:
+	"(" left=BooleanOperation "&" right=BooleanOperation ")";
+
+LogicalOrOperation:
+	"(" left=BooleanOperation "|" right=BooleanOperation ")";
+
+LogicalNegationOperation:
+	"!" value=BooleanOperation;
+
+VariableEqualityOperation:
+	left=CharacteristicReference "==" right=CharacteristicReference;
+
+VariableInequalityOperation:
+	left=CharacteristicReference "!=" right=CharacteristicReference;
+
+EmptySetOperation:
+	"isEmpty(" value=CharacteristicSetReference ")";
+
+IntersectionOperation:
+	"intersection(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+
+CreateSetOperation:
+	"{" value=CharacteristicReference "}";
+	
+// TODO: union, subtract, elementOf

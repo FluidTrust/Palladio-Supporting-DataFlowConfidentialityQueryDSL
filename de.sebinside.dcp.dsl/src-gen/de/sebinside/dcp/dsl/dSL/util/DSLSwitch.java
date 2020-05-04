@@ -109,9 +109,23 @@ public class DSLSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DSLPackage.CHARACTERISTIC_VARIABLE_TYPE: {
+				CharacteristicVariableType characteristicVariableType = (CharacteristicVariableType)theEObject;
+				T result = caseCharacteristicVariableType(characteristicVariableType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DSLPackage.CHARACTERISTIC_VARIABLE: {
 				CharacteristicVariable characteristicVariable = (CharacteristicVariable)theEObject;
 				T result = caseCharacteristicVariable(characteristicVariable);
+				if (result == null) result = caseCharacteristicVariableType(characteristicVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.CHARACTERISTIC_SET: {
+				CharacteristicSet characteristicSet = (CharacteristicSet)theEObject;
+				T result = caseCharacteristicSet(characteristicSet);
+				if (result == null) result = caseCharacteristicVariableType(characteristicSet);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -222,6 +236,108 @@ public class DSLSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DSLPackage.REFERENCE: {
+				Reference reference = (Reference)theEObject;
+				T result = caseReference(reference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.CHARACTERISTIC_REFERENCE: {
+				CharacteristicReference characteristicReference = (CharacteristicReference)theEObject;
+				T result = caseCharacteristicReference(characteristicReference);
+				if (result == null) result = caseReference(characteristicReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.CHARACTERISTIC_SET_REFERENCE: {
+				CharacteristicSetReference characteristicSetReference = (CharacteristicSetReference)theEObject;
+				T result = caseCharacteristicSetReference(characteristicSetReference);
+				if (result == null) result = caseReference(characteristicSetReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.OPERATION: {
+				Operation operation = (Operation)theEObject;
+				T result = caseOperation(operation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.BOOLEAN_OPERATION: {
+				BooleanOperation booleanOperation = (BooleanOperation)theEObject;
+				T result = caseBooleanOperation(booleanOperation);
+				if (result == null) result = caseOperation(booleanOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.CHARACTERISTSIC_SET_OPERATION: {
+				CharacteristsicSetOperation characteristsicSetOperation = (CharacteristsicSetOperation)theEObject;
+				T result = caseCharacteristsicSetOperation(characteristsicSetOperation);
+				if (result == null) result = caseOperation(characteristsicSetOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.LOGICAL_AND_OPERATION: {
+				LogicalAndOperation logicalAndOperation = (LogicalAndOperation)theEObject;
+				T result = caseLogicalAndOperation(logicalAndOperation);
+				if (result == null) result = caseBooleanOperation(logicalAndOperation);
+				if (result == null) result = caseOperation(logicalAndOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.LOGICAL_OR_OPERATION: {
+				LogicalOrOperation logicalOrOperation = (LogicalOrOperation)theEObject;
+				T result = caseLogicalOrOperation(logicalOrOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.LOGICAL_NEGATION_OPERATION: {
+				LogicalNegationOperation logicalNegationOperation = (LogicalNegationOperation)theEObject;
+				T result = caseLogicalNegationOperation(logicalNegationOperation);
+				if (result == null) result = caseBooleanOperation(logicalNegationOperation);
+				if (result == null) result = caseOperation(logicalNegationOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION: {
+				VariableEqualityOperation variableEqualityOperation = (VariableEqualityOperation)theEObject;
+				T result = caseVariableEqualityOperation(variableEqualityOperation);
+				if (result == null) result = caseBooleanOperation(variableEqualityOperation);
+				if (result == null) result = caseOperation(variableEqualityOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.VARIABLE_INEQUALITY_OPERATION: {
+				VariableInequalityOperation variableInequalityOperation = (VariableInequalityOperation)theEObject;
+				T result = caseVariableInequalityOperation(variableInequalityOperation);
+				if (result == null) result = caseBooleanOperation(variableInequalityOperation);
+				if (result == null) result = caseOperation(variableInequalityOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.EMPTY_SET_OPERATION: {
+				EmptySetOperation emptySetOperation = (EmptySetOperation)theEObject;
+				T result = caseEmptySetOperation(emptySetOperation);
+				if (result == null) result = caseBooleanOperation(emptySetOperation);
+				if (result == null) result = caseOperation(emptySetOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.INTERSECTION_OPERATION: {
+				IntersectionOperation intersectionOperation = (IntersectionOperation)theEObject;
+				T result = caseIntersectionOperation(intersectionOperation);
+				if (result == null) result = caseCharacteristsicSetOperation(intersectionOperation);
+				if (result == null) result = caseOperation(intersectionOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DSLPackage.CREATE_SET_OPERATION: {
+				CreateSetOperation createSetOperation = (CreateSetOperation)theEObject;
+				T result = caseCreateSetOperation(createSetOperation);
+				if (result == null) result = caseCharacteristsicSetOperation(createSetOperation);
+				if (result == null) result = caseOperation(createSetOperation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -323,6 +439,22 @@ public class DSLSwitch<T> extends Switch<T>
 	}
 
   /**
+	 * Returns the result of interpreting the object as an instance of '<em>Characteristic Variable Type</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Characteristic Variable Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseCharacteristicVariableType(CharacteristicVariableType object)
+  {
+		return null;
+	}
+
+  /**
 	 * Returns the result of interpreting the object as an instance of '<em>Characteristic Variable</em>'.
 	 * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -334,6 +466,22 @@ public class DSLSwitch<T> extends Switch<T>
 	 * @generated
 	 */
   public T caseCharacteristicVariable(CharacteristicVariable object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Characteristic Set</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Characteristic Set</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseCharacteristicSet(CharacteristicSet object)
   {
 		return null;
 	}
@@ -590,6 +738,230 @@ public class DSLSwitch<T> extends Switch<T>
 	 * @generated
 	 */
   public T caseCondition(Condition object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseReference(Reference object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Characteristic Reference</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Characteristic Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseCharacteristicReference(CharacteristicReference object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Characteristic Set Reference</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Characteristic Set Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseCharacteristicSetReference(CharacteristicSetReference object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseOperation(Operation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Boolean Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Boolean Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseBooleanOperation(BooleanOperation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Characteristsic Set Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Characteristsic Set Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseCharacteristsicSetOperation(CharacteristsicSetOperation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Logical And Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logical And Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseLogicalAndOperation(LogicalAndOperation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Logical Or Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logical Or Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseLogicalOrOperation(LogicalOrOperation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Logical Negation Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logical Negation Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseLogicalNegationOperation(LogicalNegationOperation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Equality Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Equality Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseVariableEqualityOperation(VariableEqualityOperation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Inequality Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Inequality Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseVariableInequalityOperation(VariableInequalityOperation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Empty Set Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Empty Set Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseEmptySetOperation(EmptySetOperation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Intersection Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Intersection Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseIntersectionOperation(IntersectionOperation object)
+  {
+		return null;
+	}
+
+  /**
+	 * Returns the result of interpreting the object as an instance of '<em>Create Set Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Create Set Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+  public T caseCreateSetOperation(CreateSetOperation object)
   {
 		return null;
 	}

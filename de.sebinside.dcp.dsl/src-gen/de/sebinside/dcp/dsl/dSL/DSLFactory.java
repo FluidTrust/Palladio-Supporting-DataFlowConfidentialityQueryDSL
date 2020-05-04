@@ -78,6 +78,15 @@ public interface DSLFactory extends EFactory
   CharacteristicTypeSelector createCharacteristicTypeSelector();
 
   /**
+	 * Returns a new object of class '<em>Characteristic Variable Type</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Characteristic Variable Type</em>'.
+	 * @generated
+	 */
+  CharacteristicVariableType createCharacteristicVariableType();
+
+  /**
 	 * Returns a new object of class '<em>Characteristic Variable</em>'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,6 +94,15 @@ public interface DSLFactory extends EFactory
 	 * @generated
 	 */
   CharacteristicVariable createCharacteristicVariable();
+
+  /**
+	 * Returns a new object of class '<em>Characteristic Set</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Characteristic Set</em>'.
+	 * @generated
+	 */
+  CharacteristicSet createCharacteristicSet();
 
   /**
 	 * Returns a new object of class '<em>Include</em>'.
@@ -229,6 +247,132 @@ public interface DSLFactory extends EFactory
 	 * @generated
 	 */
   Condition createCondition();
+
+  /**
+	 * Returns a new object of class '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Reference</em>'.
+	 * @generated
+	 */
+  Reference createReference();
+
+  /**
+	 * Returns a new object of class '<em>Characteristic Reference</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Characteristic Reference</em>'.
+	 * @generated
+	 */
+  CharacteristicReference createCharacteristicReference();
+
+  /**
+	 * Returns a new object of class '<em>Characteristic Set Reference</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Characteristic Set Reference</em>'.
+	 * @generated
+	 */
+  CharacteristicSetReference createCharacteristicSetReference();
+
+  /**
+	 * Returns a new object of class '<em>Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operation</em>'.
+	 * @generated
+	 */
+  Operation createOperation();
+
+  /**
+	 * Returns a new object of class '<em>Boolean Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boolean Operation</em>'.
+	 * @generated
+	 */
+  BooleanOperation createBooleanOperation();
+
+  /**
+	 * Returns a new object of class '<em>Characteristsic Set Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Characteristsic Set Operation</em>'.
+	 * @generated
+	 */
+  CharacteristsicSetOperation createCharacteristsicSetOperation();
+
+  /**
+	 * Returns a new object of class '<em>Logical And Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Logical And Operation</em>'.
+	 * @generated
+	 */
+  LogicalAndOperation createLogicalAndOperation();
+
+  /**
+	 * Returns a new object of class '<em>Logical Or Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Logical Or Operation</em>'.
+	 * @generated
+	 */
+  LogicalOrOperation createLogicalOrOperation();
+
+  /**
+	 * Returns a new object of class '<em>Logical Negation Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Logical Negation Operation</em>'.
+	 * @generated
+	 */
+  LogicalNegationOperation createLogicalNegationOperation();
+
+  /**
+	 * Returns a new object of class '<em>Variable Equality Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable Equality Operation</em>'.
+	 * @generated
+	 */
+  VariableEqualityOperation createVariableEqualityOperation();
+
+  /**
+	 * Returns a new object of class '<em>Variable Inequality Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable Inequality Operation</em>'.
+	 * @generated
+	 */
+  VariableInequalityOperation createVariableInequalityOperation();
+
+  /**
+	 * Returns a new object of class '<em>Empty Set Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Empty Set Operation</em>'.
+	 * @generated
+	 */
+  EmptySetOperation createEmptySetOperation();
+
+  /**
+	 * Returns a new object of class '<em>Intersection Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Intersection Operation</em>'.
+	 * @generated
+	 */
+  IntersectionOperation createIntersectionOperation();
+
+  /**
+	 * Returns a new object of class '<em>Create Set Operation</em>'.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Create Set Operation</em>'.
+	 * @generated
+	 */
+  CreateSetOperation createCreateSetOperation();
 
   /**
 	 * Returns the package supported by this factory.

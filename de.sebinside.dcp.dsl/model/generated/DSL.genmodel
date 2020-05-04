@@ -37,10 +37,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicTypeSelector/isVariableSelector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicTypeSelector/variable"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//CharacteristicVariable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicVariable/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicVariable/isSet"/>
+    <genClasses ecoreClass="DSL.ecore#//CharacteristicVariableType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicVariableType/name"/>
     </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//CharacteristicVariable"/>
+    <genClasses ecoreClass="DSL.ecore#//CharacteristicSet"/>
     <genClasses ecoreClass="DSL.ecore#//Include">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//Include/importURI"/>
     </genClasses>
@@ -83,7 +84,47 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//StatementModality/name"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Condition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//Condition/todo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Condition/operation"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//Reference"/>
+    <genClasses ecoreClass="DSL.ecore#//CharacteristicReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicReference/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//CharacteristicSetReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicSetReference/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicSetReference/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//Operation"/>
+    <genClasses ecoreClass="DSL.ecore#//BooleanOperation"/>
+    <genClasses ecoreClass="DSL.ecore#//CharacteristsicSetOperation"/>
+    <genClasses ecoreClass="DSL.ecore#//LogicalAndOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//LogicalAndOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//LogicalAndOperation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//LogicalOrOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//LogicalOrOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//LogicalOrOperation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//LogicalNegationOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//LogicalNegationOperation/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//VariableEqualityOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//VariableEqualityOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//VariableEqualityOperation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//VariableInequalityOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//VariableInequalityOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//VariableInequalityOperation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//EmptySetOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//EmptySetOperation/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//IntersectionOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//IntersectionOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//IntersectionOperation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//CreateSetOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//CreateSetOperation/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

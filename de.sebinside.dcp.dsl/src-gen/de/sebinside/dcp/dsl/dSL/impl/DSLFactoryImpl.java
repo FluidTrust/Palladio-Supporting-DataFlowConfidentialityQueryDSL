@@ -68,7 +68,9 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
 			case DSLPackage.CHARACTERISTIC_TYPE: return createCharacteristicType();
 			case DSLPackage.CHARACTERISTIC_CLASS: return createCharacteristicClass();
 			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR: return createCharacteristicTypeSelector();
+			case DSLPackage.CHARACTERISTIC_VARIABLE_TYPE: return createCharacteristicVariableType();
 			case DSLPackage.CHARACTERISTIC_VARIABLE: return createCharacteristicVariable();
+			case DSLPackage.CHARACTERISTIC_SET: return createCharacteristicSet();
 			case DSLPackage.INCLUDE: return createInclude();
 			case DSLPackage.CONSTRAINT: return createConstraint();
 			case DSLPackage.RULE: return createRule();
@@ -85,6 +87,20 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
 			case DSLPackage.STATEMENT_TYPE: return createStatementType();
 			case DSLPackage.STATEMENT_MODALITY: return createStatementModality();
 			case DSLPackage.CONDITION: return createCondition();
+			case DSLPackage.REFERENCE: return createReference();
+			case DSLPackage.CHARACTERISTIC_REFERENCE: return createCharacteristicReference();
+			case DSLPackage.CHARACTERISTIC_SET_REFERENCE: return createCharacteristicSetReference();
+			case DSLPackage.OPERATION: return createOperation();
+			case DSLPackage.BOOLEAN_OPERATION: return createBooleanOperation();
+			case DSLPackage.CHARACTERISTSIC_SET_OPERATION: return createCharacteristsicSetOperation();
+			case DSLPackage.LOGICAL_AND_OPERATION: return createLogicalAndOperation();
+			case DSLPackage.LOGICAL_OR_OPERATION: return createLogicalOrOperation();
+			case DSLPackage.LOGICAL_NEGATION_OPERATION: return createLogicalNegationOperation();
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION: return createVariableEqualityOperation();
+			case DSLPackage.VARIABLE_INEQUALITY_OPERATION: return createVariableInequalityOperation();
+			case DSLPackage.EMPTY_SET_OPERATION: return createEmptySetOperation();
+			case DSLPackage.INTERSECTION_OPERATION: return createIntersectionOperation();
+			case DSLPackage.CREATE_SET_OPERATION: return createCreateSetOperation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -200,10 +216,34 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
 	 * @generated
 	 */
   @Override
+  public CharacteristicVariableType createCharacteristicVariableType()
+  {
+		CharacteristicVariableTypeImpl characteristicVariableType = new CharacteristicVariableTypeImpl();
+		return characteristicVariableType;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
   public CharacteristicVariable createCharacteristicVariable()
   {
 		CharacteristicVariableImpl characteristicVariable = new CharacteristicVariableImpl();
 		return characteristicVariable;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public CharacteristicSet createCharacteristicSet()
+  {
+		CharacteristicSetImpl characteristicSet = new CharacteristicSetImpl();
+		return characteristicSet;
 	}
 
   /**
@@ -396,6 +436,174 @@ public class DSLFactoryImpl extends EFactoryImpl implements DSLFactory
   {
 		ConditionImpl condition = new ConditionImpl();
 		return condition;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public Reference createReference()
+  {
+		ReferenceImpl reference = new ReferenceImpl();
+		return reference;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public CharacteristicReference createCharacteristicReference()
+  {
+		CharacteristicReferenceImpl characteristicReference = new CharacteristicReferenceImpl();
+		return characteristicReference;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public CharacteristicSetReference createCharacteristicSetReference()
+  {
+		CharacteristicSetReferenceImpl characteristicSetReference = new CharacteristicSetReferenceImpl();
+		return characteristicSetReference;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public Operation createOperation()
+  {
+		OperationImpl operation = new OperationImpl();
+		return operation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public BooleanOperation createBooleanOperation()
+  {
+		BooleanOperationImpl booleanOperation = new BooleanOperationImpl();
+		return booleanOperation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public CharacteristsicSetOperation createCharacteristsicSetOperation()
+  {
+		CharacteristsicSetOperationImpl characteristsicSetOperation = new CharacteristsicSetOperationImpl();
+		return characteristsicSetOperation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public LogicalAndOperation createLogicalAndOperation()
+  {
+		LogicalAndOperationImpl logicalAndOperation = new LogicalAndOperationImpl();
+		return logicalAndOperation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public LogicalOrOperation createLogicalOrOperation()
+  {
+		LogicalOrOperationImpl logicalOrOperation = new LogicalOrOperationImpl();
+		return logicalOrOperation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public LogicalNegationOperation createLogicalNegationOperation()
+  {
+		LogicalNegationOperationImpl logicalNegationOperation = new LogicalNegationOperationImpl();
+		return logicalNegationOperation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public VariableEqualityOperation createVariableEqualityOperation()
+  {
+		VariableEqualityOperationImpl variableEqualityOperation = new VariableEqualityOperationImpl();
+		return variableEqualityOperation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public VariableInequalityOperation createVariableInequalityOperation()
+  {
+		VariableInequalityOperationImpl variableInequalityOperation = new VariableInequalityOperationImpl();
+		return variableInequalityOperation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public EmptySetOperation createEmptySetOperation()
+  {
+		EmptySetOperationImpl emptySetOperation = new EmptySetOperationImpl();
+		return emptySetOperation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public IntersectionOperation createIntersectionOperation()
+  {
+		IntersectionOperationImpl intersectionOperation = new IntersectionOperationImpl();
+		return intersectionOperation;
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public CreateSetOperation createCreateSetOperation()
+  {
+		CreateSetOperationImpl createSetOperation = new CreateSetOperationImpl();
+		return createSetOperation;
 	}
 
   /**

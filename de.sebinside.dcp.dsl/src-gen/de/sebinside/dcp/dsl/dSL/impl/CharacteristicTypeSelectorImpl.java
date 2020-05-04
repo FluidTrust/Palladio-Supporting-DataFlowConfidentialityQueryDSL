@@ -5,7 +5,7 @@ package de.sebinside.dcp.dsl.dSL.impl;
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicType;
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector;
-import de.sebinside.dcp.dsl.dSL.CharacteristicVariable;
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
 import java.util.Collection;
@@ -112,7 +112,7 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 * @ordered
 	 */
-  protected CharacteristicVariable variable;
+  protected CharacteristicVariableType variable;
 
   /**
 	 * <!-- begin-user-doc -->
@@ -248,7 +248,7 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
   @Override
-  public CharacteristicVariable getVariable()
+  public CharacteristicVariableType getVariable()
   {
 		return variable;
 	}
@@ -258,9 +258,9 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public NotificationChain basicSetVariable(CharacteristicVariable newVariable, NotificationChain msgs)
+  public NotificationChain basicSetVariable(CharacteristicVariableType newVariable, NotificationChain msgs)
   {
-		CharacteristicVariable oldVariable = variable;
+		CharacteristicVariableType oldVariable = variable;
 		variable = newVariable;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE, oldVariable, newVariable);
@@ -275,7 +275,7 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
   @Override
-  public void setVariable(CharacteristicVariable newVariable)
+  public void setVariable(CharacteristicVariableType newVariable)
   {
 		if (newVariable != variable) {
 			NotificationChain msgs = null;
@@ -353,7 +353,7 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 				setIsVariableSelector((Boolean)newValue);
 				return;
 			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
-				setVariable((CharacteristicVariable)newValue);
+				setVariable((CharacteristicVariableType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -381,7 +381,7 @@ public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container
 				setIsVariableSelector(IS_VARIABLE_SELECTOR_EDEFAULT);
 				return;
 			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
-				setVariable((CharacteristicVariable)null);
+				setVariable((CharacteristicVariableType)null);
 				return;
 		}
 		super.eUnset(featureID);

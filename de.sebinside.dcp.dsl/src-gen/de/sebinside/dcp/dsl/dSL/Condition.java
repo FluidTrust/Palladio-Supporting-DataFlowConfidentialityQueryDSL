@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.Condition#getTodo <em>Todo</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.Condition#getOperation <em>Operation</em>}</li>
  * </ul>
  *
  * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCondition()
@@ -24,25 +24,25 @@ import org.eclipse.emf.ecore.EObject;
 public interface Condition extends EObject
 {
   /**
-	 * Returns the value of the '<em><b>Todo</b></em>' reference.
+	 * Returns the value of the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Todo</em>' reference.
-	 * @see #setTodo(CharacteristicVariable)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCondition_Todo()
-	 * @model
+	 * @return the value of the '<em>Operation</em>' containment reference.
+	 * @see #setOperation(BooleanOperation)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCondition_Operation()
+	 * @model containment="true"
 	 * @generated
 	 */
-  CharacteristicVariable getTodo();
+  BooleanOperation getOperation();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Condition#getTodo <em>Todo</em>}' reference.
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.Condition#getOperation <em>Operation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Todo</em>' reference.
-	 * @see #getTodo()
+	 * @param value the new value of the '<em>Operation</em>' containment reference.
+	 * @see #getOperation()
 	 * @generated
 	 */
-  void setTodo(CharacteristicVariable value);
+  void setOperation(BooleanOperation value);
 
 } // Condition

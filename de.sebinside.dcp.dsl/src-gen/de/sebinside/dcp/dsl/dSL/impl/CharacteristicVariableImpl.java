@@ -6,69 +6,17 @@ package de.sebinside.dcp.dsl.dSL.impl;
 import de.sebinside.dcp.dsl.dSL.CharacteristicVariable;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
-import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Characteristic Variable</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * </p>
- * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.CharacteristicVariableImpl#isIsSet <em>Is Set</em>}</li>
- * </ul>
  *
  * @generated
  */
-public class CharacteristicVariableImpl extends MinimalEObjectImpl.Container implements CharacteristicVariable
+public class CharacteristicVariableImpl extends CharacteristicVariableTypeImpl implements CharacteristicVariable
 {
-  /**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-  protected String name = NAME_EDEFAULT;
-
-  /**
-	 * The default value of the '{@link #isIsSet() <em>Is Set</em>}' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @see #isIsSet()
-	 * @generated
-	 * @ordered
-	 */
-  protected static final boolean IS_SET_EDEFAULT = false;
-
-  /**
-	 * The cached value of the '{@link #isIsSet() <em>Is Set</em>}' attribute.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @see #isIsSet()
-	 * @generated
-	 * @ordered
-	 */
-  protected boolean isSet = IS_SET_EDEFAULT;
-
   /**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -88,147 +36,6 @@ public class CharacteristicVariableImpl extends MinimalEObjectImpl.Container imp
   protected EClass eStaticClass()
   {
 		return DSLPackage.Literals.CHARACTERISTIC_VARIABLE;
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public String getName()
-  {
-		return name;
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public void setName(String newName)
-  {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_VARIABLE__NAME, oldName, name));
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public boolean isIsSet()
-  {
-		return isSet;
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public void setIsSet(boolean newIsSet)
-  {
-		boolean oldIsSet = isSet;
-		isSet = newIsSet;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET, oldIsSet, isSet));
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_VARIABLE__NAME:
-				return getName();
-			case DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET:
-				return isIsSet();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_VARIABLE__NAME:
-				setName((String)newValue);
-				return;
-			case DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET:
-				setIsSet((Boolean)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public void eUnset(int featureID)
-  {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_VARIABLE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET:
-				setIsSet(IS_SET_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_VARIABLE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case DSLPackage.CHARACTERISTIC_VARIABLE__IS_SET:
-				return isSet != IS_SET_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public String toString()
-  {
-		if (eIsProxy()) return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", isSet: ");
-		result.append(isSet);
-		result.append(')');
-		return result.toString();
 	}
 
 } //CharacteristicVariableImpl

@@ -3,11 +3,12 @@
  */
 package de.sebinside.dcp.dsl.dSL.impl;
 
-import de.sebinside.dcp.dsl.dSL.CharacteristicVariable;
+import de.sebinside.dcp.dsl.dSL.BooleanOperation;
 import de.sebinside.dcp.dsl.dSL.Condition;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -23,7 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ConditionImpl#getTodo <em>Todo</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ConditionImpl#getOperation <em>Operation</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,14 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ConditionImpl extends MinimalEObjectImpl.Container implements Condition
 {
   /**
-	 * The cached value of the '{@link #getTodo() <em>Todo</em>}' reference.
+	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getTodo()
+	 * @see #getOperation()
 	 * @generated
 	 * @ordered
 	 */
-  protected CharacteristicVariable todo;
+  protected BooleanOperation operation;
 
   /**
 	 * <!-- begin-user-doc -->
@@ -67,17 +68,9 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
 	 * @generated
 	 */
   @Override
-  public CharacteristicVariable getTodo()
+  public BooleanOperation getOperation()
   {
-		if (todo != null && todo.eIsProxy()) {
-			InternalEObject oldTodo = (InternalEObject)todo;
-			todo = (CharacteristicVariable)eResolveProxy(oldTodo);
-			if (todo != oldTodo) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CONDITION__TODO, oldTodo, todo));
-			}
-		}
-		return todo;
+		return operation;
 	}
 
   /**
@@ -85,9 +78,15 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public CharacteristicVariable basicGetTodo()
+  public NotificationChain basicSetOperation(BooleanOperation newOperation, NotificationChain msgs)
   {
-		return todo;
+		BooleanOperation oldOperation = operation;
+		operation = newOperation;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.CONDITION__OPERATION, oldOperation, newOperation);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
   /**
@@ -96,12 +95,34 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
 	 * @generated
 	 */
   @Override
-  public void setTodo(CharacteristicVariable newTodo)
+  public void setOperation(BooleanOperation newOperation)
   {
-		CharacteristicVariable oldTodo = todo;
-		todo = newTodo;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CONDITION__TODO, oldTodo, todo));
+		if (newOperation != operation) {
+			NotificationChain msgs = null;
+			if (operation != null)
+				msgs = ((InternalEObject)operation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.CONDITION__OPERATION, null, msgs);
+			if (newOperation != null)
+				msgs = ((InternalEObject)newOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.CONDITION__OPERATION, null, msgs);
+			msgs = basicSetOperation(newOperation, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CONDITION__OPERATION, newOperation, newOperation));
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+		switch (featureID) {
+			case DSLPackage.CONDITION__OPERATION:
+				return basicSetOperation(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
   /**
@@ -113,9 +134,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
 		switch (featureID) {
-			case DSLPackage.CONDITION__TODO:
-				if (resolve) return getTodo();
-				return basicGetTodo();
+			case DSLPackage.CONDITION__OPERATION:
+				return getOperation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -129,8 +149,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   public void eSet(int featureID, Object newValue)
   {
 		switch (featureID) {
-			case DSLPackage.CONDITION__TODO:
-				setTodo((CharacteristicVariable)newValue);
+			case DSLPackage.CONDITION__OPERATION:
+				setOperation((BooleanOperation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -145,8 +165,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   public void eUnset(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.CONDITION__TODO:
-				setTodo((CharacteristicVariable)null);
+			case DSLPackage.CONDITION__OPERATION:
+				setOperation((BooleanOperation)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -161,8 +181,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   public boolean eIsSet(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.CONDITION__TODO:
-				return todo != null;
+			case DSLPackage.CONDITION__OPERATION:
+				return operation != null;
 		}
 		return super.eIsSet(featureID);
 	}

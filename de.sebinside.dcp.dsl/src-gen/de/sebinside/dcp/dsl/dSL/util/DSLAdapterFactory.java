@@ -96,8 +96,16 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
 				return createCharacteristicTypeSelectorAdapter();
 			}
 			@Override
+			public Adapter caseCharacteristicVariableType(CharacteristicVariableType object) {
+				return createCharacteristicVariableTypeAdapter();
+			}
+			@Override
 			public Adapter caseCharacteristicVariable(CharacteristicVariable object) {
 				return createCharacteristicVariableAdapter();
+			}
+			@Override
+			public Adapter caseCharacteristicSet(CharacteristicSet object) {
+				return createCharacteristicSetAdapter();
 			}
 			@Override
 			public Adapter caseInclude(Include object) {
@@ -162,6 +170,62 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
 			@Override
 			public Adapter caseCondition(Condition object) {
 				return createConditionAdapter();
+			}
+			@Override
+			public Adapter caseReference(Reference object) {
+				return createReferenceAdapter();
+			}
+			@Override
+			public Adapter caseCharacteristicReference(CharacteristicReference object) {
+				return createCharacteristicReferenceAdapter();
+			}
+			@Override
+			public Adapter caseCharacteristicSetReference(CharacteristicSetReference object) {
+				return createCharacteristicSetReferenceAdapter();
+			}
+			@Override
+			public Adapter caseOperation(Operation object) {
+				return createOperationAdapter();
+			}
+			@Override
+			public Adapter caseBooleanOperation(BooleanOperation object) {
+				return createBooleanOperationAdapter();
+			}
+			@Override
+			public Adapter caseCharacteristsicSetOperation(CharacteristsicSetOperation object) {
+				return createCharacteristsicSetOperationAdapter();
+			}
+			@Override
+			public Adapter caseLogicalAndOperation(LogicalAndOperation object) {
+				return createLogicalAndOperationAdapter();
+			}
+			@Override
+			public Adapter caseLogicalOrOperation(LogicalOrOperation object) {
+				return createLogicalOrOperationAdapter();
+			}
+			@Override
+			public Adapter caseLogicalNegationOperation(LogicalNegationOperation object) {
+				return createLogicalNegationOperationAdapter();
+			}
+			@Override
+			public Adapter caseVariableEqualityOperation(VariableEqualityOperation object) {
+				return createVariableEqualityOperationAdapter();
+			}
+			@Override
+			public Adapter caseVariableInequalityOperation(VariableInequalityOperation object) {
+				return createVariableInequalityOperationAdapter();
+			}
+			@Override
+			public Adapter caseEmptySetOperation(EmptySetOperation object) {
+				return createEmptySetOperationAdapter();
+			}
+			@Override
+			public Adapter caseIntersectionOperation(IntersectionOperation object) {
+				return createIntersectionOperationAdapter();
+			}
+			@Override
+			public Adapter caseCreateSetOperation(CreateSetOperation object) {
+				return createCreateSetOperationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -275,6 +339,21 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
 	}
 
   /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicVariableType <em>Characteristic Variable Type</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
+	 * @generated
+	 */
+  public Adapter createCharacteristicVariableTypeAdapter()
+  {
+		return null;
+	}
+
+  /**
 	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicVariable <em>Characteristic Variable</em>}'.
 	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -285,6 +364,21 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
   public Adapter createCharacteristicVariableAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSet <em>Characteristic Set</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicSet
+	 * @generated
+	 */
+  public Adapter createCharacteristicSetAdapter()
   {
 		return null;
 	}
@@ -525,6 +619,216 @@ public class DSLAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
   public Adapter createConditionAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.Reference <em>Reference</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.Reference
+	 * @generated
+	 */
+  public Adapter createReferenceAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicReference <em>Characteristic Reference</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicReference
+	 * @generated
+	 */
+  public Adapter createCharacteristicReferenceAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSetReference <em>Characteristic Set Reference</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristicSetReference
+	 * @generated
+	 */
+  public Adapter createCharacteristicSetReferenceAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.Operation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.Operation
+	 * @generated
+	 */
+  public Adapter createOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.BooleanOperation <em>Boolean Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.BooleanOperation
+	 * @generated
+	 */
+  public Adapter createBooleanOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CharacteristsicSetOperation <em>Characteristsic Set Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.CharacteristsicSetOperation
+	 * @generated
+	 */
+  public Adapter createCharacteristsicSetOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.LogicalAndOperation <em>Logical And Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalAndOperation
+	 * @generated
+	 */
+  public Adapter createLogicalAndOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.LogicalOrOperation <em>Logical Or Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalOrOperation
+	 * @generated
+	 */
+  public Adapter createLogicalOrOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.LogicalNegationOperation <em>Logical Negation Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.LogicalNegationOperation
+	 * @generated
+	 */
+  public Adapter createLogicalNegationOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.VariableEqualityOperation <em>Variable Equality Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.VariableEqualityOperation
+	 * @generated
+	 */
+  public Adapter createVariableEqualityOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.VariableInequalityOperation <em>Variable Inequality Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.VariableInequalityOperation
+	 * @generated
+	 */
+  public Adapter createVariableInequalityOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.EmptySetOperation <em>Empty Set Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.EmptySetOperation
+	 * @generated
+	 */
+  public Adapter createEmptySetOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.IntersectionOperation <em>Intersection Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.IntersectionOperation
+	 * @generated
+	 */
+  public Adapter createIntersectionOperationAdapter()
+  {
+		return null;
+	}
+
+  /**
+	 * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CreateSetOperation <em>Create Set Operation</em>}'.
+	 * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.sebinside.dcp.dsl.dSL.CreateSetOperation
+	 * @generated
+	 */
+  public Adapter createCreateSetOperationAdapter()
   {
 		return null;
 	}

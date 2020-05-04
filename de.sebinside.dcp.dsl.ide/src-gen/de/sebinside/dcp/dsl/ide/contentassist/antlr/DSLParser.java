@@ -33,11 +33,17 @@ public class DSLParser extends AbstractContentAssistParser {
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, DSLGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getAbstractElementAccess().getAlternatives(), "rule__AbstractElement__Alternatives");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getAlternatives_2(), "rule__CharacteristicTypeSelector__Alternatives_2");
+			builder.put(grammarAccess.getCharacteristicVariableTypeAccess().getAlternatives(), "rule__CharacteristicVariableType__Alternatives");
 			builder.put(grammarAccess.getDataSelectorAccess().getAlternatives(), "rule__DataSelector__Alternatives");
 			builder.put(grammarAccess.getCharacteristicSelectorAccess().getAlternatives(), "rule__CharacteristicSelector__Alternatives");
 			builder.put(grammarAccess.getCharacteristicClassSelectorAccess().getAlternatives(), "rule__CharacteristicClassSelector__Alternatives");
 			builder.put(grammarAccess.getDestinationSelectorAccess().getAlternatives(), "rule__DestinationSelector__Alternatives");
 			builder.put(grammarAccess.getNodeIdentitiySelectorAccess().getAlternatives(), "rule__NodeIdentitiySelector__Alternatives");
+			builder.put(grammarAccess.getReferenceAccess().getAlternatives(), "rule__Reference__Alternatives");
+			builder.put(grammarAccess.getCharacteristicSetReferenceAccess().getAlternatives(), "rule__CharacteristicSetReference__Alternatives");
+			builder.put(grammarAccess.getOperationAccess().getAlternatives(), "rule__Operation__Alternatives");
+			builder.put(grammarAccess.getBooleanOperationAccess().getAlternatives(), "rule__BooleanOperation__Alternatives");
+			builder.put(grammarAccess.getCharacteristsicSetOperationAccess().getAlternatives(), "rule__CharacteristsicSetOperation__Alternatives");
 			builder.put(grammarAccess.getTargetModelTypeAccess().getAlternatives(), "rule__TargetModelType__Alternatives");
 			builder.put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 			builder.put(grammarAccess.getTargetModelTypeDefAccess().getGroup(), "rule__TargetModelTypeDef__Group__0");
@@ -52,7 +58,7 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getGroup_2_1(), "rule__CharacteristicTypeSelector__Group_2_1__0");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getGroup_2_1_2(), "rule__CharacteristicTypeSelector__Group_2_1_2__0");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getGroup_2_2(), "rule__CharacteristicTypeSelector__Group_2_2__0");
-			builder.put(grammarAccess.getCharacteristicVariableAccess().getGroup(), "rule__CharacteristicVariable__Group__0");
+			builder.put(grammarAccess.getCharacteristicSetAccess().getGroup(), "rule__CharacteristicSet__Group__0");
 			builder.put(grammarAccess.getIncludeAccess().getGroup(), "rule__Include__Group__0");
 			builder.put(grammarAccess.getConstraintAccess().getGroup(), "rule__Constraint__Group__0");
 			builder.put(grammarAccess.getRuleAccess().getGroup(), "rule__Rule__Group__0");
@@ -66,6 +72,14 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getNodeIdentitiySelectorAccess().getGroup_1(), "rule__NodeIdentitiySelector__Group_1__0");
 			builder.put(grammarAccess.getStatementAccess().getGroup(), "rule__Statement__Group__0");
 			builder.put(grammarAccess.getConditionAccess().getGroup(), "rule__Condition__Group__0");
+			builder.put(grammarAccess.getLogicalAndOperationAccess().getGroup(), "rule__LogicalAndOperation__Group__0");
+			builder.put(grammarAccess.getLogicalOrOperationAccess().getGroup(), "rule__LogicalOrOperation__Group__0");
+			builder.put(grammarAccess.getLogicalNegationOperationAccess().getGroup(), "rule__LogicalNegationOperation__Group__0");
+			builder.put(grammarAccess.getVariableEqualityOperationAccess().getGroup(), "rule__VariableEqualityOperation__Group__0");
+			builder.put(grammarAccess.getVariableInequalityOperationAccess().getGroup(), "rule__VariableInequalityOperation__Group__0");
+			builder.put(grammarAccess.getEmptySetOperationAccess().getGroup(), "rule__EmptySetOperation__Group__0");
+			builder.put(grammarAccess.getIntersectionOperationAccess().getGroup(), "rule__IntersectionOperation__Group__0");
+			builder.put(grammarAccess.getCreateSetOperationAccess().getGroup(), "rule__CreateSetOperation__Group__0");
 			builder.put(grammarAccess.getModelAccess().getTargetModelTypeAssignment_0(), "rule__Model__TargetModelTypeAssignment_0");
 			builder.put(grammarAccess.getModelAccess().getElementsAssignment_1(), "rule__Model__ElementsAssignment_1");
 			builder.put(grammarAccess.getTargetModelTypeDefAccess().getTypeAssignment_1(), "rule__TargetModelTypeDef__TypeAssignment_1");
@@ -84,8 +98,8 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getLiteralsAssignment_2_1_2_1(), "rule__CharacteristicTypeSelector__LiteralsAssignment_2_1_2_1");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getIsVariableSelectorAssignment_2_2_0(), "rule__CharacteristicTypeSelector__IsVariableSelectorAssignment_2_2_0");
 			builder.put(grammarAccess.getCharacteristicTypeSelectorAccess().getVariableAssignment_2_2_1(), "rule__CharacteristicTypeSelector__VariableAssignment_2_2_1");
-			builder.put(grammarAccess.getCharacteristicVariableAccess().getNameAssignment_0(), "rule__CharacteristicVariable__NameAssignment_0");
-			builder.put(grammarAccess.getCharacteristicVariableAccess().getIsSetAssignment_1(), "rule__CharacteristicVariable__IsSetAssignment_1");
+			builder.put(grammarAccess.getCharacteristicVariableAccess().getNameAssignment(), "rule__CharacteristicVariable__NameAssignment");
+			builder.put(grammarAccess.getCharacteristicSetAccess().getNameAssignment_0(), "rule__CharacteristicSet__NameAssignment_0");
 			builder.put(grammarAccess.getIncludeAccess().getImportURIAssignment_1(), "rule__Include__ImportURIAssignment_1");
 			builder.put(grammarAccess.getConstraintAccess().getNameAssignment_1(), "rule__Constraint__NameAssignment_1");
 			builder.put(grammarAccess.getConstraintAccess().getRuleAssignment_3(), "rule__Constraint__RuleAssignment_3");
@@ -107,7 +121,23 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getStatementAccess().getTypeAssignment_1(), "rule__Statement__TypeAssignment_1");
 			builder.put(grammarAccess.getStatementTypeAccess().getNameAssignment(), "rule__StatementType__NameAssignment");
 			builder.put(grammarAccess.getStatementModalityAccess().getNameAssignment(), "rule__StatementModality__NameAssignment");
-			builder.put(grammarAccess.getConditionAccess().getTodoAssignment_1(), "rule__Condition__TodoAssignment_1");
+			builder.put(grammarAccess.getConditionAccess().getOperationAssignment_1(), "rule__Condition__OperationAssignment_1");
+			builder.put(grammarAccess.getCharacteristicReferenceAccess().getValueAssignment(), "rule__CharacteristicReference__ValueAssignment");
+			builder.put(grammarAccess.getCharacteristicSetReferenceAccess().getValueAssignment_0(), "rule__CharacteristicSetReference__ValueAssignment_0");
+			builder.put(grammarAccess.getCharacteristicSetReferenceAccess().getRefAssignment_1(), "rule__CharacteristicSetReference__RefAssignment_1");
+			builder.put(grammarAccess.getLogicalAndOperationAccess().getLeftAssignment_1(), "rule__LogicalAndOperation__LeftAssignment_1");
+			builder.put(grammarAccess.getLogicalAndOperationAccess().getRightAssignment_3(), "rule__LogicalAndOperation__RightAssignment_3");
+			builder.put(grammarAccess.getLogicalOrOperationAccess().getLeftAssignment_1(), "rule__LogicalOrOperation__LeftAssignment_1");
+			builder.put(grammarAccess.getLogicalOrOperationAccess().getRightAssignment_3(), "rule__LogicalOrOperation__RightAssignment_3");
+			builder.put(grammarAccess.getLogicalNegationOperationAccess().getValueAssignment_1(), "rule__LogicalNegationOperation__ValueAssignment_1");
+			builder.put(grammarAccess.getVariableEqualityOperationAccess().getLeftAssignment_0(), "rule__VariableEqualityOperation__LeftAssignment_0");
+			builder.put(grammarAccess.getVariableEqualityOperationAccess().getRightAssignment_2(), "rule__VariableEqualityOperation__RightAssignment_2");
+			builder.put(grammarAccess.getVariableInequalityOperationAccess().getLeftAssignment_0(), "rule__VariableInequalityOperation__LeftAssignment_0");
+			builder.put(grammarAccess.getVariableInequalityOperationAccess().getRightAssignment_2(), "rule__VariableInequalityOperation__RightAssignment_2");
+			builder.put(grammarAccess.getEmptySetOperationAccess().getValueAssignment_1(), "rule__EmptySetOperation__ValueAssignment_1");
+			builder.put(grammarAccess.getIntersectionOperationAccess().getLeftAssignment_1(), "rule__IntersectionOperation__LeftAssignment_1");
+			builder.put(grammarAccess.getIntersectionOperationAccess().getRightAssignment_3(), "rule__IntersectionOperation__RightAssignment_3");
+			builder.put(grammarAccess.getCreateSetOperationAccess().getValueAssignment_1(), "rule__CreateSetOperation__ValueAssignment_1");
 		}
 	}
 	

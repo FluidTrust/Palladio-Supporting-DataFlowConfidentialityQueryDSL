@@ -114,12 +114,12 @@ public interface CharacteristicTypeSelector extends EObject
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable</em>' containment reference.
-	 * @see #setVariable(CharacteristicVariable)
+	 * @see #setVariable(CharacteristicVariableType)
 	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Variable()
 	 * @model containment="true"
 	 * @generated
 	 */
-  CharacteristicVariable getVariable();
+  CharacteristicVariableType getVariable();
 
   /**
 	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#getVariable <em>Variable</em>}' containment reference.
@@ -129,6 +129,6 @@ public interface CharacteristicTypeSelector extends EObject
 	 * @see #getVariable()
 	 * @generated
 	 */
-  void setVariable(CharacteristicVariable value);
+  void setVariable(CharacteristicVariableType value);
 
 } // CharacteristicTypeSelector

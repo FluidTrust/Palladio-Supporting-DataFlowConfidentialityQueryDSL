@@ -34,7 +34,7 @@ class OperationModelConverter implements Converter {
 		selector.name
 	}
 	
-	override resolveQualifiedName(String id) {
+	override resolveQualifiedName(String id, Boolean fullName) {
 		id
 	}
 	

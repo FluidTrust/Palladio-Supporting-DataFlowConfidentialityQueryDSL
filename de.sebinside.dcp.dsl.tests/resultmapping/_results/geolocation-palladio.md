@@ -22,7 +22,7 @@ Destination Identity: `Assembly_StoreDB.StoreDB.store`
 
 ## Constraint Violations
 
-1. Parameter `DB.store.param.input` is not allowed to be *parameter* in operation `Assembly_StoreDB.StoreDB.store`.
+1. Parameter `input` is not allowed to be *parameter* in operation `store`.
 	- Call Stack: 	
 	
 	| Node |

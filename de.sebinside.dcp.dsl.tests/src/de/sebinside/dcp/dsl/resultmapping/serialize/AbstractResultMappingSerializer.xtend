@@ -42,7 +42,7 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 «makeSubTitle("Constraint Violations")»
 
 «FOR i : 0..(constraint.violations.size - 1) SEPARATOR "\n"»
-«i+1». Parameter «escape(crossPlatformConverter.convertVariable(getParameterOrCallState(constraint.violations.get(i))))» is not allowed to be «highlight(mapQueryType(constraint.violations.get(i)))» in operation «escape(crossPlatformConverter.resolveQualifiedName(constraint.violations.get(i).operation))».
+«i+1». Parameter «escape(crossPlatformConverter.convertVariable(getParameterOrCallState(constraint.violations.get(i))))» is not allowed to be «highlight(mapQueryType(constraint.violations.get(i)))» in operation «escape(crossPlatformConverter.resolveQualifiedName(constraint.violations.get(i).operation, false))».
 «FOR entry: constraint.violations.get(i).callStack.filter[e|crossPlatformConverter.qualifiedNameResolvable(e)] BEFORE "\t- Call Stack: " + indent(advancedEnumHeader("Node")) SEPARATOR advancedEnumSeparator»«indent(mapCallStackEntry(entry))»«ENDFOR»
 «FOR variable: constraint.violations.get(i).classVariables.keySet BEFORE "\t- Characteristic Classes: " + indent(advancedEnumHeader("Parameter", "Class", "Value")) SEPARATOR advancedEnumSeparator»«indent(mapClassVariable(variable, constraint.violations.get(i).classVariables.get(variable)))»«ENDFOR»
 «ENDFOR»
@@ -75,7 +75,7 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 	}
 
 	protected def String mapCallStackEntry(String entry) {
-		escape(crossPlatformConverter.resolveQualifiedName(entry))
+		escape(crossPlatformConverter.resolveQualifiedName(entry, true))
 	}
 
 	abstract protected def String indent(String value)

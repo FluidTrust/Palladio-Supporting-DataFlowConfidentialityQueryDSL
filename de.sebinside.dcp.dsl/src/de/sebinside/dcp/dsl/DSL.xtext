@@ -139,10 +139,10 @@ VariableInequalityOperation:
 	left=CharacteristicReference "!=" right=CharacteristicReference;
 
 EmptySetOperation:
-	"isEmpty(" value=CharacteristicSetReference ")";
+	"isEmpty" "(" value=CharacteristicSetReference ")";
 
 IntersectionOperation:
-	"intersection(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+	"intersection" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
 
 CreateSetOperation:
 	"{" value=CharacteristicReference "}";

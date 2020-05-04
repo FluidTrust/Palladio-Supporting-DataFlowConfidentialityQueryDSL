@@ -17,6 +17,7 @@ import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF
 import org.palladiosimulator.pcm.usagemodel.UsageModel
 
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.ParameterBasedData
 
 class PalladioConverter implements Converter {
 
@@ -103,11 +104,17 @@ class PalladioConverter implements Converter {
 		if (result.empty) {
 			id
 		} else {
-			result.get.data.entityName
+			val data = result.get.data
+			
+			if(data instanceof ParameterBasedData) {
+				data.parameter.parameterName
+			} else {
+				data.entityName
+			}
 		}
 	}
 
-	override resolveQualifiedName(String id) {
+	override resolveQualifiedName(String id, Boolean fullName) {
 
 		val seff = trace.value.resolveSeffInstance(id)
 		val operation = trace.value.resolveDataOperationInstance(id)
@@ -116,7 +123,12 @@ class PalladioConverter implements Converter {
 			val seffName = seff.get.entity.describedService__SEFF.entityName
 			val componentName = seff.get.entity.basicComponent_ServiceEffectSpecification.entityName
 			val contextName = seff.get.ac.entityName
-			'''«contextName».«componentName».«seffName»'''
+			
+			if (fullName) {
+				'''«contextName».«componentName».«seffName»'''
+			} else {
+				seffName
+			}		
 		} else if (operation.present) {
 			operation.get.entity.entityName
 		} else {

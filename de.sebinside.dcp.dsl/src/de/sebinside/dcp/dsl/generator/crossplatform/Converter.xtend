@@ -15,7 +15,7 @@ interface Converter {
 
 	def String createQualifiedName(NodeIdentitiySelector selector)
 
-	def String resolveQualifiedName(String id)
+	def String resolveQualifiedName(String id, Boolean fullName)
 
 	def String convertVariable(String id)
 

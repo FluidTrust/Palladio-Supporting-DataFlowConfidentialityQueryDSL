@@ -24,47 +24,47 @@ package de.sebinside.dcp.dsl.dSL;
 public interface VariableInequalityOperation extends SimpleBooleanOperation
 {
   /**
-   * Returns the value of the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Left</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Left</em>' containment reference.
-   * @see #setLeft(CharacteristicReference)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getVariableInequalityOperation_Left()
-   * @model containment="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Left</em>' containment reference.
+	 * @see #setLeft(CharacteristicReference)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getVariableInequalityOperation_Left()
+	 * @model containment="true"
+	 * @generated
+	 */
   CharacteristicReference getLeft();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.VariableInequalityOperation#getLeft <em>Left</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.VariableInequalityOperation#getLeft <em>Left</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Left</em>' containment reference.
-   * @see #getLeft()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Left</em>' containment reference.
+	 * @see #getLeft()
+	 * @generated
+	 */
   void setLeft(CharacteristicReference value);
 
   /**
-   * Returns the value of the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Right</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(CharacteristicReference)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getVariableInequalityOperation_Right()
-   * @model containment="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Right</em>' containment reference.
+	 * @see #setRight(CharacteristicReference)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getVariableInequalityOperation_Right()
+	 * @model containment="true"
+	 * @generated
+	 */
   CharacteristicReference getRight();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.VariableInequalityOperation#getRight <em>Right</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.VariableInequalityOperation#getRight <em>Right</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Right</em>' containment reference.
-   * @see #getRight()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Right</em>' containment reference.
+	 * @see #getRight()
+	 * @generated
+	 */
   void setRight(CharacteristicReference value);
 
 } // VariableInequalityOperation

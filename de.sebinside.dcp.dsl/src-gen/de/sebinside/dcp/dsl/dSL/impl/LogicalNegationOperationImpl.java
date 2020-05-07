@@ -4,8 +4,8 @@
 package de.sebinside.dcp.dsl.dSL.impl;
 
 import de.sebinside.dcp.dsl.dSL.BooleanOperation;
-import de.sebinside.dcp.dsl.dSL.Condition;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
+import de.sebinside.dcp.dsl.dSL.LogicalNegationOperation;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,39 +14,38 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Condition</b></em>'.
+ * An implementation of the model object '<em><b>Logical Negation Operation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.ConditionImpl#getOperation <em>Operation</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.LogicalNegationOperationImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ConditionImpl extends MinimalEObjectImpl.Container implements Condition
+public class LogicalNegationOperationImpl extends BooleanOperationImpl implements LogicalNegationOperation
 {
   /**
-	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' containment reference.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getOperation()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-  protected BooleanOperation operation;
+  protected BooleanOperation value;
 
   /**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  protected ConditionImpl()
+  protected LogicalNegationOperationImpl()
   {
 		super();
 	}
@@ -59,7 +58,7 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.CONDITION;
+		return DSLPackage.Literals.LOGICAL_NEGATION_OPERATION;
 	}
 
   /**
@@ -68,9 +67,9 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
 	 * @generated
 	 */
   @Override
-  public BooleanOperation getOperation()
+  public BooleanOperation getValue()
   {
-		return operation;
+		return value;
 	}
 
   /**
@@ -78,12 +77,12 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public NotificationChain basicSetOperation(BooleanOperation newOperation, NotificationChain msgs)
+  public NotificationChain basicSetValue(BooleanOperation newValue, NotificationChain msgs)
   {
-		BooleanOperation oldOperation = operation;
-		operation = newOperation;
+		BooleanOperation oldValue = value;
+		value = newValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.CONDITION__OPERATION, oldOperation, newOperation);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.LOGICAL_NEGATION_OPERATION__VALUE, oldValue, newValue);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -95,19 +94,19 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
 	 * @generated
 	 */
   @Override
-  public void setOperation(BooleanOperation newOperation)
+  public void setValue(BooleanOperation newValue)
   {
-		if (newOperation != operation) {
+		if (newValue != value) {
 			NotificationChain msgs = null;
-			if (operation != null)
-				msgs = ((InternalEObject)operation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.CONDITION__OPERATION, null, msgs);
-			if (newOperation != null)
-				msgs = ((InternalEObject)newOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.CONDITION__OPERATION, null, msgs);
-			msgs = basicSetOperation(newOperation, msgs);
+			if (value != null)
+				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.LOGICAL_NEGATION_OPERATION__VALUE, null, msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.LOGICAL_NEGATION_OPERATION__VALUE, null, msgs);
+			msgs = basicSetValue(newValue, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CONDITION__OPERATION, newOperation, newOperation));
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.LOGICAL_NEGATION_OPERATION__VALUE, newValue, newValue));
 	}
 
   /**
@@ -119,8 +118,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
 		switch (featureID) {
-			case DSLPackage.CONDITION__OPERATION:
-				return basicSetOperation(null, msgs);
+			case DSLPackage.LOGICAL_NEGATION_OPERATION__VALUE:
+				return basicSetValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -134,8 +133,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
 		switch (featureID) {
-			case DSLPackage.CONDITION__OPERATION:
-				return getOperation();
+			case DSLPackage.LOGICAL_NEGATION_OPERATION__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -149,8 +148,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   public void eSet(int featureID, Object newValue)
   {
 		switch (featureID) {
-			case DSLPackage.CONDITION__OPERATION:
-				setOperation((BooleanOperation)newValue);
+			case DSLPackage.LOGICAL_NEGATION_OPERATION__VALUE:
+				setValue((BooleanOperation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -165,8 +164,8 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   public void eUnset(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.CONDITION__OPERATION:
-				setOperation((BooleanOperation)null);
+			case DSLPackage.LOGICAL_NEGATION_OPERATION__VALUE:
+				setValue((BooleanOperation)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -181,10 +180,10 @@ public class ConditionImpl extends MinimalEObjectImpl.Container implements Condi
   public boolean eIsSet(int featureID)
   {
 		switch (featureID) {
-			case DSLPackage.CONDITION__OPERATION:
-				return operation != null;
+			case DSLPackage.LOGICAL_NEGATION_OPERATION__VALUE:
+				return value != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ConditionImpl
+} //LogicalNegationOperationImpl

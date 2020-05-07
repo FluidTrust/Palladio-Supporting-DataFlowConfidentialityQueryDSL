@@ -3771,9 +3771,9 @@ rule__LogicalNegationOperation__Group_1__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getLogicalNegationOperationAccess().getExclamationMarkKeyword_1_0()); }
-	'!'
-	{ after(grammarAccess.getLogicalNegationOperationAccess().getExclamationMarkKeyword_1_0()); }
+	{ before(grammarAccess.getLogicalNegationOperationAccess().getLogicalNegationOperationAction_1_0()); }
+	()
+	{ after(grammarAccess.getLogicalNegationOperationAccess().getLogicalNegationOperationAction_1_0()); }
 )
 ;
 finally {
@@ -3786,6 +3786,7 @@ rule__LogicalNegationOperation__Group_1__1
 	}
 :
 	rule__LogicalNegationOperation__Group_1__1__Impl
+	rule__LogicalNegationOperation__Group_1__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3797,9 +3798,35 @@ rule__LogicalNegationOperation__Group_1__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getLogicalNegationOperationAccess().getValueAssignment_1_1()); }
-	(rule__LogicalNegationOperation__ValueAssignment_1_1)
-	{ after(grammarAccess.getLogicalNegationOperationAccess().getValueAssignment_1_1()); }
+	{ before(grammarAccess.getLogicalNegationOperationAccess().getExclamationMarkKeyword_1_1()); }
+	'!'
+	{ after(grammarAccess.getLogicalNegationOperationAccess().getExclamationMarkKeyword_1_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__LogicalNegationOperation__Group_1__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__LogicalNegationOperation__Group_1__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__LogicalNegationOperation__Group_1__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getLogicalNegationOperationAccess().getValueAssignment_1_2()); }
+	(rule__LogicalNegationOperation__ValueAssignment_1_2)
+	{ after(grammarAccess.getLogicalNegationOperationAccess().getValueAssignment_1_2()); }
 )
 ;
 finally {
@@ -5668,15 +5695,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__LogicalNegationOperation__ValueAssignment_1_1
+rule__LogicalNegationOperation__ValueAssignment_1_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getLogicalNegationOperationAccess().getValueEncapsulatedLogicalOperationParserRuleCall_1_1_0()); }
+		{ before(grammarAccess.getLogicalNegationOperationAccess().getValueEncapsulatedLogicalOperationParserRuleCall_1_2_0()); }
 		ruleEncapsulatedLogicalOperation
-		{ after(grammarAccess.getLogicalNegationOperationAccess().getValueEncapsulatedLogicalOperationParserRuleCall_1_1_0()); }
+		{ after(grammarAccess.getLogicalNegationOperationAccess().getValueEncapsulatedLogicalOperationParserRuleCall_1_2_0()); }
 	)
 ;
 finally {

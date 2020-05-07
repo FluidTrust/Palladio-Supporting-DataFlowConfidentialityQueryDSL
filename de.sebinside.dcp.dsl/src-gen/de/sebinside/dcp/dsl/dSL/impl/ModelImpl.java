@@ -41,205 +41,197 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
   /**
-   * The cached value of the '{@link #getTargetModelType() <em>Target Model Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTargetModelType() <em>Target Model Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetModelType()
-   * @generated
-   * @ordered
-   */
+	 * @see #getTargetModelType()
+	 * @generated
+	 * @ordered
+	 */
   protected TargetModelTypeDef targetModelType;
 
   /**
-   * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElements()
-   * @generated
-   * @ordered
-   */
+	 * @see #getElements()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<AbstractElement> elements;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ModelImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.MODEL;
-  }
+		return DSLPackage.Literals.MODEL;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public TargetModelTypeDef getTargetModelType()
   {
-    return targetModelType;
-  }
+		return targetModelType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NotificationChain basicSetTargetModelType(TargetModelTypeDef newTargetModelType, NotificationChain msgs)
   {
-    TargetModelTypeDef oldTargetModelType = targetModelType;
-    targetModelType = newTargetModelType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.MODEL__TARGET_MODEL_TYPE, oldTargetModelType, newTargetModelType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
+		TargetModelTypeDef oldTargetModelType = targetModelType;
+		targetModelType = newTargetModelType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.MODEL__TARGET_MODEL_TYPE, oldTargetModelType, newTargetModelType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setTargetModelType(TargetModelTypeDef newTargetModelType)
   {
-    if (newTargetModelType != targetModelType)
-    {
-      NotificationChain msgs = null;
-      if (targetModelType != null)
-        msgs = ((InternalEObject)targetModelType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.MODEL__TARGET_MODEL_TYPE, null, msgs);
-      if (newTargetModelType != null)
-        msgs = ((InternalEObject)newTargetModelType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.MODEL__TARGET_MODEL_TYPE, null, msgs);
-      msgs = basicSetTargetModelType(newTargetModelType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.MODEL__TARGET_MODEL_TYPE, newTargetModelType, newTargetModelType));
-  }
+		if (newTargetModelType != targetModelType) {
+			NotificationChain msgs = null;
+			if (targetModelType != null)
+				msgs = ((InternalEObject)targetModelType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.MODEL__TARGET_MODEL_TYPE, null, msgs);
+			if (newTargetModelType != null)
+				msgs = ((InternalEObject)newTargetModelType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.MODEL__TARGET_MODEL_TYPE, null, msgs);
+			msgs = basicSetTargetModelType(newTargetModelType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.MODEL__TARGET_MODEL_TYPE, newTargetModelType, newTargetModelType));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EList<AbstractElement> getElements()
   {
-    if (elements == null)
-    {
-      elements = new EObjectContainmentEList<AbstractElement>(AbstractElement.class, this, DSLPackage.MODEL__ELEMENTS);
-    }
-    return elements;
-  }
+		if (elements == null) {
+			elements = new EObjectContainmentEList<AbstractElement>(AbstractElement.class, this, DSLPackage.MODEL__ELEMENTS);
+		}
+		return elements;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case DSLPackage.MODEL__TARGET_MODEL_TYPE:
-        return basicSetTargetModelType(null, msgs);
-      case DSLPackage.MODEL__ELEMENTS:
-        return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				return basicSetTargetModelType(null, msgs);
+			case DSLPackage.MODEL__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case DSLPackage.MODEL__TARGET_MODEL_TYPE:
-        return getTargetModelType();
-      case DSLPackage.MODEL__ELEMENTS:
-        return getElements();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				return getTargetModelType();
+			case DSLPackage.MODEL__ELEMENTS:
+				return getElements();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case DSLPackage.MODEL__TARGET_MODEL_TYPE:
-        setTargetModelType((TargetModelTypeDef)newValue);
-        return;
-      case DSLPackage.MODEL__ELEMENTS:
-        getElements().clear();
-        getElements().addAll((Collection<? extends AbstractElement>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				setTargetModelType((TargetModelTypeDef)newValue);
+				return;
+			case DSLPackage.MODEL__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends AbstractElement>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.MODEL__TARGET_MODEL_TYPE:
-        setTargetModelType((TargetModelTypeDef)null);
-        return;
-      case DSLPackage.MODEL__ELEMENTS:
-        getElements().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				setTargetModelType((TargetModelTypeDef)null);
+				return;
+			case DSLPackage.MODEL__ELEMENTS:
+				getElements().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.MODEL__TARGET_MODEL_TYPE:
-        return targetModelType != null;
-      case DSLPackage.MODEL__ELEMENTS:
-        return elements != null && !elements.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.MODEL__TARGET_MODEL_TYPE:
+				return targetModelType != null;
+			case DSLPackage.MODEL__ELEMENTS:
+				return elements != null && !elements.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //ModelImpl

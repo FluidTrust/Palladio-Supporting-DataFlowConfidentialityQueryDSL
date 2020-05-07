@@ -8,7 +8,8 @@ package de.sebinside.dcp.dsl.generator;
 public class GlobalConstants {
 
 	public static enum Prefixes {
-		CONSTRAINT("constraint_"), CHARACTERISTICS_CLASS("characteristicsClass_"), CLASS_VARIABLE("ClassVar_");
+		CONSTRAINT("constraint_"), CHARACTERISTICS_CLASS("characteristicsClass_"), 
+		CLASS_VARIABLE("ClassVar_"), CHARACTERISTIC_VARIABLE("Var_"), CHARACTERISTIC_SET_VARIABLE("VarSet_");
 
 		private String value;
 
@@ -24,7 +25,7 @@ public class GlobalConstants {
 
 	public static enum Parameters {
 		CONSTRAINT_NAME("ConstraintName"), QUERY_TYPE("QueryType"), CALL_STACK("S"), OPERATION("OP"), PARAMETER("P"),
-		CALL_STATE("ST");
+		CALL_STATE("ST"), ITERATOR_TEMPLATE("IteratorTemplate");
 
 		private String value;
 

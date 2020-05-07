@@ -135,7 +135,7 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCharacteristicSetReferenceAccess().getRefAssignment_1(), "rule__CharacteristicSetReference__RefAssignment_1");
 			builder.put(grammarAccess.getLogicalOrOperationAccess().getRightAssignment_1_2(), "rule__LogicalOrOperation__RightAssignment_1_2");
 			builder.put(grammarAccess.getLogicalAndOperationAccess().getRightAssignment_1_2(), "rule__LogicalAndOperation__RightAssignment_1_2");
-			builder.put(grammarAccess.getLogicalNegationOperationAccess().getValueAssignment_1_1(), "rule__LogicalNegationOperation__ValueAssignment_1_1");
+			builder.put(grammarAccess.getLogicalNegationOperationAccess().getValueAssignment_1_2(), "rule__LogicalNegationOperation__ValueAssignment_1_2");
 			builder.put(grammarAccess.getVariableEqualityOperationAccess().getLeftAssignment_0(), "rule__VariableEqualityOperation__LeftAssignment_0");
 			builder.put(grammarAccess.getVariableEqualityOperationAccess().getRightAssignment_2(), "rule__VariableEqualityOperation__RightAssignment_2");
 			builder.put(grammarAccess.getVariableInequalityOperationAccess().getLeftAssignment_0(), "rule__VariableInequalityOperation__LeftAssignment_0");

@@ -31,184 +31,174 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class AttributeClassSelectorImpl extends DataSelectorImpl implements AttributeClassSelector
 {
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef()
-   * @generated
-   * @ordered
-   */
+	 * @see #getRef()
+	 * @generated
+	 * @ordered
+	 */
   protected CharacteristicClass ref;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected AttributeClassSelectorImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.ATTRIBUTE_CLASS_SELECTOR;
-  }
+		return DSLPackage.Literals.ATTRIBUTE_CLASS_SELECTOR;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicClass getRef()
   {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (CharacteristicClass)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
-      }
-    }
-    return ref;
-  }
+		if (ref != null && ref.eIsProxy()) {
+			InternalEObject oldRef = (InternalEObject)ref;
+			ref = (CharacteristicClass)eResolveProxy(oldRef);
+			if (ref != oldRef) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
+			}
+		}
+		return ref;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public CharacteristicClass basicGetRef()
   {
-    return ref;
-  }
+		return ref;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setRef(CharacteristicClass newRef)
   {
-    CharacteristicClass oldRef = ref;
-    ref = newRef;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
-  }
+		CharacteristicClass oldRef = ref;
+		ref = newRef;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF, oldRef, ref));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+				if (resolve) return getRef();
+				return basicGetRef();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
-        setRef((CharacteristicClass)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+				setRef((CharacteristicClass)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
-        setRef((CharacteristicClass)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+				setRef((CharacteristicClass)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
-        return ref != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF:
+				return ref != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
-    if (baseClass == CharacteristicClassSelector.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF: return DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == CharacteristicClassSelector.class) {
+			switch (derivedFeatureID) {
+				case DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF: return DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
-    if (baseClass == CharacteristicClassSelector.class)
-    {
-      switch (baseFeatureID)
-      {
-        case DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF: return DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == CharacteristicClassSelector.class) {
+			switch (baseFeatureID) {
+				case DSLPackage.CHARACTERISTIC_CLASS_SELECTOR__REF: return DSLPackage.ATTRIBUTE_CLASS_SELECTOR__REF;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 } //AttributeClassSelectorImpl

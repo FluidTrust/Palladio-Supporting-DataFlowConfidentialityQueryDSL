@@ -7,7 +7,6 @@ import com.google.inject.Inject;
 import de.sebinside.dcp.dsl.dSL.AbstractElement;
 import de.sebinside.dcp.dsl.dSL.AttributeClassSelector;
 import de.sebinside.dcp.dsl.dSL.AttributeSelector;
-import de.sebinside.dcp.dsl.dSL.BooleanOperation;
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass;
 import de.sebinside.dcp.dsl.dSL.CharacteristicReference;
 import de.sebinside.dcp.dsl.dSL.CharacteristicSet;
@@ -24,6 +23,7 @@ import de.sebinside.dcp.dsl.dSL.EmptySetOperation;
 import de.sebinside.dcp.dsl.dSL.Include;
 import de.sebinside.dcp.dsl.dSL.IntersectionOperation;
 import de.sebinside.dcp.dsl.dSL.LogicalAndOperation;
+import de.sebinside.dcp.dsl.dSL.LogicalNegationOperation;
 import de.sebinside.dcp.dsl.dSL.LogicalOrOperation;
 import de.sebinside.dcp.dsl.dSL.Model;
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector;
@@ -73,9 +73,6 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DSLPackage.ATTRIBUTE_SELECTOR:
 				sequence_AttributeSelector(context, (AttributeSelector) semanticObject); 
 				return; 
-			case DSLPackage.BOOLEAN_OPERATION:
-				sequence_LogicalNegationOperation(context, (BooleanOperation) semanticObject); 
-				return; 
 			case DSLPackage.CHARACTERISTIC_CLASS:
 				sequence_CharacteristicClass(context, (CharacteristicClass) semanticObject); 
 				return; 
@@ -120,6 +117,9 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case DSLPackage.LOGICAL_AND_OPERATION:
 				sequence_LogicalAndOperation(context, (LogicalAndOperation) semanticObject); 
+				return; 
+			case DSLPackage.LOGICAL_NEGATION_OPERATION:
+				sequence_LogicalNegationOperation(context, (LogicalNegationOperation) semanticObject); 
 				return; 
 			case DSLPackage.LOGICAL_OR_OPERATION:
 				sequence_LogicalOrOperation(context, (LogicalOrOperation) semanticObject); 
@@ -452,8 +452,8 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_EmptySetOperation(ISerializationContext context, EmptySetOperation semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.BOOLEAN_OPERATION__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.BOOLEAN_OPERATION__VALUE));
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.EMPTY_SET_OPERATION__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.EMPTY_SET_OPERATION__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEmptySetOperationAccess().getValueCharacteristicSetReferenceParserRuleCall_2_0(), semanticObject.getValue());
@@ -533,25 +533,25 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Operation returns BooleanOperation
-	 *     BooleanOperation returns BooleanOperation
-	 *     LogicalOrOperation returns BooleanOperation
-	 *     LogicalOrOperation.LogicalOrOperation_1_0 returns BooleanOperation
-	 *     LogicalAndOperation returns BooleanOperation
-	 *     LogicalAndOperation.LogicalAndOperation_1_0 returns BooleanOperation
-	 *     LogicalNegationOperation returns BooleanOperation
-	 *     EncapsulatedLogicalOperation returns BooleanOperation
+	 *     Operation returns LogicalNegationOperation
+	 *     BooleanOperation returns LogicalNegationOperation
+	 *     LogicalOrOperation returns LogicalNegationOperation
+	 *     LogicalOrOperation.LogicalOrOperation_1_0 returns LogicalNegationOperation
+	 *     LogicalAndOperation returns LogicalNegationOperation
+	 *     LogicalAndOperation.LogicalAndOperation_1_0 returns LogicalNegationOperation
+	 *     LogicalNegationOperation returns LogicalNegationOperation
+	 *     EncapsulatedLogicalOperation returns LogicalNegationOperation
 	 *
 	 * Constraint:
 	 *     value=EncapsulatedLogicalOperation
 	 */
-	protected void sequence_LogicalNegationOperation(ISerializationContext context, BooleanOperation semanticObject) {
+	protected void sequence_LogicalNegationOperation(ISerializationContext context, LogicalNegationOperation semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.BOOLEAN_OPERATION__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.BOOLEAN_OPERATION__VALUE));
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.LOGICAL_NEGATION_OPERATION__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.LOGICAL_NEGATION_OPERATION__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getLogicalNegationOperationAccess().getValueEncapsulatedLogicalOperationParserRuleCall_1_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getLogicalNegationOperationAccess().getValueEncapsulatedLogicalOperationParserRuleCall_1_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

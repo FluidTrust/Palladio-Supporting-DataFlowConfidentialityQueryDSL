@@ -1746,16 +1746,23 @@ ruleLogicalNegationOperation returns [EObject current=null]
 		}
 		    |
 		(
-			otherlv_1='!'
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getLogicalNegationOperationAccess().getLogicalNegationOperationAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_2='!'
 			{
-				newLeafNode(otherlv_1, grammarAccess.getLogicalNegationOperationAccess().getExclamationMarkKeyword_1_0());
+				newLeafNode(otherlv_2, grammarAccess.getLogicalNegationOperationAccess().getExclamationMarkKeyword_1_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getLogicalNegationOperationAccess().getValueEncapsulatedLogicalOperationParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getLogicalNegationOperationAccess().getValueEncapsulatedLogicalOperationParserRuleCall_1_2_0());
 					}
-					lv_value_2_0=ruleEncapsulatedLogicalOperation
+					lv_value_3_0=ruleEncapsulatedLogicalOperation
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getLogicalNegationOperationRule());
@@ -1763,7 +1770,7 @@ ruleLogicalNegationOperation returns [EObject current=null]
 						set(
 							$current,
 							"value",
-							lv_value_2_0,
+							lv_value_3_0,
 							"de.sebinside.dcp.dsl.DSL.EncapsulatedLogicalOperation");
 						afterParserOrEnumRuleCall();
 					}

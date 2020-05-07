@@ -24,25 +24,25 @@ import org.eclipse.emf.ecore.EObject;
 public interface CharacteristicSelector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ref</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' containment reference.
-   * @see #setRef(CharacteristicTypeSelector)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Ref()
-   * @model containment="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Ref</em>' containment reference.
+	 * @see #setRef(CharacteristicTypeSelector)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicSelector_Ref()
+	 * @model containment="true"
+	 * @generated
+	 */
   CharacteristicTypeSelector getRef();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getRef <em>Ref</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector#getRef <em>Ref</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' containment reference.
-   * @see #getRef()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Ref</em>' containment reference.
+	 * @see #getRef()
+	 * @generated
+	 */
   void setRef(CharacteristicTypeSelector value);
 
 } // CharacteristicSelector

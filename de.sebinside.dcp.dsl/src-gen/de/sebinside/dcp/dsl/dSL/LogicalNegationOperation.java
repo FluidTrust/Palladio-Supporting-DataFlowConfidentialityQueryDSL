@@ -6,42 +6,42 @@ package de.sebinside.dcp.dsl.dSL;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Create Set Operation</b></em>'.
+ * A representation of the model object '<em><b>Logical Negation Operation</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.CreateSetOperation#getValue <em>Value</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.LogicalNegationOperation#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCreateSetOperation()
+ * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getLogicalNegationOperation()
  * @model
  * @generated
  */
-public interface CreateSetOperation extends CharacteristsicSetOperation
+public interface LogicalNegationOperation extends BooleanOperation
 {
   /**
 	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
-	 * @see #setValue(CharacteristicReference)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCreateSetOperation_Value()
+	 * @see #setValue(BooleanOperation)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getLogicalNegationOperation_Value()
 	 * @model containment="true"
 	 * @generated
 	 */
-  CharacteristicReference getValue();
+  BooleanOperation getValue();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CreateSetOperation#getValue <em>Value</em>}' containment reference.
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.LogicalNegationOperation#getValue <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' containment reference.
 	 * @see #getValue()
 	 * @generated
 	 */
-  void setValue(CharacteristicReference value);
+  void setValue(BooleanOperation value);
 
-} // CreateSetOperation
+} // LogicalNegationOperation

@@ -13,6 +13,8 @@ import static de.sebinside.dcp.dsl.generator.PrologUtils.*
 import org.eclipse.emf.ecore.util.EcoreUtil
 import java.util.List
 import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariable
 
 class DSLGeneratorUtils {
 
@@ -90,6 +92,18 @@ class DSLGeneratorUtils {
 			members.map [ member |
 				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«characteristicClass.name»_«member.ref.name»''')
 			])
+	}
+
+	def static createFreeVariableTerm(CharacteristicVariableType variable) {
+		if (variable instanceof CharacteristicVariable) {
+			CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTIC_VARIABLE»«variable.name»''')
+		} else {
+			CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLE»«variable.name»''')
+		}
+	}
+
+	def static createForAllQuery(CompoundTerm iteratorTemplate, Expression query, Expression resultVariable) {
+		CompoundTerm("findall", #[iteratorTemplate, query, resultVariable])
 	}
 
 	def static createPropertyQuery(Expression operation, Expression property, Expression value) {

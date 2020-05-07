@@ -14,7 +14,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VariableInequalityOperationTest extends BooleanOperationTest {
+public class VariableInequalityOperationTest extends SimpleBooleanOperationTest {
 
 	/**
 	 * <!-- begin-user-doc -->

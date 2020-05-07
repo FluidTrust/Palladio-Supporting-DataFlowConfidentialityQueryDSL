@@ -9,6 +9,12 @@ package de.sebinside.dcp.dsl.dSL;
  * A representation of the model object '<em><b>Empty Set Operation</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.EmptySetOperation#getValue <em>Value</em>}</li>
+ * </ul>
  *
  * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getEmptySetOperation()
  * @model
@@ -16,4 +22,26 @@ package de.sebinside.dcp.dsl.dSL;
  */
 public interface EmptySetOperation extends SimpleBooleanOperation
 {
+  /**
+	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @return the value of the '<em>Value</em>' containment reference.
+	 * @see #setValue(CharacteristicSetReference)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getEmptySetOperation_Value()
+	 * @model containment="true"
+	 * @generated
+	 */
+  CharacteristicSetReference getValue();
+
+  /**
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.EmptySetOperation#getValue <em>Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value</em>' containment reference.
+	 * @see #getValue()
+	 * @generated
+	 */
+  void setValue(CharacteristicSetReference value);
+
 } // EmptySetOperation

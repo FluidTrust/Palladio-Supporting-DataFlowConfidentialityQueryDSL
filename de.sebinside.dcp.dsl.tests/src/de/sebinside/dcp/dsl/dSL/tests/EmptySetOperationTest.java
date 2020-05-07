@@ -14,7 +14,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EmptySetOperationTest extends BooleanOperationTest {
+public class EmptySetOperationTest extends SimpleBooleanOperationTest {
 
 	/**
 	 * <!-- begin-user-doc -->

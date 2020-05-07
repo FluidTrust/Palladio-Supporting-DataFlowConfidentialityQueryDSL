@@ -32,238 +32,229 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class VariableEqualityOperationImpl extends SimpleBooleanOperationImpl implements VariableEqualityOperation
 {
   /**
-   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLeft()
-   * @generated
-   * @ordered
-   */
+	 * @see #getLeft()
+	 * @generated
+	 * @ordered
+	 */
   protected CharacteristicReference left;
 
   /**
-   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRight()
-   * @generated
-   * @ordered
-   */
+	 * @see #getRight()
+	 * @generated
+	 * @ordered
+	 */
   protected CharacteristicReference right;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected VariableEqualityOperationImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.VARIABLE_EQUALITY_OPERATION;
-  }
+		return DSLPackage.Literals.VARIABLE_EQUALITY_OPERATION;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicReference getLeft()
   {
-    return left;
-  }
+		return left;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NotificationChain basicSetLeft(CharacteristicReference newLeft, NotificationChain msgs)
   {
-    CharacteristicReference oldLeft = left;
-    left = newLeft;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT, oldLeft, newLeft);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
+		CharacteristicReference oldLeft = left;
+		left = newLeft;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT, oldLeft, newLeft);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setLeft(CharacteristicReference newLeft)
   {
-    if (newLeft != left)
-    {
-      NotificationChain msgs = null;
-      if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT, null, msgs);
-      if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT, null, msgs);
-      msgs = basicSetLeft(newLeft, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT, newLeft, newLeft));
-  }
+		if (newLeft != left) {
+			NotificationChain msgs = null;
+			if (left != null)
+				msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT, null, msgs);
+			if (newLeft != null)
+				msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT, null, msgs);
+			msgs = basicSetLeft(newLeft, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT, newLeft, newLeft));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public CharacteristicReference getRight()
   {
-    return right;
-  }
+		return right;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NotificationChain basicSetRight(CharacteristicReference newRight, NotificationChain msgs)
   {
-    CharacteristicReference oldRight = right;
-    right = newRight;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT, oldRight, newRight);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
+		CharacteristicReference oldRight = right;
+		right = newRight;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT, oldRight, newRight);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setRight(CharacteristicReference newRight)
   {
-    if (newRight != right)
-    {
-      NotificationChain msgs = null;
-      if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT, null, msgs);
-      if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT, null, msgs);
-      msgs = basicSetRight(newRight, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT, newRight, newRight));
-  }
+		if (newRight != right) {
+			NotificationChain msgs = null;
+			if (right != null)
+				msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT, null, msgs);
+			if (newRight != null)
+				msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT, null, msgs);
+			msgs = basicSetRight(newRight, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT, newRight, newRight));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
-        return basicSetLeft(null, msgs);
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
-        return basicSetRight(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
+				return basicSetLeft(null, msgs);
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
+				return basicSetRight(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
-        return getLeft();
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
-        return getRight();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
+				return getLeft();
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
+				return getRight();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
-        setLeft((CharacteristicReference)newValue);
-        return;
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
-        setRight((CharacteristicReference)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
+				setLeft((CharacteristicReference)newValue);
+				return;
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
+				setRight((CharacteristicReference)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
-        setLeft((CharacteristicReference)null);
-        return;
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
-        setRight((CharacteristicReference)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
+				setLeft((CharacteristicReference)null);
+				return;
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
+				setRight((CharacteristicReference)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
-        return left != null;
-      case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
-        return right != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__LEFT:
+				return left != null;
+			case DSLPackage.VARIABLE_EQUALITY_OPERATION__RIGHT:
+				return right != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //VariableEqualityOperationImpl

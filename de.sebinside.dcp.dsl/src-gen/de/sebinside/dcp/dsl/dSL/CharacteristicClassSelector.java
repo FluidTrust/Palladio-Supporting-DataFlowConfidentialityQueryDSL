@@ -24,25 +24,25 @@ import org.eclipse.emf.ecore.EObject;
 public interface CharacteristicClassSelector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Ref</b></em>' reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(CharacteristicClass)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicClassSelector_Ref()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Ref</em>' reference.
+	 * @see #setRef(CharacteristicClass)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicClassSelector_Ref()
+	 * @model
+	 * @generated
+	 */
   CharacteristicClass getRef();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicClassSelector#getRef <em>Ref</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicClassSelector#getRef <em>Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' reference.
-   * @see #getRef()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Ref</em>' reference.
+	 * @see #getRef()
+	 * @generated
+	 */
   void setRef(CharacteristicClass value);
 
 } // CharacteristicClassSelector

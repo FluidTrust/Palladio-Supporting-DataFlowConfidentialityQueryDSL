@@ -18,24 +18,24 @@ import org.eclipse.emf.ecore.EClass;
 public class CharacteristicSetImpl extends CharacteristicVariableTypeImpl implements CharacteristicSet
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected CharacteristicSetImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.CHARACTERISTIC_SET;
-  }
+		return DSLPackage.Literals.CHARACTERISTIC_SET;
+	}
 
 } //CharacteristicSetImpl

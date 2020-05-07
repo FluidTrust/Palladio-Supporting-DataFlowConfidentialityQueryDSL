@@ -3,9 +3,14 @@ package de.sebinside.dcp.dsl.generator.queryrule
 import de.sebinside.dcp.dsl.dSL.AttributeClassSelector
 import de.sebinside.dcp.dsl.dSL.AttributeSelector
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariable
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
+import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
 import de.sebinside.dcp.dsl.dSL.PropertySelector
 import de.sebinside.dcp.dsl.dSL.Rule
+import de.sebinside.dcp.dsl.generator.GlobalConstants
+import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import java.util.ArrayList
 import java.util.HashSet
 import java.util.List
@@ -15,9 +20,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 
 import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.PrologUtils.*
-import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
-import de.sebinside.dcp.dsl.generator.crossplatform.Converter
-import de.sebinside.dcp.dsl.generator.GlobalConstants
+import de.sebinside.dcp.dsl.generator.ConditionUtils
 
 abstract class QueryRule {
 
@@ -25,6 +28,7 @@ abstract class QueryRule {
 	protected val String operation = GlobalConstants.Parameters.OPERATION.toString
 	protected val String parameter = GlobalConstants.Parameters.PARAMETER.toString
 	protected val String callState = GlobalConstants.Parameters.CALL_STATE.toString
+	protected val String iteratorTemplate = GlobalConstants.Parameters.ITERATOR_TEMPLATE.toString
 	val queryTypeTerm = createQueryTypeUnification(queryTypeIdentification)
 
 	var Rule rule = null
@@ -32,6 +36,7 @@ abstract class QueryRule {
 	var Converter converter = null
 
 	var Set<CharacteristicClass> characteristicClasses = new HashSet<CharacteristicClass>
+	var Set<CharacteristicVariableType> freeVariables = new HashSet<CharacteristicVariableType>
 
 	new(Rule rule, String nameBase, Converter converter) {
 		this.rule = rule
@@ -40,17 +45,35 @@ abstract class QueryRule {
 	}
 
 	def dispatch generateDataSelectorTerm(AttributeSelector selector) {
-		selector.ref.literals.map [ literal |
-			val query = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-				converter.convert(selector.ref.ref), converter.convert(literal), CompoundTerm(operation),
-				CompoundTerm(callState))
+		val query = if (selector.ref.isIsVariableSelector) {
+				this.freeVariables.add(selector.ref.variable)
 
-			if (selector.ref.negated) {
-				negate(query)
+				val variable = createFreeVariableTerm(selector.ref.variable)
+				if (selector.ref.variable instanceof CharacteristicVariable) {
+					#[
+						createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
+							converter.convert(selector.ref.ref), variable, CompoundTerm(operation),
+							CompoundTerm(callState))]
+				} else {
+					val innerQuery = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
+						converter.convert(selector.ref.ref), CompoundTerm(iteratorTemplate), CompoundTerm(operation),
+						CompoundTerm(callState))
+
+					#[createForAllQuery(CompoundTerm(iteratorTemplate), innerQuery, variable)]
+				}
 			} else {
-				query
+				selector.ref.literals.map [ literal |
+					createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
+						converter.convert(selector.ref.ref), converter.convert(literal), CompoundTerm(operation),
+						CompoundTerm(callState))
+				]
 			}
-		]
+
+		if (selector.ref.negated) {
+			query.map[entry|negate(entry)]
+		} else {
+			query
+		}
 	}
 
 	def dispatch generateDataSelectorTerm(AttributeClassSelector selector) {
@@ -64,16 +87,30 @@ abstract class QueryRule {
 	}
 
 	def dispatch generateDestinationSelectorTerm(PropertySelector selector) {
-		selector.ref.literals.map [ literal |
-			val query = createPropertyQuery(CompoundTerm(operation), converter.convert(selector.ref.ref),
-				converter.convert(literal))
+		val query = if (selector.ref.isIsVariableSelector) {
+				this.freeVariables.add(selector.ref.variable)
 
-			if (selector.ref.negated) {
-				negate(query)
+				val variable = createFreeVariableTerm(selector.ref.variable)
+				if (selector.ref.variable instanceof CharacteristicVariable) {
+					#[createPropertyQuery(CompoundTerm(operation), converter.convert(selector.ref.ref), variable)]
+				} else {
+					val innerQuery = createPropertyQuery(CompoundTerm(operation), converter.convert(selector.ref.ref),
+						CompoundTerm(iteratorTemplate))
+
+					#[createForAllQuery(CompoundTerm(iteratorTemplate), innerQuery, variable)]
+				}
 			} else {
-				query
+				selector.ref.literals.map [ literal |
+					createPropertyQuery(CompoundTerm(operation), converter.convert(selector.ref.ref),
+						converter.convert(literal))
+				]
 			}
-		]
+
+		if (selector.ref.negated) {
+			query.map[entry|negate(entry)]
+		} else {
+			query
+		}
 	}
 
 	def dispatch generateDestinationSelectorTerm(PropertyClassSelector selector) {
@@ -106,6 +143,10 @@ abstract class QueryRule {
 
 		// Create characteristics class terms
 		val characteristicsClassesTerms = characteristicClasses.map[clazz|createCharacteristicsClassTerm(clazz)]
+		
+		// Create WHERE terms
+		val topOperation = rule.condition.operation
+		val conditionTerm = ConditionUtils.map(topOperation)
 
 		// Create final rule body
 		val subRuleComponents = #[queryTypeTerm,
@@ -113,7 +154,7 @@ abstract class QueryRule {
 			createStackValidCall(CompoundTerm(callStack)), expressionsToLogicalAnd(dataSelectorTerm),
 			expressionsToLogicalAnd(destinationSelectorTerm), if (characteristicClasses.size > 0) {
 				expressionsToLogicalAnd(characteristicsClassesTerms)
-			}]
+			}, conditionTerm]
 		subRule.body = expressionsToLogicalAnd(subRuleComponents)
 
 		// Create rules parameters
@@ -126,6 +167,12 @@ abstract class QueryRule {
 			clazz.members.map[member|'''«GlobalConstants.Prefixes.CLASS_VARIABLE»«clazz.name»_«member.ref.name»''']
 		].toSet.flatten.map[term|CompoundTerm(term)]
 		parametersList.addAll(classTerms)
+
+		// Add all free variables
+		val freeVariableTerms = freeVariables.map [ variable |
+			createFreeVariableTerm(variable)
+		]
+		parametersList.addAll(freeVariableTerms)
 
 		subRule.head.arguments.addAll(parametersList)
 		subRule

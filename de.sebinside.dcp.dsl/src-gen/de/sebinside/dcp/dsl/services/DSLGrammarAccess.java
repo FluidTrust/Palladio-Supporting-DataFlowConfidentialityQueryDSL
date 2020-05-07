@@ -1140,31 +1140,35 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cEncapsulatedLogicalOperationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cExclamationMarkKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cValueEncapsulatedLogicalOperationParserRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
+		private final Action cLogicalNegationOperationAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cExclamationMarkKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cValueEncapsulatedLogicalOperationParserRuleCall_1_2_0 = (RuleCall)cValueAssignment_1_2.eContents().get(0);
 		
 		//LogicalNegationOperation BooleanOperation:
-		//	EncapsulatedLogicalOperation | "!" value=EncapsulatedLogicalOperation;
+		//	EncapsulatedLogicalOperation | {LogicalNegationOperation} "!" value=EncapsulatedLogicalOperation;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//EncapsulatedLogicalOperation | "!" value=EncapsulatedLogicalOperation
+		//EncapsulatedLogicalOperation | {LogicalNegationOperation} "!" value=EncapsulatedLogicalOperation
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//EncapsulatedLogicalOperation
 		public RuleCall getEncapsulatedLogicalOperationParserRuleCall_0() { return cEncapsulatedLogicalOperationParserRuleCall_0; }
 		
-		//"!" value=EncapsulatedLogicalOperation
+		//{LogicalNegationOperation} "!" value=EncapsulatedLogicalOperation
 		public Group getGroup_1() { return cGroup_1; }
 		
+		//{LogicalNegationOperation}
+		public Action getLogicalNegationOperationAction_1_0() { return cLogicalNegationOperationAction_1_0; }
+		
 		//"!"
-		public Keyword getExclamationMarkKeyword_1_0() { return cExclamationMarkKeyword_1_0; }
+		public Keyword getExclamationMarkKeyword_1_1() { return cExclamationMarkKeyword_1_1; }
 		
 		//value=EncapsulatedLogicalOperation
-		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
+		public Assignment getValueAssignment_1_2() { return cValueAssignment_1_2; }
 		
 		//EncapsulatedLogicalOperation
-		public RuleCall getValueEncapsulatedLogicalOperationParserRuleCall_1_1_0() { return cValueEncapsulatedLogicalOperationParserRuleCall_1_1_0; }
+		public RuleCall getValueEncapsulatedLogicalOperationParserRuleCall_1_2_0() { return cValueEncapsulatedLogicalOperationParserRuleCall_1_2_0; }
 	}
 	public class EncapsulatedLogicalOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.EncapsulatedLogicalOperation");
@@ -2032,7 +2036,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LogicalNegationOperation BooleanOperation:
-	//	EncapsulatedLogicalOperation | "!" value=EncapsulatedLogicalOperation;
+	//	EncapsulatedLogicalOperation | {LogicalNegationOperation} "!" value=EncapsulatedLogicalOperation;
 	public LogicalNegationOperationElements getLogicalNegationOperationAccess() {
 		return pLogicalNegationOperation;
 	}

@@ -18,24 +18,24 @@ import org.eclipse.emf.ecore.EClass;
 public class CharacteristicVariableImpl extends CharacteristicVariableTypeImpl implements CharacteristicVariable
 {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected CharacteristicVariableImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.CHARACTERISTIC_VARIABLE;
-  }
+		return DSLPackage.Literals.CHARACTERISTIC_VARIABLE;
+	}
 
 } //CharacteristicVariableImpl

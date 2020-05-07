@@ -32,103 +32,103 @@ import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.E
 public interface CharacteristicTypeSelector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Ref</b></em>' reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ref</b></em>' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(CharacteristicType)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Ref()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Ref</em>' reference.
+	 * @see #setRef(CharacteristicType)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Ref()
+	 * @model
+	 * @generated
+	 */
   CharacteristicType getRef();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#getRef <em>Ref</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#getRef <em>Ref</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' reference.
-   * @see #getRef()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Ref</em>' reference.
+	 * @see #getRef()
+	 * @generated
+	 */
   void setRef(CharacteristicType value);
 
   /**
-   * Returns the value of the '<em><b>Negated</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Negated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Negated</em>' attribute.
-   * @see #setNegated(boolean)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Negated()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Negated</em>' attribute.
+	 * @see #setNegated(boolean)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Negated()
+	 * @model
+	 * @generated
+	 */
   boolean isNegated();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#isNegated <em>Negated</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#isNegated <em>Negated</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Negated</em>' attribute.
-   * @see #isNegated()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Negated</em>' attribute.
+	 * @see #isNegated()
+	 * @generated
+	 */
   void setNegated(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Literals</b></em>' reference list.
-   * The list contents are of type {@link org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral}.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Literals</b></em>' reference list.
+	 * The list contents are of type {@link org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Literals</em>' reference list.
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Literals()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Literals</em>' reference list.
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Literals()
+	 * @model
+	 * @generated
+	 */
   EList<EnumCharacteristicLiteral> getLiterals();
 
   /**
-   * Returns the value of the '<em><b>Is Variable Selector</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Is Variable Selector</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Variable Selector</em>' attribute.
-   * @see #setIsVariableSelector(boolean)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_IsVariableSelector()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Is Variable Selector</em>' attribute.
+	 * @see #setIsVariableSelector(boolean)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_IsVariableSelector()
+	 * @model
+	 * @generated
+	 */
   boolean isIsVariableSelector();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#isIsVariableSelector <em>Is Variable Selector</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#isIsVariableSelector <em>Is Variable Selector</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Variable Selector</em>' attribute.
-   * @see #isIsVariableSelector()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Is Variable Selector</em>' attribute.
+	 * @see #isIsVariableSelector()
+	 * @generated
+	 */
   void setIsVariableSelector(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Variable</b></em>' containment reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Variable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Variable</em>' containment reference.
-   * @see #setVariable(CharacteristicVariableType)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Variable()
-   * @model containment="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Variable</em>' containment reference.
+	 * @see #setVariable(CharacteristicVariableType)
+	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicTypeSelector_Variable()
+	 * @model containment="true"
+	 * @generated
+	 */
   CharacteristicVariableType getVariable();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#getVariable <em>Variable</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector#getVariable <em>Variable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Variable</em>' containment reference.
-   * @see #getVariable()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Variable</em>' containment reference.
+	 * @see #getVariable()
+	 * @generated
+	 */
   void setVariable(CharacteristicVariableType value);
 
 } // CharacteristicTypeSelector

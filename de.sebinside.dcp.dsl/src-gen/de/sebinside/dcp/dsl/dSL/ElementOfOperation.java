@@ -6,22 +6,22 @@ package de.sebinside.dcp.dsl.dSL;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Variable Equality Operation</b></em>'.
+ * A representation of the model object '<em><b>Element Of Operation</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.VariableEqualityOperation#getLeft <em>Left</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.VariableEqualityOperation#getRight <em>Right</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.ElementOfOperation#getLeft <em>Left</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.ElementOfOperation#getRight <em>Right</em>}</li>
  * </ul>
  *
- * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getVariableEqualityOperation()
+ * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getElementOfOperation()
  * @model
  * @generated
  */
-public interface VariableEqualityOperation extends SimpleBooleanOperation
+public interface ElementOfOperation extends SimpleBooleanOperation
 {
   /**
    * Returns the value of the '<em><b>Left</b></em>' containment reference.
@@ -29,14 +29,14 @@ public interface VariableEqualityOperation extends SimpleBooleanOperation
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(CharacteristicReference)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getVariableEqualityOperation_Left()
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getElementOfOperation_Left()
    * @model containment="true"
    * @generated
    */
   CharacteristicReference getLeft();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.VariableEqualityOperation#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.ElementOfOperation#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -50,21 +50,21 @@ public interface VariableEqualityOperation extends SimpleBooleanOperation
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(CharacteristicReference)
-   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getVariableEqualityOperation_Right()
+   * @see #setRight(CharacteristicSetReference)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getElementOfOperation_Right()
    * @model containment="true"
    * @generated
    */
-  CharacteristicReference getRight();
+  CharacteristicSetReference getRight();
 
   /**
-   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.VariableEqualityOperation#getRight <em>Right</em>}' containment reference.
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.ElementOfOperation#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Right</em>' containment reference.
    * @see #getRight()
    * @generated
    */
-  void setRight(CharacteristicReference value);
+  void setRight(CharacteristicSetReference value);
 
-} // VariableEqualityOperation
+} // ElementOfOperation

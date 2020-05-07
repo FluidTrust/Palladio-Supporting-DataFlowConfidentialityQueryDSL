@@ -24,47 +24,47 @@ package de.sebinside.dcp.dsl.dSL;
 public interface LogicalAndOperation extends BooleanOperation
 {
   /**
-	 * Returns the value of the '<em><b>Left</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Left</em>' containment reference.
-	 * @see #setLeft(BooleanOperation)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getLogicalAndOperation_Left()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Left</em>' containment reference.
+   * @see #setLeft(BooleanOperation)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getLogicalAndOperation_Left()
+   * @model containment="true"
+   * @generated
+   */
   BooleanOperation getLeft();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.LogicalAndOperation#getLeft <em>Left</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.LogicalAndOperation#getLeft <em>Left</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Left</em>' containment reference.
-	 * @see #getLeft()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Left</em>' containment reference.
+   * @see #getLeft()
+   * @generated
+   */
   void setLeft(BooleanOperation value);
 
   /**
-	 * Returns the value of the '<em><b>Right</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Right</em>' containment reference.
-	 * @see #setRight(BooleanOperation)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getLogicalAndOperation_Right()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Right</em>' containment reference.
+   * @see #setRight(BooleanOperation)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getLogicalAndOperation_Right()
+   * @model containment="true"
+   * @generated
+   */
   BooleanOperation getRight();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.LogicalAndOperation#getRight <em>Right</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.LogicalAndOperation#getRight <em>Right</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Right</em>' containment reference.
-	 * @see #getRight()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Right</em>' containment reference.
+   * @see #getRight()
+   * @generated
+   */
   void setRight(BooleanOperation value);
 
 } // LogicalAndOperation

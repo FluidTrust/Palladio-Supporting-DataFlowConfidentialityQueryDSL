@@ -117,20 +117,26 @@ Operation:
 	BooleanOperation | CharacteristsicSetOperation;
 
 BooleanOperation:
-	LogicalAndOperation // |  LogicalOrOperation 
-	| LogicalNegationOperation | VariableEqualityOperation |
-	VariableInequalityOperation | EmptySetOperation;
+	LogicalOrOperation;
 
 CharacteristsicSetOperation:
-	CreateSetOperation | IntersectionOperation;
-LogicalAndOperation:
-	"(" left=BooleanOperation "&" right=BooleanOperation ")";
+	CreateSetOperation | IntersectionOperation | UnionOperation | SubtractOperation;
 
-LogicalOrOperation:
-	"(" left=BooleanOperation "|" right=BooleanOperation ")";
+LogicalOrOperation returns BooleanOperation:
+	LogicalAndOperation ({LogicalOrOperation.left=current} "|" right=LogicalAndOperation)*;
 
-LogicalNegationOperation:
-	"!" value=BooleanOperation;
+LogicalAndOperation returns BooleanOperation:
+	LogicalNegationOperation ({LogicalAndOperation.left=current} "&" right=LogicalNegationOperation)*;
+
+LogicalNegationOperation returns BooleanOperation:
+	EncapsulatedLogicalOperation | "!" value=EncapsulatedLogicalOperation;
+
+EncapsulatedLogicalOperation returns BooleanOperation:
+	SimpleBooleanOperation |
+	'(' LogicalOrOperation ')';
+
+SimpleBooleanOperation:
+	EmptySetOperation | VariableEqualityOperation | VariableInequalityOperation | ElementOfOperation;
 
 VariableEqualityOperation:
 	left=CharacteristicReference "==" right=CharacteristicReference;
@@ -144,7 +150,14 @@ EmptySetOperation:
 IntersectionOperation:
 	"intersection" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
 
+UnionOperation:
+	"union" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+
+SubtractOperation:
+	"subtract" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+
+ElementOfOperation:
+	"elementOf" "(" left=CharacteristicReference "," right=CharacteristicSetReference ")";
+
 CreateSetOperation:
 	"{" value=CharacteristicReference "}";
-	
-// TODO: union, subtract, elementOf

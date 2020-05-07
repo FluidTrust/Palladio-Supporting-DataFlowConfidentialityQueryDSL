@@ -1029,48 +1029,28 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class BooleanOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.BooleanOperation");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cLogicalAndOperationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cLogicalNegationOperationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableEqualityOperationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cVariableInequalityOperationParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cEmptySetOperationParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cLogicalOrOperationParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//BooleanOperation:
-		//	LogicalAndOperation // |  LogicalOrOperation 
-		//	| LogicalNegationOperation | VariableEqualityOperation | VariableInequalityOperation | EmptySetOperation;
+		//	LogicalOrOperation;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//LogicalAndOperation // |  LogicalOrOperation 
-		//| LogicalNegationOperation | VariableEqualityOperation | VariableInequalityOperation | EmptySetOperation
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//LogicalAndOperation
-		public RuleCall getLogicalAndOperationParserRuleCall_0() { return cLogicalAndOperationParserRuleCall_0; }
-		
-		//LogicalNegationOperation
-		public RuleCall getLogicalNegationOperationParserRuleCall_1() { return cLogicalNegationOperationParserRuleCall_1; }
-		
-		//VariableEqualityOperation
-		public RuleCall getVariableEqualityOperationParserRuleCall_2() { return cVariableEqualityOperationParserRuleCall_2; }
-		
-		//VariableInequalityOperation
-		public RuleCall getVariableInequalityOperationParserRuleCall_3() { return cVariableInequalityOperationParserRuleCall_3; }
-		
-		//EmptySetOperation
-		public RuleCall getEmptySetOperationParserRuleCall_4() { return cEmptySetOperationParserRuleCall_4; }
+		//LogicalOrOperation
+		public RuleCall getLogicalOrOperationParserRuleCall() { return cLogicalOrOperationParserRuleCall; }
 	}
 	public class CharacteristsicSetOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.CharacteristsicSetOperation");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cCreateSetOperationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cIntersectionOperationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cUnionOperationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cSubtractOperationParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//CharacteristsicSetOperation:
-		//	CreateSetOperation | IntersectionOperation;
+		//	CreateSetOperation | IntersectionOperation | UnionOperation | SubtractOperation;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//CreateSetOperation | IntersectionOperation
+		//CreateSetOperation | IntersectionOperation | UnionOperation | SubtractOperation
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//CreateSetOperation
@@ -1078,107 +1058,172 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//IntersectionOperation
 		public RuleCall getIntersectionOperationParserRuleCall_1() { return cIntersectionOperationParserRuleCall_1; }
-	}
-	public class LogicalAndOperationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.LogicalAndOperation");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cLeftBooleanOperationParserRuleCall_1_0 = (RuleCall)cLeftAssignment_1.eContents().get(0);
-		private final Keyword cAmpersandKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cRightAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRightBooleanOperationParserRuleCall_3_0 = (RuleCall)cRightAssignment_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//LogicalAndOperation:
-		//	"(" left=BooleanOperation "&" right=BooleanOperation ")";
-		@Override public ParserRule getRule() { return rule; }
+		//UnionOperation
+		public RuleCall getUnionOperationParserRuleCall_2() { return cUnionOperationParserRuleCall_2; }
 		
-		//"(" left=BooleanOperation "&" right=BooleanOperation ")"
-		public Group getGroup() { return cGroup; }
-		
-		//"("
-		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
-		
-		//left=BooleanOperation
-		public Assignment getLeftAssignment_1() { return cLeftAssignment_1; }
-		
-		//BooleanOperation
-		public RuleCall getLeftBooleanOperationParserRuleCall_1_0() { return cLeftBooleanOperationParserRuleCall_1_0; }
-		
-		//"&"
-		public Keyword getAmpersandKeyword_2() { return cAmpersandKeyword_2; }
-		
-		//right=BooleanOperation
-		public Assignment getRightAssignment_3() { return cRightAssignment_3; }
-		
-		//BooleanOperation
-		public RuleCall getRightBooleanOperationParserRuleCall_3_0() { return cRightBooleanOperationParserRuleCall_3_0; }
-		
-		//")"
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		//SubtractOperation
+		public RuleCall getSubtractOperationParserRuleCall_3() { return cSubtractOperationParserRuleCall_3; }
 	}
 	public class LogicalOrOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.LogicalOrOperation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cLeftBooleanOperationParserRuleCall_1_0 = (RuleCall)cLeftAssignment_1.eContents().get(0);
-		private final Keyword cVerticalLineKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cRightAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRightBooleanOperationParserRuleCall_3_0 = (RuleCall)cRightAssignment_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final RuleCall cLogicalAndOperationParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cLogicalOrOperationLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightLogicalAndOperationParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//LogicalOrOperation:
-		//	"(" left=BooleanOperation "|" right=BooleanOperation ")";
+		//LogicalOrOperation BooleanOperation:
+		//	LogicalAndOperation ({LogicalOrOperation.left=current} "|" right=LogicalAndOperation)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"(" left=BooleanOperation "|" right=BooleanOperation ")"
+		//LogicalAndOperation ({LogicalOrOperation.left=current} "|" right=LogicalAndOperation)*
 		public Group getGroup() { return cGroup; }
 		
-		//"("
-		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
+		//LogicalAndOperation
+		public RuleCall getLogicalAndOperationParserRuleCall_0() { return cLogicalAndOperationParserRuleCall_0; }
 		
-		//left=BooleanOperation
-		public Assignment getLeftAssignment_1() { return cLeftAssignment_1; }
+		//({LogicalOrOperation.left=current} "|" right=LogicalAndOperation)*
+		public Group getGroup_1() { return cGroup_1; }
 		
-		//BooleanOperation
-		public RuleCall getLeftBooleanOperationParserRuleCall_1_0() { return cLeftBooleanOperationParserRuleCall_1_0; }
+		//{LogicalOrOperation.left=current}
+		public Action getLogicalOrOperationLeftAction_1_0() { return cLogicalOrOperationLeftAction_1_0; }
 		
 		//"|"
-		public Keyword getVerticalLineKeyword_2() { return cVerticalLineKeyword_2; }
+		public Keyword getVerticalLineKeyword_1_1() { return cVerticalLineKeyword_1_1; }
 		
-		//right=BooleanOperation
-		public Assignment getRightAssignment_3() { return cRightAssignment_3; }
+		//right=LogicalAndOperation
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
-		//BooleanOperation
-		public RuleCall getRightBooleanOperationParserRuleCall_3_0() { return cRightBooleanOperationParserRuleCall_3_0; }
+		//LogicalAndOperation
+		public RuleCall getRightLogicalAndOperationParserRuleCall_1_2_0() { return cRightLogicalAndOperationParserRuleCall_1_2_0; }
+	}
+	public class LogicalAndOperationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.LogicalAndOperation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cLogicalNegationOperationParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cLogicalAndOperationLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cAmpersandKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightLogicalNegationOperationParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//")"
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		//LogicalAndOperation BooleanOperation:
+		//	LogicalNegationOperation ({LogicalAndOperation.left=current} "&" right=LogicalNegationOperation)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//LogicalNegationOperation ({LogicalAndOperation.left=current} "&" right=LogicalNegationOperation)*
+		public Group getGroup() { return cGroup; }
+		
+		//LogicalNegationOperation
+		public RuleCall getLogicalNegationOperationParserRuleCall_0() { return cLogicalNegationOperationParserRuleCall_0; }
+		
+		//({LogicalAndOperation.left=current} "&" right=LogicalNegationOperation)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{LogicalAndOperation.left=current}
+		public Action getLogicalAndOperationLeftAction_1_0() { return cLogicalAndOperationLeftAction_1_0; }
+		
+		//"&"
+		public Keyword getAmpersandKeyword_1_1() { return cAmpersandKeyword_1_1; }
+		
+		//right=LogicalNegationOperation
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//LogicalNegationOperation
+		public RuleCall getRightLogicalNegationOperationParserRuleCall_1_2_0() { return cRightLogicalNegationOperationParserRuleCall_1_2_0; }
 	}
 	public class LogicalNegationOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.LogicalNegationOperation");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cExclamationMarkKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValueBooleanOperationParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cEncapsulatedLogicalOperationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cExclamationMarkKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValueEncapsulatedLogicalOperationParserRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
 		
-		//LogicalNegationOperation:
-		//	"!" value=BooleanOperation;
+		//LogicalNegationOperation BooleanOperation:
+		//	EncapsulatedLogicalOperation | "!" value=EncapsulatedLogicalOperation;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"!" value=BooleanOperation
-		public Group getGroup() { return cGroup; }
+		//EncapsulatedLogicalOperation | "!" value=EncapsulatedLogicalOperation
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//EncapsulatedLogicalOperation
+		public RuleCall getEncapsulatedLogicalOperationParserRuleCall_0() { return cEncapsulatedLogicalOperationParserRuleCall_0; }
+		
+		//"!" value=EncapsulatedLogicalOperation
+		public Group getGroup_1() { return cGroup_1; }
 		
 		//"!"
-		public Keyword getExclamationMarkKeyword_0() { return cExclamationMarkKeyword_0; }
+		public Keyword getExclamationMarkKeyword_1_0() { return cExclamationMarkKeyword_1_0; }
 		
-		//value=BooleanOperation
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		//value=EncapsulatedLogicalOperation
+		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
 		
-		//BooleanOperation
-		public RuleCall getValueBooleanOperationParserRuleCall_1_0() { return cValueBooleanOperationParserRuleCall_1_0; }
+		//EncapsulatedLogicalOperation
+		public RuleCall getValueEncapsulatedLogicalOperationParserRuleCall_1_1_0() { return cValueEncapsulatedLogicalOperationParserRuleCall_1_1_0; }
+	}
+	public class EncapsulatedLogicalOperationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.EncapsulatedLogicalOperation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSimpleBooleanOperationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cLogicalOrOperationParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		
+		//EncapsulatedLogicalOperation BooleanOperation:
+		//	SimpleBooleanOperation |
+		//	'(' LogicalOrOperation ')';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//SimpleBooleanOperation | '(' LogicalOrOperation ')'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//SimpleBooleanOperation
+		public RuleCall getSimpleBooleanOperationParserRuleCall_0() { return cSimpleBooleanOperationParserRuleCall_0; }
+		
+		//'(' LogicalOrOperation ')'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
+		
+		//LogicalOrOperation
+		public RuleCall getLogicalOrOperationParserRuleCall_1_1() { return cLogicalOrOperationParserRuleCall_1_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
+	}
+	public class SimpleBooleanOperationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.SimpleBooleanOperation");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cEmptySetOperationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cVariableEqualityOperationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cVariableInequalityOperationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cElementOfOperationParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		
+		//SimpleBooleanOperation:
+		//	EmptySetOperation | VariableEqualityOperation | VariableInequalityOperation | ElementOfOperation;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//EmptySetOperation | VariableEqualityOperation | VariableInequalityOperation | ElementOfOperation
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//EmptySetOperation
+		public RuleCall getEmptySetOperationParserRuleCall_0() { return cEmptySetOperationParserRuleCall_0; }
+		
+		//VariableEqualityOperation
+		public RuleCall getVariableEqualityOperationParserRuleCall_1() { return cVariableEqualityOperationParserRuleCall_1; }
+		
+		//VariableInequalityOperation
+		public RuleCall getVariableInequalityOperationParserRuleCall_2() { return cVariableInequalityOperationParserRuleCall_2; }
+		
+		//ElementOfOperation
+		public RuleCall getElementOfOperationParserRuleCall_3() { return cElementOfOperationParserRuleCall_3; }
 	}
 	public class VariableEqualityOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.VariableEqualityOperation");
@@ -1246,67 +1291,204 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.EmptySetOperation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cIsEmptyKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValueCharacteristicSetReferenceParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueCharacteristicSetReferenceParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//EmptySetOperation:
-		//	"isEmpty(" value=CharacteristicSetReference ")";
+		//	"isEmpty" "(" value=CharacteristicSetReference ")";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"isEmpty(" value=CharacteristicSetReference ")"
+		//"isEmpty" "(" value=CharacteristicSetReference ")"
 		public Group getGroup() { return cGroup; }
 		
-		//"isEmpty("
+		//"isEmpty"
 		public Keyword getIsEmptyKeyword_0() { return cIsEmptyKeyword_0; }
 		
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
 		//value=CharacteristicSetReference
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 		
 		//CharacteristicSetReference
-		public RuleCall getValueCharacteristicSetReferenceParserRuleCall_1_0() { return cValueCharacteristicSetReferenceParserRuleCall_1_0; }
+		public RuleCall getValueCharacteristicSetReferenceParserRuleCall_2_0() { return cValueCharacteristicSetReferenceParserRuleCall_2_0; }
 		
 		//")"
-		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 	public class IntersectionOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.IntersectionOperation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cIntersectionKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cLeftCharacteristicSetReferenceParserRuleCall_1_0 = (RuleCall)cLeftAssignment_1.eContents().get(0);
-		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cRightAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRightCharacteristicSetReferenceParserRuleCall_3_0 = (RuleCall)cRightAssignment_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cLeftAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLeftCharacteristicSetReferenceParserRuleCall_2_0 = (RuleCall)cLeftAssignment_2.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cRightAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRightCharacteristicSetReferenceParserRuleCall_4_0 = (RuleCall)cRightAssignment_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//IntersectionOperation:
-		//	"intersection(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+		//	"intersection" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"intersection(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")"
+		//"intersection" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")"
 		public Group getGroup() { return cGroup; }
 		
-		//"intersection("
+		//"intersection"
 		public Keyword getIntersectionKeyword_0() { return cIntersectionKeyword_0; }
 		
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
 		//left=CharacteristicSetReference
-		public Assignment getLeftAssignment_1() { return cLeftAssignment_1; }
+		public Assignment getLeftAssignment_2() { return cLeftAssignment_2; }
 		
 		//CharacteristicSetReference
-		public RuleCall getLeftCharacteristicSetReferenceParserRuleCall_1_0() { return cLeftCharacteristicSetReferenceParserRuleCall_1_0; }
+		public RuleCall getLeftCharacteristicSetReferenceParserRuleCall_2_0() { return cLeftCharacteristicSetReferenceParserRuleCall_2_0; }
 		
 		//","
-		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 		
 		//right=CharacteristicSetReference
-		public Assignment getRightAssignment_3() { return cRightAssignment_3; }
+		public Assignment getRightAssignment_4() { return cRightAssignment_4; }
 		
 		//CharacteristicSetReference
-		public RuleCall getRightCharacteristicSetReferenceParserRuleCall_3_0() { return cRightCharacteristicSetReferenceParserRuleCall_3_0; }
+		public RuleCall getRightCharacteristicSetReferenceParserRuleCall_4_0() { return cRightCharacteristicSetReferenceParserRuleCall_4_0; }
 		
 		//")"
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+	}
+	public class UnionOperationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.UnionOperation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cUnionKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cLeftAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLeftCharacteristicSetReferenceParserRuleCall_2_0 = (RuleCall)cLeftAssignment_2.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cRightAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRightCharacteristicSetReferenceParserRuleCall_4_0 = (RuleCall)cRightAssignment_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//UnionOperation:
+		//	"union" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"union" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")"
+		public Group getGroup() { return cGroup; }
+		
+		//"union"
+		public Keyword getUnionKeyword_0() { return cUnionKeyword_0; }
+		
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//left=CharacteristicSetReference
+		public Assignment getLeftAssignment_2() { return cLeftAssignment_2; }
+		
+		//CharacteristicSetReference
+		public RuleCall getLeftCharacteristicSetReferenceParserRuleCall_2_0() { return cLeftCharacteristicSetReferenceParserRuleCall_2_0; }
+		
+		//","
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		
+		//right=CharacteristicSetReference
+		public Assignment getRightAssignment_4() { return cRightAssignment_4; }
+		
+		//CharacteristicSetReference
+		public RuleCall getRightCharacteristicSetReferenceParserRuleCall_4_0() { return cRightCharacteristicSetReferenceParserRuleCall_4_0; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+	}
+	public class SubtractOperationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.SubtractOperation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSubtractKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cLeftAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLeftCharacteristicSetReferenceParserRuleCall_2_0 = (RuleCall)cLeftAssignment_2.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cRightAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRightCharacteristicSetReferenceParserRuleCall_4_0 = (RuleCall)cRightAssignment_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//SubtractOperation:
+		//	"subtract" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"subtract" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")"
+		public Group getGroup() { return cGroup; }
+		
+		//"subtract"
+		public Keyword getSubtractKeyword_0() { return cSubtractKeyword_0; }
+		
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//left=CharacteristicSetReference
+		public Assignment getLeftAssignment_2() { return cLeftAssignment_2; }
+		
+		//CharacteristicSetReference
+		public RuleCall getLeftCharacteristicSetReferenceParserRuleCall_2_0() { return cLeftCharacteristicSetReferenceParserRuleCall_2_0; }
+		
+		//","
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		
+		//right=CharacteristicSetReference
+		public Assignment getRightAssignment_4() { return cRightAssignment_4; }
+		
+		//CharacteristicSetReference
+		public RuleCall getRightCharacteristicSetReferenceParserRuleCall_4_0() { return cRightCharacteristicSetReferenceParserRuleCall_4_0; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+	}
+	public class ElementOfOperationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.ElementOfOperation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cElementOfKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cLeftAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cLeftCharacteristicReferenceParserRuleCall_2_0 = (RuleCall)cLeftAssignment_2.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cRightAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRightCharacteristicSetReferenceParserRuleCall_4_0 = (RuleCall)cRightAssignment_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//ElementOfOperation:
+		//	"elementOf" "(" left=CharacteristicReference "," right=CharacteristicSetReference ")";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"elementOf" "(" left=CharacteristicReference "," right=CharacteristicSetReference ")"
+		public Group getGroup() { return cGroup; }
+		
+		//"elementOf"
+		public Keyword getElementOfKeyword_0() { return cElementOfKeyword_0; }
+		
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//left=CharacteristicReference
+		public Assignment getLeftAssignment_2() { return cLeftAssignment_2; }
+		
+		//CharacteristicReference
+		public RuleCall getLeftCharacteristicReferenceParserRuleCall_2_0() { return cLeftCharacteristicReferenceParserRuleCall_2_0; }
+		
+		//","
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		
+		//right=CharacteristicSetReference
+		public Assignment getRightAssignment_4() { return cRightAssignment_4; }
+		
+		//CharacteristicSetReference
+		public RuleCall getRightCharacteristicSetReferenceParserRuleCall_4_0() { return cRightCharacteristicSetReferenceParserRuleCall_4_0; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
 	public class CreateSetOperationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.CreateSetOperation");
@@ -1404,13 +1586,18 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final OperationElements pOperation;
 	private final BooleanOperationElements pBooleanOperation;
 	private final CharacteristsicSetOperationElements pCharacteristsicSetOperation;
-	private final LogicalAndOperationElements pLogicalAndOperation;
 	private final LogicalOrOperationElements pLogicalOrOperation;
+	private final LogicalAndOperationElements pLogicalAndOperation;
 	private final LogicalNegationOperationElements pLogicalNegationOperation;
+	private final EncapsulatedLogicalOperationElements pEncapsulatedLogicalOperation;
+	private final SimpleBooleanOperationElements pSimpleBooleanOperation;
 	private final VariableEqualityOperationElements pVariableEqualityOperation;
 	private final VariableInequalityOperationElements pVariableInequalityOperation;
 	private final EmptySetOperationElements pEmptySetOperation;
 	private final IntersectionOperationElements pIntersectionOperation;
+	private final UnionOperationElements pUnionOperation;
+	private final SubtractOperationElements pSubtractOperation;
+	private final ElementOfOperationElements pElementOfOperation;
 	private final CreateSetOperationElements pCreateSetOperation;
 	
 	private final Grammar grammar;
@@ -1454,13 +1641,18 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pOperation = new OperationElements();
 		this.pBooleanOperation = new BooleanOperationElements();
 		this.pCharacteristsicSetOperation = new CharacteristsicSetOperationElements();
-		this.pLogicalAndOperation = new LogicalAndOperationElements();
 		this.pLogicalOrOperation = new LogicalOrOperationElements();
+		this.pLogicalAndOperation = new LogicalAndOperationElements();
 		this.pLogicalNegationOperation = new LogicalNegationOperationElements();
+		this.pEncapsulatedLogicalOperation = new EncapsulatedLogicalOperationElements();
+		this.pSimpleBooleanOperation = new SimpleBooleanOperationElements();
 		this.pVariableEqualityOperation = new VariableEqualityOperationElements();
 		this.pVariableInequalityOperation = new VariableInequalityOperationElements();
 		this.pEmptySetOperation = new EmptySetOperationElements();
 		this.pIntersectionOperation = new IntersectionOperationElements();
+		this.pUnionOperation = new UnionOperationElements();
+		this.pSubtractOperation = new SubtractOperationElements();
+		this.pElementOfOperation = new ElementOfOperationElements();
 		this.pCreateSetOperation = new CreateSetOperationElements();
 	}
 	
@@ -1800,8 +1992,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//BooleanOperation:
-	//	LogicalAndOperation // |  LogicalOrOperation 
-	//	| LogicalNegationOperation | VariableEqualityOperation | VariableInequalityOperation | EmptySetOperation;
+	//	LogicalOrOperation;
 	public BooleanOperationElements getBooleanOperationAccess() {
 		return pBooleanOperation;
 	}
@@ -1811,7 +2002,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//CharacteristsicSetOperation:
-	//	CreateSetOperation | IntersectionOperation;
+	//	CreateSetOperation | IntersectionOperation | UnionOperation | SubtractOperation;
 	public CharacteristsicSetOperationElements getCharacteristsicSetOperationAccess() {
 		return pCharacteristsicSetOperation;
 	}
@@ -1820,18 +2011,8 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getCharacteristsicSetOperationAccess().getRule();
 	}
 	
-	//LogicalAndOperation:
-	//	"(" left=BooleanOperation "&" right=BooleanOperation ")";
-	public LogicalAndOperationElements getLogicalAndOperationAccess() {
-		return pLogicalAndOperation;
-	}
-	
-	public ParserRule getLogicalAndOperationRule() {
-		return getLogicalAndOperationAccess().getRule();
-	}
-	
-	//LogicalOrOperation:
-	//	"(" left=BooleanOperation "|" right=BooleanOperation ")";
+	//LogicalOrOperation BooleanOperation:
+	//	LogicalAndOperation ({LogicalOrOperation.left=current} "|" right=LogicalAndOperation)*;
 	public LogicalOrOperationElements getLogicalOrOperationAccess() {
 		return pLogicalOrOperation;
 	}
@@ -1840,14 +2021,45 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getLogicalOrOperationAccess().getRule();
 	}
 	
-	//LogicalNegationOperation:
-	//	"!" value=BooleanOperation;
+	//LogicalAndOperation BooleanOperation:
+	//	LogicalNegationOperation ({LogicalAndOperation.left=current} "&" right=LogicalNegationOperation)*;
+	public LogicalAndOperationElements getLogicalAndOperationAccess() {
+		return pLogicalAndOperation;
+	}
+	
+	public ParserRule getLogicalAndOperationRule() {
+		return getLogicalAndOperationAccess().getRule();
+	}
+	
+	//LogicalNegationOperation BooleanOperation:
+	//	EncapsulatedLogicalOperation | "!" value=EncapsulatedLogicalOperation;
 	public LogicalNegationOperationElements getLogicalNegationOperationAccess() {
 		return pLogicalNegationOperation;
 	}
 	
 	public ParserRule getLogicalNegationOperationRule() {
 		return getLogicalNegationOperationAccess().getRule();
+	}
+	
+	//EncapsulatedLogicalOperation BooleanOperation:
+	//	SimpleBooleanOperation |
+	//	'(' LogicalOrOperation ')';
+	public EncapsulatedLogicalOperationElements getEncapsulatedLogicalOperationAccess() {
+		return pEncapsulatedLogicalOperation;
+	}
+	
+	public ParserRule getEncapsulatedLogicalOperationRule() {
+		return getEncapsulatedLogicalOperationAccess().getRule();
+	}
+	
+	//SimpleBooleanOperation:
+	//	EmptySetOperation | VariableEqualityOperation | VariableInequalityOperation | ElementOfOperation;
+	public SimpleBooleanOperationElements getSimpleBooleanOperationAccess() {
+		return pSimpleBooleanOperation;
+	}
+	
+	public ParserRule getSimpleBooleanOperationRule() {
+		return getSimpleBooleanOperationAccess().getRule();
 	}
 	
 	//VariableEqualityOperation:
@@ -1871,7 +2083,7 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EmptySetOperation:
-	//	"isEmpty(" value=CharacteristicSetReference ")";
+	//	"isEmpty" "(" value=CharacteristicSetReference ")";
 	public EmptySetOperationElements getEmptySetOperationAccess() {
 		return pEmptySetOperation;
 	}
@@ -1881,13 +2093,43 @@ public class DSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//IntersectionOperation:
-	//	"intersection(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+	//	"intersection" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
 	public IntersectionOperationElements getIntersectionOperationAccess() {
 		return pIntersectionOperation;
 	}
 	
 	public ParserRule getIntersectionOperationRule() {
 		return getIntersectionOperationAccess().getRule();
+	}
+	
+	//UnionOperation:
+	//	"union" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+	public UnionOperationElements getUnionOperationAccess() {
+		return pUnionOperation;
+	}
+	
+	public ParserRule getUnionOperationRule() {
+		return getUnionOperationAccess().getRule();
+	}
+	
+	//SubtractOperation:
+	//	"subtract" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
+	public SubtractOperationElements getSubtractOperationAccess() {
+		return pSubtractOperation;
+	}
+	
+	public ParserRule getSubtractOperationRule() {
+		return getSubtractOperationAccess().getRule();
+	}
+	
+	//ElementOfOperation:
+	//	"elementOf" "(" left=CharacteristicReference "," right=CharacteristicSetReference ")";
+	public ElementOfOperationElements getElementOfOperationAccess() {
+		return pElementOfOperation;
+	}
+	
+	public ParserRule getElementOfOperationRule() {
+		return getElementOfOperationAccess().getRule();
 	}
 	
 	//CreateSetOperation:

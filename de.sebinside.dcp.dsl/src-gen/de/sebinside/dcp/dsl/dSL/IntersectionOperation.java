@@ -24,47 +24,47 @@ package de.sebinside.dcp.dsl.dSL;
 public interface IntersectionOperation extends CharacteristsicSetOperation
 {
   /**
-	 * Returns the value of the '<em><b>Left</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Left</em>' containment reference.
-	 * @see #setLeft(CharacteristicSetReference)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getIntersectionOperation_Left()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Left</em>' containment reference.
+   * @see #setLeft(CharacteristicSetReference)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getIntersectionOperation_Left()
+   * @model containment="true"
+   * @generated
+   */
   CharacteristicSetReference getLeft();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.IntersectionOperation#getLeft <em>Left</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.IntersectionOperation#getLeft <em>Left</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Left</em>' containment reference.
-	 * @see #getLeft()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Left</em>' containment reference.
+   * @see #getLeft()
+   * @generated
+   */
   void setLeft(CharacteristicSetReference value);
 
   /**
-	 * Returns the value of the '<em><b>Right</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Right</em>' containment reference.
-	 * @see #setRight(CharacteristicSetReference)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getIntersectionOperation_Right()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Right</em>' containment reference.
+   * @see #setRight(CharacteristicSetReference)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getIntersectionOperation_Right()
+   * @model containment="true"
+   * @generated
+   */
   CharacteristicSetReference getRight();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.IntersectionOperation#getRight <em>Right</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.IntersectionOperation#getRight <em>Right</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Right</em>' containment reference.
-	 * @see #getRight()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Right</em>' containment reference.
+   * @see #getRight()
+   * @generated
+   */
   void setRight(CharacteristicSetReference value);
 
 } // IntersectionOperation

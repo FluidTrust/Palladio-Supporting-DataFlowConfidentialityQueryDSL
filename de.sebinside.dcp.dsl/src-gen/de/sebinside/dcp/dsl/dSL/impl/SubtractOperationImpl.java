@@ -3,9 +3,9 @@
  */
 package de.sebinside.dcp.dsl.dSL.impl;
 
-import de.sebinside.dcp.dsl.dSL.CharacteristicReference;
+import de.sebinside.dcp.dsl.dSL.CharacteristicSetReference;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
-import de.sebinside.dcp.dsl.dSL.VariableInequalityOperation;
+import de.sebinside.dcp.dsl.dSL.SubtractOperation;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -17,19 +17,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Variable Inequality Operation</b></em>'.
+ * An implementation of the model object '<em><b>Subtract Operation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.VariableInequalityOperationImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.VariableInequalityOperationImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.SubtractOperationImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.SubtractOperationImpl#getRight <em>Right</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl implements VariableInequalityOperation
+public class SubtractOperationImpl extends CharacteristsicSetOperationImpl implements SubtractOperation
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -39,7 +39,7 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
    * @generated
    * @ordered
    */
-  protected CharacteristicReference left;
+  protected CharacteristicSetReference left;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -49,14 +49,14 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
    * @generated
    * @ordered
    */
-  protected CharacteristicReference right;
+  protected CharacteristicSetReference right;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected VariableInequalityOperationImpl()
+  protected SubtractOperationImpl()
   {
     super();
   }
@@ -69,7 +69,7 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
   @Override
   protected EClass eStaticClass()
   {
-    return DSLPackage.Literals.VARIABLE_INEQUALITY_OPERATION;
+    return DSLPackage.Literals.SUBTRACT_OPERATION;
   }
 
   /**
@@ -78,7 +78,7 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
    * @generated
    */
   @Override
-  public CharacteristicReference getLeft()
+  public CharacteristicSetReference getLeft()
   {
     return left;
   }
@@ -88,13 +88,13 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLeft(CharacteristicReference newLeft, NotificationChain msgs)
+  public NotificationChain basicSetLeft(CharacteristicSetReference newLeft, NotificationChain msgs)
   {
-    CharacteristicReference oldLeft = left;
+    CharacteristicSetReference oldLeft = left;
     left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_INEQUALITY_OPERATION__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.SUBTRACT_OPERATION__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -106,20 +106,20 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
    * @generated
    */
   @Override
-  public void setLeft(CharacteristicReference newLeft)
+  public void setLeft(CharacteristicSetReference newLeft)
   {
     if (newLeft != left)
     {
       NotificationChain msgs = null;
       if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_INEQUALITY_OPERATION__LEFT, null, msgs);
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.SUBTRACT_OPERATION__LEFT, null, msgs);
       if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_INEQUALITY_OPERATION__LEFT, null, msgs);
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.SUBTRACT_OPERATION__LEFT, null, msgs);
       msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_INEQUALITY_OPERATION__LEFT, newLeft, newLeft));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.SUBTRACT_OPERATION__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -128,7 +128,7 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
    * @generated
    */
   @Override
-  public CharacteristicReference getRight()
+  public CharacteristicSetReference getRight()
   {
     return right;
   }
@@ -138,13 +138,13 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(CharacteristicReference newRight, NotificationChain msgs)
+  public NotificationChain basicSetRight(CharacteristicSetReference newRight, NotificationChain msgs)
   {
-    CharacteristicReference oldRight = right;
+    CharacteristicSetReference oldRight = right;
     right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_INEQUALITY_OPERATION__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.SUBTRACT_OPERATION__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -156,20 +156,20 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
    * @generated
    */
   @Override
-  public void setRight(CharacteristicReference newRight)
+  public void setRight(CharacteristicSetReference newRight)
   {
     if (newRight != right)
     {
       NotificationChain msgs = null;
       if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_INEQUALITY_OPERATION__RIGHT, null, msgs);
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.SUBTRACT_OPERATION__RIGHT, null, msgs);
       if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.VARIABLE_INEQUALITY_OPERATION__RIGHT, null, msgs);
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.SUBTRACT_OPERATION__RIGHT, null, msgs);
       msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.VARIABLE_INEQUALITY_OPERATION__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.SUBTRACT_OPERATION__RIGHT, newRight, newRight));
   }
 
   /**
@@ -182,9 +182,9 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
   {
     switch (featureID)
     {
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__LEFT:
+      case DSLPackage.SUBTRACT_OPERATION__LEFT:
         return basicSetLeft(null, msgs);
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__RIGHT:
+      case DSLPackage.SUBTRACT_OPERATION__RIGHT:
         return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -200,9 +200,9 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
   {
     switch (featureID)
     {
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__LEFT:
+      case DSLPackage.SUBTRACT_OPERATION__LEFT:
         return getLeft();
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__RIGHT:
+      case DSLPackage.SUBTRACT_OPERATION__RIGHT:
         return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -218,11 +218,11 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
   {
     switch (featureID)
     {
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__LEFT:
-        setLeft((CharacteristicReference)newValue);
+      case DSLPackage.SUBTRACT_OPERATION__LEFT:
+        setLeft((CharacteristicSetReference)newValue);
         return;
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__RIGHT:
-        setRight((CharacteristicReference)newValue);
+      case DSLPackage.SUBTRACT_OPERATION__RIGHT:
+        setRight((CharacteristicSetReference)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -238,11 +238,11 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
   {
     switch (featureID)
     {
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__LEFT:
-        setLeft((CharacteristicReference)null);
+      case DSLPackage.SUBTRACT_OPERATION__LEFT:
+        setLeft((CharacteristicSetReference)null);
         return;
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__RIGHT:
-        setRight((CharacteristicReference)null);
+      case DSLPackage.SUBTRACT_OPERATION__RIGHT:
+        setRight((CharacteristicSetReference)null);
         return;
     }
     super.eUnset(featureID);
@@ -258,12 +258,12 @@ public class VariableInequalityOperationImpl extends SimpleBooleanOperationImpl 
   {
     switch (featureID)
     {
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__LEFT:
+      case DSLPackage.SUBTRACT_OPERATION__LEFT:
         return left != null;
-      case DSLPackage.VARIABLE_INEQUALITY_OPERATION__RIGHT:
+      case DSLPackage.SUBTRACT_OPERATION__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //VariableInequalityOperationImpl
+} //SubtractOperationImpl

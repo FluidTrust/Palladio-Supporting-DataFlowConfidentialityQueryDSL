@@ -18,24 +18,24 @@ import org.eclipse.emf.ecore.EClass;
 public class PropertySelectorImpl extends CharacteristicSelectorImpl implements PropertySelector
 {
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected PropertySelectorImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.PROPERTY_SELECTOR;
-	}
+    return DSLPackage.Literals.PROPERTY_SELECTOR;
+  }
 
 } //PropertySelectorImpl

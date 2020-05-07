@@ -45,388 +45,398 @@ import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.E
 public class CharacteristicTypeSelectorImpl extends MinimalEObjectImpl.Container implements CharacteristicTypeSelector
 {
   /**
-	 * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getRef()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRef()
+   * @generated
+   * @ordered
+   */
   protected CharacteristicType ref;
 
   /**
-	 * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isNegated() <em>Negated</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isNegated()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isNegated()
+   * @generated
+   * @ordered
+   */
   protected static final boolean NEGATED_EDEFAULT = false;
 
   /**
-	 * The cached value of the '{@link #isNegated() <em>Negated</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isNegated() <em>Negated</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isNegated()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isNegated()
+   * @generated
+   * @ordered
+   */
   protected boolean negated = NEGATED_EDEFAULT;
 
   /**
-	 * The cached value of the '{@link #getLiterals() <em>Literals</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getLiterals() <em>Literals</em>}' reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getLiterals()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getLiterals()
+   * @generated
+   * @ordered
+   */
   protected EList<EnumCharacteristicLiteral> literals;
 
   /**
-	 * The default value of the '{@link #isIsVariableSelector() <em>Is Variable Selector</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsVariableSelector() <em>Is Variable Selector</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isIsVariableSelector()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsVariableSelector()
+   * @generated
+   * @ordered
+   */
   protected static final boolean IS_VARIABLE_SELECTOR_EDEFAULT = false;
 
   /**
-	 * The cached value of the '{@link #isIsVariableSelector() <em>Is Variable Selector</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsVariableSelector() <em>Is Variable Selector</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #isIsVariableSelector()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsVariableSelector()
+   * @generated
+   * @ordered
+   */
   protected boolean isVariableSelector = IS_VARIABLE_SELECTOR_EDEFAULT;
 
   /**
-	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getVariable()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getVariable()
+   * @generated
+   * @ordered
+   */
   protected CharacteristicVariableType variable;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected CharacteristicTypeSelectorImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return DSLPackage.Literals.CHARACTERISTIC_TYPE_SELECTOR;
-	}
+    return DSLPackage.Literals.CHARACTERISTIC_TYPE_SELECTOR;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public CharacteristicType getRef()
   {
-		if (ref != null && ref.eIsProxy()) {
-			InternalEObject oldRef = (InternalEObject)ref;
-			ref = (CharacteristicType)eResolveProxy(oldRef);
-			if (ref != oldRef) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF, oldRef, ref));
-			}
-		}
-		return ref;
-	}
+    if (ref != null && ref.eIsProxy())
+    {
+      InternalEObject oldRef = (InternalEObject)ref;
+      ref = (CharacteristicType)eResolveProxy(oldRef);
+      if (ref != oldRef)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF, oldRef, ref));
+      }
+    }
+    return ref;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public CharacteristicType basicGetRef()
   {
-		return ref;
-	}
+    return ref;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setRef(CharacteristicType newRef)
   {
-		CharacteristicType oldRef = ref;
-		ref = newRef;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF, oldRef, ref));
-	}
+    CharacteristicType oldRef = ref;
+    ref = newRef;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF, oldRef, ref));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean isNegated()
   {
-		return negated;
-	}
+    return negated;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setNegated(boolean newNegated)
   {
-		boolean oldNegated = negated;
-		negated = newNegated;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED, oldNegated, negated));
-	}
+    boolean oldNegated = negated;
+    negated = newNegated;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED, oldNegated, negated));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EList<EnumCharacteristicLiteral> getLiterals()
   {
-		if (literals == null) {
-			literals = new EObjectResolvingEList<EnumCharacteristicLiteral>(EnumCharacteristicLiteral.class, this, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS);
-		}
-		return literals;
-	}
+    if (literals == null)
+    {
+      literals = new EObjectResolvingEList<EnumCharacteristicLiteral>(EnumCharacteristicLiteral.class, this, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS);
+    }
+    return literals;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean isIsVariableSelector()
   {
-		return isVariableSelector;
-	}
+    return isVariableSelector;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setIsVariableSelector(boolean newIsVariableSelector)
   {
-		boolean oldIsVariableSelector = isVariableSelector;
-		isVariableSelector = newIsVariableSelector;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR, oldIsVariableSelector, isVariableSelector));
-	}
+    boolean oldIsVariableSelector = isVariableSelector;
+    isVariableSelector = newIsVariableSelector;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR, oldIsVariableSelector, isVariableSelector));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public CharacteristicVariableType getVariable()
   {
-		return variable;
-	}
+    return variable;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public NotificationChain basicSetVariable(CharacteristicVariableType newVariable, NotificationChain msgs)
   {
-		CharacteristicVariableType oldVariable = variable;
-		variable = newVariable;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE, oldVariable, newVariable);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+    CharacteristicVariableType oldVariable = variable;
+    variable = newVariable;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE, oldVariable, newVariable);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void setVariable(CharacteristicVariableType newVariable)
   {
-		if (newVariable != variable) {
-			NotificationChain msgs = null;
-			if (variable != null)
-				msgs = ((InternalEObject)variable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE, null, msgs);
-			if (newVariable != null)
-				msgs = ((InternalEObject)newVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE, null, msgs);
-			msgs = basicSetVariable(newVariable, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE, newVariable, newVariable));
-	}
+    if (newVariable != variable)
+    {
+      NotificationChain msgs = null;
+      if (variable != null)
+        msgs = ((InternalEObject)variable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE, null, msgs);
+      if (newVariable != null)
+        msgs = ((InternalEObject)newVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE, null, msgs);
+      msgs = basicSetVariable(newVariable, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE, newVariable, newVariable));
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
-				return basicSetVariable(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
+        return basicSetVariable(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF:
-				if (resolve) return getRef();
-				return basicGetRef();
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED:
-				return isNegated();
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
-				return getLiterals();
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR:
-				return isIsVariableSelector();
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
-				return getVariable();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF:
+        if (resolve) return getRef();
+        return basicGetRef();
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED:
+        return isNegated();
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
+        return getLiterals();
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR:
+        return isIsVariableSelector();
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
+        return getVariable();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF:
-				setRef((CharacteristicType)newValue);
-				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED:
-				setNegated((Boolean)newValue);
-				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
-				getLiterals().clear();
-				getLiterals().addAll((Collection<? extends EnumCharacteristicLiteral>)newValue);
-				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR:
-				setIsVariableSelector((Boolean)newValue);
-				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
-				setVariable((CharacteristicVariableType)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF:
+        setRef((CharacteristicType)newValue);
+        return;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED:
+        setNegated((Boolean)newValue);
+        return;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
+        getLiterals().clear();
+        getLiterals().addAll((Collection<? extends EnumCharacteristicLiteral>)newValue);
+        return;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR:
+        setIsVariableSelector((Boolean)newValue);
+        return;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
+        setVariable((CharacteristicVariableType)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eUnset(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF:
-				setRef((CharacteristicType)null);
-				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED:
-				setNegated(NEGATED_EDEFAULT);
-				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
-				getLiterals().clear();
-				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR:
-				setIsVariableSelector(IS_VARIABLE_SELECTOR_EDEFAULT);
-				return;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
-				setVariable((CharacteristicVariableType)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF:
+        setRef((CharacteristicType)null);
+        return;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED:
+        setNegated(NEGATED_EDEFAULT);
+        return;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
+        getLiterals().clear();
+        return;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR:
+        setIsVariableSelector(IS_VARIABLE_SELECTOR_EDEFAULT);
+        return;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
+        setVariable((CharacteristicVariableType)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean eIsSet(int featureID)
   {
-		switch (featureID) {
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF:
-				return ref != null;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED:
-				return negated != NEGATED_EDEFAULT;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
-				return literals != null && !literals.isEmpty();
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR:
-				return isVariableSelector != IS_VARIABLE_SELECTOR_EDEFAULT;
-			case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
-				return variable != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__REF:
+        return ref != null;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__NEGATED:
+        return negated != NEGATED_EDEFAULT;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__LITERALS:
+        return literals != null && !literals.isEmpty();
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR:
+        return isVariableSelector != IS_VARIABLE_SELECTOR_EDEFAULT;
+      case DSLPackage.CHARACTERISTIC_TYPE_SELECTOR__VARIABLE:
+        return variable != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public String toString()
   {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (negated: ");
-		result.append(negated);
-		result.append(", isVariableSelector: ");
-		result.append(isVariableSelector);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (negated: ");
+    result.append(negated);
+    result.append(", isVariableSelector: ");
+    result.append(isVariableSelector);
+    result.append(')');
+    return result.toString();
+  }
 
 } //CharacteristicTypeSelectorImpl

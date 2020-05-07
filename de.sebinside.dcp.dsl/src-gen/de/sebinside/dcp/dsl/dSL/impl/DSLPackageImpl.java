@@ -25,11 +25,11 @@ import de.sebinside.dcp.dsl.dSL.DSLFactory;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 import de.sebinside.dcp.dsl.dSL.DataSelector;
 import de.sebinside.dcp.dsl.dSL.DestinationSelector;
+import de.sebinside.dcp.dsl.dSL.ElementOfOperation;
 import de.sebinside.dcp.dsl.dSL.EmptySetOperation;
 import de.sebinside.dcp.dsl.dSL.Include;
 import de.sebinside.dcp.dsl.dSL.IntersectionOperation;
 import de.sebinside.dcp.dsl.dSL.LogicalAndOperation;
-import de.sebinside.dcp.dsl.dSL.LogicalNegationOperation;
 import de.sebinside.dcp.dsl.dSL.LogicalOrOperation;
 import de.sebinside.dcp.dsl.dSL.Model;
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector;
@@ -38,11 +38,14 @@ import de.sebinside.dcp.dsl.dSL.PropertyClassSelector;
 import de.sebinside.dcp.dsl.dSL.PropertySelector;
 import de.sebinside.dcp.dsl.dSL.Reference;
 import de.sebinside.dcp.dsl.dSL.Rule;
+import de.sebinside.dcp.dsl.dSL.SimpleBooleanOperation;
 import de.sebinside.dcp.dsl.dSL.Statement;
 import de.sebinside.dcp.dsl.dSL.StatementModality;
 import de.sebinside.dcp.dsl.dSL.StatementType;
+import de.sebinside.dcp.dsl.dSL.SubtractOperation;
 import de.sebinside.dcp.dsl.dSL.TargetModelType;
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef;
+import de.sebinside.dcp.dsl.dSL.UnionOperation;
 import de.sebinside.dcp.dsl.dSL.VariableEqualityOperation;
 import de.sebinside.dcp.dsl.dSL.VariableInequalityOperation;
 
@@ -108,1729 +111,1864 @@ import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage;
 public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 {
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass modelEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass targetModelTypeDefEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass abstractElementEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicTypeEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicClassEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicTypeSelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicVariableTypeEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicVariableEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicSetEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass includeEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass constraintEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass ruleEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass dataSelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicSelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicClassSelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass attributeSelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass attributeClassSelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass destinationSelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass propertySelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass propertyClassSelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass nodeIdentitiySelectorEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass statementEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass statementTypeEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass statementModalityEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass conditionEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass referenceEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicReferenceEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristicSetReferenceEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass operationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass booleanOperationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass characteristsicSetOperationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
-  private EClass logicalAndOperationEClass = null;
+   * @generated
+   */
+  private EClass simpleBooleanOperationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
-  private EClass logicalOrOperationEClass = null;
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  private EClass logicalNegationOperationEClass = null;
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass variableEqualityOperationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass variableInequalityOperationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass emptySetOperationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private EClass intersectionOperationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  private EClass unionOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass subtractOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass elementOfOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass createSetOperationEClass = null;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  private EClass logicalOrOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass logicalAndOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EEnum targetModelTypeEEnum = null;
 
   /**
-	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the model <b>Package</b>, registered with
+   * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+   * package URI value.
+   * <p>Note: the correct way to create the package is via the static
+   * factory method {@link #init init()}, which also performs
+   * initialization of the package, or returns the registered package,
+   * if one already exists.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#eNS_URI
-	 * @see #init()
-	 * @generated
-	 */
+   * @see org.eclipse.emf.ecore.EPackage.Registry
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#eNS_URI
+   * @see #init()
+   * @generated
+   */
   private DSLPackageImpl()
   {
-		super(eNS_URI, DSLFactory.eINSTANCE);
-	}
+    super(eNS_URI, DSLFactory.eINSTANCE);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private static boolean isInited = false;
 
   /**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 *
-	 * <p>This method is used to initialize {@link DSLPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
+   * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+   *
+   * <p>This method is used to initialize {@link DSLPackage#eINSTANCE} when that field is accessed.
+   * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #eNS_URI
-	 * @see #createPackageContents()
-	 * @see #initializePackageContents()
-	 * @generated
-	 */
+   * @see #eNS_URI
+   * @see #createPackageContents()
+   * @see #initializePackageContents()
+   * @generated
+   */
   public static DSLPackage init()
   {
-		if (isInited) return (DSLPackage)EPackage.Registry.INSTANCE.getEPackage(DSLPackage.eNS_URI);
+    if (isInited) return (DSLPackage)EPackage.Registry.INSTANCE.getEPackage(DSLPackage.eNS_URI);
 
-		// Obtain or create and register package
-		Object registeredDSLPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		DSLPackageImpl theDSLPackage = registeredDSLPackage instanceof DSLPackageImpl ? (DSLPackageImpl)registeredDSLPackage : new DSLPackageImpl();
+    // Obtain or create and register package
+    Object registeredDSLPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+    DSLPackageImpl theDSLPackage = registeredDSLPackage instanceof DSLPackageImpl ? (DSLPackageImpl)registeredDSLPackage : new DSLPackageImpl();
 
-		isInited = true;
+    isInited = true;
 
-		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
-		CharacteristicsPackage.eINSTANCE.eClass();
-		AllocationPackage.eINSTANCE.eClass();
-		CompositionPackage.eINSTANCE.eClass();
-		RepositoryPackage.eINSTANCE.eClass();
-		SeffPackage.eINSTANCE.eClass();
-		UsagemodelPackage.eINSTANCE.eClass();
-		IdentifierPackage.eINSTANCE.eClass();
-		EntityPackage.eINSTANCE.eClass();
-		org.palladiosimulator.pcm.dataprocessing.dataprocessing.repository.RepositoryPackage.eINSTANCE.eClass();
-		ResourceenvironmentPackage.eINSTANCE.eClass();
-		SystemPackage.eINSTANCE.eClass();
-		CorePackage.eINSTANCE.eClass();
-		ParameterPackage.eINSTANCE.eClass();
-		ReliabilityPackage.eINSTANCE.eClass();
-		ResourcetypePackage.eINSTANCE.eClass();
-		ProtocolPackage.eINSTANCE.eClass();
-		DataPackage.eINSTANCE.eClass();
-		QosannotationsPackage.eINSTANCE.eClass();
-		StoexPackage.eINSTANCE.eClass();
-		QosPerformancePackage.eINSTANCE.eClass();
-		QosReliabilityPackage.eINSTANCE.eClass();
-		UnitsPackage.eINSTANCE.eClass();
-		ProbfunctionPackage.eINSTANCE.eClass();
+    // Initialize simple dependencies
+    EcorePackage.eINSTANCE.eClass();
+    CharacteristicsPackage.eINSTANCE.eClass();
+    AllocationPackage.eINSTANCE.eClass();
+    CompositionPackage.eINSTANCE.eClass();
+    RepositoryPackage.eINSTANCE.eClass();
+    SeffPackage.eINSTANCE.eClass();
+    UsagemodelPackage.eINSTANCE.eClass();
+    IdentifierPackage.eINSTANCE.eClass();
+    EntityPackage.eINSTANCE.eClass();
+    org.palladiosimulator.pcm.dataprocessing.dataprocessing.repository.RepositoryPackage.eINSTANCE.eClass();
+    ResourceenvironmentPackage.eINSTANCE.eClass();
+    SystemPackage.eINSTANCE.eClass();
+    CorePackage.eINSTANCE.eClass();
+    ParameterPackage.eINSTANCE.eClass();
+    ReliabilityPackage.eINSTANCE.eClass();
+    ResourcetypePackage.eINSTANCE.eClass();
+    ProtocolPackage.eINSTANCE.eClass();
+    DataPackage.eINSTANCE.eClass();
+    QosannotationsPackage.eINSTANCE.eClass();
+    StoexPackage.eINSTANCE.eClass();
+    QosPerformancePackage.eINSTANCE.eClass();
+    QosReliabilityPackage.eINSTANCE.eClass();
+    UnitsPackage.eINSTANCE.eClass();
+    ProbfunctionPackage.eINSTANCE.eClass();
 
-		// Create package meta-data objects
-		theDSLPackage.createPackageContents();
+    // Create package meta-data objects
+    theDSLPackage.createPackageContents();
 
-		// Initialize created meta-data
-		theDSLPackage.initializePackageContents();
+    // Initialize created meta-data
+    theDSLPackage.initializePackageContents();
 
-		// Mark meta-data to indicate it can't be changed
-		theDSLPackage.freeze();
+    // Mark meta-data to indicate it can't be changed
+    theDSLPackage.freeze();
 
-		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(DSLPackage.eNS_URI, theDSLPackage);
-		return theDSLPackage;
-	}
+    // Update the registry and return the package
+    EPackage.Registry.INSTANCE.put(DSLPackage.eNS_URI, theDSLPackage);
+    return theDSLPackage;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getModel()
   {
-		return modelEClass;
-	}
+    return modelEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getModel_TargetModelType()
   {
-		return (EReference)modelEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)modelEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getModel_Elements()
   {
-		return (EReference)modelEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)modelEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getTargetModelTypeDef()
   {
-		return targetModelTypeDefEClass;
-	}
+    return targetModelTypeDefEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getTargetModelTypeDef_Type()
   {
-		return (EAttribute)targetModelTypeDefEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)targetModelTypeDefEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getTargetModelTypeDef_TypeContainer()
   {
-		return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getTargetModelTypeDef_AllocationModel()
   {
-		return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(2);
-	}
+    return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(2);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getTargetModelTypeDef_UsageModel()
   {
-		return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(3);
-	}
+    return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(3);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getAbstractElement()
   {
-		return abstractElementEClass;
-	}
+    return abstractElementEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicType()
   {
-		return characteristicTypeEClass;
-	}
+    return characteristicTypeEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getCharacteristicType_Name()
   {
-		return (EAttribute)characteristicTypeEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)characteristicTypeEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicType_Ref()
   {
-		return (EReference)characteristicTypeEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)characteristicTypeEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicClass()
   {
-		return characteristicClassEClass;
-	}
+    return characteristicClassEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getCharacteristicClass_Name()
   {
-		return (EAttribute)characteristicClassEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)characteristicClassEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicClass_Members()
   {
-		return (EReference)characteristicClassEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)characteristicClassEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicTypeSelector()
   {
-		return characteristicTypeSelectorEClass;
-	}
+    return characteristicTypeSelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicTypeSelector_Ref()
   {
-		return (EReference)characteristicTypeSelectorEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)characteristicTypeSelectorEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getCharacteristicTypeSelector_Negated()
   {
-		return (EAttribute)characteristicTypeSelectorEClass.getEStructuralFeatures().get(1);
-	}
+    return (EAttribute)characteristicTypeSelectorEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicTypeSelector_Literals()
   {
-		return (EReference)characteristicTypeSelectorEClass.getEStructuralFeatures().get(2);
-	}
+    return (EReference)characteristicTypeSelectorEClass.getEStructuralFeatures().get(2);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getCharacteristicTypeSelector_IsVariableSelector()
   {
-		return (EAttribute)characteristicTypeSelectorEClass.getEStructuralFeatures().get(3);
-	}
+    return (EAttribute)characteristicTypeSelectorEClass.getEStructuralFeatures().get(3);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicTypeSelector_Variable()
   {
-		return (EReference)characteristicTypeSelectorEClass.getEStructuralFeatures().get(4);
-	}
+    return (EReference)characteristicTypeSelectorEClass.getEStructuralFeatures().get(4);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicVariableType()
   {
-		return characteristicVariableTypeEClass;
-	}
+    return characteristicVariableTypeEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getCharacteristicVariableType_Name()
   {
-		return (EAttribute)characteristicVariableTypeEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)characteristicVariableTypeEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicVariable()
   {
-		return characteristicVariableEClass;
-	}
+    return characteristicVariableEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicSet()
   {
-		return characteristicSetEClass;
-	}
+    return characteristicSetEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getInclude()
   {
-		return includeEClass;
-	}
+    return includeEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getInclude_ImportURI()
   {
-		return (EAttribute)includeEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)includeEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getConstraint()
   {
-		return constraintEClass;
-	}
+    return constraintEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getConstraint_Name()
   {
-		return (EAttribute)constraintEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)constraintEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getConstraint_Rule()
   {
-		return (EReference)constraintEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)constraintEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getRule()
   {
-		return ruleEClass;
-	}
+    return ruleEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getRule_DataSelectors()
   {
-		return (EReference)ruleEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)ruleEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getRule_Statement()
   {
-		return (EReference)ruleEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)ruleEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getRule_DestinationSelectors()
   {
-		return (EReference)ruleEClass.getEStructuralFeatures().get(2);
-	}
+    return (EReference)ruleEClass.getEStructuralFeatures().get(2);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getRule_Condition()
   {
-		return (EReference)ruleEClass.getEStructuralFeatures().get(3);
-	}
+    return (EReference)ruleEClass.getEStructuralFeatures().get(3);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getDataSelector()
   {
-		return dataSelectorEClass;
-	}
+    return dataSelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicSelector()
   {
-		return characteristicSelectorEClass;
-	}
+    return characteristicSelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicSelector_Ref()
   {
-		return (EReference)characteristicSelectorEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)characteristicSelectorEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicClassSelector()
   {
-		return characteristicClassSelectorEClass;
-	}
+    return characteristicClassSelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicClassSelector_Ref()
   {
-		return (EReference)characteristicClassSelectorEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)characteristicClassSelectorEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getAttributeSelector()
   {
-		return attributeSelectorEClass;
-	}
+    return attributeSelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getAttributeClassSelector()
   {
-		return attributeClassSelectorEClass;
-	}
+    return attributeClassSelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getDestinationSelector()
   {
-		return destinationSelectorEClass;
-	}
+    return destinationSelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getPropertySelector()
   {
-		return propertySelectorEClass;
-	}
+    return propertySelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getPropertyClassSelector()
   {
-		return propertyClassSelectorEClass;
-	}
+    return propertyClassSelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getNodeIdentitiySelector()
   {
-		return nodeIdentitiySelectorEClass;
-	}
+    return nodeIdentitiySelectorEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getNodeIdentitiySelector_Name()
   {
-		return (EAttribute)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getNodeIdentitiySelector_Assembly()
   {
-		return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getNodeIdentitiySelector_Component()
   {
-		return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(2);
-	}
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(2);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getNodeIdentitiySelector_Seff()
   {
-		return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(3);
-	}
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(3);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getStatement()
   {
-		return statementEClass;
-	}
+    return statementEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getStatement_Modality()
   {
-		return (EReference)statementEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)statementEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getStatement_Type()
   {
-		return (EReference)statementEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)statementEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getStatementType()
   {
-		return statementTypeEClass;
-	}
+    return statementTypeEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getStatementType_Name()
   {
-		return (EAttribute)statementTypeEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)statementTypeEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getStatementModality()
   {
-		return statementModalityEClass;
-	}
+    return statementModalityEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EAttribute getStatementModality_Name()
   {
-		return (EAttribute)statementModalityEClass.getEStructuralFeatures().get(0);
-	}
+    return (EAttribute)statementModalityEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCondition()
   {
-		return conditionEClass;
-	}
+    return conditionEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCondition_Operation()
   {
-		return (EReference)conditionEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)conditionEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getReference()
   {
-		return referenceEClass;
-	}
+    return referenceEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicReference()
   {
-		return characteristicReferenceEClass;
-	}
+    return characteristicReferenceEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicReference_Value()
   {
-		return (EReference)characteristicReferenceEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)characteristicReferenceEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getCharacteristicSetReference()
   {
-		return characteristicSetReferenceEClass;
-	}
+    return characteristicSetReferenceEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicSetReference_Value()
   {
-		return (EReference)characteristicSetReferenceEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)characteristicSetReferenceEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCharacteristicSetReference_Ref()
   {
-		return (EReference)characteristicSetReferenceEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)characteristicSetReferenceEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getOperation()
   {
-		return operationEClass;
-	}
+    return operationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getBooleanOperation()
   {
-		return booleanOperationEClass;
-	}
+    return booleanOperationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
+  public EReference getBooleanOperation_Value()
+  {
+    return (EReference)booleanOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public EClass getCharacteristsicSetOperation()
   {
-		return characteristsicSetOperationEClass;
-	}
+    return characteristsicSetOperationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
-  public EClass getLogicalAndOperation()
+  public EClass getSimpleBooleanOperation()
   {
-		return logicalAndOperationEClass;
-	}
+    return simpleBooleanOperationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public EReference getLogicalAndOperation_Left()
-  {
-		return (EReference)logicalAndOperationEClass.getEStructuralFeatures().get(0);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public EReference getLogicalAndOperation_Right()
-  {
-		return (EReference)logicalAndOperationEClass.getEStructuralFeatures().get(1);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public EClass getLogicalOrOperation()
-  {
-		return logicalOrOperationEClass;
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public EReference getLogicalOrOperation_Left()
-  {
-		return (EReference)logicalOrOperationEClass.getEStructuralFeatures().get(0);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public EReference getLogicalOrOperation_Right()
-  {
-		return (EReference)logicalOrOperationEClass.getEStructuralFeatures().get(1);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public EClass getLogicalNegationOperation()
-  {
-		return logicalNegationOperationEClass;
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public EReference getLogicalNegationOperation_Value()
-  {
-		return (EReference)logicalNegationOperationEClass.getEStructuralFeatures().get(0);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getVariableEqualityOperation()
   {
-		return variableEqualityOperationEClass;
-	}
+    return variableEqualityOperationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getVariableEqualityOperation_Left()
   {
-		return (EReference)variableEqualityOperationEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)variableEqualityOperationEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getVariableEqualityOperation_Right()
   {
-		return (EReference)variableEqualityOperationEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)variableEqualityOperationEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getVariableInequalityOperation()
   {
-		return variableInequalityOperationEClass;
-	}
+    return variableInequalityOperationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getVariableInequalityOperation_Left()
   {
-		return (EReference)variableInequalityOperationEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)variableInequalityOperationEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getVariableInequalityOperation_Right()
   {
-		return (EReference)variableInequalityOperationEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)variableInequalityOperationEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getEmptySetOperation()
   {
-		return emptySetOperationEClass;
-	}
+    return emptySetOperationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public EReference getEmptySetOperation_Value()
-  {
-		return (EReference)emptySetOperationEClass.getEStructuralFeatures().get(0);
-	}
-
-  /**
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EClass getIntersectionOperation()
   {
-		return intersectionOperationEClass;
-	}
+    return intersectionOperationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getIntersectionOperation_Left()
   {
-		return (EReference)intersectionOperationEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)intersectionOperationEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getIntersectionOperation_Right()
   {
-		return (EReference)intersectionOperationEClass.getEStructuralFeatures().get(1);
-	}
+    return (EReference)intersectionOperationEClass.getEStructuralFeatures().get(1);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
+  public EClass getUnionOperation()
+  {
+    return unionOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getUnionOperation_Left()
+  {
+    return (EReference)unionOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getUnionOperation_Right()
+  {
+    return (EReference)unionOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSubtractOperation()
+  {
+    return subtractOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSubtractOperation_Left()
+  {
+    return (EReference)subtractOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSubtractOperation_Right()
+  {
+    return (EReference)subtractOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getElementOfOperation()
+  {
+    return elementOfOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getElementOfOperation_Left()
+  {
+    return (EReference)elementOfOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getElementOfOperation_Right()
+  {
+    return (EReference)elementOfOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public EClass getCreateSetOperation()
   {
-		return createSetOperationEClass;
-	}
+    return createSetOperationEClass;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EReference getCreateSetOperation_Value()
   {
-		return (EReference)createSetOperationEClass.getEStructuralFeatures().get(0);
-	}
+    return (EReference)createSetOperationEClass.getEStructuralFeatures().get(0);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
+  public EClass getLogicalOrOperation()
+  {
+    return logicalOrOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLogicalOrOperation_Left()
+  {
+    return (EReference)logicalOrOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLogicalOrOperation_Right()
+  {
+    return (EReference)logicalOrOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLogicalAndOperation()
+  {
+    return logicalAndOperationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLogicalAndOperation_Left()
+  {
+    return (EReference)logicalAndOperationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLogicalAndOperation_Right()
+  {
+    return (EReference)logicalAndOperationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public EEnum getTargetModelType()
   {
-		return targetModelTypeEEnum;
-	}
+    return targetModelTypeEEnum;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public DSLFactory getDSLFactory()
   {
-		return (DSLFactory)getEFactoryInstance();
-	}
+    return (DSLFactory)getEFactoryInstance();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private boolean isCreated = false;
 
   /**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
+   * Creates the meta-model objects for the package.  This method is
+   * guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public void createPackageContents()
   {
-		if (isCreated) return;
-		isCreated = true;
+    if (isCreated) return;
+    isCreated = true;
 
-		// Create classes and their features
-		modelEClass = createEClass(MODEL);
-		createEReference(modelEClass, MODEL__TARGET_MODEL_TYPE);
-		createEReference(modelEClass, MODEL__ELEMENTS);
+    // Create classes and their features
+    modelEClass = createEClass(MODEL);
+    createEReference(modelEClass, MODEL__TARGET_MODEL_TYPE);
+    createEReference(modelEClass, MODEL__ELEMENTS);
 
-		targetModelTypeDefEClass = createEClass(TARGET_MODEL_TYPE_DEF);
-		createEAttribute(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__TYPE);
-		createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER);
-		createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL);
-		createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__USAGE_MODEL);
+    targetModelTypeDefEClass = createEClass(TARGET_MODEL_TYPE_DEF);
+    createEAttribute(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__TYPE);
+    createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER);
+    createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL);
+    createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__USAGE_MODEL);
 
-		abstractElementEClass = createEClass(ABSTRACT_ELEMENT);
+    abstractElementEClass = createEClass(ABSTRACT_ELEMENT);
 
-		characteristicTypeEClass = createEClass(CHARACTERISTIC_TYPE);
-		createEAttribute(characteristicTypeEClass, CHARACTERISTIC_TYPE__NAME);
-		createEReference(characteristicTypeEClass, CHARACTERISTIC_TYPE__REF);
+    characteristicTypeEClass = createEClass(CHARACTERISTIC_TYPE);
+    createEAttribute(characteristicTypeEClass, CHARACTERISTIC_TYPE__NAME);
+    createEReference(characteristicTypeEClass, CHARACTERISTIC_TYPE__REF);
 
-		characteristicClassEClass = createEClass(CHARACTERISTIC_CLASS);
-		createEAttribute(characteristicClassEClass, CHARACTERISTIC_CLASS__NAME);
-		createEReference(characteristicClassEClass, CHARACTERISTIC_CLASS__MEMBERS);
+    characteristicClassEClass = createEClass(CHARACTERISTIC_CLASS);
+    createEAttribute(characteristicClassEClass, CHARACTERISTIC_CLASS__NAME);
+    createEReference(characteristicClassEClass, CHARACTERISTIC_CLASS__MEMBERS);
 
-		characteristicTypeSelectorEClass = createEClass(CHARACTERISTIC_TYPE_SELECTOR);
-		createEReference(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__REF);
-		createEAttribute(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__NEGATED);
-		createEReference(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__LITERALS);
-		createEAttribute(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR);
-		createEReference(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__VARIABLE);
+    characteristicTypeSelectorEClass = createEClass(CHARACTERISTIC_TYPE_SELECTOR);
+    createEReference(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__REF);
+    createEAttribute(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__NEGATED);
+    createEReference(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__LITERALS);
+    createEAttribute(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__IS_VARIABLE_SELECTOR);
+    createEReference(characteristicTypeSelectorEClass, CHARACTERISTIC_TYPE_SELECTOR__VARIABLE);
 
-		characteristicVariableTypeEClass = createEClass(CHARACTERISTIC_VARIABLE_TYPE);
-		createEAttribute(characteristicVariableTypeEClass, CHARACTERISTIC_VARIABLE_TYPE__NAME);
+    characteristicVariableTypeEClass = createEClass(CHARACTERISTIC_VARIABLE_TYPE);
+    createEAttribute(characteristicVariableTypeEClass, CHARACTERISTIC_VARIABLE_TYPE__NAME);
 
-		characteristicVariableEClass = createEClass(CHARACTERISTIC_VARIABLE);
+    characteristicVariableEClass = createEClass(CHARACTERISTIC_VARIABLE);
 
-		characteristicSetEClass = createEClass(CHARACTERISTIC_SET);
+    characteristicSetEClass = createEClass(CHARACTERISTIC_SET);
 
-		includeEClass = createEClass(INCLUDE);
-		createEAttribute(includeEClass, INCLUDE__IMPORT_URI);
+    includeEClass = createEClass(INCLUDE);
+    createEAttribute(includeEClass, INCLUDE__IMPORT_URI);
 
-		constraintEClass = createEClass(CONSTRAINT);
-		createEAttribute(constraintEClass, CONSTRAINT__NAME);
-		createEReference(constraintEClass, CONSTRAINT__RULE);
+    constraintEClass = createEClass(CONSTRAINT);
+    createEAttribute(constraintEClass, CONSTRAINT__NAME);
+    createEReference(constraintEClass, CONSTRAINT__RULE);
 
-		ruleEClass = createEClass(RULE);
-		createEReference(ruleEClass, RULE__DATA_SELECTORS);
-		createEReference(ruleEClass, RULE__STATEMENT);
-		createEReference(ruleEClass, RULE__DESTINATION_SELECTORS);
-		createEReference(ruleEClass, RULE__CONDITION);
+    ruleEClass = createEClass(RULE);
+    createEReference(ruleEClass, RULE__DATA_SELECTORS);
+    createEReference(ruleEClass, RULE__STATEMENT);
+    createEReference(ruleEClass, RULE__DESTINATION_SELECTORS);
+    createEReference(ruleEClass, RULE__CONDITION);
 
-		dataSelectorEClass = createEClass(DATA_SELECTOR);
+    dataSelectorEClass = createEClass(DATA_SELECTOR);
 
-		characteristicSelectorEClass = createEClass(CHARACTERISTIC_SELECTOR);
-		createEReference(characteristicSelectorEClass, CHARACTERISTIC_SELECTOR__REF);
+    characteristicSelectorEClass = createEClass(CHARACTERISTIC_SELECTOR);
+    createEReference(characteristicSelectorEClass, CHARACTERISTIC_SELECTOR__REF);
 
-		characteristicClassSelectorEClass = createEClass(CHARACTERISTIC_CLASS_SELECTOR);
-		createEReference(characteristicClassSelectorEClass, CHARACTERISTIC_CLASS_SELECTOR__REF);
+    characteristicClassSelectorEClass = createEClass(CHARACTERISTIC_CLASS_SELECTOR);
+    createEReference(characteristicClassSelectorEClass, CHARACTERISTIC_CLASS_SELECTOR__REF);
 
-		attributeSelectorEClass = createEClass(ATTRIBUTE_SELECTOR);
+    attributeSelectorEClass = createEClass(ATTRIBUTE_SELECTOR);
 
-		attributeClassSelectorEClass = createEClass(ATTRIBUTE_CLASS_SELECTOR);
+    attributeClassSelectorEClass = createEClass(ATTRIBUTE_CLASS_SELECTOR);
 
-		destinationSelectorEClass = createEClass(DESTINATION_SELECTOR);
+    destinationSelectorEClass = createEClass(DESTINATION_SELECTOR);
 
-		propertySelectorEClass = createEClass(PROPERTY_SELECTOR);
+    propertySelectorEClass = createEClass(PROPERTY_SELECTOR);
 
-		propertyClassSelectorEClass = createEClass(PROPERTY_CLASS_SELECTOR);
+    propertyClassSelectorEClass = createEClass(PROPERTY_CLASS_SELECTOR);
 
-		nodeIdentitiySelectorEClass = createEClass(NODE_IDENTITIY_SELECTOR);
-		createEAttribute(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__NAME);
-		createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__ASSEMBLY);
-		createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__COMPONENT);
-		createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__SEFF);
+    nodeIdentitiySelectorEClass = createEClass(NODE_IDENTITIY_SELECTOR);
+    createEAttribute(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__NAME);
+    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__ASSEMBLY);
+    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__COMPONENT);
+    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__SEFF);
 
-		statementEClass = createEClass(STATEMENT);
-		createEReference(statementEClass, STATEMENT__MODALITY);
-		createEReference(statementEClass, STATEMENT__TYPE);
+    statementEClass = createEClass(STATEMENT);
+    createEReference(statementEClass, STATEMENT__MODALITY);
+    createEReference(statementEClass, STATEMENT__TYPE);
 
-		statementTypeEClass = createEClass(STATEMENT_TYPE);
-		createEAttribute(statementTypeEClass, STATEMENT_TYPE__NAME);
+    statementTypeEClass = createEClass(STATEMENT_TYPE);
+    createEAttribute(statementTypeEClass, STATEMENT_TYPE__NAME);
 
-		statementModalityEClass = createEClass(STATEMENT_MODALITY);
-		createEAttribute(statementModalityEClass, STATEMENT_MODALITY__NAME);
+    statementModalityEClass = createEClass(STATEMENT_MODALITY);
+    createEAttribute(statementModalityEClass, STATEMENT_MODALITY__NAME);
 
-		conditionEClass = createEClass(CONDITION);
-		createEReference(conditionEClass, CONDITION__OPERATION);
+    conditionEClass = createEClass(CONDITION);
+    createEReference(conditionEClass, CONDITION__OPERATION);
 
-		referenceEClass = createEClass(REFERENCE);
+    referenceEClass = createEClass(REFERENCE);
 
-		characteristicReferenceEClass = createEClass(CHARACTERISTIC_REFERENCE);
-		createEReference(characteristicReferenceEClass, CHARACTERISTIC_REFERENCE__VALUE);
+    characteristicReferenceEClass = createEClass(CHARACTERISTIC_REFERENCE);
+    createEReference(characteristicReferenceEClass, CHARACTERISTIC_REFERENCE__VALUE);
 
-		characteristicSetReferenceEClass = createEClass(CHARACTERISTIC_SET_REFERENCE);
-		createEReference(characteristicSetReferenceEClass, CHARACTERISTIC_SET_REFERENCE__VALUE);
-		createEReference(characteristicSetReferenceEClass, CHARACTERISTIC_SET_REFERENCE__REF);
+    characteristicSetReferenceEClass = createEClass(CHARACTERISTIC_SET_REFERENCE);
+    createEReference(characteristicSetReferenceEClass, CHARACTERISTIC_SET_REFERENCE__VALUE);
+    createEReference(characteristicSetReferenceEClass, CHARACTERISTIC_SET_REFERENCE__REF);
 
-		operationEClass = createEClass(OPERATION);
+    operationEClass = createEClass(OPERATION);
 
-		booleanOperationEClass = createEClass(BOOLEAN_OPERATION);
+    booleanOperationEClass = createEClass(BOOLEAN_OPERATION);
+    createEReference(booleanOperationEClass, BOOLEAN_OPERATION__VALUE);
 
-		characteristsicSetOperationEClass = createEClass(CHARACTERISTSIC_SET_OPERATION);
+    characteristsicSetOperationEClass = createEClass(CHARACTERISTSIC_SET_OPERATION);
 
-		logicalAndOperationEClass = createEClass(LOGICAL_AND_OPERATION);
-		createEReference(logicalAndOperationEClass, LOGICAL_AND_OPERATION__LEFT);
-		createEReference(logicalAndOperationEClass, LOGICAL_AND_OPERATION__RIGHT);
+    simpleBooleanOperationEClass = createEClass(SIMPLE_BOOLEAN_OPERATION);
 
-		logicalOrOperationEClass = createEClass(LOGICAL_OR_OPERATION);
-		createEReference(logicalOrOperationEClass, LOGICAL_OR_OPERATION__LEFT);
-		createEReference(logicalOrOperationEClass, LOGICAL_OR_OPERATION__RIGHT);
+    variableEqualityOperationEClass = createEClass(VARIABLE_EQUALITY_OPERATION);
+    createEReference(variableEqualityOperationEClass, VARIABLE_EQUALITY_OPERATION__LEFT);
+    createEReference(variableEqualityOperationEClass, VARIABLE_EQUALITY_OPERATION__RIGHT);
 
-		logicalNegationOperationEClass = createEClass(LOGICAL_NEGATION_OPERATION);
-		createEReference(logicalNegationOperationEClass, LOGICAL_NEGATION_OPERATION__VALUE);
+    variableInequalityOperationEClass = createEClass(VARIABLE_INEQUALITY_OPERATION);
+    createEReference(variableInequalityOperationEClass, VARIABLE_INEQUALITY_OPERATION__LEFT);
+    createEReference(variableInequalityOperationEClass, VARIABLE_INEQUALITY_OPERATION__RIGHT);
 
-		variableEqualityOperationEClass = createEClass(VARIABLE_EQUALITY_OPERATION);
-		createEReference(variableEqualityOperationEClass, VARIABLE_EQUALITY_OPERATION__LEFT);
-		createEReference(variableEqualityOperationEClass, VARIABLE_EQUALITY_OPERATION__RIGHT);
+    emptySetOperationEClass = createEClass(EMPTY_SET_OPERATION);
 
-		variableInequalityOperationEClass = createEClass(VARIABLE_INEQUALITY_OPERATION);
-		createEReference(variableInequalityOperationEClass, VARIABLE_INEQUALITY_OPERATION__LEFT);
-		createEReference(variableInequalityOperationEClass, VARIABLE_INEQUALITY_OPERATION__RIGHT);
+    intersectionOperationEClass = createEClass(INTERSECTION_OPERATION);
+    createEReference(intersectionOperationEClass, INTERSECTION_OPERATION__LEFT);
+    createEReference(intersectionOperationEClass, INTERSECTION_OPERATION__RIGHT);
 
-		emptySetOperationEClass = createEClass(EMPTY_SET_OPERATION);
-		createEReference(emptySetOperationEClass, EMPTY_SET_OPERATION__VALUE);
+    unionOperationEClass = createEClass(UNION_OPERATION);
+    createEReference(unionOperationEClass, UNION_OPERATION__LEFT);
+    createEReference(unionOperationEClass, UNION_OPERATION__RIGHT);
 
-		intersectionOperationEClass = createEClass(INTERSECTION_OPERATION);
-		createEReference(intersectionOperationEClass, INTERSECTION_OPERATION__LEFT);
-		createEReference(intersectionOperationEClass, INTERSECTION_OPERATION__RIGHT);
+    subtractOperationEClass = createEClass(SUBTRACT_OPERATION);
+    createEReference(subtractOperationEClass, SUBTRACT_OPERATION__LEFT);
+    createEReference(subtractOperationEClass, SUBTRACT_OPERATION__RIGHT);
 
-		createSetOperationEClass = createEClass(CREATE_SET_OPERATION);
-		createEReference(createSetOperationEClass, CREATE_SET_OPERATION__VALUE);
+    elementOfOperationEClass = createEClass(ELEMENT_OF_OPERATION);
+    createEReference(elementOfOperationEClass, ELEMENT_OF_OPERATION__LEFT);
+    createEReference(elementOfOperationEClass, ELEMENT_OF_OPERATION__RIGHT);
 
-		// Create enums
-		targetModelTypeEEnum = createEEnum(TARGET_MODEL_TYPE);
-	}
+    createSetOperationEClass = createEClass(CREATE_SET_OPERATION);
+    createEReference(createSetOperationEClass, CREATE_SET_OPERATION__VALUE);
+
+    logicalOrOperationEClass = createEClass(LOGICAL_OR_OPERATION);
+    createEReference(logicalOrOperationEClass, LOGICAL_OR_OPERATION__LEFT);
+    createEReference(logicalOrOperationEClass, LOGICAL_OR_OPERATION__RIGHT);
+
+    logicalAndOperationEClass = createEClass(LOGICAL_AND_OPERATION);
+    createEReference(logicalAndOperationEClass, LOGICAL_AND_OPERATION__LEFT);
+    createEReference(logicalAndOperationEClass, LOGICAL_AND_OPERATION__RIGHT);
+
+    // Create enums
+    targetModelTypeEEnum = createEEnum(TARGET_MODEL_TYPE);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private boolean isInitialized = false;
 
   /**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
+   * Complete the initialization of the package and its meta-model.  This
+   * method is guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public void initializePackageContents()
   {
-		if (isInitialized) return;
-		isInitialized = true;
+    if (isInitialized) return;
+    isInitialized = true;
 
-		// Initialize package
-		setName(eNAME);
-		setNsPrefix(eNS_PREFIX);
-		setNsURI(eNS_URI);
+    // Initialize package
+    setName(eNAME);
+    setNsPrefix(eNS_PREFIX);
+    setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		CharacteristicsPackage theCharacteristicsPackage = (CharacteristicsPackage)EPackage.Registry.INSTANCE.getEPackage(CharacteristicsPackage.eNS_URI);
-		AllocationPackage theAllocationPackage = (AllocationPackage)EPackage.Registry.INSTANCE.getEPackage(AllocationPackage.eNS_URI);
-		UsagemodelPackage theUsagemodelPackage = (UsagemodelPackage)EPackage.Registry.INSTANCE.getEPackage(UsagemodelPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-		CompositionPackage theCompositionPackage = (CompositionPackage)EPackage.Registry.INSTANCE.getEPackage(CompositionPackage.eNS_URI);
-		RepositoryPackage theRepositoryPackage = (RepositoryPackage)EPackage.Registry.INSTANCE.getEPackage(RepositoryPackage.eNS_URI);
-		SeffPackage theSeffPackage = (SeffPackage)EPackage.Registry.INSTANCE.getEPackage(SeffPackage.eNS_URI);
+    // Obtain other dependent packages
+    CharacteristicsPackage theCharacteristicsPackage = (CharacteristicsPackage)EPackage.Registry.INSTANCE.getEPackage(CharacteristicsPackage.eNS_URI);
+    AllocationPackage theAllocationPackage = (AllocationPackage)EPackage.Registry.INSTANCE.getEPackage(AllocationPackage.eNS_URI);
+    UsagemodelPackage theUsagemodelPackage = (UsagemodelPackage)EPackage.Registry.INSTANCE.getEPackage(UsagemodelPackage.eNS_URI);
+    EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+    CompositionPackage theCompositionPackage = (CompositionPackage)EPackage.Registry.INSTANCE.getEPackage(CompositionPackage.eNS_URI);
+    RepositoryPackage theRepositoryPackage = (RepositoryPackage)EPackage.Registry.INSTANCE.getEPackage(RepositoryPackage.eNS_URI);
+    SeffPackage theSeffPackage = (SeffPackage)EPackage.Registry.INSTANCE.getEPackage(SeffPackage.eNS_URI);
 
-		// Create type parameters
+    // Create type parameters
 
-		// Set bounds for type parameters
+    // Set bounds for type parameters
 
-		// Add supertypes to classes
-		characteristicTypeEClass.getESuperTypes().add(this.getAbstractElement());
-		characteristicClassEClass.getESuperTypes().add(this.getAbstractElement());
-		characteristicVariableEClass.getESuperTypes().add(this.getCharacteristicVariableType());
-		characteristicSetEClass.getESuperTypes().add(this.getCharacteristicVariableType());
-		includeEClass.getESuperTypes().add(this.getAbstractElement());
-		constraintEClass.getESuperTypes().add(this.getAbstractElement());
-		attributeSelectorEClass.getESuperTypes().add(this.getDataSelector());
-		attributeSelectorEClass.getESuperTypes().add(this.getCharacteristicSelector());
-		attributeClassSelectorEClass.getESuperTypes().add(this.getDataSelector());
-		attributeClassSelectorEClass.getESuperTypes().add(this.getCharacteristicClassSelector());
-		propertySelectorEClass.getESuperTypes().add(this.getCharacteristicSelector());
-		propertySelectorEClass.getESuperTypes().add(this.getDestinationSelector());
-		propertyClassSelectorEClass.getESuperTypes().add(this.getCharacteristicClassSelector());
-		propertyClassSelectorEClass.getESuperTypes().add(this.getDestinationSelector());
-		nodeIdentitiySelectorEClass.getESuperTypes().add(this.getDestinationSelector());
-		characteristicReferenceEClass.getESuperTypes().add(this.getReference());
-		characteristicSetReferenceEClass.getESuperTypes().add(this.getReference());
-		booleanOperationEClass.getESuperTypes().add(this.getOperation());
-		characteristsicSetOperationEClass.getESuperTypes().add(this.getOperation());
-		logicalAndOperationEClass.getESuperTypes().add(this.getBooleanOperation());
-		logicalNegationOperationEClass.getESuperTypes().add(this.getBooleanOperation());
-		variableEqualityOperationEClass.getESuperTypes().add(this.getBooleanOperation());
-		variableInequalityOperationEClass.getESuperTypes().add(this.getBooleanOperation());
-		emptySetOperationEClass.getESuperTypes().add(this.getBooleanOperation());
-		intersectionOperationEClass.getESuperTypes().add(this.getCharacteristsicSetOperation());
-		createSetOperationEClass.getESuperTypes().add(this.getCharacteristsicSetOperation());
+    // Add supertypes to classes
+    characteristicTypeEClass.getESuperTypes().add(this.getAbstractElement());
+    characteristicClassEClass.getESuperTypes().add(this.getAbstractElement());
+    characteristicVariableEClass.getESuperTypes().add(this.getCharacteristicVariableType());
+    characteristicSetEClass.getESuperTypes().add(this.getCharacteristicVariableType());
+    includeEClass.getESuperTypes().add(this.getAbstractElement());
+    constraintEClass.getESuperTypes().add(this.getAbstractElement());
+    attributeSelectorEClass.getESuperTypes().add(this.getDataSelector());
+    attributeSelectorEClass.getESuperTypes().add(this.getCharacteristicSelector());
+    attributeClassSelectorEClass.getESuperTypes().add(this.getDataSelector());
+    attributeClassSelectorEClass.getESuperTypes().add(this.getCharacteristicClassSelector());
+    propertySelectorEClass.getESuperTypes().add(this.getCharacteristicSelector());
+    propertySelectorEClass.getESuperTypes().add(this.getDestinationSelector());
+    propertyClassSelectorEClass.getESuperTypes().add(this.getCharacteristicClassSelector());
+    propertyClassSelectorEClass.getESuperTypes().add(this.getDestinationSelector());
+    nodeIdentitiySelectorEClass.getESuperTypes().add(this.getDestinationSelector());
+    characteristicReferenceEClass.getESuperTypes().add(this.getReference());
+    characteristicSetReferenceEClass.getESuperTypes().add(this.getReference());
+    booleanOperationEClass.getESuperTypes().add(this.getOperation());
+    characteristsicSetOperationEClass.getESuperTypes().add(this.getOperation());
+    simpleBooleanOperationEClass.getESuperTypes().add(this.getBooleanOperation());
+    variableEqualityOperationEClass.getESuperTypes().add(this.getSimpleBooleanOperation());
+    variableInequalityOperationEClass.getESuperTypes().add(this.getSimpleBooleanOperation());
+    emptySetOperationEClass.getESuperTypes().add(this.getSimpleBooleanOperation());
+    intersectionOperationEClass.getESuperTypes().add(this.getCharacteristsicSetOperation());
+    unionOperationEClass.getESuperTypes().add(this.getCharacteristsicSetOperation());
+    subtractOperationEClass.getESuperTypes().add(this.getCharacteristsicSetOperation());
+    elementOfOperationEClass.getESuperTypes().add(this.getSimpleBooleanOperation());
+    createSetOperationEClass.getESuperTypes().add(this.getCharacteristsicSetOperation());
+    logicalOrOperationEClass.getESuperTypes().add(this.getBooleanOperation());
+    logicalAndOperationEClass.getESuperTypes().add(this.getBooleanOperation());
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModel_TargetModelType(), this.getTargetModelTypeDef(), null, "targetModelType", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModel_Elements(), this.getAbstractElement(), null, "elements", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    // Initialize classes and features; add operations and parameters
+    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getModel_TargetModelType(), this.getTargetModelTypeDef(), null, "targetModelType", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Elements(), this.getAbstractElement(), null, "elements", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(targetModelTypeDefEClass, TargetModelTypeDef.class, "TargetModelTypeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTargetModelTypeDef_Type(), this.getTargetModelType(), "type", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTargetModelTypeDef_TypeContainer(), theCharacteristicsPackage.getCharacteristicTypeContainer(), null, "typeContainer", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTargetModelTypeDef_AllocationModel(), theAllocationPackage.getAllocation(), null, "allocationModel", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTargetModelTypeDef_UsageModel(), theUsagemodelPackage.getUsageModel(), null, "usageModel", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(targetModelTypeDefEClass, TargetModelTypeDef.class, "TargetModelTypeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTargetModelTypeDef_Type(), this.getTargetModelType(), "type", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTargetModelTypeDef_TypeContainer(), theCharacteristicsPackage.getCharacteristicTypeContainer(), null, "typeContainer", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTargetModelTypeDef_AllocationModel(), theAllocationPackage.getAllocation(), null, "allocationModel", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTargetModelTypeDef_UsageModel(), theUsagemodelPackage.getUsageModel(), null, "usageModel", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(abstractElementEClass, AbstractElement.class, "AbstractElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(abstractElementEClass, AbstractElement.class, "AbstractElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(characteristicTypeEClass, CharacteristicType.class, "CharacteristicType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCharacteristicType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CharacteristicType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCharacteristicType_Ref(), theCharacteristicsPackage.getCharacteristicType(), null, "ref", null, 0, 1, CharacteristicType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(characteristicTypeEClass, CharacteristicType.class, "CharacteristicType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCharacteristicType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CharacteristicType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCharacteristicType_Ref(), theCharacteristicsPackage.getCharacteristicType(), null, "ref", null, 0, 1, CharacteristicType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(characteristicClassEClass, CharacteristicClass.class, "CharacteristicClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCharacteristicClass_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CharacteristicClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCharacteristicClass_Members(), this.getCharacteristicTypeSelector(), null, "members", null, 0, -1, CharacteristicClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(characteristicClassEClass, CharacteristicClass.class, "CharacteristicClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCharacteristicClass_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CharacteristicClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCharacteristicClass_Members(), this.getCharacteristicTypeSelector(), null, "members", null, 0, -1, CharacteristicClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(characteristicTypeSelectorEClass, CharacteristicTypeSelector.class, "CharacteristicTypeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCharacteristicTypeSelector_Ref(), this.getCharacteristicType(), null, "ref", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCharacteristicTypeSelector_Negated(), theEcorePackage.getEBoolean(), "negated", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCharacteristicTypeSelector_Literals(), theCharacteristicsPackage.getEnumCharacteristicLiteral(), null, "literals", null, 0, -1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCharacteristicTypeSelector_IsVariableSelector(), theEcorePackage.getEBoolean(), "isVariableSelector", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCharacteristicTypeSelector_Variable(), this.getCharacteristicVariableType(), null, "variable", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(characteristicTypeSelectorEClass, CharacteristicTypeSelector.class, "CharacteristicTypeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCharacteristicTypeSelector_Ref(), this.getCharacteristicType(), null, "ref", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCharacteristicTypeSelector_Negated(), theEcorePackage.getEBoolean(), "negated", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCharacteristicTypeSelector_Literals(), theCharacteristicsPackage.getEnumCharacteristicLiteral(), null, "literals", null, 0, -1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCharacteristicTypeSelector_IsVariableSelector(), theEcorePackage.getEBoolean(), "isVariableSelector", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCharacteristicTypeSelector_Variable(), this.getCharacteristicVariableType(), null, "variable", null, 0, 1, CharacteristicTypeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(characteristicVariableTypeEClass, CharacteristicVariableType.class, "CharacteristicVariableType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCharacteristicVariableType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CharacteristicVariableType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(characteristicVariableTypeEClass, CharacteristicVariableType.class, "CharacteristicVariableType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCharacteristicVariableType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CharacteristicVariableType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(characteristicVariableEClass, CharacteristicVariable.class, "CharacteristicVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(characteristicVariableEClass, CharacteristicVariable.class, "CharacteristicVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(characteristicSetEClass, CharacteristicSet.class, "CharacteristicSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(characteristicSetEClass, CharacteristicSet.class, "CharacteristicSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(includeEClass, Include.class, "Include", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInclude_ImportURI(), theEcorePackage.getEString(), "importURI", null, 0, 1, Include.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(includeEClass, Include.class, "Include", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInclude_ImportURI(), theEcorePackage.getEString(), "importURI", null, 0, 1, Include.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getConstraint_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConstraint_Rule(), this.getRule(), null, "rule", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConstraint_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstraint_Rule(), this.getRule(), null, "rule", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRule_DataSelectors(), this.getDataSelector(), null, "dataSelectors", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRule_Statement(), this.getStatement(), null, "statement", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRule_DestinationSelectors(), this.getDestinationSelector(), null, "destinationSelectors", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRule_Condition(), this.getCondition(), null, "condition", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRule_DataSelectors(), this.getDataSelector(), null, "dataSelectors", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRule_Statement(), this.getStatement(), null, "statement", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRule_DestinationSelectors(), this.getDestinationSelector(), null, "destinationSelectors", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRule_Condition(), this.getCondition(), null, "condition", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataSelectorEClass, DataSelector.class, "DataSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(dataSelectorEClass, DataSelector.class, "DataSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(characteristicSelectorEClass, CharacteristicSelector.class, "CharacteristicSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCharacteristicSelector_Ref(), this.getCharacteristicTypeSelector(), null, "ref", null, 0, 1, CharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(characteristicSelectorEClass, CharacteristicSelector.class, "CharacteristicSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCharacteristicSelector_Ref(), this.getCharacteristicTypeSelector(), null, "ref", null, 0, 1, CharacteristicSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(characteristicClassSelectorEClass, CharacteristicClassSelector.class, "CharacteristicClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCharacteristicClassSelector_Ref(), this.getCharacteristicClass(), null, "ref", null, 0, 1, CharacteristicClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(characteristicClassSelectorEClass, CharacteristicClassSelector.class, "CharacteristicClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCharacteristicClassSelector_Ref(), this.getCharacteristicClass(), null, "ref", null, 0, 1, CharacteristicClassSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(attributeSelectorEClass, AttributeSelector.class, "AttributeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(attributeSelectorEClass, AttributeSelector.class, "AttributeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(attributeClassSelectorEClass, AttributeClassSelector.class, "AttributeClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(attributeClassSelectorEClass, AttributeClassSelector.class, "AttributeClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(destinationSelectorEClass, DestinationSelector.class, "DestinationSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(destinationSelectorEClass, DestinationSelector.class, "DestinationSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(propertySelectorEClass, PropertySelector.class, "PropertySelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(propertySelectorEClass, PropertySelector.class, "PropertySelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(propertyClassSelectorEClass, PropertyClassSelector.class, "PropertyClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(propertyClassSelectorEClass, PropertyClassSelector.class, "PropertyClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(nodeIdentitiySelectorEClass, NodeIdentitiySelector.class, "NodeIdentitiySelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNodeIdentitiySelector_Name(), theEcorePackage.getEString(), "name", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNodeIdentitiySelector_Assembly(), theCompositionPackage.getAssemblyContext(), null, "assembly", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNodeIdentitiySelector_Component(), theRepositoryPackage.getBasicComponent(), null, "component", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNodeIdentitiySelector_Seff(), theSeffPackage.getServiceEffectSpecification(), null, "seff", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(nodeIdentitiySelectorEClass, NodeIdentitiySelector.class, "NodeIdentitiySelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNodeIdentitiySelector_Name(), theEcorePackage.getEString(), "name", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeIdentitiySelector_Assembly(), theCompositionPackage.getAssemblyContext(), null, "assembly", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeIdentitiySelector_Component(), theRepositoryPackage.getBasicComponent(), null, "component", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeIdentitiySelector_Seff(), theSeffPackage.getServiceEffectSpecification(), null, "seff", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStatement_Modality(), this.getStatementModality(), null, "modality", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStatement_Type(), this.getStatementType(), null, "type", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getStatement_Modality(), this.getStatementModality(), null, "modality", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStatement_Type(), this.getStatementType(), null, "type", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(statementTypeEClass, StatementType.class, "StatementType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStatementType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, StatementType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(statementTypeEClass, StatementType.class, "StatementType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStatementType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, StatementType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(statementModalityEClass, StatementModality.class, "StatementModality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStatementModality_Name(), theEcorePackage.getEString(), "name", null, 0, 1, StatementModality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(statementModalityEClass, StatementModality.class, "StatementModality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStatementModality_Name(), theEcorePackage.getEString(), "name", null, 0, 1, StatementModality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCondition_Operation(), this.getBooleanOperation(), null, "operation", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCondition_Operation(), this.getBooleanOperation(), null, "operation", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(characteristicReferenceEClass, CharacteristicReference.class, "CharacteristicReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCharacteristicReference_Value(), this.getCharacteristicVariable(), null, "value", null, 0, 1, CharacteristicReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(characteristicReferenceEClass, CharacteristicReference.class, "CharacteristicReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCharacteristicReference_Value(), this.getCharacteristicVariable(), null, "value", null, 0, 1, CharacteristicReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(characteristicSetReferenceEClass, CharacteristicSetReference.class, "CharacteristicSetReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCharacteristicSetReference_Value(), this.getCharacteristicSet(), null, "value", null, 0, 1, CharacteristicSetReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCharacteristicSetReference_Ref(), this.getCharacteristsicSetOperation(), null, "ref", null, 0, 1, CharacteristicSetReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(characteristicSetReferenceEClass, CharacteristicSetReference.class, "CharacteristicSetReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCharacteristicSetReference_Value(), this.getCharacteristicSet(), null, "value", null, 0, 1, CharacteristicSetReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCharacteristicSetReference_Ref(), this.getCharacteristsicSetOperation(), null, "ref", null, 0, 1, CharacteristicSetReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(booleanOperationEClass, BooleanOperation.class, "BooleanOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(booleanOperationEClass, BooleanOperation.class, "BooleanOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBooleanOperation_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, BooleanOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(characteristsicSetOperationEClass, CharacteristsicSetOperation.class, "CharacteristsicSetOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(characteristsicSetOperationEClass, CharacteristsicSetOperation.class, "CharacteristsicSetOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(logicalAndOperationEClass, LogicalAndOperation.class, "LogicalAndOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLogicalAndOperation_Left(), this.getBooleanOperation(), null, "left", null, 0, 1, LogicalAndOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLogicalAndOperation_Right(), this.getBooleanOperation(), null, "right", null, 0, 1, LogicalAndOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(simpleBooleanOperationEClass, SimpleBooleanOperation.class, "SimpleBooleanOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(logicalOrOperationEClass, LogicalOrOperation.class, "LogicalOrOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLogicalOrOperation_Left(), this.getBooleanOperation(), null, "left", null, 0, 1, LogicalOrOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLogicalOrOperation_Right(), this.getBooleanOperation(), null, "right", null, 0, 1, LogicalOrOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(variableEqualityOperationEClass, VariableEqualityOperation.class, "VariableEqualityOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVariableEqualityOperation_Left(), this.getCharacteristicReference(), null, "left", null, 0, 1, VariableEqualityOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableEqualityOperation_Right(), this.getCharacteristicReference(), null, "right", null, 0, 1, VariableEqualityOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(logicalNegationOperationEClass, LogicalNegationOperation.class, "LogicalNegationOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLogicalNegationOperation_Value(), this.getBooleanOperation(), null, "value", null, 0, 1, LogicalNegationOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(variableInequalityOperationEClass, VariableInequalityOperation.class, "VariableInequalityOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVariableInequalityOperation_Left(), this.getCharacteristicReference(), null, "left", null, 0, 1, VariableInequalityOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableInequalityOperation_Right(), this.getCharacteristicReference(), null, "right", null, 0, 1, VariableInequalityOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(variableEqualityOperationEClass, VariableEqualityOperation.class, "VariableEqualityOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariableEqualityOperation_Left(), this.getCharacteristicReference(), null, "left", null, 0, 1, VariableEqualityOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableEqualityOperation_Right(), this.getCharacteristicReference(), null, "right", null, 0, 1, VariableEqualityOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(emptySetOperationEClass, EmptySetOperation.class, "EmptySetOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(variableInequalityOperationEClass, VariableInequalityOperation.class, "VariableInequalityOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariableInequalityOperation_Left(), this.getCharacteristicReference(), null, "left", null, 0, 1, VariableInequalityOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariableInequalityOperation_Right(), this.getCharacteristicReference(), null, "right", null, 0, 1, VariableInequalityOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(intersectionOperationEClass, IntersectionOperation.class, "IntersectionOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIntersectionOperation_Left(), this.getCharacteristicSetReference(), null, "left", null, 0, 1, IntersectionOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIntersectionOperation_Right(), this.getCharacteristicSetReference(), null, "right", null, 0, 1, IntersectionOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(emptySetOperationEClass, EmptySetOperation.class, "EmptySetOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEmptySetOperation_Value(), this.getCharacteristicSetReference(), null, "value", null, 0, 1, EmptySetOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(unionOperationEClass, UnionOperation.class, "UnionOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUnionOperation_Left(), this.getCharacteristicSetReference(), null, "left", null, 0, 1, UnionOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUnionOperation_Right(), this.getCharacteristicSetReference(), null, "right", null, 0, 1, UnionOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(intersectionOperationEClass, IntersectionOperation.class, "IntersectionOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIntersectionOperation_Left(), this.getCharacteristicSetReference(), null, "left", null, 0, 1, IntersectionOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIntersectionOperation_Right(), this.getCharacteristicSetReference(), null, "right", null, 0, 1, IntersectionOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(subtractOperationEClass, SubtractOperation.class, "SubtractOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSubtractOperation_Left(), this.getCharacteristicSetReference(), null, "left", null, 0, 1, SubtractOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubtractOperation_Right(), this.getCharacteristicSetReference(), null, "right", null, 0, 1, SubtractOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(createSetOperationEClass, CreateSetOperation.class, "CreateSetOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCreateSetOperation_Value(), this.getCharacteristicReference(), null, "value", null, 0, 1, CreateSetOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(elementOfOperationEClass, ElementOfOperation.class, "ElementOfOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getElementOfOperation_Left(), this.getCharacteristicReference(), null, "left", null, 0, 1, ElementOfOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getElementOfOperation_Right(), this.getCharacteristicSetReference(), null, "right", null, 0, 1, ElementOfOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		// Initialize enums and add enum literals
-		initEEnum(targetModelTypeEEnum, TargetModelType.class, "TargetModelType");
-		addEEnumLiteral(targetModelTypeEEnum, TargetModelType.OPERATION_MODEL);
-		addEEnumLiteral(targetModelTypeEEnum, TargetModelType.DATA_CENTRIC_PALLADIO);
-		addEEnumLiteral(targetModelTypeEEnum, TargetModelType.EXTENDED_DFD);
+    initEClass(createSetOperationEClass, CreateSetOperation.class, "CreateSetOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCreateSetOperation_Value(), this.getCharacteristicReference(), null, "value", null, 0, 1, CreateSetOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		// Create resource
-		createResource(eNS_URI);
-	}
+    initEClass(logicalOrOperationEClass, LogicalOrOperation.class, "LogicalOrOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLogicalOrOperation_Left(), this.getBooleanOperation(), null, "left", null, 0, 1, LogicalOrOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLogicalOrOperation_Right(), this.getBooleanOperation(), null, "right", null, 0, 1, LogicalOrOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(logicalAndOperationEClass, LogicalAndOperation.class, "LogicalAndOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLogicalAndOperation_Left(), this.getBooleanOperation(), null, "left", null, 0, 1, LogicalAndOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLogicalAndOperation_Right(), this.getBooleanOperation(), null, "right", null, 0, 1, LogicalAndOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(targetModelTypeEEnum, TargetModelType.class, "TargetModelType");
+    addEEnumLiteral(targetModelTypeEEnum, TargetModelType.OPERATION_MODEL);
+    addEEnumLiteral(targetModelTypeEEnum, TargetModelType.DATA_CENTRIC_PALLADIO);
+    addEEnumLiteral(targetModelTypeEEnum, TargetModelType.EXTENDED_DFD);
+
+    // Create resource
+    createResource(eNS_URI);
+  }
 
 } //DSLPackageImpl

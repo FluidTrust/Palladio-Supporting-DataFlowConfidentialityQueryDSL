@@ -1,6 +1,6 @@
 define(["ace/lib/oop", "ace/mode/text", "ace/mode/text_highlight_rules"], function(oop, mText, mTextHighlightRules) {
 	var HighlightRules = function() {
-		var keywords = "DataCentricPalladio|ExtendedDFD|FLOWS|NEVER|OperationModel|WHERE|class|constraint|import|target|type|using";
+		var keywords = "DataCentricPalladio|ExtendedDFD|FLOWS|NEVER|OperationModel|WHERE|class|constraint|elementOf|import|intersection|isEmpty|subtract|target|type|union|using";
 		this.$rules = {
 			"start": [
 				{token: "comment", regex: "\\/\\/.*$"},

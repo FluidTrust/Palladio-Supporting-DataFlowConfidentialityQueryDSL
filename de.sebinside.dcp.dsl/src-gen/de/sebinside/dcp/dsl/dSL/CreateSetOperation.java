@@ -23,25 +23,25 @@ package de.sebinside.dcp.dsl.dSL;
 public interface CreateSetOperation extends CharacteristsicSetOperation
 {
   /**
-	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' containment reference.
-	 * @see #setValue(CharacteristicReference)
-	 * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCreateSetOperation_Value()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Value</em>' containment reference.
+   * @see #setValue(CharacteristicReference)
+   * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCreateSetOperation_Value()
+   * @model containment="true"
+   * @generated
+   */
   CharacteristicReference getValue();
 
   /**
-	 * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CreateSetOperation#getValue <em>Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CreateSetOperation#getValue <em>Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' containment reference.
-	 * @see #getValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Value</em>' containment reference.
+   * @see #getValue()
+   * @generated
+   */
   void setValue(CharacteristicReference value);
 
 } // CreateSetOperation

@@ -104,48 +104,63 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanOperation" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanOperation" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CharacteristsicSetOperation" eSuperTypes="#//Operation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="LogicalAndOperation" eSuperTypes="#//BooleanOperation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//BooleanOperation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//BooleanOperation"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LogicalOrOperation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//BooleanOperation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//BooleanOperation"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LogicalNegationOperation" eSuperTypes="#//BooleanOperation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//BooleanOperation"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableEqualityOperation" eSuperTypes="#//BooleanOperation">
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleBooleanOperation" eSuperTypes="#//BooleanOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableEqualityOperation" eSuperTypes="#//SimpleBooleanOperation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//CharacteristicReference"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//CharacteristicReference"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableInequalityOperation" eSuperTypes="#//BooleanOperation">
+  <eClassifiers xsi:type="ecore:EClass" name="VariableInequalityOperation" eSuperTypes="#//SimpleBooleanOperation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//CharacteristicReference"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//CharacteristicReference"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EmptySetOperation" eSuperTypes="#//BooleanOperation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CharacteristicSetReference"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EmptySetOperation" eSuperTypes="#//SimpleBooleanOperation"/>
   <eClassifiers xsi:type="ecore:EClass" name="IntersectionOperation" eSuperTypes="#//CharacteristsicSetOperation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//CharacteristicSetReference"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//CharacteristicSetReference"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnionOperation" eSuperTypes="#//CharacteristsicSetOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//CharacteristicSetReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//CharacteristicSetReference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubtractOperation" eSuperTypes="#//CharacteristsicSetOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//CharacteristicSetReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//CharacteristicSetReference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElementOfOperation" eSuperTypes="#//SimpleBooleanOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//CharacteristicReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//CharacteristicSetReference"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CreateSetOperation" eSuperTypes="#//CharacteristsicSetOperation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CharacteristicReference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalOrOperation" eSuperTypes="#//BooleanOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//BooleanOperation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//BooleanOperation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalAndOperation" eSuperTypes="#//BooleanOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//BooleanOperation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//BooleanOperation"
         containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

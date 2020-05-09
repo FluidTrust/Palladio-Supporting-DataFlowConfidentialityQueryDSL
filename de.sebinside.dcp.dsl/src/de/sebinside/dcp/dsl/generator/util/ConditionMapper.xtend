@@ -21,6 +21,8 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 
 import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
+import de.sebinside.dcp.dsl.dSL.CharacteristicReference
+import org.eclipse.xtext.EcoreUtil2
 
 class ConditionMapper {
 
@@ -45,26 +47,41 @@ class ConditionMapper {
 			val freeVariable = createFreeVariableTerm(reference.value)
 			this.variables.push(freeVariable)
 		} else {
-			val temporalVariable = createTemporalVariable('''«temporalVariableCounter++»''')
+			val temporalVariable = createTemporalVariableTerm('''«temporalVariableCounter++»''')
 			this.variables.push(temporalVariable)
 
 			map(reference.ref)
 		}
 	}
 
+	private def void consumeOrNest(CharacteristicReference reference) {
+		val freeVariable = createFreeVariableTerm(reference.value)
+		this.variables.push(freeVariable)
+	}
+
+	private def copyStackHead() {
+		// This is needed because of the containment references in the prolog meta-model
+		EcoreUtil2.copy(variables.lastElement)
+	}
+
 	private def dispatch void map(LogicalOrOperation operation) {
+		// TODO
 	}
 
 	private def dispatch void map(LogicalAndOperation operation) {
+		// TODO
 	}
 
 	private def dispatch void map(LogicalNegationOperation operation) {
+		// TODO
 	}
 
 	private def dispatch void map(VariableEqualityOperation operation) {
+		// TODO
 	}
 
 	private def dispatch void map(VariableInequalityOperation operation) {
+		// TODO
 	}
 
 	private def dispatch void map(EmptySetOperation operation) {
@@ -81,21 +98,32 @@ class ConditionMapper {
 
 		val right = variables.pop
 		val left = variables.pop
-		val temporal = variables.firstElement
+		val temporal = copyStackHead()
 
 		val term = CompoundTerm("intersection", #[left, right, temporal])
 		expressions.add(term)
 	}
 
 	private def dispatch void map(UnionOperation operation) {
+		// TODO
 	}
 
 	private def dispatch void map(SubtractOperation operation) {
+		// TODO
 	}
 
 	private def dispatch void map(ElementOfOperation operation) {
+		consumeOrNest(operation.left)
+		consumeOrNest(operation.right)
+
+		val right = variables.pop
+		val left = variables.pop
+
+		val term = CompoundTerm("memberchk", #[left, right])
+		expressions.add(term)
 	}
 
 	private def dispatch void map(CreateSetOperation operation) {
+		// TODO
 	}
 }

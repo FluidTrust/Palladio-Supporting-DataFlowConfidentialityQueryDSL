@@ -103,7 +103,7 @@ class DSLGeneratorUtils {
 		}
 	}
 	
-	def static createTemporalVariable(String name) {
+	def static createTemporalVariableTerm(String name) {
 		CompoundTerm('''«GlobalConstants.Prefixes.TEMPORAL_VARIABLE»«name»''')
 	}
 

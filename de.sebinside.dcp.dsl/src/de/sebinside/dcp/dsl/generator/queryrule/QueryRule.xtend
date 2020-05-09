@@ -18,9 +18,9 @@ import java.util.Set
 import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
-import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
-import static de.sebinside.dcp.dsl.generator.PrologUtils.*
-import de.sebinside.dcp.dsl.generator.ConditionUtils
+import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
+import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
+import de.sebinside.dcp.dsl.generator.util.ConditionMapper
 
 abstract class QueryRule {
 
@@ -143,10 +143,6 @@ abstract class QueryRule {
 
 		// Create characteristics class terms
 		val characteristicsClassesTerms = characteristicClasses.map[clazz|createCharacteristicsClassTerm(clazz)]
-		
-		// Create WHERE terms
-		val topOperation = rule.condition.operation
-		val conditionTerm = ConditionUtils.map(topOperation)
 
 		// Create final rule body
 		val subRuleComponents = #[queryTypeTerm,
@@ -154,7 +150,9 @@ abstract class QueryRule {
 			createStackValidCall(CompoundTerm(callStack)), expressionsToLogicalAnd(dataSelectorTerm),
 			expressionsToLogicalAnd(destinationSelectorTerm), if (characteristicClasses.size > 0) {
 				expressionsToLogicalAnd(characteristicsClassesTerms)
-			}, conditionTerm]
+			}, if (rule.condition !== null) {
+				new ConditionMapper(rule.condition.operation).conditionTerm
+			}]
 		subRule.body = expressionsToLogicalAnd(subRuleComponents)
 
 		// Create rules parameters

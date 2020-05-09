@@ -1,4 +1,4 @@
-package de.sebinside.dcp.dsl.generator
+package de.sebinside.dcp.dsl.generator.util
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import java.io.ByteArrayOutputStream
@@ -9,12 +9,13 @@ import org.palladiosimulator.supporting.prolog.model.prolog.Program
 import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
-import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 import org.eclipse.emf.ecore.util.EcoreUtil
 import java.util.List
 import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
 import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
 import de.sebinside.dcp.dsl.dSL.CharacteristicVariable
+import de.sebinside.dcp.dsl.generator.GlobalConstants
 
 class DSLGeneratorUtils {
 
@@ -100,6 +101,10 @@ class DSLGeneratorUtils {
 		} else {
 			CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLE»«variable.name»''')
 		}
+	}
+	
+	def static createTemporalVariable(String name) {
+		CompoundTerm('''«GlobalConstants.Prefixes.TEMPORAL_VARIABLE»«name»''')
 	}
 
 	def static createForAllQuery(CompoundTerm iteratorTemplate, Expression query, Expression resultVariable) {

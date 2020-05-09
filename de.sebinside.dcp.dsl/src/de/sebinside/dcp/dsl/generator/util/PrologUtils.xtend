@@ -1,4 +1,4 @@
-package de.sebinside.dcp.dsl.generator
+package de.sebinside.dcp.dsl.generator.util
 
 import java.util.List
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
@@ -81,6 +81,12 @@ class PrologUtils {
 		val aqs = PrologFactory.eINSTANCE.createAtomicQuotedString
 		aqs.value = value
 		aqs
+	}
+
+	def static AtomicNumber(int value) {
+		val number = PrologFactory.eINSTANCE.createAtomicNumber
+		number.value = value
+		number
 	}
 
 }

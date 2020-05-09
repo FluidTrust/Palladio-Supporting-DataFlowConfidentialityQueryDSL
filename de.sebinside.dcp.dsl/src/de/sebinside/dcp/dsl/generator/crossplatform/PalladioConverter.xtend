@@ -16,7 +16,7 @@ import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.E
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF
 import org.palladiosimulator.pcm.usagemodel.UsageModel
 
-import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.ParameterBasedData
 
 class PalladioConverter implements Converter {

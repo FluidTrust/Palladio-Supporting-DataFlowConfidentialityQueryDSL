@@ -24,8 +24,8 @@ import org.palladiosimulator.supporting.prolog.model.prolog.Clause
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 
-import static de.sebinside.dcp.dsl.generator.DSLGeneratorUtils.*
-import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
+import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
 
 class DSLGenerator extends AbstractGenerator {

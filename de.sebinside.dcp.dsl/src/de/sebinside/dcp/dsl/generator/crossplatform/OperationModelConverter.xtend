@@ -4,7 +4,7 @@ import de.sebinside.dcp.dsl.dSL.CharacteristicType
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
 
-import static de.sebinside.dcp.dsl.generator.PrologUtils.*
+import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 
 class OperationModelConverter implements Converter {
 

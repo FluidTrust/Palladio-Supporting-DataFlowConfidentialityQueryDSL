@@ -9,7 +9,8 @@ public class GlobalConstants {
 
 	public static enum Prefixes {
 		CONSTRAINT("constraint_"), CHARACTERISTICS_CLASS("characteristicsClass_"), 
-		CLASS_VARIABLE("ClassVar_"), CHARACTERISTIC_VARIABLE("Var_"), CHARACTERISTIC_SET_VARIABLE("VarSet_");
+		CLASS_VARIABLE("ClassVar_"), CHARACTERISTIC_VARIABLE("Var_"), CHARACTERISTIC_SET_VARIABLE("VarSet_"),
+		TEMPORAL_VARIABLE("Temp_");
 
 		private String value;
 

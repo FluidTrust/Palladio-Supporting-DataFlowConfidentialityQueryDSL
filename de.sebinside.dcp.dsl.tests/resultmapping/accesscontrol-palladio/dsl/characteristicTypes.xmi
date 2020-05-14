@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<characteristics:CharacteristicTypeContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:characteristics="http://www.palladiosimulator.org/pcm/dataprocessing/characteristics/0.1/" id="_nSj8IFqmEeiPkr6LR6jHLg">
+  <characteristicTypes xsi:type="characteristics:EnumCharacteristicType" id="_rkiSMFqnEeiY18w7ObeSrg" entityName="AccessRights" multipleChoice="true" enum="_VP-rAFqnEeiArJNC74_aMQ"/>
+  <characteristicTypes xsi:type="characteristics:EnumCharacteristicType" id="_vP5JoFqnEeiY18w7ObeSrg" entityName="Roles" multipleChoice="true" enum="_VP-rAFqnEeiArJNC74_aMQ"/>
+  <enumerations id="_VP-rAFqnEeiArJNC74_aMQ" entityName="Roles">
+    <literals id="_m8CdEFqnEeiY18w7ObeSrg" entityName="User"/>
+    <literals id="_ollNwFqnEeiY18w7ObeSrg" entityName="TravelAgency"/>
+    <literals id="_pqWdcFqnEeiY18w7ObeSrg" entityName="Airline"/>
+  </enumerations>
+</characteristics:CharacteristicTypeContainer>

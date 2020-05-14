@@ -32,6 +32,20 @@ class ResultMappingCases extends ResultMappingBase {
 		val query = "constraint_NoUnencryptedPersonalDataFlow(ConstraintName, QueryType, OP, S, ST)."
 		loadInputAndPrintResultMapping(caseName, query)
 	}
+	
+	@Test
+	def void accessControlSimpleCase() {
+		val caseName = "accesscontrol-simple"
+		val query = "constraint_AuthorizedAccess(ConstraintName, QueryType, OP, S, VarSet_authRoles, VarSet_accessRoles, P)."
+		loadInputAndPrintResultMapping(caseName, query)
+	}
+	
+	@Test
+	def void accessControlPalladioCase() {
+		val caseName = "accesscontrol-palladio"
+		val query = "constraint_AuthorizedAccess(ConstraintName, QueryType, OP, S, ST, VarSet_authRoles, VarSet_accessRoles)."
+		loadInputAndPrintResultMapping(caseName, query)
+	}
 
 	private def loadInputAndPrintResultMapping(String caseName, String query) {
 		val model = loadDSLModel(caseName)

@@ -1,0 +1,12 @@
+target DataCentricPalladio using characteristicTypes,default,default
+import "characteristicTypes.xmi"
+import "default.allocation"
+import "default.usagemodel"
+
+type accessRoles: Roles
+type authorizedRoles: AccessRights
+
+// Negation of the unauthorized access constraint 
+constraint AuthorizedAccess {
+	data.attribute.authorizedRoles.$authRoles{} NEVER FLOWS node.property.accessRoles.$accessRoles{} WHERE !isEmpty(intersection(authRoles, accessRoles))
+}

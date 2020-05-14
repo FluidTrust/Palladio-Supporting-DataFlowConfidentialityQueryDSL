@@ -1,0 +1,47 @@
+-------------- GENERAL ---------------
+
+Case name: "accesscontrol-simple"
+Constraint count: 1
+
+------------ CONSTRAINT 1 ------------
+
+Constraint name: "AuthorizedAccess"
+Violations found: 10
+
+--------- CONSTRAINT DETAILS ---------
+
+Data Characteristics: "authorizedRoles" set to 
+Condition: NEVER FLOWS
+Destination Characteristics: "accessRoles" set to 
+
+------- CONSTRAINT VIOLATIONS --------
+
+1. Parameter "input" is not allowed to be call argument in operation "TravelAgency_getFlightOffers".
+	- Call Stack: "TravelAgency_getFlightOffers", "checkAgency", "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
+
+2. Parameter "input" is not allowed to be call argument in operation "Airline_getFlightOffers".
+	- Call Stack: "Airline_getFlightOffers", "checkAirlines", "TravelAgency_getFlightOffers", "checkAgency", "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
+
+3. Parameter "ccd" is not allowed to be call argument in operation "Airline_bookFlight".
+	- Call Stack: "Airline_bookFlight", "book", "TravelPlanner_bookFlight", "book", "BookingUsage"
+
+4. Parameter "flight" is not allowed to be call argument in operation "Airline_bookFlight".
+	- Call Stack: "Airline_bookFlight", "book", "TravelPlanner_bookFlight", "book", "BookingUsage"
+
+5. Parameter "input" is not allowed to be call argument in operation "TravelPlanner_getFlightOffers".
+	- Call Stack: "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
+
+6. Parameter "selectedFlight" is not allowed to be call argument in operation "TravelPlanner_bookFlight".
+	- Call Stack: "TravelPlanner_bookFlight", "book", "BookingUsage"
+
+7. Parameter "flightOffers" is not allowed to be return value in operation "TravelAgency_getFlightOffers".
+	- Call Stack: "TravelAgency_getFlightOffers", "checkAgency", "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
+
+8. Parameter "flightOffers" is not allowed to be return value in operation "Airline_getFlightOffers".
+	- Call Stack: "Airline_getFlightOffers", "checkAirlines", "TravelAgency_getFlightOffers", "checkAgency", "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
+
+9. Parameter "ccd" is not allowed to be return value in operation "CCC_requestDeclassifiedCCD".
+	- Call Stack: "CCC_requestDeclassifiedCCD", "fetchCCD", "TravelPlanner_bookFlight", "book", "BookingUsage"
+
+10. Parameter "flightOffers" is not allowed to be return value in operation "TravelPlanner_getFlightOffers".
+	- Call Stack: "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"

@@ -1,0 +1,50 @@
+-------------- GENERAL ---------------
+
+Case name: "accesscontrol-palladio"
+Constraint count: 1
+
+------------ CONSTRAINT 1 ------------
+
+Constraint name: "AuthorizedAccess"
+Violations found: 11
+
+--------- CONSTRAINT DETAILS ---------
+
+Data Characteristics: "authorizedRoles" set to 
+Condition: NEVER FLOWS
+Destination Characteristics: "accessRoles" set to 
+
+------- CONSTRAINT VIOLATIONS --------
+
+1. Parameter "requestData" is not allowed to be parameter in operation "getFlightOffers".
+	- Call Stack: "Airline <Airline>.Airline.getFlightOffers", "TA - getFlightOffers - callAirline", "TA - getFlightOffers - returnFlights", "TravelAgency <TravelAgency>.TravelAgency.getFlightOffers", "TP - getFlightOffers - callTA", "TP - getFlightOffers - returnFlightOffers", "TravelPlanner <TravelPlanner>.TravelPlanner.getFlightOffers", "UsageModel - RequestFlightOffers - CallTravelAgency", "UsageModel - SelectFlightOffer", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+2. Parameter "requestData" is not allowed to be parameter in operation "getFlightOffers".
+	- Call Stack: "TravelAgency <TravelAgency>.TravelAgency.getFlightOffers", "TP - getFlightOffers - callTA", "TP - getFlightOffers - returnFlightOffers", "TravelPlanner <TravelPlanner>.TravelPlanner.getFlightOffers", "UsageModel - RequestFlightOffers - CallTravelAgency", "UsageModel - SelectFlightOffer", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+3. Parameter "ccd_decl" is not allowed to be parameter in operation "bookFlight".
+	- Call Stack: "Airline <Airline>.Airline.bookFlight", "TP - bookSelected - callAirline", "TP - bookSelected - returnConfirmation", "TravelPlanner <TravelPlanner>.TravelPlanner.bookSelected", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+4. Parameter "offerId" is not allowed to be parameter in operation "bookFlight".
+	- Call Stack: "Airline <Airline>.Airline.bookFlight", "TP - bookSelected - callAirline", "TP - bookSelected - returnConfirmation", "TravelPlanner <TravelPlanner>.TravelPlanner.bookSelected", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+5. Parameter "airline" is not allowed to be parameter in operation "confirmBooking".
+	- Call Stack: "TravelPlanner <TravelPlanner>.TravelPlanner.confirmBooking", "Airline - bookgFlight - callForBookingConfirmation", "Airline - bookFlight - discardUserConfirmation", "Airline <Airline>.Airline.bookFlight", "TP - bookSelected - callAirline", "TP - bookSelected - returnConfirmation", "TravelPlanner <TravelPlanner>.TravelPlanner.bookSelected", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+6. Parameter "offerId" is not allowed to be parameter in operation "confirmBooking".
+	- Call Stack: "TravelPlanner <TravelPlanner>.TravelPlanner.confirmBooking", "Airline - bookgFlight - callForBookingConfirmation", "Airline - bookFlight - discardUserConfirmation", "Airline <Airline>.Airline.bookFlight", "TP - bookSelected - callAirline", "TP - bookSelected - returnConfirmation", "TravelPlanner <TravelPlanner>.TravelPlanner.bookSelected", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+7. Parameter "offerId" is not allowed to be parameter in operation "payCommission".
+	- Call Stack: "TravelAgency <TravelAgency>.TravelAgency.payCommission", "Airline - bookFlight - callPayComission", "Airline - bookFlight - discardComissionConfirmation", "Airline <Airline>.Airline.bookFlight", "TP - bookSelected - callAirline", "TP - bookSelected - returnConfirmation", "TravelPlanner <TravelPlanner>.TravelPlanner.bookSelected", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+8. Parameter "requestData" is not allowed to be parameter in operation "getFlightOffers".
+	- Call Stack: "TravelPlanner <TravelPlanner>.TravelPlanner.getFlightOffers", "UsageModel - RequestFlightOffers - CallTravelAgency", "UsageModel - SelectFlightOffer", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+9. Parameter "ccDetails" is not allowed to be parameter in operation "declassifyCCDForAirline".
+	- Call Stack: "CreditCardCenter <CreditCardCenter>.CreditCardCenter.declassifyCCDForAirline", "UsageModel - DeclassifyCCD", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+10. Parameter "flightOffer" is not allowed to be parameter in operation "bookSelected".
+	- Call Stack: "TravelPlanner <TravelPlanner>.TravelPlanner.bookSelected", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"
+
+11. Parameter "cc_decl" is not allowed to be parameter in operation "bookSelected".
+	- Call Stack: "TravelPlanner <TravelPlanner>.TravelPlanner.bookSelected", "UsageModel - BookSelected", "UsageModel - ReadBookingConfirmation"

@@ -71,9 +71,14 @@ class PrologUtils {
 	}
 
 	def static List(Expression head, Expression tail) {
+		val list = List(head)
+		list.tails.add(tail)
+		list
+	}
+
+	def static List(Expression head) {
 		val list = PrologFactory.eINSTANCE.createList
 		list.heads.add(head)
-		list.tails.add(tail)
 		list
 	}
 

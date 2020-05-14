@@ -1,6 +1,7 @@
 package de.sebinside.dcp.dsl.generator.util
 
 import de.sebinside.dcp.dsl.dSL.BooleanOperation
+import de.sebinside.dcp.dsl.dSL.CharacteristicReference
 import de.sebinside.dcp.dsl.dSL.CharacteristicSetReference
 import de.sebinside.dcp.dsl.dSL.CreateSetOperation
 import de.sebinside.dcp.dsl.dSL.ElementOfOperation
@@ -13,25 +14,22 @@ import de.sebinside.dcp.dsl.dSL.SubtractOperation
 import de.sebinside.dcp.dsl.dSL.UnionOperation
 import de.sebinside.dcp.dsl.dSL.VariableEqualityOperation
 import de.sebinside.dcp.dsl.dSL.VariableInequalityOperation
-import java.util.ArrayList
-import java.util.List
 import java.util.Stack
+import org.eclipse.xtext.EcoreUtil2
 import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
 import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
-import de.sebinside.dcp.dsl.dSL.CharacteristicReference
-import org.eclipse.xtext.EcoreUtil2
 
 class ConditionMapper {
 
-	List<Expression> expressions
+	Stack<Expression> expressions
 	Stack<CompoundTerm> variables
 	int temporalVariableCounter
 
 	new(BooleanOperation operation) {
-		this.expressions = new ArrayList<Expression>
+		this.expressions = new Stack<Expression>
 		this.variables = new Stack<CompoundTerm>
 		this.temporalVariableCounter = 0
 
@@ -60,28 +58,60 @@ class ConditionMapper {
 	}
 
 	private def copyStackHead() {
-		// This is needed because of the containment references in the prolog meta-model
+		// This is needed because of the containment reference in the prolog meta-model
 		EcoreUtil2.copy(variables.lastElement)
 	}
 
 	private def dispatch void map(LogicalOrOperation operation) {
-		// TODO
+		map(operation.left)
+		val left = expressions.pop
+
+		map(operation.right)
+		val right = expressions.pop
+
+		val term = LogicalOr(left, right)
+		expressions.push(term)
 	}
 
 	private def dispatch void map(LogicalAndOperation operation) {
-		// TODO
+		map(operation.left)
+		val left = expressions.pop
+
+		map(operation.right)
+		val right = expressions.pop
+
+		val term = LogicalAnd(left, right)
+		expressions.push(term)
 	}
 
 	private def dispatch void map(LogicalNegationOperation operation) {
-		// TODO
+		map(operation.value)
+		val expression = expressions.pop
+
+		val term = negate(expression)
+		expressions.push(term)
 	}
 
 	private def dispatch void map(VariableEqualityOperation operation) {
-		// TODO
+		consumeOrNest(operation.left)
+		consumeOrNest(operation.right)
+
+		val right = variables.pop
+		val left = variables.pop
+
+		val term = Unification(left, right)
+		expressions.push(term)
 	}
 
 	private def dispatch void map(VariableInequalityOperation operation) {
-		// TODO
+		consumeOrNest(operation.left)
+		consumeOrNest(operation.right)
+
+		val right = variables.pop
+		val left = variables.pop
+
+		val term = negate(Unification(left, right))
+		expressions.push(term)
 	}
 
 	private def dispatch void map(EmptySetOperation operation) {
@@ -89,27 +119,31 @@ class ConditionMapper {
 
 		val variable = variables.pop
 		val term = negate(CompoundTerm("length", #[variable, AtomicNumber(0)]))
-		expressions.add(term)
+		expressions.push(term)
 	}
 
 	private def dispatch void map(IntersectionOperation operation) {
-		consumeOrNest(operation.left)
-		consumeOrNest(operation.right)
-
-		val right = variables.pop
-		val left = variables.pop
-		val temporal = copyStackHead()
-
-		val term = CompoundTerm("intersection", #[left, right, temporal])
-		expressions.add(term)
+		basicSetOperation("intersection", operation.left, operation.right)
 	}
 
 	private def dispatch void map(UnionOperation operation) {
-		// TODO
+		basicSetOperation("union", operation.left, operation.right)
 	}
 
 	private def dispatch void map(SubtractOperation operation) {
-		// TODO
+		basicSetOperation("subtract", operation.left, operation.right)
+	}
+
+	private def void basicSetOperation(String name, CharacteristicSetReference left, CharacteristicSetReference right) {
+		consumeOrNest(left)
+		consumeOrNest(right)
+
+		val rightVariable = variables.pop
+		val leftVariable = variables.pop
+		val temporal = copyStackHead()
+
+		val term = CompoundTerm(name, #[leftVariable, rightVariable, temporal])
+		expressions.push(term)
 	}
 
 	private def dispatch void map(ElementOfOperation operation) {
@@ -120,10 +154,16 @@ class ConditionMapper {
 		val left = variables.pop
 
 		val term = CompoundTerm("memberchk", #[left, right])
-		expressions.add(term)
+		expressions.push(term)
 	}
 
 	private def dispatch void map(CreateSetOperation operation) {
-		// TODO
+		consumeOrNest(operation.value)
+
+		val variable = variables.pop
+		val temporal = copyStackHead()
+
+		val term = Unification(temporal, List(variable))
+		expressions.push(term)
 	}
 }

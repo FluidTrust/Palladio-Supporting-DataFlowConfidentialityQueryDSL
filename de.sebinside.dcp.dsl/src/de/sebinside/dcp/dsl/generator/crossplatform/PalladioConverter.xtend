@@ -159,5 +159,19 @@ class PalladioConverter implements Converter {
 	override qualifiedNameResolvable(String id) {
 		trace.value.resolveSeffInstance(id).present || trace.value.resolveDataOperationInstance(id).present
 	}
+	
+	override convertCharacteristicLiteral(String id) {
+		val result = trace.value.resolveIdentifier(id)
+
+		if (result.empty) {
+			id
+		} else {
+			if(result.get instanceof EnumCharacteristicLiteral) {
+				(result.get as EnumCharacteristicLiteral).entityName
+			} else {
+				id
+			}
+		}
+	}
 
 }

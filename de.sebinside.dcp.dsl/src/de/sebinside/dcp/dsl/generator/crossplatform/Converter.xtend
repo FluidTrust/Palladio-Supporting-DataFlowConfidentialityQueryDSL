@@ -18,6 +18,8 @@ interface Converter {
 	def String resolveQualifiedName(String id, Boolean fullName)
 
 	def String convertVariable(String id)
+	
+	def String convertCharacteristicLiteral(String id)
 
 	def String convertQueryType(QueryTypes queryType, String variableId) {
 		switch (queryType) {

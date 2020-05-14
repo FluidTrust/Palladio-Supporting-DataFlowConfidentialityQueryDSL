@@ -3,6 +3,9 @@ package de.sebinside.dcp.dsl.resultmapping.serialize
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
 
 import static de.sebinside.dcp.dsl.resultmapping.ResultMappingUtils.*
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
+import java.util.List
+import de.sebinside.dcp.dsl.dSL.CharacteristicSet
 
 class MarkdownResultMappingSerializer extends AbstractResultMappingSerializer {
 
@@ -56,6 +59,12 @@ class MarkdownResultMappingSerializer extends AbstractResultMappingSerializer {
 	
 	override protected indent(String value) {
 		'''«"\t"»«value.lines.toArray.join("\n\t")»«if(value.lines.toArray.size > 1) "\n" else ""»'''
+	}
+	
+	override protected mapCharacteristicVariable(CharacteristicVariableType variable, List<String> values) {
+		val escapedValues = super.mapCharacteristicVariable(variable, values)
+		'''| «escape(variable.name)»«IF variable instanceof CharacteristicSet» (Set)«ENDIF» | «escapedValues» |'''
+	
 	}
 
 }

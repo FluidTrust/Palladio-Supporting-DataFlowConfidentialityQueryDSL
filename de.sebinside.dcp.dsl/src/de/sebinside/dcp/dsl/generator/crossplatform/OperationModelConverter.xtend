@@ -41,5 +41,9 @@ class OperationModelConverter implements Converter {
 	override qualifiedNameResolvable(String id) {
 		true
 	}
+	
+	override convertCharacteristicLiteral(String id) {
+		id
+	}
 
 }

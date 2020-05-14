@@ -13,6 +13,8 @@ import java.util.List
 import java.util.stream.Collectors
 import java.util.stream.Stream
 import org.eclipse.xtend.lib.annotations.Accessors
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariable
+import de.sebinside.dcp.dsl.dSL.CharacteristicSet
 
 class EvaluatedConstraint {
 
@@ -27,13 +29,33 @@ class EvaluatedConstraint {
 	def getConstraintName() {
 		original.name
 	}
-	
+
 	def getCondition() {
 		original.rule.condition
 	}
-	
+
 	def hasCondition() {
 		original.rule.condition !== null
+	}
+
+	def getAllCharacteristicVariables() {
+		allVariables.filter(CharacteristicVariable)
+	}
+
+	def getAllCharacteristicSetVariables() {
+		allVariables.filter(CharacteristicSet)
+	}
+
+	private def getAllVariables() {
+		val attributeVariables = original.rule.dataSelectors.filter(AttributeSelector).filter [ selector |
+			selector.ref.isIsVariableSelector
+		].map[selector|selector.ref.variable]
+		val propertyVariables = original.rule.dataSelectors.filter(PropertySelector).filter [ selector |
+			selector.ref.isIsVariableSelector
+		].map[selector|selector.ref.variable]
+
+		Stream.concat(attributeVariables.toList.stream, propertyVariables.toList.stream).distinct.collect(
+			Collectors.toList)
 	}
 
 	def Iterable<CharacteristicTypeSelector> getAttributeSelectors() {

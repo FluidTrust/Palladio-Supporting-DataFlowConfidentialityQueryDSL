@@ -15,6 +15,7 @@ import org.prolog4j.Solution
 import org.prolog4j.SolutionIterator
 
 import static de.sebinside.dcp.dsl.resultmapping.ResultMappingUtils.*
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
 
 class ResultMapping {
 
@@ -89,9 +90,29 @@ class ResultMapping {
 			}
 		}
 
+		// Retrieve (optional) extra free variables
+		var variablesMap = new HashMap<CharacteristicVariableType, List<String>>
+		for (variable : evaluatedConstraint.allCharacteristicVariables) {
+			val value = getSolutionVariable(
+				iterator, '''«GlobalConstants.Prefixes.CHARACTERISTIC_VARIABLE»«variable.name»''')
+
+			if (value.present) {
+				variablesMap.put(variable, #[value.get])
+			}
+		}
+		for (variable : evaluatedConstraint.allCharacteristicSetVariables) {
+			val value = getSolutionArray(
+				iterator, '''«GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLE»«variable.name»''')
+
+			if (value.present) {
+				variablesMap.put(variable, value.get)
+			}
+		}
+
 		evaluatedConstraint.addViolation(
-			new Violation(violationQueryType.get, violationCallStack.get, violationOperation.get, violationParameter,
-				violationCallState, classVariableMap))
+			new Violation(violationQueryType.get, violationCallStack.get, 
+				violationOperation.get, violationParameter,
+				violationCallState, classVariableMap, variablesMap))
 	}
 
 	private def EvaluatedConstraint retrieveConstraint(SolutionIterator<Object> iterator) {

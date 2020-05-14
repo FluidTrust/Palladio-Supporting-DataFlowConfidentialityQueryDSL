@@ -12,6 +12,8 @@ import org.eclipse.xtext.serializer.ISerializer
 import com.google.inject.Injector
 import com.google.inject.Guice
 import de.sebinside.dcp.dsl.DSLRuntimeModule
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
+import java.util.List
 
 abstract class AbstractResultMappingSerializer implements ResultMappingSerializer {
 
@@ -54,6 +56,7 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 «i+1». Parameter «escape(crossPlatformConverter.convertVariable(getParameterOrCallState(constraint.violations.get(i))))» is not allowed to be «highlight(mapQueryType(constraint.violations.get(i)))» in operation «escape(crossPlatformConverter.resolveQualifiedName(constraint.violations.get(i).operation, false))».
 «FOR entry: constraint.violations.get(i).callStack.filter[e|crossPlatformConverter.qualifiedNameResolvable(e)] BEFORE "\t- Call Stack: " + indent(advancedEnumHeader("Node")) SEPARATOR advancedEnumSeparator»«indent(mapCallStackEntry(entry))»«ENDFOR»
 «FOR variable: constraint.violations.get(i).classVariables.keySet BEFORE "\t- Characteristic Classes: " + indent(advancedEnumHeader("Parameter", "Class", "Value")) SEPARATOR advancedEnumSeparator»«indent(mapClassVariable(variable, constraint.violations.get(i).classVariables.get(variable)))»«ENDFOR»
+«FOR variable: constraint.violations.get(i).characteristicVariables.keySet BEFORE "\t- Characteristic Variables: " + indent(advancedEnumHeader("Variable", "Value")) SEPARATOR advancedEnumSeparator»«indent(mapCharacteristicVariable(variable, constraint.violations.get(i).characteristicVariables.get(variable)))»«ENDFOR»
 «ENDFOR»
 «ENDFOR»
 '''
@@ -99,9 +102,14 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 		val operation = condition.operation
 		escape(serializer.serialize(operation).replaceAll(" ", ""))
 	}
+	
+	protected def String mapCharacteristicVariable(CharacteristicVariableType variable, List<String> values) {
+		values.map[value|crossPlatformConverter.convertCharacteristicLiteral(value)].map[value|escape(value)].join(", ")
+	}
+	
 
 	abstract protected def String indent(String value)
-
+	
 	abstract protected def String mapClassVariable(CharacteristicTypeSelector variable, String value)
 
 	abstract protected def String advancedEnumHeader(String... entries)

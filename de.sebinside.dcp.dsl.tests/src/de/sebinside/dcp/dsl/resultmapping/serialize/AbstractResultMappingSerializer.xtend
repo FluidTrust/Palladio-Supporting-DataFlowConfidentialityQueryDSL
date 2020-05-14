@@ -7,12 +7,20 @@ import de.sebinside.dcp.dsl.generator.GlobalConstants
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import de.sebinside.dcp.dsl.resultmapping.generate.ResultMapping
 import de.sebinside.dcp.dsl.resultmapping.generate.Violation
+import de.sebinside.dcp.dsl.dSL.Condition
+import org.eclipse.xtext.serializer.ISerializer
+import com.google.inject.Injector
+import com.google.inject.Guice
+import de.sebinside.dcp.dsl.DSLRuntimeModule
 
 abstract class AbstractResultMappingSerializer implements ResultMappingSerializer {
 
 	protected Converter crossPlatformConverter
+	protected ISerializer serializer
 
 	package new() {
+		val Injector injector = Guice.createInjector(new DSLRuntimeModule);  
+		serializer = injector.getInstance(ISerializer);  
 	}
 
 	override serialize(String caseName, ResultMapping resultMapping) {
@@ -38,6 +46,7 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 «FOR selector : constraint.propertySelectors BEFORE "Destination Characteristics: " + advancedEnumHeader("Characteristic", "Value") SEPARATOR advancedEnumSeparator»«mapCharacteristicTypeSelector(selector)»«ENDFOR»
 «FOR selector: constraint.propertyClasses BEFORE "Destination Classes: " SEPARATOR ", "»«mapCharacteristicClass(selector)»«ENDFOR»
 «FOR selector: constraint.nodeIdentities BEFORE "Destination Identity: " SEPARATOR ", "»«mapNodeIdentity(selector)»«ENDFOR»
+«IF constraint.hasCondition»Condition: «mapCondition(constraint.condition)»«ENDIF»
 
 «makeSubTitle("Constraint Violations")»
 
@@ -76,6 +85,19 @@ Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint
 
 	protected def String mapCallStackEntry(String entry) {
 		escape(crossPlatformConverter.resolveQualifiedName(entry, true))
+	}
+
+	protected def String handleSelectorLiterals(CharacteristicTypeSelector selector) {
+		if (selector.isIsVariableSelector) {
+			'''variable «escape(selector.variable.name)»'''
+		} else {
+			selector.literals.map[literal|escape(literal.entityName)].join(", ")
+		}
+	}
+
+	protected def String mapCondition(Condition condition) {
+		val operation = condition.operation
+		escape(serializer.serialize(operation).replaceAll(" ", ""))
 	}
 
 	abstract protected def String indent(String value)

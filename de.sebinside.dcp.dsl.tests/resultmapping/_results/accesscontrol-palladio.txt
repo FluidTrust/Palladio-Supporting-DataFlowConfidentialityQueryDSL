@@ -10,9 +10,10 @@ Violations found: 11
 
 --------- CONSTRAINT DETAILS ---------
 
-Data Characteristics: "authorizedRoles" set to 
+Data Characteristics: "authorizedRoles" set to variable "authRoles"
 Condition: NEVER FLOWS
-Destination Characteristics: "accessRoles" set to 
+Destination Characteristics: "accessRoles" set to variable "accessRoles"
+Condition: "!isEmpty(intersection(authRoles,accessRoles))"
 
 ------- CONSTRAINT VIOLATIONS --------
 

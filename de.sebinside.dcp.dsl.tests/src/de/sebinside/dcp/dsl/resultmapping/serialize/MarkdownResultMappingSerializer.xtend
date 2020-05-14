@@ -19,7 +19,7 @@ class MarkdownResultMappingSerializer extends AbstractResultMappingSerializer {
 
 	override mapCharacteristicTypeSelector(CharacteristicTypeSelector selector) {
 		val characteristicName = selector.ref.name
-		val literals = selector.literals.map[literal|escape(literal.entityName)].join(", ")
+		val literals = handleSelectorLiterals(selector)
 
 		'''| «escape(characteristicName)» | «if(selector.negated) "*not* " else ""»«literals» |'''
 	}

@@ -27,6 +27,14 @@ class EvaluatedConstraint {
 	def getConstraintName() {
 		original.name
 	}
+	
+	def getCondition() {
+		original.rule.condition
+	}
+	
+	def hasCondition() {
+		original.rule.condition !== null
+	}
 
 	def Iterable<CharacteristicTypeSelector> getAttributeSelectors() {
 		original.rule.dataSelectors.filter(AttributeSelector).map[selector|selector.ref]

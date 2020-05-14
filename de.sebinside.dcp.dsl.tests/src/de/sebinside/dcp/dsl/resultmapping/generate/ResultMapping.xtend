@@ -4,8 +4,9 @@ import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
 import de.sebinside.dcp.dsl.dSL.Constraint
 import de.sebinside.dcp.dsl.dSL.Model
-import de.sebinside.dcp.dsl.dSL.TargetModelType
 import de.sebinside.dcp.dsl.generator.GlobalConstants
+import de.sebinside.dcp.dsl.generator.crossplatform.Converter
+import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
@@ -14,8 +15,6 @@ import org.prolog4j.Solution
 import org.prolog4j.SolutionIterator
 
 import static de.sebinside.dcp.dsl.resultmapping.ResultMappingUtils.*
-import de.sebinside.dcp.dsl.generator.crossplatform.Converter
-import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
 
 class ResultMapping {
 

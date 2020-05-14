@@ -118,7 +118,7 @@ class ConditionMapper {
 		consumeOrNest(operation.value)
 
 		val variable = variables.pop
-		val term = negate(CompoundTerm("length", #[variable, AtomicNumber(0)]))
+		val term = CompoundTerm("length", #[variable, AtomicNumber(0)])
 		expressions.push(term)
 	}
 

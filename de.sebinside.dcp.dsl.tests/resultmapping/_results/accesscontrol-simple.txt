@@ -19,40 +19,40 @@ Condition: "!isEmpty(intersection(authRoles,accessRoles))"
 
 1. Parameter "input" is not allowed to be call argument in operation "TravelAgency_getFlightOffers".
 	- Call Stack: "TravelAgency_getFlightOffers", "checkAgency", "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline", "TravelAgency"
+	- Characteristic Variables: Set variable "accessRoles" set to "TravelAgency", Set variable "authRoles" set to "User", "Airline", "TravelAgency"
 
 2. Parameter "input" is not allowed to be call argument in operation "Airline_getFlightOffers".
 	- Call Stack: "Airline_getFlightOffers", "checkAirlines", "TravelAgency_getFlightOffers", "checkAgency", "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline", "TravelAgency"
+	- Characteristic Variables: Set variable "accessRoles" set to "Airline", Set variable "authRoles" set to "User", "Airline", "TravelAgency"
 
 3. Parameter "ccd" is not allowed to be call argument in operation "Airline_bookFlight".
 	- Call Stack: "Airline_bookFlight", "book", "TravelPlanner_bookFlight", "book", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline"
+	- Characteristic Variables: Set variable "accessRoles" set to "Airline", Set variable "authRoles" set to "User", "Airline"
 
 4. Parameter "flight" is not allowed to be call argument in operation "Airline_bookFlight".
 	- Call Stack: "Airline_bookFlight", "book", "TravelPlanner_bookFlight", "book", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline"
+	- Characteristic Variables: Set variable "accessRoles" set to "Airline", Set variable "authRoles" set to "User", "Airline"
 
 5. Parameter "input" is not allowed to be call argument in operation "TravelPlanner_getFlightOffers".
 	- Call Stack: "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline", "TravelAgency"
+	- Characteristic Variables: Set variable "accessRoles" set to "User", Set variable "authRoles" set to "User", "Airline", "TravelAgency"
 
 6. Parameter "selectedFlight" is not allowed to be call argument in operation "TravelPlanner_bookFlight".
 	- Call Stack: "TravelPlanner_bookFlight", "book", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline"
+	- Characteristic Variables: Set variable "accessRoles" set to "User", Set variable "authRoles" set to "User", "Airline"
 
 7. Parameter "flightOffers" is not allowed to be return value in operation "TravelAgency_getFlightOffers".
 	- Call Stack: "TravelAgency_getFlightOffers", "checkAgency", "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline", "TravelAgency"
+	- Characteristic Variables: Set variable "accessRoles" set to "TravelAgency", Set variable "authRoles" set to "User", "Airline", "TravelAgency"
 
 8. Parameter "flightOffers" is not allowed to be return value in operation "Airline_getFlightOffers".
 	- Call Stack: "Airline_getFlightOffers", "checkAirlines", "TravelAgency_getFlightOffers", "checkAgency", "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline", "TravelAgency"
+	- Characteristic Variables: Set variable "accessRoles" set to "Airline", Set variable "authRoles" set to "User", "Airline", "TravelAgency"
 
 9. Parameter "ccd" is not allowed to be return value in operation "CCC_requestDeclassifiedCCD".
 	- Call Stack: "CCC_requestDeclassifiedCCD", "fetchCCD", "TravelPlanner_bookFlight", "book", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline"
+	- Characteristic Variables: Set variable "accessRoles" set to "User", Set variable "authRoles" set to "User", "Airline"
 
 10. Parameter "flightOffers" is not allowed to be return value in operation "TravelPlanner_getFlightOffers".
 	- Call Stack: "TravelPlanner_getFlightOffers", "fetchOffers", "BookingUsage"
-	- Characteristic Variables: Set variable "authRoles" set to "User", "Airline", "TravelAgency"
+	- Characteristic Variables: Set variable "accessRoles" set to "User", Set variable "authRoles" set to "User", "Airline", "TravelAgency"

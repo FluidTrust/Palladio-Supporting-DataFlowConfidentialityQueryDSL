@@ -39,6 +39,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `TravelAgency` |
 	| `authRoles` (Set) | `User`, `Airline`, `TravelAgency` |
 
 2. Parameter `input` is not allowed to be *call argument* in operation `Airline_getFlightOffers`.
@@ -57,6 +58,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `Airline` |
 	| `authRoles` (Set) | `User`, `Airline`, `TravelAgency` |
 
 3. Parameter `ccd` is not allowed to be *call argument* in operation `Airline_bookFlight`.
@@ -73,6 +75,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `Airline` |
 	| `authRoles` (Set) | `User`, `Airline` |
 
 4. Parameter `flight` is not allowed to be *call argument* in operation `Airline_bookFlight`.
@@ -89,6 +92,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `Airline` |
 	| `authRoles` (Set) | `User`, `Airline` |
 
 5. Parameter `input` is not allowed to be *call argument* in operation `TravelPlanner_getFlightOffers`.
@@ -103,6 +107,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User`, `Airline`, `TravelAgency` |
 
 6. Parameter `selectedFlight` is not allowed to be *call argument* in operation `TravelPlanner_bookFlight`.
@@ -117,6 +122,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User`, `Airline` |
 
 7. Parameter `flightOffers` is not allowed to be *return value* in operation `TravelAgency_getFlightOffers`.
@@ -133,6 +139,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `TravelAgency` |
 	| `authRoles` (Set) | `User`, `Airline`, `TravelAgency` |
 
 8. Parameter `flightOffers` is not allowed to be *return value* in operation `Airline_getFlightOffers`.
@@ -151,6 +158,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `Airline` |
 	| `authRoles` (Set) | `User`, `Airline`, `TravelAgency` |
 
 9. Parameter `ccd` is not allowed to be *return value* in operation `CCC_requestDeclassifiedCCD`.
@@ -167,6 +175,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User`, `Airline` |
 
 10. Parameter `flightOffers` is not allowed to be *return value* in operation `TravelPlanner_getFlightOffers`.
@@ -181,4 +190,5 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User`, `Airline`, `TravelAgency` |

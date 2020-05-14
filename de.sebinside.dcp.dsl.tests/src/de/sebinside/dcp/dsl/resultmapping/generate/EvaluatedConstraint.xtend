@@ -50,7 +50,7 @@ class EvaluatedConstraint {
 		val attributeVariables = original.rule.dataSelectors.filter(AttributeSelector).filter [ selector |
 			selector.ref.isIsVariableSelector
 		].map[selector|selector.ref.variable]
-		val propertyVariables = original.rule.dataSelectors.filter(PropertySelector).filter [ selector |
+		val propertyVariables = original.rule.destinationSelectors.filter(PropertySelector).filter [ selector |
 			selector.ref.isIsVariableSelector
 		].map[selector|selector.ref.variable]
 

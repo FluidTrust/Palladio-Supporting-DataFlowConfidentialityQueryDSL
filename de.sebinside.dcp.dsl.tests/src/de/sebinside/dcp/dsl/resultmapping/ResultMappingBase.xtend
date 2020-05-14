@@ -42,7 +42,7 @@ class ResultMappingBase {
 	@BeforeEach
 	def void setup() {
 		prover = proverFactory.createProver();
-		serializer = SerializerFactory.createMarkdownSerializer
+		serializer = SerializerFactory.createPlainTextSerializer
 	}
 
 	protected def Solution<Object> createSolution(String caseName, String query) {

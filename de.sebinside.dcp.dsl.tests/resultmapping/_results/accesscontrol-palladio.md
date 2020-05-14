@@ -45,6 +45,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `Airline` |
 	| `authRoles` (Set) | `User`, `TravelAgency`, `Airline` |
 
 2. Parameter `requestData` is not allowed to be *parameter* in operation `getFlightOffers`.
@@ -64,6 +65,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `TravelAgency` |
 	| `authRoles` (Set) | `User`, `TravelAgency`, `Airline` |
 
 3. Parameter `ccd_decl` is not allowed to be *parameter* in operation `bookFlight`.
@@ -81,6 +83,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `Airline` |
 	| `authRoles` (Set) | `User`, `Airline` |
 
 4. Parameter `offerId` is not allowed to be *parameter* in operation `bookFlight`.
@@ -98,6 +101,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `Airline` |
 	| `authRoles` (Set) | `User`, `TravelAgency`, `Airline` |
 
 5. Parameter `airline` is not allowed to be *parameter* in operation `confirmBooking`.
@@ -118,6 +122,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User`, `TravelAgency`, `Airline` |
 
 6. Parameter `offerId` is not allowed to be *parameter* in operation `confirmBooking`.
@@ -138,6 +143,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User`, `TravelAgency`, `Airline` |
 
 7. Parameter `offerId` is not allowed to be *parameter* in operation `payCommission`.
@@ -158,6 +164,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `TravelAgency` |
 	| `authRoles` (Set) | `User`, `TravelAgency`, `Airline` |
 
 8. Parameter `requestData` is not allowed to be *parameter* in operation `getFlightOffers`.
@@ -174,6 +181,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User`, `TravelAgency`, `Airline` |
 
 9. Parameter `ccDetails` is not allowed to be *parameter* in operation `declassifyCCDForAirline`.
@@ -189,6 +197,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User` |
 
 10. Parameter `flightOffer` is not allowed to be *parameter* in operation `bookSelected`.
@@ -203,6 +212,7 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User`, `TravelAgency`, `Airline` |
 
 11. Parameter `cc_decl` is not allowed to be *parameter* in operation `bookSelected`.
@@ -217,4 +227,5 @@ Condition: `!isEmpty(intersection(authRoles,accessRoles))`
 	
 	| Variable | Value |
 	| :-- | :-- |
+	| `accessRoles` (Set) | `User` |
 	| `authRoles` (Set) | `User`, `Airline` |

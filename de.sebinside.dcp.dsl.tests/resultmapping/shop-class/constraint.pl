@@ -12,6 +12,7 @@ constraint_NoType0Flow_PreCallState(QueryType, OP, S, ST, ClassVar_isNotSafe_loc
 	QueryType = 'PreCallState',
 	S = [OP | _],
 	stackValid(S),
+	operationState(OP, ST),
 	preCallState(S, OP, ST, 'level', 'Type-0'),
 	operationProperty(OP, 'location', ClassVar_isNotSafe_location),
 	characteristicsClass_isNotSafe(ClassVar_isNotSafe_location).
@@ -19,6 +20,7 @@ constraint_NoType0Flow_PostCallState(QueryType, OP, S, ST, ClassVar_isNotSafe_lo
 	QueryType = 'PostCallState',
 	S = [OP | _],
 	stackValid(S),
+	operationState(OP, ST),
 	postCallState(S, OP, ST, 'level', 'Type-0'),
 	operationProperty(OP, 'location', ClassVar_isNotSafe_location),
 	characteristicsClass_isNotSafe(ClassVar_isNotSafe_location).
@@ -26,6 +28,7 @@ constraint_NoType0Flow_CallArgument(QueryType, OP, S, P, ClassVar_isNotSafe_loca
 	QueryType = 'CallArgument',
 	S = [OP | _],
 	stackValid(S),
+	operationParameter(OP, P),
 	callArgument(S, P, 'level', 'Type-0'),
 	operationProperty(OP, 'location', ClassVar_isNotSafe_location),
 	characteristicsClass_isNotSafe(ClassVar_isNotSafe_location).
@@ -33,6 +36,7 @@ constraint_NoType0Flow_ReturnValue(QueryType, OP, S, P, ClassVar_isNotSafe_locat
 	QueryType = 'ReturnValue',
 	S = [OP | _],
 	stackValid(S),
+	operationReturnValue(OP, P),
 	returnValue(S, P, 'level', 'Type-0'),
 	operationProperty(OP, 'location', ClassVar_isNotSafe_location),
 	characteristicsClass_isNotSafe(ClassVar_isNotSafe_location).

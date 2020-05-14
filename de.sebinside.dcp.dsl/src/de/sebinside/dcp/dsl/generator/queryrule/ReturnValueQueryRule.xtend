@@ -1,8 +1,10 @@
 package de.sebinside.dcp.dsl.generator.queryrule
 
 import de.sebinside.dcp.dsl.dSL.Rule
+
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
+import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import de.sebinside.dcp.dsl.generator.queryrule.QueryRule
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import de.sebinside.dcp.dsl.generator.GlobalConstants
@@ -24,6 +26,10 @@ class ReturnValueQueryRule extends QueryRule {
 
 	override parameterTerm() {
 		CompoundTerm(parameter)
+	}
+
+	override isUsedInOperationCheck() {
+		createOperationReturnValue(CompoundTerm(operation), CompoundTerm(parameter))
 	}
 
 }

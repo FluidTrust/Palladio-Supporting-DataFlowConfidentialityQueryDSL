@@ -147,8 +147,9 @@ abstract class QueryRule {
 		// Create final rule body
 		val subRuleComponents = #[queryTypeTerm,
 			createCallStackUnification(CompoundTerm(callStack), CompoundTerm(operation)),
-			createStackValidCall(CompoundTerm(callStack)), expressionsToLogicalAnd(dataSelectorTerm),
-			expressionsToLogicalAnd(destinationSelectorTerm), if (characteristicClasses.size > 0) {
+			createStackValidCall(CompoundTerm(callStack)), isUsedInOperationCheck(),
+			expressionsToLogicalAnd(dataSelectorTerm), expressionsToLogicalAnd(destinationSelectorTerm),
+			if (characteristicClasses.size > 0) {
 				expressionsToLogicalAnd(characteristicsClassesTerms)
 			}, if (rule.condition !== null) {
 				new ConditionMapper(rule.condition.operation).conditionTerm
@@ -182,5 +183,7 @@ abstract class QueryRule {
 	abstract def String queryTypeIdentification()
 
 	abstract def CompoundTerm parameterTerm()
+
+	abstract def CompoundTerm isUsedInOperationCheck()
 
 }

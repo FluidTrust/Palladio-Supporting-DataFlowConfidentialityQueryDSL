@@ -4,6 +4,7 @@ import de.sebinside.dcp.dsl.dSL.Rule
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
+import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import de.sebinside.dcp.dsl.generator.GlobalConstants
 
@@ -24,6 +25,10 @@ class PreCallStateQueryRule extends QueryRule {
 
 	override parameterTerm() {
 		CompoundTerm(callState)
+	}
+	
+	override isUsedInOperationCheck() {
+		createOperationStateQuery(CompoundTerm(operation), CompoundTerm(callState))
 	}
 
 }

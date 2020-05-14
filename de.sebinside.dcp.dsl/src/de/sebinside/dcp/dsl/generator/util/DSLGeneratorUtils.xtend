@@ -88,6 +88,18 @@ class DSLGeneratorUtils {
 		CompoundTerm("valueSetMember", #[valueSet, member])
 	}
 
+	def static createOperationParameterQuery(CompoundTerm operation, CompoundTerm parameter) {
+		CompoundTerm("operationParameter", #[operation, parameter])
+	}
+
+	def static createOperationStateQuery(CompoundTerm operation, CompoundTerm state) {
+		CompoundTerm("operationState", #[operation, state])
+	}
+
+	def static createOperationReturnValue(CompoundTerm operation, CompoundTerm returnValue) {
+		CompoundTerm("operationReturnValue", #[operation, returnValue])
+	}
+
 	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
 		CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«characteristicClass.name»''', characteristicClass.
 			members.map [ member |
@@ -102,7 +114,7 @@ class DSLGeneratorUtils {
 			CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLE»«variable.name»''')
 		}
 	}
-	
+
 	def static createTemporalVariableTerm(String name) {
 		CompoundTerm('''«GlobalConstants.Prefixes.TEMPORAL_VARIABLE»«name»''')
 	}

@@ -128,7 +128,7 @@ class DSLGenerator extends AbstractGenerator {
 		// Add member queries to the class directly
 		// FIXME: Might contain duplicates
 		val memberQueries = charateristicClass.members.map [ member |
-			createMemberQuery(converter.convert(member.ref),
+			createMemberQuery(converter.convertMember(member.ref),
 				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«member.ref.name»'''))
 		]
 		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
@@ -160,8 +160,8 @@ class DSLGenerator extends AbstractGenerator {
 
 			var rules = new ArrayList<Rule>()
 			// FIXME: The combination of this rules is not everytime clear in previously modeled use cases
-			rules.add(new PreCallStateQueryRule(mainRule, constraintName, converter).generate())
-			//rules.add(new ReturnValueQueryRule(mainRule, constraintName, converter).generate())
+			//rules.add(new PreCallStateQueryRule(mainRule, constraintName, converter).generate())
+			rules.add(new ReturnValueQueryRule(mainRule, constraintName, converter).generate())
 
 			// Only the operation model works with all kinds of rules, Palladio only requires preCallStates
 			if (this.targetModelType == TargetModelType.OPERATION_MODEL) {

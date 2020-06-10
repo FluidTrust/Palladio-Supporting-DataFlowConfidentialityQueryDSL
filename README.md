@@ -46,4 +46,4 @@ constraint DefaultAttackerEncrypted {
 
 ### UMLsec secure dependencies
 
-TODO
+Not possible, since `lnot` is a custom element an cannot be generated.

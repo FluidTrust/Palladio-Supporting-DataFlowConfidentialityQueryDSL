@@ -14,6 +14,10 @@ class OperationModelConverter implements Converter {
 	override convert(CharacteristicType characteristicType) {
 		AtomicQuotedString(characteristicType.name)
 	}
+	
+	override convertMember(CharacteristicType characteristicType) {
+		this.convert(characteristicType)
+	}
 
 	override convert(EnumCharacteristicLiteral characteristicLiteral) {
 		AtomicQuotedString(characteristicLiteral.entityName)

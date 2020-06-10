@@ -8,6 +8,8 @@ import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
 
 interface Converter {
 	def AtomicQuotedString convert(CharacteristicType characteristicType)
+	
+	def AtomicQuotedString convertMember(CharacteristicType characteristicType)
 
 	def AtomicQuotedString convert(EnumCharacteristicLiteral characteristicLiteral)
 

@@ -34,19 +34,10 @@ class PalladioConverter implements Converter {
 
 	override convert(CharacteristicType characteristicType) {
 		if (trace.value === null) {
-			if(characteristicType.ref instanceof EnumCharacteristicType) {
-				val enumType = characteristicType.ref as EnumCharacteristicType
-				val name = enumType.enum.entityName
-				val id = enumType.enum.id
-				
-				AtomicQuotedString('''Enumeration «name» («id»)''')
-			} else {
-				val name = characteristicType.ref.entityName
-				val id = characteristicType.ref.id
+			val name = characteristicType.ref.entityName
+			val id = characteristicType.ref.id
 
-				AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
-			}
-			
+			AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
 		} else {
 			val computedValue = trace.value.resolveId(characteristicType.ref)
 
@@ -55,6 +46,18 @@ class PalladioConverter implements Converter {
 			} else {
 				throw new Exception("Unable to resolve CharacteristicType id.")
 			}
+		}
+	}
+
+	override convertMember(CharacteristicType characteristicType) {
+		if (trace.value === null && characteristicType.ref instanceof EnumCharacteristicType) {
+			val enumType = characteristicType.ref as EnumCharacteristicType
+			val name = enumType.enum.entityName
+			val id = enumType.enum.id
+
+			AtomicQuotedString('''Enumeration «name» («id»)''')
+		} else {
+			this.convert(characteristicType)
 		}
 	}
 
@@ -115,8 +118,8 @@ class PalladioConverter implements Converter {
 			id
 		} else {
 			val data = result.get.data
-			
-			if(data instanceof ParameterBasedData) {
+
+			if (data instanceof ParameterBasedData) {
 				data.parameter.parameterName
 			} else {
 				data.entityName
@@ -133,12 +136,12 @@ class PalladioConverter implements Converter {
 			val seffName = seff.get.entity.describedService__SEFF.entityName
 			val componentName = seff.get.entity.basicComponent_ServiceEffectSpecification.entityName
 			val contextName = seff.get.ac.entityName
-			
+
 			if (fullName) {
 				'''«contextName».«componentName».«seffName»'''
 			} else {
 				seffName
-			}		
+			}
 		} else if (operation.present) {
 			operation.get.entity.entityName
 		} else {
@@ -169,14 +172,14 @@ class PalladioConverter implements Converter {
 	override qualifiedNameResolvable(String id) {
 		trace.value.resolveSeffInstance(id).present || trace.value.resolveDataOperationInstance(id).present
 	}
-	
+
 	override convertCharacteristicLiteral(String id) {
 		val result = trace.value.resolveIdentifier(id)
 
 		if (result.empty) {
 			id
 		} else {
-			if(result.get instanceof EnumCharacteristicLiteral) {
+			if (result.get instanceof EnumCharacteristicLiteral) {
 				(result.get as EnumCharacteristicLiteral).entityName
 			} else {
 				id

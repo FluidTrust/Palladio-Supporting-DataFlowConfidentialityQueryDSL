@@ -5,78 +5,45 @@ This is a first implementation of the constraint DSL for data-centric palladio.
 ## Characteristics
 
 There are several characteristics files available for testing purposes. They can be found [here](https://github.com/sebinside/DCPDSL/tree/master/Characteristics).
+More ready-to-use cases can be found in the `resultmapping`-folder inside the test-project.
 
-## Snippets
+## More snippets
 
-### Shop
+There are more cases which have been modeled but are not represented in result mapping.
 
-This snippet describes the Type0-constraint from the shop example.
+### UMLsec secure links
 
 ```smalltalk
-target OperationModel
-import "shop.xmi"
+target DataCentricPalladio
+import "links.xmi"
 
-type level: PrivacyLevel
-type location: Locations
+type Link: Link
+type Sensitivity: Sensitivity
 
-class isNotSafe {
-	location.!EU
+class AllSensitivities {
+	Sensitivity.[High,Integrity,Secrecy]
 }
 
-// No type 0 data flow to unsafe locations
-constraint NoType0Flow {
-	data.attribute.level.Type0 NEVER FLOWS node.class.isNotSafe
+class AllLinks {
+	Link.[Encrypted,Internet,LAN]
+}
+
+// Insider attacker attacks all link type and has all threads thus attacks all sensitivity levels
+constraint InsiderAttacker {
+	data.class.AllSensitivities NEVER FLOWS node.class.AllLinks
+}
+
+// Default attacker can attack Internet links on all sensitivity levels as well
+constraint DefaultAttackerInternet {
+	data.class.AllSensitivities NEVER FLOWS node.property.Link.Internet
+}
+
+// Default attacker cannot read or insert on encrypted links 
+constraint DefaultAttackerEncrypted {
+	data.attribute.Sensitivity.High NEVER FLOWS node.property.Link.Encrypted
 }
 ```
 
-### Sample
+### UMLsec secure dependencies
 
-This snippet is partly equivalent to the one from the *LanguageDesign*-Document.
-
-```smalltalk
-import "SimpleCharacteristics.xmi"
-
-type Sizes: Sizes
-type Locations: Locations
-type Colors: Colors
-
-class example1 {
-    Sizes.[small,medium],
-    Colors.!red,
-    Locations.USA
-}
-
-constraint example1 {
-	data.attribute.Sizes.small NEVER FLOWS node.property.Locations.USA
-}
-
-constraint example2 {
-	data.class.example1 NEVER FLOWS node.property.Colors.red
-}
-```
-
-### Geolocation
-
-This snippet describes the constraint for the (newly developed) geolocation example.
-
-```smalltalk
-target DataCentricPalladio using geolocation,newAllocation,newUsageModel
-import "geolocation.xmi"
-import "newAllocation.allocation"
-import "newAssembly.system"
-import "newUsageModel.usagemodel"
-
-type Encryption: Encryption
-type Location: Location
-type Origin: Origin
-type PersonalInformation: PersonalInformation
-
-// No flow of personal unencrypted information to the specified node 
-constraint NoUnencryptedPersonalDataFlow {
-	data.attribute.Origin.EU &
-	data.attribute.PersonalInformation.true &
-	data.attribute.Encryption.!true 
-	NEVER FLOWS
-	node.identity.Assembly_StoreDB.StoreDB.store
-}
-```
+TODO

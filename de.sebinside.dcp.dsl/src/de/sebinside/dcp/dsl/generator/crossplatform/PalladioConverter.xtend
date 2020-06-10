@@ -18,6 +18,7 @@ import org.palladiosimulator.pcm.usagemodel.UsageModel
 
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 import org.palladiosimulator.pcm.dataprocessing.dataprocessing.data.ParameterBasedData
+import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicType
 
 class PalladioConverter implements Converter {
 
@@ -33,10 +34,19 @@ class PalladioConverter implements Converter {
 
 	override convert(CharacteristicType characteristicType) {
 		if (trace.value === null) {
-			val name = characteristicType.ref.entityName
-			val id = characteristicType.ref.id
+			if(characteristicType.ref instanceof EnumCharacteristicType) {
+				val enumType = characteristicType.ref as EnumCharacteristicType
+				val name = enumType.enum.entityName
+				val id = enumType.enum.id
+				
+				AtomicQuotedString('''Enumeration «name» («id»)''')
+			} else {
+				val name = characteristicType.ref.entityName
+				val id = characteristicType.ref.id
 
-			AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
+				AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
+			}
+			
 		} else {
 			val computedValue = trace.value.resolveId(characteristicType.ref)
 

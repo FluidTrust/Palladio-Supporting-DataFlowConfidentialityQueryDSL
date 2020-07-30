@@ -160,8 +160,7 @@ class DSLGenerator extends AbstractGenerator {
 
 			var rules = new ArrayList<Rule>()
 			// FIXME: The combination of this rules is not everytime clear in previously modeled use cases
-			//rules.add(new PreCallStateQueryRule(mainRule, constraintName, converter).generate())
-			rules.add(new ReturnValueQueryRule(mainRule, constraintName, converter).generate())
+			rules.add(new PreCallStateQueryRule(mainRule, constraintName, converter).generate())
 
 			// Only the operation model works with all kinds of rules, Palladio only requires preCallStates
 			if (this.targetModelType == TargetModelType.OPERATION_MODEL) {

@@ -16,9 +16,9 @@ import org.palladiosimulator.pcm.allocation.Allocation
 import org.palladiosimulator.pcm.allocation.AllocationPackage
 import org.palladiosimulator.pcm.core.composition.AssemblyContext
 import org.palladiosimulator.pcm.core.composition.CompositionPackage
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicTypeContainer
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicsPackage
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicType
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterized
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterizedPackage
 import org.palladiosimulator.pcm.usagemodel.UsageModel
 import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage
 
@@ -35,11 +35,11 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 			return true
 		}
 
-		if (eObject.eClass === CharacteristicsPackage.eINSTANCE.enumCharacteristicType) {
+		if (eObject.eClass === DataDictionaryCharacterizedPackage.eINSTANCE.enumCharacteristicType) {
 			createEObjectDescriptionForEnumCharacteristicType(eObject, acceptor)
 			return false
 		}
-		if (eObject.eClass === CharacteristicsPackage.eINSTANCE.characteristicTypeContainer) {
+		if (eObject.eClass === DataDictionaryCharacterizedPackage.eINSTANCE.dataDictionaryCharacterized) {
 			createEObjectDescriptionForCharacteristicTypeContainer(eObject, acceptor)
 			return true
 		}
@@ -80,7 +80,7 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 
 	protected def createEObjectDescriptionForCharacteristicTypeContainer(EObject eObject,
 		IAcceptor<IEObjectDescription> acceptor) {
-		val typeContainer = eObject as CharacteristicTypeContainer
+		val typeContainer = eObject as DataDictionaryCharacterized
 		acceptor.accept(
 			EObjectDescription.create(QualifiedName.create(getEResourceFileName(typeContainer.eResource)),
 				typeContainer));
@@ -102,10 +102,10 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 		IAcceptor<IEObjectDescription> acceptor) {
 		val characteristicType = eObject as EnumCharacteristicType
 		acceptor.accept(
-			EObjectDescription.create(QualifiedName.create(characteristicType.entityName), characteristicType))
-		for (literal : characteristicType.enum.literals) {
+			EObjectDescription.create(QualifiedName.create(characteristicType.name), characteristicType))
+		for (literal : characteristicType.type.literals) {
 			acceptor.accept(
-				EObjectDescription.create(QualifiedName.create(characteristicType.entityName, literal.entityName),
+				EObjectDescription.create(QualifiedName.create(characteristicType.name, literal.name),
 					literal))
 		}
 	}

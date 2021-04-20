@@ -2,7 +2,8 @@ package de.sebinside.dcp.dsl.generator.crossplatform
 
 import org.palladiosimulator.pcm.usagemodel.UsageModel
 import org.palladiosimulator.pcm.allocation.Allocation
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicTypeContainer
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterized
+import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.DFD2PrologTransformationTrace
 
 class ConverterFactory {
 
@@ -11,12 +12,16 @@ class ConverterFactory {
 	}
 
 	static def Converter createPalladioConverter() {
-		new PalladioConverter
+		//new PalladioConverter
 	}
 
 	static def Converter createPalladioConverter(UsageModel usageModel, Allocation allocationModel,
-		CharacteristicTypeContainer typeContainer) {
-		new PalladioConverter(usageModel, allocationModel, typeContainer)
+		DataDictionaryCharacterized typeContainer) {
+		//new PalladioConverter(usageModel, allocationModel, typeContainer)
+	}
+	
+	static def Converter createExtendedDFDConverter(DFD2PrologTransformationTrace trace) {
+		new DFDConverter(trace);
 	}
 
 }

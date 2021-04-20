@@ -3,7 +3,7 @@ package de.sebinside.dcp.dsl.generator.crossplatform
 import de.sebinside.dcp.dsl.dSL.CharacteristicType
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import de.sebinside.dcp.dsl.generator.GlobalConstants.QueryTypes
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.Literal
 import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
 
 interface Converter {
@@ -11,7 +11,7 @@ interface Converter {
 	
 	def AtomicQuotedString convertMember(CharacteristicType characteristicType)
 
-	def AtomicQuotedString convert(EnumCharacteristicLiteral characteristicLiteral)
+	def AtomicQuotedString convert(Literal characteristicLiteral)
 
 	def AtomicQuotedString convert(NodeIdentitiySelector selector)
 

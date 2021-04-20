@@ -36,9 +36,9 @@ class ResultMapping {
 		switch (model.targetModelType.type) {
 			case OPERATION_MODEL:
 				ConverterFactory.createOperationModelConverter
-			case DATA_CENTRIC_PALLADIO:
-				ConverterFactory.createPalladioConverter(model.targetModelType.usageModel,
-					model.targetModelType.allocationModel, model.targetModelType.typeContainer)
+//			case DATA_CENTRIC_PALLADIO:
+//				ConverterFactory.createPalladioConverter(model.targetModelType.usageModel,
+//					model.targetModelType.allocationModel, model.targetModelType.typeContainer)
 			default:
 				throw new RuntimeException("Unsupported target model type.")
 		}
@@ -82,7 +82,7 @@ class ResultMapping {
 		for (clazz : evaluatedConstraint.allClasses) {
 			for (member : clazz.members) {
 				val value = getSolutionVariable(
-					iterator, '''«GlobalConstants.Prefixes.CLASS_VARIABLE»«clazz.name»_«member.ref.name»''')
+					iterator, '''ï¿½GlobalConstants.Prefixes.CLASS_VARIABLEï¿½ï¿½clazz.nameï¿½_ï¿½member.ref.nameï¿½''')
 
 				if (value.present) {
 					classVariableMap.put(member, value.get)
@@ -94,7 +94,7 @@ class ResultMapping {
 		var variablesMap = new HashMap<CharacteristicVariableType, List<String>>
 		for (variable : evaluatedConstraint.allCharacteristicVariables) {
 			val value = getSolutionVariable(
-				iterator, '''«GlobalConstants.Prefixes.CHARACTERISTIC_VARIABLE»«variable.name»''')
+				iterator, '''ï¿½GlobalConstants.Prefixes.CHARACTERISTIC_VARIABLEï¿½ï¿½variable.nameï¿½''')
 
 			if (value.present) {
 				variablesMap.put(variable, #[value.get])
@@ -102,7 +102,7 @@ class ResultMapping {
 		}
 		for (variable : evaluatedConstraint.allCharacteristicSetVariables) {
 			val value = getSolutionArray(
-				iterator, '''«GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLE»«variable.name»''')
+				iterator, '''ï¿½GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLEï¿½ï¿½variable.nameï¿½''')
 
 			if (value.present) {
 				variablesMap.put(variable, value.get)

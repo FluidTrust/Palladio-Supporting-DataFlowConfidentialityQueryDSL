@@ -4,8 +4,10 @@ generate dSL "http://www.sebinside.de/dcp/dsl/DSL"
 
 // Nested EPackage has to be referred to by platform:/resource URI
 // https://sdqweb.ipd.kit.edu/wiki/Importing_nested_EPackages_in_Xtext
-import "platform:/resource/org.palladiosimulator.pcm.dataprocessing/model/dataprocessing.ecore#//characteristics" as
-characteristics
+import "platform:/resource/org.palladiosimulator.dataflow.diagram.characterized/model/DataFlowDiagramCharacterized.ecore" as
+diagram
+import "platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.ecore" as
+dictionary
 import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//allocation" as allocation
 import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel" as usagemodel
 import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//core/composition" as composition
@@ -17,7 +19,7 @@ Model:
 	(elements+=AbstractElement)*;
 
 TargetModelTypeDef:
-	'target' type=TargetModelType ('using' typeContainer=[characteristics::CharacteristicTypeContainer]
+	'target' type=TargetModelType ('using' typeContainer=[dictionary::DataDictionaryCharacterized]
 	(',' allocationModel=[allocation::Allocation] ',' usageModel=[usagemodel::UsageModel])?)?;
 
 enum TargetModelType:
@@ -27,7 +29,7 @@ AbstractElement:
 	Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
 
 CharacteristicType:
-	'type' name=ID ':' ref=[characteristics::CharacteristicType];
+	'type' name=ID ':' ref=[dictionary::CharacteristicType];
 
 CharacteristicClass:
 	'class' name=ID '{' members+=CharacteristicTypeSelector (',' members+=CharacteristicTypeSelector)* '}';
@@ -35,10 +37,10 @@ CharacteristicClass:
 CharacteristicTypeSelector:
 	ref=[CharacteristicType] '.'
 	// Single literal, may be negated
-	(((negated?='!')? literals+=[characteristics::EnumCharacteristicLiteral]) |
+	(((negated?='!')? literals+=[dictionary::Literal]) |
 	// Multiple literals, written as list
-	('[' literals+=[characteristics::EnumCharacteristicLiteral]
-	(',' literals+=[characteristics::EnumCharacteristicLiteral])*
+	('[' literals+=[dictionary::Literal]
+	(',' literals+=[dictionary::Literal])*
 	']') |
 	// Variable usage
 	(isVariableSelector?="$") variable=CharacteristicVariableType);
@@ -89,8 +91,8 @@ PropertyClassSelector:
 	'node.class.' ref=[CharacteristicClass];
 
 NodeIdentitiySelector:
-	'node.name.' name=STRING | 'node.identity.' assembly=[composition::AssemblyContext] '.'
-	component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification];
+	'node.name.' name=STRING | 'node.identity.' (assembly=[composition::AssemblyContext] '.'
+	component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification] | diaNode=[diagram::CharacterizedNode]);
 
 Statement:
 	modality=StatementModality type=StatementType;

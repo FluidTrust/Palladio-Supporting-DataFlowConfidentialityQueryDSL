@@ -2,7 +2,7 @@ package de.sebinside.dcp.dsl.generator.crossplatform
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicType
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.Literal
 
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 
@@ -19,8 +19,8 @@ class OperationModelConverter implements Converter {
 		this.convert(characteristicType)
 	}
 
-	override convert(EnumCharacteristicLiteral characteristicLiteral) {
-		AtomicQuotedString(characteristicLiteral.entityName)
+	override convert(Literal characteristicLiteral) {
+		AtomicQuotedString(characteristicLiteral.name)
 	}
 
 	override convert(NodeIdentitiySelector selector) {

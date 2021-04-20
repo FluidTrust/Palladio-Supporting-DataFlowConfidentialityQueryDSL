@@ -1,0 +1,10 @@
+target ExtendedDFD using DDC_TravelPlanner_AccessControl
+import "DDC_TravelPlanner_AccessControl.xmi"
+
+type accessRoles: Roles
+type authorizedRoles: AccessPermissions
+
+// Negation of the unauthorized access constraint
+constraint AuthorizedAccess {
+	data.attribute.authorizedRoles.$authRoles{} NEVER FLOWS node.property.accessRoles.$accessRoles{} WHERE !isEmpty(intersection(authRoles, accessRoles))
+}

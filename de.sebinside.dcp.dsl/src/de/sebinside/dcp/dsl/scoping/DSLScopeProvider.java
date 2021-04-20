@@ -15,10 +15,10 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.CharacteristicType;
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicLiteral;
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.EnumCharacteristicType;
-import org.palladiosimulator.pcm.dataprocessing.dataprocessing.characteristics.Enumeration;
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType;
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.Literal;
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType;
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.Enumeration;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
@@ -48,13 +48,13 @@ public class DSLScopeProvider extends AbstractDSLScopeProvider {
 			// Assumption: The DSL is intended to only work with EnumCharacteristicType
 			if (type instanceof EnumCharacteristicType) {
 				EnumCharacteristicType enumType = (EnumCharacteristicType) type;
-				Enumeration literalEnumeration = enumType.getEnum();
+				Enumeration literalEnumeration = enumType.getType();
 
 				// This is the case if the characteristic type is invalid referenced
 				if (literalEnumeration != null) {
-					List<EnumCharacteristicLiteral> literals = literalEnumeration.getLiterals();
+					List<Literal> literals = literalEnumeration.getLiterals();
 
-					IScope scope = Scopes.scopeFor(literals, literal -> QualifiedName.create(literal.getEntityName()),
+					IScope scope = Scopes.scopeFor(literals, literal -> QualifiedName.create(literal.getName()),
 							IScope.NULLSCOPE);
 
 					return scope;

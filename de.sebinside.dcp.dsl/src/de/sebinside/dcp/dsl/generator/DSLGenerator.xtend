@@ -9,7 +9,7 @@ import de.sebinside.dcp.dsl.dSL.TargetModelType
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import de.sebinside.dcp.dsl.generator.crossplatform.OperationModelConverter
-import de.sebinside.dcp.dsl.generator.crossplatform.PalladioConverter
+//import de.sebinside.dcp.dsl.generator.crossplatform.PalladioConverter
 import de.sebinside.dcp.dsl.generator.queryrule.CallArgumentQueryRule
 import de.sebinside.dcp.dsl.generator.queryrule.PostCallStateQueryRule
 import de.sebinside.dcp.dsl.generator.queryrule.PreCallStateQueryRule
@@ -27,6 +27,8 @@ import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
+import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.DFD2PrologTransformationTrace
+import de.sebinside.dcp.dsl.dSL.Model
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -36,9 +38,37 @@ class DSLGenerator extends AbstractGenerator {
 
 	// Setting the default value
 	Converter converter = ConverterFactory.createOperationModelConverter
-	TargetModelType targetModelType = TargetModelType.OPERATION_MODEL
+	TargetModelType targetModelType = TargetModelType.EXTENDED_DFD
+	
+	DFD2PrologTransformationTrace extendedDFDConverterTrace = null
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		val program = generateFromResource(resource)
+
+		val outputFileName = if (resource.URI.lastSegment !== null) {
+				resource.URI.lastSegment.replace(DSL_EXTENSION, PROLOG_EXTENSION)
+			} else {
+				DEFAULT_OUTPUT_FILE_NAME
+			}
+		saveFile(fsa, resource, program, outputFileName)
+	}
+	
+	def generateFromModel(Model model) {
+		val program = PrologFactory.eINSTANCE.createProgram
+		model.targetModelType.compile
+		
+		for (charClass : model.elements.filter(CharacteristicClass)) {
+			program.clauses.addAll(charClass.compile)
+		}
+		
+		for (constraint : model.elements.filter(Constraint)) {
+			program.clauses.addAll(constraint.compile)
+		}
+		
+		program
+	}
+	
+	def generateFromResource(Resource resource) {
 		val program = PrologFactory.eINSTANCE.createProgram
 
 		for (element : resource.allContents.toIterable.filter(TargetModelTypeDef)) {
@@ -52,13 +82,12 @@ class DSLGenerator extends AbstractGenerator {
 		for (element : resource.allContents.toIterable.filter(Constraint)) {
 			program.clauses.addAll(element.compile)
 		}
-
-		val outputFileName = if (resource.URI.lastSegment !== null) {
-				resource.URI.lastSegment.replace(DSL_EXTENSION, PROLOG_EXTENSION)
-			} else {
-				DEFAULT_OUTPUT_FILE_NAME
-			}
-		saveFile(fsa, resource, program, outputFileName)
+		
+		program
+	}
+	
+	def setExtendedDFDConvertrerTrace(DFD2PrologTransformationTrace trace) {
+		this.extendedDFDConverterTrace = trace;
 	}
 
 	def compile(TargetModelTypeDef typeDefs) {
@@ -67,16 +96,17 @@ class DSLGenerator extends AbstractGenerator {
 
 		switch (typeDefs.type) {
 			case DATA_CENTRIC_PALLADIO: {
-				if (typeDefs.usageModel === null || typeDefs.allocationModel === null ||
-					typeDefs.typeContainer === null) {
-					this.converter = ConverterFactory.createPalladioConverter
-				} else {
-					this.converter = ConverterFactory.createPalladioConverter(typeDefs.usageModel,
-						typeDefs.allocationModel, typeDefs.typeContainer)
-				}
+//				if (typeDefs.usageModel === null || typeDefs.allocationModel === null ||
+//					typeDefs.typeContainer === null) {
+//					this.converter = ConverterFactory.createPalladioConverter
+//				} else {
+//					this.converter = ConverterFactory.createPalladioConverter(typeDefs.usageModel,
+//						typeDefs.allocationModel, typeDefs.typeContainer)
+//				}
+				throw new Exception("Palladio currently not supported!")
 			}
 			case EXTENDED_DFD: {
-				throw new Exception("Extended DFD are not supported yet.")
+				this.converter = ConverterFactory.createExtendedDFDConverter(extendedDFDConverterTrace)
 			}
 			case OPERATION_MODEL: {
 				this.converter = ConverterFactory.createOperationModelConverter
@@ -88,12 +118,12 @@ class DSLGenerator extends AbstractGenerator {
 		val clauses = new ArrayList<Clause>
 
 		// Create rule referencing all facts
-		val rule = Rule('''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«charateristicClass.name»''')
+		val rule = Rule('''ï¿½GlobalConstants.Prefixes.CHARACTERISTICS_CLASSï¿½ï¿½charateristicClass.nameï¿½''')
 		rule.body = null
 
 		// A rules arguments are all contained member type names
 		rule.head.arguments.addAll(charateristicClass.members.map[member|member.ref.name].toSet.map [ type |
-			CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«type»''')
+			CompoundTerm('''ï¿½GlobalConstants.Prefixes.CLASS_VARIABLEï¿½ï¿½charateristicClass.nameï¿½_ï¿½typeï¿½''')
 		].toList)
 
 		// Create single facts for every member
@@ -101,13 +131,13 @@ class DSLGenerator extends AbstractGenerator {
 			member.literals.forEach [ literal |
 
 				// Create and add fact
-				val factName = '''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
+				val factName = '''ï¿½GlobalConstants.Prefixes.CHARACTERISTICS_CLASSï¿½ï¿½charateristicClass.nameï¿½_ï¿½member.ref.nameï¿½_ï¿½indexï¿½ï¿½if(member.negated) "_NEG"ï¿½'''
 				val fact = SimpleFact(factName, converter.convert(literal))
 				clauses.add(fact)
 
 				// Create fact reference for the rule
 				val factReference = CompoundTerm(fact.head.value,
-					CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«member.ref.name»'''))
+					CompoundTerm('''ï¿½GlobalConstants.Prefixes.CLASS_VARIABLEï¿½ï¿½charateristicClass.nameï¿½_ï¿½member.ref.nameï¿½'''))
 
 				// Handle negated facts
 				val factExpression = if (member.negated) {
@@ -129,7 +159,7 @@ class DSLGenerator extends AbstractGenerator {
 		// FIXME: Might contain duplicates
 		val memberQueries = charateristicClass.members.map [ member |
 			createMemberQuery(converter.convertMember(member.ref),
-				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«member.ref.name»'''))
+				CompoundTerm('''ï¿½GlobalConstants.Prefixes.CLASS_VARIABLEï¿½ï¿½charateristicClass.nameï¿½_ï¿½member.ref.nameï¿½'''))
 		]
 		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
 
@@ -144,7 +174,7 @@ class DSLGenerator extends AbstractGenerator {
 
 	def List<Clause> compile(Constraint constraint) {
 		val clauses = new ArrayList<Clause>
-		val constraintName = '''«GlobalConstants.Prefixes.CONSTRAINT»«constraint.name»'''
+		val constraintName = '''ï¿½GlobalConstants.Prefixes.CONSTRAINTï¿½ï¿½constraint.nameï¿½'''
 		val constraintNameTerm = createConstraintNameUnification(constraint.name)
 
 		// Every constraint is mapped to a rule
@@ -174,7 +204,7 @@ class DSLGenerator extends AbstractGenerator {
 
 			// Add constraint name unification
 			constraintRule.body = LogicalAnd(constraintNameTerm, constraintRule.body)
-			constraintRule.head.arguments.add(CompoundTerm('''«GlobalConstants.Parameters.CONSTRAINT_NAME»'''))
+			constraintRule.head.arguments.add(CompoundTerm('''ï¿½GlobalConstants.Parameters.CONSTRAINT_NAMEï¿½'''))
 
 			// Combine (unique) arguments of all rules
 			val allArguments = combineRuleArguments(rules)

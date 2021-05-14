@@ -69,9 +69,8 @@ class ResultMapping {
 		// Retrieve standard query parameters
 		val violationQueryType = getSolutionVariable(iterator, GlobalConstants.Parameters.QUERY_TYPE.toString)
 		val violationCallStack = getSolutionArray(iterator, GlobalConstants.Parameters.CALL_STACK.toString)
-		val violationOperation = getSolutionVariable(iterator, GlobalConstants.Parameters.OPERATION.toString)
-		val violationParameter = getSolutionVariable(iterator, GlobalConstants.Parameters.PARAMETER.toString)
-		val violationCallState = getSolutionVariable(iterator, GlobalConstants.Parameters.CALL_STATE.toString)
+		val violationOperation = getSolutionVariable(iterator, GlobalConstants.Parameters.NODE.toString)
+		val violationParameter = getSolutionVariable(iterator, GlobalConstants.Parameters.PIN.toString)
 
 		if (violationQueryType.empty || violationCallStack.empty || violationOperation.empty) {
 			throw new RuntimeException("QueryType, CallStack and Operation parameters are required in the solution.")
@@ -82,7 +81,7 @@ class ResultMapping {
 		for (clazz : evaluatedConstraint.allClasses) {
 			for (member : clazz.members) {
 				val value = getSolutionVariable(
-					iterator, '''�GlobalConstants.Prefixes.CLASS_VARIABLE��clazz.name�_�member.ref.name�''')
+					iterator, '''«GlobalConstants.Prefixes.CLASS_VARIABLE»«clazz.name»_«member.ref.name»''')
 
 				if (value.present) {
 					classVariableMap.put(member, value.get)
@@ -94,7 +93,7 @@ class ResultMapping {
 		var variablesMap = new HashMap<CharacteristicVariableType, List<String>>
 		for (variable : evaluatedConstraint.allCharacteristicVariables) {
 			val value = getSolutionVariable(
-				iterator, '''�GlobalConstants.Prefixes.CHARACTERISTIC_VARIABLE��variable.name�''')
+				iterator, '''«GlobalConstants.Prefixes.CHARACTERISTIC_VARIABLE»«variable.name»''')
 
 			if (value.present) {
 				variablesMap.put(variable, #[value.get])
@@ -102,7 +101,7 @@ class ResultMapping {
 		}
 		for (variable : evaluatedConstraint.allCharacteristicSetVariables) {
 			val value = getSolutionArray(
-				iterator, '''�GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLE��variable.name�''')
+				iterator, '''«GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLE»«variable.name»''')
 
 			if (value.present) {
 				variablesMap.put(variable, value.get)
@@ -111,8 +110,7 @@ class ResultMapping {
 
 		evaluatedConstraint.addViolation(
 			new Violation(violationQueryType.get, violationCallStack.get, 
-				violationOperation.get, violationParameter,
-				violationCallState, classVariableMap, variablesMap))
+				violationOperation.get, violationParameter, classVariableMap, variablesMap))
 	}
 
 	private def EvaluatedConstraint retrieveConstraint(SolutionIterator<Object> iterator) {

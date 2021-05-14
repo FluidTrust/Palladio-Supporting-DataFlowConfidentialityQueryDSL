@@ -16,17 +16,17 @@ class PlainTextResultMappingSerializer extends AbstractResultMappingSerializer {
 		val characteristicName = selector.ref.name
 		val literals = handleSelectorLiterals(selector)
 
-		'''«escape(characteristicName)» «if(selector.negated) "not " else ""»set to «literals»'''
+		'''Â«escape(characteristicName)Â» Â«if(selector.negated) "not " else ""Â»set to Â«literalsÂ»'''
 	}
 
 	override makeTitle(String value) {
 		val titleLength = 40
 		val int dashCount = (titleLength - value.length) / 2 - 2
 		val String dashes = "-".repeat(dashCount)
-		val title = '''«dashes» «value.toUpperCase» «dashes»'''
+		val title = '''Â«dashesÂ» Â«value.toUpperCaseÂ» Â«dashesÂ»'''
 
 		return title.length == titleLength - 3
-			? '''«title»-''' : title
+			? '''Â«titleÂ»-''' : title
 	}
 
 	override makeSubTitle(String value) {
@@ -38,7 +38,7 @@ class PlainTextResultMappingSerializer extends AbstractResultMappingSerializer {
 	}
 
 	override escape(String value) {
-		'''"«value»"'''
+		'''"Â«valueÂ»"'''
 	}
 
 	override highlight(String value) {
@@ -46,7 +46,7 @@ class PlainTextResultMappingSerializer extends AbstractResultMappingSerializer {
 	}
 
 	override protected mapClassVariable(CharacteristicTypeSelector variable, String value) {
-		'''Parameter «escape(variable.ref.name)» (Class «escape(retrieveClass(variable).get.name)») set to «escape(value)»'''
+		'''Parameter Â«escape(variable.ref.name)Â» (Class Â«escape(retrieveClass(variable).get.name)Â») set to Â«escape(value)Â»'''
 	}
 
 	override protected advancedEnumHeader(String... header) {
@@ -64,7 +64,7 @@ class PlainTextResultMappingSerializer extends AbstractResultMappingSerializer {
 
 	override protected mapCharacteristicVariable(CharacteristicVariableType variable, List<String> values) {
 		val escapedValues = super.mapCharacteristicVariable(variable, values)
-		'''«IF variable instanceof CharacteristicSet»Set variable«ELSE»Variable«ENDIF» «escape(variable.name)» set to «escapedValues»'''
+		'''Â«IF variable instanceof CharacteristicSetÂ»Set variableÂ«ELSEÂ»VariableÂ«ENDIFÂ»Â«escape(variable.name)Â» set to Â«escapedValuesÂ»'''
 	}
 
 }

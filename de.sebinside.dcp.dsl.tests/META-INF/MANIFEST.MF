@@ -14,6 +14,7 @@ Require-Bundle: de.sebinside.dcp.dsl,
  org.prolog4j.api;bundle-version="1.0.0",
  org.prolog4j.tuprolog;bundle-version="1.0.0",
  org.palladiosimulator.dataflow.diagram.characterized;bundle-version="0.1.0";visibility:=reexport,
- org.palladiosimulator.dataflow.dictionary.characterized;bundle-version="0.1.0";visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ org.palladiosimulator.dataflow.dictionary.characterized;bundle-version="0.1.0";visibility:=reexport,
+ org.junit
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: de.sebinside.dcp.dsl.tests;x-internal=true

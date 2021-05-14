@@ -13,18 +13,18 @@ class MarkdownResultMappingSerializer extends AbstractResultMappingSerializer {
 	}
 
 	override makeTitle(String value) {
-		'''# «value»'''
+		'''# Â«valueÂ»'''
 	}
 
 	override makeSubTitle(String value) {
-		'''## «value»'''
+		'''## Â«valueÂ»'''
 	}
 
 	override mapCharacteristicTypeSelector(CharacteristicTypeSelector selector) {
 		val characteristicName = selector.ref.name
 		val literals = handleSelectorLiterals(selector)
 
-		'''| «escape(characteristicName)» | «if(selector.negated) "*not* " else ""»«literals» |'''
+		'''| Â«escape(characteristicName)Â» | Â«if(selector.negated) "*not* " else ""Â»Â«literalsÂ» |'''
 	}
 
 	override fileExtension() {
@@ -32,25 +32,25 @@ class MarkdownResultMappingSerializer extends AbstractResultMappingSerializer {
 	}
 
 	override escape(String value) {
-		'''`«value»`'''
+		'''`Â«valueÂ»`'''
 	}
 
 	override highlight(String value) {
-		'''*«value»*'''
+		'''*Â«valueÂ»*'''
 	}
 
 	override mapCallStackEntry(String entry) {
-		'''| «super.mapCallStackEntry(entry)» |'''
+		'''| Â«super.mapCallStackEntry(entry)Â» |'''
 	}
 
 	override protected mapClassVariable(CharacteristicTypeSelector variable, String value) {
-		'''| «escape(variable.ref.name)» | «escape(retrieveClass(variable).get.name)» | «escape(value)» |'''
+		'''| Â«escape(variable.ref.name)Â» | Â«escape(retrieveClass(variable).get.name)Â» | Â«escape(value)Â» |'''
 	}
 
 	override protected advancedEnumHeader(String... entries) {
-		val header = '''«FOR entry : entries BEFORE "\n\n| " SEPARATOR " | " AFTER " |\n"»«entry»«ENDFOR»'''
-		val align = '''«FOR entry : entries BEFORE "| " SEPARATOR " | " AFTER " |\n"»:--«ENDFOR»'''
-		'''«header»«align»'''
+		val header = '''Â«FOR entry : entries BEFORE "\n\n| " SEPARATOR " | " AFTER " |\n"Â»Â«entryÂ»Â«ENDFORÂ»'''
+		val align = '''Â«FOR entry : entries BEFORE "| " SEPARATOR " | " AFTER " |\n"Â»:--Â«ENDFORÂ»'''
+		'''Â«headerÂ»Â«alignÂ»'''
 	}
 
 	override protected advancedEnumSeparator() {
@@ -58,12 +58,12 @@ class MarkdownResultMappingSerializer extends AbstractResultMappingSerializer {
 	}
 	
 	override protected indent(String value) {
-		'''«"\t"»«value.lines.toArray.join("\n\t")»«if(value.lines.toArray.size > 1) "\n" else ""»'''
+		'''Â«"\t"Â»Â«value.lines.toArray.join("\n\t")Â»Â«if(value.lines.toArray.size > 1) "\n" else ""Â»'''
 	}
 	
 	override protected mapCharacteristicVariable(CharacteristicVariableType variable, List<String> values) {
 		val escapedValues = super.mapCharacteristicVariable(variable, values)
-		'''| «escape(variable.name)»«IF variable instanceof CharacteristicSet» (Set)«ENDIF» | «escapedValues» |'''
+		'''| Â«escape(variable.name)Â»Â«IF variable instanceof CharacteristicSetÂ» (Set)Â«ENDIFÂ» | Â«escapedValuesÂ» |'''
 	
 	}
 

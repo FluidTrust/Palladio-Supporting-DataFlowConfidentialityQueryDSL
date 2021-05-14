@@ -5085,13 +5085,13 @@ rule__CharacteristicType__RefAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeCrossReference_3_0()); }
+		{ before(grammarAccess.getCharacteristicTypeAccess().getRefEnumCharacteristicTypeCrossReference_3_0()); }
 		(
-			{ before(grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeIDTerminalRuleCall_3_0_1()); }
+			{ before(grammarAccess.getCharacteristicTypeAccess().getRefEnumCharacteristicTypeIDTerminalRuleCall_3_0_1()); }
 			RULE_ID
-			{ after(grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeIDTerminalRuleCall_3_0_1()); }
+			{ after(grammarAccess.getCharacteristicTypeAccess().getRefEnumCharacteristicTypeIDTerminalRuleCall_3_0_1()); }
 		)
-		{ after(grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeCrossReference_3_0()); }
+		{ after(grammarAccess.getCharacteristicTypeAccess().getRefEnumCharacteristicTypeCrossReference_3_0()); }
 	)
 ;
 finally {

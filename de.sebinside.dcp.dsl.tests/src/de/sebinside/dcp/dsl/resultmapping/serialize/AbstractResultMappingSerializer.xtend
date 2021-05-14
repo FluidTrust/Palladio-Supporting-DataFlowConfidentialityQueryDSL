@@ -30,41 +30,41 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 //		var constraintCounter = 1
 //		this.crossPlatformConverter = resultMapping.targetModelCompliantConverter
 
-//		'''makeTitle("General")
+//		'''«makeTitle("General")»
 //
-//Case name: �escape(caseName)�
-//Constraint count: �resultMapping.evaluatedConstraints.length�
+//Case name: «escape(caseName)»
+//Constraint count: «resultMapping.evaluatedConstraints.length»
 //
-//�FOR constraint : resultMapping.evaluatedConstraints SEPARATOR "\n\n"�
-//makeTitle('''Constraint constraintCounter++''')
+//«FOR constraint : resultMapping.evaluatedConstraints SEPARATOR "\n\n"»
+//«makeTitle('''Constraint «constraintCounter++»''')»
 //
-//Constraint name: �escape(constraint.constraintName)�
-//Violations found: �constraint.violations.length�
+//Constraint name: «escape(constraint.constraintName)»
+//Violations found: «constraint.violations.length»
 //
-//�makeSubTitle("Constraint Details")�
+//«makeSubTitle("Constraint Details")»
 //
-//�FOR selector : constraint.attributeSelectors BEFORE "Data Characteristics: " + advancedEnumHeader("Characteristic", "Value") SEPARATOR advancedEnumSeparator��mapCharacteristicTypeSelector(selector)��ENDFOR�
-//�FOR selector: constraint.attributeClasses BEFORE "Data Classes: " SEPARATOR ", "��mapCharacteristicClass(selector)��ENDFOR�
-//Condition: �highlight(constraint.statement.modality.name)� �highlight(constraint.statement.type.name)�
-//�FOR selector : constraint.propertySelectors BEFORE "Destination Characteristics: " + advancedEnumHeader("Characteristic", "Value") SEPARATOR advancedEnumSeparator��mapCharacteristicTypeSelector(selector)��ENDFOR�
-//�FOR selector: constraint.propertyClasses BEFORE "Destination Classes: " SEPARATOR ", "��mapCharacteristicClass(selector)��ENDFOR�
-//�FOR selector: constraint.nodeIdentities BEFORE "Destination Identity: " SEPARATOR ", "��mapNodeIdentity(selector)��ENDFOR�
-//�IF constraint.hasCondition�Condition: �mapCondition(constraint.condition)��ENDIF�
+//«FOR selector : constraint.attributeSelectors BEFORE "Data Characteristics: " + advancedEnumHeader("Characteristic", "Value") SEPARATOR '''«advancedEnumSeparator()»«mapCharacteristicTypeSelector(selector)»'''ENDFOR»
+//«FOR selector: constraint.attributeClasses BEFORE "Data Classes: " SEPARATOR ", "mapCharacteristicClass(selector)ENDFOR»
+//Condition: «highlight(constraint.statement.modality.name)» «highlight(constraint.statement.type.name)»
+//«FOR selector : constraint.propertySelectors BEFORE "Destination Characteristics: " + advancedEnumHeader("Characteristic", "Value") SEPARATOR advancedEnumSeparatormapCharacteristicTypeSelector(selector)ENDFOR»
+//«FOR selector: constraint.propertyClasses BEFORE "Destination Classes: " SEPARATOR ", "mapCharacteristicClass(selector)ENDFOR»
+//«FOR selector: constraint.nodeIdentities BEFORE "Destination Identity: " SEPARATOR ", "mapNodeIdentity(selector)ENDFOR»
+//«IF constraint.hasConditionCondition: mapCondition(constraint.condition)ENDIF»
 //
-//�makeSubTitle("Constraint Violations")�
 //
-//�FOR i : 0..(constraint.violations.size - 1) SEPARATOR "\n"�
-//�i+1�. Parameter �escape(crossPlatformConverter.convertVariable(getParameterOrCallState(constraint.violations.get(i))))� is not allowed to be �highlight(mapQueryType(constraint.violations.get(i)))� in operation �escape(crossPlatformConverter.resolveQualifiedName(constraint.violations.get(i).operation, false))�.
-//�FOR entry: constraint.violations.get(i).callStack.filter[e|crossPlatformConverter.qualifiedNameResolvable(e)] BEFORE "\t- Call Stack: " + indent(advancedEnumHeader("Node")) SEPARATOR advancedEnumSeparator��indent(mapCallStackEntry(entry))��ENDFOR�
-//�FOR variable: constraint.violations.get(i).classVariables.keySet BEFORE "\t- Characteristic Classes: " + indent(advancedEnumHeader("Parameter", "Class", "Value")) SEPARATOR advancedEnumSeparator��indent(mapClassVariable(variable, constraint.violations.get(i).classVariables.get(variable)))��ENDFOR�
-//�FOR variable: constraint.violations.get(i).characteristicVariables.keySet BEFORE "\t- Characteristic Variables: " + indent(advancedEnumHeader("Variable", "Value")) SEPARATOR advancedEnumSeparator��indent(mapCharacteristicVariable(variable, constraint.violations.get(i).characteristicVariables.get(variable)))��ENDFOR�
-//�ENDFOR�
-//�ENDFOR�
+//«makeSubTitle("Constraint Violations")»
+//«FOR i : 0..(constraint.violations.size - 1) SEPARATOR "\n" 
+//i+1. '''Parameter '''escape(crossPlatformConverter.convertVariable(getParameterOrCallState(constraint.violations.get(i))))''' is not allowed to be '''highlight(mapQueryType(constraint.violations.get(i)))''' in operation '''escape(crossPlatformConverter.resolveQualifiedName(constraint.violations.get(i).operation, false)).
+//FOR entry: constraint.violations.get(i).callStack.filter[e|crossPlatformConverter.qualifiedNameResolvable(e)] BEFORE "\t- Call Stack: " + indent(advancedEnumHeader("Node")) SEPARATOR advancedEnumSeparatorindent(mapCallStackEntry(entry))ENDFOR
+//FOR variable: constraint.violations.get(i).classVariables.keySet BEFORE "\t- Characteristic Classes: " + indent(advancedEnumHeader("Parameter", "Class", "Value")) SEPARATOR advancedEnumSeparatorindent(mapClassVariable(variable, constraint.violations.get(i).classVariables.get(variable)))ENDFOR
+//FOR variable: constraint.violations.get(i).characteristicVariables.keySet BEFORE "\t- Characteristic Variables: " + indent(advancedEnumHeader("Variable", "Value")) SEPARATOR advancedEnumSeparatorindent(mapCharacteristicVariable(variable, constraint.violations.get(i).characteristicVariables.get(variable)))ENDFOR
+//ENDFOR
+//ENDFOR»
 //'''
 	}
 
 	protected def getParameterOrCallState(Violation violation) {
-		violation.parameter.isPresent ? violation.parameter.get : violation.callState.get
+		violation.parameter.isPresent ? violation.parameter.get : null
 	}
 
 	protected def mapQueryType(Violation violation) {
@@ -93,7 +93,7 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 
 	protected def String handleSelectorLiterals(CharacteristicTypeSelector selector) {
 		if (selector.isIsVariableSelector) {
-			'''variable �escape(selector.variable.name)�'''
+			'''variable «escape(selector.variable.name)»'''
 		} else {
 			selector.literals.map[literal|escape(literal.name)].join(", ")
 		}

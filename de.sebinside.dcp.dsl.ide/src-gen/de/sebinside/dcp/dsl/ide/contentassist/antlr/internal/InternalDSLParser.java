@@ -15478,17 +15478,17 @@ public class InternalDSLParser extends AbstractInternalContentAssistParser {
             // InternalDSL.g:5087:2: ( ( RULE_ID ) )
             // InternalDSL.g:5088:3: ( RULE_ID )
             {
-             before(grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeCrossReference_3_0()); 
+             before(grammarAccess.getCharacteristicTypeAccess().getRefEnumCharacteristicTypeCrossReference_3_0()); 
             // InternalDSL.g:5089:3: ( RULE_ID )
             // InternalDSL.g:5090:4: RULE_ID
             {
-             before(grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeIDTerminalRuleCall_3_0_1()); 
+             before(grammarAccess.getCharacteristicTypeAccess().getRefEnumCharacteristicTypeIDTerminalRuleCall_3_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeIDTerminalRuleCall_3_0_1()); 
+             after(grammarAccess.getCharacteristicTypeAccess().getRefEnumCharacteristicTypeIDTerminalRuleCall_3_0_1()); 
 
             }
 
-             after(grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeCrossReference_3_0()); 
+             after(grammarAccess.getCharacteristicTypeAccess().getRefEnumCharacteristicTypeCrossReference_3_0()); 
 
             }
 

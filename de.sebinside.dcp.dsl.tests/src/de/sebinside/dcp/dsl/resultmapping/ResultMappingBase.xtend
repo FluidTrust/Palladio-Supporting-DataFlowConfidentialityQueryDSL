@@ -52,18 +52,18 @@ class ResultMappingBase {
 	}
 
 	private def String loadCombinedPrologTheory(String caseName) {
-		val model = readResultMappingFile('''«caseName»/model.pl''')
-		val constraint = readResultMappingFile('''«caseName»/constraint.pl''')
+		val model = readResultMappingFile('''Â«caseNameÂ»/model.pl''')
+		val constraint = readResultMappingFile('''Â«caseNameÂ»/constraint.pl''')
 		model + "\n" + constraint
 	}
 
 	protected def saveResult(String caseName, String fileExtension, String result) {
-		val resultFilePath = createResultMappingPath('''_results/«caseName».«fileExtension»''')
+		val resultFilePath = createResultMappingPath('''_results/Â«caseNameÂ».Â«fileExtensionÂ»''')
 		Files.writeString(Paths.get(resultFilePath), result, #[StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE])
 	}
 
 	protected def Model loadDSLModel(String caseName) {
-		val dslPath = '''«caseName»/dsl/input.DCPDSL'''
+		val dslPath = '''Â«caseNameÂ»/dsl/input.DCPDSL'''
 
 		val resourceSet = new ResourceSetImpl
 		val inputStream = new FileInputStream(new File(createResultMappingPath(dslPath)))
@@ -76,7 +76,7 @@ class ResultMappingBase {
 	}
 
 	private static def String createResultMappingPath(String relativePath) {
-		'''resultmapping/«relativePath»'''
+		'''resultmapping/Â«relativePathÂ»'''
 	}
 
 	private static def createPlatformURI(String relativePath) {

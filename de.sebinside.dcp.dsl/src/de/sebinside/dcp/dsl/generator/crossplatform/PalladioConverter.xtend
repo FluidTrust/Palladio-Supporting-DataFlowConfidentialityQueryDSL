@@ -38,7 +38,7 @@
 //			val name = characteristicType.ref.name
 //			val id = characteristicType.ref.id
 //
-//			AtomicQuotedString('''EnumCharacteristicType �name� (�id�)''')
+//			AtomicQuotedString('''EnumCharacteristicType name (id)''')
 //		} else {
 //			val computedValue = trace.value.resolveId(characteristicType.ref)
 //
@@ -56,7 +56,7 @@
 //			val name = enumType.type.name
 //			val id = enumType.type.id
 //
-//			AtomicQuotedString('''Enumeration �name� (�id�)''')
+//			AtomicQuotedString('''Enumeration name (id)''')
 //		} else {
 //			this.convert(characteristicType)
 //		}
@@ -67,7 +67,7 @@
 //			val content = characteristicLiteral.name
 //			val id = characteristicLiteral.id
 //
-//			AtomicQuotedString('''Literal �content� (�id�)''')
+//			AtomicQuotedString('''Literal content (id)''')
 //		} else {
 //			val computedValue = trace.value.resolveId(characteristicLiteral)
 //
@@ -88,7 +88,7 @@
 //			val assemblyID = selector.assembly.id
 //			val seffID = EcoreUtil2.getID(selector.seff)
 //
-//			AtomicQuotedString('''ResourceDemandingSEFF (�seffID�) - AC �assemblyID�''')
+//			AtomicQuotedString('''ResourceDemandingSEFF (seffID) - AC assemblyID''')
 //		} else {
 //			if (selector.seff instanceof ResourceDemandingSEFF) {
 //				val seffInstance = SEFFInstance.createInstance(selector.assembly,
@@ -109,7 +109,7 @@
 //	}
 //
 //	override createQualifiedName(NodeIdentitiySelector selector) {
-//		'''�selector.assembly.entityName�.�selector.component.entityName�.�selector.seff.describedService__SEFF.entityName�'''
+//		'''selector.assembly.entityName.selector.component.entityName.selector.seff.describedService__SEFF.entityName'''
 //	}
 //
 //	override convertVariable(String id) {
@@ -139,7 +139,7 @@
 //			val contextName = seff.get.ac.entityName
 //
 //			if (fullName) {
-//				'''�contextName�.�componentName�.�seffName�'''
+//				'''contextName.componentName.seffName'''
 //			} else {
 //				seffName
 //			}

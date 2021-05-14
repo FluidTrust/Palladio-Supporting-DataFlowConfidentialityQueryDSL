@@ -27,10 +27,11 @@ class DFDConverter implements Converter {
 			AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
 		} else {
 			var factId = trace.getFactId(characteristicType.ref)
-			if(factId.isEmpty) {
+			if(factId.isPresent) {
+				AtomicQuotedString('''«factId.get»''')
+			} else {
 				throw new Exception("Unable to resolve CharacteristicType.")
 			}
-			AtomicQuotedString('''«factId»''')
 		}
 	}
 	
@@ -54,11 +55,12 @@ class DFDConverter implements Converter {
 			AtomicQuotedString('''Literal «content» («id»)''')
 		} else {
 			var factId = trace.getFactId(characteristicLiteral)
-			if(factId.isEmpty) {
+			
+			if(factId.isPresent) {
+				AtomicQuotedString('''«factId.get»''')
+			} else {
 				throw new Exception("Unable to resolve Literal.")
 			}
-
-			AtomicQuotedString('''«factId»''')
 		}
 	}
 	
@@ -88,10 +90,10 @@ class DFDConverter implements Converter {
 			// ERROR: This is not technically correct!
 		} else {
 			var dfdId = trace.getDfdId(id)
-			if(dfdId.isEmpty) {
-				id
-			} else {
+			if(dfdId.isPresent) {
 				dfdId.get
+			} else {
+				id
 			}
 		}
 	}

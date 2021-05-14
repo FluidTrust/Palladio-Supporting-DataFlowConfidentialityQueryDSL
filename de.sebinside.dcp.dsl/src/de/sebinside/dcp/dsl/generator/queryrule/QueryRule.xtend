@@ -24,7 +24,7 @@ import de.sebinside.dcp.dsl.generator.util.ConditionMapper
 
 abstract class QueryRule {
 
-	protected val String node = GlobalConstants.Parameters.PIN.toString
+	protected val String node = GlobalConstants.Parameters.NODE.toString
 	protected val String pin = GlobalConstants.Parameters.PIN.toString
 	protected val String stack = GlobalConstants.Parameters.CALL_STACK.toString
 	

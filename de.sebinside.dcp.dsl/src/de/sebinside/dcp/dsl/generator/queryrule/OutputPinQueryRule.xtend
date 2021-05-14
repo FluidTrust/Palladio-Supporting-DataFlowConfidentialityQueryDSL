@@ -8,27 +8,18 @@ import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import de.sebinside.dcp.dsl.generator.GlobalConstants
 
-class PreCallStateQueryRule extends QueryRule {
+class OutputPinQueryRule extends QueryRule {
 
 	new(Rule rule, String nameBase, Converter converter) {
 		super(rule, nameBase, converter)
 	}
 
-	override createParameterQuery(Expression stack, Expression parameter, Expression attribute, Expression value,
-		Expression operation, Expression stateVariable) {
-		CompoundTerm("preCallState", #[stack, operation, stateVariable, attribute, value])
-	}
-
 	override queryTypeIdentification() {
-		'''«GlobalConstants.QueryTypes.PRE_CALL_STATE»'''
-	}
-
-	override parameterTerm() {
-		CompoundTerm(callState)
+		'''Â«GlobalConstants.QueryTypes.OUTPUT_PINÂ»'''
 	}
 	
-	override isUsedInOperationCheck() {
-		createOperationStateQuery(CompoundTerm(operation), CompoundTerm(callState))
+	override createPinLocationQuery(Expression node, Expression pin) {
+		CompoundTerm("outputPin", #[node, pin])
 	}
 
 }

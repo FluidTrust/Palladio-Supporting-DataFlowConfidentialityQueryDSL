@@ -45,7 +45,7 @@ class ConditionMapper {
 			val freeVariable = createFreeVariableTerm(reference.value)
 			this.variables.push(freeVariable)
 		} else {
-			val temporalVariable = createTemporalVariableTerm('''«temporalVariableCounter++»''')
+			val temporalVariable = createTemporalVariableTerm('''Â«temporalVariableCounter++Â»''')
 			this.variables.push(temporalVariable)
 
 			map(reference.ref)

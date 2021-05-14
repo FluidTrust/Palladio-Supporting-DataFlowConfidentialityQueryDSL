@@ -2,6 +2,7 @@ package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workfl
 
 import org.eclipse.emf.common.util.URI;
 import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.DFD2PrologTransformation;
+import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.tests.util.StandaloneUtil;
 import org.palladiosimulator.supporting.prolog.PrologStandaloneSetup;
 
 import de.sebinside.dcp.dsl.DSLStandaloneSetup;
@@ -28,6 +29,7 @@ public class DCPStandaloneUtil {
             .addCustomTask(DSLStandaloneSetup::doSetup)
             .build();
         initializer.init();
+        
     }
 
     public static URI getRelativeURI(String relativePath) {

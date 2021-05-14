@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Characteristic Type</b></em>'.
@@ -58,7 +60,7 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
    * @generated
    * @ordered
    */
-  protected org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType ref;
+  protected EnumCharacteristicType ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -112,12 +114,12 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
    * @generated
    */
   @Override
-  public org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType getRef()
+  public EnumCharacteristicType getRef()
   {
     if (ref != null && ((EObject)ref).eIsProxy())
     {
       InternalEObject oldRef = (InternalEObject)ref;
-      ref = (org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType)eResolveProxy(oldRef);
+      ref = (EnumCharacteristicType)eResolveProxy(oldRef);
       if (ref != oldRef)
       {
         if (eNotificationRequired())
@@ -132,7 +134,7 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
    * <!-- end-user-doc -->
    * @generated
    */
-  public org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType basicGetRef()
+  public EnumCharacteristicType basicGetRef()
   {
     return ref;
   }
@@ -143,9 +145,9 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
    * @generated
    */
   @Override
-  public void setRef(org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType newRef)
+  public void setRef(EnumCharacteristicType newRef)
   {
-    org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType oldRef = ref;
+    EnumCharacteristicType oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.CHARACTERISTIC_TYPE__REF, oldRef, ref));
@@ -184,7 +186,7 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
         setName((String)newValue);
         return;
       case DSLPackage.CHARACTERISTIC_TYPE__REF:
-        setRef((org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType)newValue);
+        setRef((EnumCharacteristicType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -204,7 +206,7 @@ public class CharacteristicTypeImpl extends AbstractElementImpl implements Chara
         setName(NAME_EDEFAULT);
         return;
       case DSLPackage.CHARACTERISTIC_TYPE__REF:
-        setRef((org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType)null);
+        setRef((EnumCharacteristicType)null);
         return;
     }
     super.eUnset(featureID);

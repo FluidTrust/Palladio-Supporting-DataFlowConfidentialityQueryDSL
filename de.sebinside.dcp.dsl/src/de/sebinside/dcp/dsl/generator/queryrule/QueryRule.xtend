@@ -24,10 +24,10 @@ import de.sebinside.dcp.dsl.generator.util.ConditionMapper
 
 abstract class QueryRule {
 
-	protected val String callStack = GlobalConstants.Parameters.CALL_STACK.toString
-	protected val String operation = GlobalConstants.Parameters.OPERATION.toString
-	protected val String parameter = GlobalConstants.Parameters.PARAMETER.toString
-	protected val String callState = GlobalConstants.Parameters.CALL_STATE.toString
+	protected val String node = GlobalConstants.Parameters.PIN.toString
+	protected val String pin = GlobalConstants.Parameters.PIN.toString
+	protected val String stack = GlobalConstants.Parameters.CALL_STACK.toString
+	
 	protected val String iteratorTemplate = GlobalConstants.Parameters.ITERATOR_TEMPLATE.toString
 	val queryTypeTerm = createQueryTypeUnification(queryTypeIdentification)
 
@@ -49,23 +49,28 @@ abstract class QueryRule {
 				this.freeVariables.add(selector.ref.variable)
 
 				val variable = createFreeVariableTerm(selector.ref.variable)
-				if (selector.ref.variable instanceof CharacteristicVariable) {
+				if (selector.ref.variable instanceof CharacteristicVariable) { 
+				// single characteristic selected
+				// characteristic(N, PIN, CT, V, S)
+				// characteristic(node, pin, selector.ref.ref, variable, stack) -> for each literal in selector.ref.literals
+
 					#[
-						createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-							converter.convert(selector.ref.ref), variable, CompoundTerm(operation),
-							CompoundTerm(callState))]
-				} else {
-					val innerQuery = createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-						converter.convert(selector.ref.ref), CompoundTerm(iteratorTemplate), CompoundTerm(operation),
-						CompoundTerm(callState))
+						createParameterQuery(CompoundTerm(node), CompoundTerm(pin),
+							converter.convert(selector.ref.ref), variable, CompoundTerm(stack))]
+				} else { 
+				// set of characteristics selected
+				// setof(iteratorTemplate, characteristic(node, pin, selector.ref.ref, iteratorTemplate, stack)				
+					val innerQuery = createParameterQuery(CompoundTerm(node), CompoundTerm(pin),
+						converter.convert(selector.ref.ref), CompoundTerm(iteratorTemplate), CompoundTerm(stack))
 
 					#[createForAllQuery(CompoundTerm(iteratorTemplate), innerQuery, variable)]
 				}
 			} else {
+				// characteristic(node, pin, selector.ref.ref, selector.ref.literals, stack) 
+				// -> for each literal in selector.ref.literals
 				selector.ref.literals.map [ literal |
-					createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter),
-						converter.convert(selector.ref.ref), converter.convert(literal), CompoundTerm(operation),
-						CompoundTerm(callState))
+					createParameterQuery(CompoundTerm(node), CompoundTerm(pin),
+						converter.convert(selector.ref.ref), converter.convert(literal), CompoundTerm(stack))
 				]
 			}
 
@@ -77,12 +82,12 @@ abstract class QueryRule {
 	}
 
 	def dispatch generateDataSelectorTerm(AttributeClassSelector selector) {
+		// stays the same
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
-			createParameterQuery(CompoundTerm(callStack), CompoundTerm(parameter), converter.convert(member.ref),
-				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«selector.ref.name»_«member.ref.name»'''),
-				CompoundTerm(operation), CompoundTerm(callState))
+			createParameterQuery(CompoundTerm(node), CompoundTerm(pin), converter.convert(member.ref),
+				CompoundTerm('''Â«GlobalConstants.Prefixes.CLASS_VARIABLEÂ»Â«selector.ref.nameÂ»_Â«member.ref.nameÂ»'''), CompoundTerm(stack))
 		]
 	}
 
@@ -92,16 +97,24 @@ abstract class QueryRule {
 
 				val variable = createFreeVariableTerm(selector.ref.variable)
 				if (selector.ref.variable instanceof CharacteristicVariable) {
-					#[createPropertyQuery(CompoundTerm(operation), converter.convert(selector.ref.ref), variable)]
+					// single characteristic selected
+					// nodeCharacteristic(N, CT, V)
+					// nodeCharacteristic(node, selector.ref.ref, variable)
+					#[createPropertyQuery(CompoundTerm(node), converter.convert(selector.ref.ref), variable)]
 				} else {
-					val innerQuery = createPropertyQuery(CompoundTerm(operation), converter.convert(selector.ref.ref),
+					// set of characteristics selected
+					// setof(R, nodeCharacteristic(N, CT, R), variable)
+					// setof(iteratorTemplate, nodeCharacteristic(node, selector.ref.ref, iteratorTemplate), variable)
+					val innerQuery = createPropertyQuery(CompoundTerm(node), converter.convert(selector.ref.ref),
 						CompoundTerm(iteratorTemplate))
 
 					#[createForAllQuery(CompoundTerm(iteratorTemplate), innerQuery, variable)]
 				}
 			} else {
+				// nodeCharacteristic(node, selector.ref.ref, literal)
+				// -> for each literal in selector.ref.literals
 				selector.ref.literals.map [ literal |
-					createPropertyQuery(CompoundTerm(operation), converter.convert(selector.ref.ref),
+					createPropertyQuery(CompoundTerm(node), converter.convert(selector.ref.ref),
 						converter.convert(literal))
 				]
 			}
@@ -114,22 +127,25 @@ abstract class QueryRule {
 	}
 
 	def dispatch generateDestinationSelectorTerm(PropertyClassSelector selector) {
+		// stays the same
 		characteristicClasses.add(selector.ref)
 
 		selector.ref.members.map [ member |
-			createPropertyQuery(CompoundTerm(operation), converter.convert(member.ref),
-				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«selector.ref.name»_«member.ref.name»'''))
+			createPropertyQuery(CompoundTerm(node), converter.convert(member.ref),
+				CompoundTerm('''Â«GlobalConstants.Prefixes.CLASS_VARIABLEÂ»Â«selector.ref.nameÂ»_Â«member.ref.nameÂ»'''))
 		]
 	}
 
 	def dispatch generateDestinationSelectorTerm(NodeIdentitiySelector selector) {
-		val unification = Unification(CompoundTerm(operation), converter.convert(selector))
+		// node can be actor(selector), store(selector), process(selector)
+		// -> each of the three in disjunction?
+		val unification = Unification(CompoundTerm(node), converter.convert(selector))
 
 		#[unification]
 	}
 
-	def generate() {
-		val subRule = Rule('''«nameBase»_«queryTypeIdentification»''')
+	public def generate() { // Important for generating the actual query rule body
+		val subRule = Rule('''Â«nameBaseÂ»_Â«queryTypeIdentificationÂ»''')
 
 		// Map all data selectors to parts of a rule
 		val dataSelectorTerm = rule.dataSelectors.map[selector|generateDataSelectorTerm(selector)].map [ queries |
@@ -146,8 +162,8 @@ abstract class QueryRule {
 
 		// Create final rule body
 		val subRuleComponents = #[queryTypeTerm,
-			createCallStackUnification(CompoundTerm(callStack), CompoundTerm(operation)),
-			createStackValidCall(CompoundTerm(callStack)), isUsedInOperationCheck(),
+			createFlowTreeCall(CompoundTerm(node), CompoundTerm(pin), CompoundTerm(stack)),
+			createPinLocationQuery(CompoundTerm(node), CompoundTerm(pin)),
 			expressionsToLogicalAnd(dataSelectorTerm), expressionsToLogicalAnd(destinationSelectorTerm),
 			if (characteristicClasses.size > 0) {
 				expressionsToLogicalAnd(characteristicsClassesTerms)
@@ -158,12 +174,11 @@ abstract class QueryRule {
 
 		// Create rules parameters
 		var List<CompoundTerm> parametersList = new ArrayList<CompoundTerm>
-		parametersList.addAll(CompoundTerm("QueryType"), CompoundTerm(operation), CompoundTerm(callStack))
-		parametersList.add(parameterTerm())
+		parametersList.addAll(CompoundTerm("QueryType"), CompoundTerm(node), CompoundTerm(pin), CompoundTerm(stack))
 
 		// Add all (unique) classes members names to the list
 		val classTerms = characteristicClasses.toList.map [ clazz |
-			clazz.members.map[member|'''«GlobalConstants.Prefixes.CLASS_VARIABLE»«clazz.name»_«member.ref.name»''']
+			clazz.members.map[member|'''Â«GlobalConstants.Prefixes.CLASS_VARIABLEÂ»Â«clazz.nameÂ»_Â«member.ref.nameÂ»''']
 		].toSet.flatten.map[term|CompoundTerm(term)]
 		parametersList.addAll(classTerms)
 
@@ -177,13 +192,7 @@ abstract class QueryRule {
 		subRule
 	}
 
-	abstract def Expression createParameterQuery(Expression stack, Expression parameter, Expression attribute,
-		Expression value, Expression operation, Expression stateVariable)
+	abstract def Expression createPinLocationQuery(Expression node, Expression pin)
 
 	abstract def String queryTypeIdentification()
-
-	abstract def CompoundTerm parameterTerm()
-
-	abstract def CompoundTerm isUsedInOperationCheck()
-
 }

@@ -68,65 +68,55 @@ class DSLGeneratorUtils {
 	}
 
 	def static createQueryTypeUnification(String queryType) {
-		Unification(CompoundTerm('''«GlobalConstants.Parameters.QUERY_TYPE»'''), AtomicQuotedString(queryType))
+		Unification(CompoundTerm('''Â«GlobalConstants.Parameters.QUERY_TYPEÂ»'''), AtomicQuotedString(queryType))
 	}
 
 	def static createConstraintNameUnification(String constraintName) {
-		Unification(CompoundTerm('''«GlobalConstants.Parameters.CONSTRAINT_NAME»'''),
+		Unification(CompoundTerm('''Â«GlobalConstants.Parameters.CONSTRAINT_NAMEÂ»'''),
 			AtomicQuotedString(constraintName))
 	}
-
-	def static createCallStackUnification(CompoundTerm stack, CompoundTerm head) {
-		Unification(stack, List(head, CompoundTerm("_")))
-	}
-
-	def static createStackValidCall(CompoundTerm callStack) {
-		CompoundTerm("stackValid", callStack)
+	
+	def static createFlowTreeCall(CompoundTerm node, CompoundTerm pin, CompoundTerm stack){
+		CompoundTerm("flowTree", #[node, pin, stack])
 	}
 
 	def static createMemberQuery(AtomicQuotedString valueSet, CompoundTerm member) {
 		CompoundTerm("valueSetMember", #[valueSet, member])
 	}
 
-	def static createOperationParameterQuery(CompoundTerm operation, CompoundTerm parameter) {
-		CompoundTerm("operationParameter", #[operation, parameter])
-	}
-
-	def static createOperationStateQuery(CompoundTerm operation, CompoundTerm state) {
-		CompoundTerm("operationState", #[operation, state])
-	}
-
-	def static createOperationReturnValue(CompoundTerm operation, CompoundTerm returnValue) {
-		CompoundTerm("operationReturnValue", #[operation, returnValue])
-	}
-
 	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
-		CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«characteristicClass.name»''', characteristicClass.
+		CompoundTerm('''Â«GlobalConstants.Prefixes.CHARACTERISTICS_CLASSÂ»Â«characteristicClass.nameÂ»''', characteristicClass.
 			members.map [ member |
-				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«characteristicClass.name»_«member.ref.name»''')
+				CompoundTerm('''Â«GlobalConstants.Prefixes.CLASS_VARIABLEÂ»Â«characteristicClass.nameÂ»_Â«member.ref.nameÂ»''')
 			])
 	}
 
 	def static createFreeVariableTerm(CharacteristicVariableType variable) {
 		if (variable instanceof CharacteristicVariable) {
-			CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTIC_VARIABLE»«variable.name»''')
+			CompoundTerm('''Â«GlobalConstants.Prefixes.CHARACTERISTIC_VARIABLEÂ»Â«variable.nameÂ»''')
 		} else {
-			CompoundTerm('''«GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLE»«variable.name»''')
+			CompoundTerm('''Â«GlobalConstants.Prefixes.CHARACTERISTIC_SET_VARIABLEÂ»Â«variable.nameÂ»''')
 		}
 	}
 
 	def static createTemporalVariableTerm(String name) {
-		CompoundTerm('''«GlobalConstants.Prefixes.TEMPORAL_VARIABLE»«name»''')
+		CompoundTerm('''Â«GlobalConstants.Prefixes.TEMPORAL_VARIABLEÂ»Â«nameÂ»''')
 	}
 
 	def static createForAllQuery(CompoundTerm iteratorTemplate, Expression query, Expression resultVariable) {
-		CompoundTerm("findall", #[iteratorTemplate, query, resultVariable])
+		CompoundTerm("setof", #[iteratorTemplate, query, resultVariable])
 	}
 
-	def static createPropertyQuery(Expression operation, Expression property, Expression value) {
-		CompoundTerm("operationProperty", #[operation, property, value])
+	def static createPropertyQuery(Expression node, Expression property, Expression value) {
+		// nodeCharacteristic(N, CT, V)
+		CompoundTerm("nodeCharacteristic", #[node, property, value])
 	}
-
+	
+	def static createParameterQuery(Expression node, Expression pin, Expression property, Expression value, Expression stack) {
+		// characteristic(N, PIN, CT, V, S)
+		CompoundTerm("characteristic", #[node, pin, property, value, stack])
+	}
+	
 	def static saveFile(IFileSystemAccess2 fsa, Resource resource, Program program, String fileName) {
 		// Create new resource
 		val prologRessource = resource.resourceSet.createResource(resource.URI.appendFileExtension("pl"))

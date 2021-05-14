@@ -29,7 +29,7 @@ AbstractElement:
 	Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
 
 CharacteristicType:
-	'type' name=ID ':' ref=[dictionary::CharacteristicType];
+	'type' name=ID ':' ref=[dictionary::EnumCharacteristicType];
 
 CharacteristicClass:
 	'class' name=ID '{' members+=CharacteristicTypeSelector (',' members+=CharacteristicTypeSelector)* '}';

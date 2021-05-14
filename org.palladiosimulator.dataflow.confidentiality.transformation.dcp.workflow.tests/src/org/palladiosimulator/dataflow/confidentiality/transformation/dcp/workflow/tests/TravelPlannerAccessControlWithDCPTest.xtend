@@ -19,16 +19,22 @@ import org.palladiosimulator.dataflow.diagram.DataFlowDiagram.DataFlowDiagram
 
 import static org.junit.jupiter.api.Assertions.*
 import de.sebinside.dcp.dsl.dSL.DSLPackage
+import org.junit.jupiter.api.BeforeAll
 
 class TravelPlannerAccessControlWithDCPTest extends AnalysisIntegrationTestBase {
 	
 	var DFDWithDCPTransformationWorkflowBuilder dcpBuilder
+	
+	@BeforeAll
+	static def void init() {
+		AnalysisIntegrationTestBase.init()
+		DCPStandaloneUtil.init
+	}
 
 	@BeforeEach
 	override void setup() {
 		super.setup()
 		//super.setup() already sets a new builder, which we simply substitute for a new instance of our own builder...
-		DCPStandaloneUtil.init
 		dcpBuilder = new DFDWithDCPTransformationWorkflowBuilder()
 		builder = dcpBuilder
 	}
@@ -43,12 +49,14 @@ class TravelPlannerAccessControlWithDCPTest extends AnalysisIntegrationTestBase 
 		
 		var workflow = dcpBuilder.build()
 
-		workflow.run()
+		workflow.run
 		
 		var dcpWorkflow = workflow as TransformDFDWithDCPConstraintsToPrologWorkflow
 		println(dcpWorkflow.serializedPrologConstraints)
-		var result = workflow.getSerializedPrologProgram()
-		assertFalse(result.isEmpty())
+		var result = workflow.getSerializedPrologProgram
+		var constraints = dcpWorkflow.serializedPrologConstraints
+		assertFalse(constraints.isEmpty)
+		assertFalse(result.isEmpty)
 	}
 
 	protected def loadAndInitDFD(String ddcPath, String dfdPath, String dcpPath) {

@@ -309,7 +309,7 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     CharacteristicType returns CharacteristicType
 	 *
 	 * Constraint:
-	 *     (name=ID ref=[CharacteristicType|ID])
+	 *     (name=ID ref=[EnumCharacteristicType|ID])
 	 */
 	protected void sequence_CharacteristicType(ISerializationContext context, CharacteristicType semanticObject) {
 		if (errorAcceptor != null) {
@@ -320,7 +320,7 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getCharacteristicTypeAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getCharacteristicTypeAccess().getRefCharacteristicTypeIDTerminalRuleCall_3_0_1(), semanticObject.eGet(DSLPackage.Literals.CHARACTERISTIC_TYPE__REF, false));
+		feeder.accept(grammarAccess.getCharacteristicTypeAccess().getRefEnumCharacteristicTypeIDTerminalRuleCall_3_0_1(), semanticObject.eGet(DSLPackage.Literals.CHARACTERISTIC_TYPE__REF, false));
 		feeder.finish();
 	}
 	

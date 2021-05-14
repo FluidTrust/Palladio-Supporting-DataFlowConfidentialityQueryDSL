@@ -8,27 +8,18 @@ import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import de.sebinside.dcp.dsl.generator.GlobalConstants
 
-class PostCallStateQueryRule extends QueryRule {
+class InputPinQueryRule extends QueryRule {
 
 	new(Rule rule, String nameBase, Converter converter) {
 		super(rule, nameBase, converter)
 	}
 
-	override createParameterQuery(Expression stack, Expression parameter, Expression attribute, Expression value,
-		Expression operation, Expression stateVariable) {
-		CompoundTerm("postCallState", #[stack, operation, stateVariable, attribute, value])
-	}
-
 	override queryTypeIdentification() {
-		'''«GlobalConstants.QueryTypes.POST_CALL_STATE»'''
+		'''Â«GlobalConstants.QueryTypes.INPUT_PINÂ»'''
 	}
 	
-	override parameterTerm() {
-		CompoundTerm(callState)
+	override createPinLocationQuery(Expression node, Expression pin) {
+		CompoundTerm("inputPin", #[node, pin])
 	}
 	
-	override isUsedInOperationCheck() {
-		createOperationStateQuery(CompoundTerm(operation), CompoundTerm(callState))
-	}
-
 }

@@ -26,17 +26,11 @@ class DFDConverter implements Converter {
 
 			AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
 		} else {
-			var dfdid = trace.getDfdId(characteristicType.ref.id)
-			var dfdpinid = trace.getDfdPinId(characteristicType.ref.id)
-			//var resolveElement = trace.resolveDfdElement(characteristicType.ref.id, characteristicType.class)
-			throw new UnsupportedOperationException("convert CharType error")
-//			val computedValue = trace.value.resolveId(characteristicType.ref)
-//
-//			if (computedValue.present) {
-//				AtomicQuotedString(computedValue.get)
-//			} else {
-//				throw new Exception("Unable to resolve CharacteristicType id.")
-//			}
+			var factId = trace.getFactId(characteristicType.ref)
+			if(factId.isEmpty) {
+				throw new Exception("Unable to resolve CharacteristicType.")
+			}
+			AtomicQuotedString('''«factId»''')
 		}
 	}
 	
@@ -48,8 +42,7 @@ class DFDConverter implements Converter {
 
 			AtomicQuotedString('''Enumeration «name» («id»)''')
 		} else {
-			//this.convert(characteristicType)
-			throw new UnsupportedOperationException("convertMember error")
+			this.convert(characteristicType)
 		}
 	}
 	
@@ -60,14 +53,12 @@ class DFDConverter implements Converter {
 
 			AtomicQuotedString('''Literal «content» («id»)''')
 		} else {
-			throw new UnsupportedOperationException("convert Literal error")
-//			val computedValue = trace
-//
-//			if (computedValue.present) {
-//				AtomicQuotedString(computedValue.get)
-//			} else {
-//				throw new Exception("Unable to resolve Literal id.")
-//			}
+			var factId = trace.getFactId(characteristicLiteral)
+			if(factId.isEmpty) {
+				throw new Exception("Unable to resolve Literal.")
+			}
+
+			AtomicQuotedString('''«factId»''')
 		}
 	}
 	
@@ -79,11 +70,11 @@ class DFDConverter implements Converter {
 		if(this.trace === null) {
 			if(selector.diaNode === null) {
 			throw new IllegalArgumentException("Target model type and node selector are incompatible.")
-		}
+			}
 		
 			AtomicQuotedString(convertCharacterizedNode(selector.diaNode))
 		} else {
-			throw new UnsupportedOperationException("convert node identity selector error")
+			// hier problem da trace mit behaving noch zusätzlich einen pin benötigt
 		}
 	}
 	
@@ -95,40 +86,20 @@ class DFDConverter implements Converter {
 		if(trace === null) {
 			id 
 			// ERROR: This is not technically correct!
-			// Calling this method without a trace will yield an incorrect result!
-			// Qualified names in the DFD look like "name (id)" 
-			// trace already contains the names correctly
 		} else {
-			throw new UnsupportedOperationException("resolve qual name error")
+			var dfdId = trace.getDfdId(id)
+			if(dfdId.isEmpty) {
+				id
+			} else {
+				dfdId.get
+			}
 		}
-		
-//		val seff = trace.value.resolveSeffInstance(id)
-//		val operation = trace.value.resolveDataOperationInstance(id)
-//
-//		if (seff.present) {
-//			val seffName = seff.get.entity.describedService__SEFF.entityName
-//			val componentName = seff.get.entity.basicComponent_ServiceEffectSpecification.entityName
-//			val contextName = seff.get.ac.entityName
-//
-//			if (fullName) {
-//				'''�contextName�.�componentName�.�seffName�'''
-//			} else {
-//				seffName
-//			}
-//		} else if (operation.present) {
-//			operation.get.entity.entityName
-//		} else {
-//			id
-//		}
 	}
 	
 	override convertVariable(String id) {
 		if(trace === null) {
 			id 
 			// ERROR: This is not technically correct!
-			// Calling this method without a trace will yield an incorrect result!
-			// Qualified names in the DFD look like "name (id)" 
-			// trace already contains the names correctly
 		} else {
 			throw new UnsupportedOperationException("convert Var error")
 		}
@@ -181,9 +152,6 @@ class DFDConverter implements Converter {
 //		trace.value.resolveSeffInstance(id).present || trace.value.resolveDataOperationInstance(id).present
 			throw new UnsupportedOperationException("qualifiedNameResolvable error")		
 		}
-
-
-		
 	}
 	
 }

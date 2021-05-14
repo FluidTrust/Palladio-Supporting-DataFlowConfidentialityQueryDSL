@@ -8,12 +8,7 @@ import de.sebinside.dcp.dsl.dSL.Constraint
 import de.sebinside.dcp.dsl.dSL.TargetModelType
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
-import de.sebinside.dcp.dsl.generator.crossplatform.OperationModelConverter
 //import de.sebinside.dcp.dsl.generator.crossplatform.PalladioConverter
-import de.sebinside.dcp.dsl.generator.queryrule.CallArgumentQueryRule
-import de.sebinside.dcp.dsl.generator.queryrule.PostCallStateQueryRule
-import de.sebinside.dcp.dsl.generator.queryrule.PreCallStateQueryRule
-import de.sebinside.dcp.dsl.generator.queryrule.ReturnValueQueryRule
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.ecore.resource.Resource
@@ -29,6 +24,8 @@ import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
 import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.DFD2PrologTransformationTrace
 import de.sebinside.dcp.dsl.dSL.Model
+import de.sebinside.dcp.dsl.generator.queryrule.InputPinQueryRule
+import de.sebinside.dcp.dsl.generator.queryrule.OutputPinQueryRule
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -118,12 +115,12 @@ class DSLGenerator extends AbstractGenerator {
 		val clauses = new ArrayList<Clause>
 
 		// Create rule referencing all facts
-		val rule = Rule('''�GlobalConstants.Prefixes.CHARACTERISTICS_CLASS��charateristicClass.name�''')
+		val rule = Rule('''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«charateristicClass.name»''')
 		rule.body = null
 
 		// A rules arguments are all contained member type names
 		rule.head.arguments.addAll(charateristicClass.members.map[member|member.ref.name].toSet.map [ type |
-			CompoundTerm('''�GlobalConstants.Prefixes.CLASS_VARIABLE��charateristicClass.name�_�type�''')
+			CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«type»''')
 		].toList)
 
 		// Create single facts for every member
@@ -131,13 +128,13 @@ class DSLGenerator extends AbstractGenerator {
 			member.literals.forEach [ literal |
 
 				// Create and add fact
-				val factName = '''�GlobalConstants.Prefixes.CHARACTERISTICS_CLASS��charateristicClass.name�_�member.ref.name�_�index��if(member.negated) "_NEG"�'''
+				val factName = '''«GlobalConstants.Prefixes.CHARACTERISTICS_CLASS»«charateristicClass.name»_«member.ref.name»_«index»«if(member.negated) "_NEG"»'''
 				val fact = SimpleFact(factName, converter.convert(literal))
 				clauses.add(fact)
 
 				// Create fact reference for the rule
 				val factReference = CompoundTerm(fact.head.value,
-					CompoundTerm('''�GlobalConstants.Prefixes.CLASS_VARIABLE��charateristicClass.name�_�member.ref.name�'''))
+					CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«member.ref.name»'''))
 
 				// Handle negated facts
 				val factExpression = if (member.negated) {
@@ -159,7 +156,7 @@ class DSLGenerator extends AbstractGenerator {
 		// FIXME: Might contain duplicates
 		val memberQueries = charateristicClass.members.map [ member |
 			createMemberQuery(converter.convertMember(member.ref),
-				CompoundTerm('''�GlobalConstants.Prefixes.CLASS_VARIABLE��charateristicClass.name�_�member.ref.name�'''))
+				CompoundTerm('''«GlobalConstants.Prefixes.CLASS_VARIABLE»«charateristicClass.name»_«member.ref.name»'''))
 		]
 		val memberQueriesTerm = expressionsToLogicalAnd(memberQueries);
 
@@ -174,7 +171,7 @@ class DSLGenerator extends AbstractGenerator {
 
 	def List<Clause> compile(Constraint constraint) {
 		val clauses = new ArrayList<Clause>
-		val constraintName = '''�GlobalConstants.Prefixes.CONSTRAINT��constraint.name�'''
+		val constraintName = '''«GlobalConstants.Prefixes.CONSTRAINT»«constraint.name»'''
 		val constraintNameTerm = createConstraintNameUnification(constraint.name)
 
 		// Every constraint is mapped to a rule
@@ -190,13 +187,11 @@ class DSLGenerator extends AbstractGenerator {
 
 			var rules = new ArrayList<Rule>()
 			// FIXME: The combination of this rules is not everytime clear in previously modeled use cases
-			rules.add(new PreCallStateQueryRule(mainRule, constraintName, converter).generate())
+			rules.add(new InputPinQueryRule(mainRule, constraintName, converter).generate())
 
 			// Only the operation model works with all kinds of rules, Palladio only requires preCallStates
 			if (this.targetModelType == TargetModelType.OPERATION_MODEL) {
-				rules.add(new PostCallStateQueryRule(mainRule, constraintName, converter).generate())
-				rules.add(new CallArgumentQueryRule(mainRule, constraintName, converter).generate())
-				rules.add(new ReturnValueQueryRule(mainRule, constraintName, converter).generate())
+				rules.add(new OutputPinQueryRule(mainRule, constraintName, converter).generate())
 			}
 
 			// Combine rules
@@ -204,7 +199,7 @@ class DSLGenerator extends AbstractGenerator {
 
 			// Add constraint name unification
 			constraintRule.body = LogicalAnd(constraintNameTerm, constraintRule.body)
-			constraintRule.head.arguments.add(CompoundTerm('''�GlobalConstants.Parameters.CONSTRAINT_NAME�'''))
+			constraintRule.head.arguments.add(CompoundTerm('''«GlobalConstants.Parameters.CONSTRAINT_NAME»'''))
 
 			// Combine (unique) arguments of all rules
 			val allArguments = combineRuleArguments(rules)

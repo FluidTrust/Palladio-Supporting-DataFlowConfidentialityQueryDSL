@@ -25,10 +25,8 @@ interface Converter {
 
 	def String convertQueryType(QueryTypes queryType, String variableId) {
 		switch (queryType) {
-			case CALL_ARGUMENT: "call argument"
-			case RETURN_VALUE: "return value"
-			case PRE_CALL_STATE: "call state"
-			case POST_CALL_STATE: "call state"
+			case INPUT_PIN: "input pin"
+			case OUTPUT_PIN: "output pin"
 		}
 	}
 	

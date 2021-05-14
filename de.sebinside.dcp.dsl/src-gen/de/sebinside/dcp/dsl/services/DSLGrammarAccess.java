@@ -184,14 +184,14 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cRefAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cRefCharacteristicTypeCrossReference_3_0 = (CrossReference)cRefAssignment_3.eContents().get(0);
-		private final RuleCall cRefCharacteristicTypeIDTerminalRuleCall_3_0_1 = (RuleCall)cRefCharacteristicTypeCrossReference_3_0.eContents().get(1);
+		private final CrossReference cRefEnumCharacteristicTypeCrossReference_3_0 = (CrossReference)cRefAssignment_3.eContents().get(0);
+		private final RuleCall cRefEnumCharacteristicTypeIDTerminalRuleCall_3_0_1 = (RuleCall)cRefEnumCharacteristicTypeCrossReference_3_0.eContents().get(1);
 		
 		//CharacteristicType:
-		//	'type' name=ID ':' ref=[dictionary::CharacteristicType];
+		//	'type' name=ID ':' ref=[dictionary::EnumCharacteristicType];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'type' name=ID ':' ref=[dictionary::CharacteristicType]
+		//'type' name=ID ':' ref=[dictionary::EnumCharacteristicType]
 		public Group getGroup() { return cGroup; }
 		
 		//'type'
@@ -206,14 +206,14 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
-		//ref=[dictionary::CharacteristicType]
+		//ref=[dictionary::EnumCharacteristicType]
 		public Assignment getRefAssignment_3() { return cRefAssignment_3; }
 		
-		//[dictionary::CharacteristicType]
-		public CrossReference getRefCharacteristicTypeCrossReference_3_0() { return cRefCharacteristicTypeCrossReference_3_0; }
+		//[dictionary::EnumCharacteristicType]
+		public CrossReference getRefEnumCharacteristicTypeCrossReference_3_0() { return cRefEnumCharacteristicTypeCrossReference_3_0; }
 		
 		//ID
-		public RuleCall getRefCharacteristicTypeIDTerminalRuleCall_3_0_1() { return cRefCharacteristicTypeIDTerminalRuleCall_3_0_1; }
+		public RuleCall getRefEnumCharacteristicTypeIDTerminalRuleCall_3_0_1() { return cRefEnumCharacteristicTypeIDTerminalRuleCall_3_0_1; }
 	}
 	public class CharacteristicClassElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.CharacteristicClass");
@@ -1759,7 +1759,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//CharacteristicType:
-	//	'type' name=ID ':' ref=[dictionary::CharacteristicType];
+	//	'type' name=ID ':' ref=[dictionary::EnumCharacteristicType];
 	public CharacteristicTypeElements getCharacteristicTypeAccess() {
 		return pCharacteristicType;
 	}

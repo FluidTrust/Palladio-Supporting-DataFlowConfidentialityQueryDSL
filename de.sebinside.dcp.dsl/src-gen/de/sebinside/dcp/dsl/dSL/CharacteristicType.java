@@ -3,6 +3,7 @@
  */
 package de.sebinside.dcp.dsl.dSL;
 
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,12 +51,12 @@ public interface CharacteristicType extends AbstractElement
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType)
+   * @see #setRef(EnumCharacteristicType)
    * @see de.sebinside.dcp.dsl.dSL.DSLPackage#getCharacteristicType_Ref()
    * @model
    * @generated
    */
-  org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType getRef();
+  EnumCharacteristicType getRef();
 
   /**
    * Sets the value of the '{@link de.sebinside.dcp.dsl.dSL.CharacteristicType#getRef <em>Ref</em>}' reference.
@@ -65,6 +66,6 @@ public interface CharacteristicType extends AbstractElement
    * @see #getRef()
    * @generated
    */
-  void setRef(org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType value);
+  void setRef(EnumCharacteristicType value);
 
 } // CharacteristicType

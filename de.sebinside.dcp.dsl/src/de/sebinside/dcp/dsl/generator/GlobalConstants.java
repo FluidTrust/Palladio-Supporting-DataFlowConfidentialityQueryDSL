@@ -23,10 +23,10 @@ public class GlobalConstants {
 			return this.value;
 		}
 	}
-
+	
 	public static enum Parameters {
-		CONSTRAINT_NAME("ConstraintName"), QUERY_TYPE("QueryType"), CALL_STACK("S"), OPERATION("OP"), PARAMETER("P"),
-		CALL_STATE("ST"), ITERATOR_TEMPLATE("IteratorTemplate");
+		CONSTRAINT_NAME("ConstraintName"), QUERY_TYPE("QueryType"), NODE("N"), PIN("PIN"), CALL_STACK("S"), 
+		 ITERATOR_TEMPLATE("IteratorTemplate");
 
 		private String value;
 
@@ -41,8 +41,7 @@ public class GlobalConstants {
 	}
 
 	public static enum QueryTypes {
-		CALL_ARGUMENT("CallArgument"), RETURN_VALUE("ReturnValue"), PRE_CALL_STATE("PreCallState"),
-		POST_CALL_STATE("PostCallState");
+		INPUT_PIN("InputPin"), OUTPUT_PIN("OutputPin");
 
 		private String value;
 

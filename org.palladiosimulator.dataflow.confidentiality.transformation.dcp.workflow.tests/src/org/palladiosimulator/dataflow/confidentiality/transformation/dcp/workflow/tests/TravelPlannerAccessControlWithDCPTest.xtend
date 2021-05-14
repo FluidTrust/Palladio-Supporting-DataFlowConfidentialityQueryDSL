@@ -20,8 +20,10 @@ import org.palladiosimulator.dataflow.diagram.DataFlowDiagram.DataFlowDiagram
 import static org.junit.jupiter.api.Assertions.*
 import de.sebinside.dcp.dsl.dSL.DSLPackage
 import org.junit.jupiter.api.BeforeAll
+import java.util.Arrays
+import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.tests.TravelPlannerAccessControlTest
 
-class TravelPlannerAccessControlWithDCPTest extends AnalysisIntegrationTestBase {
+class TravelPlannerAccessControlWithDCPTest extends TravelPlannerAccessControlTest {
 	
 	var DFDWithDCPTransformationWorkflowBuilder dcpBuilder
 	
@@ -40,23 +42,50 @@ class TravelPlannerAccessControlWithDCPTest extends AnalysisIntegrationTestBase 
 	}
 	
 	@Test
-	def void testFullRun() {
+	override void testNoFlaws() {
 		loadAndInitDFD("models/DDC_TravelPlanner_AccessControl.xmi", "models/DFDC_TravelPlanner_AccessControl.xmi", "models/Travel_Planner.DCPDSL")
 		dcpBuilder.addSerializeToString(SaveOptions.newBuilder().format().getOptions().toOptionsMap())
 		dcpBuilder.setNameDerivationMethod(NameGenerationStrategie.DETAILED)
-		
 		dcpBuilder.addSerializeDCPPrologToString(SaveOptions.newBuilder().format().getOptions().toOptionsMap())
 		
 		var workflow = dcpBuilder.build()
-
 		workflow.run
 		
 		var dcpWorkflow = workflow as TransformDFDWithDCPConstraintsToPrologWorkflow
-		println(dcpWorkflow.serializedPrologConstraints)
-		var result = workflow.getSerializedPrologProgram
+		var result = dcpWorkflow.getSerializedPrologProgram
 		var constraints = dcpWorkflow.serializedPrologConstraints
-		assertFalse(constraints.isEmpty)
 		assertFalse(result.isEmpty)
+		assertFalse(constraints.isEmpty)
+		
+		prover.loadTheory(result.get())
+		prover.addTheory(constraints.get)
+		var query = prover.query("constraint_AuthorizedAccess(ConstraintName, QueryType, N, PIN, S, VarSet_accessRoles, VarSet_authRoles).")
+		var solution = query.solve()
+		assertNumberOfSolutions(solution, 0, Arrays.asList("P", "REQ", "ROLES"))
+	}
+	
+	@Test
+	override void testNoDeclassification() {
+		var dfd = loadAndInitDFD("models/DDC_TravelPlanner_AccessControl.xmi", "models/DFDC_TravelPlanner_AccessControl.xmi", "models/Travel_Planner.DCPDSL")
+		dfd.addNoDeclassificationFlow
+		
+		dcpBuilder.addSerializeToString(SaveOptions.newBuilder().format().getOptions().toOptionsMap())
+		dcpBuilder.setNameDerivationMethod(NameGenerationStrategie.DETAILED)
+		dcpBuilder.addSerializeDCPPrologToString(SaveOptions.newBuilder().format().getOptions().toOptionsMap())
+		
+		var workflow = dcpBuilder.build()
+		workflow.run	
+		var dcpWorkflow = workflow as TransformDFDWithDCPConstraintsToPrologWorkflow
+		var result = dcpWorkflow.getSerializedPrologProgram
+		var constraints = dcpWorkflow.serializedPrologConstraints
+		assertFalse(result.isEmpty)
+		assertFalse(constraints.isEmpty)
+		
+		prover.loadTheory(result.get())
+		prover.addTheory(constraints.get)
+		var query = prover.query("constraint_AuthorizedAccess(ConstraintName, QueryType, N, PIN, S, VarSet_accessRoles, VarSet_authRoles).")
+		var solution = query.solve()
+		assertNumberOfSolutions(solution, 3, Arrays.asList("P", "REQ", "ROLES"))
 	}
 
 	protected def loadAndInitDFD(String ddcPath, String dfdPath, String dcpPath) {
@@ -73,6 +102,7 @@ class TravelPlannerAccessControlWithDCPTest extends AnalysisIntegrationTestBase 
 		var dcp = dcpResource.contents.iterator.next as Model
 		
 		dcpBuilder.addDFD(dfd, dd, dcp);
+		dfd
 	}
 	
 	def static URI getRelativeURIDCP(String path) {

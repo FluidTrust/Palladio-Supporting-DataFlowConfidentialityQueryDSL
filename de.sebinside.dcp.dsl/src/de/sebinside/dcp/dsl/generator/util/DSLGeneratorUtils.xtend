@@ -103,7 +103,7 @@ class DSLGeneratorUtils {
 		CompoundTerm('''«GlobalConstants.Prefixes.TEMPORAL_VARIABLE»«name»''')
 	}
 
-	def static createForAllQuery(CompoundTerm iteratorTemplate, Expression query, Expression resultVariable) {
+	def static createSetOfQuery(CompoundTerm iteratorTemplate, Expression query, Expression resultVariable) {
 		CompoundTerm("setof", #[iteratorTemplate, query, resultVariable])
 	}
 

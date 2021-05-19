@@ -28,7 +28,8 @@ abstract class QueryRule {
 	protected val String pin = GlobalConstants.Parameters.PIN.toString
 	protected val String stack = GlobalConstants.Parameters.CALL_STACK.toString
 	
-	protected val String iteratorTemplate = GlobalConstants.Parameters.ITERATOR_TEMPLATE.toString
+	protected val String iteratorTemplate1 = GlobalConstants.Parameters.ITERATOR_TEMPLATE_1.toString
+	protected val String iteratorTemplate2 = GlobalConstants.Parameters.ITERATOR_TEMPLATE_2.toString
 	val queryTypeTerm = createQueryTypeUnification(queryTypeIdentification)
 
 	var Rule rule = null
@@ -59,11 +60,11 @@ abstract class QueryRule {
 							converter.convert(selector.ref.ref), variable, CompoundTerm(stack))]
 				} else { 
 				// set of characteristics selected
-				// setof(iteratorTemplate, characteristic(node, pin, selector.ref.ref, iteratorTemplate, stack)				
+				// setof(V, characteristic(node, pin, selector.ref.ref, V, stack)				
 					val innerQuery = createParameterQuery(CompoundTerm(node), CompoundTerm(pin),
-						converter.convert(selector.ref.ref), CompoundTerm(iteratorTemplate), CompoundTerm(stack))
+						converter.convert(selector.ref.ref), CompoundTerm(iteratorTemplate1), CompoundTerm(stack))
 
-					#[createForAllQuery(CompoundTerm(iteratorTemplate), innerQuery, variable)]
+					#[createSetOfQuery(CompoundTerm(iteratorTemplate1), innerQuery, variable)]
 				}
 			} else {
 				// characteristic(node, pin, selector.ref.ref, selector.ref.literals, stack) 
@@ -72,7 +73,7 @@ abstract class QueryRule {
 					createParameterQuery(CompoundTerm(node), CompoundTerm(pin),
 						converter.convert(selector.ref.ref), converter.convert(literal), CompoundTerm(stack))
 				]
-			}
+			} 
 
 		if (selector.ref.negated) {
 			query.map[entry|negate(entry)]
@@ -104,11 +105,11 @@ abstract class QueryRule {
 				} else {
 					// set of characteristics selected
 					// setof(R, nodeCharacteristic(N, CT, R), variable)
-					// setof(iteratorTemplate, nodeCharacteristic(node, selector.ref.ref, iteratorTemplate), variable)
+					// setof(R, nodeCharacteristic(node, selector.ref.ref, R), variable)
 					val innerQuery = createPropertyQuery(CompoundTerm(node), converter.convert(selector.ref.ref),
-						CompoundTerm(iteratorTemplate))
+						CompoundTerm(iteratorTemplate2))
 
-					#[createForAllQuery(CompoundTerm(iteratorTemplate), innerQuery, variable)]
+					#[createSetOfQuery(CompoundTerm(iteratorTemplate2), innerQuery, variable)]
 				}
 			} else {
 				// nodeCharacteristic(node, selector.ref.ref, literal)
@@ -144,7 +145,7 @@ abstract class QueryRule {
 		#[unification]
 	}
 
-	public def generate() { // Important for generating the actual query rule body
+	def generate() { // Important for generating the actual query rule body
 		val subRule = Rule('''«nameBase»_«queryTypeIdentification»''')
 
 		// Map all data selectors to parts of a rule
@@ -162,9 +163,11 @@ abstract class QueryRule {
 
 		// Create final rule body
 		val subRuleComponents = #[queryTypeTerm,
-			createFlowTreeCall(CompoundTerm(node), CompoundTerm(pin), CompoundTerm(stack)),
-			createPinLocationQuery(CompoundTerm(node), CompoundTerm(pin)),
-			expressionsToLogicalAnd(dataSelectorTerm), expressionsToLogicalAnd(destinationSelectorTerm),
+			createPinLocationQuery(CompoundTerm(node), CompoundTerm(pin)), // input/output pin
+			createFlowTreeCall(CompoundTerm(node), CompoundTerm(pin), CompoundTerm(stack)), // flowTree 
+			expressionsToLogicalAnd(destinationSelectorTerm), // set of nodeCharacteristic
+			expressionsToLogicalAnd(dataSelectorTerm), // set of characteristic
+			
 			if (characteristicClasses.size > 0) {
 				expressionsToLogicalAnd(characteristicsClassesTerms)
 			}, if (rule.condition !== null) {

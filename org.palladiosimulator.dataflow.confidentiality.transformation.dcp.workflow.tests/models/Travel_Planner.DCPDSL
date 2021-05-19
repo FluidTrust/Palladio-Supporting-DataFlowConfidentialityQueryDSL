@@ -6,5 +6,5 @@ type authorizedRoles: AccessPermissions
 
 // Negation of the unauthorized access constraint
 constraint AuthorizedAccess {
-	data.attribute.authorizedRoles.$authRoles{} NEVER FLOWS node.property.accessRoles.$accessRoles{} WHERE !isEmpty(intersection(authRoles, accessRoles))
+	data.attribute.authorizedRoles.$authRoles{} NEVER FLOWS node.property.accessRoles.$accessRoles{} WHERE isEmpty(intersection(authRoles, accessRoles))
 }

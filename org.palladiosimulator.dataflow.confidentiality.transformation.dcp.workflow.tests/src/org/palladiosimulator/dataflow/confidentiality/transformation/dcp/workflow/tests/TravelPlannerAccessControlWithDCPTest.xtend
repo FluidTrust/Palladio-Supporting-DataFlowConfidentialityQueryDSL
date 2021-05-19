@@ -61,7 +61,7 @@ class TravelPlannerAccessControlWithDCPTest extends TravelPlannerAccessControlTe
 		prover.addTheory(constraints.get)
 		var query = prover.query("constraint_AuthorizedAccess(ConstraintName, QueryType, N, PIN, S, VarSet_accessRoles, VarSet_authRoles).")
 		var solution = query.solve()
-		assertNumberOfSolutions(solution, 0, Arrays.asList("P", "REQ", "ROLES"))
+		assertNumberOfSolutions(solution, 0, Arrays.asList("ConstraintName", "QueryType", "N", "VarSet_authRoles", "VarSet_accessRoles"))
 	}
 	
 	@Test
@@ -85,7 +85,7 @@ class TravelPlannerAccessControlWithDCPTest extends TravelPlannerAccessControlTe
 		prover.addTheory(constraints.get)
 		var query = prover.query("constraint_AuthorizedAccess(ConstraintName, QueryType, N, PIN, S, VarSet_accessRoles, VarSet_authRoles).")
 		var solution = query.solve()
-		assertNumberOfSolutions(solution, 3, Arrays.asList("P", "REQ", "ROLES"))
+		assertNumberOfSolutions(solution, 3, Arrays.asList("ConstraintName", "QueryType", "N", "VarSet_authRoles", "VarSet_accessRoles"))
 	}
 
 	protected def loadAndInitDFD(String ddcPath, String dfdPath, String dcpPath) {

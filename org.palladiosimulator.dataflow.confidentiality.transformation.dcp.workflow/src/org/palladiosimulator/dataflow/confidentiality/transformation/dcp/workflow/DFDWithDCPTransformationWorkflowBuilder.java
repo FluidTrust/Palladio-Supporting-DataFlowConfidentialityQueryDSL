@@ -28,6 +28,7 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 	private static final String DEFAULT_CONSTRAINTS_KEY = "constraints";
 	
 	private ModelLocation dcpdslLocation;
+	private ModelLocation ddcLocation;
 	
 	protected final Collection<IJob> dcpPrologSerializationJobs = new ArrayList<>();
 	
@@ -46,7 +47,7 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
         // create transformation job
         getBlackboard().addPartition(DEFAULT_CONSTRAINTS_LOCATION.getPartitionID(), new ResourceSetPartition());
 		
-        jobSequence.add(new TransfromDCPDSLToPrologJob<KeyValueMDSDBlackboard>(DEFAULT_DCPDSL_LOCATION, DEFAULT_CONSTRAINTS_LOCATION, DEFAULT_TRACE_KEY));
+        jobSequence.add(new TransfromDCPDSLToPrologJob<KeyValueMDSDBlackboard>(dcpdslLocation, DEFAULT_CONSTRAINTS_LOCATION, DEFAULT_TRACE_KEY));
 		
 		//add serialize model job; prolog constraints at DEFAULT_CONSTRAINTS_LOCATION
 		jobSequence.addAll(dcpPrologSerializationJobs);
@@ -63,7 +64,13 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 		getBlackboard().setContents(DEFAULT_DFD_LOCATION, Arrays.asList(dfd));
 		getBlackboard().setContents(DEFAULT_DCPDSL_LOCATION, Arrays.asList(dcp));
 		dfdLocation = DEFAULT_DFD_LOCATION;
+		ddcLocation = DEFAULT_DFD_LOCATION;
 		dcpdslLocation = DEFAULT_DCPDSL_LOCATION;
+		return this;
+	}
+	
+	public DFDWithDCPTransformationWorkflowBuilder addDDC(URI ddcURI) {
+		ddcLocation = new ModelLocation(dfdLocation.getPartitionID(), ddcURI);
 		return this;
 	}
 	

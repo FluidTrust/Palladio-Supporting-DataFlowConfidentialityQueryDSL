@@ -64,5 +64,4 @@ public class TransformDFDWithDCPConstraintsToPrologWorkflowImpl extends Blackboa
 		return blackboard.get(serializedDCPConstraintsKey)
 	            .map(String.class::cast);
 	}
-
 }

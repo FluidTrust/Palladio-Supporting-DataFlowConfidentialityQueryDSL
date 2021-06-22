@@ -1,48 +1,19 @@
 package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.tests
 
-import de.sebinside.dcp.dsl.dSL.Model
-
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.emf.common.util.URI
 import org.eclipse.xtext.resource.SaveOptions
-
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.BeforeEach
-
-import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.tests.impl.AnalysisIntegrationTestBase
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.DFDWithDCPTransformationWorkflowBuilder
 import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.NameGenerationStrategie
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.TransformDFDWithDCPConstraintsToPrologWorkflow
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.tests.util.DCPStandaloneUtil
-import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterized
-import org.palladiosimulator.dataflow.diagram.DataFlowDiagram.DataFlowDiagram
-
 import static org.junit.jupiter.api.Assertions.*
-import de.sebinside.dcp.dsl.dSL.DSLPackage
-import org.junit.jupiter.api.BeforeAll
 import java.util.Arrays
-import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.tests.TravelPlannerAccessControlTest
+import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.DataFlowDiagramCharacterizedFactory
+import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.CharacterizedProcess
+import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.Behaving
 
-class TravelPlannerAccessControlWithDCPTest extends TravelPlannerAccessControlTest {
-	
-	var DFDWithDCPTransformationWorkflowBuilder dcpBuilder
-	
-	@BeforeAll
-	static def void init() {
-		AnalysisIntegrationTestBase.init()
-		DCPStandaloneUtil.init
-	}
-
-	@BeforeEach
-	override void setup() {
-		super.setup()
-		//super.setup() already sets a new builder, which we simply substitute for a new instance of our own builder...
-		dcpBuilder = new DFDWithDCPTransformationWorkflowBuilder()
-		builder = dcpBuilder
-	}
+class TravelPlannerAccessControlWithDCPTest extends AnalysisDCPIntegrationTestBase {
 	
 	@Test
-	override void testNoFlaws() {
+	def void testNoFlaws() {
 		loadAndInitDFD("models/DDC_TravelPlanner_AccessControl.xmi", "models/DFDC_TravelPlanner_AccessControl.xmi", "models/Travel_Planner.DCPDSL")
 		dcpBuilder.addSerializeToString(SaveOptions.newBuilder().format().getOptions().toOptionsMap())
 		dcpBuilder.setNameDerivationMethod(NameGenerationStrategie.DETAILED)
@@ -65,9 +36,16 @@ class TravelPlannerAccessControlWithDCPTest extends TravelPlannerAccessControlTe
 	}
 	
 	@Test
-	override void testNoDeclassification() {
+	def void testNoDeclassification() {
 		var dfd = loadAndInitDFD("models/DDC_TravelPlanner_AccessControl.xmi", "models/DFDC_TravelPlanner_AccessControl.xmi", "models/Travel_Planner.DCPDSL")
-		dfd.addNoDeclassificationFlow
+		// add possible data flow from CCD store to booking process
+		var directCCDFlow = DataFlowDiagramCharacterizedFactory.eINSTANCE.createCharacterizedDataFlow
+		directCCDFlow.name = "ccd direct"
+		directCCDFlow.source = dfd.nodes.filter(CharacterizedProcess).findFirst["CCD.readCCD" == name]
+		directCCDFlow.sourcePin = (directCCDFlow.source as Behaving).behavior.outputs.iterator.next
+		directCCDFlow.target = dfd.nodes.filter(CharacterizedProcess).findFirst["User.bookFlight" == name]
+		directCCDFlow.targetPin = (directCCDFlow.target as Behaving).behavior.inputs.get(1)
+		dfd.edges += directCCDFlow
 		
 		dcpBuilder.addSerializeToString(SaveOptions.newBuilder().format().getOptions().toOptionsMap())
 		dcpBuilder.setNameDerivationMethod(NameGenerationStrategie.DETAILED)
@@ -86,27 +64,6 @@ class TravelPlannerAccessControlWithDCPTest extends TravelPlannerAccessControlTe
 		var query = prover.query("constraint_AuthorizedAccess(ConstraintName, QueryType, N, PIN, S, VarSet_accessRoles, VarSet_authRoles).")
 		var solution = query.solve()
 		assertNumberOfSolutions(solution, 3, Arrays.asList("ConstraintName", "QueryType", "N", "VarSet_authRoles", "VarSet_accessRoles"))
-	}
-
-	protected def loadAndInitDFD(String ddcPath, String dfdPath, String dcpPath) {
-		DSLPackage.eINSTANCE.getClass
-		var resourceSet = new ResourceSetImpl
-		var ddUri = getRelativeURIDCP(ddcPath)
-		var ddResource = resourceSet.getResource(ddUri, true)
-		var dd = ddResource.contents.iterator.next as DataDictionaryCharacterized
-		var dfdUri = getRelativeURIDCP(dfdPath)
-		var dfdResource = resourceSet.getResource(dfdUri, true)
-		var dfd = dfdResource.contents.iterator.next as DataFlowDiagram
-		var dcpUri = getRelativeURIDCP(dcpPath)
-		var dcpResource = resourceSet.getResource(dcpUri, true)
-		var dcp = dcpResource.contents.iterator.next as Model
-		
-		dcpBuilder.addDFD(dfd, dd, dcp);
-		dfd
-	}
-	
-	def static URI getRelativeURIDCP(String path) {
-		DCPStandaloneUtil.getRelativeURI(path)
 	}
 }
 

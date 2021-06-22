@@ -1,0 +1,9 @@
+target ExtendedDFD using DDC_DroidBench
+import "DDC_DroidBench.xmi"
+
+type ZONE:ZoneMembership
+type LEVEL:ConfidentialityRequirements
+
+constraint IllegalInformationFlow {
+	data.attribute.LEVEL.High NEVER FLOWS node.property.ZONE.AttackZone
+}

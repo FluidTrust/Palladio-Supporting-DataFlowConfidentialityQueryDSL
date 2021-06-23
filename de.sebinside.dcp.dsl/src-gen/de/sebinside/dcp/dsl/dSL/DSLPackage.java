@@ -5,7 +5,6 @@ package de.sebinside.dcp.dsl.dSL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -124,31 +123,13 @@ public interface DSLPackage extends EPackage
   int TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER = 1;
 
   /**
-   * The feature id for the '<em><b>Allocation Model</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL = 2;
-
-  /**
-   * The feature id for the '<em><b>Usage Model</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TARGET_MODEL_TYPE_DEF__USAGE_MODEL = 3;
-
-  /**
    * The number of structural features of the '<em>Target Model Type Def</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TARGET_MODEL_TYPE_DEF_FEATURE_COUNT = 4;
+  int TARGET_MODEL_TYPE_DEF_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
@@ -737,40 +718,13 @@ public interface DSLPackage extends EPackage
   int NODE_IDENTITIY_SELECTOR__NAME = DESTINATION_SELECTOR_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Assembly</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NODE_IDENTITIY_SELECTOR__ASSEMBLY = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Component</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NODE_IDENTITIY_SELECTOR__COMPONENT = DESTINATION_SELECTOR_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Seff</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NODE_IDENTITIY_SELECTOR__SEFF = DESTINATION_SELECTOR_FEATURE_COUNT + 3;
-
-  /**
    * The feature id for the '<em><b>Dia Node</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NODE_IDENTITIY_SELECTOR__DIA_NODE = DESTINATION_SELECTOR_FEATURE_COUNT + 4;
+  int NODE_IDENTITIY_SELECTOR__DIA_NODE = DESTINATION_SELECTOR_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Node Identitiy Selector</em>' class.
@@ -779,7 +733,7 @@ public interface DSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NODE_IDENTITIY_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 5;
+  int NODE_IDENTITIY_SELECTOR_FEATURE_COUNT = DESTINATION_SELECTOR_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.impl.StatementImpl <em>Statement</em>}' class.
@@ -1442,16 +1396,6 @@ public interface DSLPackage extends EPackage
    */
   int LOGICAL_NEGATION_OPERATION_FEATURE_COUNT = BOOLEAN_OPERATION_FEATURE_COUNT + 1;
 
-  /**
-   * The meta object id for the '{@link de.sebinside.dcp.dsl.dSL.TargetModelType <em>Target Model Type</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.sebinside.dcp.dsl.dSL.TargetModelType
-   * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getTargetModelType()
-   * @generated
-   */
-  int TARGET_MODEL_TYPE = 43;
-
 
   /**
    * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.Model <em>Model</em>}'.
@@ -1516,28 +1460,6 @@ public interface DSLPackage extends EPackage
    * @generated
    */
   EReference getTargetModelTypeDef_TypeContainer();
-
-  /**
-   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getAllocationModel <em>Allocation Model</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Allocation Model</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getAllocationModel()
-   * @see #getTargetModelTypeDef()
-   * @generated
-   */
-  EReference getTargetModelTypeDef_AllocationModel();
-
-  /**
-   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getUsageModel <em>Usage Model</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Usage Model</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.TargetModelTypeDef#getUsageModel()
-   * @see #getTargetModelTypeDef()
-   * @generated
-   */
-  EReference getTargetModelTypeDef_UsageModel();
 
   /**
    * Returns the meta object for class '{@link de.sebinside.dcp.dsl.dSL.AbstractElement <em>Abstract Element</em>}'.
@@ -1948,39 +1870,6 @@ public interface DSLPackage extends EPackage
    * @generated
    */
   EAttribute getNodeIdentitiySelector_Name();
-
-  /**
-   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getAssembly <em>Assembly</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Assembly</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getAssembly()
-   * @see #getNodeIdentitiySelector()
-   * @generated
-   */
-  EReference getNodeIdentitiySelector_Assembly();
-
-  /**
-   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getComponent <em>Component</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Component</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getComponent()
-   * @see #getNodeIdentitiySelector()
-   * @generated
-   */
-  EReference getNodeIdentitiySelector_Component();
-
-  /**
-   * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getSeff <em>Seff</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Seff</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getSeff()
-   * @see #getNodeIdentitiySelector()
-   * @generated
-   */
-  EReference getNodeIdentitiySelector_Seff();
 
   /**
    * Returns the meta object for the reference '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector#getDiaNode <em>Dia Node</em>}'.
@@ -2511,16 +2400,6 @@ public interface DSLPackage extends EPackage
   EReference getLogicalNegationOperation_Value();
 
   /**
-   * Returns the meta object for enum '{@link de.sebinside.dcp.dsl.dSL.TargetModelType <em>Target Model Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Target Model Type</em>'.
-   * @see de.sebinside.dcp.dsl.dSL.TargetModelType
-   * @generated
-   */
-  EEnum getTargetModelType();
-
-  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2594,22 +2473,6 @@ public interface DSLPackage extends EPackage
      * @generated
      */
     EReference TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER = eINSTANCE.getTargetModelTypeDef_TypeContainer();
-
-    /**
-     * The meta object literal for the '<em><b>Allocation Model</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL = eINSTANCE.getTargetModelTypeDef_AllocationModel();
-
-    /**
-     * The meta object literal for the '<em><b>Usage Model</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TARGET_MODEL_TYPE_DEF__USAGE_MODEL = eINSTANCE.getTargetModelTypeDef_UsageModel();
 
     /**
      * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
@@ -2960,30 +2823,6 @@ public interface DSLPackage extends EPackage
      * @generated
      */
     EAttribute NODE_IDENTITIY_SELECTOR__NAME = eINSTANCE.getNodeIdentitiySelector_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Assembly</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference NODE_IDENTITIY_SELECTOR__ASSEMBLY = eINSTANCE.getNodeIdentitiySelector_Assembly();
-
-    /**
-     * The meta object literal for the '<em><b>Component</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference NODE_IDENTITIY_SELECTOR__COMPONENT = eINSTANCE.getNodeIdentitiySelector_Component();
-
-    /**
-     * The meta object literal for the '<em><b>Seff</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference NODE_IDENTITIY_SELECTOR__SEFF = eINSTANCE.getNodeIdentitiySelector_Seff();
 
     /**
      * The meta object literal for the '<em><b>Dia Node</b></em>' reference feature.
@@ -3428,16 +3267,6 @@ public interface DSLPackage extends EPackage
      * @generated
      */
     EReference LOGICAL_NEGATION_OPERATION__VALUE = eINSTANCE.getLogicalNegationOperation_Value();
-
-    /**
-     * The meta object literal for the '{@link de.sebinside.dcp.dsl.dSL.TargetModelType <em>Target Model Type</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.sebinside.dcp.dsl.dSL.TargetModelType
-     * @see de.sebinside.dcp.dsl.dSL.impl.DSLPackageImpl#getTargetModelType()
-     * @generated
-     */
-    EEnum TARGET_MODEL_TYPE = eINSTANCE.getTargetModelType();
 
   }
 

@@ -1,4 +1,4 @@
-target ExtendedDFD using DDC_Hospital
+target DFD using DDC_Hospital
 import "DDC_Hospital.xmi"
 
 type ZONE:ZoneMembership

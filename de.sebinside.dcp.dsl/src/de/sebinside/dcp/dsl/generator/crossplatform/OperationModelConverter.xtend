@@ -6,6 +6,7 @@ import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCha
 
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 
+@Deprecated
 class OperationModelConverter implements Converter {
 
 	package new() {

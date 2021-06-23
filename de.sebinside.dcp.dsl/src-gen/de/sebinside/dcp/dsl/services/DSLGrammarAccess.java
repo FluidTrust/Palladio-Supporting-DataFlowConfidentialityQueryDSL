@@ -10,8 +10,6 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
-import org.eclipse.xtext.EnumLiteralDeclaration;
-import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -60,82 +58,39 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cTargetKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeTargetModelTypeEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cUsingKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cTypeContainerAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final CrossReference cTypeContainerDataDictionaryCharacterizedCrossReference_2_1_0 = (CrossReference)cTypeContainerAssignment_2_1.eContents().get(0);
-		private final RuleCall cTypeContainerDataDictionaryCharacterizedIDTerminalRuleCall_2_1_0_1 = (RuleCall)cTypeContainerDataDictionaryCharacterizedCrossReference_2_1_0.eContents().get(1);
-		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
-		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
-		private final Assignment cAllocationModelAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
-		private final CrossReference cAllocationModelAllocationCrossReference_2_2_1_0 = (CrossReference)cAllocationModelAssignment_2_2_1.eContents().get(0);
-		private final RuleCall cAllocationModelAllocationIDTerminalRuleCall_2_2_1_0_1 = (RuleCall)cAllocationModelAllocationCrossReference_2_2_1_0.eContents().get(1);
-		private final Keyword cCommaKeyword_2_2_2 = (Keyword)cGroup_2_2.eContents().get(2);
-		private final Assignment cUsageModelAssignment_2_2_3 = (Assignment)cGroup_2_2.eContents().get(3);
-		private final CrossReference cUsageModelUsageModelCrossReference_2_2_3_0 = (CrossReference)cUsageModelAssignment_2_2_3.eContents().get(0);
-		private final RuleCall cUsageModelUsageModelIDTerminalRuleCall_2_2_3_0_1 = (RuleCall)cUsageModelUsageModelCrossReference_2_2_3_0.eContents().get(1);
+		private final Keyword cTypeDFDKeyword_1_0 = (Keyword)cTypeAssignment_1.eContents().get(0);
+		private final Keyword cUsingKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTypeContainerAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cTypeContainerDataDictionaryCharacterizedCrossReference_3_0 = (CrossReference)cTypeContainerAssignment_3.eContents().get(0);
+		private final RuleCall cTypeContainerDataDictionaryCharacterizedIDTerminalRuleCall_3_0_1 = (RuleCall)cTypeContainerDataDictionaryCharacterizedCrossReference_3_0.eContents().get(1);
 		
 		//TargetModelTypeDef:
-		//	'target' type=TargetModelType ('using' typeContainer=[dictionary::DataDictionaryCharacterized] (','
-		//	allocationModel=[allocation::Allocation] ',' usageModel=[usagemodel::UsageModel])?)?;
+		//	'target' type="DFD" 'using' typeContainer=[dictionary::DataDictionaryCharacterized];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'target' type=TargetModelType ('using' typeContainer=[dictionary::DataDictionaryCharacterized] (','
-		//allocationModel=[allocation::Allocation] ',' usageModel=[usagemodel::UsageModel])?)?
+		//'target' type="DFD" 'using' typeContainer=[dictionary::DataDictionaryCharacterized]
 		public Group getGroup() { return cGroup; }
 		
 		//'target'
 		public Keyword getTargetKeyword_0() { return cTargetKeyword_0; }
 		
-		//type=TargetModelType
+		//type="DFD"
 		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
 		
-		//TargetModelType
-		public RuleCall getTypeTargetModelTypeEnumRuleCall_1_0() { return cTypeTargetModelTypeEnumRuleCall_1_0; }
-		
-		//('using' typeContainer=[dictionary::DataDictionaryCharacterized] (',' allocationModel=[allocation::Allocation] ','
-		//usageModel=[usagemodel::UsageModel])?)?
-		public Group getGroup_2() { return cGroup_2; }
+		//"DFD"
+		public Keyword getTypeDFDKeyword_1_0() { return cTypeDFDKeyword_1_0; }
 		
 		//'using'
-		public Keyword getUsingKeyword_2_0() { return cUsingKeyword_2_0; }
+		public Keyword getUsingKeyword_2() { return cUsingKeyword_2; }
 		
 		//typeContainer=[dictionary::DataDictionaryCharacterized]
-		public Assignment getTypeContainerAssignment_2_1() { return cTypeContainerAssignment_2_1; }
+		public Assignment getTypeContainerAssignment_3() { return cTypeContainerAssignment_3; }
 		
 		//[dictionary::DataDictionaryCharacterized]
-		public CrossReference getTypeContainerDataDictionaryCharacterizedCrossReference_2_1_0() { return cTypeContainerDataDictionaryCharacterizedCrossReference_2_1_0; }
+		public CrossReference getTypeContainerDataDictionaryCharacterizedCrossReference_3_0() { return cTypeContainerDataDictionaryCharacterizedCrossReference_3_0; }
 		
 		//ID
-		public RuleCall getTypeContainerDataDictionaryCharacterizedIDTerminalRuleCall_2_1_0_1() { return cTypeContainerDataDictionaryCharacterizedIDTerminalRuleCall_2_1_0_1; }
-		
-		//(',' allocationModel=[allocation::Allocation] ',' usageModel=[usagemodel::UsageModel])?
-		public Group getGroup_2_2() { return cGroup_2_2; }
-		
-		//','
-		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
-		
-		//allocationModel=[allocation::Allocation]
-		public Assignment getAllocationModelAssignment_2_2_1() { return cAllocationModelAssignment_2_2_1; }
-		
-		//[allocation::Allocation]
-		public CrossReference getAllocationModelAllocationCrossReference_2_2_1_0() { return cAllocationModelAllocationCrossReference_2_2_1_0; }
-		
-		//ID
-		public RuleCall getAllocationModelAllocationIDTerminalRuleCall_2_2_1_0_1() { return cAllocationModelAllocationIDTerminalRuleCall_2_2_1_0_1; }
-		
-		//','
-		public Keyword getCommaKeyword_2_2_2() { return cCommaKeyword_2_2_2; }
-		
-		//usageModel=[usagemodel::UsageModel]
-		public Assignment getUsageModelAssignment_2_2_3() { return cUsageModelAssignment_2_2_3; }
-		
-		//[usagemodel::UsageModel]
-		public CrossReference getUsageModelUsageModelCrossReference_2_2_3_0() { return cUsageModelUsageModelCrossReference_2_2_3_0; }
-		
-		//ID
-		public RuleCall getUsageModelUsageModelIDTerminalRuleCall_2_2_3_0_1() { return cUsageModelUsageModelIDTerminalRuleCall_2_2_3_0_1; }
+		public RuleCall getTypeContainerDataDictionaryCharacterizedIDTerminalRuleCall_3_0_1() { return cTypeContainerDataDictionaryCharacterizedIDTerminalRuleCall_3_0_1; }
 	}
 	public class AbstractElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.AbstractElement");
@@ -788,32 +743,15 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cNameSTRINGTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Keyword cNodeIdentityKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
-		private final Group cGroup_1_1_0 = (Group)cAlternatives_1_1.eContents().get(0);
-		private final Assignment cAssemblyAssignment_1_1_0_0 = (Assignment)cGroup_1_1_0.eContents().get(0);
-		private final CrossReference cAssemblyAssemblyContextCrossReference_1_1_0_0_0 = (CrossReference)cAssemblyAssignment_1_1_0_0.eContents().get(0);
-		private final RuleCall cAssemblyAssemblyContextIDTerminalRuleCall_1_1_0_0_0_1 = (RuleCall)cAssemblyAssemblyContextCrossReference_1_1_0_0_0.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_1_0_1 = (Keyword)cGroup_1_1_0.eContents().get(1);
-		private final Assignment cComponentAssignment_1_1_0_2 = (Assignment)cGroup_1_1_0.eContents().get(2);
-		private final CrossReference cComponentBasicComponentCrossReference_1_1_0_2_0 = (CrossReference)cComponentAssignment_1_1_0_2.eContents().get(0);
-		private final RuleCall cComponentBasicComponentIDTerminalRuleCall_1_1_0_2_0_1 = (RuleCall)cComponentBasicComponentCrossReference_1_1_0_2_0.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_1_0_3 = (Keyword)cGroup_1_1_0.eContents().get(3);
-		private final Assignment cSeffAssignment_1_1_0_4 = (Assignment)cGroup_1_1_0.eContents().get(4);
-		private final CrossReference cSeffServiceEffectSpecificationCrossReference_1_1_0_4_0 = (CrossReference)cSeffAssignment_1_1_0_4.eContents().get(0);
-		private final RuleCall cSeffServiceEffectSpecificationIDTerminalRuleCall_1_1_0_4_0_1 = (RuleCall)cSeffServiceEffectSpecificationCrossReference_1_1_0_4_0.eContents().get(1);
-		private final Assignment cDiaNodeAssignment_1_1_1 = (Assignment)cAlternatives_1_1.eContents().get(1);
-		private final CrossReference cDiaNodeCharacterizedNodeCrossReference_1_1_1_0 = (CrossReference)cDiaNodeAssignment_1_1_1.eContents().get(0);
-		private final RuleCall cDiaNodeCharacterizedNodeIDTerminalRuleCall_1_1_1_0_1 = (RuleCall)cDiaNodeCharacterizedNodeCrossReference_1_1_1_0.eContents().get(1);
+		private final Assignment cDiaNodeAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final CrossReference cDiaNodeCharacterizedNodeCrossReference_1_1_0 = (CrossReference)cDiaNodeAssignment_1_1.eContents().get(0);
+		private final RuleCall cDiaNodeCharacterizedNodeIDTerminalRuleCall_1_1_0_1 = (RuleCall)cDiaNodeCharacterizedNodeCrossReference_1_1_0.eContents().get(1);
 		
 		//NodeIdentitiySelector:
-		//	'node.name.' name=STRING | 'node.identity.' (assembly=[composition::AssemblyContext] '.'
-		//	component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification] |
-		//	diaNode=[diagram::CharacterizedNode]);
+		//	'node.name.' name=STRING | 'node.identity.' diaNode=[diagram::CharacterizedNode];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'node.name.' name=STRING | 'node.identity.' (assembly=[composition::AssemblyContext] '.'
-		//component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification] |
-		//diaNode=[diagram::CharacterizedNode])
+		//'node.name.' name=STRING | 'node.identity.' diaNode=[diagram::CharacterizedNode]
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'node.name.' name=STRING
@@ -828,64 +766,20 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//STRING
 		public RuleCall getNameSTRINGTerminalRuleCall_0_1_0() { return cNameSTRINGTerminalRuleCall_0_1_0; }
 		
-		//'node.identity.' (assembly=[composition::AssemblyContext] '.'
-		//component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification] |
-		//diaNode=[diagram::CharacterizedNode])
+		//'node.identity.' diaNode=[diagram::CharacterizedNode]
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'node.identity.'
 		public Keyword getNodeIdentityKeyword_1_0() { return cNodeIdentityKeyword_1_0; }
 		
-		//(assembly=[composition::AssemblyContext] '.'
-		//component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification] |
-		//diaNode=[diagram::CharacterizedNode])
-		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
-		
-		//assembly=[composition::AssemblyContext] '.'
-		//component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification]
-		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
-		
-		//assembly=[composition::AssemblyContext]
-		public Assignment getAssemblyAssignment_1_1_0_0() { return cAssemblyAssignment_1_1_0_0; }
-		
-		//[composition::AssemblyContext]
-		public CrossReference getAssemblyAssemblyContextCrossReference_1_1_0_0_0() { return cAssemblyAssemblyContextCrossReference_1_1_0_0_0; }
-		
-		//ID
-		public RuleCall getAssemblyAssemblyContextIDTerminalRuleCall_1_1_0_0_0_1() { return cAssemblyAssemblyContextIDTerminalRuleCall_1_1_0_0_0_1; }
-		
-		//'.'
-		public Keyword getFullStopKeyword_1_1_0_1() { return cFullStopKeyword_1_1_0_1; }
-		
-		//component=[repository::BasicComponent]
-		public Assignment getComponentAssignment_1_1_0_2() { return cComponentAssignment_1_1_0_2; }
-		
-		//[repository::BasicComponent]
-		public CrossReference getComponentBasicComponentCrossReference_1_1_0_2_0() { return cComponentBasicComponentCrossReference_1_1_0_2_0; }
-		
-		//ID
-		public RuleCall getComponentBasicComponentIDTerminalRuleCall_1_1_0_2_0_1() { return cComponentBasicComponentIDTerminalRuleCall_1_1_0_2_0_1; }
-		
-		//'.'
-		public Keyword getFullStopKeyword_1_1_0_3() { return cFullStopKeyword_1_1_0_3; }
-		
-		//seff=[seff::ServiceEffectSpecification]
-		public Assignment getSeffAssignment_1_1_0_4() { return cSeffAssignment_1_1_0_4; }
-		
-		//[seff::ServiceEffectSpecification]
-		public CrossReference getSeffServiceEffectSpecificationCrossReference_1_1_0_4_0() { return cSeffServiceEffectSpecificationCrossReference_1_1_0_4_0; }
-		
-		//ID
-		public RuleCall getSeffServiceEffectSpecificationIDTerminalRuleCall_1_1_0_4_0_1() { return cSeffServiceEffectSpecificationIDTerminalRuleCall_1_1_0_4_0_1; }
-		
 		//diaNode=[diagram::CharacterizedNode]
-		public Assignment getDiaNodeAssignment_1_1_1() { return cDiaNodeAssignment_1_1_1; }
+		public Assignment getDiaNodeAssignment_1_1() { return cDiaNodeAssignment_1_1; }
 		
 		//[diagram::CharacterizedNode]
-		public CrossReference getDiaNodeCharacterizedNodeCrossReference_1_1_1_0() { return cDiaNodeCharacterizedNodeCrossReference_1_1_1_0; }
+		public CrossReference getDiaNodeCharacterizedNodeCrossReference_1_1_0() { return cDiaNodeCharacterizedNodeCrossReference_1_1_0; }
 		
 		//ID
-		public RuleCall getDiaNodeCharacterizedNodeIDTerminalRuleCall_1_1_1_0_1() { return cDiaNodeCharacterizedNodeIDTerminalRuleCall_1_1_1_0_1; }
+		public RuleCall getDiaNodeCharacterizedNodeIDTerminalRuleCall_1_1_0_1() { return cDiaNodeCharacterizedNodeIDTerminalRuleCall_1_1_0_1; }
 	}
 	public class StatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.Statement");
@@ -1551,45 +1445,9 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
 	}
 	
-	public class TargetModelTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.sebinside.dcp.dsl.DSL.TargetModelType");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cOperationModelEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cOperationModelOperationModelKeyword_0_0 = (Keyword)cOperationModelEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cDataCentricPalladioEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cDataCentricPalladioDataCentricPalladioKeyword_1_0 = (Keyword)cDataCentricPalladioEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cExtendedDFDEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cExtendedDFDExtendedDFDKeyword_2_0 = (Keyword)cExtendedDFDEnumLiteralDeclaration_2.eContents().get(0);
-		
-		//enum TargetModelType:
-		//	OperationModel | DataCentricPalladio | ExtendedDFD;
-		public EnumRule getRule() { return rule; }
-		
-		//OperationModel | DataCentricPalladio | ExtendedDFD
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//OperationModel
-		public EnumLiteralDeclaration getOperationModelEnumLiteralDeclaration_0() { return cOperationModelEnumLiteralDeclaration_0; }
-		
-		//"OperationModel"
-		public Keyword getOperationModelOperationModelKeyword_0_0() { return cOperationModelOperationModelKeyword_0_0; }
-		
-		//DataCentricPalladio
-		public EnumLiteralDeclaration getDataCentricPalladioEnumLiteralDeclaration_1() { return cDataCentricPalladioEnumLiteralDeclaration_1; }
-		
-		//"DataCentricPalladio"
-		public Keyword getDataCentricPalladioDataCentricPalladioKeyword_1_0() { return cDataCentricPalladioDataCentricPalladioKeyword_1_0; }
-		
-		//ExtendedDFD
-		public EnumLiteralDeclaration getExtendedDFDEnumLiteralDeclaration_2() { return cExtendedDFDEnumLiteralDeclaration_2; }
-		
-		//"ExtendedDFD"
-		public Keyword getExtendedDFDExtendedDFDKeyword_2_0() { return cExtendedDFDExtendedDFDKeyword_2_0; }
-	}
 	
 	private final ModelElements pModel;
 	private final TargetModelTypeDefElements pTargetModelTypeDef;
-	private final TargetModelTypeElements eTargetModelType;
 	private final AbstractElementElements pAbstractElement;
 	private final CharacteristicTypeElements pCharacteristicType;
 	private final CharacteristicClassElements pCharacteristicClass;
@@ -1644,7 +1502,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pTargetModelTypeDef = new TargetModelTypeDefElements();
-		this.eTargetModelType = new TargetModelTypeElements();
 		this.pAbstractElement = new AbstractElementElements();
 		this.pCharacteristicType = new CharacteristicTypeElements();
 		this.pCharacteristicClass = new CharacteristicClassElements();
@@ -1728,24 +1585,13 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//TargetModelTypeDef:
-	//	'target' type=TargetModelType ('using' typeContainer=[dictionary::DataDictionaryCharacterized] (','
-	//	allocationModel=[allocation::Allocation] ',' usageModel=[usagemodel::UsageModel])?)?;
+	//	'target' type="DFD" 'using' typeContainer=[dictionary::DataDictionaryCharacterized];
 	public TargetModelTypeDefElements getTargetModelTypeDefAccess() {
 		return pTargetModelTypeDef;
 	}
 	
 	public ParserRule getTargetModelTypeDefRule() {
 		return getTargetModelTypeDefAccess().getRule();
-	}
-	
-	//enum TargetModelType:
-	//	OperationModel | DataCentricPalladio | ExtendedDFD;
-	public TargetModelTypeElements getTargetModelTypeAccess() {
-		return eTargetModelType;
-	}
-	
-	public EnumRule getTargetModelTypeRule() {
-		return getTargetModelTypeAccess().getRule();
 	}
 	
 	//AbstractElement:
@@ -1934,9 +1780,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//NodeIdentitiySelector:
-	//	'node.name.' name=STRING | 'node.identity.' (assembly=[composition::AssemblyContext] '.'
-	//	component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification] |
-	//	diaNode=[diagram::CharacterizedNode]);
+	//	'node.name.' name=STRING | 'node.identity.' diaNode=[diagram::CharacterizedNode];
 	public NodeIdentitiySelectorElements getNodeIdentitiySelectorAccess() {
 		return pNodeIdentitiySelector;
 	}

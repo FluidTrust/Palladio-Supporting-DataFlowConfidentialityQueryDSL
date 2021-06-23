@@ -34,8 +34,8 @@ class ResultMapping {
 
 	def Converter getTargetModelCompliantConverter() {
 		switch (model.targetModelType.type) {
-			case OPERATION_MODEL:
-				ConverterFactory.createOperationModelConverter
+//			case OPERATION_MODEL:
+//				ConverterFactory.createOperationModelConverter
 //			case DATA_CENTRIC_PALLADIO:
 //				ConverterFactory.createPalladioConverter(model.targetModelType.usageModel,
 //					model.targetModelType.allocationModel, model.targetModelType.typeContainer)

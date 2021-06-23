@@ -1,4 +1,4 @@
-target ExtendedDFD using DDC_TravelPlanner_AccessControl
+target DFD using DDC_TravelPlanner_AccessControl
 import "DDC_TravelPlanner_AccessControl.xmi"
 
 type accessRoles: Roles

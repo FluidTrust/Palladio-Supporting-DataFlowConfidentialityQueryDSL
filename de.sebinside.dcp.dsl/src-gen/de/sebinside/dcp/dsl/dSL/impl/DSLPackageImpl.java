@@ -44,7 +44,6 @@ import de.sebinside.dcp.dsl.dSL.Statement;
 import de.sebinside.dcp.dsl.dSL.StatementModality;
 import de.sebinside.dcp.dsl.dSL.StatementType;
 import de.sebinside.dcp.dsl.dSL.SubtractOperation;
-import de.sebinside.dcp.dsl.dSL.TargetModelType;
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef;
 import de.sebinside.dcp.dsl.dSL.UnionOperation;
 import de.sebinside.dcp.dsl.dSL.VariableEqualityOperation;
@@ -52,15 +51,8 @@ import de.sebinside.dcp.dsl.dSL.VariableInequalityOperation;
 
 import de.uka.ipd.sdq.identifier.IdentifierPackage;
 
-import de.uka.ipd.sdq.probfunction.ProbfunctionPackage;
-
-import de.uka.ipd.sdq.stoex.StoexPackage;
-
-import de.uka.ipd.sdq.units.UnitsPackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -74,38 +66,6 @@ import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramChara
 import org.palladiosimulator.dataflow.dictionary.DataDictionary.DataDictionaryPackage;
 
 import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterizedPackage;
-
-import org.palladiosimulator.pcm.allocation.AllocationPackage;
-
-import org.palladiosimulator.pcm.core.CorePackage;
-
-import org.palladiosimulator.pcm.core.composition.CompositionPackage;
-
-import org.palladiosimulator.pcm.core.entity.EntityPackage;
-
-import org.palladiosimulator.pcm.parameter.ParameterPackage;
-
-import org.palladiosimulator.pcm.protocol.ProtocolPackage;
-
-import org.palladiosimulator.pcm.qosannotations.QosannotationsPackage;
-
-import org.palladiosimulator.pcm.qosannotations.qos_performance.QosPerformancePackage;
-
-import org.palladiosimulator.pcm.qosannotations.qos_reliability.QosReliabilityPackage;
-
-import org.palladiosimulator.pcm.reliability.ReliabilityPackage;
-
-import org.palladiosimulator.pcm.repository.RepositoryPackage;
-
-import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentPackage;
-
-import org.palladiosimulator.pcm.resourcetype.ResourcetypePackage;
-
-import org.palladiosimulator.pcm.seff.SeffPackage;
-
-import org.palladiosimulator.pcm.system.SystemPackage;
-
-import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -417,13 +377,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
   private EClass logicalNegationOperationEClass = null;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum targetModelTypeEEnum = null;
-
-  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -476,28 +429,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     EcorePackage.eINSTANCE.eClass();
     DataFlowDiagramCharacterizedPackage.eINSTANCE.eClass();
     DataDictionaryCharacterizedPackage.eINSTANCE.eClass();
-    AllocationPackage.eINSTANCE.eClass();
-    CompositionPackage.eINSTANCE.eClass();
-    RepositoryPackage.eINSTANCE.eClass();
-    SeffPackage.eINSTANCE.eClass();
-    UsagemodelPackage.eINSTANCE.eClass();
     DataFlowDiagramPackage.eINSTANCE.eClass();
     IdentifierPackage.eINSTANCE.eClass();
     DataDictionaryPackage.eINSTANCE.eClass();
-    EntityPackage.eINSTANCE.eClass();
-    ResourceenvironmentPackage.eINSTANCE.eClass();
-    SystemPackage.eINSTANCE.eClass();
-    CorePackage.eINSTANCE.eClass();
-    ParameterPackage.eINSTANCE.eClass();
-    ReliabilityPackage.eINSTANCE.eClass();
-    ResourcetypePackage.eINSTANCE.eClass();
-    ProtocolPackage.eINSTANCE.eClass();
-    QosannotationsPackage.eINSTANCE.eClass();
-    StoexPackage.eINSTANCE.eClass();
-    QosPerformancePackage.eINSTANCE.eClass();
-    QosReliabilityPackage.eINSTANCE.eClass();
-    UnitsPackage.eINSTANCE.eClass();
-    ProbfunctionPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theDSLPackage.createPackageContents();
@@ -577,28 +511,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
   public EReference getTargetModelTypeDef_TypeContainer()
   {
     return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getTargetModelTypeDef_AllocationModel()
-  {
-    return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getTargetModelTypeDef_UsageModel()
-  {
-    return (EReference)targetModelTypeDefEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1036,42 +948,9 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   @Override
-  public EReference getNodeIdentitiySelector_Assembly()
-  {
-    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getNodeIdentitiySelector_Component()
-  {
-    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getNodeIdentitiySelector_Seff()
-  {
-    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getNodeIdentitiySelector_DiaNode()
   {
-    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(4);
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1619,17 +1498,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
    * @generated
    */
   @Override
-  public EEnum getTargetModelType()
-  {
-    return targetModelTypeEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public DSLFactory getDSLFactory()
   {
     return (DSLFactory)getEFactoryInstance();
@@ -1662,8 +1530,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     targetModelTypeDefEClass = createEClass(TARGET_MODEL_TYPE_DEF);
     createEAttribute(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__TYPE);
     createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER);
-    createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL);
-    createEReference(targetModelTypeDefEClass, TARGET_MODEL_TYPE_DEF__USAGE_MODEL);
 
     abstractElementEClass = createEClass(ABSTRACT_ELEMENT);
 
@@ -1722,9 +1588,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
     nodeIdentitiySelectorEClass = createEClass(NODE_IDENTITIY_SELECTOR);
     createEAttribute(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__NAME);
-    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__ASSEMBLY);
-    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__COMPONENT);
-    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__SEFF);
     createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__DIA_NODE);
 
     statementEClass = createEClass(STATEMENT);
@@ -1797,9 +1660,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
     logicalNegationOperationEClass = createEClass(LOGICAL_NEGATION_OPERATION);
     createEReference(logicalNegationOperationEClass, LOGICAL_NEGATION_OPERATION__VALUE);
-
-    // Create enums
-    targetModelTypeEEnum = createEEnum(TARGET_MODEL_TYPE);
   }
 
   /**
@@ -1827,13 +1687,8 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
-    DataDictionaryCharacterizedPackage theDataDictionaryCharacterizedPackage = (DataDictionaryCharacterizedPackage)EPackage.Registry.INSTANCE.getEPackage(DataDictionaryCharacterizedPackage.eNS_URI);
-    AllocationPackage theAllocationPackage = (AllocationPackage)EPackage.Registry.INSTANCE.getEPackage(AllocationPackage.eNS_URI);
-    UsagemodelPackage theUsagemodelPackage = (UsagemodelPackage)EPackage.Registry.INSTANCE.getEPackage(UsagemodelPackage.eNS_URI);
     EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-    CompositionPackage theCompositionPackage = (CompositionPackage)EPackage.Registry.INSTANCE.getEPackage(CompositionPackage.eNS_URI);
-    RepositoryPackage theRepositoryPackage = (RepositoryPackage)EPackage.Registry.INSTANCE.getEPackage(RepositoryPackage.eNS_URI);
-    SeffPackage theSeffPackage = (SeffPackage)EPackage.Registry.INSTANCE.getEPackage(SeffPackage.eNS_URI);
+    DataDictionaryCharacterizedPackage theDataDictionaryCharacterizedPackage = (DataDictionaryCharacterizedPackage)EPackage.Registry.INSTANCE.getEPackage(DataDictionaryCharacterizedPackage.eNS_URI);
     DataFlowDiagramCharacterizedPackage theDataFlowDiagramCharacterizedPackage = (DataFlowDiagramCharacterizedPackage)EPackage.Registry.INSTANCE.getEPackage(DataFlowDiagramCharacterizedPackage.eNS_URI);
 
     // Create type parameters
@@ -1879,10 +1734,8 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
     initEReference(getModel_Elements(), this.getAbstractElement(), null, "elements", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(targetModelTypeDefEClass, TargetModelTypeDef.class, "TargetModelTypeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTargetModelTypeDef_Type(), this.getTargetModelType(), "type", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTargetModelTypeDef_Type(), theEcorePackage.getEString(), "type", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTargetModelTypeDef_TypeContainer(), theDataDictionaryCharacterizedPackage.getDataDictionaryCharacterized(), null, "typeContainer", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTargetModelTypeDef_AllocationModel(), theAllocationPackage.getAllocation(), null, "allocationModel", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTargetModelTypeDef_UsageModel(), theUsagemodelPackage.getUsageModel(), null, "usageModel", null, 0, 1, TargetModelTypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(abstractElementEClass, AbstractElement.class, "AbstractElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1941,9 +1794,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
     initEClass(nodeIdentitiySelectorEClass, NodeIdentitiySelector.class, "NodeIdentitiySelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNodeIdentitiySelector_Name(), theEcorePackage.getEString(), "name", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNodeIdentitiySelector_Assembly(), theCompositionPackage.getAssemblyContext(), null, "assembly", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNodeIdentitiySelector_Component(), theRepositoryPackage.getBasicComponent(), null, "component", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNodeIdentitiySelector_Seff(), theSeffPackage.getServiceEffectSpecification(), null, "seff", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNodeIdentitiySelector_DiaNode(), theDataFlowDiagramCharacterizedPackage.getCharacterizedNode(), null, "diaNode", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2016,12 +1866,6 @@ public class DSLPackageImpl extends EPackageImpl implements DSLPackage
 
     initEClass(logicalNegationOperationEClass, LogicalNegationOperation.class, "LogicalNegationOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLogicalNegationOperation_Value(), this.getBooleanOperation(), null, "value", null, 0, 1, LogicalNegationOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    // Initialize enums and add enum literals
-    initEEnum(targetModelTypeEEnum, TargetModelType.class, "TargetModelType");
-    addEEnumLiteral(targetModelTypeEEnum, TargetModelType.OPERATION_MODEL);
-    addEEnumLiteral(targetModelTypeEEnum, TargetModelType.DATA_CENTRIC_PALLADIO);
-    addEEnumLiteral(targetModelTypeEEnum, TargetModelType.EXTENDED_DFD);
 
     // Create resource
     createResource(eNS_URI);

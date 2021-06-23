@@ -23,7 +23,6 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -140,78 +139,35 @@ ruleTargetModelTypeDef returns [EObject current=null]
 		}
 		(
 			(
+				lv_type_1_0='DFD'
 				{
-					newCompositeNode(grammarAccess.getTargetModelTypeDefAccess().getTypeTargetModelTypeEnumRuleCall_1_0());
+					newLeafNode(lv_type_1_0, grammarAccess.getTargetModelTypeDefAccess().getTypeDFDKeyword_1_0());
 				}
-				lv_type_1_0=ruleTargetModelType
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getTargetModelTypeDefRule());
+						$current = createModelElement(grammarAccess.getTargetModelTypeDefRule());
 					}
-					set(
-						$current,
-						"type",
-						lv_type_1_0,
-						"de.sebinside.dcp.dsl.DSL.TargetModelType");
-					afterParserOrEnumRuleCall();
+					setWithLastConsumed($current, "type", lv_type_1_0, "DFD");
 				}
 			)
 		)
+		otherlv_2='using'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getTargetModelTypeDefAccess().getUsingKeyword_2());
+		}
 		(
-			otherlv_2='using'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getTargetModelTypeDefAccess().getUsingKeyword_2_0());
-			}
 			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTargetModelTypeDefRule());
-						}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTargetModelTypeDefRule());
 					}
-					otherlv_3=RULE_ID
-					{
-						newLeafNode(otherlv_3, grammarAccess.getTargetModelTypeDefAccess().getTypeContainerDataDictionaryCharacterizedCrossReference_2_1_0());
-					}
-				)
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getTargetModelTypeDefAccess().getTypeContainerDataDictionaryCharacterizedCrossReference_3_0());
+				}
 			)
-			(
-				otherlv_4=','
-				{
-					newLeafNode(otherlv_4, grammarAccess.getTargetModelTypeDefAccess().getCommaKeyword_2_2_0());
-				}
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getTargetModelTypeDefRule());
-							}
-						}
-						otherlv_5=RULE_ID
-						{
-							newLeafNode(otherlv_5, grammarAccess.getTargetModelTypeDefAccess().getAllocationModelAllocationCrossReference_2_2_1_0());
-						}
-					)
-				)
-				otherlv_6=','
-				{
-					newLeafNode(otherlv_6, grammarAccess.getTargetModelTypeDefAccess().getCommaKeyword_2_2_2());
-				}
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getTargetModelTypeDefRule());
-							}
-						}
-						otherlv_7=RULE_ID
-						{
-							newLeafNode(otherlv_7, grammarAccess.getTargetModelTypeDefAccess().getUsageModelUsageModelCrossReference_2_2_3_0());
-						}
-					)
-				)
-			)?
-		)?
+		)
 	)
 ;
 
@@ -1231,67 +1187,15 @@ ruleNodeIdentitiySelector returns [EObject current=null]
 			}
 			(
 				(
-					(
-						(
-							{
-								if ($current==null) {
-									$current = createModelElement(grammarAccess.getNodeIdentitiySelectorRule());
-								}
-							}
-							otherlv_3=RULE_ID
-							{
-								newLeafNode(otherlv_3, grammarAccess.getNodeIdentitiySelectorAccess().getAssemblyAssemblyContextCrossReference_1_1_0_0_0());
-							}
-						)
-					)
-					otherlv_4='.'
 					{
-						newLeafNode(otherlv_4, grammarAccess.getNodeIdentitiySelectorAccess().getFullStopKeyword_1_1_0_1());
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getNodeIdentitiySelectorRule());
+						}
 					}
-					(
-						(
-							{
-								if ($current==null) {
-									$current = createModelElement(grammarAccess.getNodeIdentitiySelectorRule());
-								}
-							}
-							otherlv_5=RULE_ID
-							{
-								newLeafNode(otherlv_5, grammarAccess.getNodeIdentitiySelectorAccess().getComponentBasicComponentCrossReference_1_1_0_2_0());
-							}
-						)
-					)
-					otherlv_6='.'
+					otherlv_3=RULE_ID
 					{
-						newLeafNode(otherlv_6, grammarAccess.getNodeIdentitiySelectorAccess().getFullStopKeyword_1_1_0_3());
+						newLeafNode(otherlv_3, grammarAccess.getNodeIdentitiySelectorAccess().getDiaNodeCharacterizedNodeCrossReference_1_1_0());
 					}
-					(
-						(
-							{
-								if ($current==null) {
-									$current = createModelElement(grammarAccess.getNodeIdentitiySelectorRule());
-								}
-							}
-							otherlv_7=RULE_ID
-							{
-								newLeafNode(otherlv_7, grammarAccess.getNodeIdentitiySelectorAccess().getSeffServiceEffectSpecificationCrossReference_1_1_0_4_0());
-							}
-						)
-					)
-				)
-				    |
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getNodeIdentitiySelectorRule());
-							}
-						}
-						otherlv_8=RULE_ID
-						{
-							newLeafNode(otherlv_8, grammarAccess.getNodeIdentitiySelectorAccess().getDiaNodeCharacterizedNodeCrossReference_1_1_1_0());
-						}
-					)
 				)
 			)
 		)
@@ -2405,41 +2309,6 @@ ruleCreateSetOperation returns [EObject current=null]
 		{
 			newLeafNode(otherlv_2, grammarAccess.getCreateSetOperationAccess().getRightCurlyBracketKeyword_2());
 		}
-	)
-;
-
-// Rule TargetModelType
-ruleTargetModelType returns [Enumerator current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			enumLiteral_0='OperationModel'
-			{
-				$current = grammarAccess.getTargetModelTypeAccess().getOperationModelEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getTargetModelTypeAccess().getOperationModelEnumLiteralDeclaration_0());
-			}
-		)
-		    |
-		(
-			enumLiteral_1='DataCentricPalladio'
-			{
-				$current = grammarAccess.getTargetModelTypeAccess().getDataCentricPalladioEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getTargetModelTypeAccess().getDataCentricPalladioEnumLiteralDeclaration_1());
-			}
-		)
-		    |
-		(
-			enumLiteral_2='ExtendedDFD'
-			{
-				$current = grammarAccess.getTargetModelTypeAccess().getExtendedDFDEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getTargetModelTypeAccess().getExtendedDFDEnumLiteralDeclaration_2());
-			}
-		)
 	)
 ;
 

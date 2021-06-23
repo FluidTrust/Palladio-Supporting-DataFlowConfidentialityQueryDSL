@@ -22,8 +22,6 @@ import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCha
 import org.palladiosimulator.pcm.usagemodel.UsageModel
 import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage
 import org.palladiosimulator.pcm.repository.RepositoryPackage
-import org.palladiosimulator.dataflow.confidentiality.pcm.model.confidentiality.characteristics.CharacteristicsPackage
-import org.palladiosimulator.dataflow.confidentiality.pcm.model.confidentiality.characteristics.CharacteristicTypeDictionary
 import org.palladiosimulator.pcm.repository.Repository
 
 class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStrategy {
@@ -57,10 +55,10 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 			return true
 		}
 		
-		if (eObject.eClass === CharacteristicsPackage.eINSTANCE.characteristicTypeDictionary) {
-			createEObjectDescriptionForPCMCharacteristicTypeContainer(eObject, acceptor)
-			return true
-		}
+//		if (eObject.eClass === CharacteristicsPackage.eINSTANCE.characteristicTypeDictionary) {
+//			createEObjectDescriptionForPCMCharacteristicTypeContainer(eObject, acceptor)
+//			return true
+//		}
 				
 		if(eObject.eClass === RepositoryPackage.eINSTANCE.repository) {
 			createEObjectDescriptionForRepository(eObject, acceptor)
@@ -81,13 +79,13 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 			EObjectDescription.create(QualifiedName.create(getEResourceFileName(repository.eResource)), repository))
 	}
 	
-	protected def createEObjectDescriptionForPCMCharacteristicTypeContainer(EObject eObject,
-		IAcceptor<IEObjectDescription> acceptor) {
-		val typeContainer = eObject as CharacteristicTypeDictionary
-		acceptor.accept(
-			EObjectDescription.create(QualifiedName.create(getEResourceFileName(typeContainer.eResource)),
-				typeContainer));
-	}
+//	protected def createEObjectDescriptionForPCMCharacteristicTypeContainer(EObject eObject,
+//		IAcceptor<IEObjectDescription> acceptor) {
+//		val typeContainer = eObject as CharacteristicTypeDictionary
+//		acceptor.accept(
+//			EObjectDescription.create(QualifiedName.create(getEResourceFileName(typeContainer.eResource)),
+//				typeContainer));
+//	}
 
 	protected def createEObjectDescriptionForAssemblyContext(EObject eObject, IAcceptor<IEObjectDescription> acceptor) {
 		val assemblyContext = eObject as AssemblyContext

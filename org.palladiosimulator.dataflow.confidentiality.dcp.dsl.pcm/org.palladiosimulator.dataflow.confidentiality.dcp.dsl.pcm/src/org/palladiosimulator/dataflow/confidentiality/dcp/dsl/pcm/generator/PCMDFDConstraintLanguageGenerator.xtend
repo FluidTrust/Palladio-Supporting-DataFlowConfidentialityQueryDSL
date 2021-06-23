@@ -4,33 +4,49 @@
 package org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.generator
 
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
+import org.palladiosimulator.dataflow.confidentiality.pcm.workflow.TransitiveTransformationTrace
+import de.sebinside.dcp.dsl.generator.DSLGenerator
+import de.sebinside.dcp.dsl.dSL.Rule
+import de.sebinside.dcp.dsl.generator.crossplatform.Converter
+import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.converter.PCMDFDConverter
 
 /**
  * Generates code from your model files on save.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
-class PCMDFDConstraintLanguageGenerator extends AbstractGenerator {
+class PCMDFDConstraintLanguageGenerator extends DSLGenerator {
+	
+	private String targetModelType = "PCMDFD"
+	private TransitiveTransformationTrace transitiveTransformationTrace = null
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 
 	}
+
+	override compile(TargetModelTypeDef typeDefs) {
+		// There is only one or none target model type definition
+		this.targetModelType = typeDefs.type
+		
+		switch this.targetModelType {
+			case "PCMDFD": { 
+				if(transitiveTransformationTrace === null) {
+						throw new Exception("No valid trace for DFD!")
+				}
+				this.converter = new PCMDFDConverter(transitiveTransformationTrace)}
+			case "DFD": super.compile(typeDefs)
+			default: throw new Exception("No valid type definition given!")
+		}
+	}
 	
-//	def generateFromModel(Model model) {
-//		val program = PrologFactory.eINSTANCE.createProgram
-//		model.targetModelType.compile
-//		
-//		for (charClass : model.elements.filter(CharacteristicClass)) {
-//			program.clauses.addAll(charClass.compile)
-//		}
-//		
-//		for (constraint : model.elements.filter(Constraint)) {
-//			program.clauses.addAll(constraint.compile)
-//		}
-//		
-//		program
-//	}
+	override generateRule(Rule mainRule, String constraintName, Converter converter) {
+		
+	}
+	
+	def setTransitiveTransformationTrace(TransitiveTransformationTrace trace) {
+		this.transitiveTransformationTrace = trace
+	}
 }

@@ -7,28 +7,30 @@ import "http://www.sebinside.de/dcp/dsl/DSL" as base
 
 import "platform:/resource/org.palladiosimulator.dataflow.confidentiality.pcm.model/model/dataFlowConfidentiality.ecore#//characteristics" as pcmDictionary
 import "platform:/resource/org.palladiosimulator.dataflow.confidentiality.pcm.model/model/dataFlowConfidentiality.ecore#//repository" as pcmConfRepository
-//import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//allocation" as allocation
-//import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel" as usagemodel
-//import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//core/composition" as composition
-//import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//core/entity" as entity
-//import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//repository" as repository
-//import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//seff" as seff
+
+import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//allocation" as allocation
+import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel" as usagemodel
+import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//core/composition" as composition
+import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//core/entity" as entity
+import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//repository" as repository
+import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//seff" as seff
 
 
 @Override
-Model:
-	(targetModelType=TargetModelTypeDef | pcmTargetModelType=PCMTargetModelTypeDef)?
+Model: //necessary
+	(targetModelType=TargetModelTypeDef)?
 	(elements+=AbstractElement)*;
 	
-PCMTargetModelTypeDef:
-	'target' type=TargetModelType 
-	//'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary] 
-//		',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
-;
-
 @Override
-enum TargetModelType returns base::TargetModelType:
-	PCMDFD | ExtendedDFD;
+TargetModelTypeDef:
+	'target' type="PCMDFD" 'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary] 
+		',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
+;
+//	
+//PCMTargetModelTypeDef:
+//	'target' type="PCMDFD" 'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary] 
+//		',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
+//;
 
 @Override	
 DestinationSelector returns base::DestinationSelector:
@@ -44,9 +46,10 @@ PropertyClassSelector:
 
 ComponentIdentitySelector:
 	'component.name.' name=STRING 
-//	| 'component.identity.' (
-//		'Action.' action=[seff::AbstractAction] |
-//		'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature] |
-//		'UserAction.' userAction=[usagemodel::EntryLevelSystemCall] |
-//		'Store.' assembly=[composition::AssemblyContext] '.' store=[pcmConfRepository::OperationalDataStoreComponent])
+	| 
+	'component.identity.' (
+		'Action.' action=[seff::AbstractAction] |
+		'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature] |
+		'UserAction.' userAction=[usagemodel::EntryLevelSystemCall] |
+		'Store.' assembly=[composition::AssemblyContext] '.' store=[pcmConfRepository::OperationalDataStoreComponent])
 	;

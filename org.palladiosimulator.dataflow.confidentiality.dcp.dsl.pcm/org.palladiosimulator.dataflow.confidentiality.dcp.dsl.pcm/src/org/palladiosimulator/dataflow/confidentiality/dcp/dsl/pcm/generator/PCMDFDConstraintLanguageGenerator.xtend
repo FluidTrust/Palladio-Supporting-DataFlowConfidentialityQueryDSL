@@ -20,7 +20,6 @@ import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.converter.PCMD
  */
 class PCMDFDConstraintLanguageGenerator extends DSLGenerator {
 	
-	private String targetModelType = "PCMDFD"
 	private TransitiveTransformationTrace transitiveTransformationTrace = null
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {

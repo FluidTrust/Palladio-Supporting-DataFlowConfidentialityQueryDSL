@@ -6,7 +6,6 @@ import de.sebinside.dcp.dsl.dSL.Constraint
 import de.sebinside.dcp.dsl.dSL.Model
 import de.sebinside.dcp.dsl.generator.GlobalConstants
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
-import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.List

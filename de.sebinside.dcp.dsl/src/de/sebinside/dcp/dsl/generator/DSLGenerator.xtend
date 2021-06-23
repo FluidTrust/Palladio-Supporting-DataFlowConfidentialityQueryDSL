@@ -32,8 +32,8 @@ class DSLGenerator extends AbstractGenerator {
 	static final String PROLOG_EXTENSION = ".pl"
 
 	// Setting the default value
-	Converter converter = null
-	String targetModelType = "DFD"
+	protected Converter converter = null
+	protected String targetModelType = "DFD"
 	
 	DFD2PrologTransformationTrace extendedDFDConverterTrace = null
 

@@ -34,5 +34,8 @@ Export-Package: org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm,
  org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.scoping,
  org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.services,
  org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.validation,
- org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.serializer
+ org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.serializer,
+ org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl,
+ org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage,
+ org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.util
 Import-Package: org.apache.log4j

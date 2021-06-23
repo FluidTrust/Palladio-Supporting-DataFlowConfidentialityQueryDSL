@@ -5,6 +5,7 @@ import org.eclipse.xtext.xtext.generator.model.project.*
 
 var rootPath = ".."
 
+
 Workflow {
 	
 	bean = org.eclipse.emf.mwe.utils.StandaloneSetup {
@@ -26,6 +27,30 @@ Workflow {
 		uriMap = {
 			from = "platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore"
 			to = "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore"
+		}
+		uriMap = {
+			from = "platform:/plugin/de.uka.ipd.sdq.probfunction/model/ProbabilityFunction.genmodel"
+			to = "platform:/resource/de.uka.ipd.sdq.probfunction/model/ProbabilityFunction.genmodel"
+		}
+		uriMap = {
+			from = "platform:/plugin/de.uka.ipd.sdq.probfunction/model/ProbabilityFunction.ecore"
+			to = "platform:/resource/de.uka.ipd.sdq.probfunction/model/ProbabilityFunction.ecore"
+		}
+		uriMap = {
+			from = "platform:/plugin/de.uka.ipd.sdq.stoex/model/stoex.genmodel"
+			to = "platform:/resource/de.uka.ipd.sdq.stoex/model/stoex.genmodel"
+		}
+		uriMap = {
+			from = "platform:/plugin/de.uka.ipd.sdq.stoex/model/stoex.ecore"
+			to = "platform:/resource/de.uka.ipd.sdq.stoex/model/stoex.ecore"
+		}
+		uriMap = {
+			from = "platform:/plugin/de.uka.ipd.sdq.units/model/Units.genmodel"
+			to = "platform:/resource/de.uka.ipd.sdq.units/model/Units.genmodel"
+		}
+		uriMap = {
+			from = "platform:/plugin/de.uka.ipd.sdq.units/model/Units.ecore"
+			to = "platform:/resource/de.uka.ipd.sdq.units/model/Units.ecore"
 		}
 		
 		uriMap = {
@@ -69,8 +94,11 @@ Workflow {
 		
 		registerGenModelFile = "platform:/resource/de.uka.ipd.sdq.identifier/model/identifier.genmodel"
 		registerGenModelFile = "platform:/resource/org.palladiosimulator.pcm/model/pcm.genmodel"
-		registerGenModelFile = "platform:/resource/de.sebinside.dcp.dsl/model/generated/DSL.genmodel"
+		registerGenModelFile = "platform:/resource/de.uka.ipd.sdq.probfunction/model/ProbabilityFunction.genmodel"
+		registerGenModelFile = "platform:/resource/de.uka.ipd.sdq.stoex/model/stoex.genmodel"
+		registerGenModelFile = "platform:/resource/de.uka.ipd.sdq.units/model/Units.genmodel"
 		registerGenModelFile = "platform:/resource/org.palladiosimulator.dataflow.confidentiality.pcm.model/model/dataFlowConfidentiality.genmodel"
+		registerGenModelFile = "platform:/resource/de.sebinside.dcp.dsl/model/generated/DSL.genmodel"
 	}
 	
 	component = XtextGenerator {

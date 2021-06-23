@@ -1,4 +1,4 @@
-target ExtendedDFD using DDC_FriendMap
+target DFD using DDC_FriendMap
 import "DDC_FriendMap.xmi"
 
 type ZONE:ZoneMembership

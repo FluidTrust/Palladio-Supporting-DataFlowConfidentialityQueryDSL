@@ -8,13 +8,11 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
-import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.dataflow.confidentiality.pcm.model.confidentiality.repository.OperationalDataStoreComponent;
 import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.CharacteristicType;
 import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.Literal;
 import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType;
@@ -22,8 +20,6 @@ import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCha
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
-
-import com.ibm.icu.impl.duration.impl.Utils;
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
@@ -39,6 +35,7 @@ import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector;
 public class DSLScopeProvider extends AbstractDSLScopeProvider {
 	@Override
 	public IScope getScope(EObject context, EReference reference) {
+		
 
 		if (context instanceof CharacteristicTypeSelector
 				&& reference == DSLPackage.Literals.CHARACTERISTIC_TYPE_SELECTOR__LITERALS) {
@@ -63,37 +60,54 @@ public class DSLScopeProvider extends AbstractDSLScopeProvider {
 			return super.getScope(context, reference);
 		}
 
-		if (context instanceof NodeIdentitiySelector
-				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__COMPONENT) {
-
-			AssemblyContext assemblyContext = ((NodeIdentitiySelector) context).getAssembly();
-			RepositoryComponent repositoryComponent = assemblyContext.getEncapsulatedComponent__AssemblyContext();
-
-			// Assumption: The DSL is intended to only work with BasicComponents
-			if (repositoryComponent instanceof BasicComponent) {
-				BasicComponent component = (BasicComponent) repositoryComponent;
-				List<BasicComponent> componentList = new ArrayList<BasicComponent>();
-				componentList.add(component);
-
-				return Scopes.scopeFor(componentList, c -> QualifiedName.create(c.getEntityName()), IScope.NULLSCOPE);
-			}
-			return super.getScope(context, reference);
-		}
-
-		if (context instanceof NodeIdentitiySelector
-				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__SEFF) {
-
-			BasicComponent component = ((NodeIdentitiySelector) context).getComponent();
-
-			// This is the case if the component is invalid referenced
-			if (component != null) {
-				List<ServiceEffectSpecification> seffs = component.getServiceEffectSpecifications__BasicComponent();
-
-				return Scopes.scopeFor(seffs,
-						seff -> QualifiedName.create(seff.getDescribedService__SEFF().getEntityName()),
-						IScope.NULLSCOPE);
-			}
-		}
+//		if (context instanceof NodeIdentitiySelector
+//				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__COMPONENT) {
+//
+//			AssemblyContext assemblyContext = ((NodeIdentitiySelector) context).getAssembly();
+//			RepositoryComponent repositoryComponent = assemblyContext.getEncapsulatedComponent__AssemblyContext();
+//			
+//			// Assumption: The DSL is intended to only work with BasicComponents
+//			if (repositoryComponent instanceof BasicComponent) {
+//				BasicComponent component = (BasicComponent) repositoryComponent;
+//				List<BasicComponent> componentList = new ArrayList<BasicComponent>();
+//				componentList.add(component);
+//
+//				return Scopes.scopeFor(componentList, c -> QualifiedName.create(c.getEntityName()), IScope.NULLSCOPE);
+//			}
+//			return super.getScope(context, reference);
+//		}
+		
+//		if (context instanceof NodeIdentitiySelector
+//				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__STORE) {
+//
+//			AssemblyContext assemblyContext = ((NodeIdentitiySelector) context).getAssembly();
+//			RepositoryComponent repositoryComponent = assemblyContext.getEncapsulatedComponent__AssemblyContext();
+//			
+//			// Assumption: The DSL is intended to only work with BasicComponents
+//			if (repositoryComponent instanceof OperationalDataStoreComponent) {
+//				OperationalDataStoreComponent component = (OperationalDataStoreComponent) repositoryComponent;
+//				List<OperationalDataStoreComponent> componentList = new ArrayList<OperationalDataStoreComponent>();
+//				componentList.add(component);
+//
+//				return Scopes.scopeFor(componentList, c -> QualifiedName.create(c.getEntityName()), IScope.NULLSCOPE);
+//			}
+//			return super.getScope(context, reference);
+//		}
+		
+//		if (context instanceof NodeIdentitiySelector
+//				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__SIGNATURE) {
+//
+//			BasicComponent component = ((NodeIdentitiySelector) context).getComponent();
+//
+//			// This is the case if the component is invalid referenced
+//			if (component != null) {
+//				List<ServiceEffectSpecification> seffs = component.getServiceEffectSpecifications__BasicComponent();
+//
+//				return Scopes.scopeFor(seffs,
+//						seff -> QualifiedName.create(seff.getDescribedService__SEFF().getEntityName()),
+//						IScope.NULLSCOPE);
+//			}
+//		}
 
 		return super.getScope(context, reference);
 	}

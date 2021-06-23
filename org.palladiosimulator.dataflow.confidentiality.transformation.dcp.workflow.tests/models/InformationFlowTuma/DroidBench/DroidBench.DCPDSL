@@ -1,4 +1,4 @@
-target ExtendedDFD using DDC_DroidBench
+target DFD using DDC_DroidBench
 import "DDC_DroidBench.xmi"
 
 type ZONE:ZoneMembership

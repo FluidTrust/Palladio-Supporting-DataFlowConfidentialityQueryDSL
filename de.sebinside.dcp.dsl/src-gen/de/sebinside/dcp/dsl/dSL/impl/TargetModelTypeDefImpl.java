@@ -4,7 +4,6 @@
 package de.sebinside.dcp.dsl.dSL.impl;
 
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
-import de.sebinside.dcp.dsl.dSL.TargetModelType;
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -18,10 +17,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterized;
 
-import org.palladiosimulator.pcm.allocation.Allocation;
-
-import org.palladiosimulator.pcm.usagemodel.UsageModel;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Target Model Type Def</b></em>'.
@@ -32,8 +27,6 @@ import org.palladiosimulator.pcm.usagemodel.UsageModel;
  * <ul>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl#getTypeContainer <em>Type Container</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl#getAllocationModel <em>Allocation Model</em>}</li>
- *   <li>{@link de.sebinside.dcp.dsl.dSL.impl.TargetModelTypeDefImpl#getUsageModel <em>Usage Model</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,7 +41,7 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected static final TargetModelType TYPE_EDEFAULT = TargetModelType.OPERATION_MODEL;
+  protected static final String TYPE_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -58,7 +51,7 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected TargetModelType type = TYPE_EDEFAULT;
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getTypeContainer() <em>Type Container</em>}' reference.
@@ -69,26 +62,6 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
    * @ordered
    */
   protected DataDictionaryCharacterized typeContainer;
-
-  /**
-   * The cached value of the '{@link #getAllocationModel() <em>Allocation Model</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAllocationModel()
-   * @generated
-   * @ordered
-   */
-  protected Allocation allocationModel;
-
-  /**
-   * The cached value of the '{@link #getUsageModel() <em>Usage Model</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getUsageModel()
-   * @generated
-   * @ordered
-   */
-  protected UsageModel usageModel;
 
   /**
    * <!-- begin-user-doc -->
@@ -117,7 +90,7 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    */
   @Override
-  public TargetModelType getType()
+  public String getType()
   {
     return type;
   }
@@ -128,10 +101,10 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    */
   @Override
-  public void setType(TargetModelType newType)
+  public void setType(String newType)
   {
-    TargetModelType oldType = type;
-    type = newType == null ? TYPE_EDEFAULT : newType;
+    String oldType = type;
+    type = newType;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE, oldType, type));
   }
@@ -187,96 +160,6 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    */
   @Override
-  public Allocation getAllocationModel()
-  {
-    if (allocationModel != null && ((EObject)allocationModel).eIsProxy())
-    {
-      InternalEObject oldAllocationModel = (InternalEObject)allocationModel;
-      allocationModel = (Allocation)eResolveProxy(oldAllocationModel);
-      if (allocationModel != oldAllocationModel)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL, oldAllocationModel, allocationModel));
-      }
-    }
-    return allocationModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Allocation basicGetAllocationModel()
-  {
-    return allocationModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setAllocationModel(Allocation newAllocationModel)
-  {
-    Allocation oldAllocationModel = allocationModel;
-    allocationModel = newAllocationModel;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL, oldAllocationModel, allocationModel));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public UsageModel getUsageModel()
-  {
-    if (usageModel != null && ((EObject)usageModel).eIsProxy())
-    {
-      InternalEObject oldUsageModel = (InternalEObject)usageModel;
-      usageModel = (UsageModel)eResolveProxy(oldUsageModel);
-      if (usageModel != oldUsageModel)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_MODEL, oldUsageModel, usageModel));
-      }
-    }
-    return usageModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public UsageModel basicGetUsageModel()
-  {
-    return usageModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setUsageModel(UsageModel newUsageModel)
-  {
-    UsageModel oldUsageModel = usageModel;
-    usageModel = newUsageModel;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_MODEL, oldUsageModel, usageModel));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -286,12 +169,6 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
       case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
         if (resolve) return getTypeContainer();
         return basicGetTypeContainer();
-      case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
-        if (resolve) return getAllocationModel();
-        return basicGetAllocationModel();
-      case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_MODEL:
-        if (resolve) return getUsageModel();
-        return basicGetUsageModel();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -307,16 +184,10 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
     switch (featureID)
     {
       case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
-        setType((TargetModelType)newValue);
+        setType((String)newValue);
         return;
       case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
         setTypeContainer((DataDictionaryCharacterized)newValue);
-        return;
-      case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
-        setAllocationModel((Allocation)newValue);
-        return;
-      case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_MODEL:
-        setUsageModel((UsageModel)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -338,12 +209,6 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
       case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
         setTypeContainer((DataDictionaryCharacterized)null);
         return;
-      case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
-        setAllocationModel((Allocation)null);
-        return;
-      case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_MODEL:
-        setUsageModel((UsageModel)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -359,13 +224,9 @@ public class TargetModelTypeDefImpl extends MinimalEObjectImpl.Container impleme
     switch (featureID)
     {
       case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE:
-        return type != TYPE_EDEFAULT;
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case DSLPackage.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER:
         return typeContainer != null;
-      case DSLPackage.TARGET_MODEL_TYPE_DEF__ALLOCATION_MODEL:
-        return allocationModel != null;
-      case DSLPackage.TARGET_MODEL_TYPE_DEF__USAGE_MODEL:
-        return usageModel != null;
     }
     return super.eIsSet(featureID);
   }

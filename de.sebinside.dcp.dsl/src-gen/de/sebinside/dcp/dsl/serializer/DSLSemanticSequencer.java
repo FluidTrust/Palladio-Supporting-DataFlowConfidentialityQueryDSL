@@ -602,7 +602,7 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     NodeIdentitiySelector returns NodeIdentitiySelector
 	 *
 	 * Constraint:
-	 *     (name=STRING | (assembly=[AssemblyContext|ID] component=[BasicComponent|ID] seff=[ServiceEffectSpecification|ID]) | diaNode=[CharacterizedNode|ID])
+	 *     (name=STRING | diaNode=[CharacterizedNode|ID])
 	 */
 	protected void sequence_NodeIdentitiySelector(ISerializationContext context, NodeIdentitiySelector semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -753,10 +753,19 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TargetModelTypeDef returns TargetModelTypeDef
 	 *
 	 * Constraint:
-	 *     (type=TargetModelType (typeContainer=[DataDictionaryCharacterized|ID] (allocationModel=[Allocation|ID] usageModel=[UsageModel|ID])?)?)
+	 *     (type='DFD' typeContainer=[DataDictionaryCharacterized|ID])
 	 */
 	protected void sequence_TargetModelTypeDef(ISerializationContext context, TargetModelTypeDef semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE));
+			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTargetModelTypeDefAccess().getTypeDFDKeyword_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getTargetModelTypeDefAccess().getTypeContainerDataDictionaryCharacterizedIDTerminalRuleCall_3_0_1(), semanticObject.eGet(DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE_CONTAINER, false));
+		feeder.finish();
 	}
 	
 	

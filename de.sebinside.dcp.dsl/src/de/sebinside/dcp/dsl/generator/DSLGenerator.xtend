@@ -5,7 +5,6 @@ package de.sebinside.dcp.dsl.generator
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.Constraint
-import de.sebinside.dcp.dsl.dSL.TargetModelType
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 //import de.sebinside.dcp.dsl.generator.crossplatform.PalladioConverter
@@ -17,15 +16,14 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.palladiosimulator.supporting.prolog.model.prolog.Clause
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
-import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 
 import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
-import de.sebinside.dcp.dsl.generator.crossplatform.ConverterFactory
 import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.DFD2PrologTransformationTrace
 import de.sebinside.dcp.dsl.dSL.Model
 import de.sebinside.dcp.dsl.generator.queryrule.InputPinQueryRule
-import de.sebinside.dcp.dsl.generator.queryrule.OutputPinQueryRule
+import de.sebinside.dcp.dsl.dSL.Rule
+import de.sebinside.dcp.dsl.generator.crossplatform.DFDConverter
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -34,8 +32,8 @@ class DSLGenerator extends AbstractGenerator {
 	static final String PROLOG_EXTENSION = ".pl"
 
 	// Setting the default value
-	Converter converter = ConverterFactory.createOperationModelConverter
-	TargetModelType targetModelType = TargetModelType.EXTENDED_DFD
+	Converter converter = null
+	String targetModelType = "DFD"
 	
 	DFD2PrologTransformationTrace extendedDFDConverterTrace = null
 
@@ -83,31 +81,18 @@ class DSLGenerator extends AbstractGenerator {
 		program
 	}
 	
-	def setExtendedDFDConvertrerTrace(DFD2PrologTransformationTrace trace) {
+	def setDFD2PrologTrace(DFD2PrologTransformationTrace trace) {
 		this.extendedDFDConverterTrace = trace;
 	}
 
 	def compile(TargetModelTypeDef typeDefs) {
 		// There is only one or none target model type definition
 		this.targetModelType = typeDefs.type
-
-		switch (typeDefs.type) {
-			case DATA_CENTRIC_PALLADIO: {
-//				if (typeDefs.usageModel === null || typeDefs.allocationModel === null ||
-//					typeDefs.typeContainer === null) {
-//					this.converter = ConverterFactory.createPalladioConverter
-//				} else {
-//					this.converter = ConverterFactory.createPalladioConverter(typeDefs.usageModel,
-//						typeDefs.allocationModel, typeDefs.typeContainer)
-//				}
-				throw new Exception("Palladio currently not supported!")
+		if (targetModelType.equals("DFD")) {
+			if(extendedDFDConverterTrace === null) {
+					throw new Exception("No valid trace for DFD!")
 			}
-			case EXTENDED_DFD: {
-				this.converter = ConverterFactory.createExtendedDFDConverter(extendedDFDConverterTrace)
-			}
-			case OPERATION_MODEL: {
-				this.converter = ConverterFactory.createOperationModelConverter
-			}
+				this.converter = new DFDConverter(extendedDFDConverterTrace)
 		}
 	}
 
@@ -185,14 +170,13 @@ class DSLGenerator extends AbstractGenerator {
 			throw new Exception("Unable to generate. Unsupported modality or statement type.")
 		} else {
 
-			var rules = new ArrayList<Rule>()
+			var rules = new ArrayList<org.palladiosimulator.supporting.prolog.model.prolog.Rule>()
 			// FIXME: The combination of this rules is not everytime clear in previously modeled use cases
-			rules.add(new InputPinQueryRule(mainRule, constraintName, converter).generate())
-
+			rules.add(generateRule(mainRule, constraintName, this.converter))
 			// Only the operation model works with all kinds of rules, Palladio only requires preCallStates
-			if (this.targetModelType == TargetModelType.OPERATION_MODEL) {
-				rules.add(new OutputPinQueryRule(mainRule, constraintName, converter).generate())
-			}
+//			if (this.targetModelType == TargetModelType.OPERATION_MODEL) {
+//				rules.add(new OutputPinQueryRule(mainRule, constraintName, converter).generate())
+//			}
 
 			// Combine rules
 			constraintRule.body = expressionsToLogicalOr(rules.map[rule|ruleToRuleCall(rule)])
@@ -209,6 +193,11 @@ class DSLGenerator extends AbstractGenerator {
 			clauses.addAll(rules)
 		}
 		clauses
+	}
+	
+	def generateRule(Rule mainRule, String constraintName, Converter converter) {
+		var inputRule = new InputPinQueryRule(mainRule, constraintName, converter)
+		inputRule.generate()
 	}
 
 }

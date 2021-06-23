@@ -8,22 +8,13 @@ import "platform:/resource/org.palladiosimulator.dataflow.diagram.characterized/
 diagram
 import "platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.ecore" as
 dictionary
-import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//allocation" as allocation
-import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel" as usagemodel
-import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//core/composition" as composition
-import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//repository" as repository
-import "platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//seff" as seff
 
 Model:
 	(targetModelType=TargetModelTypeDef)?
 	(elements+=AbstractElement)*;
 
 TargetModelTypeDef:
-	'target' type=TargetModelType ('using' typeContainer=[dictionary::DataDictionaryCharacterized]
-	(',' allocationModel=[allocation::Allocation] ',' usageModel=[usagemodel::UsageModel])?)?;
-
-enum TargetModelType:
-	OperationModel | DataCentricPalladio | ExtendedDFD;
+	'target' type="DFD" 'using' typeContainer=[dictionary::DataDictionaryCharacterized];
 
 AbstractElement:
 	Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
@@ -91,8 +82,7 @@ PropertyClassSelector:
 	'node.class.' ref=[CharacteristicClass];
 
 NodeIdentitiySelector:
-	'node.name.' name=STRING | 'node.identity.' (assembly=[composition::AssemblyContext] '.'
-	component=[repository::BasicComponent] '.' seff=[seff::ServiceEffectSpecification] | diaNode=[diagram::CharacterizedNode]);
+	'node.name.' name=STRING | 'node.identity.' diaNode=[diagram::CharacterizedNode];
 
 Statement:
 	modality=StatementModality type=StatementType;

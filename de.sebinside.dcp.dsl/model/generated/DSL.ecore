@@ -8,45 +8,38 @@
         eType="#//AbstractElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TargetModelTypeDef">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TargetModelType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="typeContainer" eType="ecore:EClass platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.ecore#//DataDictionaryCharacterized"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allocationModel" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//allocation/Allocation"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="usageModel" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel/UsageModel"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="TargetModelType">
-    <eLiterals name="OperationModel" literal="OperationModel"/>
-    <eLiterals name="DataCentricPalladio" value="1" literal="DataCentricPalladio"/>
-    <eLiterals name="ExtendedDFD" value="2" literal="ExtendedDFD"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="CharacteristicType" eSuperTypes="#//AbstractElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="ecore:EClass platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.ecore#//EnumCharacteristicType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CharacteristicClass" eSuperTypes="#//AbstractElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
         eType="#//CharacteristicTypeSelector" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CharacteristicTypeSelector">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CharacteristicType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="negated" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="negated" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="literals" unique="false"
         upperBound="-1" eType="ecore:EClass platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.ecore#//Literal"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isVariableSelector" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isVariableSelector" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//CharacteristicVariableType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CharacteristicVariableType">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CharacteristicVariable" eSuperTypes="#//CharacteristicVariableType"/>
   <eClassifiers xsi:type="ecore:EClass" name="CharacteristicSet" eSuperTypes="#//CharacteristicVariableType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Include" eSuperTypes="#//AbstractElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constraint" eSuperTypes="#//AbstractElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rule" eType="#//Rule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rule">
@@ -73,10 +66,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PropertySelector" eSuperTypes="#//CharacteristicSelector #//DestinationSelector"/>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyClassSelector" eSuperTypes="#//CharacteristicClassSelector #//DestinationSelector"/>
   <eClassifiers xsi:type="ecore:EClass" name="NodeIdentitiySelector" eSuperTypes="#//DestinationSelector">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assembly" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="component" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//repository/BasicComponent"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="seff" eType="ecore:EClass platform:/resource/org.palladiosimulator.pcm/model/pcm.ecore#//seff/ServiceEffectSpecification"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="diaNode" eType="ecore:EClass platform:/resource/org.palladiosimulator.dataflow.diagram.characterized/model/DataFlowDiagramCharacterized.ecore#//CharacterizedNode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement">
@@ -86,10 +76,10 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StatementType">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StatementModality">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="#//BooleanOperation"

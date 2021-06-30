@@ -138,8 +138,6 @@ abstract class QueryRule {
 	}
 
 	def dispatch generateDestinationSelectorTerm(NodeIdentitiySelector selector) {
-		// node can be actor(selector), store(selector), process(selector)
-		// -> each of the three in disjunction?
 		val unification = Unification(CompoundTerm(node), converter.convert(selector))
 
 		#[unification]

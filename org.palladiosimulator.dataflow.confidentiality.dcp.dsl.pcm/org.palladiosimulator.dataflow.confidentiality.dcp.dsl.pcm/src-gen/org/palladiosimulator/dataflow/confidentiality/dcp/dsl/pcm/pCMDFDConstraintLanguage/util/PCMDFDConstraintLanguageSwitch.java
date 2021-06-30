@@ -98,8 +98,8 @@ public class PCMDFDConstraintLanguageSwitch<T> extends Switch<T>
         PropertySelector propertySelector = (PropertySelector)theEObject;
         T result = casePropertySelector(propertySelector);
         if (result == null) result = caseDSL_PropertySelector(propertySelector);
-        if (result == null) result = caseDestinationSelector(propertySelector);
         if (result == null) result = caseCharacteristicSelector(propertySelector);
+        if (result == null) result = caseDestinationSelector(propertySelector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -108,16 +108,17 @@ public class PCMDFDConstraintLanguageSwitch<T> extends Switch<T>
         PropertyClassSelector propertyClassSelector = (PropertyClassSelector)theEObject;
         T result = casePropertyClassSelector(propertyClassSelector);
         if (result == null) result = caseDSL_PropertyClassSelector(propertyClassSelector);
-        if (result == null) result = caseDestinationSelector(propertyClassSelector);
         if (result == null) result = caseCharacteristicClassSelector(propertyClassSelector);
+        if (result == null) result = caseDestinationSelector(propertyClassSelector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case PCMDFDConstraintLanguagePackage.COMPONENT_IDENTITY_SELECTOR:
+      case PCMDFDConstraintLanguagePackage.NODE_IDENTITIY_SELECTOR:
       {
-        ComponentIdentitySelector componentIdentitySelector = (ComponentIdentitySelector)theEObject;
-        T result = caseComponentIdentitySelector(componentIdentitySelector);
-        if (result == null) result = caseDestinationSelector(componentIdentitySelector);
+        NodeIdentitiySelector nodeIdentitiySelector = (NodeIdentitiySelector)theEObject;
+        T result = caseNodeIdentitiySelector(nodeIdentitiySelector);
+        if (result == null) result = caseDSL_NodeIdentitiySelector(nodeIdentitiySelector);
+        if (result == null) result = caseDestinationSelector(nodeIdentitiySelector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -190,17 +191,17 @@ public class PCMDFDConstraintLanguageSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Component Identity Selector</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Node Identitiy Selector</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Component Identity Selector</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Node Identitiy Selector</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseComponentIdentitySelector(ComponentIdentitySelector object)
+  public T caseNodeIdentitiySelector(NodeIdentitiySelector object)
   {
     return null;
   }
@@ -238,22 +239,6 @@ public class PCMDFDConstraintLanguageSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Destination Selector</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Destination Selector</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDestinationSelector(DestinationSelector object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Characteristic Selector</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -265,6 +250,22 @@ public class PCMDFDConstraintLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCharacteristicSelector(CharacteristicSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Destination Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Destination Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDestinationSelector(DestinationSelector object)
   {
     return null;
   }
@@ -313,6 +314,22 @@ public class PCMDFDConstraintLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDSL_PropertyClassSelector(de.sebinside.dcp.dsl.dSL.PropertyClassSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Node Identitiy Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Node Identitiy Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDSL_NodeIdentitiySelector(de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector object)
   {
     return null;
   }

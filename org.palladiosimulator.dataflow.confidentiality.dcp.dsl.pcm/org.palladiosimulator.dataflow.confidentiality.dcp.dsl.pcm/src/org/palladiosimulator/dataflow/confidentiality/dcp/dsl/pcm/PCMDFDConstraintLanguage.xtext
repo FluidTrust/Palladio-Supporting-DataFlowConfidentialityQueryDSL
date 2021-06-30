@@ -24,7 +24,7 @@ Model: //necessary
 @Override
 TargetModelTypeDef:
 	'target' type="PCMDFD" 'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary] 
-		',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
+		(',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository])?
 ;
 //	
 //PCMTargetModelTypeDef:
@@ -32,9 +32,9 @@ TargetModelTypeDef:
 //		',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
 //;
 
-@Override	
-DestinationSelector returns base::DestinationSelector:
-	PropertySelector | PropertyClassSelector | ComponentIdentitySelector;
+//@Override	
+//DestinationSelector returns base::DestinationSelector:
+//	PropertySelector | PropertyClassSelector | ComponentIdentitySelector;
 
 @Override
 PropertySelector:
@@ -44,10 +44,12 @@ PropertySelector:
 PropertyClassSelector:
 	'component.class.' ref=[base::CharacteristicClass];
 
-ComponentIdentitySelector:
+@Override
+NodeIdentitiySelector:
 	'component.name.' name=STRING 
 	| 
 	'component.identity.' (
+		'Component.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] |
 		'Action.' action=[seff::AbstractAction] |
 		'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature] |
 		'UserAction.' userAction=[usagemodel::EntryLevelSystemCall] |

@@ -4,7 +4,6 @@ import de.sebinside.dcp.dsl.dSL.Rule
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
-import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import de.sebinside.dcp.dsl.generator.GlobalConstants
 
@@ -19,7 +18,6 @@ class InputPinQueryRule extends QueryRule {
 	}
 	
 	override createPinLocationQuery(Expression node, Expression pin) {
-		CompoundTerm("inputPin", #[node, pin])
+		CompoundTerm(GlobalConstants.QueryTypes.INPUT_PIN.prolog, #[node, pin])
 	}
-	
 }

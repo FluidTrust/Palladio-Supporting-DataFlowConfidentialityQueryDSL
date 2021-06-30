@@ -20,47 +20,25 @@ class DFDConverter implements Converter {
 	}
 	
 	override convert(CharacteristicType characteristicType) {
-		if (trace === null) {
-			val name = characteristicType.ref.name
-			val id = characteristicType.ref.id
-
-			AtomicQuotedString('''EnumCharacteristicType «name» («id»)''')
+		var factId = trace.getFactId(characteristicType.ref)
+		if(factId.isPresent) {
+			AtomicQuotedString('''«factId.get»''')
 		} else {
-			var factId = trace.getFactId(characteristicType.ref)
-			if(factId.isPresent) {
-				AtomicQuotedString('''«factId.get»''')
-			} else {
-				throw new Exception("Unable to resolve CharacteristicType.")
-			}
+			throw new Exception("Unable to resolve CharacteristicType.")
 		}
 	}
 	
 	override convertMember(CharacteristicType characteristicType) {
-		if (trace === null && characteristicType.ref instanceof EnumCharacteristicType) {
-			val enumType = characteristicType.ref as EnumCharacteristicType
-			val name = enumType.type.name
-			val id = enumType.type.id
-
-			AtomicQuotedString('''Enumeration «name» («id»)''')
-		} else {
-			this.convert(characteristicType)
-		}
+		this.convert(characteristicType)
 	}
 	
 	override convert(Literal characteristicLiteral) {
-		if (trace === null) {
-			val content = characteristicLiteral.name
-			val id = characteristicLiteral.id
-
-			AtomicQuotedString('''Literal «content» («id»)''')
+		var factId = trace.getFactId(characteristicLiteral)
+		
+		if(factId.isPresent) {
+			AtomicQuotedString('''«factId.get»''')
 		} else {
-			var factId = trace.getFactId(characteristicLiteral)
-			
-			if(factId.isPresent) {
-				AtomicQuotedString('''«factId.get»''')
-			} else {
-				throw new Exception("Unable to resolve Literal.")
-			}
+			throw new Exception("Unable to resolve Literal.")
 		}
 	}
 	
@@ -69,15 +47,12 @@ class DFDConverter implements Converter {
 	def dispatch String convertCharacterizedNode(CharacterizedNode node) {throw new IllegalArgumentException("Unsupported node type selected!")}
 	
 	override convert(NodeIdentitiySelector selector) {
-		if(this.trace === null) {
-			if(selector.diaNode === null) {
+		if(selector.diaNode === null) {
 			throw new IllegalArgumentException("Target model type and node selector are incompatible.")
-			}
-		
-			AtomicQuotedString(convertCharacterizedNode(selector.diaNode))
-		} else {
-			// hier problem da trace mit behaving noch zusätzlich einen pin benötigt
 		}
+	
+		AtomicQuotedString('''«trace.getFactId(selector.diaNode, null)»''')
+		// hier problem da trace mit behaving noch zusätzlich einen pin benötigt
 	}
 	
 	override createQualifiedName(NodeIdentitiySelector selector) {
@@ -85,53 +60,20 @@ class DFDConverter implements Converter {
 	}
 	
 	override resolveQualifiedName(String id, Boolean fullName) {
-		if(trace === null) {
-			id 
-			// ERROR: This is not technically correct!
+		var dfdId = trace.getDfdId(id)
+		if(dfdId.isPresent) {
+			dfdId.get
 		} else {
-			var dfdId = trace.getDfdId(id)
-			if(dfdId.isPresent) {
-				dfdId.get
-			} else {
-				id
-			}
+			id
 		}
 	}
 	
 	override convertVariable(String id) {
-		if(trace === null) {
-			id 
-			// ERROR: This is not technically correct!
-		} else {
-			throw new UnsupportedOperationException("convert Var error")
-		}
-		
-//		val result = trace.value.resolveVariable(id)
-//
-//		if (result.empty) {
-//			id
-//		} else {
-//			val data = result.get.data
-//
-//			if (data instanceof ParameterBasedData) {
-//				data.parameter.parameterName
-//			} else {
-//				data.entityName
-//			}
-//		}
-
+		throw new UnsupportedOperationException("convert Var error")
 	}
 	
 	override convertCharacteristicLiteral(String id) {
-		if(trace === null) {
-			id 
-			// ERROR: This is not technically correct!
-			// Calling this method without a trace will yield an incorrect result!
-			// Qualified names in the DFD look like "name (id)" 
-			// trace already contains the names correctly
-		} else {
-			throw new UnsupportedOperationException("convert CharacteristicLiteral error")
-		}
+		throw new UnsupportedOperationException("convert CharacteristicLiteral error")
 //		val result = trace.value.resolveIdentifier(id)
 //
 //		if (result.empty) {
@@ -146,14 +88,8 @@ class DFDConverter implements Converter {
 	}
 	
 	override qualifiedNameResolvable(String id) {
-		if(trace === null) {
-			false 
-			// ERROR: This is not technically correct!
-			// Calling this method without a trace will yield an incorrect result!
-		} else {
 //		trace.value.resolveSeffInstance(id).present || trace.value.resolveDataOperationInstance(id).present
-			throw new UnsupportedOperationException("qualifiedNameResolvable error")		
-		}
+		throw new UnsupportedOperationException("qualifiedNameResolvable error")		
 	}
 	
 }

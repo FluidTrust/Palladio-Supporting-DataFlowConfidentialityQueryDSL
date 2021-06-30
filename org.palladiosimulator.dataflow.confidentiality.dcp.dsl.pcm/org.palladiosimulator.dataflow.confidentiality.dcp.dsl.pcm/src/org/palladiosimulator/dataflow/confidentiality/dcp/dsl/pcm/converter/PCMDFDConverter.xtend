@@ -2,97 +2,50 @@ package org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.converter
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicType
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
-import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import org.palladiosimulator.dataflow.confidentiality.pcm.workflow.TransitiveTransformationTrace
 import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.Literal
 
-//import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
+import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
+import de.sebinside.dcp.dsl.generator.crossplatform.DFDConverter
 
-class PCMDFDConverter implements Converter {
+class PCMDFDConverter extends DFDConverter {
 	
 	val TransitiveTransformationTrace trace
 
 	new(TransitiveTransformationTrace trace) {
+		super(null)
 		this.trace = trace
 	}
 
 	override convert(CharacteristicType characteristicType) {
-		throw new Exception("Unable to resolve CharacteristicType id.")
-//		if (trace.value === null) {
-//			val name = characteristicType.ref.name
-//			val id = characteristicType.ref.id
-//
-//			AtomicQuotedString('''EnumCharacteristicType name (id)''')
-//		} else {
-//			val computedValue = trace.value.resolveId(characteristicType.ref)
-//
-//			if (computedValue.present) {
-//				AtomicQuotedString(computedValue.get)
-//			} else {
-//				throw new Exception("Unable to resolve CharacteristicType id.")
-//			}
-//		}
+		var id = trace.getFactIds(characteristicType.ref).findFirst[true]
+		if(id === null) {
+			throw new Exception("Unable to resolve CharacteristicType id.")
+		} else {
+			AtomicQuotedString('''«id»''')
+		}
 	}
 
 	override convertMember(CharacteristicType characteristicType) {
-		throw new Exception("Unable to resolve CharacteristicType.")
-//		if (trace.value === null && characteristicType.ref instanceof EnumCharacteristicType) {
-//			val enumType = characteristicType.ref as EnumCharacteristicType
-//			val name = enumType.type.name
-//			val id = enumType.type.id
-//
-//			AtomicQuotedString('''Enumeration name (id)''')
-//		} else {
-//			this.convert(characteristicType)
-//		}
+		this.convert(characteristicType)
 	}
 
 	override convert(Literal characteristicLiteral) {
-		throw new Exception("Unable to resolve Literal id.")
-//		if (trace.value === null) {
-//			val content = characteristicLiteral.name
-//			val id = characteristicLiteral.id
-//
-//			AtomicQuotedString('''Literal content (id)''')
-//		} else {
-//			val computedValue = trace.value.resolveId(characteristicLiteral)
-//
-//			if (computedValue.present) {
-//				AtomicQuotedString(computedValue.get)
-//			} else {
-//				throw new Exception("Unable to resolve Literal id.")
-//			}
-//		}
+		var id  = trace.getLiteralFactIds(characteristicLiteral).findFirst[true]
+		if(id === null) {
+			throw new Exception("Unable to resolve Literal id.")
+		} else {
+			AtomicQuotedString('''«id»''')
+		}
 	}
 
 	override convert(NodeIdentitiySelector selector) {
-		throw new Exception("Unable to resolve node identity selector.")
-//		if (trace.value === null) {
-//			if (selector.assembly === null) {
-//				throw new IllegalArgumentException("Use node.identity-attribute with DataCentricPalladio target.")
-//			}
-//
-//			val assemblyID = selector.assembly.id
-//			val seffID = EcoreUtil2.getID(selector.seff)
-//
-//			AtomicQuotedString('''ResourceDemandingSEFF (seffID) - AC assemblyID''')
-//		} else {
-//			if (selector.seff instanceof ResourceDemandingSEFF) {
-//				val seffInstance = SEFFInstance.createInstance(selector.assembly,
-//					selector.seff as ResourceDemandingSEFF);
-//
-//				val computedValue = trace.value.resolveId(seffInstance)
-//
-//				if (computedValue.present) {
-//					AtomicQuotedString(computedValue.get)
-//
-//				} else {
-//					throw new Exception("Unable to resolve SEFF id.")
-//				}
-//			} else {
-//				throw new Exception("Unable to resolve SEFF instance.")
-//			}
-//		}
+		if(selector instanceof org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector) {
+			// hier fehler! -> implementiere ähnliche funktion, die eine Liste mit verschiedenen Ids zurückgibt, die dann im query verODERT werden
+			throw new UnsupportedOperationException("This needs to be implemented depending on the selected component!!")
+		} else {
+			throw new Exception("Unable to resolve native dfd node identity selector.")
+		}
 	}
 
 	override convertVariable(String id) {

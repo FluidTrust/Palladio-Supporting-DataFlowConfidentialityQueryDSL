@@ -9,7 +9,7 @@ import java.util.Map;
 import org.apache.commons.lang3.Validate;
 import org.eclipse.emf.common.util.URI;
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.impl.TransformDFDWithDCPConstraintsToPrologWorkflowImpl;
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.TransfromDCPDSLToPrologJob;
+import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.TransfromDFDConstraintsToPrologJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.TransformationWorkflowBuilder;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.blackboards.KeyValueMDSDBlackboard;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.LoadModelJob;
@@ -47,7 +47,7 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
         // create transformation job
         getBlackboard().addPartition(DEFAULT_CONSTRAINTS_LOCATION.getPartitionID(), new ResourceSetPartition());
 		
-        jobSequence.add(new TransfromDCPDSLToPrologJob<KeyValueMDSDBlackboard>(dcpdslLocation, DEFAULT_CONSTRAINTS_LOCATION, DEFAULT_TRACE_KEY));
+        jobSequence.add(new TransfromDFDConstraintsToPrologJob<KeyValueMDSDBlackboard>(dcpdslLocation, DEFAULT_CONSTRAINTS_LOCATION, DEFAULT_TRACE_KEY));
 		
 		//add serialize model job; prolog constraints at DEFAULT_CONSTRAINTS_LOCATION
 		jobSequence.addAll(dcpPrologSerializationJobs);

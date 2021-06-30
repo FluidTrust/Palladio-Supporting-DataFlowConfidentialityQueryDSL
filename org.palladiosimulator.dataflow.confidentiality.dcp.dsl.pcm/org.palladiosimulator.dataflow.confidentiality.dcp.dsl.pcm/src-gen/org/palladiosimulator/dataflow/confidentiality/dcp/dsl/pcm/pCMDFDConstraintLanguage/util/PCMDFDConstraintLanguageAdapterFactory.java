@@ -100,9 +100,9 @@ public class PCMDFDConstraintLanguageAdapterFactory extends AdapterFactoryImpl
         return createPropertyClassSelectorAdapter();
       }
       @Override
-      public Adapter caseComponentIdentitySelector(ComponentIdentitySelector object)
+      public Adapter caseNodeIdentitiySelector(NodeIdentitiySelector object)
       {
-        return createComponentIdentitySelectorAdapter();
+        return createNodeIdentitiySelectorAdapter();
       }
       @Override
       public Adapter caseDSL_Model(de.sebinside.dcp.dsl.dSL.Model object)
@@ -115,14 +115,14 @@ public class PCMDFDConstraintLanguageAdapterFactory extends AdapterFactoryImpl
         return createDSL_TargetModelTypeDefAdapter();
       }
       @Override
-      public Adapter caseDestinationSelector(DestinationSelector object)
-      {
-        return createDestinationSelectorAdapter();
-      }
-      @Override
       public Adapter caseCharacteristicSelector(CharacteristicSelector object)
       {
         return createCharacteristicSelectorAdapter();
+      }
+      @Override
+      public Adapter caseDestinationSelector(DestinationSelector object)
+      {
+        return createDestinationSelectorAdapter();
       }
       @Override
       public Adapter caseDSL_PropertySelector(de.sebinside.dcp.dsl.dSL.PropertySelector object)
@@ -138,6 +138,11 @@ public class PCMDFDConstraintLanguageAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDSL_PropertyClassSelector(de.sebinside.dcp.dsl.dSL.PropertyClassSelector object)
       {
         return createDSL_PropertyClassSelectorAdapter();
+      }
+      @Override
+      public Adapter caseDSL_NodeIdentitiySelector(de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector object)
+      {
+        return createDSL_NodeIdentitiySelectorAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -222,16 +227,16 @@ public class PCMDFDConstraintLanguageAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector <em>Component Identity Selector</em>}'.
+   * Creates a new adapter for an object of class '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector <em>Node Identitiy Selector</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector
    * @generated
    */
-  public Adapter createComponentIdentitySelectorAdapter()
+  public Adapter createNodeIdentitiySelectorAdapter()
   {
     return null;
   }
@@ -267,21 +272,6 @@ public class PCMDFDConstraintLanguageAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.DestinationSelector <em>Destination Selector</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.sebinside.dcp.dsl.dSL.DestinationSelector
-   * @generated
-   */
-  public Adapter createDestinationSelectorAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.CharacteristicSelector <em>Characteristic Selector</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -292,6 +282,21 @@ public class PCMDFDConstraintLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCharacteristicSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.DestinationSelector <em>Destination Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.DestinationSelector
+   * @generated
+   */
+  public Adapter createDestinationSelectorAdapter()
   {
     return null;
   }
@@ -337,6 +342,21 @@ public class PCMDFDConstraintLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDSL_PropertyClassSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector <em>Node Identitiy Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
+   * @generated
+   */
+  public Adapter createDSL_NodeIdentitiySelectorAdapter()
   {
     return null;
   }

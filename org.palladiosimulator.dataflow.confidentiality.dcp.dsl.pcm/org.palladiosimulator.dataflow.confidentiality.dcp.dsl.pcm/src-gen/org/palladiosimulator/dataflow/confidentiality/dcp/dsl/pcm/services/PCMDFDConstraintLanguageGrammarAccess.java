@@ -66,24 +66,25 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		private final Assignment cPcmTypeContainerAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cPcmTypeContainerCharacteristicTypeDictionaryCrossReference_3_0 = (CrossReference)cPcmTypeContainerAssignment_3.eContents().get(0);
 		private final RuleCall cPcmTypeContainerCharacteristicTypeDictionaryIDTerminalRuleCall_3_0_1 = (RuleCall)cPcmTypeContainerCharacteristicTypeDictionaryCrossReference_3_0.eContents().get(1);
-		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cUsageModelAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cUsageModelUsageModelCrossReference_5_0 = (CrossReference)cUsageModelAssignment_5.eContents().get(0);
-		private final RuleCall cUsageModelUsageModelIDTerminalRuleCall_5_0_1 = (RuleCall)cUsageModelUsageModelCrossReference_5_0.eContents().get(1);
-		private final Keyword cCommaKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cRepositoryModelAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final CrossReference cRepositoryModelRepositoryCrossReference_7_0 = (CrossReference)cRepositoryModelAssignment_7.eContents().get(0);
-		private final RuleCall cRepositoryModelRepositoryIDTerminalRuleCall_7_0_1 = (RuleCall)cRepositoryModelRepositoryCrossReference_7_0.eContents().get(1);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cUsageModelAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cUsageModelUsageModelCrossReference_4_1_0 = (CrossReference)cUsageModelAssignment_4_1.eContents().get(0);
+		private final RuleCall cUsageModelUsageModelIDTerminalRuleCall_4_1_0_1 = (RuleCall)cUsageModelUsageModelCrossReference_4_1_0.eContents().get(1);
+		private final Keyword cCommaKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Assignment cRepositoryModelAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
+		private final CrossReference cRepositoryModelRepositoryCrossReference_4_3_0 = (CrossReference)cRepositoryModelAssignment_4_3.eContents().get(0);
+		private final RuleCall cRepositoryModelRepositoryIDTerminalRuleCall_4_3_0_1 = (RuleCall)cRepositoryModelRepositoryCrossReference_4_3_0.eContents().get(1);
 		
 		//@Override
 		//TargetModelTypeDef:
 		//    'target' type="PCMDFD" 'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary]
-		//        ',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
+		//        (',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository])?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'target' type="PCMDFD" 'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary]
-		//    ',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
+		//    (',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository])?
 		public Group getGroup() { return cGroup; }
 		
 		//'target'
@@ -107,58 +108,32 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		//ID
 		public RuleCall getPcmTypeContainerCharacteristicTypeDictionaryIDTerminalRuleCall_3_0_1() { return cPcmTypeContainerCharacteristicTypeDictionaryIDTerminalRuleCall_3_0_1; }
 		
+		//(',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository])?
+		public Group getGroup_4() { return cGroup_4; }
+		
 		//','
-		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
 		//usageModel=[usagemodel::UsageModel]
-		public Assignment getUsageModelAssignment_5() { return cUsageModelAssignment_5; }
+		public Assignment getUsageModelAssignment_4_1() { return cUsageModelAssignment_4_1; }
 		
 		//[usagemodel::UsageModel]
-		public CrossReference getUsageModelUsageModelCrossReference_5_0() { return cUsageModelUsageModelCrossReference_5_0; }
+		public CrossReference getUsageModelUsageModelCrossReference_4_1_0() { return cUsageModelUsageModelCrossReference_4_1_0; }
 		
 		//ID
-		public RuleCall getUsageModelUsageModelIDTerminalRuleCall_5_0_1() { return cUsageModelUsageModelIDTerminalRuleCall_5_0_1; }
+		public RuleCall getUsageModelUsageModelIDTerminalRuleCall_4_1_0_1() { return cUsageModelUsageModelIDTerminalRuleCall_4_1_0_1; }
 		
 		//','
-		public Keyword getCommaKeyword_6() { return cCommaKeyword_6; }
+		public Keyword getCommaKeyword_4_2() { return cCommaKeyword_4_2; }
 		
 		//repositoryModel=[repository::Repository]
-		public Assignment getRepositoryModelAssignment_7() { return cRepositoryModelAssignment_7; }
+		public Assignment getRepositoryModelAssignment_4_3() { return cRepositoryModelAssignment_4_3; }
 		
 		//[repository::Repository]
-		public CrossReference getRepositoryModelRepositoryCrossReference_7_0() { return cRepositoryModelRepositoryCrossReference_7_0; }
+		public CrossReference getRepositoryModelRepositoryCrossReference_4_3_0() { return cRepositoryModelRepositoryCrossReference_4_3_0; }
 		
 		//ID
-		public RuleCall getRepositoryModelRepositoryIDTerminalRuleCall_7_0_1() { return cRepositoryModelRepositoryIDTerminalRuleCall_7_0_1; }
-	}
-	public class DestinationSelectorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.PCMDFDConstraintLanguage.DestinationSelector");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cPropertySelectorParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cPropertyClassSelectorParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cComponentIdentitySelectorParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		
-		////
-		////PCMTargetModelTypeDef:
-		////    'target' type="PCMDFD" 'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary]
-		////        ',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
-		////;
-		//@Override
-		//DestinationSelector returns base::DestinationSelector:
-		//    PropertySelector | PropertyClassSelector | ComponentIdentitySelector;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//PropertySelector | PropertyClassSelector | ComponentIdentitySelector
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//PropertySelector
-		public RuleCall getPropertySelectorParserRuleCall_0() { return cPropertySelectorParserRuleCall_0; }
-		
-		//PropertyClassSelector
-		public RuleCall getPropertyClassSelectorParserRuleCall_1() { return cPropertyClassSelectorParserRuleCall_1; }
-		
-		//ComponentIdentitySelector
-		public RuleCall getComponentIdentitySelectorParserRuleCall_2() { return cComponentIdentitySelectorParserRuleCall_2; }
+		public RuleCall getRepositoryModelRepositoryIDTerminalRuleCall_4_3_0_1() { return cRepositoryModelRepositoryIDTerminalRuleCall_4_3_0_1; }
 	}
 	public class PropertySelectorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.PCMDFDConstraintLanguage.PropertySelector");
@@ -167,6 +142,14 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		private final Assignment cRefAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cRefCharacteristicTypeSelectorParserRuleCall_1_0 = (RuleCall)cRefAssignment_1.eContents().get(0);
 		
+		////
+		////PCMTargetModelTypeDef:
+		////    'target' type="PCMDFD" 'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary]
+		////        ',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
+		////;
+		////@Override
+		////DestinationSelector returns base::DestinationSelector:
+		////    PropertySelector | PropertyClassSelector | ComponentIdentitySelector;
 		//@Override
 		//PropertySelector:
 		//    'component.property.' ref=CharacteristicTypeSelector;
@@ -212,8 +195,8 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		//ID
 		public RuleCall getRefCharacteristicClassIDTerminalRuleCall_1_0_1() { return cRefCharacteristicClassIDTerminalRuleCall_1_0_1; }
 	}
-	public class ComponentIdentitySelectorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.PCMDFDConstraintLanguage.ComponentIdentitySelector");
+	public class NodeIdentitiySelectorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.PCMDFDConstraintLanguage.NodeIdentitiySelector");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Keyword cComponentNameKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
@@ -223,42 +206,53 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		private final Keyword cComponentIdentityKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
 		private final Group cGroup_1_1_0 = (Group)cAlternatives_1_1.eContents().get(0);
-		private final Keyword cActionKeyword_1_1_0_0 = (Keyword)cGroup_1_1_0.eContents().get(0);
-		private final Assignment cActionAssignment_1_1_0_1 = (Assignment)cGroup_1_1_0.eContents().get(1);
-		private final CrossReference cActionAbstractActionCrossReference_1_1_0_1_0 = (CrossReference)cActionAssignment_1_1_0_1.eContents().get(0);
-		private final RuleCall cActionAbstractActionIDTerminalRuleCall_1_1_0_1_0_1 = (RuleCall)cActionAbstractActionCrossReference_1_1_0_1_0.eContents().get(1);
+		private final Keyword cComponentKeyword_1_1_0_0 = (Keyword)cGroup_1_1_0.eContents().get(0);
+		private final Assignment cAssemblyAssignment_1_1_0_1 = (Assignment)cGroup_1_1_0.eContents().get(1);
+		private final CrossReference cAssemblyAssemblyContextCrossReference_1_1_0_1_0 = (CrossReference)cAssemblyAssignment_1_1_0_1.eContents().get(0);
+		private final RuleCall cAssemblyAssemblyContextIDTerminalRuleCall_1_1_0_1_0_1 = (RuleCall)cAssemblyAssemblyContextCrossReference_1_1_0_1_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_1_0_2 = (Keyword)cGroup_1_1_0.eContents().get(2);
+		private final Assignment cComponentAssignment_1_1_0_3 = (Assignment)cGroup_1_1_0.eContents().get(3);
+		private final CrossReference cComponentBasicComponentCrossReference_1_1_0_3_0 = (CrossReference)cComponentAssignment_1_1_0_3.eContents().get(0);
+		private final RuleCall cComponentBasicComponentIDTerminalRuleCall_1_1_0_3_0_1 = (RuleCall)cComponentBasicComponentCrossReference_1_1_0_3_0.eContents().get(1);
 		private final Group cGroup_1_1_1 = (Group)cAlternatives_1_1.eContents().get(1);
-		private final Keyword cSEFFKeyword_1_1_1_0 = (Keyword)cGroup_1_1_1.eContents().get(0);
-		private final Assignment cAssemblyAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
-		private final CrossReference cAssemblyAssemblyContextCrossReference_1_1_1_1_0 = (CrossReference)cAssemblyAssignment_1_1_1_1.eContents().get(0);
-		private final RuleCall cAssemblyAssemblyContextIDTerminalRuleCall_1_1_1_1_0_1 = (RuleCall)cAssemblyAssemblyContextCrossReference_1_1_1_1_0.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_1_1_2 = (Keyword)cGroup_1_1_1.eContents().get(2);
-		private final Assignment cComponentAssignment_1_1_1_3 = (Assignment)cGroup_1_1_1.eContents().get(3);
-		private final CrossReference cComponentBasicComponentCrossReference_1_1_1_3_0 = (CrossReference)cComponentAssignment_1_1_1_3.eContents().get(0);
-		private final RuleCall cComponentBasicComponentIDTerminalRuleCall_1_1_1_3_0_1 = (RuleCall)cComponentBasicComponentCrossReference_1_1_1_3_0.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_1_1_4 = (Keyword)cGroup_1_1_1.eContents().get(4);
-		private final Assignment cSignatureAssignment_1_1_1_5 = (Assignment)cGroup_1_1_1.eContents().get(5);
-		private final CrossReference cSignatureOperationSignatureCrossReference_1_1_1_5_0 = (CrossReference)cSignatureAssignment_1_1_1_5.eContents().get(0);
-		private final RuleCall cSignatureOperationSignatureIDTerminalRuleCall_1_1_1_5_0_1 = (RuleCall)cSignatureOperationSignatureCrossReference_1_1_1_5_0.eContents().get(1);
+		private final Keyword cActionKeyword_1_1_1_0 = (Keyword)cGroup_1_1_1.eContents().get(0);
+		private final Assignment cActionAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
+		private final CrossReference cActionAbstractActionCrossReference_1_1_1_1_0 = (CrossReference)cActionAssignment_1_1_1_1.eContents().get(0);
+		private final RuleCall cActionAbstractActionIDTerminalRuleCall_1_1_1_1_0_1 = (RuleCall)cActionAbstractActionCrossReference_1_1_1_1_0.eContents().get(1);
 		private final Group cGroup_1_1_2 = (Group)cAlternatives_1_1.eContents().get(2);
-		private final Keyword cUserActionKeyword_1_1_2_0 = (Keyword)cGroup_1_1_2.eContents().get(0);
-		private final Assignment cUserActionAssignment_1_1_2_1 = (Assignment)cGroup_1_1_2.eContents().get(1);
-		private final CrossReference cUserActionEntryLevelSystemCallCrossReference_1_1_2_1_0 = (CrossReference)cUserActionAssignment_1_1_2_1.eContents().get(0);
-		private final RuleCall cUserActionEntryLevelSystemCallIDTerminalRuleCall_1_1_2_1_0_1 = (RuleCall)cUserActionEntryLevelSystemCallCrossReference_1_1_2_1_0.eContents().get(1);
+		private final Keyword cSEFFKeyword_1_1_2_0 = (Keyword)cGroup_1_1_2.eContents().get(0);
+		private final Assignment cAssemblyAssignment_1_1_2_1 = (Assignment)cGroup_1_1_2.eContents().get(1);
+		private final CrossReference cAssemblyAssemblyContextCrossReference_1_1_2_1_0 = (CrossReference)cAssemblyAssignment_1_1_2_1.eContents().get(0);
+		private final RuleCall cAssemblyAssemblyContextIDTerminalRuleCall_1_1_2_1_0_1 = (RuleCall)cAssemblyAssemblyContextCrossReference_1_1_2_1_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_1_2_2 = (Keyword)cGroup_1_1_2.eContents().get(2);
+		private final Assignment cComponentAssignment_1_1_2_3 = (Assignment)cGroup_1_1_2.eContents().get(3);
+		private final CrossReference cComponentBasicComponentCrossReference_1_1_2_3_0 = (CrossReference)cComponentAssignment_1_1_2_3.eContents().get(0);
+		private final RuleCall cComponentBasicComponentIDTerminalRuleCall_1_1_2_3_0_1 = (RuleCall)cComponentBasicComponentCrossReference_1_1_2_3_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_1_2_4 = (Keyword)cGroup_1_1_2.eContents().get(4);
+		private final Assignment cSignatureAssignment_1_1_2_5 = (Assignment)cGroup_1_1_2.eContents().get(5);
+		private final CrossReference cSignatureOperationSignatureCrossReference_1_1_2_5_0 = (CrossReference)cSignatureAssignment_1_1_2_5.eContents().get(0);
+		private final RuleCall cSignatureOperationSignatureIDTerminalRuleCall_1_1_2_5_0_1 = (RuleCall)cSignatureOperationSignatureCrossReference_1_1_2_5_0.eContents().get(1);
 		private final Group cGroup_1_1_3 = (Group)cAlternatives_1_1.eContents().get(3);
-		private final Keyword cStoreKeyword_1_1_3_0 = (Keyword)cGroup_1_1_3.eContents().get(0);
-		private final Assignment cAssemblyAssignment_1_1_3_1 = (Assignment)cGroup_1_1_3.eContents().get(1);
-		private final CrossReference cAssemblyAssemblyContextCrossReference_1_1_3_1_0 = (CrossReference)cAssemblyAssignment_1_1_3_1.eContents().get(0);
-		private final RuleCall cAssemblyAssemblyContextIDTerminalRuleCall_1_1_3_1_0_1 = (RuleCall)cAssemblyAssemblyContextCrossReference_1_1_3_1_0.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_1_3_2 = (Keyword)cGroup_1_1_3.eContents().get(2);
-		private final Assignment cStoreAssignment_1_1_3_3 = (Assignment)cGroup_1_1_3.eContents().get(3);
-		private final CrossReference cStoreOperationalDataStoreComponentCrossReference_1_1_3_3_0 = (CrossReference)cStoreAssignment_1_1_3_3.eContents().get(0);
-		private final RuleCall cStoreOperationalDataStoreComponentIDTerminalRuleCall_1_1_3_3_0_1 = (RuleCall)cStoreOperationalDataStoreComponentCrossReference_1_1_3_3_0.eContents().get(1);
+		private final Keyword cUserActionKeyword_1_1_3_0 = (Keyword)cGroup_1_1_3.eContents().get(0);
+		private final Assignment cUserActionAssignment_1_1_3_1 = (Assignment)cGroup_1_1_3.eContents().get(1);
+		private final CrossReference cUserActionEntryLevelSystemCallCrossReference_1_1_3_1_0 = (CrossReference)cUserActionAssignment_1_1_3_1.eContents().get(0);
+		private final RuleCall cUserActionEntryLevelSystemCallIDTerminalRuleCall_1_1_3_1_0_1 = (RuleCall)cUserActionEntryLevelSystemCallCrossReference_1_1_3_1_0.eContents().get(1);
+		private final Group cGroup_1_1_4 = (Group)cAlternatives_1_1.eContents().get(4);
+		private final Keyword cStoreKeyword_1_1_4_0 = (Keyword)cGroup_1_1_4.eContents().get(0);
+		private final Assignment cAssemblyAssignment_1_1_4_1 = (Assignment)cGroup_1_1_4.eContents().get(1);
+		private final CrossReference cAssemblyAssemblyContextCrossReference_1_1_4_1_0 = (CrossReference)cAssemblyAssignment_1_1_4_1.eContents().get(0);
+		private final RuleCall cAssemblyAssemblyContextIDTerminalRuleCall_1_1_4_1_0_1 = (RuleCall)cAssemblyAssemblyContextCrossReference_1_1_4_1_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_1_4_2 = (Keyword)cGroup_1_1_4.eContents().get(2);
+		private final Assignment cStoreAssignment_1_1_4_3 = (Assignment)cGroup_1_1_4.eContents().get(3);
+		private final CrossReference cStoreOperationalDataStoreComponentCrossReference_1_1_4_3_0 = (CrossReference)cStoreAssignment_1_1_4_3.eContents().get(0);
+		private final RuleCall cStoreOperationalDataStoreComponentIDTerminalRuleCall_1_1_4_3_0_1 = (RuleCall)cStoreOperationalDataStoreComponentCrossReference_1_1_4_3_0.eContents().get(1);
 		
-		//ComponentIdentitySelector:
+		//@Override
+		//NodeIdentitiySelector:
 		//    'component.name.' name=STRING
 		//    |
 		//    'component.identity.' (
+		//        'Component.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] |
 		//        'Action.' action=[seff::AbstractAction] |
 		//        'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature] |
 		//        'UserAction.' userAction=[usagemodel::EntryLevelSystemCall] |
@@ -269,6 +263,7 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		//'component.name.' name=STRING
 		//|
 		//'component.identity.' (
+		//    'Component.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] |
 		//    'Action.' action=[seff::AbstractAction] |
 		//    'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature] |
 		//    'UserAction.' userAction=[usagemodel::EntryLevelSystemCall] |
@@ -288,6 +283,7 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		public RuleCall getNameSTRINGTerminalRuleCall_0_1_0() { return cNameSTRINGTerminalRuleCall_0_1_0; }
 		
 		//'component.identity.' (
+		//    'Component.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] |
 		//    'Action.' action=[seff::AbstractAction] |
 		//    'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature] |
 		//    'UserAction.' userAction=[usagemodel::EntryLevelSystemCall] |
@@ -298,116 +294,143 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		public Keyword getComponentIdentityKeyword_1_0() { return cComponentIdentityKeyword_1_0; }
 		
 		//(
+		//       'Component.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] |
 		//       'Action.' action=[seff::AbstractAction] |
 		//       'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature] |
 		//       'UserAction.' userAction=[usagemodel::EntryLevelSystemCall] |
 		//       'Store.' assembly=[composition::AssemblyContext] '.' store=[pcmConfRepository::OperationalDataStoreComponent])
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 		
-		//'Action.' action=[seff::AbstractAction]
+		//'Component.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent]
 		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
 		
-		//'Action.'
-		public Keyword getActionKeyword_1_1_0_0() { return cActionKeyword_1_1_0_0; }
-		
-		//action=[seff::AbstractAction]
-		public Assignment getActionAssignment_1_1_0_1() { return cActionAssignment_1_1_0_1; }
-		
-		//[seff::AbstractAction]
-		public CrossReference getActionAbstractActionCrossReference_1_1_0_1_0() { return cActionAbstractActionCrossReference_1_1_0_1_0; }
-		
-		//ID
-		public RuleCall getActionAbstractActionIDTerminalRuleCall_1_1_0_1_0_1() { return cActionAbstractActionIDTerminalRuleCall_1_1_0_1_0_1; }
-		
-		//'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature]
-		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
-		
-		//'SEFF.'
-		public Keyword getSEFFKeyword_1_1_1_0() { return cSEFFKeyword_1_1_1_0; }
+		//'Component.'
+		public Keyword getComponentKeyword_1_1_0_0() { return cComponentKeyword_1_1_0_0; }
 		
 		//assembly=[composition::AssemblyContext]
-		public Assignment getAssemblyAssignment_1_1_1_1() { return cAssemblyAssignment_1_1_1_1; }
+		public Assignment getAssemblyAssignment_1_1_0_1() { return cAssemblyAssignment_1_1_0_1; }
 		
 		//[composition::AssemblyContext]
-		public CrossReference getAssemblyAssemblyContextCrossReference_1_1_1_1_0() { return cAssemblyAssemblyContextCrossReference_1_1_1_1_0; }
+		public CrossReference getAssemblyAssemblyContextCrossReference_1_1_0_1_0() { return cAssemblyAssemblyContextCrossReference_1_1_0_1_0; }
 		
 		//ID
-		public RuleCall getAssemblyAssemblyContextIDTerminalRuleCall_1_1_1_1_0_1() { return cAssemblyAssemblyContextIDTerminalRuleCall_1_1_1_1_0_1; }
+		public RuleCall getAssemblyAssemblyContextIDTerminalRuleCall_1_1_0_1_0_1() { return cAssemblyAssemblyContextIDTerminalRuleCall_1_1_0_1_0_1; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_1_1_1_2() { return cFullStopKeyword_1_1_1_2; }
+		public Keyword getFullStopKeyword_1_1_0_2() { return cFullStopKeyword_1_1_0_2; }
 		
 		//component=[repository::BasicComponent]
-		public Assignment getComponentAssignment_1_1_1_3() { return cComponentAssignment_1_1_1_3; }
+		public Assignment getComponentAssignment_1_1_0_3() { return cComponentAssignment_1_1_0_3; }
 		
 		//[repository::BasicComponent]
-		public CrossReference getComponentBasicComponentCrossReference_1_1_1_3_0() { return cComponentBasicComponentCrossReference_1_1_1_3_0; }
+		public CrossReference getComponentBasicComponentCrossReference_1_1_0_3_0() { return cComponentBasicComponentCrossReference_1_1_0_3_0; }
 		
 		//ID
-		public RuleCall getComponentBasicComponentIDTerminalRuleCall_1_1_1_3_0_1() { return cComponentBasicComponentIDTerminalRuleCall_1_1_1_3_0_1; }
+		public RuleCall getComponentBasicComponentIDTerminalRuleCall_1_1_0_3_0_1() { return cComponentBasicComponentIDTerminalRuleCall_1_1_0_3_0_1; }
 		
-		//'.'
-		public Keyword getFullStopKeyword_1_1_1_4() { return cFullStopKeyword_1_1_1_4; }
+		//'Action.' action=[seff::AbstractAction]
+		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
 		
-		//signature=[repository::OperationSignature]
-		public Assignment getSignatureAssignment_1_1_1_5() { return cSignatureAssignment_1_1_1_5; }
+		//'Action.'
+		public Keyword getActionKeyword_1_1_1_0() { return cActionKeyword_1_1_1_0; }
 		
-		//[repository::OperationSignature]
-		public CrossReference getSignatureOperationSignatureCrossReference_1_1_1_5_0() { return cSignatureOperationSignatureCrossReference_1_1_1_5_0; }
+		//action=[seff::AbstractAction]
+		public Assignment getActionAssignment_1_1_1_1() { return cActionAssignment_1_1_1_1; }
+		
+		//[seff::AbstractAction]
+		public CrossReference getActionAbstractActionCrossReference_1_1_1_1_0() { return cActionAbstractActionCrossReference_1_1_1_1_0; }
 		
 		//ID
-		public RuleCall getSignatureOperationSignatureIDTerminalRuleCall_1_1_1_5_0_1() { return cSignatureOperationSignatureIDTerminalRuleCall_1_1_1_5_0_1; }
+		public RuleCall getActionAbstractActionIDTerminalRuleCall_1_1_1_1_0_1() { return cActionAbstractActionIDTerminalRuleCall_1_1_1_1_0_1; }
 		
-		//'UserAction.' userAction=[usagemodel::EntryLevelSystemCall]
+		//'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature]
 		public Group getGroup_1_1_2() { return cGroup_1_1_2; }
 		
-		//'UserAction.'
-		public Keyword getUserActionKeyword_1_1_2_0() { return cUserActionKeyword_1_1_2_0; }
-		
-		//userAction=[usagemodel::EntryLevelSystemCall]
-		public Assignment getUserActionAssignment_1_1_2_1() { return cUserActionAssignment_1_1_2_1; }
-		
-		//[usagemodel::EntryLevelSystemCall]
-		public CrossReference getUserActionEntryLevelSystemCallCrossReference_1_1_2_1_0() { return cUserActionEntryLevelSystemCallCrossReference_1_1_2_1_0; }
-		
-		//ID
-		public RuleCall getUserActionEntryLevelSystemCallIDTerminalRuleCall_1_1_2_1_0_1() { return cUserActionEntryLevelSystemCallIDTerminalRuleCall_1_1_2_1_0_1; }
-		
-		//'Store.' assembly=[composition::AssemblyContext] '.' store=[pcmConfRepository::OperationalDataStoreComponent]
-		public Group getGroup_1_1_3() { return cGroup_1_1_3; }
-		
-		//'Store.'
-		public Keyword getStoreKeyword_1_1_3_0() { return cStoreKeyword_1_1_3_0; }
+		//'SEFF.'
+		public Keyword getSEFFKeyword_1_1_2_0() { return cSEFFKeyword_1_1_2_0; }
 		
 		//assembly=[composition::AssemblyContext]
-		public Assignment getAssemblyAssignment_1_1_3_1() { return cAssemblyAssignment_1_1_3_1; }
+		public Assignment getAssemblyAssignment_1_1_2_1() { return cAssemblyAssignment_1_1_2_1; }
 		
 		//[composition::AssemblyContext]
-		public CrossReference getAssemblyAssemblyContextCrossReference_1_1_3_1_0() { return cAssemblyAssemblyContextCrossReference_1_1_3_1_0; }
+		public CrossReference getAssemblyAssemblyContextCrossReference_1_1_2_1_0() { return cAssemblyAssemblyContextCrossReference_1_1_2_1_0; }
 		
 		//ID
-		public RuleCall getAssemblyAssemblyContextIDTerminalRuleCall_1_1_3_1_0_1() { return cAssemblyAssemblyContextIDTerminalRuleCall_1_1_3_1_0_1; }
+		public RuleCall getAssemblyAssemblyContextIDTerminalRuleCall_1_1_2_1_0_1() { return cAssemblyAssemblyContextIDTerminalRuleCall_1_1_2_1_0_1; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_1_1_3_2() { return cFullStopKeyword_1_1_3_2; }
+		public Keyword getFullStopKeyword_1_1_2_2() { return cFullStopKeyword_1_1_2_2; }
 		
-		//store=[pcmConfRepository::OperationalDataStoreComponent]
-		public Assignment getStoreAssignment_1_1_3_3() { return cStoreAssignment_1_1_3_3; }
+		//component=[repository::BasicComponent]
+		public Assignment getComponentAssignment_1_1_2_3() { return cComponentAssignment_1_1_2_3; }
 		
-		//[pcmConfRepository::OperationalDataStoreComponent]
-		public CrossReference getStoreOperationalDataStoreComponentCrossReference_1_1_3_3_0() { return cStoreOperationalDataStoreComponentCrossReference_1_1_3_3_0; }
+		//[repository::BasicComponent]
+		public CrossReference getComponentBasicComponentCrossReference_1_1_2_3_0() { return cComponentBasicComponentCrossReference_1_1_2_3_0; }
 		
 		//ID
-		public RuleCall getStoreOperationalDataStoreComponentIDTerminalRuleCall_1_1_3_3_0_1() { return cStoreOperationalDataStoreComponentIDTerminalRuleCall_1_1_3_3_0_1; }
+		public RuleCall getComponentBasicComponentIDTerminalRuleCall_1_1_2_3_0_1() { return cComponentBasicComponentIDTerminalRuleCall_1_1_2_3_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1_1_2_4() { return cFullStopKeyword_1_1_2_4; }
+		
+		//signature=[repository::OperationSignature]
+		public Assignment getSignatureAssignment_1_1_2_5() { return cSignatureAssignment_1_1_2_5; }
+		
+		//[repository::OperationSignature]
+		public CrossReference getSignatureOperationSignatureCrossReference_1_1_2_5_0() { return cSignatureOperationSignatureCrossReference_1_1_2_5_0; }
+		
+		//ID
+		public RuleCall getSignatureOperationSignatureIDTerminalRuleCall_1_1_2_5_0_1() { return cSignatureOperationSignatureIDTerminalRuleCall_1_1_2_5_0_1; }
+		
+		//'UserAction.' userAction=[usagemodel::EntryLevelSystemCall]
+		public Group getGroup_1_1_3() { return cGroup_1_1_3; }
+		
+		//'UserAction.'
+		public Keyword getUserActionKeyword_1_1_3_0() { return cUserActionKeyword_1_1_3_0; }
+		
+		//userAction=[usagemodel::EntryLevelSystemCall]
+		public Assignment getUserActionAssignment_1_1_3_1() { return cUserActionAssignment_1_1_3_1; }
+		
+		//[usagemodel::EntryLevelSystemCall]
+		public CrossReference getUserActionEntryLevelSystemCallCrossReference_1_1_3_1_0() { return cUserActionEntryLevelSystemCallCrossReference_1_1_3_1_0; }
+		
+		//ID
+		public RuleCall getUserActionEntryLevelSystemCallIDTerminalRuleCall_1_1_3_1_0_1() { return cUserActionEntryLevelSystemCallIDTerminalRuleCall_1_1_3_1_0_1; }
+		
+		//'Store.' assembly=[composition::AssemblyContext] '.' store=[pcmConfRepository::OperationalDataStoreComponent]
+		public Group getGroup_1_1_4() { return cGroup_1_1_4; }
+		
+		//'Store.'
+		public Keyword getStoreKeyword_1_1_4_0() { return cStoreKeyword_1_1_4_0; }
+		
+		//assembly=[composition::AssemblyContext]
+		public Assignment getAssemblyAssignment_1_1_4_1() { return cAssemblyAssignment_1_1_4_1; }
+		
+		//[composition::AssemblyContext]
+		public CrossReference getAssemblyAssemblyContextCrossReference_1_1_4_1_0() { return cAssemblyAssemblyContextCrossReference_1_1_4_1_0; }
+		
+		//ID
+		public RuleCall getAssemblyAssemblyContextIDTerminalRuleCall_1_1_4_1_0_1() { return cAssemblyAssemblyContextIDTerminalRuleCall_1_1_4_1_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1_1_4_2() { return cFullStopKeyword_1_1_4_2; }
+		
+		//store=[pcmConfRepository::OperationalDataStoreComponent]
+		public Assignment getStoreAssignment_1_1_4_3() { return cStoreAssignment_1_1_4_3; }
+		
+		//[pcmConfRepository::OperationalDataStoreComponent]
+		public CrossReference getStoreOperationalDataStoreComponentCrossReference_1_1_4_3_0() { return cStoreOperationalDataStoreComponentCrossReference_1_1_4_3_0; }
+		
+		//ID
+		public RuleCall getStoreOperationalDataStoreComponentIDTerminalRuleCall_1_1_4_3_0_1() { return cStoreOperationalDataStoreComponentIDTerminalRuleCall_1_1_4_3_0_1; }
 	}
 	
 	
 	private final ModelElements pModel;
 	private final TargetModelTypeDefElements pTargetModelTypeDef;
-	private final DestinationSelectorElements pDestinationSelector;
 	private final PropertySelectorElements pPropertySelector;
 	private final PropertyClassSelectorElements pPropertyClassSelector;
-	private final ComponentIdentitySelectorElements pComponentIdentitySelector;
+	private final NodeIdentitiySelectorElements pNodeIdentitiySelector;
 	
 	private final Grammar grammar;
 	
@@ -424,10 +447,9 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pTargetModelTypeDef = new TargetModelTypeDefElements();
-		this.pDestinationSelector = new DestinationSelectorElements();
 		this.pPropertySelector = new PropertySelectorElements();
 		this.pPropertyClassSelector = new PropertyClassSelectorElements();
-		this.pComponentIdentitySelector = new ComponentIdentitySelectorElements();
+		this.pNodeIdentitiySelector = new NodeIdentitiySelectorElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -476,7 +498,7 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 	//@Override
 	//TargetModelTypeDef:
 	//    'target' type="PCMDFD" 'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary]
-	//        ',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
+	//        (',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository])?
 	//;
 	public TargetModelTypeDefElements getTargetModelTypeDefAccess() {
 		return pTargetModelTypeDef;
@@ -491,17 +513,9 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 	////    'target' type="PCMDFD" 'using' pcmTypeContainer=[pcmDictionary::CharacteristicTypeDictionary]
 	////        ',' usageModel=[usagemodel::UsageModel] ',' repositoryModel=[repository::Repository]
 	////;
-	//@Override
-	//DestinationSelector returns base::DestinationSelector:
-	//    PropertySelector | PropertyClassSelector | ComponentIdentitySelector;
-	public DestinationSelectorElements getDestinationSelectorAccess() {
-		return pDestinationSelector;
-	}
-	
-	public ParserRule getDestinationSelectorRule() {
-		return getDestinationSelectorAccess().getRule();
-	}
-	
+	////@Override
+	////DestinationSelector returns base::DestinationSelector:
+	////    PropertySelector | PropertyClassSelector | ComponentIdentitySelector;
 	//@Override
 	//PropertySelector:
 	//    'component.property.' ref=CharacteristicTypeSelector;
@@ -524,21 +538,23 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		return getPropertyClassSelectorAccess().getRule();
 	}
 	
-	//ComponentIdentitySelector:
+	//@Override
+	//NodeIdentitiySelector:
 	//    'component.name.' name=STRING
 	//    |
 	//    'component.identity.' (
+	//        'Component.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] |
 	//        'Action.' action=[seff::AbstractAction] |
 	//        'SEFF.' assembly=[composition::AssemblyContext] '.' component=[repository::BasicComponent] '.' signature=[repository::OperationSignature] |
 	//        'UserAction.' userAction=[usagemodel::EntryLevelSystemCall] |
 	//        'Store.' assembly=[composition::AssemblyContext] '.' store=[pcmConfRepository::OperationalDataStoreComponent])
 	//    ;
-	public ComponentIdentitySelectorElements getComponentIdentitySelectorAccess() {
-		return pComponentIdentitySelector;
+	public NodeIdentitiySelectorElements getNodeIdentitiySelectorAccess() {
+		return pNodeIdentitiySelector;
 	}
 	
-	public ParserRule getComponentIdentitySelectorRule() {
-		return getComponentIdentitySelectorAccess().getRule();
+	public ParserRule getNodeIdentitiySelectorRule() {
+		return getNodeIdentitiySelectorAccess().getRule();
 	}
 	
 	//AbstractElement:
@@ -702,14 +718,14 @@ public class PCMDFDConstraintLanguageGrammarAccess extends AbstractElementFinder
 		return getAttributeClassSelectorAccess().getRule();
 	}
 	
-	//NodeIdentitiySelector:
-	//    'node.name.' name=STRING | 'node.identity.' diaNode=[diagram::CharacterizedNode];
-	public DSLGrammarAccess.NodeIdentitiySelectorElements getNodeIdentitiySelectorAccess() {
-		return gaDSL.getNodeIdentitiySelectorAccess();
+	//DestinationSelector:
+	//    PropertySelector | PropertyClassSelector | NodeIdentitiySelector;
+	public DSLGrammarAccess.DestinationSelectorElements getDestinationSelectorAccess() {
+		return gaDSL.getDestinationSelectorAccess();
 	}
 	
-	public ParserRule getNodeIdentitiySelectorRule() {
-		return getNodeIdentitiySelectorAccess().getRule();
+	public ParserRule getDestinationSelectorRule() {
+		return getDestinationSelectorAccess().getRule();
 	}
 	
 	//Statement:

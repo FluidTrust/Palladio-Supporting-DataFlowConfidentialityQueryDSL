@@ -3,7 +3,6 @@
  */
 package org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage;
 
-import de.sebinside.dcp.dsl.dSL.DestinationSelector;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,6 +14,6 @@ import de.sebinside.dcp.dsl.dSL.DestinationSelector;
  * @model
  * @generated
  */
-public interface PropertyClassSelector extends DestinationSelector, de.sebinside.dcp.dsl.dSL.PropertyClassSelector
+public interface PropertyClassSelector extends de.sebinside.dcp.dsl.dSL.PropertyClassSelector
 {
 } // PropertyClassSelector

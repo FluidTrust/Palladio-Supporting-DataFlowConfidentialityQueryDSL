@@ -25,7 +25,6 @@ import de.sebinside.dcp.dsl.dSL.IntersectionOperation;
 import de.sebinside.dcp.dsl.dSL.LogicalAndOperation;
 import de.sebinside.dcp.dsl.dSL.LogicalNegationOperation;
 import de.sebinside.dcp.dsl.dSL.LogicalOrOperation;
-import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector;
 import de.sebinside.dcp.dsl.dSL.Rule;
 import de.sebinside.dcp.dsl.dSL.Statement;
 import de.sebinside.dcp.dsl.dSL.StatementModality;
@@ -44,8 +43,8 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector;
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.Model;
+import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector;
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.PCMDFDConstraintLanguagePackage;
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.PropertyClassSelector;
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.PropertySelector;
@@ -126,9 +125,6 @@ public class PCMDFDConstraintLanguageSemanticSequencer extends DSLSemanticSequen
 			case DSLPackage.LOGICAL_OR_OPERATION:
 				sequence_LogicalOrOperation(context, (LogicalOrOperation) semanticObject); 
 				return; 
-			case DSLPackage.NODE_IDENTITIY_SELECTOR:
-				sequence_NodeIdentitiySelector(context, (NodeIdentitiySelector) semanticObject); 
-				return; 
 			case DSLPackage.RULE:
 				sequence_Rule(context, (Rule) semanticObject); 
 				return; 
@@ -156,11 +152,11 @@ public class PCMDFDConstraintLanguageSemanticSequencer extends DSLSemanticSequen
 			}
 		else if (epackage == PCMDFDConstraintLanguagePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case PCMDFDConstraintLanguagePackage.COMPONENT_IDENTITY_SELECTOR:
-				sequence_ComponentIdentitySelector(context, (ComponentIdentitySelector) semanticObject); 
-				return; 
 			case PCMDFDConstraintLanguagePackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
+				return; 
+			case PCMDFDConstraintLanguagePackage.NODE_IDENTITIY_SELECTOR:
+				sequence_NodeIdentitiySelector(context, (NodeIdentitiySelector) semanticObject); 
 				return; 
 			case PCMDFDConstraintLanguagePackage.PROPERTY_CLASS_SELECTOR:
 				sequence_PropertyClassSelector(context, (PropertyClassSelector) semanticObject); 
@@ -178,25 +174,6 @@ public class PCMDFDConstraintLanguageSemanticSequencer extends DSLSemanticSequen
 	
 	/**
 	 * Contexts:
-	 *     DestinationSelector returns ComponentIdentitySelector
-	 *     ComponentIdentitySelector returns ComponentIdentitySelector
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=STRING | 
-	 *         action=[AbstractAction|ID] | 
-	 *         (assembly=[AssemblyContext|ID] component=[BasicComponent|ID] signature=[OperationSignature|ID]) | 
-	 *         userAction=[EntryLevelSystemCall|ID] | 
-	 *         (assembly=[AssemblyContext|ID] store=[OperationalDataStoreComponent|ID])
-	 *     )
-	 */
-	protected void sequence_ComponentIdentitySelector(ISerializationContext context, ComponentIdentitySelector semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Model returns Model
 	 *
 	 * Constraint:
@@ -209,9 +186,29 @@ public class PCMDFDConstraintLanguageSemanticSequencer extends DSLSemanticSequen
 	
 	/**
 	 * Contexts:
-	 *     DestinationSelector returns PropertyClassSelector
+	 *     NodeIdentitiySelector returns NodeIdentitiySelector
+	 *     DestinationSelector returns NodeIdentitiySelector
+	 *
+	 * Constraint:
+	 *     (
+	 *         name=STRING | 
+	 *         (assembly=[AssemblyContext|ID] component=[BasicComponent|ID]) | 
+	 *         action=[AbstractAction|ID] | 
+	 *         (assembly=[AssemblyContext|ID] component=[BasicComponent|ID] signature=[OperationSignature|ID]) | 
+	 *         userAction=[EntryLevelSystemCall|ID] | 
+	 *         (assembly=[AssemblyContext|ID] store=[OperationalDataStoreComponent|ID])
+	 *     )
+	 */
+	protected void sequence_NodeIdentitiySelector(ISerializationContext context, NodeIdentitiySelector semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     PropertyClassSelector returns PropertyClassSelector
 	 *     CharacteristicClassSelector returns PropertyClassSelector
+	 *     DestinationSelector returns PropertyClassSelector
 	 *
 	 * Constraint:
 	 *     ref=[CharacteristicClass|ID]
@@ -229,9 +226,9 @@ public class PCMDFDConstraintLanguageSemanticSequencer extends DSLSemanticSequen
 	
 	/**
 	 * Contexts:
-	 *     DestinationSelector returns PropertySelector
 	 *     PropertySelector returns PropertySelector
 	 *     CharacteristicSelector returns PropertySelector
+	 *     DestinationSelector returns PropertySelector
 	 *
 	 * Constraint:
 	 *     ref=CharacteristicTypeSelector
@@ -252,25 +249,10 @@ public class PCMDFDConstraintLanguageSemanticSequencer extends DSLSemanticSequen
 	 *     TargetModelTypeDef returns TargetModelTypeDef
 	 *
 	 * Constraint:
-	 *     (type='PCMDFD' pcmTypeContainer=[CharacteristicTypeDictionary|ID] usageModel=[UsageModel|ID] repositoryModel=[Repository|ID])
+	 *     (type='PCMDFD' pcmTypeContainer=[CharacteristicTypeDictionary|ID] (usageModel=[UsageModel|ID] repositoryModel=[Repository|ID])?)
 	 */
 	protected void sequence_TargetModelTypeDef(ISerializationContext context, TargetModelTypeDef semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DSLPackage.Literals.TARGET_MODEL_TYPE_DEF__TYPE));
-			if (transientValues.isValueTransient(semanticObject, PCMDFDConstraintLanguagePackage.Literals.TARGET_MODEL_TYPE_DEF__PCM_TYPE_CONTAINER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PCMDFDConstraintLanguagePackage.Literals.TARGET_MODEL_TYPE_DEF__PCM_TYPE_CONTAINER));
-			if (transientValues.isValueTransient(semanticObject, PCMDFDConstraintLanguagePackage.Literals.TARGET_MODEL_TYPE_DEF__USAGE_MODEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PCMDFDConstraintLanguagePackage.Literals.TARGET_MODEL_TYPE_DEF__USAGE_MODEL));
-			if (transientValues.isValueTransient(semanticObject, PCMDFDConstraintLanguagePackage.Literals.TARGET_MODEL_TYPE_DEF__REPOSITORY_MODEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, PCMDFDConstraintLanguagePackage.Literals.TARGET_MODEL_TYPE_DEF__REPOSITORY_MODEL));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTargetModelTypeDefAccess().getTypePCMDFDKeyword_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getTargetModelTypeDefAccess().getPcmTypeContainerCharacteristicTypeDictionaryIDTerminalRuleCall_3_0_1(), semanticObject.eGet(PCMDFDConstraintLanguagePackage.Literals.TARGET_MODEL_TYPE_DEF__PCM_TYPE_CONTAINER, false));
-		feeder.accept(grammarAccess.getTargetModelTypeDefAccess().getUsageModelUsageModelIDTerminalRuleCall_5_0_1(), semanticObject.eGet(PCMDFDConstraintLanguagePackage.Literals.TARGET_MODEL_TYPE_DEF__USAGE_MODEL, false));
-		feeder.accept(grammarAccess.getTargetModelTypeDefAccess().getRepositoryModelRepositoryIDTerminalRuleCall_7_0_1(), semanticObject.eGet(PCMDFDConstraintLanguagePackage.Literals.TARGET_MODEL_TYPE_DEF__REPOSITORY_MODEL, false));
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

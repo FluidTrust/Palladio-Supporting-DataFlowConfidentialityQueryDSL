@@ -60,13 +60,13 @@ public interface PCMDFDConstraintLanguageFactory extends EFactory
   PropertyClassSelector createPropertyClassSelector();
 
   /**
-   * Returns a new object of class '<em>Component Identity Selector</em>'.
+   * Returns a new object of class '<em>Node Identitiy Selector</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Component Identity Selector</em>'.
+   * @return a new object of class '<em>Node Identitiy Selector</em>'.
    * @generated
    */
-  ComponentIdentitySelector createComponentIdentitySelector();
+  NodeIdentitiySelector createNodeIdentitiySelector();
 
   /**
    * Returns the package supported by this factory.

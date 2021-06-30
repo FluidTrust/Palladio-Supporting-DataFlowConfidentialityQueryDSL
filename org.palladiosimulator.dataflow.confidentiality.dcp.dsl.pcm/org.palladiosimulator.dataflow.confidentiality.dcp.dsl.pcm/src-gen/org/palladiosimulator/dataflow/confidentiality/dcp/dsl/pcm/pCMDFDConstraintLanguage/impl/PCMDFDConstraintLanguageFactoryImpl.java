@@ -69,7 +69,7 @@ public class PCMDFDConstraintLanguageFactoryImpl extends EFactoryImpl implements
       case PCMDFDConstraintLanguagePackage.TARGET_MODEL_TYPE_DEF: return createTargetModelTypeDef();
       case PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR: return createPropertySelector();
       case PCMDFDConstraintLanguagePackage.PROPERTY_CLASS_SELECTOR: return createPropertyClassSelector();
-      case PCMDFDConstraintLanguagePackage.COMPONENT_IDENTITY_SELECTOR: return createComponentIdentitySelector();
+      case PCMDFDConstraintLanguagePackage.NODE_IDENTITIY_SELECTOR: return createNodeIdentitiySelector();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -129,10 +129,10 @@ public class PCMDFDConstraintLanguageFactoryImpl extends EFactoryImpl implements
    * @generated
    */
   @Override
-  public ComponentIdentitySelector createComponentIdentitySelector()
+  public NodeIdentitiySelector createNodeIdentitiySelector()
   {
-    ComponentIdentitySelectorImpl componentIdentitySelector = new ComponentIdentitySelectorImpl();
-    return componentIdentitySelector;
+    NodeIdentitiySelectorImpl nodeIdentitiySelector = new NodeIdentitiySelectorImpl();
+    return nodeIdentitiySelector;
   }
 
   /**

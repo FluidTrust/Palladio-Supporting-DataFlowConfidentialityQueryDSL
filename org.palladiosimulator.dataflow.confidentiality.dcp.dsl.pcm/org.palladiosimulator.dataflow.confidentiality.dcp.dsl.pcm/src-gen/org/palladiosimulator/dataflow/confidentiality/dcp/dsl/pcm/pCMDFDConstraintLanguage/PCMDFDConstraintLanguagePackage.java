@@ -5,7 +5,6 @@ package org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstra
 
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -177,7 +176,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_SELECTOR__REF = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 0;
+  int PROPERTY_SELECTOR__REF = DSLPackage.PROPERTY_SELECTOR__REF;
 
   /**
    * The number of structural features of the '<em>Property Selector</em>' class.
@@ -186,7 +185,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_SELECTOR_FEATURE_COUNT = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 1;
+  int PROPERTY_SELECTOR_FEATURE_COUNT = DSLPackage.PROPERTY_SELECTOR_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.PropertyClassSelectorImpl <em>Property Class Selector</em>}' class.
@@ -205,7 +204,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_CLASS_SELECTOR__REF = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 0;
+  int PROPERTY_CLASS_SELECTOR__REF = DSLPackage.PROPERTY_CLASS_SELECTOR__REF;
 
   /**
    * The number of structural features of the '<em>Property Class Selector</em>' class.
@@ -214,17 +213,17 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_CLASS_SELECTOR_FEATURE_COUNT = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 1;
+  int PROPERTY_CLASS_SELECTOR_FEATURE_COUNT = DSLPackage.PROPERTY_CLASS_SELECTOR_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.ComponentIdentitySelectorImpl <em>Component Identity Selector</em>}' class.
+   * The meta object id for the '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.NodeIdentitiySelectorImpl <em>Node Identitiy Selector</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.ComponentIdentitySelectorImpl
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.PCMDFDConstraintLanguagePackageImpl#getComponentIdentitySelector()
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.NodeIdentitiySelectorImpl
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.PCMDFDConstraintLanguagePackageImpl#getNodeIdentitiySelector()
    * @generated
    */
-  int COMPONENT_IDENTITY_SELECTOR = 4;
+  int NODE_IDENTITIY_SELECTOR = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -233,16 +232,16 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_IDENTITY_SELECTOR__NAME = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 0;
+  int NODE_IDENTITIY_SELECTOR__NAME = DSLPackage.NODE_IDENTITIY_SELECTOR__NAME;
 
   /**
-   * The feature id for the '<em><b>Action</b></em>' reference.
+   * The feature id for the '<em><b>Dia Node</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT_IDENTITY_SELECTOR__ACTION = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 1;
+  int NODE_IDENTITIY_SELECTOR__DIA_NODE = DSLPackage.NODE_IDENTITIY_SELECTOR__DIA_NODE;
 
   /**
    * The feature id for the '<em><b>Assembly</b></em>' reference.
@@ -251,7 +250,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_IDENTITY_SELECTOR__ASSEMBLY = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 2;
+  int NODE_IDENTITIY_SELECTOR__ASSEMBLY = DSLPackage.NODE_IDENTITIY_SELECTOR_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Component</b></em>' reference.
@@ -260,7 +259,16 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_IDENTITY_SELECTOR__COMPONENT = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 3;
+  int NODE_IDENTITIY_SELECTOR__COMPONENT = DSLPackage.NODE_IDENTITIY_SELECTOR_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Action</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_IDENTITIY_SELECTOR__ACTION = DSLPackage.NODE_IDENTITIY_SELECTOR_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Signature</b></em>' reference.
@@ -269,7 +277,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_IDENTITY_SELECTOR__SIGNATURE = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 4;
+  int NODE_IDENTITIY_SELECTOR__SIGNATURE = DSLPackage.NODE_IDENTITIY_SELECTOR_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>User Action</b></em>' reference.
@@ -278,7 +286,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_IDENTITY_SELECTOR__USER_ACTION = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 5;
+  int NODE_IDENTITIY_SELECTOR__USER_ACTION = DSLPackage.NODE_IDENTITIY_SELECTOR_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Store</b></em>' reference.
@@ -287,16 +295,16 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_IDENTITY_SELECTOR__STORE = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 6;
+  int NODE_IDENTITIY_SELECTOR__STORE = DSLPackage.NODE_IDENTITIY_SELECTOR_FEATURE_COUNT + 5;
 
   /**
-   * The number of structural features of the '<em>Component Identity Selector</em>' class.
+   * The number of structural features of the '<em>Node Identitiy Selector</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT_IDENTITY_SELECTOR_FEATURE_COUNT = DSLPackage.DESTINATION_SELECTOR_FEATURE_COUNT + 7;
+  int NODE_IDENTITIY_SELECTOR_FEATURE_COUNT = DSLPackage.NODE_IDENTITIY_SELECTOR_FEATURE_COUNT + 6;
 
 
   /**
@@ -373,91 +381,80 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
   EClass getPropertyClassSelector();
 
   /**
-   * Returns the meta object for class '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector <em>Component Identity Selector</em>}'.
+   * Returns the meta object for class '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector <em>Node Identitiy Selector</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Component Identity Selector</em>'.
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector
+   * @return the meta object for class '<em>Node Identitiy Selector</em>'.
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector
    * @generated
    */
-  EClass getComponentIdentitySelector();
+  EClass getNodeIdentitiySelector();
 
   /**
-   * Returns the meta object for the attribute '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getName()
-   * @see #getComponentIdentitySelector()
-   * @generated
-   */
-  EAttribute getComponentIdentitySelector_Name();
-
-  /**
-   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getAction <em>Action</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Action</em>'.
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getAction()
-   * @see #getComponentIdentitySelector()
-   * @generated
-   */
-  EReference getComponentIdentitySelector_Action();
-
-  /**
-   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getAssembly <em>Assembly</em>}'.
+   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getAssembly <em>Assembly</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Assembly</em>'.
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getAssembly()
-   * @see #getComponentIdentitySelector()
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getAssembly()
+   * @see #getNodeIdentitiySelector()
    * @generated
    */
-  EReference getComponentIdentitySelector_Assembly();
+  EReference getNodeIdentitiySelector_Assembly();
 
   /**
-   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getComponent <em>Component</em>}'.
+   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getComponent <em>Component</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Component</em>'.
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getComponent()
-   * @see #getComponentIdentitySelector()
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getComponent()
+   * @see #getNodeIdentitiySelector()
    * @generated
    */
-  EReference getComponentIdentitySelector_Component();
+  EReference getNodeIdentitiySelector_Component();
 
   /**
-   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getSignature <em>Signature</em>}'.
+   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getAction <em>Action</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Action</em>'.
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getAction()
+   * @see #getNodeIdentitiySelector()
+   * @generated
+   */
+  EReference getNodeIdentitiySelector_Action();
+
+  /**
+   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getSignature <em>Signature</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Signature</em>'.
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getSignature()
-   * @see #getComponentIdentitySelector()
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getSignature()
+   * @see #getNodeIdentitiySelector()
    * @generated
    */
-  EReference getComponentIdentitySelector_Signature();
+  EReference getNodeIdentitiySelector_Signature();
 
   /**
-   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getUserAction <em>User Action</em>}'.
+   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getUserAction <em>User Action</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>User Action</em>'.
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getUserAction()
-   * @see #getComponentIdentitySelector()
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getUserAction()
+   * @see #getNodeIdentitiySelector()
    * @generated
    */
-  EReference getComponentIdentitySelector_UserAction();
+  EReference getNodeIdentitiySelector_UserAction();
 
   /**
-   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getStore <em>Store</em>}'.
+   * Returns the meta object for the reference '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getStore <em>Store</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Store</em>'.
-   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector#getStore()
-   * @see #getComponentIdentitySelector()
+   * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector#getStore()
+   * @see #getNodeIdentitiySelector()
    * @generated
    */
-  EReference getComponentIdentitySelector_Store();
+  EReference getNodeIdentitiySelector_Store();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -547,30 +544,14 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
     EClass PROPERTY_CLASS_SELECTOR = eINSTANCE.getPropertyClassSelector();
 
     /**
-     * The meta object literal for the '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.ComponentIdentitySelectorImpl <em>Component Identity Selector</em>}' class.
+     * The meta object literal for the '{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.NodeIdentitiySelectorImpl <em>Node Identitiy Selector</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.ComponentIdentitySelectorImpl
-     * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.PCMDFDConstraintLanguagePackageImpl#getComponentIdentitySelector()
+     * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.NodeIdentitiySelectorImpl
+     * @see org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.PCMDFDConstraintLanguagePackageImpl#getNodeIdentitiySelector()
      * @generated
      */
-    EClass COMPONENT_IDENTITY_SELECTOR = eINSTANCE.getComponentIdentitySelector();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPONENT_IDENTITY_SELECTOR__NAME = eINSTANCE.getComponentIdentitySelector_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Action</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference COMPONENT_IDENTITY_SELECTOR__ACTION = eINSTANCE.getComponentIdentitySelector_Action();
+    EClass NODE_IDENTITIY_SELECTOR = eINSTANCE.getNodeIdentitiySelector();
 
     /**
      * The meta object literal for the '<em><b>Assembly</b></em>' reference feature.
@@ -578,7 +559,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPONENT_IDENTITY_SELECTOR__ASSEMBLY = eINSTANCE.getComponentIdentitySelector_Assembly();
+    EReference NODE_IDENTITIY_SELECTOR__ASSEMBLY = eINSTANCE.getNodeIdentitiySelector_Assembly();
 
     /**
      * The meta object literal for the '<em><b>Component</b></em>' reference feature.
@@ -586,7 +567,15 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPONENT_IDENTITY_SELECTOR__COMPONENT = eINSTANCE.getComponentIdentitySelector_Component();
+    EReference NODE_IDENTITIY_SELECTOR__COMPONENT = eINSTANCE.getNodeIdentitiySelector_Component();
+
+    /**
+     * The meta object literal for the '<em><b>Action</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NODE_IDENTITIY_SELECTOR__ACTION = eINSTANCE.getNodeIdentitiySelector_Action();
 
     /**
      * The meta object literal for the '<em><b>Signature</b></em>' reference feature.
@@ -594,7 +583,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPONENT_IDENTITY_SELECTOR__SIGNATURE = eINSTANCE.getComponentIdentitySelector_Signature();
+    EReference NODE_IDENTITIY_SELECTOR__SIGNATURE = eINSTANCE.getNodeIdentitiySelector_Signature();
 
     /**
      * The meta object literal for the '<em><b>User Action</b></em>' reference feature.
@@ -602,7 +591,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPONENT_IDENTITY_SELECTOR__USER_ACTION = eINSTANCE.getComponentIdentitySelector_UserAction();
+    EReference NODE_IDENTITIY_SELECTOR__USER_ACTION = eINSTANCE.getNodeIdentitiySelector_UserAction();
 
     /**
      * The meta object literal for the '<em><b>Store</b></em>' reference feature.
@@ -610,7 +599,7 @@ public interface PCMDFDConstraintLanguagePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPONENT_IDENTITY_SELECTOR__STORE = eINSTANCE.getComponentIdentitySelector_Store();
+    EReference NODE_IDENTITIY_SELECTOR__STORE = eINSTANCE.getNodeIdentitiySelector_Store();
 
   }
 

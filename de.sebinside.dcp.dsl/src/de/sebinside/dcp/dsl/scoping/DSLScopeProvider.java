@@ -58,55 +58,9 @@ public class DSLScopeProvider extends AbstractDSLScopeProvider {
 			}
 			return super.getScope(context, reference);
 		}
-
-//		if (context instanceof NodeIdentitiySelector
-//				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__COMPONENT) {
-//
-//			AssemblyContext assemblyContext = ((NodeIdentitiySelector) context).getAssembly();
-//			RepositoryComponent repositoryComponent = assemblyContext.getEncapsulatedComponent__AssemblyContext();
-//			
-//			// Assumption: The DSL is intended to only work with BasicComponents
-//			if (repositoryComponent instanceof BasicComponent) {
-//				BasicComponent component = (BasicComponent) repositoryComponent;
-//				List<BasicComponent> componentList = new ArrayList<BasicComponent>();
-//				componentList.add(component);
-//
-//				return Scopes.scopeFor(componentList, c -> QualifiedName.create(c.getEntityName()), IScope.NULLSCOPE);
-//			}
-//			return super.getScope(context, reference);
-//		}
 		
-//		if (context instanceof NodeIdentitiySelector
-//				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__STORE) {
-//
-//			AssemblyContext assemblyContext = ((NodeIdentitiySelector) context).getAssembly();
-//			RepositoryComponent repositoryComponent = assemblyContext.getEncapsulatedComponent__AssemblyContext();
-//			
-//			// Assumption: The DSL is intended to only work with BasicComponents
-//			if (repositoryComponent instanceof OperationalDataStoreComponent) {
-//				OperationalDataStoreComponent component = (OperationalDataStoreComponent) repositoryComponent;
-//				List<OperationalDataStoreComponent> componentList = new ArrayList<OperationalDataStoreComponent>();
-//				componentList.add(component);
-//
-//				return Scopes.scopeFor(componentList, c -> QualifiedName.create(c.getEntityName()), IScope.NULLSCOPE);
-//			}
-//			return super.getScope(context, reference);
-//		}
-		
-//		if (context instanceof NodeIdentitiySelector
-//				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__SIGNATURE) {
-//
-//			BasicComponent component = ((NodeIdentitiySelector) context).getComponent();
-//
-//			// This is the case if the component is invalid referenced
-//			if (component != null) {
-//				List<ServiceEffectSpecification> seffs = component.getServiceEffectSpecifications__BasicComponent();
-//
-//				return Scopes.scopeFor(seffs,
-//						seff -> QualifiedName.create(seff.getDescribedService__SEFF().getEntityName()),
-//						IScope.NULLSCOPE);
-//			}
-//		}
+//		if(context instanceof NodeIdentitiySelector
+//				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__DIA_NODE)
 
 		return super.getScope(context, reference);
 	}

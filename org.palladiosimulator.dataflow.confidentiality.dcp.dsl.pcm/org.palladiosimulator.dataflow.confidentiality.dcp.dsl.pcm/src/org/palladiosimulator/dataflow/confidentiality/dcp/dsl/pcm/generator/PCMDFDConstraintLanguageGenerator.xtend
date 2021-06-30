@@ -9,9 +9,14 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
 import org.palladiosimulator.dataflow.confidentiality.pcm.workflow.TransitiveTransformationTrace
 import de.sebinside.dcp.dsl.generator.DSLGenerator
-import de.sebinside.dcp.dsl.dSL.Rule
-import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.converter.PCMDFDConverter
+import de.sebinside.dcp.dsl.dSL.Constraint
+import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
+import de.sebinside.dcp.dsl.dSL.CharacteristicClass
+import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.Model
+import de.sebinside.dcp.dsl.dSL.Rule
+import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.queryrule.PCMDFDInputPinQueryRule
+import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 
 /**
  * Generates code from your model files on save.
@@ -20,10 +25,26 @@ import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.converter.PCMD
  */
 class PCMDFDConstraintLanguageGenerator extends DSLGenerator {
 	
-	private TransitiveTransformationTrace transitiveTransformationTrace = null
+	TransitiveTransformationTrace transitiveTransformationTrace = null
+	PCMDFDConverter pcmDFDConverter = null
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-
+		// intentionally empty, so the editor does not try to generate a output
+	}
+	
+	def generateFromModel(Model model) { // potentially not necessary, but could be usefull to differentiate the two DSLs
+		val program = PrologFactory.eINSTANCE.createProgram
+		model.targetModelType.compile
+		
+		for (charClass : model.elements.filter(CharacteristicClass)) {
+			program.clauses.addAll(charClass.compile)
+		}
+		
+		for (constraint : model.elements.filter(Constraint)) {
+			program.clauses.addAll(constraint.compile)
+		}
+		
+		program
 	}
 
 	override compile(TargetModelTypeDef typeDefs) {
@@ -35,14 +56,16 @@ class PCMDFDConstraintLanguageGenerator extends DSLGenerator {
 				if(transitiveTransformationTrace === null) {
 						throw new Exception("No valid trace for DFD!")
 				}
-				this.converter = new PCMDFDConverter(transitiveTransformationTrace)}
+				this.pcmDFDConverter = new PCMDFDConverter(transitiveTransformationTrace)
+				this.converter = this.pcmDFDConverter} 
 			case "DFD": super.compile(typeDefs)
 			default: throw new Exception("No valid type definition given!")
 		}
 	}
 	
 	override generateRule(Rule mainRule, String constraintName, Converter converter) {
-		
+		var inputRule = new PCMDFDInputPinQueryRule(mainRule, constraintName, pcmDFDConverter)
+		inputRule.generate()
 	}
 	
 	def setTransitiveTransformationTrace(TransitiveTransformationTrace trace) {

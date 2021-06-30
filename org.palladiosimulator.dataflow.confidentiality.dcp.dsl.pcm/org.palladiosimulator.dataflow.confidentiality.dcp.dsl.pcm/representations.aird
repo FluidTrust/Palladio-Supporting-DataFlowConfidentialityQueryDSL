@@ -31,4 +31,8 @@
   <semanticResources>platform:/resource/de.uka.ipd.sdq.probfunction/model/ProbabilityFunction.genmodel</semanticResources>
   <semanticResources>platform:/resource/de.uka.ipd.sdq.units/model/Units.genmodel</semanticResources>
   <semanticResources>platform:/resource/de.uka.ipd.sdq.stoex/model/stoex.genmodel</semanticResources>
+  <semanticResources>src/org/palladiosimulator/dataflow/confidentiality/dcp/dsl/pcm/queryrule/PCMDFDQueryRule.xtend</semanticResources>
+  <semanticResources>src/org/palladiosimulator/dataflow/confidentiality/dcp/dsl/pcm/queryrule/PCMDFDInputPinQueryRule.xtend</semanticResources>
+  <semanticResources>src/org/palladiosimulator/dataflow/confidentiality/dcp/dsl/pcm/scoping/ImportReadyGlobalScopeProvider.xtend</semanticResources>
+  <semanticResources>src/org/palladiosimulator/dataflow/confidentiality/dcp/dsl/pcm/ExtendedResourceDescriptionStrategy.xtend</semanticResources>
 </viewpoint:DAnalysis>

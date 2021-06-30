@@ -7,7 +7,6 @@ import org.eclipse.emf.common.util.URI;
 import org.palladiosimulator.dataflow.confidentiality.pcm.transformation.dcp.workflow.jobs.impl.TransformPCMDFDWithConstraintsToPrologJobImpl;
 import org.palladiosimulator.dataflow.confidentiality.pcm.workflow.jobs.TransformPCMDFDToPrologJobBuilder;
 import org.palladiosimulator.dataflow.confidentiality.pcm.workflow.jobs.impl.TransformPCMDFDtoPrologJobImpl;
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.TransfromDCPDSLToPrologJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.blackboards.KeyValueMDSDBlackboard;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.InitPartitionJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.LoadModelJob;
@@ -41,7 +40,7 @@ public class TransformPCMDFDWithConstraintsToPrologJobBuilder {
 		@SuppressWarnings("unchecked")
 		var baseSequenceImpl = (TransformPCMDFDtoPrologJobImpl<KeyValueMDSDBlackboard>) baseSequence;
 		if(baseSequenceImpl == null) {
-			//Error
+			//Error 
 		}
 		
 		var jobSequence = new TransformPCMDFDWithConstraintsToPrologJobImpl<KeyValueMDSDBlackboard>("\"PCM to Prolog Transformation with Constraints\"", 
@@ -59,7 +58,7 @@ public class TransformPCMDFDWithConstraintsToPrologJobBuilder {
         jobSequence.add(initPrologConstraintsPartitionJob);
         
         // actual transformation job
-        var dcpdslToConstraintsJob = new TransfromDCPDSLToPrologJob<KeyValueMDSDBlackboard>(dcpdslLocation, prologConstraintsLocation, baseSequence.getTraceKey());
+        var dcpdslToConstraintsJob = new TransfromPCMDFDConstraintsToPrologJob<KeyValueMDSDBlackboard>(dcpdslLocation, prologConstraintsLocation, baseSequence.getTraceKey());
         jobSequence.add(dcpdslToConstraintsJob);
 		
         // serialize the prolog constraints either to file or to string

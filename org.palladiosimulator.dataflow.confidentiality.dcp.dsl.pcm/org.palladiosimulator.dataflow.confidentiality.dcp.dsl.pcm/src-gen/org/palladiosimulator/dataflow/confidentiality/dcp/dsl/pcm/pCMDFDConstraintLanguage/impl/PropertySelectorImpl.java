@@ -3,19 +3,7 @@
  */
 package org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl;
 
-import de.sebinside.dcp.dsl.dSL.CharacteristicSelector;
-import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector;
-import de.sebinside.dcp.dsl.dSL.DSLPackage;
-
-import de.sebinside.dcp.dsl.dSL.impl.DestinationSelectorImpl;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.PCMDFDConstraintLanguagePackage;
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.PropertySelector;
@@ -24,27 +12,11 @@ import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstrai
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Property Selector</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * </p>
- * <ul>
- *   <li>{@link org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.impl.PropertySelectorImpl#getRef <em>Ref</em>}</li>
- * </ul>
  *
  * @generated
  */
-public class PropertySelectorImpl extends DestinationSelectorImpl implements PropertySelector
+public class PropertySelectorImpl extends de.sebinside.dcp.dsl.dSL.impl.PropertySelectorImpl implements PropertySelector
 {
-  /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRef()
-   * @generated
-   * @ordered
-   */
-  protected CharacteristicTypeSelector ref;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -64,190 +36,6 @@ public class PropertySelectorImpl extends DestinationSelectorImpl implements Pro
   protected EClass eStaticClass()
   {
     return PCMDFDConstraintLanguagePackage.Literals.PROPERTY_SELECTOR;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public CharacteristicTypeSelector getRef()
-  {
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetRef(CharacteristicTypeSelector newRef, NotificationChain msgs)
-  {
-    CharacteristicTypeSelector oldRef = ref;
-    ref = newRef;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF, oldRef, newRef);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setRef(CharacteristicTypeSelector newRef)
-  {
-    if (newRef != ref)
-    {
-      NotificationChain msgs = null;
-      if (ref != null)
-        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF, null, msgs);
-      if (newRef != null)
-        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF, null, msgs);
-      msgs = basicSetRef(newRef, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF, newRef, newRef));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF:
-        return basicSetRef(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF:
-        return getRef();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF:
-        setRef((CharacteristicTypeSelector)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF:
-        setRef((CharacteristicTypeSelector)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF:
-        return ref != null;
-    }
-    return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == CharacteristicSelector.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF: return DSLPackage.CHARACTERISTIC_SELECTOR__REF;
-        default: return -1;
-      }
-    }
-    if (baseClass == de.sebinside.dcp.dsl.dSL.PropertySelector.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == CharacteristicSelector.class)
-    {
-      switch (baseFeatureID)
-      {
-        case DSLPackage.CHARACTERISTIC_SELECTOR__REF: return PCMDFDConstraintLanguagePackage.PROPERTY_SELECTOR__REF;
-        default: return -1;
-      }
-    }
-    if (baseClass == de.sebinside.dcp.dsl.dSL.PropertySelector.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
 } //PropertySelectorImpl

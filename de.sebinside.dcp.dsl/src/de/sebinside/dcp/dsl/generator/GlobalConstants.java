@@ -41,12 +41,18 @@ public class GlobalConstants {
 	}
 
 	public static enum QueryTypes {
-		INPUT_PIN("InputPin"), OUTPUT_PIN("OutputPin");
+		INPUT_PIN("InputPin", "inputPin"), OUTPUT_PIN("OutputPin", "outputPin");
 
 		private String value;
+		private String prolog;
 
-		QueryTypes(String value) {
-			this.value = value;
+		QueryTypes(String name, String prolog) {
+			this.value = name;
+			this.prolog = prolog;
+		}
+		
+		public String prolog() {
+			return this.prolog;
 		}
 
 		@Override

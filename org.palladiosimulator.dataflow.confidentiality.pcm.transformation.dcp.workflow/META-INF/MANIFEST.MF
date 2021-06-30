@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Workflow
+Bundle-SymbolicName: org.palladiosimulator.dataflow.confidentiality.pcm.transformation.dcp.workflow
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: org.palladiosimulator.dataflow.confidentiality.transformation.dcp.dsl.pcm.workflow
+Export-Package: org.palladiosimulator.dataflow.confidentiality.pcm.transformation.dcp.workflow,
+ org.palladiosimulator.dataflow.confidentiality.pcm.transformation.dcp.workflow.impl,
+ org.palladiosimulator.dataflow.confidentiality.pcm.transformation.dcp.workflow.jobs,
+ org.palladiosimulator.dataflow.confidentiality.pcm.transformation.dcp.workflow.jobs.impl
+Require-Bundle: org.palladiosimulator.dataflow.confidentiality.pcm.workflow;bundle-version="0.1.0",
+ de.uka.ipd.sdq.workflow;bundle-version="4.2.0",
+ de.uka.ipd.sdq.workflow.mdsd;bundle-version="4.2.0",
+ org.palladiosimulator.pcm,
+ org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm,
+ org.palladiosimulator.supporting.prolog.model

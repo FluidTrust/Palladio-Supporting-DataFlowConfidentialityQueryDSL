@@ -13,7 +13,6 @@ import de.uka.ipd.sdq.stoex.StoexPackage;
 
 import de.uka.ipd.sdq.units.UnitsPackage;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -21,8 +20,8 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.ComponentIdentitySelector;
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.Model;
+import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.NodeIdentitiySelector;
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.PCMDFDConstraintLanguageFactory;
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.PCMDFDConstraintLanguagePackage;
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.PropertyClassSelector;
@@ -112,7 +111,7 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass componentIdentitySelectorEClass = null;
+  private EClass nodeIdentitiySelectorEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -165,13 +164,13 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
 
     // Initialize simple dependencies
     DSLPackage.eINSTANCE.eClass();
-    EcorePackage.eINSTANCE.eClass();
     CharacteristicsPackage.eINSTANCE.eClass();
     RepositoryPackage.eINSTANCE.eClass();
     CompositionPackage.eINSTANCE.eClass();
     org.palladiosimulator.pcm.repository.RepositoryPackage.eINSTANCE.eClass();
     SeffPackage.eINSTANCE.eClass();
     UsagemodelPackage.eINSTANCE.eClass();
+    EcorePackage.eINSTANCE.eClass();
     DataDictionaryCharacterizedPackage.eINSTANCE.eClass();
     DataFlowDiagramCharacterizedPackage.eINSTANCE.eClass();
     IdentifierPackage.eINSTANCE.eClass();
@@ -290,9 +289,9 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
    * @generated
    */
   @Override
-  public EClass getComponentIdentitySelector()
+  public EClass getNodeIdentitiySelector()
   {
-    return componentIdentitySelectorEClass;
+    return nodeIdentitiySelectorEClass;
   }
 
   /**
@@ -301,9 +300,9 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
    * @generated
    */
   @Override
-  public EAttribute getComponentIdentitySelector_Name()
+  public EReference getNodeIdentitiySelector_Assembly()
   {
-    return (EAttribute)componentIdentitySelectorEClass.getEStructuralFeatures().get(0);
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -312,9 +311,9 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
    * @generated
    */
   @Override
-  public EReference getComponentIdentitySelector_Action()
+  public EReference getNodeIdentitiySelector_Component()
   {
-    return (EReference)componentIdentitySelectorEClass.getEStructuralFeatures().get(1);
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -323,9 +322,9 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
    * @generated
    */
   @Override
-  public EReference getComponentIdentitySelector_Assembly()
+  public EReference getNodeIdentitiySelector_Action()
   {
-    return (EReference)componentIdentitySelectorEClass.getEStructuralFeatures().get(2);
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -334,9 +333,9 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
    * @generated
    */
   @Override
-  public EReference getComponentIdentitySelector_Component()
+  public EReference getNodeIdentitiySelector_Signature()
   {
-    return (EReference)componentIdentitySelectorEClass.getEStructuralFeatures().get(3);
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -345,9 +344,9 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
    * @generated
    */
   @Override
-  public EReference getComponentIdentitySelector_Signature()
+  public EReference getNodeIdentitiySelector_UserAction()
   {
-    return (EReference)componentIdentitySelectorEClass.getEStructuralFeatures().get(4);
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -356,20 +355,9 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
    * @generated
    */
   @Override
-  public EReference getComponentIdentitySelector_UserAction()
+  public EReference getNodeIdentitiySelector_Store()
   {
-    return (EReference)componentIdentitySelectorEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getComponentIdentitySelector_Store()
-  {
-    return (EReference)componentIdentitySelectorEClass.getEStructuralFeatures().get(6);
+    return (EReference)nodeIdentitiySelectorEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -414,14 +402,13 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
 
     propertyClassSelectorEClass = createEClass(PROPERTY_CLASS_SELECTOR);
 
-    componentIdentitySelectorEClass = createEClass(COMPONENT_IDENTITY_SELECTOR);
-    createEAttribute(componentIdentitySelectorEClass, COMPONENT_IDENTITY_SELECTOR__NAME);
-    createEReference(componentIdentitySelectorEClass, COMPONENT_IDENTITY_SELECTOR__ACTION);
-    createEReference(componentIdentitySelectorEClass, COMPONENT_IDENTITY_SELECTOR__ASSEMBLY);
-    createEReference(componentIdentitySelectorEClass, COMPONENT_IDENTITY_SELECTOR__COMPONENT);
-    createEReference(componentIdentitySelectorEClass, COMPONENT_IDENTITY_SELECTOR__SIGNATURE);
-    createEReference(componentIdentitySelectorEClass, COMPONENT_IDENTITY_SELECTOR__USER_ACTION);
-    createEReference(componentIdentitySelectorEClass, COMPONENT_IDENTITY_SELECTOR__STORE);
+    nodeIdentitiySelectorEClass = createEClass(NODE_IDENTITIY_SELECTOR);
+    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__ASSEMBLY);
+    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__COMPONENT);
+    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__ACTION);
+    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__SIGNATURE);
+    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__USER_ACTION);
+    createEReference(nodeIdentitiySelectorEClass, NODE_IDENTITIY_SELECTOR__STORE);
   }
 
   /**
@@ -453,9 +440,8 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
     CharacteristicsPackage theCharacteristicsPackage = (CharacteristicsPackage)EPackage.Registry.INSTANCE.getEPackage(CharacteristicsPackage.eNS_URI);
     UsagemodelPackage theUsagemodelPackage = (UsagemodelPackage)EPackage.Registry.INSTANCE.getEPackage(UsagemodelPackage.eNS_URI);
     org.palladiosimulator.pcm.repository.RepositoryPackage theRepositoryPackage_1 = (org.palladiosimulator.pcm.repository.RepositoryPackage)EPackage.Registry.INSTANCE.getEPackage(org.palladiosimulator.pcm.repository.RepositoryPackage.eNS_URI);
-    EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-    SeffPackage theSeffPackage = (SeffPackage)EPackage.Registry.INSTANCE.getEPackage(SeffPackage.eNS_URI);
     CompositionPackage theCompositionPackage = (CompositionPackage)EPackage.Registry.INSTANCE.getEPackage(CompositionPackage.eNS_URI);
+    SeffPackage theSeffPackage = (SeffPackage)EPackage.Registry.INSTANCE.getEPackage(SeffPackage.eNS_URI);
     RepositoryPackage theRepositoryPackage = (RepositoryPackage)EPackage.Registry.INSTANCE.getEPackage(RepositoryPackage.eNS_URI);
 
     // Create type parameters
@@ -465,11 +451,9 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
     // Add supertypes to classes
     modelEClass.getESuperTypes().add(theDSLPackage.getModel());
     targetModelTypeDefEClass.getESuperTypes().add(theDSLPackage.getTargetModelTypeDef());
-    propertySelectorEClass.getESuperTypes().add(theDSLPackage.getDestinationSelector());
     propertySelectorEClass.getESuperTypes().add(theDSLPackage.getPropertySelector());
-    propertyClassSelectorEClass.getESuperTypes().add(theDSLPackage.getDestinationSelector());
     propertyClassSelectorEClass.getESuperTypes().add(theDSLPackage.getPropertyClassSelector());
-    componentIdentitySelectorEClass.getESuperTypes().add(theDSLPackage.getDestinationSelector());
+    nodeIdentitiySelectorEClass.getESuperTypes().add(theDSLPackage.getNodeIdentitiySelector());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -483,14 +467,13 @@ public class PCMDFDConstraintLanguagePackageImpl extends EPackageImpl implements
 
     initEClass(propertyClassSelectorEClass, PropertyClassSelector.class, "PropertyClassSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(componentIdentitySelectorEClass, ComponentIdentitySelector.class, "ComponentIdentitySelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getComponentIdentitySelector_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ComponentIdentitySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentIdentitySelector_Action(), theSeffPackage.getAbstractAction(), null, "action", null, 0, 1, ComponentIdentitySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentIdentitySelector_Assembly(), theCompositionPackage.getAssemblyContext(), null, "assembly", null, 0, 1, ComponentIdentitySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentIdentitySelector_Component(), theRepositoryPackage_1.getBasicComponent(), null, "component", null, 0, 1, ComponentIdentitySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentIdentitySelector_Signature(), theRepositoryPackage_1.getOperationSignature(), null, "signature", null, 0, 1, ComponentIdentitySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentIdentitySelector_UserAction(), theUsagemodelPackage.getEntryLevelSystemCall(), null, "userAction", null, 0, 1, ComponentIdentitySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentIdentitySelector_Store(), theRepositoryPackage.getOperationalDataStoreComponent(), null, "store", null, 0, 1, ComponentIdentitySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(nodeIdentitiySelectorEClass, NodeIdentitiySelector.class, "NodeIdentitiySelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNodeIdentitiySelector_Assembly(), theCompositionPackage.getAssemblyContext(), null, "assembly", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeIdentitiySelector_Component(), theRepositoryPackage_1.getBasicComponent(), null, "component", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeIdentitiySelector_Action(), theSeffPackage.getAbstractAction(), null, "action", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeIdentitiySelector_Signature(), theRepositoryPackage_1.getOperationSignature(), null, "signature", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeIdentitiySelector_UserAction(), theUsagemodelPackage.getEntryLevelSystemCall(), null, "userAction", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeIdentitiySelector_Store(), theRepositoryPackage.getOperationalDataStoreComponent(), null, "store", null, 0, 1, NodeIdentitiySelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

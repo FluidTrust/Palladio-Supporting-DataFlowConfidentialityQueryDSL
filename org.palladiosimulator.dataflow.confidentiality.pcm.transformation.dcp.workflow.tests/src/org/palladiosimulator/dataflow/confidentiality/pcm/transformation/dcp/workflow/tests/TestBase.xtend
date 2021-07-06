@@ -68,9 +68,9 @@ class TestBase {
 		prover.loadTheory(program.get)
 		prover.addTheory(constraints.get)
 		
-		val query = prover.query("")
+		val query = prover.query("constraint_RBAC(ConstraintName, QueryType, N, PIN, S, VarSet_authRoles, VarSet_compRoles).")
 		val solution = query.solve()
 		
-		assertTrue(solution.size == 0)
+		assertTrue(solution !== null && solution.size == 1)
 	}
 }

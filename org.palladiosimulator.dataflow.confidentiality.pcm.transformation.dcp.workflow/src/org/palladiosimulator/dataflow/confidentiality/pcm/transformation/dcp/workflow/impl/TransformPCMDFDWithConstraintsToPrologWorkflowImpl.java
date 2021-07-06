@@ -20,6 +20,7 @@ public class TransformPCMDFDWithConstraintsToPrologWorkflowImpl implements Trans
     private final BlackboardBasedWorkflow<KeyValueMDSDBlackboard> workflow;
     private final String prologProgramKey;
     private final String traceKey;
+    private final String constraintsKey;
     private final WorkflowExceptionHandler handler;
     private final IProgressMonitor monitor;
 	
@@ -32,6 +33,7 @@ public class TransformPCMDFDWithConstraintsToPrologWorkflowImpl implements Trans
 		this.workflow = createWorkflow(job, monitor, handler, blackboard);
         this.prologProgramKey = job.getPrologKey();
         this.traceKey = job.getTraceKey();
+        this.constraintsKey = job.getConstraintsKey();
         this.handler = handler;
         this.monitor = monitor;
 	}
@@ -67,7 +69,7 @@ public class TransformPCMDFDWithConstraintsToPrologWorkflowImpl implements Trans
 
 	@Override
 	public Optional<String> getPrologConstraints() {
-		return blackboard.get(traceKey)
+		return blackboard.get(constraintsKey)
 	            .map(String.class::cast);
 	}
 }

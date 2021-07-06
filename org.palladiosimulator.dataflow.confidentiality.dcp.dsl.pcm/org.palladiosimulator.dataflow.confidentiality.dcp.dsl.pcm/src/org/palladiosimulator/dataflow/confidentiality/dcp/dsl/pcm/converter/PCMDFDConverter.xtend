@@ -18,7 +18,8 @@ class PCMDFDConverter extends DFDConverter {
 	}
 
 	override convert(CharacteristicType characteristicType) {
-		var id = trace.getFactIds(characteristicType.ref).findFirst[true]
+		val refType = characteristicType.ref
+		var id = trace.getFactId([ct | ct.id == refType.id && ct.name == refType.name]).findFirst[true]
 		if(id === null) {
 			throw new Exception("Unable to resolve CharacteristicType id.")
 		} else {

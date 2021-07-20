@@ -71,4 +71,8 @@ class PCMDFDConstraintLanguageGenerator extends DSLGenerator {
 	def setTransitiveTransformationTrace(TransitiveTransformationTrace trace) {
 		this.transitiveTransformationTrace = trace
 	}
+	
+	override getConverter(){
+		this.pcmDFDConverter
+	}
 }

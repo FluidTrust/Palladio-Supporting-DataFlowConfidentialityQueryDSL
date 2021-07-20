@@ -17,6 +17,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import org.palladiosimulator.dataflow.confidentiality.pcm.transformation.dcp.workflow.jobs.TransformPCMDFDWithConstraintsToPrologJobBuilder
 import org.palladiosimulator.dataflow.confidentiality.pcm.transformation.dcp.workflow.TransformPCMDFDWithConstraintsToPrologWorkflowFactory
 import static org.junit.Assert.assertTrue
+import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall
+import java.io.FileOutputStream
+import java.nio.file.Path
+import java.nio.file.Files
+import java.io.IOException
 
 class TestBase {
 	static SWIPrologCLIProverFactory proverFactory
@@ -49,6 +54,11 @@ class TestBase {
 		var Allocation allocationModel = allocationModelResource.contents.get(0) as Allocation
 		EcoreUtil.resolveAll(rs)
 		
+		// modify usageModel
+		val elsc = usageModel.usageScenario_UsageModel.get(1).scenarioBehaviour_UsageScenario.actions_ScenarioBehaviour.filter(EntryLevelSystemCall).findFirst[entityName.contains("User.bookFlight.bookFlight")]
+		val outputCharacterisations = elsc.inputParameterUsages_EntryLevelSystemCall.get(0).variableCharacterisation_VariableUsage
+		outputCharacterisations.remove(1)
+		
 		var builder = new TransformPCMDFDWithConstraintsToPrologJobBuilder()
 			.addSerializeModelToString
 			.addSerializeDCPPrologToString
@@ -59,18 +69,20 @@ class TestBase {
 		val workflow = TransformPCMDFDWithConstraintsToPrologWorkflowFactory.createWorkflow(job)
 		workflow.run
 		
-		val program = workflow.prologProgram
-		val constraints = workflow.prologConstraints
+		// workflow.run already calls the prolog program and processes the solution
 		
-		assertTrue(program.present)
-		assertTrue(constraints.present)
-		
-		prover.loadTheory(program.get)
-		prover.addTheory(constraints.get)
-		
-		val query = prover.query("constraint_RBAC(ConstraintName, QueryType, N, PIN, S, VarSet_authRoles, VarSet_compRoles).")
-		val solution = query.solve()
-		
-		assertTrue(solution !== null && solution.size == 1)
+//		val program = workflow.prologProgram
+//		val constraints = workflow.prologConstraints
+//		
+//		assertTrue(program.present)
+//		assertTrue(constraints.present)
+//
+//		prover.loadTheory(program.get)
+//		prover.addTheory(constraints.get)
+//		
+//		val query = prover.query("constraint_RBAC(ConstraintName, QueryType, N, PIN, S, VarSet_authRoles, VarSet_compRoles).")
+//		val solution = query.solve()
+//		
+//		assertTrue(solution !== null && solution.size == 1)
 	}
 }

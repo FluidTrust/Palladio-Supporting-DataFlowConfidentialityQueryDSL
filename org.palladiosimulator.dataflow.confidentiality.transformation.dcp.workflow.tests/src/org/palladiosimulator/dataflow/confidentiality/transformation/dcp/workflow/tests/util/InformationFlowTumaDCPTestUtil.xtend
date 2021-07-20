@@ -32,11 +32,15 @@ class InformationFlowTumaDCPTestUtil {
 		var workflow = dcpBuilder.build()
 
 		workflow.run()
+		
+		
+		//workflow run already runs the prolog program.
+		// this is just added to reuse the original unit tests
 		var result = workflow.getSerializedPrologProgram()
 		var constraints = workflow.serializedPrologConstraints
-		assertFalse(result.isEmpty())
-		assertFalse(constraints.isEmpty)
-
+//		assertFalse(result.isEmpty())
+//		assertFalse(constraints.isEmpty)
+//
 		prover.loadTheory(result.get())
 		prover.addTheory(constraints.get)
 		var query = prover.query("constraint_IllegalInformationFlow(ConstraintName, QueryType, P, PIN, S).")

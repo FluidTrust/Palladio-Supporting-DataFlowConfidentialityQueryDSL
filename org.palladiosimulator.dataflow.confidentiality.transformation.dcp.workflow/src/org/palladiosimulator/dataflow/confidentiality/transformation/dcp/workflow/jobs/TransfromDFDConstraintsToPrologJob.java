@@ -21,10 +21,12 @@ public class TransfromDFDConstraintsToPrologJob<T extends KeyValueMDSDBlackboard
     private final String traceKey;
 	private final ModelLocation dcpdslLocation;
 	private final ModelLocation constraintsLocation;
+	private final ModelLocation callableQueryLocation;
 	
-	public TransfromDFDConstraintsToPrologJob(ModelLocation dcpdslLocation, ModelLocation constraintsLocation, String traceKey) {
+	public TransfromDFDConstraintsToPrologJob(ModelLocation dcpdslLocation, ModelLocation constraintsLocation, ModelLocation callableQueryLocation, String traceKey) {
 		this.dcpdslLocation = dcpdslLocation;
 		this.constraintsLocation = constraintsLocation;
+		this.callableQueryLocation = callableQueryLocation;
         this.traceKey = traceKey;
     }
 	
@@ -35,6 +37,7 @@ public class TransfromDFDConstraintsToPrologJob<T extends KeyValueMDSDBlackboard
 	
 	@Override
 	public void execute(IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
+		monitor.beginTask(getName(), 1);
 		var optTrace = getBlackboard().get(traceKey);
 		if(optTrace.isEmpty()) {
             throw new JobFailedException("There is no trace available on blackboard.");
@@ -59,8 +62,12 @@ public class TransfromDFDConstraintsToPrologJob<T extends KeyValueMDSDBlackboard
         }
 
 		var prologConstraints = generator.generateFromModel(dcpdslFiles.get(0));
+		getBlackboard().put("converter", generator.getConverter());
+		
+		var callQueryProgram = generator.getCallableQueryProgram();
 		
 		getBlackboard().setContents(constraintsLocation, Arrays.asList(prologConstraints));
+		getBlackboard().setContents(callableQueryLocation, Arrays.asList(callQueryProgram));
 		
         monitor.worked(1);
         monitor.done();

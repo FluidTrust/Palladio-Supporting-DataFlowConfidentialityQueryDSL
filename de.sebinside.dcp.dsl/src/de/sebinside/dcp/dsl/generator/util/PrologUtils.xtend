@@ -5,6 +5,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.ExpressionsFactory
 import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
+import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
 
 class PrologUtils {
 	def static Rule(String head) {
@@ -18,6 +19,12 @@ class PrologUtils {
 		val fact = PrologFactory.eINSTANCE.createFact
 		val factInternals = CompoundTerm(head, argument)
 		fact.head = factInternals
+		fact
+	}
+	
+	def static Fact(CompoundTerm term) {
+		val fact = PrologFactory.eINSTANCE.createFact
+		fact.head = term
 		fact
 	}
 

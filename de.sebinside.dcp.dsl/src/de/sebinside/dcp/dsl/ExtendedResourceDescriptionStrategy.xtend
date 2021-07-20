@@ -52,7 +52,7 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 		}
 		if (eObject.eClass === UsagemodelPackage.eINSTANCE.usageModel) {
 			createEObjectDescriptionForUsageModel(eObject, acceptor)
-			return true
+			return false
 		}
 		
 //		if (eObject.eClass === CharacteristicsPackage.eINSTANCE.characteristicTypeDictionary) {
@@ -62,12 +62,12 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 				
 		if(eObject.eClass === RepositoryPackage.eINSTANCE.repository) {
 			createEObjectDescriptionForRepository(eObject, acceptor)
-			return true
+			return false
 		}
 
 		if (eObject.eClass == CompositionPackage.eINSTANCE.assemblyContext) {
 			createEObjectDescriptionForAssemblyContext(eObject, acceptor)
-			return true
+			return false
 		}
 
 		super.createEObjectDescriptions(eObject, acceptor)

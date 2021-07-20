@@ -42,54 +42,50 @@ class DFDConverter implements Converter {
 		}
 	}
 	
-	def dispatch String convertCharacterizedNode(CharacterizedExternalActor actor) {'''«actor.name» («actor.id»)'''}
-	def dispatch String convertCharacterizedNode(CharacterizedStore store) {'''«store.name» («store.id»)'''}
-	def dispatch String convertCharacterizedNode(CharacterizedNode node) {throw new IllegalArgumentException("Unsupported node type selected!")}
-	
 	override convert(NodeIdentitiySelector selector) {
 		if(selector.diaNode === null) {
 			throw new IllegalArgumentException("Target model type and node selector are incompatible.")
 		}
 	
 		AtomicQuotedString('''«trace.getFactId(selector.diaNode, null)»''')
-		// hier problem da trace mit behaving noch zusätzlich einen pin benötigt
+		// Problem as the DFD trace needs an additional pin in order to resolve this
 	}
 	
 	override createQualifiedName(NodeIdentitiySelector selector) {
-		convertCharacterizedNode(selector.diaNode)
+		selector.name
 	}
 	
 	override resolveQualifiedName(String id, Boolean fullName) {
-		var dfdId = trace.getDfdId(id)
-		if(dfdId.isPresent) {
-			dfdId.get
-		} else {
-			id
-		}
-	}
-	
-	override convertVariable(String id) {
-		throw new UnsupportedOperationException("convert Var error")
-	}
-	
-	override convertCharacteristicLiteral(String id) {
-		throw new UnsupportedOperationException("convert CharacteristicLiteral error")
-//		val result = trace.value.resolveIdentifier(id)
-//
-//		if (result.empty) {
-//			id
+		id
+//		var dfdId = trace.getDfdId(id)
+//		if(dfdId.isPresent) {
+//			dfdId.get
 //		} else {
-//			if (result.get instanceof Literal) {
-//				(result.get as Literal).name
-//			} else {
-//				id
-//			}
+//			id
 //		}
 	}
 	
+	override convertVariable(String id) {
+		id
+		//throw new UnsupportedOperationException("convert Var error")
+	}
+	
+	override convertCharacteristicLiteral(String id) {
+		var optResult = trace.resolveDfdElement(id, Literal)
+		
+		if(optResult.isPresent) {
+			var result = optResult.get
+			result.name
+		} else {
+			id
+			//throw new UnsupportedOperationException("convert CharacteristicLiteral error")
+		}
+	}
+	
 	override qualifiedNameResolvable(String id) {
+		true
 //		trace.value.resolveSeffInstance(id).present || trace.value.resolveDataOperationInstance(id).present
-		throw new UnsupportedOperationException("qualifiedNameResolvable error")		
+		//throw new UnsupportedOperationException("qualifiedNameResolvable error")		
 	}
 	
 }

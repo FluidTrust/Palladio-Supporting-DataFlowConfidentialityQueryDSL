@@ -8,11 +8,15 @@ import java.util.Map;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.xtext.resource.SaveOptions;
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.impl.TransformDFDWithDCPConstraintsToPrologWorkflowImpl;
+import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.CreateResultMappingFromSolutionJob;
+import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.RunConstraintsQueryJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.TransfromDFDConstraintsToPrologJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.TransformationWorkflowBuilder;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.blackboards.KeyValueMDSDBlackboard;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.LoadModelJob;
+import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.SerializeModelToStringJob;
 import org.palladiosimulator.dataflow.diagram.DataFlowDiagram.DataFlowDiagram;
 import org.palladiosimulator.dataflow.dictionary.DataDictionary.DataDictionary;
 
@@ -25,7 +29,11 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 	
 	private static final ModelLocation DEFAULT_DCPDSL_LOCATION = new ModelLocation("dfd", URI.createFileURI("tmp/constaints.DCPDSL"));
 	private static final ModelLocation DEFAULT_CONSTRAINTS_LOCATION = new ModelLocation("constraints", URI.createFileURI("tmp/constraints.pl"));
-	private static final String DEFAULT_CONSTRAINTS_KEY = "constraints";
+	private static final ModelLocation DEFAULT_CALLABLE_QUERY_LOCATION = new ModelLocation("query", URI.createFileURI("tmp/query.pl"));
+	private static final String DEFAULT_CONSTRAINTS_KEY = "stringconstraints";
+	private static final String DEFAULT_CALLABLE_QUERY_KEY = "stringquery";
+	private static final String DEFAULT_SOLUTION_KEY = "solution";
+	
 	
 	private ModelLocation dcpdslLocation;
 	private ModelLocation ddcLocation;
@@ -44,13 +52,22 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
         var loadDCPJob = new LoadModelJob<>(dcpdslLocation);
         jobSequence.add(loadDCPJob);
 
-        // create transformation job
+        //initialize partitions for transformed prolog constraints and callable query
         getBlackboard().addPartition(DEFAULT_CONSTRAINTS_LOCATION.getPartitionID(), new ResourceSetPartition());
-		
-        jobSequence.add(new TransfromDFDConstraintsToPrologJob<KeyValueMDSDBlackboard>(dcpdslLocation, DEFAULT_CONSTRAINTS_LOCATION, DEFAULT_TRACE_KEY));
+        getBlackboard().addPartition(DEFAULT_CALLABLE_QUERY_LOCATION.getPartitionID(), new ResourceSetPartition());
+        
+        // create transformation job
+        jobSequence.add(new TransfromDFDConstraintsToPrologJob<KeyValueMDSDBlackboard>(dcpdslLocation, DEFAULT_CONSTRAINTS_LOCATION, DEFAULT_CALLABLE_QUERY_LOCATION, DEFAULT_TRACE_KEY));
 		
 		//add serialize model job; prolog constraints at DEFAULT_CONSTRAINTS_LOCATION
 		jobSequence.addAll(dcpPrologSerializationJobs);
+		
+		//add serialize model job; toplevel constraints at DEFAULT_CALLABLE_QUERY_LOCATION
+		jobSequence.add(new SerializeModelToStringJob(DEFAULT_CALLABLE_QUERY_LOCATION, SaveOptions.newBuilder().format().getOptions().toOptionsMap(), DEFAULT_CALLABLE_QUERY_KEY));
+		
+		jobSequence.add(new RunConstraintsQueryJob<>(DEFAULT_PROLOG_KEY, DEFAULT_CONSTRAINTS_KEY, DEFAULT_CALLABLE_QUERY_KEY, DEFAULT_SOLUTION_KEY));
+
+		jobSequence.add(new CreateResultMappingFromSolutionJob<>(DEFAULT_SOLUTION_KEY, dcpdslLocation, ""));
 		
 		return new TransformDFDWithDCPConstraintsToPrologWorkflowImpl(jobSequence, progressMonitor, workflowExceptionHandler, getBlackboard(), 
 				DEFAULT_PROLOG_KEY, DEFAULT_TRACE_KEY, DEFAULT_CONSTRAINTS_KEY);
@@ -93,5 +110,4 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 		addSerializeModelToFile(DEFAULT_CONSTRAINTS_LOCATION, destinationURI, saveOptions, dcpPrologSerializationJobs);
 		return this;
 	}
-
 }

@@ -4,9 +4,12 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.xtext.resource.SaveOptions;
 import org.palladiosimulator.dataflow.confidentiality.pcm.transformation.dcp.workflow.jobs.impl.TransformPCMDFDWithConstraintsToPrologJobImpl;
 import org.palladiosimulator.dataflow.confidentiality.pcm.workflow.jobs.TransformPCMDFDToPrologJobBuilder;
 import org.palladiosimulator.dataflow.confidentiality.pcm.workflow.jobs.impl.TransformPCMDFDtoPrologJobImpl;
+import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.CreateResultMappingFromSolutionJob;
+import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.RunConstraintsQueryJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.blackboards.KeyValueMDSDBlackboard;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.InitPartitionJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.LoadModelJob;
@@ -16,13 +19,17 @@ import org.palladiosimulator.pcm.usagemodel.UsageModel;
 
 import de.uka.ipd.sdq.workflow.jobs.IJob;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ModelLocation;
+import de.uka.ipd.sdq.workflow.mdsd.blackboard.ResourceSetPartition;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.SavePartitionToDiskJob;
 
 public class TransformPCMDFDWithConstraintsToPrologJobBuilder {
 	
 	private static final ModelLocation DEFAULT_DCPDSL_LOCATION = new ModelLocation("dfd", URI.createFileURI("tmp/constaints.DCPDSL"));
 	private static final ModelLocation DEFAULT_CONSTRAINTS_LOCATION = new ModelLocation("constraints", URI.createFileURI("tmp/constraints.pl"));
-	private static final String DEFAULT_CONSTRAINTS_KEY = "constraints";
+	private static final ModelLocation DEFAULT_CALLABLE_QUERY_LOCATION = new ModelLocation("query", URI.createFileURI("tmp/query.pl"));
+	private static final String DEFAULT_CONSTRAINTS_KEY = "stringconstraints";
+	private static final String DEFAULT_CALLABLE_QUERY_KEY = "stringquery";
+	private static final String DEFAULT_SOLUTION_KEY = "solution";
 	
 	private ModelLocation dcpdslLocation;
 	private ModelLocation prologConstraintsLocation;
@@ -56,9 +63,12 @@ public class TransformPCMDFDWithConstraintsToPrologJobBuilder {
 		// initialize blackboard partition for transformed prolog constraints
 		var initPrologConstraintsPartitionJob = new InitPartitionJob(prologConstraintsLocation.getPartitionID());
         jobSequence.add(initPrologConstraintsPartitionJob);
-        
+        //initialize blackboard partition for callable query location
+      	IJob initPrologPartitionJob = new InitPartitionJob(DEFAULT_CALLABLE_QUERY_LOCATION.getPartitionID());
+      	jobSequence.add(initPrologPartitionJob);
+             
         // actual transformation job
-        var dcpdslToConstraintsJob = new TransfromPCMDFDConstraintsToPrologJob<KeyValueMDSDBlackboard>(dcpdslLocation, prologConstraintsLocation, baseSequence.getTraceKey());
+        var dcpdslToConstraintsJob = new TransfromPCMDFDConstraintsToPrologJob<KeyValueMDSDBlackboard>(dcpdslLocation, prologConstraintsLocation, DEFAULT_CALLABLE_QUERY_LOCATION, baseSequence.getTraceKey());
         jobSequence.add(dcpdslToConstraintsJob);
 		
         // serialize the prolog constraints either to file or to string
@@ -69,7 +79,14 @@ public class TransformPCMDFDWithConstraintsToPrologJobBuilder {
         	serializeConstraintsJob = new SavePartitionToDiskJob(prologConstraintsLocation.getPartitionID());
         }
         jobSequence.add(serializeConstraintsJob);
+        
+		//add serialize model job; toplevel constraints at DEFAULT_CALLABLE_QUERY_LOCATION
+		jobSequence.add(new SerializeModelToStringJob(DEFAULT_CALLABLE_QUERY_LOCATION, SaveOptions.newBuilder().format().getOptions().toOptionsMap(), DEFAULT_CALLABLE_QUERY_KEY));
 		
+		jobSequence.add(new RunConstraintsQueryJob<>(TransformPCMDFDToPrologJobBuilder.DEFAULT_PROLOG_KEY, DEFAULT_CONSTRAINTS_KEY, DEFAULT_CALLABLE_QUERY_KEY, DEFAULT_SOLUTION_KEY));
+
+		jobSequence.add(new CreateResultMappingFromSolutionJob<>(DEFAULT_SOLUTION_KEY, dcpdslLocation, ""));
+        
 		return jobSequence;
 	}
 	

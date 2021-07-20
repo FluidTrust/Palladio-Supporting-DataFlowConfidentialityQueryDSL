@@ -8,7 +8,7 @@ import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.generator.PCMD
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.Model;
 import org.palladiosimulator.dataflow.confidentiality.pcm.workflow.TransitiveTransformationTrace;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.blackboards.KeyValueMDSDBlackboard;
-
+import de.sebinside.dcp.dsl.generator.crossplatform.Converter;
 import de.uka.ipd.sdq.workflow.jobs.AbstractBlackboardInteractingJob;
 import de.uka.ipd.sdq.workflow.jobs.CleanupFailedException;
 import de.uka.ipd.sdq.workflow.jobs.JobFailedException;
@@ -20,10 +20,12 @@ public class TransfromPCMDFDConstraintsToPrologJob<T extends KeyValueMDSDBlackbo
     private final String traceKey;
 	private final ModelLocation dcpdslLocation;
 	private final ModelLocation constraintsLocation;
+	private final ModelLocation callableQueryLocation;
 	
-	public TransfromPCMDFDConstraintsToPrologJob(ModelLocation dcpdslLocation, ModelLocation constraintsLocation, String traceKey) {
+	public TransfromPCMDFDConstraintsToPrologJob(ModelLocation dcpdslLocation, ModelLocation constraintsLocation, ModelLocation callableQueryLocation, String traceKey) {
 		this.dcpdslLocation = dcpdslLocation;
 		this.constraintsLocation = constraintsLocation;
+		this.callableQueryLocation = callableQueryLocation;
         this.traceKey = traceKey;
     }
 	
@@ -59,8 +61,12 @@ public class TransfromPCMDFDConstraintsToPrologJob<T extends KeyValueMDSDBlackbo
         }
 
 		var prologConstraints = generator.generateFromModel(dcpdslFiles.get(0));
+		getBlackboard().put("converter", generator.getConverter());
+		
+		var callQueryProgram = generator.getCallableQueryProgram();
 		
 		getBlackboard().setContents(constraintsLocation, Arrays.asList(prologConstraints));
+		getBlackboard().setContents(callableQueryLocation, Arrays.asList(callQueryProgram));
 		
         monitor.worked(1);
         monitor.done();

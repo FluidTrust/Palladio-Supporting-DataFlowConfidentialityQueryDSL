@@ -24,6 +24,8 @@ import de.sebinside.dcp.dsl.dSL.Model
 import de.sebinside.dcp.dsl.generator.queryrule.InputPinQueryRule
 import de.sebinside.dcp.dsl.dSL.Rule
 import de.sebinside.dcp.dsl.generator.crossplatform.DFDConverter
+import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
+import org.eclipse.xtext.EcoreUtil2
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -36,6 +38,8 @@ class DSLGenerator extends AbstractGenerator {
 	protected String targetModelType = "DFD"
 	
 	DFD2PrologTransformationTrace extendedDFDConverterTrace = null
+	
+	var callableQueryConstraints = new ArrayList<CompoundTerm>
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val program = generateFromResource(resource)
@@ -61,6 +65,30 @@ class DSLGenerator extends AbstractGenerator {
 		}
 		
 		program
+	}
+	
+	def getCallableQueryProgram() {
+		val program = PrologFactory.eINSTANCE.createProgram
+		
+		// Combining the 'head' compound terms of the top level constraint rules to form a query
+		// does not work with automatic serialization to string, as the logicalOr expressions have to be
+		// contained in a compound term in order to be set as a 'clause' in a program
+		// This probably needs to be done by hand...
+//		var combinedTopLevelConstraints = expressionsToLogicalOr(callableQueryConstraints)
+//		
+//		val compoundTerm = CompoundTerm
+//		compoundTerm.value = "query"
+//		compoundTerm.arguments.add(combinedTopLevelConstraints)
+
+		if(callableQueryConstraints.isEmpty) {
+			throw new Exception("No valid constraint rule that can be called!")
+		}		
+		program.clauses.add(Fact(callableQueryConstraints.get(0)))
+		program
+	}
+	
+	def getConverter() {
+		this.converter
 	}
 	
 	def generateFromResource(Resource resource) {
@@ -190,6 +218,9 @@ class DSLGenerator extends AbstractGenerator {
 			constraintRule.head.arguments.addAll(allArguments)
 
 			clauses.add(constraintRule)
+			
+			
+			callableQueryConstraints.add(EcoreUtil2.copy(constraintRule.head))
 			clauses.addAll(rules)
 		}
 		clauses

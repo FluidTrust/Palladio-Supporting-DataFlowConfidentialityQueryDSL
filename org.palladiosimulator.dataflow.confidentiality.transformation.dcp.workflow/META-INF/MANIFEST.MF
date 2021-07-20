@@ -13,7 +13,12 @@ Require-Bundle: de.uka.ipd.sdq.workflow;bundle-version="4.2.0",
  org.eclipse.xtext.generator;bundle-version="2.24.0",
  org.palladiosimulator.supporting.prolog.model,
  org.palladiosimulator.dataflow.confidentiality.transformation.prolog,
- org.palladiosimulator.dataflow.diagram;visibility:=reexport
+ org.palladiosimulator.dataflow.diagram;visibility:=reexport,
+ org.prolog4j.api,
+ org.palladiosimulator.dataflow.confidentiality.transformation.dcp.resultmapping,
+ org.prolog4j.swicli,
+ org.prolog4j.swicli.enabler,
+ org.eclipse.xtext
 Import-Package: org.apache.commons.lang3;version="3.1.0"
 Export-Package: org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow,
  org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs

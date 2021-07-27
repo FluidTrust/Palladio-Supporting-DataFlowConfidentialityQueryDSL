@@ -135,7 +135,7 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 	
 	private def serializeViolationCallStack(List<Object> callStack) {
 		//recursive call of serializeCallStack
-		'''«IF !callStack.isEmpty»«"\t- Call Stack: \n\t\t" + serializeCallStack(callStack, "", true, true, true)»«ENDIF»'''
+		'''«IF !callStack.isEmpty»«"\t- Flow Tree: \n\t\t" + serializeCallStack(callStack, "", true, true, true)»«ENDIF»'''
 	}
 	
 	private def <E extends Object> String serializeCallStack(List<E> branch, String treeIndent, boolean lastElement, boolean multipleBranches, boolean root) {

@@ -15,6 +15,7 @@ import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflo
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.TransfromDFDConstraintsToPrologJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.TransformationWorkflowBuilder;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.blackboards.KeyValueMDSDBlackboard;
+import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.CopyModelJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.LoadModelJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.SerializeModelToStringJob;
 import org.palladiosimulator.dataflow.diagram.DataFlowDiagram.DataFlowDiagram;
@@ -22,8 +23,10 @@ import org.palladiosimulator.dataflow.dictionary.DataDictionary.DataDictionary;
 
 import de.sebinside.dcp.dsl.dSL.Model;
 import de.uka.ipd.sdq.workflow.jobs.IJob;
+import de.uka.ipd.sdq.workflow.jobs.SequentialBlackboardInteractingJob;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ModelLocation;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ResourceSetPartition;
+import de.uka.ipd.sdq.workflow.mdsd.blackboard.SavePartitionToDiskJob;
 
 public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkflowBuilder {
 	
@@ -96,18 +99,10 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 		return this;
 	}
 	
-	public DFDWithDCPTransformationWorkflowBuilder addSerializeDCPPrologToString(Map<Object, Object> saveOptions) {		
-		addSerializeToString(DEFAULT_CONSTRAINTS_LOCATION, saveOptions, DEFAULT_CONSTRAINTS_KEY, dcpPrologSerializationJobs);
-		return this;
-	}
-	
-	public DFDWithDCPTransformationWorkflowBuilder addSerializeDCPPrologToFile(URI destinationURI) {
-		addSerializeDCPPrologToFile(destinationURI, Collections.emptyMap());
-		return this;
-	}
-	
-	public DFDWithDCPTransformationWorkflowBuilder addSerializeDCPPrologToFile(URI destinationURI, Map<String, Object> saveOptions) {
-		addSerializeModelToFile(DEFAULT_CONSTRAINTS_LOCATION, destinationURI, saveOptions, dcpPrologSerializationJobs);
+	public DFDWithDCPTransformationWorkflowBuilder addSerializeDCPPrologToString(Map<Object, Object> saveOptions) {
+		dcpPrologSerializationJobs.removeIf(SerializeModelToStringJob.class::isInstance);
+		var serializeJob = new SerializeModelToStringJob(DEFAULT_CONSTRAINTS_LOCATION, saveOptions, DEFAULT_CONSTRAINTS_KEY);
+		dcpPrologSerializationJobs.add(serializeJob);
 		return this;
 	}
 }

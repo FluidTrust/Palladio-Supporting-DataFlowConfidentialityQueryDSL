@@ -54,7 +54,6 @@ abstract class QueryRule {
 				// single characteristic selected
 				// characteristic(N, PIN, CT, V, S)
 				// characteristic(node, pin, selector.ref.ref, variable, stack) -> for each literal in selector.ref.literals
-
 					#[
 						createParameterQuery(CompoundTerm(node), CompoundTerm(pin),
 							converter.convert(selector.ref.ref), variable, CompoundTerm(stack))]

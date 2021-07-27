@@ -38,8 +38,8 @@ class InformationFlowTumaDCPTestUtil {
 		// this is just added to reuse the original unit tests
 		var result = workflow.getSerializedPrologProgram()
 		var constraints = workflow.serializedPrologConstraints
-//		assertFalse(result.isEmpty())
-//		assertFalse(constraints.isEmpty)
+		assertFalse(result.isEmpty())
+		assertFalse(constraints.isEmpty)
 //
 		prover.loadTheory(result.get())
 		prover.addTheory(constraints.get)

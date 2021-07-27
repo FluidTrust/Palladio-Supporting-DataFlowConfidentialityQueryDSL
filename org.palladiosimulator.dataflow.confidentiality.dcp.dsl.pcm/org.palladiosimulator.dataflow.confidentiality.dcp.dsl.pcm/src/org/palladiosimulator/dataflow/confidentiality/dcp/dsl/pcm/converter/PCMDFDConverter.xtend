@@ -50,7 +50,8 @@ class PCMDFDConverter extends DFDConverter {
 	}
 
 	override convertVariable(String id) {
-		throw new Exception("Unable to resolve Variable.")
+		id
+		//throw new Exception("Unable to resolve Variable.")
 //		val result = trace.value.resolveVariable(id)
 //
 //		if (result.empty) {
@@ -67,18 +68,22 @@ class PCMDFDConverter extends DFDConverter {
 	}
 	
 	override createQualifiedName(NodeIdentitiySelector selector) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		selector.name
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	override resolveQualifiedName(String id, Boolean fullName) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		id
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	override convertCharacteristicLiteral(String id) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		id
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	override qualifiedNameResolvable(String id) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		true
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 }

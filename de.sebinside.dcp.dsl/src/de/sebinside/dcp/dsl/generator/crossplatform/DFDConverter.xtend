@@ -71,15 +71,8 @@ class DFDConverter implements Converter {
 	}
 	
 	override convertCharacteristicLiteral(String id) {
-		var optResult = trace.resolveDfdElement(id, Literal)
-		
-		if(optResult.isPresent) {
-			var result = optResult.get
-			result.name
-		} else {
-			id
-			//throw new UnsupportedOperationException("convert CharacteristicLiteral error")
-		}
+		id
+		//throw new UnsupportedOperationException("convert CharacteristicLiteral error")
 	}
 	
 	override qualifiedNameResolvable(String id) {

@@ -12,6 +12,7 @@ Require-Bundle: org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.palladiosimulator.dataflow.diagram.characterized;bundle-version="0.1.0";visibility:=reexport,
- org.palladiosimulator.dataflow.dictionary.characterized;bundle-version="0.1.0";visibility:=reexport
+ org.palladiosimulator.dataflow.dictionary.characterized;bundle-version="0.1.0";visibility:=reexport,
+ de.sebinside.dcp.dsl;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.tests;x-internal=true

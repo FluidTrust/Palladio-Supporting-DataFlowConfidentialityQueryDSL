@@ -17,14 +17,14 @@ import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstrai
 class PCMDFDConstraintLanguageParsingTest {
 	@Inject
 	ParseHelper<Model> parseHelper
-	
-	@Test
-	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
-		Assertions.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
-	}
+//	
+//	@Test
+//	def void loadModel() {
+//		val result = parseHelper.parse('''
+//			Hello Xtext!
+//		''')
+//		Assertions.assertNotNull(result)
+//		val errors = result.eResource.errors
+//		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+//	}
 }

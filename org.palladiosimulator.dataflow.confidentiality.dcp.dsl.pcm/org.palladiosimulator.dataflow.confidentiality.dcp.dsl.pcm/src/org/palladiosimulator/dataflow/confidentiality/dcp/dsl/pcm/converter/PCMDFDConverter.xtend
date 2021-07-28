@@ -7,6 +7,9 @@ import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCha
 
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 import de.sebinside.dcp.dsl.generator.crossplatform.DFDConverter
+import org.palladiosimulator.dataflow.confidentiality.pcm.transformation.pcm2dfd.trace.PCMSingleTraceElement
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType
+import org.palladiosimulator.dataflow.confidentiality.pcm.transformation.pcm2dfd.trace.PCMTraceElement
 
 class PCMDFDConverter extends DFDConverter {
 	
@@ -73,13 +76,26 @@ class PCMDFDConverter extends DFDConverter {
 	}
 	
 	override resolveQualifiedName(String id, Boolean fullName) {
+		var entries = trace.getPCMEntries(id)
 		id
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	override convertCharacteristicLiteral(String id) {
-		id
-		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		var entries = trace.getPCMEntries(id).filter(PCMSingleTraceElement)
+		if(entries.isEmpty) {
+			id
+		} else if (entries.size > 1) {
+			throw new UnsupportedOperationException("There are multiple literals. Literals need to be unambiguous.")
+		} else {
+			var element = entries.get(0).element
+			if (element instanceof Literal) {
+				var literal = element as Literal
+				literal.name
+			} else {
+				throw new UnsupportedOperationException("Trace element is faulty: Expected element from type Literal.")
+			}
+		}
 	}
 	
 	override qualifiedNameResolvable(String id) {

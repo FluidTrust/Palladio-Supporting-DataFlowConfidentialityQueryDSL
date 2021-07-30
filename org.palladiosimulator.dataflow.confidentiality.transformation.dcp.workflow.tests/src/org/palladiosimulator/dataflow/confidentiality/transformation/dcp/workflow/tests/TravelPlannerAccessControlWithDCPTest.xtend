@@ -3,12 +3,9 @@ package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workfl
 import org.eclipse.xtext.resource.SaveOptions
 import org.junit.jupiter.api.Test
 import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.NameGenerationStrategie
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.TransformDFDWithDCPConstraintsToPrologWorkflow
-import static org.junit.jupiter.api.Assertions.*
-import java.util.Arrays
-import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.DataFlowDiagramCharacterizedFactory
-import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.CharacterizedProcess
 import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.Behaving
+import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.CharacterizedProcess
+import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.DataFlowDiagramCharacterizedFactory
 
 class TravelPlannerAccessControlWithDCPTest extends AnalysisDCPIntegrationTestBase {
 	

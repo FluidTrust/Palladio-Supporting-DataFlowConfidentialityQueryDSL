@@ -1,18 +1,13 @@
 package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.tests.util
 
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.DFDWithDCPTransformationWorkflowBuilder
+import org.eclipse.emf.common.util.URI
 import org.eclipse.xtext.resource.SaveOptions
+import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.DFDWithDCPTransformationWorkflowBuilder
 import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.NameGenerationStrategie
+import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.tests.impl.AnalysisIntegrationTestBase
+import org.prolog4j.Prover
 
 import static org.junit.jupiter.api.Assertions.*
-import org.prolog4j.Prover
-import org.eclipse.emf.common.util.URI
-import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.tests.impl.AnalysisIntegrationTestBase
-import de.sebinside.dcp.dsl.dSL.DSLPackage
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterized
-import org.palladiosimulator.dataflow.diagram.DataFlowDiagram.DataFlowDiagram
-import de.sebinside.dcp.dsl.dSL.Model
 
 class InformationFlowTumaDCPTestUtil {
 	

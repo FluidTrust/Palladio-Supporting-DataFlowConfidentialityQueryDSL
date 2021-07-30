@@ -11,7 +11,7 @@ class TravelPlannerAccessControlWithDCPTest extends AnalysisDCPIntegrationTestBa
 	
 	@Test
 	def void testNoFlaws() {
-		loadAndInitDFD("models/DDC_TravelPlanner_AccessControl.xmi", "models/DFDC_TravelPlanner_AccessControl.xmi", "models/Travel_Planner.DCPDSL")
+		loadAndInitDFD("models/DDC_TravelPlanner_AccessControl.xmi", "models/DFDC_TravelPlanner_AccessControl.xmi", "models/Travel_Planner.qdsl")
 		dcpBuilder.addSerializeToString(SaveOptions.newBuilder().format().getOptions().toOptionsMap())
 		dcpBuilder.setNameDerivationMethod(NameGenerationStrategie.DETAILED)
 		dcpBuilder.addSerializeDCPPrologToString(SaveOptions.newBuilder().format().getOptions().toOptionsMap())
@@ -34,7 +34,7 @@ class TravelPlannerAccessControlWithDCPTest extends AnalysisDCPIntegrationTestBa
 	
 	@Test
 	def void testNoDeclassification() {
-		var dfd = loadAndInitDFD("models/DDC_TravelPlanner_AccessControl.xmi", "models/DFDC_TravelPlanner_AccessControl.xmi", "models/Travel_Planner.DCPDSL")
+		var dfd = loadAndInitDFD("models/DDC_TravelPlanner_AccessControl.xmi", "models/DFDC_TravelPlanner_AccessControl.xmi", "models/Travel_Planner.qdsl")
 		// add possible data flow from CCD store to booking process
 		var directCCDFlow = DataFlowDiagramCharacterizedFactory.eINSTANCE.createCharacterizedDataFlow
 		directCCDFlow.name = "ccd direct"

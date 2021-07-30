@@ -3,53 +3,48 @@
  */
 package de.sebinside.dcp.dsl.tests
 
-import com.google.inject.Inject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
-import org.eclipse.xtext.testing.util.ParseHelper
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
-import de.sebinside.dcp.dsl.dSL.Model
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
 class DSLParsingTest {
-	@Inject
-	ParseHelper<Model> parseHelper
-	
-	@Test
-	def void fullTest() {
-		val result = parseHelper.parse('''
-			datatype String
-			datatype UserData
-			valueset sensitivity <- [low, high, mid]
-			attribute sensitivity <- sensitivity
-			property sensitivity <- sensitivity
-			
-			class example {
-				sensitivity.low,
-				sensitivity.high
-			}
-			
-			constraint "test" {
-				data.attribute.sensitivity.high NEVER FLOWS node.property.sensitivity.low
-			}
-			
-			constraint "test" {
-				data.class.example NEVER FLOWS node.class.!example
-			}
-			
-			class selectorPossibilites {
-				sensitivity.low,
-				sensitivity.!low,
-				sensitivity.[low],
-				sensitivity.[low, high, mid],
-				sensitivity.[low & high & mid]
-			}
-		''')
-		Assertions.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
-	}
+//	@Inject
+//	ParseHelper<Model> parseHelper
+//	
+//	@Test
+//	def void fullTest() {
+//		val result = parseHelper.parse('''
+//			datatype String
+//			datatype UserData
+//			valueset sensitivity <- [low, high, mid]
+//			attribute sensitivity <- sensitivity
+//			property sensitivity <- sensitivity
+//			
+//			class example {
+//				sensitivity.low,
+//				sensitivity.high
+//			}
+//			
+//			constraint "test" {
+//				data.attribute.sensitivity.high NEVER FLOWS node.property.sensitivity.low
+//			}
+//			
+//			constraint "test" {
+//				data.class.example NEVER FLOWS node.class.!example
+//			}
+//			
+//			class selectorPossibilites {
+//				sensitivity.low,
+//				sensitivity.!low,
+//				sensitivity.[low],
+//				sensitivity.[low, high, mid],
+//				sensitivity.[low & high & mid]
+//			}
+//		''')
+//		Assertions.assertNotNull(result)
+//		val errors = result.eResource.errors
+//		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+//	}
 }

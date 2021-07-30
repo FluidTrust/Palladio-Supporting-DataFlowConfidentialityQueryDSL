@@ -3,9 +3,6 @@
  */
 package org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm;
 
-import org.eclipse.xtext.resource.IResourceServiceProvider;
-import org.eclipse.xtext.resource.generic.GenericResourceServiceProvider;
-
 import com.google.inject.Injector;
 
 /**

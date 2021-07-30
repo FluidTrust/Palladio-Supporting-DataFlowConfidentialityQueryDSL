@@ -3,7 +3,6 @@ package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workfl
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Map;
 
 import org.apache.commons.lang3.Validate;
@@ -15,7 +14,6 @@ import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflo
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.TransfromDFDConstraintsToPrologJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.TransformationWorkflowBuilder;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.blackboards.KeyValueMDSDBlackboard;
-import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.CopyModelJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.LoadModelJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.SerializeModelToStringJob;
 import org.palladiosimulator.dataflow.diagram.DataFlowDiagram.DataFlowDiagram;
@@ -23,10 +21,8 @@ import org.palladiosimulator.dataflow.dictionary.DataDictionary.DataDictionary;
 
 import de.sebinside.dcp.dsl.dSL.Model;
 import de.uka.ipd.sdq.workflow.jobs.IJob;
-import de.uka.ipd.sdq.workflow.jobs.SequentialBlackboardInteractingJob;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ModelLocation;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ResourceSetPartition;
-import de.uka.ipd.sdq.workflow.mdsd.blackboard.SavePartitionToDiskJob;
 
 public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkflowBuilder {
 	

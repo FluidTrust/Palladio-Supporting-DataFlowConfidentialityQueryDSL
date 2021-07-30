@@ -8,7 +8,7 @@ import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.generator.PCMD
 import org.palladiosimulator.dataflow.confidentiality.dcp.dsl.pcm.pCMDFDConstraintLanguage.Model;
 import org.palladiosimulator.dataflow.confidentiality.pcm.workflow.TransitiveTransformationTrace;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.blackboards.KeyValueMDSDBlackboard;
-import de.sebinside.dcp.dsl.generator.crossplatform.Converter;
+
 import de.uka.ipd.sdq.workflow.jobs.AbstractBlackboardInteractingJob;
 import de.uka.ipd.sdq.workflow.jobs.CleanupFailedException;
 import de.uka.ipd.sdq.workflow.jobs.JobFailedException;

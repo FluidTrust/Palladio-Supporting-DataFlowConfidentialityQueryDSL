@@ -7,7 +7,7 @@
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
-			extensions="DCPDSL"
+			extensions="qdsl"
 			id="de.sebinside.dcp.dsl.DSL"
 			name="DSL Editor">
 		</editor>
@@ -26,11 +26,11 @@
 		<handler
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
 			commandId="de.sebinside.dcp.dsl.DSL.validate">
-		<activeWhen>
-			<reference
+			<activeWhen>
+				<reference
 					definitionId="de.sebinside.dcp.dsl.DSL.Editor.opened">
-			</reference>
-		</activeWhen>
+				</reference>
+			</activeWhen>
 		</handler>
 		<!-- copy qualified name -->
 		<handler
@@ -119,38 +119,38 @@
 	</extension>
 	<extension
 		point="org.eclipse.ui.commands">
-	<command
+		<command
 			description="Trigger expensive validation"
 			id="de.sebinside.dcp.dsl.DSL.validate"
 			name="Validate">
-	</command>
-	<!-- copy qualified name -->
-	<command
+		</command>
+		<!-- copy qualified name -->
+		<command
 			id="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 			categoryId="org.eclipse.ui.category.edit"
 			description="Copy the qualified name for the selected element"
 			name="Copy Qualified Name">
-	</command>
-	<command
+		</command>
+		<command
 			id="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
 			categoryId="org.eclipse.ui.category.edit"
 			description="Copy the qualified name for the selected element"
 			name="Copy Qualified Name">
-	</command>
+		</command>
 	</extension>
 	<extension point="org.eclipse.ui.menus">
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
-			 <command
-				 commandId="de.sebinside.dcp.dsl.DSL.validate"
-				 style="push"
-				 tooltip="Trigger expensive validation">
-			<visibleWhen checkEnabled="false">
-				<reference
-					definitionId="de.sebinside.dcp.dsl.DSL.Editor.opened">
-				</reference>
-			</visibleWhen>
-		</command>
+			<command
+				commandId="de.sebinside.dcp.dsl.DSL.validate"
+				style="push"
+				tooltip="Trigger expensive validation">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="de.sebinside.dcp.dsl.DSL.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
 		</menuContribution>
 		<!-- copy qualified name -->
 		<menuContribution locationURI="popup:#TextEditorContext?after=copy">
@@ -207,7 +207,7 @@
 	<extension point="org.eclipse.core.contenttype.contentTypes">
 		<content-type
 			base-type="org.eclipse.core.runtime.text"
-			file-extensions="DCPDSL"
+			file-extensions="qdsl"
 			id="de.sebinside.dcp.dsl.DSL.contenttype"
 			name="DSL File"
 			priority="normal">
@@ -218,13 +218,13 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="DCPDSL">
+			type="qdsl">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-			uriExtension="DCPDSL">
+			uriExtension="qdsl">
 		</resourceServiceProvider>
 	</extension>
 	<!-- marker definitions for de.sebinside.dcp.dsl.DSL -->
@@ -261,7 +261,7 @@
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-			fileExtensions="DCPDSL"/>
+			fileExtensions="qdsl"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
@@ -309,7 +309,7 @@
 	<!-- Quick Outline -->
 	<extension
 		point="org.eclipse.ui.handlers">
-		<handler 
+		<handler
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
@@ -369,7 +369,7 @@
 	</extension>
 	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
-		<handler 
+		<handler
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
@@ -404,7 +404,7 @@
 	<extension point="org.eclipse.compare.contentViewers">
 		<viewer id="de.sebinside.dcp.dsl.DSL.compare.contentViewers"
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="DCPDSL">
+			extensions="qdsl">
 		</viewer>
 		<contentTypeBinding
 			contentTypeId="de.sebinside.dcp.dsl.DSL.contenttype"
@@ -413,7 +413,7 @@
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="de.sebinside.dcp.dsl.DSL.compare.contentMergeViewers"
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="DCPDSL" label="DSL Compare">
+			extensions="qdsl" label="DSL Compare">
 		</viewer>
 		<contentTypeBinding
 			contentTypeId="de.sebinside.dcp.dsl.DSL.contenttype"
@@ -422,12 +422,12 @@
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="de.sebinside.dcp.dsl.DSL.editors.documentProviders"
 			class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-			extensions="DCPDSL">
+			extensions="qdsl">
 		</provider>
 	</extension>
 	<extension point="org.eclipse.team.core.fileTypes">
 		<fileTypes
-			extension="DCPDSL"
+			extension="qdsl"
 			type="text">
 		</fileTypes>
 	</extension>

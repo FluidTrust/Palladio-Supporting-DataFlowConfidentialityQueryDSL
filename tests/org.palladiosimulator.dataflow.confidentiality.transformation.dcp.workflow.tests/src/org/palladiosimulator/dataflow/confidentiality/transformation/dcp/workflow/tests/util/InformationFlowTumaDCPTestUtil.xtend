@@ -18,7 +18,7 @@ class InformationFlowTumaDCPTestUtil {
 	
 	static def findFlaws(Prover prover, DFDWithDCPTransformationWorkflowBuilder dcpBuilder, String testCase) {
 		dcpBuilder.addDDC(getRelativeURIDCP("models/InformationFlowTuma/" + testCase + "/DDC_" + testCase + ".xmi"))
-		dcpBuilder.addDCPDSL(getRelativeURIDCP("models/InformationFlowTuma/" + testCase + "/" + testCase + ".DCPDSL"))
+		dcpBuilder.addDCPDSL(getRelativeURIDCP("models/InformationFlowTuma/" + testCase + "/" + testCase + ".qdsl"))
 				
 		dcpBuilder.addSerializeToString(SaveOptions.newBuilder().format().getOptions().toOptionsMap())
 		dcpBuilder.setNameDerivationMethod(NameGenerationStrategie.DETAILED)

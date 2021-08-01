@@ -20,4 +20,5 @@ Require-Bundle: org.eclipse.xtext.xbase,
  org.eclipse.core.runtime,
  org.eclipse.uml2.codegen.ecore,
  org.palladiosimulator.pcm,
- org.palladiosimulator.dataflow.diagram.characterized
+ org.palladiosimulator.dataflow.diagram.characterized,
+ de.itemis.xtext.antlr;bundle-version="2.1.1"

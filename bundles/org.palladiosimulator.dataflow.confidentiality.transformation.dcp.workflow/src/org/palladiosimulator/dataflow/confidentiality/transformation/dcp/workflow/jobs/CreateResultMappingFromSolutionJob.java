@@ -20,14 +20,13 @@ public class CreateResultMappingFromSolutionJob <T extends KeyValueMDSDBlackboar
 
 	private final String solutionKey;
 	private final ModelLocation dcpdslLocation;
-	private final String resultMappingPath;
+	private final String resultMappingKey;
 	private ResultMappingSerializer serializer;
 	
-	public CreateResultMappingFromSolutionJob(String solutionKey, ModelLocation dcpdslLocation, String resultMappingPath) {
+	public CreateResultMappingFromSolutionJob(String solutionKey, ModelLocation dcpdslLocation, String resultMappingKey) {
 		this.solutionKey = solutionKey;
 		this.dcpdslLocation = dcpdslLocation;
-		this.resultMappingPath = resultMappingPath;
-		
+		this.resultMappingKey = resultMappingKey;
 		serializer = SerializerFactory.createPlainTextSerializer();
 	}
 	
@@ -35,12 +34,13 @@ public class CreateResultMappingFromSolutionJob <T extends KeyValueMDSDBlackboar
 	public void execute(IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
 		monitor.beginTask(getName(), 1);
 		
-		var optSolution = getBlackboard().get(solutionKey);
+		var blackboardSolution = getBlackboard().get(solutionKey);
+		@SuppressWarnings("unchecked")
+        var optSolution = blackboardSolution.filter(Solution.class::isInstance).map(Solution.class::cast).map(s -> (Solution<Object>)s);
 		if(optSolution.isEmpty()) {
             throw new JobFailedException("There are no serialized top level constraint available on blackboard.");
 		}
-		
-		Solution solution = (Solution) optSolution.get();
+		Solution<Object> solution = optSolution.get();
 		
 		var dcpdslFiles = getBlackboard().getContents(this.dcpdslLocation)
 				.stream()
@@ -62,10 +62,8 @@ public class CreateResultMappingFromSolutionJob <T extends KeyValueMDSDBlackboar
 		
 		var result = new ResultMapping(model, converter, solution);
 		var serializedResult = serializer.serialize(result);
-		System.out.println(serializedResult);
 		
-		// Currently results are directly printed to console
-		//ResultMappingSerializer.saveResult(this.resultMappingPath, serializedResult);
+		getBlackboard().put(resultMappingKey, serializedResult);
 		
 		monitor.worked(1);
         monitor.done();

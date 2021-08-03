@@ -35,7 +35,6 @@ class DSLGenerator extends AbstractGenerator {
 
 	// Setting the default value
 	protected Converter converter = null
-	protected String targetModelType = "DFD"
 	
 	DFD2PrologTransformationTrace extendedDFDConverterTrace = null
 	
@@ -114,14 +113,10 @@ class DSLGenerator extends AbstractGenerator {
 	}
 
 	def compile(TargetModelTypeDef typeDefs) {
-		// There is only one or none target model type definition
-		this.targetModelType = typeDefs.type
-		if (targetModelType.equals("DFD")) {
-			if(extendedDFDConverterTrace === null) {
-					throw new Exception("No valid trace for DFD!")
-			}
-				this.converter = new DFDConverter(extendedDFDConverterTrace)
+		if (extendedDFDConverterTrace === null) {
+			throw new Exception("No valid trace for DFD!")
 		}
+		this.converter = new DFDConverter(extendedDFDConverterTrace)
 	}
 
 	def List<Clause> compile(CharacteristicClass charateristicClass) {

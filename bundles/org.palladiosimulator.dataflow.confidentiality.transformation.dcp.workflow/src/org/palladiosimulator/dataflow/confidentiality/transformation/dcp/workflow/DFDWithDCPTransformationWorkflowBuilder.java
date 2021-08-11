@@ -9,6 +9,7 @@ import org.apache.commons.lang3.Validate;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.resource.SaveOptions;
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.impl.TransformDFDWithDCPConstraintsToPrologWorkflowImpl;
+import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.internal.Activator;
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.CreateResultMappingFromSolutionJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.RunConstraintsQueryJob;
 import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs.TransfromDFDConstraintsToPrologJob;
@@ -18,6 +19,7 @@ import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jo
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.jobs.SerializeModelToStringJob;
 import org.palladiosimulator.dataflow.diagram.DataFlowDiagram.DataFlowDiagram;
 import org.palladiosimulator.dataflow.dictionary.DataDictionary.DataDictionary;
+import org.prolog4j.IProverFactory;
 
 import de.sebinside.dcp.dsl.dSL.Model;
 import de.uka.ipd.sdq.workflow.jobs.IJob;
@@ -36,6 +38,7 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 	
 	private ModelLocation dcpdslLocation;
 	private ModelLocation ddcLocation;
+	private IProverFactory proverFactory;
 	
 	protected final Collection<IJob> dcpPrologSerializationJobs = new ArrayList<>();
 	
@@ -47,6 +50,16 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 		//Validate.validState(dcpdslLocation != null, "DCP DSL constraints have to be given");
         Validate.validState(!dcpPrologSerializationJobs.isEmpty(), "At least one serialization option for DCP DSL constraints has to be given");
 		
+        if (proverFactory == null) {
+            var proverFactories = Activator.getInstance()
+                .getProverManager()
+                .getProvers()
+                .values();
+            Validate.isTrue(!proverFactories.isEmpty());
+            proverFactory = proverFactories.iterator()
+                .next();
+        }
+        
 		//add load existing dcpDSL model; add to blackboard at DEFAULT_DCPDSL_LOCATION
         var loadDCPJob = new LoadModelJob<>(dcpdslLocation);
         jobSequence.add(loadDCPJob);
@@ -64,7 +77,7 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 		//add serialize model job; toplevel constraints at DEFAULT_CALLABLE_QUERY_LOCATION
 		jobSequence.add(new SerializeModelToStringJob(DEFAULT_CALLABLE_QUERY_LOCATION, SaveOptions.newBuilder().format().getOptions().toOptionsMap(), DEFAULT_CALLABLE_QUERY_KEY));
 		
-		jobSequence.add(new RunConstraintsQueryJob<>(DEFAULT_PROLOG_KEY, DEFAULT_CONSTRAINTS_KEY, DEFAULT_CALLABLE_QUERY_KEY, DEFAULT_SOLUTION_KEY));
+		jobSequence.add(new RunConstraintsQueryJob<>(DEFAULT_PROLOG_KEY, DEFAULT_CONSTRAINTS_KEY, DEFAULT_CALLABLE_QUERY_KEY, DEFAULT_SOLUTION_KEY, proverFactory));
 
 		jobSequence.add(new CreateResultMappingFromSolutionJob<>(DEFAULT_SOLUTION_KEY, dcpdslLocation, ""));
 		
@@ -100,5 +113,10 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 		var serializeJob = new SerializeModelToStringJob(DEFAULT_CONSTRAINTS_LOCATION, saveOptions, DEFAULT_CONSTRAINTS_KEY);
 		dcpPrologSerializationJobs.add(serializeJob);
 		return this;
+	}
+	
+	public DFDWithDCPTransformationWorkflowBuilder addProverFactory(IProverFactory proverFactory) {
+	    this.proverFactory = proverFactory;
+	    return this;
 	}
 }

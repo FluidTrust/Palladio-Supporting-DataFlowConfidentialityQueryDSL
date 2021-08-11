@@ -1,7 +1,6 @@
 package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.internal.Activator;
 import org.palladiosimulator.dataflow.confidentiality.transformation.workflow.blackboards.KeyValueMDSDBlackboard;
 import org.prolog4j.IProverFactory;
 import org.prolog4j.ProverCreationException;
@@ -20,13 +19,12 @@ public class RunConstraintsQueryJob<T extends KeyValueMDSDBlackboard> extends Ab
     private final IProverFactory proverFactory;
 
     public RunConstraintsQueryJob(String prologCodeKey, String constraintsKey, String callableQueryKey,
-            String solutionKey) {
+            String solutionKey, IProverFactory proverFactory) {
         this.solutionKey = solutionKey;
         this.constraintsKey = constraintsKey;
         this.prologCodeKey = prologCodeKey;
         this.callableQueryKey = callableQueryKey;
-        this.proverFactory = Activator.getInstance()
-            .getProverFactory();
+        this.proverFactory = proverFactory;
     }
 
     @Override

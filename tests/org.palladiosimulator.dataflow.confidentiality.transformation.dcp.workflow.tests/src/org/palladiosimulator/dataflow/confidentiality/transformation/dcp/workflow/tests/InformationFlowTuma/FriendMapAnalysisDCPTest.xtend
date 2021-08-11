@@ -21,6 +21,7 @@ class FriendMapAnalysisDCPTest extends FriendMapAnalysisTest{
 		super.setup()
 		//super.setup() already sets a new builder, which we simply substitute for a new instance of our own builder...
 		dcpBuilder = new DFDWithDCPTransformationWorkflowBuilder()
+		dcpBuilder.addProverFactory(proverFactory)
 		builder = dcpBuilder
 	}
 	

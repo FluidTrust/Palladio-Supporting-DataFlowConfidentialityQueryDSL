@@ -3,28 +3,28 @@ package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workfl
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
-import org.prolog4j.swicli.SWIPrologCLIProverFactory;
+import org.prolog4j.manager.IProverManager;
 
 public class Activator extends Plugin {
 
     private static Activator instance;
-    private ServiceReference<SWIPrologCLIProverFactory> proverFactoryReference;
-    private SWIPrologCLIProverFactory proverFactory;
+    private ServiceReference<IProverManager> proverManagerReference;
+    private IProverManager proverManager;
 
     @Override
     public void start(BundleContext context) throws Exception {
         super.start(context);
         setInstance(this);
 
-        proverFactoryReference = context.getServiceReference(SWIPrologCLIProverFactory.class);
-        proverFactory = context.getService(proverFactoryReference);
+        proverManagerReference = context.getServiceReference(IProverManager.class);
+        proverManager = context.getService(proverManagerReference);
     }
 
     @Override
     public void stop(BundleContext context) throws Exception {
-        context.ungetService(proverFactoryReference);
-        proverFactory = null;
-        proverFactoryReference = null;
+        context.ungetService(proverManagerReference);
+        proverManager = null;
+        proverManagerReference = null;
 
         setInstance(null);
         super.stop(context);
@@ -38,8 +38,8 @@ public class Activator extends Plugin {
         Activator.instance = instance;
     }
 
-    public SWIPrologCLIProverFactory getProverFactory() {
-        return proverFactory;
+    public IProverManager getProverManager() {
+        return proverManager;
     }
 
 }

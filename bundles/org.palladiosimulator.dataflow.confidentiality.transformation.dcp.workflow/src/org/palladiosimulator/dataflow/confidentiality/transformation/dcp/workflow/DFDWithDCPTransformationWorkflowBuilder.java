@@ -39,6 +39,7 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 	private ModelLocation dcpdslLocation;
 	private ModelLocation ddcLocation;
 	private IProverFactory proverFactory;
+	private boolean serializeFlowTree = true;
 	
 	protected final Collection<IJob> dcpPrologSerializationJobs = new ArrayList<>();
 	
@@ -79,7 +80,7 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 		
 		jobSequence.add(new RunConstraintsQueryJob<>(DEFAULT_PROLOG_KEY, DEFAULT_CONSTRAINTS_KEY, DEFAULT_CALLABLE_QUERY_KEY, DEFAULT_SOLUTION_KEY, proverFactory));
 
-		jobSequence.add(new CreateResultMappingFromSolutionJob<>(DEFAULT_SOLUTION_KEY, dcpdslLocation, ""));
+		jobSequence.add(new CreateResultMappingFromSolutionJob<>(DEFAULT_SOLUTION_KEY, dcpdslLocation, "", serializeFlowTree));
 		
 		return new TransformDFDWithDCPConstraintsToPrologWorkflowImpl(jobSequence, progressMonitor, workflowExceptionHandler, getBlackboard(), 
 				DEFAULT_PROLOG_KEY, DEFAULT_TRACE_KEY, DEFAULT_CONSTRAINTS_KEY);
@@ -117,6 +118,11 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 	
 	public DFDWithDCPTransformationWorkflowBuilder addProverFactory(IProverFactory proverFactory) {
 	    this.proverFactory = proverFactory;
+	    return this;
+	}
+	
+	public DFDWithDCPTransformationWorkflowBuilder setSerializeFlowTree(boolean serializationFlag) {
+	    this.serializeFlowTree = serializationFlag;
 	    return this;
 	}
 }

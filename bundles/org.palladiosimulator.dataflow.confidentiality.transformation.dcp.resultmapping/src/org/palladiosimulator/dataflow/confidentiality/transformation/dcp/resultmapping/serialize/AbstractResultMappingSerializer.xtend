@@ -23,10 +23,12 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 
 	protected Converter crossPlatformConverter
 	protected ISerializer serializer
+	protected boolean serializeFlowTree
 
-	package new() {
+	package new(boolean serializeFlowTree) {
 		val Injector injector = Guice.createInjector(new DSLRuntimeModule);  
-		serializer = injector.getInstance(ISerializer); 
+		serializer = injector.getInstance(ISerializer);
+		this.serializeFlowTree = serializeFlowTree;
 	}
 	
 	protected def getParameterOrCallState(Violation violation) {
@@ -128,7 +130,9 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 			«i+1». Parameter «escape(crossPlatformConverter.convertVariable(getParameterOrCallState(violations.get(i))))» is not allowed to be «highlight(mapQueryType(violations.get(i)))» in operation «escape(crossPlatformConverter.resolveQualifiedName(violations.get(i).operation, false))».
 			«serializeViolationClassVariables(violations.get(i).classVariables)»
 			«serializeViolationCharacteristicVariables(violations.get(i).characteristicVariables)»
-			«serializeViolationCallStack(violations.get(i).callStack)»
+			«IF serializeFlowTree»
+				«serializeViolationCallStack(violations.get(i).callStack)»
+			«ENDIF»
 		«ENDFOR»
 		'''
 	}

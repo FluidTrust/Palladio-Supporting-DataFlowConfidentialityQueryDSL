@@ -8,7 +8,8 @@ import de.sebinside.dcp.dsl.dSL.CharacteristicSet
 
 class PlainTextResultMappingSerializer extends AbstractResultMappingSerializer {
 
-	package new() {
+	package new(boolean serializeFlowTree) {
+		super(serializeFlowTree)
 	}
 
 	override mapCharacteristicTypeSelector(CharacteristicTypeSelector selector) {

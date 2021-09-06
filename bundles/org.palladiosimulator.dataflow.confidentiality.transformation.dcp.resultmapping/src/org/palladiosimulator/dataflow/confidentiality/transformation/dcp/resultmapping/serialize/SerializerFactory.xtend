@@ -2,8 +2,8 @@ package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.result
 
 class SerializerFactory {
 
-	static def createPlainTextSerializer() {
-		new PlainTextResultMappingSerializer
+	static def createPlainTextSerializer(boolean serializeFlowTree) {
+		new PlainTextResultMappingSerializer(serializeFlowTree)
 	}
 
 //	static def createMarkdownSerializer() {

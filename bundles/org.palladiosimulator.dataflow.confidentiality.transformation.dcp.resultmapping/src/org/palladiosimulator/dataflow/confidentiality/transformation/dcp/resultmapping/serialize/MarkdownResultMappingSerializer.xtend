@@ -8,7 +8,8 @@ import de.sebinside.dcp.dsl.dSL.CharacteristicSet
 
 class MarkdownResultMappingSerializer extends AbstractResultMappingSerializer {
 
-	package new() {
+	package new(boolean serializeFlowTree) {
+		super(serializeFlowTree)
 	}
 
 	override makeTitle(String value) {

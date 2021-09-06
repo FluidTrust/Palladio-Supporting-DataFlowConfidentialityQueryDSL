@@ -23,11 +23,11 @@ public class CreateResultMappingFromSolutionJob <T extends KeyValueMDSDBlackboar
 	private final String resultMappingKey;
 	private ResultMappingSerializer serializer;
 	
-	public CreateResultMappingFromSolutionJob(String solutionKey, ModelLocation dcpdslLocation, String resultMappingKey) {
+	public CreateResultMappingFromSolutionJob(String solutionKey, ModelLocation dcpdslLocation, String resultMappingKey, boolean serializeFlowTree) {
 		this.solutionKey = solutionKey;
 		this.dcpdslLocation = dcpdslLocation;
 		this.resultMappingKey = resultMappingKey;
-		serializer = SerializerFactory.createPlainTextSerializer();
+		serializer = SerializerFactory.createPlainTextSerializer(serializeFlowTree);
 	}
 	
 	@Override

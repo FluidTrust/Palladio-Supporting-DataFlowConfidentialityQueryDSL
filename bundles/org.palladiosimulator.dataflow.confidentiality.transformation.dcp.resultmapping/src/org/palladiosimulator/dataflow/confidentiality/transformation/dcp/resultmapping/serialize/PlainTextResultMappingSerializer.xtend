@@ -66,7 +66,7 @@ class PlainTextResultMappingSerializer extends AbstractResultMappingSerializer {
 
 	override protected mapCharacteristicVariable(CharacteristicVariableType variable, List<String> values) {
 		val escapedValues = super.mapCharacteristicVariable(variable, values)
-		'''«IF variable instanceof CharacteristicSet»Set variable«ELSE»Variable«ENDIF»«escape(variable.name)» set to «escapedValues»'''
+		'''«IF variable instanceof CharacteristicSet»set variable«ELSE»variable«ENDIF» «escape(variable.name)» set to «escapedValues»'''
 	}
 
 }

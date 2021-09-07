@@ -21,14 +21,18 @@ public class CreateResultMappingFromSolutionJob <T extends KeyValueMDSDBlackboar
 	private final String solutionKey;
 	private final ModelLocation dcpdslLocation;
 	private final String resultMappingKey;
-	private ResultMappingSerializer serializer;
+	private final ResultMappingSerializer serializer;
 	
 	public CreateResultMappingFromSolutionJob(String solutionKey, ModelLocation dcpdslLocation, String resultMappingKey, boolean serializeFlowTree) {
-		this.solutionKey = solutionKey;
-		this.dcpdslLocation = dcpdslLocation;
-		this.resultMappingKey = resultMappingKey;
-		serializer = SerializerFactory.createPlainTextSerializer(serializeFlowTree);
+		this(solutionKey, dcpdslLocation, resultMappingKey, SerializerFactory.createPlainTextSerializer(serializeFlowTree));
 	}
+	
+    public CreateResultMappingFromSolutionJob(String solutionKey, ModelLocation dcpdslLocation, String resultMappingKey, ResultMappingSerializer serializer) {
+        this.solutionKey = solutionKey;
+        this.dcpdslLocation = dcpdslLocation;
+        this.resultMappingKey = resultMappingKey;
+        this.serializer = serializer;
+    }
 	
 	@Override
 	public void execute(IProgressMonitor monitor) throws JobFailedException, UserCanceledException {

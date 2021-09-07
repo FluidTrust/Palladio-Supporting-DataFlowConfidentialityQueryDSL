@@ -1,23 +1,20 @@
 package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.resultmapping.serialize
 
-import com.google.inject.Injector
 import com.google.inject.Guice
-import org.eclipse.xtext.serializer.ISerializer
+import com.google.inject.Injector
+import de.sebinside.dcp.dsl.DSLRuntimeModule
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
+import de.sebinside.dcp.dsl.dSL.Condition
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import de.sebinside.dcp.dsl.generator.GlobalConstants
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
-import de.sebinside.dcp.dsl.dSL.Condition
-import de.sebinside.dcp.dsl.DSLRuntimeModule
-import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.resultmapping.ResultMapping
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.resultmapping.serialize.ResultMappingSerializer
-import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.resultmapping.Violation
-
 import java.util.List
-import java.util.Set
 import java.util.Map
+import org.eclipse.xtext.serializer.ISerializer
+import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.resultmapping.ResultMapping
+import org.palladiosimulator.dataflow.confidentiality.transformation.dcp.resultmapping.Violation
 
 abstract class AbstractResultMappingSerializer implements ResultMappingSerializer {
 
@@ -25,10 +22,14 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 	protected ISerializer serializer
 	protected boolean serializeFlowTree
 
-	package new(boolean serializeFlowTree) {
-		val Injector injector = Guice.createInjector(new DSLRuntimeModule);  
-		serializer = injector.getInstance(ISerializer);
+	package new(boolean serializeFlowTree) { 
+		this.serializer = createDSLSerializer();
 		this.serializeFlowTree = serializeFlowTree;
+	}
+	
+	protected def createDSLSerializer() {
+		val Injector injector = Guice.createInjector(new DSLRuntimeModule);  
+		return injector.getInstance(ISerializer);
 	}
 	
 	protected def getParameterOrCallState(Violation violation) {
@@ -124,7 +125,7 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 		'''«FOR selector: nodeIdentities BEFORE "Destination Identity: " SEPARATOR ", "»«mapNodeIdentity(selector)»«ENDFOR»'''
 	}
 	
-	private def serializeViolations(List<Violation> violations) {
+	protected def serializeViolations(List<Violation> violations) {
 		'''
 		«FOR i : 0..(violations.size - 1) SEPARATOR "\n"»
 			«i+1». Parameter «escape(crossPlatformConverter.convertVariable(getParameterOrCallState(violations.get(i))))» is not allowed to be «highlight(mapQueryType(violations.get(i)))» in operation «escape(crossPlatformConverter.resolveQualifiedName(violations.get(i).operation, false))».
@@ -137,7 +138,7 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 		'''
 	}
 	
-	private def serializeViolationCallStack(List<Object> callStack) {
+	protected def serializeViolationCallStack(List<Object> callStack) {
 		//recursive call of serializeCallStack
 		'''«IF !callStack.isEmpty»«"\t- Flow Tree: \n\t\t" + serializeCallStack(callStack, "", true, true, true)»«ENDIF»'''
 	}
@@ -162,15 +163,15 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 		'''«FOR subBranch : branch SEPARATOR "\n\t" + newTreeIndent»«IF subBranch instanceof String»«serializeCallStackEntry(subBranch as String, callStackEntryTreeIndent)»«ELSEIF subBranch instanceof List»«indent(serializeCallStack(subBranch, newTreeIndent, branch.last.equals(subBranch), branch.size > 2, false))»«ENDIF»«ENDFOR»'''
 	}
 	
-	private def serializeViolationClassVariables(Map<CharacteristicTypeSelector, String> classVariableMap) {
+	protected def serializeViolationClassVariables(Map<CharacteristicTypeSelector, String> classVariableMap) {
 		'''«FOR variable: classVariableMap.keySet BEFORE "\t- Characteristic Classes: " + indent(advancedEnumHeader("Parameter", "Class", "Value")) SEPARATOR advancedEnumSeparator»«indent(mapClassVariable(variable, classVariableMap.get(variable)))»«ENDFOR»'''
 	}
 	
-	private def serializeViolationCharacteristicVariables(Map<CharacteristicVariableType, List<String>> characteristicVariableMap) {
+	protected def serializeViolationCharacteristicVariables(Map<CharacteristicVariableType, List<String>> characteristicVariableMap) {
 		'''«FOR variable: characteristicVariableMap.keySet BEFORE "\t- Characteristic Variables: " + indent(advancedEnumHeader("Variable", "Value")) SEPARATOR advancedEnumSeparator»«indent(mapCharacteristicVariable(variable, characteristicVariableMap.get(variable)))»«ENDFOR»'''
 	}
 	
-	private def serializeCallStackEntry(String call, String treeIndent) {
+	protected def serializeCallStackEntry(String call, String treeIndent) {
 		treeIndent + indent(mapCallStackEntry(call))
 	}
 	

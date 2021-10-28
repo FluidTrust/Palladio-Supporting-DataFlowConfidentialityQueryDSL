@@ -8,6 +8,7 @@ import "platform:/resource/org.palladiosimulator.dataflow.diagram.characterized/
 diagram
 import "platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.ecore" as
 dictionary
+import "http://www.eclipse.org/emf/2002/Ecore"
 
 Model:
 	(targetModelType=TargetModelTypeDef)?
@@ -20,7 +21,11 @@ AbstractElement:
 	Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
 
 CharacteristicType:
-	'type' name=ID ':' ref=[dictionary::EnumCharacteristicType];
+	'type' name=ID ':' ref=[dictionary::EnumCharacteristicType|StringOrId];
+
+StringOrId returns EString:
+	ID | STRING
+;
 
 CharacteristicClass:
 	'class' name=ID '{' members+=CharacteristicTypeSelector (',' members+=CharacteristicTypeSelector)* '}';
@@ -67,22 +72,30 @@ CharacteristicClassSelector:
 	AttributeClassSelector | PropertyClassSelector;
 
 AttributeSelector:
-	'data.attribute.' ref=CharacteristicTypeSelector;
+	'data' '.' 'attribute' '.' ref=CharacteristicTypeSelector;
 
 AttributeClassSelector:
-	'data.class.' ref=[CharacteristicClass];
+	'data' '.' 'class' '.' ref=[CharacteristicClass];
 
 DestinationSelector:
-	PropertySelector | PropertyClassSelector | NodeIdentitiySelector;
+	PropertySelector | PropertyClassSelector | NodeIdentitiySelector | NodeTypeSelector;
 
 PropertySelector:
-	'node.property.' ref=CharacteristicTypeSelector;
+	'node' '.' 'property' '.' ref=CharacteristicTypeSelector;
 
 PropertyClassSelector:
-	'node.class.' ref=[CharacteristicClass];
+	'node' '.' 'class' '.' ref=[CharacteristicClass];
 
 NodeIdentitiySelector:
-	'node.name.' name=STRING | 'node.identity.' diaNode=[diagram::CharacterizedNode];
+	'node' '.' ('name' '.' name=STRING) | ('identity' '.' diaNode=[diagram::CharacterizedNode]);
+
+NodeTypeSelector:
+	'node' '.' 'type' '.' type=NodeType
+;
+
+enum NodeType:
+	ACTOR = 'Actor' | PROCESS = 'Process' | STORE = 'Store' | ACTORPROCESS = 'ActorProcess'
+;
 
 Statement:
 	modality=StatementModality type=StatementType;
@@ -128,13 +141,19 @@ EncapsulatedLogicalOperation returns BooleanOperation:
 	'(' LogicalOrOperation ')';
 
 SimpleBooleanOperation:
-	EmptySetOperation | VariableEqualityOperation | VariableInequalityOperation | ElementOfOperation;
+	EmptySetOperation | VariableEqualityOperation | VariableInequalityOperation | LessThanOperation | GreaterThanOperation | ElementOfOperation;
 
 VariableEqualityOperation:
 	left=CharacteristicReference "==" right=CharacteristicReference;
 
 VariableInequalityOperation:
 	left=CharacteristicReference "!=" right=CharacteristicReference;
+
+LessThanOperation:
+	left=NumericOperation "<" right=NumericOperation;
+
+GreaterThanOperation:
+	left=NumericOperation ">" right=NumericOperation;
 
 EmptySetOperation:
 	"isEmpty" "(" value=CharacteristicSetReference ")";
@@ -153,3 +172,11 @@ ElementOfOperation:
 
 CreateSetOperation:
 	"{" value=CharacteristicReference "}";
+
+NumericOperation:
+	IndexOperation
+;
+
+IndexOperation:
+	'index' '(' value=CharacteristicReference ')'
+;

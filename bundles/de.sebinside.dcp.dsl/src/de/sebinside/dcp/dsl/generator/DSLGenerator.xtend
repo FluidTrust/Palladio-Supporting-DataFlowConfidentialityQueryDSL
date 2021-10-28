@@ -41,7 +41,11 @@ class DSLGenerator extends AbstractGenerator {
 	var callableQueryConstraints = new ArrayList<CompoundTerm>
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val program = generateFromResource(resource)
+		val model = resource.contents.iterator.next as Model
+		if (model === null) {
+			return
+		}
+		val program = generateFromModel(model)
 
 		val outputFileName = if (resource.URI.lastSegment !== null) {
 				resource.URI.lastSegment.replace(DSL_EXTENSION, PROLOG_EXTENSION)
@@ -90,23 +94,23 @@ class DSLGenerator extends AbstractGenerator {
 		this.converter
 	}
 	
-	def generateFromResource(Resource resource) {
-		val program = PrologFactory.eINSTANCE.createProgram
-
-		for (element : resource.allContents.toIterable.filter(TargetModelTypeDef)) {
-			element.compile
-		}
-
-		for (element : resource.allContents.toIterable.filter(CharacteristicClass)) {
-			program.clauses.addAll(element.compile)
-		}
-
-		for (element : resource.allContents.toIterable.filter(Constraint)) {
-			program.clauses.addAll(element.compile)
-		}
-		
-		program
-	}
+//	def generateFromResource(Resource resource) {
+//		val program = PrologFactory.eINSTANCE.createProgram
+//
+//		for (element : resource.allContents.toIterable.filter(TargetModelTypeDef)) {
+//			element.compile
+//		}
+//
+//		for (element : resource.allContents.toIterable.filter(CharacteristicClass)) {
+//			program.clauses.addAll(element.compile)
+//		}
+//
+//		for (element : resource.allContents.toIterable.filter(Constraint)) {
+//			program.clauses.addAll(element.compile)
+//		}
+//		
+//		program
+//	}
 	
 	def setDFD2PrologTrace(DFD2PrologTransformationTrace trace) {
 		this.extendedDFDConverterTrace = trace;

@@ -6,13 +6,15 @@ import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.CharacteristicVariable
 import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
+import de.sebinside.dcp.dsl.dSL.NodeTypeSelector
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
 import de.sebinside.dcp.dsl.dSL.PropertySelector
 import de.sebinside.dcp.dsl.dSL.Rule
 import de.sebinside.dcp.dsl.generator.GlobalConstants
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
+import de.sebinside.dcp.dsl.generator.util.ConditionMapper
 import java.util.ArrayList
-import java.util.HashSet
+import java.util.LinkedHashSet
 import java.util.List
 import java.util.Set
 import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
@@ -20,7 +22,6 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 
 import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
-import de.sebinside.dcp.dsl.generator.util.ConditionMapper
 
 abstract class QueryRule {
 
@@ -36,8 +37,8 @@ abstract class QueryRule {
 	var String nameBase = null
 	var Converter converter = null
 
-	var Set<CharacteristicClass> characteristicClasses = new HashSet<CharacteristicClass>
-	var Set<CharacteristicVariableType> freeVariables = new HashSet<CharacteristicVariableType>
+	var Set<CharacteristicClass> characteristicClasses = new LinkedHashSet<CharacteristicClass>
+	var Set<CharacteristicVariableType> freeVariables = new LinkedHashSet<CharacteristicVariableType>
 
 	new(Rule rule, String nameBase, Converter converter) {
 		this.rule = rule
@@ -141,6 +142,25 @@ abstract class QueryRule {
 
 		#[unification]
 	}
+	
+	def dispatch generateDestinationSelectorTerm(NodeTypeSelector selector) {
+		val term = switch (selector.type) {
+			case ACTOR: {
+				CompoundTerm("actor", CompoundTerm(node))
+			}
+			case ACTORPROCESS: {
+				CompoundTerm("actorprocess", #[CompoundTerm(node), CompoundTerm("_")])
+			}
+			case PROCESS: {
+				CompoundTerm("process", CompoundTerm(node))
+			}
+			case STORE: {
+				CompoundTerm("store", CompoundTerm(node))
+			}
+			
+		}
+		#[term]
+	}
 
 	def generate() { // Important for generating the actual query rule body
 		val subRule = Rule('''«nameBase»_«queryTypeIdentification»''')
@@ -168,7 +188,7 @@ abstract class QueryRule {
 			if (characteristicClasses.size > 0) {
 				expressionsToLogicalAnd(characteristicsClassesTerms)
 			}, if (rule.condition !== null) {
-				new ConditionMapper(rule.condition.operation).conditionTerm
+				new ConditionMapper(rule.condition.operation, converter).conditionTerm
 			}]
 		subRule.body = expressionsToLogicalAnd(subRuleComponents)
 

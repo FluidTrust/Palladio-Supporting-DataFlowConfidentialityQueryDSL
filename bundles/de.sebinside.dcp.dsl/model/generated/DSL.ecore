@@ -69,6 +69,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="diaNode" eType="ecore:EClass platform:/resource/org.palladiosimulator.dataflow.diagram.characterized/model/DataFlowDiagramCharacterized.ecore#//CharacterizedNode"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeTypeSelector" eSuperTypes="#//DestinationSelector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//NodeType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NodeType">
+    <eLiterals name="ACTOR" literal="Actor"/>
+    <eLiterals name="PROCESS" value="1" literal="Process"/>
+    <eLiterals name="STORE" value="2" literal="Store"/>
+    <eLiterals name="ACTORPROCESS" value="3" literal="ActorProcess"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modality" eType="#//StatementModality"
         containment="true"/>
@@ -110,6 +119,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//CharacteristicReference"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LessThanOperation" eSuperTypes="#//SimpleBooleanOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//NumericOperation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//NumericOperation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GreaterThanOperation" eSuperTypes="#//SimpleBooleanOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//NumericOperation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//NumericOperation"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EmptySetOperation" eSuperTypes="#//SimpleBooleanOperation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CharacteristicSetReference"
         containment="true"/>
@@ -139,6 +160,11 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CreateSetOperation" eSuperTypes="#//CharacteristsicSetOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CharacteristicReference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NumericOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IndexOperation" eSuperTypes="#//NumericOperation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//CharacteristicReference"
         containment="true"/>
   </eClassifiers>

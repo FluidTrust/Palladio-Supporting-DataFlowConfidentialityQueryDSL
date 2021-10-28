@@ -1,21 +1,23 @@
 package de.sebinside.dcp.dsl.generator.util
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariable
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
+import de.sebinside.dcp.dsl.generator.GlobalConstants
 import java.io.ByteArrayOutputStream
+import java.util.List
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.generator.IFileSystemAccess2
+import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
 import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
 import org.palladiosimulator.supporting.prolog.model.prolog.Program
 import org.palladiosimulator.supporting.prolog.model.prolog.Rule
 import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expression
 
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
-import org.eclipse.emf.ecore.util.EcoreUtil
-import java.util.List
-import org.palladiosimulator.supporting.prolog.model.prolog.AtomicQuotedString
-import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
-import de.sebinside.dcp.dsl.dSL.CharacteristicVariable
-import de.sebinside.dcp.dsl.generator.GlobalConstants
 
 class DSLGeneratorUtils {
 
@@ -81,7 +83,7 @@ class DSLGeneratorUtils {
 	}
 
 	def static createMemberQuery(AtomicQuotedString valueSet, CompoundTerm member) {
-		CompoundTerm("valueSetMember", #[valueSet, member])
+		CompoundTerm("characteristicTypeValue", #[valueSet, member, CompoundTerm("_")])
 	}
 
 	def static createCharacteristicsClassTerm(CharacteristicClass characteristicClass) {
@@ -128,5 +130,13 @@ class DSLGeneratorUtils {
 
 		// Use FileSystemAccess to write serialized prolog code
 		fsa.generateFile(fileName, outputStream.toString)
+	}
+	
+	def static findParentOfType(EObject start, EClass parentType) {
+		var current = start;
+		while (current !== null && !parentType.isInstance(current)) {
+			current = current.eContainer
+		}
+		return current
 	}
 }

@@ -6,6 +6,12 @@
     copyrightFields="false" runtimeVersion="2.20" usedGenPackages="platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/resource/org.palladiosimulator.dataflow.diagram.characterized/model/DataFlowDiagramCharacterized.genmodel#//DataFlowDiagramCharacterized platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.genmodel#//DataDictionaryCharacterized">
   <genPackages prefix="DSL" basePackage="de.sebinside.dcp.dsl" disposableProviderFactory="true"
       fileExtensions="qdsl" ecorePackage="DSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DSL.ecore#//NodeType">
+      <genEnumLiterals ecoreEnumLiteral="DSL.ecore#//NodeType/ACTOR"/>
+      <genEnumLiterals ecoreEnumLiteral="DSL.ecore#//NodeType/PROCESS"/>
+      <genEnumLiterals ecoreEnumLiteral="DSL.ecore#//NodeType/STORE"/>
+      <genEnumLiterals ecoreEnumLiteral="DSL.ecore#//NodeType/ACTORPROCESS"/>
+    </genEnums>
     <genClasses ecoreClass="DSL.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Model/targetModelType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Model/elements"/>
@@ -64,6 +70,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//NodeIdentitiySelector/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//NodeIdentitiySelector/diaNode"/>
     </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//NodeTypeSelector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//NodeTypeSelector/type"/>
+    </genClasses>
     <genClasses ecoreClass="DSL.ecore#//Statement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Statement/modality"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//Statement/type"/>
@@ -97,6 +106,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//VariableInequalityOperation/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//VariableInequalityOperation/right"/>
     </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//LessThanOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//LessThanOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//LessThanOperation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//GreaterThanOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//GreaterThanOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//GreaterThanOperation/right"/>
+    </genClasses>
     <genClasses ecoreClass="DSL.ecore#//EmptySetOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//EmptySetOperation/value"/>
     </genClasses>
@@ -118,6 +135,10 @@
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//CreateSetOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//CreateSetOperation/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//NumericOperation"/>
+    <genClasses ecoreClass="DSL.ecore#//IndexOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//IndexOperation/value"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//LogicalOrOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//LogicalOrOperation/left"/>

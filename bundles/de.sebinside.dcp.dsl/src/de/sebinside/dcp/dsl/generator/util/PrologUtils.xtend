@@ -101,4 +101,17 @@ class PrologUtils {
 		number
 	}
 
+	def static Less(Expression left, Expression right) {
+		val less = ExpressionsFactory.eINSTANCE.createLessThan
+		less.left = left
+		less.right = right
+		less
+	}
+
+	def static Geater(Expression left, Expression right) {
+		val greater = ExpressionsFactory.eINSTANCE.createGreaterThan
+		greater.left = left
+		greater.right = right
+		greater
+	}
 }

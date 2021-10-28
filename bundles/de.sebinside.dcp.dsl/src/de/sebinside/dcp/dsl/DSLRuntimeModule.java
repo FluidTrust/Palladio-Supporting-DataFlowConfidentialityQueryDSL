@@ -3,6 +3,7 @@
  */
 package de.sebinside.dcp.dsl;
 
+import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
 
@@ -23,5 +24,10 @@ public class DSLRuntimeModule extends AbstractDSLRuntimeModule {
 	public Class<? extends IGlobalScopeProvider> bindIGlobalScopeProvider() {
 		return ImportReadyGlobalScopeProvider.class;
 	}
+
+    @Override
+    public Class<? extends IValueConverterService> bindIValueConverterService() {
+        return DSLValueConverter.class;
+    }
 
 }

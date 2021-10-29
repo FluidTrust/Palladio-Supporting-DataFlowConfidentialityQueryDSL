@@ -52,15 +52,15 @@ class DSLGeneratorTest {
 		subject.DFD2PrologTrace = new DFD2PrologTransformationTrace() {
 
 			override getDfd() {
-				throw new UnsupportedOperationException("TODO: auto-generated method stub")
+				throw new UnsupportedOperationException("This method must never be used in the test.")
 			}
 
 			override getDfdId(String factId) {
-				throw new UnsupportedOperationException("TODO: auto-generated method stub")
+				throw new UnsupportedOperationException("This method must never be used in the test.")
 			}
 
 			override getDfdPinId(String factId) {
-				throw new UnsupportedOperationException("TODO: auto-generated method stub")
+				throw new UnsupportedOperationException("This method must never be used in the test.")
 			}
 
 			override getFactId(Entity entity) {
@@ -77,15 +77,15 @@ class DSLGeneratorTest {
 			}
 
 			override getFactId(Behaving entity, Pin pin) {
-				throw new UnsupportedOperationException("TODO: auto-generated method stub")
+				throw new UnsupportedOperationException("This method must never be used in the test.")
 			}
 
 			override getPrologProgram() {
-				throw new UnsupportedOperationException("TODO: auto-generated method stub")
+				throw new UnsupportedOperationException("This method must never be used in the test.")
 			}
 
 			override <T extends EObject> resolveDfdElement(String dfdId, Class<T> type) {
-				throw new UnsupportedOperationException("TODO: auto-generated method stub")
+				throw new UnsupportedOperationException("This method must never be used in the test.")
 			}
 
 		}

@@ -27,7 +27,6 @@ import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCha
 import tools.mdsd.library.standalone.initialization.StandaloneInitializerBuilder
 
 import static org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Disabled
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DSLInjectorProvider)
@@ -204,33 +203,67 @@ class DSLGeneratorTest {
 	}
 	
 	@Test
-	@Disabled
 	def void testABAC() {
 		runTest('''
 			type CustomerLocation : CustomerLocation
 			type EmployeeLocation : EmployeeLocation
 			type CustomerStatus : CustomerStatus
 			type EmployeeRole : EmployeeRole
+
+			var ER_CLERK{} = EmployeeRole.[Clerk]
+			var ER_MANAGER{} = EmployeeRole.[Manager]
+			var CS_CELEBRITY{} = CustomerStatus.[Celebrity]
+			var CS_REGULAR{} = CustomerStatus.[Regular]
 			
-			class Clerk {
-				EmployeeRole.Clerk
-			}
-			
-			class Regular {
-				CustomerStatus.Regular
-			}
-			
-			class Celebrity {
-				CustomerStatus.Celebrity
-			}
-			
-			constraint NoClerkAndCelebrity {
-				data.class.Celebrity NEVER FLOWS node.class.Clerk
+			constraint Test {
+				data.attribute.CustomerLocation.$CL{} &
+				data.attribute.CustomerStatus.$CS{}
+					NEVER FLOWS
+				node.property.EmployeeLocation.$EL{} &
+				node.property.EmployeeRole.$ER{}
+					WHERE
+				!(
+					(
+						subset(ER, ER_MANAGER) & subset(ER_MANAGER, ER)
+					) |	(
+						subset(ER, ER_CLERK) & subset(ER_CLERK, ER) &
+						subset(CS, CS_REGULAR) & subset(CS_REGULAR, CS) &
+						subset(EL, CL) & subset(CL, EL)
+					)
+				)
 			}
 		''',
 		"evaluation/abac/abac_dd.xmi",
 		'''
-			foo
+			constraint_Test(ConstraintName, QueryType, N, PIN, S, VarSet_EL, VarSet_ER, VarSet_CL, VarSet_CS) :-
+				ConstraintName = 'Test',
+				constraint_Test_InputPin(QueryType, N, PIN, S, VarSet_EL, VarSet_ER, VarSet_CL, VarSet_CS).
+			constraint_Test_InputPin(QueryType, N, PIN, S, VarSet_EL, VarSet_ER, VarSet_CL, VarSet_CS) :-
+				QueryType = 'InputPin',
+				VarSet_ER_CLERK = ['Clerk (_c_En8OJAEeqO9NqdRSqKUA)'],
+				VarSet_ER_MANAGER = ['Manager (_dvk30OJAEeqO9NqdRSqKUA)'],
+				VarSet_CS_CELEBRITY = ['Celebrity (_hCxt8OJAEeqO9NqdRSqKUA)'],
+				VarSet_CS_REGULAR = ['Regular (_gYqZ8OJAEeqO9NqdRSqKUA)'],
+				inputPin(N, PIN),
+				flowTree(N, PIN, S),
+				(
+					setof(R, nodeCharacteristic(N, 'EmployeeLocation (_j_v1Y-JAEeqO9NqdRSqKUA)', R), VarSet_EL),
+					setof(R, nodeCharacteristic(N, 'EmployeeRole (_nNduk-JAEeqO9NqdRSqKUA)', R), VarSet_ER)
+				),
+				(
+					setof(V, characteristic(N, PIN, 'CustomerLocation (_h6k4o-JAEeqO9NqdRSqKUA)', V, S), VarSet_CL),
+					setof(V, characteristic(N, PIN, 'CustomerStatus (_lmMOw-JAEeqO9NqdRSqKUA)', V, S), VarSet_CS)
+				),
+				\+ (
+					subset(VarSet_ER, VarSet_ER_MANAGER),
+					subset(VarSet_ER_MANAGER, VarSet_ER);
+					subset(VarSet_ER, VarSet_ER_CLERK),
+					subset(VarSet_ER_CLERK, VarSet_ER),
+					subset(VarSet_CS, VarSet_CS_REGULAR),
+					subset(VarSet_CS_REGULAR, VarSet_CS),
+					subset(VarSet_EL, VarSet_CL),
+					subset(VarSet_CL, VarSet_EL)
+				).
 		'''
 		)
 	}

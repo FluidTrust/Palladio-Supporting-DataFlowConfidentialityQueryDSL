@@ -83,10 +83,14 @@ class PrologUtils {
 		list
 	}
 
-	def static List(Expression head) {
+	def static List(Iterable<Expression> heads) {
 		val list = PrologFactory.eINSTANCE.createList
-		list.heads.add(head)
+		list.heads.addAll(heads)
 		list
+	}
+
+	def static List(Expression head) {
+		List(#[head])
 	}
 
 	def static AtomicQuotedString(String value) {

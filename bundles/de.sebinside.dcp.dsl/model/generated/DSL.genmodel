@@ -25,6 +25,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicType/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicType/ref"/>
     </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//GlobalVariableDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalVariableDefinition/ref"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalVariableDefinition/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//GlobalSetVariableDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalSetVariableDefinition/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//GlobalValueVariableDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalValueVariableDefinition/variable"/>
+    </genClasses>
     <genClasses ecoreClass="DSL.ecore#//CharacteristicClass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicClass/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicClass/members"/>
@@ -116,6 +126,10 @@
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//EmptySetOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//EmptySetOperation/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DSL.ecore#//SubsetOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//SubsetOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//SubsetOperation/right"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//IntersectionOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//IntersectionOperation/left"/>

@@ -5,6 +5,9 @@ import de.sebinside.dcp.dsl.dSL.AttributeSelector
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.CharacteristicVariable
 import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
+import de.sebinside.dcp.dsl.dSL.GlobalSetVariableDefinition
+import de.sebinside.dcp.dsl.dSL.GlobalValueVariableDefinition
+import de.sebinside.dcp.dsl.dSL.GlobalVariableDefinition
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import de.sebinside.dcp.dsl.dSL.NodeTypeSelector
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
@@ -162,7 +165,7 @@ abstract class QueryRule {
 		#[term]
 	}
 
-	def generate() { // Important for generating the actual query rule body
+	def generate(Iterable<GlobalVariableDefinition> globalVariables) { // Important for generating the actual query rule body
 		val subRule = Rule('''«nameBase»_«queryTypeIdentification»''')
 
 		// Map all data selectors to parts of a rule
@@ -178,18 +181,24 @@ abstract class QueryRule {
 		// Create characteristics class terms
 		val characteristicsClassesTerms = characteristicClasses.map[clazz|createCharacteristicsClassTerm(clazz)]
 
+		// Create all global variables
+		val globalVariableExpressions = globalVariables.map[generateGlobalVariable]
+
 		// Create final rule body
-		val subRuleComponents = #[queryTypeTerm,
-			createPinLocationQuery(CompoundTerm(node), CompoundTerm(pin)), // input/output pin
-			createFlowTreeCall(CompoundTerm(node), CompoundTerm(pin), CompoundTerm(stack)), // flowTree 
-			expressionsToLogicalAnd(destinationSelectorTerm), // set of nodeCharacteristic
-			expressionsToLogicalAnd(dataSelectorTerm), // set of characteristic
-			
-			if (characteristicClasses.size > 0) {
-				expressionsToLogicalAnd(characteristicsClassesTerms)
-			}, if (rule.condition !== null) {
-				new ConditionMapper(rule.condition.operation, converter).conditionTerm
-			}]
+		val subRuleComponents = new ArrayList<Expression>
+		subRuleComponents += queryTypeTerm
+		subRuleComponents += globalVariableExpressions
+		subRuleComponents += createPinLocationQuery(CompoundTerm(node), CompoundTerm(pin)) // input/output pin
+		subRuleComponents += createFlowTreeCall(CompoundTerm(node), CompoundTerm(pin), CompoundTerm(stack)) // flowTree 
+		subRuleComponents += expressionsToLogicalAnd(destinationSelectorTerm) // set of nodeCharacteristic
+		subRuleComponents += expressionsToLogicalAnd(dataSelectorTerm) // set of characteristic
+		if (characteristicClasses.size > 0) {
+			subRuleComponents += expressionsToLogicalAnd(characteristicsClassesTerms)
+		}
+		if (rule.condition !== null) {
+			subRuleComponents += new ConditionMapper(rule.condition.operation, converter).conditionTerm
+		}
+
 		subRule.body = expressionsToLogicalAnd(subRuleComponents)
 
 		// Create rules parameters
@@ -215,4 +224,16 @@ abstract class QueryRule {
 	abstract def Expression createPinLocationQuery(Expression node, Expression pin)
 
 	abstract def String queryTypeIdentification()
+	
+	protected def dispatch Expression generateGlobalVariable(GlobalValueVariableDefinition definition) {
+		val variableTerm = createFreeVariableTerm(definition.variable)
+		val literal = definition.literals.findFirst[true]
+		Unification(variableTerm, converter.convert(literal))
+	}
+	
+	protected def dispatch Expression generateGlobalVariable(GlobalSetVariableDefinition definition) {
+		val variableTerm = createFreeVariableTerm(definition.variable)
+		val values = definition.literals.map[l|converter.convert(l)].filter(Expression)
+		Unification(variableTerm, List(values))
+	}
 }

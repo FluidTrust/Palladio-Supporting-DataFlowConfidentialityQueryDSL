@@ -4,6 +4,7 @@
 package de.sebinside.dcp.dsl.scoping;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -17,45 +18,56 @@ import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCha
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
+import de.sebinside.dcp.dsl.dSL.GlobalVariableDefinition;
 
 /**
  * This class contains custom scoping description.
  * 
- * See
- * https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#scoping
- * on how and when to use it.
+ * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#scoping on how and when
+ * to use it.
  */
 public class DSLScopeProvider extends AbstractDSLScopeProvider {
-	@Override
-	public IScope getScope(EObject context, EReference reference) {
-		
+    
+    @Override
+    public IScope getScope(EObject context, EReference reference) {
+        var superScope = super.getScope(context, reference);
 
-		if (context instanceof CharacteristicTypeSelector
-				&& reference == DSLPackage.Literals.CHARACTERISTIC_TYPE_SELECTOR__LITERALS) {
+        if (context instanceof CharacteristicTypeSelector
+                && reference == DSLPackage.Literals.CHARACTERISTIC_TYPE_SELECTOR__LITERALS) {
+            CharacteristicType characteristicType = ((CharacteristicTypeSelector) context).getRef()
+                .getRef();
+            return createScopeForLiteralsOfCharacteristicType(characteristicType).orElse(superScope);
+        }
 
-			CharacteristicType type = ((CharacteristicTypeSelector) context).getRef().getRef();
+        if (context instanceof GlobalVariableDefinition
+                && reference == DSLPackage.Literals.GLOBAL_VARIABLE_DEFINITION__LITERALS) {
+            var definition = (GlobalVariableDefinition) context;
+            var characteristicType = definition.getRef()
+                .getRef();
+            return createScopeForLiteralsOfCharacteristicType(characteristicType).orElse(superScope);
+        }
 
-			// Assumption: The DSL is intended to only work with EnumCharacteristicType
-			if (type instanceof EnumCharacteristicType) {
-				EnumCharacteristicType enumType = (EnumCharacteristicType) type;
-				Enumeration literalEnumeration = enumType.getType();
+        return super.getScope(context, reference);
+    }
 
-				// This is the case if the characteristic type is invalid referenced
-				if (literalEnumeration != null) {
-					List<Literal> literals = literalEnumeration.getLiterals();
+    protected Optional<IScope> createScopeForLiteralsOfCharacteristicType(CharacteristicType type) {
+        if (!(type instanceof EnumCharacteristicType)) {
+            return Optional.empty();
+        }
 
-					IScope scope = Scopes.scopeFor(literals, literal -> QualifiedName.create(literal.getName()),
-							IScope.NULLSCOPE);
+        EnumCharacteristicType enumType = (EnumCharacteristicType) type;
+        Enumeration literalEnumeration = enumType.getType();
 
-					return scope;
-				}
-			}
-			return super.getScope(context, reference);
-		}
-		
-//		if(context instanceof NodeIdentitiySelector
-//				&& reference == DSLPackage.Literals.NODE_IDENTITIY_SELECTOR__DIA_NODE)
+        // This is the case if the characteristic type is invalid referenced
+        if (literalEnumeration != null) {
+            List<Literal> literals = literalEnumeration.getLiterals();
 
-		return super.getScope(context, reference);
-	}
+            IScope scope = Scopes.scopeFor(literals, literal -> QualifiedName.create(literal.getName()),
+                    IScope.NULLSCOPE);
+
+            return Optional.of(scope);
+        }
+
+        return Optional.empty();
+    }
 }

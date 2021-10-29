@@ -5,27 +5,27 @@ package de.sebinside.dcp.dsl.generator
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.Constraint
+import de.sebinside.dcp.dsl.dSL.GlobalVariableDefinition
+import de.sebinside.dcp.dsl.dSL.Model
+import de.sebinside.dcp.dsl.dSL.Rule
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
-//import de.sebinside.dcp.dsl.generator.crossplatform.PalladioConverter
+import de.sebinside.dcp.dsl.generator.crossplatform.DFDConverter
+import de.sebinside.dcp.dsl.generator.queryrule.InputPinQueryRule
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.DFD2PrologTransformationTrace
 import org.palladiosimulator.supporting.prolog.model.prolog.Clause
+import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
 import org.palladiosimulator.supporting.prolog.model.prolog.PrologFactory
 
 import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
-import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.DFD2PrologTransformationTrace
-import de.sebinside.dcp.dsl.dSL.Model
-import de.sebinside.dcp.dsl.generator.queryrule.InputPinQueryRule
-import de.sebinside.dcp.dsl.dSL.Rule
-import de.sebinside.dcp.dsl.generator.crossplatform.DFDConverter
-import org.palladiosimulator.supporting.prolog.model.prolog.CompoundTerm
-import org.eclipse.xtext.EcoreUtil2
 
 class DSLGenerator extends AbstractGenerator {
 
@@ -59,12 +59,14 @@ class DSLGenerator extends AbstractGenerator {
 		val program = PrologFactory.eINSTANCE.createProgram
 		model.targetModelType.compile
 		
+		val globalVariables = model.elements.filter(GlobalVariableDefinition)
+		
 		for (charClass : model.elements.filter(CharacteristicClass)) {
 			program.clauses.addAll(charClass.compile)
 		}
 		
 		for (constraint : model.elements.filter(Constraint)) {
-			program.clauses.addAll(constraint.compile)
+			program.clauses.addAll(constraint.compile(globalVariables))
 		}
 		
 		program
@@ -116,14 +118,14 @@ class DSLGenerator extends AbstractGenerator {
 		this.extendedDFDConverterTrace = trace;
 	}
 
-	def compile(TargetModelTypeDef typeDefs) {
+	protected def compile(TargetModelTypeDef typeDefs) {
 		if (extendedDFDConverterTrace === null) {
 			throw new Exception("No valid trace for DFD!")
 		}
 		this.converter = new DFDConverter(extendedDFDConverterTrace)
 	}
 
-	def List<Clause> compile(CharacteristicClass charateristicClass) {
+	protected def List<Clause> compile(CharacteristicClass charateristicClass) {
 		val clauses = new ArrayList<Clause>
 
 		// Create rule referencing all facts
@@ -181,7 +183,7 @@ class DSLGenerator extends AbstractGenerator {
 		clauses
 	}
 
-	def List<Clause> compile(Constraint constraint) {
+	protected def List<Clause> compile(Constraint constraint, Iterable<GlobalVariableDefinition> globalVariables) {
 		val clauses = new ArrayList<Clause>
 		val constraintName = '''«GlobalConstants.Prefixes.CONSTRAINT»«constraint.name»'''
 		val constraintNameTerm = createConstraintNameUnification(constraint.name)
@@ -199,7 +201,7 @@ class DSLGenerator extends AbstractGenerator {
 
 			var rules = new ArrayList<org.palladiosimulator.supporting.prolog.model.prolog.Rule>()
 			// FIXME: The combination of this rules is not everytime clear in previously modeled use cases
-			rules.add(generateRule(mainRule, constraintName, this.converter))
+			rules.add(generateRule(mainRule, constraintName, this.converter, globalVariables))
 			// Only the operation model works with all kinds of rules, Palladio only requires preCallStates
 //			if (this.targetModelType == TargetModelType.OPERATION_MODEL) {
 //				rules.add(new OutputPinQueryRule(mainRule, constraintName, converter).generate())
@@ -225,9 +227,9 @@ class DSLGenerator extends AbstractGenerator {
 		clauses
 	}
 	
-	def generateRule(Rule mainRule, String constraintName, Converter converter) {
+	protected def generateRule(Rule mainRule, String constraintName, Converter converter, Iterable<GlobalVariableDefinition> globalVariables) {
 		var inputRule = new InputPinQueryRule(mainRule, constraintName, converter)
-		inputRule.generate()
+		inputRule.generate(globalVariables)
 	}
 
 }

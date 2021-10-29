@@ -18,7 +18,7 @@ TargetModelTypeDef:
 	'target' type="DFD" 'using' typeContainer=[dictionary::DataDictionaryCharacterized];
 
 AbstractElement:
-	Include | CharacteristicType | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
+	Include | CharacteristicType | GlobalVariableDefinition | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
 
 CharacteristicType:
 	'type' name=ID ':' ref=[dictionary::EnumCharacteristicType|StringOrId];
@@ -27,19 +27,32 @@ StringOrId returns EString:
 	ID | STRING
 ;
 
+GlobalVariableDefinition:
+	GlobalSetVariableDefinition | GlobalValueVariableDefinition
+;
+
+GlobalSetVariableDefinition:
+	'var' variable=CharacteristicSet '='
+		ref=[CharacteristicType] '.' ('[' literals+=[dictionary::Literal] (',' literals+=[dictionary::Literal])* ']')
+;
+
+GlobalValueVariableDefinition:
+	'var' variable=CharacteristicVariable '=' ref=[CharacteristicType] '.' literals+=[dictionary::Literal]
+;
+
 CharacteristicClass:
 	'class' name=ID '{' members+=CharacteristicTypeSelector (',' members+=CharacteristicTypeSelector)* '}';
 
 CharacteristicTypeSelector:
 	ref=[CharacteristicType] '.'
-	// Single literal, may be negated
-	(((negated?='!')? literals+=[dictionary::Literal]) |
-	// Multiple literals, written as list
-	('[' literals+=[dictionary::Literal]
-	(',' literals+=[dictionary::Literal])*
-	']') |
-	// Variable usage
-	(isVariableSelector?="$") variable=CharacteristicVariableType);
+	(
+		// Single literal, may be negated
+		((negated?='!')? literals+=[dictionary::Literal]) |
+		// Multiple literals, written as list
+		('[' literals+=[dictionary::Literal] (',' literals+=[dictionary::Literal])*	']') |
+		// Variable usage
+		(isVariableSelector?="$") variable=CharacteristicVariableType
+	);
 
 CharacteristicVariableType:
 	CharacteristicVariable | CharacteristicSet;
@@ -141,7 +154,7 @@ EncapsulatedLogicalOperation returns BooleanOperation:
 	'(' LogicalOrOperation ')';
 
 SimpleBooleanOperation:
-	EmptySetOperation | VariableEqualityOperation | VariableInequalityOperation | LessThanOperation | GreaterThanOperation | ElementOfOperation;
+	EmptySetOperation | VariableEqualityOperation | VariableInequalityOperation | LessThanOperation | GreaterThanOperation | ElementOfOperation | SubsetOperation;
 
 VariableEqualityOperation:
 	left=CharacteristicReference "==" right=CharacteristicReference;
@@ -157,6 +170,10 @@ GreaterThanOperation:
 
 EmptySetOperation:
 	"isEmpty" "(" value=CharacteristicSetReference ")";
+
+SubsetOperation:
+	"subset" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")"
+;
 
 IntersectionOperation:
 	"intersection" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";

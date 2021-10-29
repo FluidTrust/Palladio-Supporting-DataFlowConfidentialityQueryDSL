@@ -28,6 +28,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 
 import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
+import de.sebinside.dcp.dsl.dSL.SubsetOperation
 
 class ConditionMapper {
 
@@ -167,6 +168,17 @@ class ConditionMapper {
 
 		val variable = variables.pop
 		val term = CompoundTerm("length", #[variable, AtomicNumber(0)])
+		expressions.push(term)
+	}
+	
+	private def dispatch void map(SubsetOperation operation) {
+		consumeOrNest(operation.left)
+		val subsetVar = variables.pop
+		
+		consumeOrNest(operation.right)
+		val setVar = variables.pop
+		
+		val term = CompoundTerm("subset", #[subsetVar, setVar])
 		expressions.push(term)
 	}
 

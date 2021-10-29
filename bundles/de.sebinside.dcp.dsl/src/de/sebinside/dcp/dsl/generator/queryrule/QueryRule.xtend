@@ -5,9 +5,9 @@ import de.sebinside.dcp.dsl.dSL.AttributeSelector
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.CharacteristicVariable
 import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
-import de.sebinside.dcp.dsl.dSL.GlobalSetVariableDefinition
-import de.sebinside.dcp.dsl.dSL.GlobalValueVariableDefinition
-import de.sebinside.dcp.dsl.dSL.GlobalVariableDefinition
+import de.sebinside.dcp.dsl.dSL.GlobalConstantDefinition
+import de.sebinside.dcp.dsl.dSL.GlobalSetConstantDefinition
+import de.sebinside.dcp.dsl.dSL.GlobalValueConstantDefinition
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import de.sebinside.dcp.dsl.dSL.NodeTypeSelector
 import de.sebinside.dcp.dsl.dSL.PropertyClassSelector
@@ -165,7 +165,7 @@ abstract class QueryRule {
 		#[term]
 	}
 
-	def generate(Iterable<GlobalVariableDefinition> globalVariables) { // Important for generating the actual query rule body
+	def generate(Iterable<GlobalConstantDefinition> globalConstants) { // Important for generating the actual query rule body
 		val subRule = Rule('''«nameBase»_«queryTypeIdentification»''')
 
 		// Map all data selectors to parts of a rule
@@ -181,13 +181,13 @@ abstract class QueryRule {
 		// Create characteristics class terms
 		val characteristicsClassesTerms = characteristicClasses.map[clazz|createCharacteristicsClassTerm(clazz)]
 
-		// Create all global variables
-		val globalVariableExpressions = globalVariables.map[generateGlobalVariable]
+		// Create all global constants
+		val globalConstantExpressions = globalConstants.map[generateGlobalConstant]
 
 		// Create final rule body
 		val subRuleComponents = new ArrayList<Expression>
 		subRuleComponents += queryTypeTerm
-		subRuleComponents += globalVariableExpressions
+		subRuleComponents += globalConstantExpressions
 		subRuleComponents += createPinLocationQuery(CompoundTerm(node), CompoundTerm(pin)) // input/output pin
 		subRuleComponents += createFlowTreeCall(CompoundTerm(node), CompoundTerm(pin), CompoundTerm(stack)) // flowTree 
 		subRuleComponents += expressionsToLogicalAnd(destinationSelectorTerm) // set of nodeCharacteristic
@@ -225,15 +225,15 @@ abstract class QueryRule {
 
 	abstract def String queryTypeIdentification()
 	
-	protected def dispatch Expression generateGlobalVariable(GlobalValueVariableDefinition definition) {
-		val variableTerm = createFreeVariableTerm(definition.variable)
+	protected def dispatch Expression generateGlobalConstant(GlobalValueConstantDefinition definition) {
+		val constantTerm = createFreeVariableTerm(definition.variable)
 		val literal = definition.literals.findFirst[true]
-		Unification(variableTerm, converter.convert(literal))
+		Unification(constantTerm, converter.convert(literal))
 	}
 	
-	protected def dispatch Expression generateGlobalVariable(GlobalSetVariableDefinition definition) {
-		val variableTerm = createFreeVariableTerm(definition.variable)
+	protected def dispatch Expression generateGlobalConstant(GlobalSetConstantDefinition definition) {
+		val constantTerm = createFreeVariableTerm(definition.variable)
 		val values = definition.literals.map[l|converter.convert(l)].filter(Expression)
-		Unification(variableTerm, List(values))
+		Unification(constantTerm, List(values))
 	}
 }

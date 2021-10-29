@@ -18,7 +18,7 @@ TargetModelTypeDef:
 	'target' type="DFD" 'using' typeContainer=[dictionary::DataDictionaryCharacterized];
 
 AbstractElement:
-	Include | CharacteristicType | GlobalVariableDefinition | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
+	Include | CharacteristicType | GlobalConstantDefinition | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;
 
 CharacteristicType:
 	'type' name=ID ':' ref=[dictionary::EnumCharacteristicType|StringOrId];
@@ -27,17 +27,17 @@ StringOrId returns EString:
 	ID | STRING
 ;
 
-GlobalVariableDefinition:
-	GlobalSetVariableDefinition | GlobalValueVariableDefinition
+GlobalConstantDefinition:
+	GlobalSetConstantDefinition | GlobalValueConstantDefinition
 ;
 
-GlobalSetVariableDefinition:
-	'var' variable=CharacteristicSet '='
+GlobalSetConstantDefinition:
+	'const' variable=CharacteristicSet '='
 		ref=[CharacteristicType] '.' ('[' literals+=[dictionary::Literal] (',' literals+=[dictionary::Literal])* ']')
 ;
 
-GlobalValueVariableDefinition:
-	'var' variable=CharacteristicVariable '=' ref=[CharacteristicType] '.' literals+=[dictionary::Literal]
+GlobalValueConstantDefinition:
+	'const' variable=CharacteristicVariable '=' ref=[CharacteristicType] '.' literals+=[dictionary::Literal]
 ;
 
 CharacteristicClass:

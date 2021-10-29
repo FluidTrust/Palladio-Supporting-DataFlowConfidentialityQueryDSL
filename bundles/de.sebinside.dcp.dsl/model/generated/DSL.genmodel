@@ -25,15 +25,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicType/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//CharacteristicType/ref"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//GlobalVariableDefinition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalVariableDefinition/ref"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalVariableDefinition/literals"/>
+    <genClasses ecoreClass="DSL.ecore#//GlobalConstantDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalConstantDefinition/ref"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalConstantDefinition/literals"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//GlobalSetVariableDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalSetVariableDefinition/variable"/>
+    <genClasses ecoreClass="DSL.ecore#//GlobalSetConstantDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalSetConstantDefinition/variable"/>
     </genClasses>
-    <genClasses ecoreClass="DSL.ecore#//GlobalValueVariableDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalValueVariableDefinition/variable"/>
+    <genClasses ecoreClass="DSL.ecore#//GlobalValueConstantDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DSL.ecore#//GlobalValueConstantDefinition/variable"/>
     </genClasses>
     <genClasses ecoreClass="DSL.ecore#//CharacteristicClass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DSL.ecore#//CharacteristicClass/name"/>

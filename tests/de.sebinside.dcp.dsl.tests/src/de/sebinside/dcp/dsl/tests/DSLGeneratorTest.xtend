@@ -210,10 +210,10 @@ class DSLGeneratorTest {
 			type CustomerStatus : CustomerStatus
 			type EmployeeRole : EmployeeRole
 
-			var ER_CLERK{} = EmployeeRole.[Clerk]
-			var ER_MANAGER{} = EmployeeRole.[Manager]
-			var CS_CELEBRITY{} = CustomerStatus.[Celebrity]
-			var CS_REGULAR{} = CustomerStatus.[Regular]
+			const ER_CLERK{} = EmployeeRole.[Clerk]
+			const ER_MANAGER{} = EmployeeRole.[Manager]
+			const CS_CELEBRITY{} = CustomerStatus.[Celebrity]
+			const CS_REGULAR{} = CustomerStatus.[Regular]
 			
 			constraint Test {
 				data.attribute.CustomerLocation.$CL{} &

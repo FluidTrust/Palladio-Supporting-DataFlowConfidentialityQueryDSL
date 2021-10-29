@@ -5,7 +5,7 @@ package de.sebinside.dcp.dsl.generator
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.Constraint
-import de.sebinside.dcp.dsl.dSL.GlobalVariableDefinition
+import de.sebinside.dcp.dsl.dSL.GlobalConstantDefinition
 import de.sebinside.dcp.dsl.dSL.Model
 import de.sebinside.dcp.dsl.dSL.Rule
 import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
@@ -59,7 +59,7 @@ class DSLGenerator extends AbstractGenerator {
 		val program = PrologFactory.eINSTANCE.createProgram
 		model.targetModelType.compile
 		
-		val globalVariables = model.elements.filter(GlobalVariableDefinition)
+		val globalVariables = model.elements.filter(GlobalConstantDefinition)
 		
 		for (charClass : model.elements.filter(CharacteristicClass)) {
 			program.clauses.addAll(charClass.compile)
@@ -183,7 +183,7 @@ class DSLGenerator extends AbstractGenerator {
 		clauses
 	}
 
-	protected def List<Clause> compile(Constraint constraint, Iterable<GlobalVariableDefinition> globalVariables) {
+	protected def List<Clause> compile(Constraint constraint, Iterable<GlobalConstantDefinition> globalConstants) {
 		val clauses = new ArrayList<Clause>
 		val constraintName = '''«GlobalConstants.Prefixes.CONSTRAINT»«constraint.name»'''
 		val constraintNameTerm = createConstraintNameUnification(constraint.name)
@@ -201,7 +201,7 @@ class DSLGenerator extends AbstractGenerator {
 
 			var rules = new ArrayList<org.palladiosimulator.supporting.prolog.model.prolog.Rule>()
 			// FIXME: The combination of this rules is not everytime clear in previously modeled use cases
-			rules.add(generateRule(mainRule, constraintName, this.converter, globalVariables))
+			rules.add(generateRule(mainRule, constraintName, this.converter, globalConstants))
 			// Only the operation model works with all kinds of rules, Palladio only requires preCallStates
 //			if (this.targetModelType == TargetModelType.OPERATION_MODEL) {
 //				rules.add(new OutputPinQueryRule(mainRule, constraintName, converter).generate())
@@ -227,9 +227,9 @@ class DSLGenerator extends AbstractGenerator {
 		clauses
 	}
 	
-	protected def generateRule(Rule mainRule, String constraintName, Converter converter, Iterable<GlobalVariableDefinition> globalVariables) {
+	protected def generateRule(Rule mainRule, String constraintName, Converter converter, Iterable<GlobalConstantDefinition> globalConstants) {
 		var inputRule = new InputPinQueryRule(mainRule, constraintName, converter)
-		inputRule.generate(globalVariables)
+		inputRule.generate(globalConstants)
 	}
 
 }

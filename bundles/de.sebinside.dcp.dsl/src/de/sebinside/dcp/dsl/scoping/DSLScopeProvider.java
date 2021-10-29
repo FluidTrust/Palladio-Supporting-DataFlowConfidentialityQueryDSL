@@ -18,7 +18,7 @@ import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCha
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector;
 import de.sebinside.dcp.dsl.dSL.DSLPackage;
-import de.sebinside.dcp.dsl.dSL.GlobalVariableDefinition;
+import de.sebinside.dcp.dsl.dSL.GlobalConstantDefinition;
 
 /**
  * This class contains custom scoping description.
@@ -39,9 +39,9 @@ public class DSLScopeProvider extends AbstractDSLScopeProvider {
             return createScopeForLiteralsOfCharacteristicType(characteristicType).orElse(superScope);
         }
 
-        if (context instanceof GlobalVariableDefinition
-                && reference == DSLPackage.Literals.GLOBAL_VARIABLE_DEFINITION__LITERALS) {
-            var definition = (GlobalVariableDefinition) context;
+        if (context instanceof GlobalConstantDefinition
+                && reference == DSLPackage.Literals.GLOBAL_CONSTANT_DEFINITION__LITERALS) {
+            var definition = (GlobalConstantDefinition) context;
             var characteristicType = definition.getRef()
                 .getRef();
             return createScopeForLiteralsOfCharacteristicType(characteristicType).orElse(superScope);

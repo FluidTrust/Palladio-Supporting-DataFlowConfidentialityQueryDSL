@@ -16,16 +16,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="ecore:EClass platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.ecore#//EnumCharacteristicType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GlobalVariableDefinition" eSuperTypes="#//AbstractElement">
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalConstantDefinition" eSuperTypes="#//AbstractElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//CharacteristicType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="literals" unique="false"
         upperBound="-1" eType="ecore:EClass platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.ecore#//Literal"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GlobalSetVariableDefinition" eSuperTypes="#//GlobalVariableDefinition">
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalSetConstantDefinition" eSuperTypes="#//GlobalConstantDefinition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//CharacteristicSet"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GlobalValueVariableDefinition" eSuperTypes="#//GlobalVariableDefinition">
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalValueConstantDefinition" eSuperTypes="#//GlobalConstantDefinition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//CharacteristicVariable"
         containment="true"/>
   </eClassifiers>

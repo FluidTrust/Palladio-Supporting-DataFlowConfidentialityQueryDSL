@@ -122,6 +122,63 @@ class DSLGeneratorTest {
 	}
 	
 	@Test
+	def void testDACStatic() {
+		runTest('''
+			type Identity : Identity
+			type ReadAccess : "Read Access"
+			type WriteAccess : "Write Access"
+			constraint ReadViolation {
+				data.any NEVER FLOWS node.type.Actor & node.property.Identity.$IDENT
+				FROM node.type.Store & node.property.ReadAccess.$RA{}
+				WHERE !elementOf(IDENT, RA)
+			}
+			constraint WriteViolation {
+				data.any NEVER FLOWS node.type.Store & node.property.WriteAccess.$WA{}
+				FROM node.type.Actor & node.property.Identity.$IDENT
+				WHERE !elementOf(IDENT, WA)
+			}
+		''',
+		"evaluation/dac/dac_dd.xmi",
+		'''
+			constraint_ReadViolation(ConstraintName, QueryType, N, PIN, S, N_FROM, Var_IDENT, VarSet_RA) :-
+				ConstraintName = 'ReadViolation',
+				constraint_ReadViolation_InputPin(QueryType, N, PIN, S, N_FROM, Var_IDENT, VarSet_RA).
+			constraint_ReadViolation_InputPin(QueryType, N, PIN, S, N_FROM, Var_IDENT, VarSet_RA) :-
+				QueryType = 'InputPin',
+				inputPin(N, PIN),
+				flowTree(N, PIN, S),
+				(
+					actor(N),
+					nodeCharacteristic(N, 'Identity (_o7_1k9VeEeqRbpVUMz5XAQ)', Var_IDENT)
+				),
+				(
+					store(N_FROM),
+					setof(R, nodeCharacteristic(N_FROM, 'Read Access (_rd9cA9VeEeqRbpVUMz5XAQ)', R), VarSet_RA),
+					traversedNode(S, N_FROM)
+				),
+				\+ memberchk(Var_IDENT, VarSet_RA).
+			constraint_WriteViolation(ConstraintName, QueryType, N, PIN, S, N_FROM, VarSet_WA, Var_IDENT) :-
+				ConstraintName = 'WriteViolation',
+				constraint_WriteViolation_InputPin(QueryType, N, PIN, S, N_FROM, VarSet_WA, Var_IDENT).
+			constraint_WriteViolation_InputPin(QueryType, N, PIN, S, N_FROM, VarSet_WA, Var_IDENT) :-
+				QueryType = 'InputPin',
+				inputPin(N, PIN),
+				flowTree(N, PIN, S),
+				(
+					store(N),
+					setof(R, nodeCharacteristic(N, 'Write Access (_swJco9VeEeqRbpVUMz5XAQ)', R), VarSet_WA)
+				),
+				(
+					actor(N_FROM),
+					nodeCharacteristic(N_FROM, 'Identity (_o7_1k9VeEeqRbpVUMz5XAQ)', Var_IDENT),
+					traversedNode(S, N_FROM)
+				),
+				\+ memberchk(Var_IDENT, VarSet_WA).
+		'''
+		)
+	}
+	
+	@Test
 	def void testMACNeedToKnow() {
 		runTest('''
 			type Compartment : Compartment

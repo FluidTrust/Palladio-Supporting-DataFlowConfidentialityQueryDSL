@@ -25,8 +25,8 @@ public class GlobalConstants {
 	}
 	
 	public static enum Parameters {
-		CONSTRAINT_NAME("ConstraintName"), QUERY_TYPE("QueryType"), NODE("N"), PIN("PIN"), CALL_STACK("S"), 
-		 ITERATOR_TEMPLATE_1("V"), ITERATOR_TEMPLATE_2("R");
+        CONSTRAINT_NAME("ConstraintName"), QUERY_TYPE("QueryType"), NODE("N"), NODE_FROM("N_FROM"), PIN(
+                "PIN"), CALL_STACK("S"), ITERATOR_TEMPLATE_1("V"), ITERATOR_TEMPLATE_2("R");
 
 		private String value;
 

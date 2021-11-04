@@ -70,12 +70,19 @@ Constraint:
 	'constraint' name=ID '{' rule=Rule '}';
 
 Rule:
-	dataSelectors+=DataSelector ('&' dataSelectors+=DataSelector)*
+	(dataSelectors+=AnySelector | (dataSelectors+=SpecificDataSelector ('&' dataSelectors+=SpecificDataSelector)*))
 	statement=Statement
 	destinationSelectors+=DestinationSelector ('&' destinationSelectors+=DestinationSelector)*
+	(from=From)?
 	(condition=Condition)?;
 
+From:
+	'FROM' destinationSelectors+=DestinationSelector ('&' destinationSelectors+=DestinationSelector)*;
+
 DataSelector:
+	SpecificDataSelector | AnySelector;
+	
+SpecificDataSelector:
 	AttributeSelector | AttributeClassSelector;
 
 CharacteristicSelector:
@@ -90,6 +97,9 @@ AttributeSelector:
 AttributeClassSelector:
 	'data' '.' 'class' '.' ref=[CharacteristicClass];
 
+AnySelector:
+	{AnySelector} 'data' '.' 'any';
+
 DestinationSelector:
 	PropertySelector | PropertyClassSelector | NodeIdentitiySelector | NodeTypeSelector;
 
@@ -103,12 +113,10 @@ NodeIdentitiySelector:
 	'node' '.' ('name' '.' name=STRING) | ('identity' '.' diaNode=[diagram::CharacterizedNode]);
 
 NodeTypeSelector:
-	'node' '.' 'type' '.' type=NodeType
-;
+	'node' '.' 'type' '.' type=NodeType;
 
 enum NodeType:
-	ACTOR = 'Actor' | PROCESS = 'Process' | STORE = 'Store' | ACTORPROCESS = 'ActorProcess'
-;
+	ACTOR = 'Actor' | PROCESS = 'Process' | STORE = 'Store' | ACTORPROCESS = 'ActorProcess';
 
 Statement:
 	modality=StatementModality type=StatementType;
@@ -132,7 +140,7 @@ CharacteristicSetReference:
 	value=[CharacteristicSet] | ref=CharacteristsicSetOperation;
 
 Operation:
-	BooleanOperation | CharacteristsicSetOperation;
+	BooleanOperation | CharacteristsicSetOperation | NumericOperation;
 
 BooleanOperation:
 	LogicalOrOperation;
@@ -172,8 +180,7 @@ EmptySetOperation:
 	"isEmpty" "(" value=CharacteristicSetReference ")";
 
 SubsetOperation:
-	"subset" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")"
-;
+	"subset" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
 
 IntersectionOperation:
 	"intersection" "(" left=CharacteristicSetReference "," right=CharacteristicSetReference ")";
@@ -191,9 +198,7 @@ CreateSetOperation:
 	"{" value=CharacteristicReference "}";
 
 NumericOperation:
-	IndexOperation
-;
+	IndexOperation;
 
 IndexOperation:
-	'index' '(' value=CharacteristicReference ')'
-;
+	'index' '(' value=CharacteristicReference ')';

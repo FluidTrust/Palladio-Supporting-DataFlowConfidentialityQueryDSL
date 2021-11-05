@@ -52,7 +52,7 @@ class EvaluatedConstraint {
 	}
 
 	private def getAllVariables() {
-		val attributeVariables = original.rule.dataSelectors.filter(AttributeSelector).filter [ selector |
+		val attributeVariables = original.rule.data.selectors.filter(AttributeSelector).filter [ selector |
 			selector.ref.isIsVariableSelector
 		].map[selector|selector.ref.variable]
 		val propertyVariables = original.rule.destination.selectors.filter(PropertySelector).filter [ selector |
@@ -64,7 +64,7 @@ class EvaluatedConstraint {
 	}
 
 	def Iterable<CharacteristicTypeSelector> getAttributeSelectors() {
-		original.rule.dataSelectors.filter(AttributeSelector).map[selector|selector.ref]
+		original.rule.data.selectors.filter(AttributeSelector).map[selector|selector.ref]
 	}
 
 	def Iterable<CharacteristicTypeSelector> getPropertySelectors() {
@@ -72,7 +72,7 @@ class EvaluatedConstraint {
 	}
 
 	def Iterable<CharacteristicClass> getAttributeClasses() {
-		original.rule.dataSelectors.filter(AttributeClassSelector).map[selector|selector.ref]
+		original.rule.data.selectors.filter(AttributeClassSelector).map[selector|selector.ref]
 	}
 
 	def Iterable<CharacteristicClass> getPropertyClasses() {

@@ -70,17 +70,19 @@ Constraint:
 	'constraint' name=ID '{' rule=Rule '}';
 
 Rule:
-	(dataSelectors+=AnySelector | (dataSelectors+=SpecificDataSelector ('&' dataSelectors+=SpecificDataSelector)*))
+	data=Data
 	statement=Statement
 	destination=Destination
-	(from=From)?
+	(from=Source)?
 	(condition=Condition)?;
 
-Destination:
-	selectors+=NodeSelector ('&' selectors+=NodeSelector)*
-;
+Data:
+	(selectors+=AnySelector | (selectors+=SpecificDataSelector ('&' selectors+=SpecificDataSelector)*));
 
-From:
+Destination:
+	selectors+=NodeSelector ('&' selectors+=NodeSelector)*;
+
+Source:
 	'FROM' selectors+=NodeSelector ('&' selectors+=NodeSelector)*;
 
 DataSelector:

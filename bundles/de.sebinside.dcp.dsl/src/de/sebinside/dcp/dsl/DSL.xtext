@@ -72,12 +72,16 @@ Constraint:
 Rule:
 	(dataSelectors+=AnySelector | (dataSelectors+=SpecificDataSelector ('&' dataSelectors+=SpecificDataSelector)*))
 	statement=Statement
-	destinationSelectors+=DestinationSelector ('&' destinationSelectors+=DestinationSelector)*
+	destination=Destination
 	(from=From)?
 	(condition=Condition)?;
 
+Destination:
+	selectors+=NodeSelector ('&' selectors+=NodeSelector)*
+;
+
 From:
-	'FROM' destinationSelectors+=DestinationSelector ('&' destinationSelectors+=DestinationSelector)*;
+	'FROM' selectors+=NodeSelector ('&' selectors+=NodeSelector)*;
 
 DataSelector:
 	SpecificDataSelector | AnySelector;
@@ -100,7 +104,7 @@ AttributeClassSelector:
 AnySelector:
 	{AnySelector} 'data' '.' 'any';
 
-DestinationSelector:
+NodeSelector:
 	PropertySelector | PropertyClassSelector | NodeIdentitiySelector | NodeTypeSelector;
 
 PropertySelector:

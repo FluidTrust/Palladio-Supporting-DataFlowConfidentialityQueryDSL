@@ -101,7 +101,7 @@ abstract class QueryRule {
 		#[]
 	}
 
-	def dispatch generateDestinationSelectorTerm(PropertySelector selector, String nodeName) {
+	def dispatch generateNodeSelectorTerm(PropertySelector selector, String nodeName) {
 		val query = if (selector.ref.isIsVariableSelector) {
 				this.freeVariables.add(selector.ref.variable)
 
@@ -136,7 +136,7 @@ abstract class QueryRule {
 		}
 	}
 
-	def dispatch generateDestinationSelectorTerm(PropertyClassSelector selector, String nodeName) {
+	def dispatch generateNodeSelectorTerm(PropertyClassSelector selector, String nodeName) {
 		// stays the same
 		characteristicClasses.add(selector.ref)
 
@@ -146,13 +146,13 @@ abstract class QueryRule {
 		]
 	}
 
-	def dispatch generateDestinationSelectorTerm(NodeIdentitiySelector selector, String nodeName) {
+	def dispatch generateNodeSelectorTerm(NodeIdentitiySelector selector, String nodeName) {
 		val unification = Unification(CompoundTerm(nodeName), converter.convert(selector))
 
 		#[unification]
 	}
 	
-	def dispatch generateDestinationSelectorTerm(NodeTypeSelector selector, String nodeName) {
+	def dispatch generateNodeSelectorTerm(NodeTypeSelector selector, String nodeName) {
 		val term = switch (selector.type) {
 			case ACTOR: {
 				CompoundTerm("actor", CompoundTerm(nodeName))
@@ -180,15 +180,15 @@ abstract class QueryRule {
 		].filterNull
 
 		// Map all destination selectors to parts of a rule
-		val destinationSelectorTerm = rule.destinationSelectors.map [ selector |
-			generateDestinationSelectorTerm(selector, node)
+		val destinationSelectorTerm = rule.destination.selectors.map [ selector |
+			generateNodeSelectorTerm(selector, node)
 		].map[queries|expressionsToLogicalAnd(queries)]
 		
 		// Map all destination selectors of FROM to parts of a rule
 		val fromSelectorTerm = rule.from === null
 				? #[]
 				: {
-					val selectorTerms = rule.from.destinationSelectors.map[s|generateDestinationSelectorTerm(s, fromNode)].map[queries|expressionsToLogicalAnd(queries)]
+					val selectorTerms = rule.from.selectors.map[s|generateNodeSelectorTerm(s, fromNode)].map[queries|expressionsToLogicalAnd(queries)]
 					val fromCheckTerm = CompoundTerm("traversedNode", #[CompoundTerm(stack), CompoundTerm(fromNode)])
 					selectorTerms + #[fromCheckTerm]
 				}

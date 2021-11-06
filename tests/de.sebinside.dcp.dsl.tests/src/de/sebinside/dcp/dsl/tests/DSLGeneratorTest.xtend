@@ -325,6 +325,63 @@ class DSLGeneratorTest {
 		)
 	}
 	
+	@Test
+	def void testComplementOperator() {		
+		runTest('''
+			type AccessPermissions : AccessPermissions
+			type Roles : Roles
+			constraint Test {
+				data.any NEVER FLOWS node.property.Roles.$AR{}
+				WHERE isEmpty(complement[Roles,AccessPermissions](AR))
+			}
+		''',
+		"evaluation/travelplanner/DDC_TravelPlanner_AccessControl.xmi",
+		'''
+			constraint_Test(ConstraintName, QueryType, N, PIN, S, VarSet_AR) :-
+				ConstraintName = 'Test',
+				constraint_Test_InputPin(QueryType, N, PIN, S, VarSet_AR).
+			constraint_Test_InputPin(QueryType, N, PIN, S, VarSet_AR) :-
+				QueryType = 'InputPin',
+				inputPin(N, PIN),
+				flowTree(N, PIN, S),
+				setof(R, nodeCharacteristic(N, 'Roles (_JvuuQ9vqEeqNdo_V4bA-xw)', R), VarSet_AR),
+				(
+					complement(['Roles (_JvuuQ9vqEeqNdo_V4bA-xw)', 'AccessPermissions (_k9jB49vTEeqNdo_V4bA-xw)'], VarSet_AR, Temp_0),
+					length(Temp_0, 0)
+				).
+		'''
+		)
+	}
+	
+	@Test
+	def void testGlobalSetConstants() {
+		runTest('''
+			type AccessPermissions : AccessPermissions
+			type Roles : Roles
+			const ALL_LITERALS{} = Roles.*
+			const EMPTY_LITERALS{} = []
+			const SOME_LITERALS{} = Roles.[User, Airline]
+			constraint Test {
+				data.any NEVER FLOWS node.property.Roles.User
+			}
+		''',
+		"evaluation/travelplanner/DDC_TravelPlanner_AccessControl.xmi",
+		'''
+			constraint_Test(ConstraintName, QueryType, N, PIN, S) :-
+				ConstraintName = 'Test',
+				constraint_Test_InputPin(QueryType, N, PIN, S).
+			constraint_Test_InputPin(QueryType, N, PIN, S) :-
+				QueryType = 'InputPin',
+				VarSet_ALL_LITERALS = ['Agency (_qiLIENvTEeqNdo_V4bA-xw)', 'Airline (_sJIe0NvTEeqNdo_V4bA-xw)' , 'User (_tkFZ4NvTEeqNdo_V4bA-xw)'],
+				VarSet_EMPTY_LITERALS = [],
+				VarSet_SOME_LITERALS = ['User (_tkFZ4NvTEeqNdo_V4bA-xw)', 'Airline (_sJIe0NvTEeqNdo_V4bA-xw)'],
+				inputPin(N, PIN),
+				flowTree(N, PIN, S),
+				nodeCharacteristic(N, 'Roles (_JvuuQ9vqEeqNdo_V4bA-xw)', 'User (_tkFZ4NvTEeqNdo_V4bA-xw)').
+		'''
+		)
+	}
+	
 	protected def runTest(String query, String dictionaryPath, String expected) {
 		val actual = runGenerator(dictionaryPath, query)
 		assertEquals(expected, actual)

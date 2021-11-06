@@ -3,15 +3,10 @@
  */
 package de.sebinside.dcp.dsl;
 
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.generic.GenericResourceServiceProvider;
 
 import com.google.inject.Injector;
-
-import de.sebinside.dcp.dsl.dSL.DSLPackage;
 
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.

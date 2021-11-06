@@ -1,15 +1,11 @@
 package de.sebinside.dcp.dsl.generator.crossplatform
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicType
-import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.Literal
 import de.sebinside.dcp.dsl.dSL.NodeIdentitiySelector
 import org.palladiosimulator.dataflow.confidentiality.transformation.prolog.DFD2PrologTransformationTrace
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.Literal
 
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
-import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType
-import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.CharacterizedExternalActor
-import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.CharacterizedStore
-import org.palladiosimulator.dataflow.diagram.characterized.DataFlowDiagramCharacterized.CharacterizedNode
 
 class DFDConverter implements Converter {
 	

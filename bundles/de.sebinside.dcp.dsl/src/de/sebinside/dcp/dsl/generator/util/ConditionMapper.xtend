@@ -29,6 +29,7 @@ import org.palladiosimulator.supporting.prolog.model.prolog.expressions.Expressi
 import static de.sebinside.dcp.dsl.generator.util.DSLGeneratorUtils.*
 import static de.sebinside.dcp.dsl.generator.util.PrologUtils.*
 import de.sebinside.dcp.dsl.dSL.SubsetOperation
+import de.sebinside.dcp.dsl.dSL.ComplementOperation
 
 class ConditionMapper {
 
@@ -192,6 +193,17 @@ class ConditionMapper {
 
 	private def dispatch void map(SubtractOperation operation) {
 		basicSetOperation("subtract", operation.left, operation.right)
+	}
+	
+	private def dispatch void map(ComplementOperation operation) {		
+		consumeOrNest(operation.value)
+		
+		val characteristicTypesList = List(operation.types.map[t|converter.convert(t)])
+		val setVar = variables.pop
+		val temporal = copyStackHead
+		
+		val term = CompoundTerm("complement", #[characteristicTypesList, setVar, temporal])
+		expressions.push(term)
 	}
 
 	private def void basicSetOperation(String name, CharacteristicSetReference left, CharacteristicSetReference right) {

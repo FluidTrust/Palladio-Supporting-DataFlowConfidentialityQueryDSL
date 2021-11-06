@@ -2,12 +2,8 @@ grammar de.sebinside.dcp.dsl.DSL with org.eclipse.xtext.common.Terminals
 
 generate dSL "http://www.sebinside.de/dcp/dsl/DSL"
 
-// Nested EPackage has to be referred to by platform:/resource URI
-// https://sdqweb.ipd.kit.edu/wiki/Importing_nested_EPackages_in_Xtext
-import "platform:/resource/org.palladiosimulator.dataflow.diagram.characterized/model/DataFlowDiagramCharacterized.ecore" as
-diagram
-import "platform:/resource/org.palladiosimulator.dataflow.dictionary.characterized/model/DataDictionaryCharacterized.ecore" as
-dictionary
+import "http://palladiosimulator.org/dataflow/diagram/characterized/1.0" as diagram
+import "http://palladiosimulator.org/dataflow/dictionary/characterized/1.0" as dictionary
 import "http://www.eclipse.org/emf/2002/Ecore"
 
 Model:
@@ -32,13 +28,19 @@ GlobalConstantDefinition:
 ;
 
 GlobalSetConstantDefinition:
-	'const' variable=CharacteristicSet '='
-		ref=[CharacteristicType] '.' ('[' literals+=[dictionary::Literal] (',' literals+=[dictionary::Literal])* ']')
-;
+	'const' variable=CharacteristicSet '=' (
+		('['']') |
+		(
+			ref=[CharacteristicType] '.' 
+			(
+				('[' literals+=[dictionary::Literal] (',' literals+=[dictionary::Literal])* ']') |
+				'*'
+			)
+		)
+	);
 
 GlobalValueConstantDefinition:
-	'const' variable=CharacteristicVariable '=' ref=[CharacteristicType] '.' literals+=[dictionary::Literal]
-;
+	'const' variable=CharacteristicVariable '=' ref=[CharacteristicType] '.' literals+=[dictionary::Literal];
 
 CharacteristicClass:
 	'class' name=ID '{' members+=CharacteristicTypeSelector (',' members+=CharacteristicTypeSelector)* '}';
@@ -152,7 +154,7 @@ BooleanOperation:
 	LogicalOrOperation;
 
 CharacteristsicSetOperation:
-	CreateSetOperation | IntersectionOperation | UnionOperation | SubtractOperation;
+	CreateSetOperation | IntersectionOperation | UnionOperation | SubtractOperation | ComplementOperation;
 
 LogicalOrOperation returns BooleanOperation:
 	LogicalAndOperation ({LogicalOrOperation.left=current} "|" right=LogicalAndOperation)*;
@@ -202,6 +204,9 @@ ElementOfOperation:
 
 CreateSetOperation:
 	"{" value=CharacteristicReference "}";
+
+ComplementOperation:
+	"complement" "[" types+=[CharacteristicType] (',' types+=[CharacteristicType])* "]" "(" value=CharacteristicSetReference ")";
 
 NumericOperation:
 	IndexOperation;

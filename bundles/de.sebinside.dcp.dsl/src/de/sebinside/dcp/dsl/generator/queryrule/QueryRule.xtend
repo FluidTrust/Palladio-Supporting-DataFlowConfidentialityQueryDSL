@@ -252,7 +252,11 @@ abstract class QueryRule {
 	
 	protected def dispatch Expression generateGlobalConstant(GlobalSetConstantDefinition definition) {
 		val constantTerm = createFreeVariableTerm(definition.variable)
-		val values = definition.literals.map[l|converter.convert(l)].filter(Expression)
+		var Iterable<Expression> values = #[]
+		if (definition.ref !== null) {
+			val literals = definition.literals.empty ? definition.ref.ref.type.literals : definition.literals
+			values = literals.map[l|converter.convert(l)].filter(Expression)
+		}
 		Unification(constantTerm, List(values))
 	}
 }

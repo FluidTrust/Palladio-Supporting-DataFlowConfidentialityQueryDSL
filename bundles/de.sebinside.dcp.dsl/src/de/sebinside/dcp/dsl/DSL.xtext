@@ -100,7 +100,7 @@ CharacteristicClassSelector:
 	AttributeClassSelector | PropertyClassSelector;
 
 AttributeSelector:
-	'data' '.' 'attribute' '.' ref=CharacteristicTypeSelector;
+	'data' '.' ('attribute'|'property') '.' ref=CharacteristicTypeSelector;
 
 AttributeClassSelector:
 	'data' '.' 'class' '.' ref=[CharacteristicClass];

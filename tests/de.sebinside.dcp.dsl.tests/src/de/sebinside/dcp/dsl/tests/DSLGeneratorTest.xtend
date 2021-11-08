@@ -92,6 +92,30 @@ class DSLGeneratorTest {
 	}
 
 	@Test
+	def void testInformationFlowLowHigh() {		
+		runTest('''
+			type Clearance : ConfidentialityRequirements
+			type Classification : ConfidentialityRequirements
+			constraint Test {
+				data.property.Classification.High NEVER FLOWS node.property.Clearance.Low
+			}
+		''',
+		"evaluation/hospital/DDC_Hospital.xmi",
+		'''
+			constraint_Test(ConstraintName, QueryType, N, PIN, S) :-
+				ConstraintName = 'Test',
+				constraint_Test_InputPin(QueryType, N, PIN, S).
+			constraint_Test_InputPin(QueryType, N, PIN, S) :-
+				QueryType = 'InputPin',
+				inputPin(N, PIN),
+				flowTree(N, PIN, S),
+				nodeCharacteristic(N, 'ConfidentialityRequirements (_LNbeM1IoEeqxoa0IdF5JoA)', 'Low (_QlOpUFIoEeqxoa0IdF5JoA)'),
+				characteristic(N, PIN, 'ConfidentialityRequirements (_LNbeM1IoEeqxoa0IdF5JoA)', 'High (_PtJx0FIoEeqxoa0IdF5JoA)', S).
+		'''
+		)
+	}
+
+	@Test
 	def void testInformationFlowLinearOrderedLattice() {		
 		runTest('''
 			type SecurityLevel : SecurityLevel

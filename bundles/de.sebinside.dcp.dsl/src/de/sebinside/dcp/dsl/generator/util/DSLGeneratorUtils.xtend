@@ -106,7 +106,9 @@ class DSLGeneratorUtils {
 	}
 
 	def static createSetOfQuery(CompoundTerm iteratorTemplate, Expression query, Expression resultVariable) {
-		CompoundTerm("setof", #[iteratorTemplate, query, resultVariable])
+		// finall is required here because it yields an empty result if no solution can be found
+		// setof would fail and would not yield any result
+		CompoundTerm("findall", #[iteratorTemplate, query, resultVariable])
 	}
 
 	def static createPropertyQuery(Expression node, Expression property, Expression value) {

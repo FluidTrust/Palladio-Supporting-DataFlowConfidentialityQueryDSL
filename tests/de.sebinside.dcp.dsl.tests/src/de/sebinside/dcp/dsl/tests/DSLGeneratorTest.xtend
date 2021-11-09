@@ -177,7 +177,7 @@ class DSLGeneratorTest {
 				),
 				(
 					store(N_FROM),
-					setof(R, nodeCharacteristic(N_FROM, 'Read Access (_rd9cA9VeEeqRbpVUMz5XAQ)', R), VarSet_RA),
+					findall(R, nodeCharacteristic(N_FROM, 'Read Access (_rd9cA9VeEeqRbpVUMz5XAQ)', R), VarSet_RA),
 					traversedNode(S, N_FROM)
 				),
 				\+ memberchk(Var_IDENT, VarSet_RA).
@@ -190,7 +190,7 @@ class DSLGeneratorTest {
 				flowTree(N, PIN, S),
 				(
 					store(N),
-					setof(R, nodeCharacteristic(N, 'Write Access (_swJco9VeEeqRbpVUMz5XAQ)', R), VarSet_WA)
+					findall(R, nodeCharacteristic(N, 'Write Access (_swJco9VeEeqRbpVUMz5XAQ)', R), VarSet_WA)
 				),
 				(
 					actor(N_FROM),
@@ -227,9 +227,9 @@ class DSLGeneratorTest {
 				flowTree(N, PIN, S),
 				(
 					actor(N),
-					setof(R, nodeCharacteristic(N, 'Need to Know (_hedQgzANEeyxUoEkMpyhIg)', R), VarSet_NTK)
+					findall(R, nodeCharacteristic(N, 'Need to Know (_hedQgzANEeyxUoEkMpyhIg)', R), VarSet_NTK)
 				),
-				setof(V, characteristic(N, PIN, 'Compartment (_IgunozANEeyxUoEkMpyhIg)', V, S), VarSet_COMP),
+				findall(V, characteristic(N, PIN, 'Compartment (_IgunozANEeyxUoEkMpyhIg)', V, S), VarSet_COMP),
 				(
 					subtract(VarSet_COMP, VarSet_NTK, Temp_0),
 					\+ length(Temp_0, 0)
@@ -243,9 +243,9 @@ class DSLGeneratorTest {
 				flowTree(N, PIN, S),
 				(
 					actorprocess(N, _),
-					setof(R, nodeCharacteristic(N, 'Need to Know (_hedQgzANEeyxUoEkMpyhIg)', R), VarSet_NTK)
+					findall(R, nodeCharacteristic(N, 'Need to Know (_hedQgzANEeyxUoEkMpyhIg)', R), VarSet_NTK)
 				),
-				setof(V, characteristic(N, PIN, 'Compartment (_IgunozANEeyxUoEkMpyhIg)', V, S), VarSet_COMP),
+				findall(V, characteristic(N, PIN, 'Compartment (_IgunozANEeyxUoEkMpyhIg)', V, S), VarSet_COMP),
 				(
 					subtract(VarSet_COMP, VarSet_NTK, Temp_0),
 					\+ length(Temp_0, 0)
@@ -273,8 +273,8 @@ class DSLGeneratorTest {
 				QueryType = 'InputPin',
 				inputPin(N, PIN),
 				flowTree(N, PIN, S),
-				setof(R, nodeCharacteristic(N, 'Roles (_JvuuQ9vqEeqNdo_V4bA-xw)', R), VarSet_AR),
-				setof(V, characteristic(N, PIN, 'AccessPermissions (_k9jB49vTEeqNdo_V4bA-xw)', V, S), VarSet_PR),
+				findall(R, nodeCharacteristic(N, 'Roles (_JvuuQ9vqEeqNdo_V4bA-xw)', R), VarSet_AR),
+				findall(V, characteristic(N, PIN, 'AccessPermissions (_k9jB49vTEeqNdo_V4bA-xw)', V, S), VarSet_PR),
 				(
 					intersection(VarSet_PR, VarSet_AR, Temp_0),
 					length(Temp_0, 0)
@@ -328,12 +328,12 @@ class DSLGeneratorTest {
 				inputPin(N, PIN),
 				flowTree(N, PIN, S),
 				(
-					setof(R, nodeCharacteristic(N, 'EmployeeLocation (_j_v1Y-JAEeqO9NqdRSqKUA)', R), VarSet_EL),
-					setof(R, nodeCharacteristic(N, 'EmployeeRole (_nNduk-JAEeqO9NqdRSqKUA)', R), VarSet_ER)
+					findall(R, nodeCharacteristic(N, 'EmployeeLocation (_j_v1Y-JAEeqO9NqdRSqKUA)', R), VarSet_EL),
+					findall(R, nodeCharacteristic(N, 'EmployeeRole (_nNduk-JAEeqO9NqdRSqKUA)', R), VarSet_ER)
 				),
 				(
-					setof(V, characteristic(N, PIN, 'CustomerLocation (_h6k4o-JAEeqO9NqdRSqKUA)', V, S), VarSet_CL),
-					setof(V, characteristic(N, PIN, 'CustomerStatus (_lmMOw-JAEeqO9NqdRSqKUA)', V, S), VarSet_CS)
+					findall(V, characteristic(N, PIN, 'CustomerLocation (_h6k4o-JAEeqO9NqdRSqKUA)', V, S), VarSet_CL),
+					findall(V, characteristic(N, PIN, 'CustomerStatus (_lmMOw-JAEeqO9NqdRSqKUA)', V, S), VarSet_CS)
 				),
 				\+ (
 					subset(VarSet_ER, VarSet_ER_MANAGER),
@@ -368,7 +368,7 @@ class DSLGeneratorTest {
 				QueryType = 'InputPin',
 				inputPin(N, PIN),
 				flowTree(N, PIN, S),
-				setof(R, nodeCharacteristic(N, 'Roles (_JvuuQ9vqEeqNdo_V4bA-xw)', R), VarSet_AR),
+				findall(R, nodeCharacteristic(N, 'Roles (_JvuuQ9vqEeqNdo_V4bA-xw)', R), VarSet_AR),
 				(
 					complement(['Roles (_JvuuQ9vqEeqNdo_V4bA-xw)', 'AccessPermissions (_k9jB49vTEeqNdo_V4bA-xw)'], VarSet_AR, Temp_0),
 					length(Temp_0, 0)
@@ -382,6 +382,7 @@ class DSLGeneratorTest {
 		runTest('''
 			type AccessPermissions : AccessPermissions
 			type Roles : Roles
+			const USER_LITERAL = Roles.User
 			const ALL_LITERALS{} = Roles.*
 			const EMPTY_LITERALS{} = []
 			const SOME_LITERALS{} = Roles.[User, Airline]
@@ -396,6 +397,7 @@ class DSLGeneratorTest {
 				constraint_Test_InputPin(QueryType, N, PIN, S).
 			constraint_Test_InputPin(QueryType, N, PIN, S) :-
 				QueryType = 'InputPin',
+				Var_USER_LITERAL = 'User (_tkFZ4NvTEeqNdo_V4bA-xw)',
 				VarSet_ALL_LITERALS = ['Agency (_qiLIENvTEeqNdo_V4bA-xw)', 'Airline (_sJIe0NvTEeqNdo_V4bA-xw)' , 'User (_tkFZ4NvTEeqNdo_V4bA-xw)'],
 				VarSet_EMPTY_LITERALS = [],
 				VarSet_SOME_LITERALS = ['User (_tkFZ4NvTEeqNdo_V4bA-xw)', 'Airline (_sJIe0NvTEeqNdo_V4bA-xw)'],

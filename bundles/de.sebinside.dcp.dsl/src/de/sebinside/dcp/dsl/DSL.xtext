@@ -163,7 +163,7 @@ LogicalAndOperation returns BooleanOperation:
 	LogicalNegationOperation ({LogicalAndOperation.left=current} "&" right=LogicalNegationOperation)*;
 
 LogicalNegationOperation returns BooleanOperation:
-	EncapsulatedLogicalOperation | {LogicalNegationOperation} "!" value=EncapsulatedLogicalOperation;
+	EncapsulatedLogicalOperation | ({LogicalNegationOperation} '!' value=LogicalNegationOperation);
 
 EncapsulatedLogicalOperation returns BooleanOperation:
 	SimpleBooleanOperation |

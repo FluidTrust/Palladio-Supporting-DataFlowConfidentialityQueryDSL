@@ -12,17 +12,9 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.resource.impl.DefaultResourceDescriptionStrategy
 import org.eclipse.xtext.scoping.impl.ImportUriResolver
 import org.eclipse.xtext.util.IAcceptor
-import org.palladiosimulator.pcm.allocation.Allocation
-import org.palladiosimulator.pcm.allocation.AllocationPackage
-import org.palladiosimulator.pcm.core.composition.AssemblyContext
-import org.palladiosimulator.pcm.core.composition.CompositionPackage
-import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType
 import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterized
 import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterizedPackage
-import org.palladiosimulator.pcm.usagemodel.UsageModel
-import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage
-import org.palladiosimulator.pcm.repository.RepositoryPackage
-import org.palladiosimulator.pcm.repository.Repository
+import org.palladiosimulator.dataflow.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType
 
 class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStrategy {
 
@@ -46,62 +38,7 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 			return true
 		}
 
-		if (eObject.eClass === AllocationPackage.eINSTANCE.allocation) {
-			createEObjectDescriptionForAllocation(eObject, acceptor)
-			return false
-		}
-		if (eObject.eClass === UsagemodelPackage.eINSTANCE.usageModel) {
-			createEObjectDescriptionForUsageModel(eObject, acceptor)
-			return false
-		}
-		
-//		if (eObject.eClass === CharacteristicsPackage.eINSTANCE.characteristicTypeDictionary) {
-//			createEObjectDescriptionForPCMCharacteristicTypeContainer(eObject, acceptor)
-//			return true
-//		}
-				
-		if(eObject.eClass === RepositoryPackage.eINSTANCE.repository) {
-			createEObjectDescriptionForRepository(eObject, acceptor)
-			return false
-		}
-
-		if (eObject.eClass == CompositionPackage.eINSTANCE.assemblyContext) {
-			createEObjectDescriptionForAssemblyContext(eObject, acceptor)
-			return false
-		}
-
 		super.createEObjectDescriptions(eObject, acceptor)
-	}
-	
-	protected def createEObjectDescriptionForRepository(EObject eObject, IAcceptor<IEObjectDescription> acceptor) {
-		val repository = eObject as Repository
-		acceptor.accept(
-			EObjectDescription.create(QualifiedName.create(getEResourceFileName(repository.eResource)), repository))
-	}
-	
-//	protected def createEObjectDescriptionForPCMCharacteristicTypeContainer(EObject eObject,
-//		IAcceptor<IEObjectDescription> acceptor) {
-//		val typeContainer = eObject as CharacteristicTypeDictionary
-//		acceptor.accept(
-//			EObjectDescription.create(QualifiedName.create(getEResourceFileName(typeContainer.eResource)),
-//				typeContainer));
-//	}
-
-	protected def createEObjectDescriptionForAssemblyContext(EObject eObject, IAcceptor<IEObjectDescription> acceptor) {
-		val assemblyContext = eObject as AssemblyContext
-		acceptor.accept(EObjectDescription.create(QualifiedName.create(assemblyContext.entityName), assemblyContext))
-	}
-
-	protected def createEObjectDescriptionForUsageModel(EObject eObject, IAcceptor<IEObjectDescription> acceptor) {
-		val usageModel = eObject as UsageModel
-		acceptor.accept(
-			EObjectDescription.create(QualifiedName.create(getEResourceFileName(usageModel.eResource)), usageModel))
-	}
-
-	protected def createEObjectDescriptionForAllocation(EObject eObject, IAcceptor<IEObjectDescription> acceptor) {
-		val allocation = eObject as Allocation
-		acceptor.accept(
-			EObjectDescription.create(QualifiedName.create(getEResourceFileName(allocation.eResource)), allocation))
 	}
 
 	protected def createEObjectDescriptionForCharacteristicTypeContainer(EObject eObject,

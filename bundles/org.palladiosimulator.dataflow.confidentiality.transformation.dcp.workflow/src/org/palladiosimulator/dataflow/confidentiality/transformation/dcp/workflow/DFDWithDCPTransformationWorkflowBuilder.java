@@ -37,7 +37,7 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 	
 	
 	private ModelLocation dcpdslLocation;
-	private ModelLocation ddcLocation;
+//	private ModelLocation ddcLocation;
 	private IProverFactory proverFactory;
 	private boolean serializeFlowTree = true;
 	
@@ -94,13 +94,13 @@ public class DFDWithDCPTransformationWorkflowBuilder extends TransformationWorkf
 		getBlackboard().setContents(DEFAULT_DFD_LOCATION, Arrays.asList(dfd));
 		getBlackboard().setContents(DEFAULT_DCPDSL_LOCATION, Arrays.asList(dcp));
 		dfdLocation = DEFAULT_DFD_LOCATION;
-		ddcLocation = DEFAULT_DFD_LOCATION;
+//		ddcLocation = DEFAULT_DFD_LOCATION;
 		dcpdslLocation = DEFAULT_DCPDSL_LOCATION;
 		return this;
 	}
 	
 	public DFDWithDCPTransformationWorkflowBuilder addDDC(URI ddcURI) {
-		ddcLocation = new ModelLocation(dfdLocation.getPartitionID(), ddcURI);
+//		ddcLocation = new ModelLocation(dfdLocation.getPartitionID(), ddcURI);
 		return this;
 	}
 	

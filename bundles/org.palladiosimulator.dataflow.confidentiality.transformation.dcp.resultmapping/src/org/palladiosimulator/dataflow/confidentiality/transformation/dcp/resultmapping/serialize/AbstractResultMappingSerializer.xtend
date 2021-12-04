@@ -69,7 +69,7 @@ abstract class AbstractResultMappingSerializer implements ResultMappingSerialize
 	}
 
 	protected def String mapCondition(Condition condition) {
-		val operation = condition.operation
+		//val operation = condition.operation
 		//escape(serializer.serialize(operation).replaceAll(" ", ""))
 		// Currently not resolved
 		""

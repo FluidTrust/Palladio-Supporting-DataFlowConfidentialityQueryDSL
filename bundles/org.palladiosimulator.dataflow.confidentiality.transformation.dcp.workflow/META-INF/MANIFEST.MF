@@ -21,6 +21,6 @@ Require-Bundle: de.uka.ipd.sdq.workflow;bundle-version="4.2.0",
 Import-Package: org.apache.commons.lang3;version="3.1.0"
 Export-Package: org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow,
  org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.internal,
- org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs;x-friends:="org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.tests"
+ org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.jobs
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.palladiosimulator.dataflow.confidentiality.transformation.dcp.workflow.internal.Activator

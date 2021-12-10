@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.xtext,
  org.palladiosimulator.dataflow.diagram.characterized;bundle-version="0.1.0";visibility:=reexport,
  org.palladiosimulator.dataflow.dictionary.characterized;bundle-version="0.1.0";visibility:=reexport,
  org.apache.commons.lang3;bundle-version="3.1.0",
- de.uka.ipd.sdq.workflow.mdsd;bundle-version="4.2.0",
+ de.uka.ipd.sdq.workflow.mdsd.blackboard;bundle-version="5.1.0",
  org.palladiosimulator.dataflow.confidentiality.transformation.workflow,
  org.palladiosimulator.dataflow.confidentiality.transformation.prolog;visibility:=reexport,
  org.palladiosimulator.dataflow.confidentiality.querydsl.mwe2;resolution:=optional

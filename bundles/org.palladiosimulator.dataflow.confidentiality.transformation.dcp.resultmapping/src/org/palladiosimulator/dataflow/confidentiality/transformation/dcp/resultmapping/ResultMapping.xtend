@@ -2,19 +2,19 @@ package org.palladiosimulator.dataflow.confidentiality.transformation.dcp.result
 
 import de.sebinside.dcp.dsl.dSL.CharacteristicClass
 import de.sebinside.dcp.dsl.dSL.CharacteristicTypeSelector
+import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
 import de.sebinside.dcp.dsl.dSL.Constraint
 import de.sebinside.dcp.dsl.dSL.Model
 import de.sebinside.dcp.dsl.generator.GlobalConstants
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import java.util.ArrayList
-import java.util.HashMap
+import java.util.LinkedHashMap
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.prolog4j.Solution
 import org.prolog4j.SolutionIterator
 
 import static org.palladiosimulator.dataflow.confidentiality.transformation.dcp.resultmapping.serialize.ResultMappingUtils.*
-import de.sebinside.dcp.dsl.dSL.CharacteristicVariableType
 
 class ResultMapping {
 
@@ -71,7 +71,7 @@ class ResultMapping {
 		}
 
 		// Retrieve (optional) extra class variable unifications
-		var classVariableMap = new HashMap<CharacteristicTypeSelector, String>
+		var classVariableMap = new LinkedHashMap<CharacteristicTypeSelector, String>
 		for (clazz : evaluatedConstraint.allClasses) {
 			for (member : clazz.members) {
 				val value = getSolutionVariable(
@@ -84,7 +84,7 @@ class ResultMapping {
 		}
 
 		// Retrieve (optional) extra free variables
-		var variablesMap = new HashMap<CharacteristicVariableType, List<String>>
+		var variablesMap = new LinkedHashMap<CharacteristicVariableType, List<String>>
 		for (variable : evaluatedConstraint.allCharacteristicVariables) {
 			val value = getSolutionVariable(
 				iterator, '''«GlobalConstants.Prefixes.CHARACTERISTIC_VARIABLE»«variable.name»''')

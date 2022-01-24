@@ -438,25 +438,4 @@
           uriExtension="xmi">
     </resourceServiceProvider>
  </extension>
-  <extension
-       point="org.eclipse.xtext.extension_resourceServiceProvider">
-    <resourceServiceProvider
-          class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.resource.generic.GenericResourceServiceProvider"
-          uriExtension="allocation">
-    </resourceServiceProvider>
- </extension>
-  <extension
-       point="org.eclipse.xtext.extension_resourceServiceProvider">
-    <resourceServiceProvider
-          class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.resource.generic.GenericResourceServiceProvider"
-          uriExtension="usagemodel">
-    </resourceServiceProvider>
- </extension>
-   <extension
-       point="org.eclipse.xtext.extension_resourceServiceProvider">
-    <resourceServiceProvider
-          class="de.sebinside.dcp.dsl.ui.DSLExecutableExtensionFactory:org.eclipse.xtext.resource.generic.GenericResourceServiceProvider"
-          uriExtension="system">
-    </resourceServiceProvider>
- </extension>
 </plugin>

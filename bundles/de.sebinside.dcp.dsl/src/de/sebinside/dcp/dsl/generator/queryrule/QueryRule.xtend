@@ -40,7 +40,7 @@ abstract class QueryRule {
 
 	var Rule rule = null
 	var String nameBase = null
-	var Converter converter = null
+	protected val Converter converter
 
 	var Set<CharacteristicClass> characteristicClasses = new LinkedHashSet<CharacteristicClass>
 	var Set<CharacteristicVariableType> freeVariables = new LinkedHashSet<CharacteristicVariableType>
@@ -147,7 +147,11 @@ abstract class QueryRule {
 	}
 
 	def dispatch generateNodeSelectorTerm(NodeIdentitiySelector selector, String nodeName) {
-		val unification = Unification(CompoundTerm(nodeName), converter.convert(selector))
+		val identifiers = converter.convert(selector)
+		if (identifiers.size != 1) {
+			throw new IllegalStateException("Could not uniquely identify a node by the given identifier.")
+		}
+		val unification = Unification(CompoundTerm(nodeName), identifiers.iterator.next)
 
 		#[unification]
 	}

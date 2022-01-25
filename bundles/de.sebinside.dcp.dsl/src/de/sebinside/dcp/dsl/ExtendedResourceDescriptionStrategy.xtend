@@ -49,7 +49,7 @@ class ExtendedResourceDescriptionStrategy extends DefaultResourceDescriptionStra
 				typeContainer));
 	}
 
-	private def getEResourceFileName(Resource eResource) {
+	protected def getEResourceFileName(Resource eResource) {
 		eResource.URI.lastSegment.substring(0, eResource.URI.lastSegment.lastIndexOf("."))
 	}
 

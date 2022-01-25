@@ -43,7 +43,7 @@ class DFDConverter implements Converter {
 			throw new IllegalArgumentException("Target model type and node selector are incompatible.")
 		}
 	
-		AtomicQuotedString('''«trace.getFactId(selector.diaNode, null)»''')
+		#[AtomicQuotedString('''«trace.getFactId(selector.diaNode, null)»''')]
 		// Problem as the DFD trace needs an additional pin in order to resolve this
 	}
 	

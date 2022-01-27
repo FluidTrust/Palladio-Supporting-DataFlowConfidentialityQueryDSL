@@ -1,4 +1,3 @@
-target DFD using DDC_Hospital
 import "DDC_Hospital.xmi"
 
 type ZONE:ZoneMembership

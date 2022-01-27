@@ -1,4 +1,3 @@
-target DFD using DDC_JPMail
 import "DDC_JPMail.xmi"
 
 type ZONE:ZoneMembership

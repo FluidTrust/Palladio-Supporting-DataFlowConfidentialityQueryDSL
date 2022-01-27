@@ -1,4 +1,3 @@
-target DFD using DDC_WebRTC
 import "DDC_WebRTC.xmi"
 
 type ZONE:ZoneMembership

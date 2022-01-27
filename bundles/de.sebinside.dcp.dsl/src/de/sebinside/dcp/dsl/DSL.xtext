@@ -7,11 +7,7 @@ import "http://palladiosimulator.org/dataflow/dictionary/characterized/1.0" as d
 import "http://www.eclipse.org/emf/2002/Ecore"
 
 Model:
-	(targetModelType=TargetModelTypeDef)?
 	(elements+=AbstractElement)*;
-
-TargetModelTypeDef:
-	'target' type="DFD" 'using' typeContainer=[dictionary::DataDictionaryCharacterized];
 
 AbstractElement:
 	Include | CharacteristicType | GlobalConstantDefinition | CharacteristicClass | Constraint | {AbstractElement} SL_COMMENT;

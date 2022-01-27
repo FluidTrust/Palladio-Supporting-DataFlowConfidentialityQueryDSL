@@ -8,7 +8,6 @@ import de.sebinside.dcp.dsl.dSL.Constraint
 import de.sebinside.dcp.dsl.dSL.GlobalConstantDefinition
 import de.sebinside.dcp.dsl.dSL.Model
 import de.sebinside.dcp.dsl.dSL.Rule
-import de.sebinside.dcp.dsl.dSL.TargetModelTypeDef
 import de.sebinside.dcp.dsl.generator.crossplatform.Converter
 import de.sebinside.dcp.dsl.generator.crossplatform.DFDConverter
 import de.sebinside.dcp.dsl.generator.queryrule.InputPinQueryRule
@@ -36,8 +35,6 @@ class DSLGenerator extends AbstractGenerator {
 	// Setting the default value
 	protected Converter converter = null
 	
-	DFD2PrologTransformationTrace extendedDFDConverterTrace = null
-	
 	var callableQueryConstraints = new ArrayList<CompoundTerm>
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -57,7 +54,6 @@ class DSLGenerator extends AbstractGenerator {
 	
 	def generateFromModel(Model model) {
 		val program = PrologFactory.eINSTANCE.createProgram
-		model.targetModelType.compile
 		
 		val globalVariables = model.elements.filter(GlobalConstantDefinition)
 		
@@ -115,14 +111,7 @@ class DSLGenerator extends AbstractGenerator {
 //	}
 	
 	def setDFD2PrologTrace(DFD2PrologTransformationTrace trace) {
-		this.extendedDFDConverterTrace = trace;
-	}
-
-	protected def compile(TargetModelTypeDef typeDefs) {
-		if (extendedDFDConverterTrace === null) {
-			throw new Exception("No valid trace for DFD!")
-		}
-		this.converter = new DFDConverter(extendedDFDConverterTrace)
+		this.converter = new DFDConverter(trace)
 	}
 
 	protected def List<Clause> compile(CharacteristicClass charateristicClass) {
